@@ -1,7 +1,7 @@
-package engine;
+package engine.events;
 
 /**
- * This class will define the handlers for the action classes and 
+ * This interface will define the handlers for the action classes and 
  * execute the corresponding sequence of updates based on actions.
  * 
  * Can call methods to change Sprite state, Level state, CameraView state...
@@ -11,7 +11,7 @@ package engine;
  *
  */
 
-
+//Temporary implementation, might change it back to an Abstract Class
 /*
  * Types of events
  *      - Collision events
@@ -29,9 +29,10 @@ package engine;
  *      - Camera changes...
  */
 
-public interface GameEvent {
+public interface Event {
+    
     /**
-     * Will execute this Event resulting from applying an Action.
+     * Will execute the consequences resulting from applying an Action.
      * @param action
      */
     public abstract void execute ();
