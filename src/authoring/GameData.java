@@ -13,9 +13,6 @@ import java.io.Serializable;
  */
 public class GameData implements Serializable{
 
-	
-	
-	
 	/**
 	 * Maybe put in properties file?
 	 */
@@ -26,8 +23,8 @@ public class GameData implements Serializable{
 	private SoundCollection mySounds;
 	private ImageCollection myImages;
 	private SpriteCollection mySprites;
-	private EventCollection myEvents; //events prompt actions and hold onto their corresponding action
-	private VariableCollection myVariables;
+//	private EventCollection myEvents; //events prompt actions and hold onto their corresponding action
+//	private VariableCollection myVariables;
 	
 	
 }
