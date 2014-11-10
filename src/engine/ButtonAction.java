@@ -6,11 +6,17 @@ import java.util.List;
  * 
  * @author Davis
  * 
- * actions caused by collisions of two nodes
+ * actions caused by a button press
  *
  */
 
-public class CollisionAction extends Action {
+public class ButtonAction extends Action {
+    private char triggerKey;
+    
+    public ButtonAction (char triggerKey) {
+        super();
+        this.triggerKey = triggerKey;
+    }
 
     @Override
     public boolean isEnabled () {
@@ -23,5 +29,5 @@ public class CollisionAction extends Action {
         // TODO Auto-generated method stub
         return null;
     }
-    
+
 }
