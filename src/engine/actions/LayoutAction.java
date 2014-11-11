@@ -1,11 +1,11 @@
-package engine.events;
+package engine.actions;
 
 import java.util.List;
 import engine.sprite.Sprite;
 
-public class LayoutEvent implements Event {
+public class LayoutAction implements Action {
 
-    public LayoutEvent (List<Sprite> sprites, List<Double> values) {
+    public LayoutAction (List<Sprite> sprites, List<Double> values) {
         
     }
     
