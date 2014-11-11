@@ -15,6 +15,14 @@ public class SplashScreen {
 		return null;
 	}
 	
+	private void play(){
+//		myGamePlayerLoop.initialize();
+	}
+	
+	private void author(){
+		//
+	}
+	
 	
 	
 
