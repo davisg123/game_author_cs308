@@ -1,7 +1,7 @@
-package engine.actions;
+package engine.conditions;
 
 import java.util.List;
-import engine.events.Event;
+import engine.actions.Action;
 
 /**
  * 
@@ -11,10 +11,10 @@ import engine.events.Event;
  *
  */
 
-public class ButtonAction extends Action {
+public class ButtonCondition extends Condition {
     private char triggerKey;
     
-    public ButtonAction (char triggerKey) {
+    public ButtonCondition (char triggerKey) {
         super();
         this.triggerKey = triggerKey;
     }
@@ -26,7 +26,7 @@ public class ButtonAction extends Action {
     }
 
     @Override
-    public List<Event> getEvents () {
+    public List<Action> getEvents () {
         // TODO Auto-generated method stub
         return null;
     }

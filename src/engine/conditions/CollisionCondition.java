@@ -1,7 +1,7 @@
-package engine.actions;
+package engine.conditions;
 
 import java.util.List;
-import engine.events.Event;
+import engine.actions.Action;
 
 /**
  * 
@@ -11,7 +11,7 @@ import engine.events.Event;
  *
  */
 
-public class CollisionAction extends Action {
+public class CollisionCondition extends Condition {
 
     @Override
     public boolean isEnabled () {
@@ -20,7 +20,7 @@ public class CollisionAction extends Action {
     }
 
     @Override
-    public List<Event> getEvents () {
+    public List<Action> getEvents () {
         // TODO Auto-generated method stub
         return null;
     }
