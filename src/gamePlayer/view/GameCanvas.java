@@ -2,7 +2,6 @@ package gamePlayer.view;
 
 import javafx.scene.Group;
 import javafx.scene.Node;
-import javafx.scene.layout.BorderPane;
 
 public class GameCanvas implements ViewController{
 	
@@ -26,9 +25,5 @@ public class GameCanvas implements ViewController{
 	public void clear(){
 		myCanvas.getChildren().clear();
 	}
-	
-	
-
-	
 	
 }
