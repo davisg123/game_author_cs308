@@ -2,7 +2,6 @@ package gamePlayer.view;
 
 import javafx.scene.Group;
 import javafx.scene.Node;
-import javafx.scene.layout.BorderPane;
 
 public class GameCanvas implements ViewController{
 	
@@ -15,7 +14,6 @@ public class GameCanvas implements ViewController{
 	
 	@Override
 	public Node getNode() {
-		// TODO Auto-generated method stub
 		return myCanvas;
 	}
 	
