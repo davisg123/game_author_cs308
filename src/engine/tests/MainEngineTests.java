@@ -2,8 +2,6 @@ package engine.tests;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.ResourceBundle;
 import javafx.geometry.Point2D;
 import engine.GameManager;
 import engine.sprite.Sprite;
@@ -14,6 +12,8 @@ import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Group;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -21,6 +21,8 @@ public class MainEngineTests extends Application {
     
     private Timeline myAnimation;
     private GameManager myGameManager;
+    private Stage myStage;
+    private Group myRootGroup;
     private static double DEFAULT_SPEED = 60.0;
     
     public static void main(String[] args) throws Exception {
@@ -29,6 +31,14 @@ public class MainEngineTests extends Application {
 
     @Override
     public void start (Stage arg0) throws Exception {
+        myStage = arg0;
+        myStage.setTitle("Mirror Man");
+
+        myRootGroup = new Group();
+
+        Scene myScene = new Scene(myRootGroup,300,300);
+        myStage.setScene(myScene);
+        myStage.show();
         createSprite();
         setGameSpeed(DEFAULT_SPEED,true);
     }
@@ -39,9 +49,7 @@ public class MainEngineTests extends Application {
         Sprite sprite = new Sprite(null,spriteLayout,null);
         List<Sprite> mySpriteList = new ArrayList<Sprite>();
         mySpriteList.add(sprite);
-        myGameManager = new GameManager(null,mySpriteList);
-        
-        
+        myGameManager = new GameManager(null,mySpriteList,myRootGroup);
     }
     
     /**
