@@ -1,4 +1,4 @@
-package engine.events;
+package engine.actions;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import java.util.List;
  *
  */
 
-public class StateEvent implements Event {
+public class StateAction implements Action {
 
     private List<Double> myValues;
     
@@ -17,7 +17,7 @@ public class StateEvent implements Event {
      * Constructor loads values that can be changed in state
      * @param values
      */
-    public StateEvent (List<Double> values) {
+    public StateAction (List<Double> values) {
         myValues = values;
     }
     

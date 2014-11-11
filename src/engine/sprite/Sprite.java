@@ -2,6 +2,7 @@ package engine.sprite;
 
 import engine.sprite.components.*;
 import java.util.List;
+import javafx.scene.Node;
 
 
 /**
@@ -15,6 +16,7 @@ public class Sprite {
    private State myState;
    private Layout myLayout;
    private PhysicsBody myPhysicsBody;
+   private Node myRenderedNode;
    
    /**
     * 
@@ -23,6 +25,18 @@ public class Sprite {
        myState = state;
        myLayout = layout;
        myPhysicsBody = physicsBody;
+   }
+   
+   public Layout getLayout(){
+       return myLayout;
+   }
+   
+   public Node getNode(){
+       return myRenderedNode;
+   }
+   
+   public void setNode(Node n){
+       myRenderedNode = n;
    }
     
    /**
