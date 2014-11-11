@@ -6,7 +6,7 @@ import javafx.geometry.Point2D;
  * 
  * @author ArihantJain
  * 
- * This Class holds a Layout State for Sprite;
+ * This Class holds Layout Information for Sprite;
  *
  */
 public class Layout{
