@@ -4,5 +4,7 @@ public class GamePlayerLoop {
 
 	// private GameEngine myGameEngine;
 	private DataWrapper myWrapper;
-	private DataHandler myHandler; 
+	private DataHandler myHandler;
+	
+	
 }
