@@ -8,7 +8,6 @@ public class Main extends Application{
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		// TODO Auto-generated method stub
 		SplashScreen screen = new SplashScreen();
 		Scene scene = screen.initialize();
 		primaryStage.setScene(scene);
