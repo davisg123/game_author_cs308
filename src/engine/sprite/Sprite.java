@@ -7,7 +7,7 @@ import javafx.scene.Node;
 
 /**
 * 
-* @author ArihantJain
+* @author Arihant Jain
 *
 *
 *This class initiates a list of components which are characteristics of the sprite. 
@@ -16,7 +16,7 @@ public class Sprite {
    private State myState;
    private Layout myLayout;
    private PhysicsBody myPhysicsBody;
-   private Node myRenderedNode;
+   
    
    /**
     * 
@@ -31,9 +31,7 @@ public class Sprite {
        return myLayout;
    }
    
-   public Node getNode(){
-       return myRenderedNode;
-   }
+   
    
    public void setNode(Node n){
        myRenderedNode = n;
