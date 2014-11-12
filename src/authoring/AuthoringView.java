@@ -6,14 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 /**
  * Displays all objects on the screen. Individual components observes components
@@ -33,7 +25,7 @@ public class AuthoringView {
 	private void initializeStage() throws IOException {
 
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
-				"voogatest2.fxml"));
+				"voogatest1.fxml"));
 		Parent root;
 		root = fxmlLoader.load();
 		myController = (AuthoringController) fxmlLoader.getController();

@@ -6,8 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="658.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="658.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="authoring.AuthoringController">
    <children>
       <Pane layoutY="68.0" prefHeight="591.0" prefWidth="198.0" style="-fx-background-color: BLUE;">
          <children>
@@ -100,6 +99,9 @@
             </MenuBar>
          </children>
       </Pane>
-      <Pane layoutX="198.0" layoutY="68.0" prefHeight="591.0" prefWidth="642.0" style="-fx-background-color: GREEN;" />
+      <Pane layoutX="198.0" layoutY="68.0" prefHeight="591.0" prefWidth="642.0" style="-fx-background-color: GREEN;">
+         <children>
+            <Button layoutX="181.0" layoutY="194.0" mnemonicParsing="false" onAction="#testMethod" text="Button" />
+         </children></Pane>
    </children>
 </AnchorPane>
