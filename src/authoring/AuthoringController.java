@@ -52,5 +52,9 @@ public class AuthoringController implements Initializable {
 	public void setView(AuthoringView view){
 		myView = view;
 	}
+	
+	public void printo(){
+		System.out.println("ncjidbvij eihvbei");
+	}
 
 }
