@@ -8,7 +8,7 @@ import javafx.scene.Node;
 /**
 * 
 * @author ArihantJain
-*
+*/k
 *
 *This class initiates a list of components which are characteristics of the sprite. 
 */
