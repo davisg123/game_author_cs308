@@ -101,7 +101,8 @@
       </Pane>
       <Pane layoutX="198.0" layoutY="68.0" prefHeight="591.0" prefWidth="642.0" style="-fx-background-color: GREEN;">
          <children>
-            <Button layoutX="181.0" layoutY="194.0" mnemonicParsing="false" onAction="#testMethod" text="Button" />
+            <Button layoutX="181.0" layoutY="194.0" mnemonicParsing="false" onAction="#showPane" text="Button" />
+            <Pane fx:id="myPane" layoutX="39.0" layoutY="278.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: yellow;" visible="false" />
          </children></Pane>
    </children>
 </AnchorPane>

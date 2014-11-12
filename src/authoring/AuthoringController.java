@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.Pane;
 
 
 
@@ -39,6 +40,12 @@ public class AuthoringController implements Initializable {
 	@FXML
 	public void testMethod(ActionEvent event){
 		System.out.println("hi");
+	}
+	
+	@FXML
+	private Pane myPane; //the yellow Pane object has fxid myPane
+	public void showPane(){
+		myPane.setVisible(true);
 	}
 
 }
