@@ -28,7 +28,7 @@ public class GamePlayerLoop {
 	}
 	
 	private void initializeGUIComponents() {
-		
+		myCanvas = new GameCanvas();
 	}
 	
 	private void initializeGUIElements(){
