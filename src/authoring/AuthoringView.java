@@ -2,6 +2,7 @@ package authoring;
 
 import java.io.IOException;
 
+import authoring.AuthoringController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -25,17 +26,10 @@ public class AuthoringView {
 	private void initializeStage() throws IOException {
 
 		FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(
-				"voogatest1.fxml"));
+				"randotest.fxml"));
 		Parent root;
-		try {
-			root = fxmlLoader.load();
-			myController = (AuthoringController) fxmlLoader.getController();
-			myController.setView(this);
-		} catch (IOException exception) {
-			// displayError(exception);
-			return;
-		}
 		root = fxmlLoader.load();
+		myController = (AuthoringController) fxmlLoader.getController();
 
 		this.myScene = new Scene(root, 840, 658);
 		this.myStage.setTitle("Dinkey");

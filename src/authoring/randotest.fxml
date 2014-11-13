@@ -5,6 +5,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import authoring.*?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="658.0" prefWidth="840.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -101,7 +102,8 @@
       </Pane>
       <Pane layoutX="198.0" layoutY="68.0" prefHeight="591.0" prefWidth="642.0" style="-fx-background-color: GREEN;">
          <children>
-            <TestButton fx:id="myTestButton" />
+            <TestButton fx:id="myTestButton" layoutX="202.0" layoutY="219.0" mnemonicParsing="false" text="TestButton" />
+            <TestTwo layoutX="155.0" layoutY="415.0" mnemonicParsing="false" text="Two" />
          </children></Pane>
    </children>
 </AnchorPane>
