@@ -1,13 +1,12 @@
 package authoring;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
 
 /**
@@ -25,7 +24,7 @@ public class AuthoringController implements Initializable {
 	 */
 
 	@FXML
-	private List myTestButton = new ArrayList<String>();
+	private Button myTestButton;
 
 //	public AuthoringController(){
 //		myTestButton.setOnAction(event -> {System.out.println("fgDFh"); });
@@ -37,7 +36,8 @@ public class AuthoringController implements Initializable {
 	 */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-
+		TestButtonController t = new TestButtonController(myTestButton);
+		System.out.println(myTestButton.getText());
 	}
 
 	public void setView(AuthoringView view) {

@@ -29,7 +29,7 @@ public class AuthoringView {
 				"randotest.fxml"));
 		Parent root;
 		root = fxmlLoader.load();
-		myController = (AuthoringController) fxmlLoader.getController();
+		//myController = (AuthoringController) fxmlLoader.getController();
 
 		this.myScene = new Scene(root, 840, 658);
 		this.myStage.setTitle("Dinkey");
