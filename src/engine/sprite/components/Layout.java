@@ -6,20 +6,17 @@ import javafx.geometry.Point2D;
  * 
  * @author ArihantJain
  * 
- * This Class holds a Layout State for Sprite;
+ * This Class holds Layout Information for Sprite;
  *
  */
 public class Layout{
     private Point2D myLocation;
-    private double myLocX = myLocation.getX();
-    private double myLocY = myLocation.getY();
     private double mySizeHeight;
     private double mySizeWidth;
 
 
     public Layout(Point2D point, double height, double width){
-        myLocX = point.getX();
-        myLocY  = point.getY();;
+        myLocation = point;
         mySizeHeight = height;
         mySizeWidth = width;
     }
@@ -31,7 +28,7 @@ public class Layout{
      * @param x - New X coordinate of Object
      */
     public void setPosX(double x){
-        myLocX = x;
+        myLocation = new Point2D(x,getPosY());
     }
 
     /**
@@ -40,7 +37,7 @@ public class Layout{
      * @param y - New Y coordinate of Object
      */
     public void setPosY(double y){
-        myLocY = y;
+        myLocation = new Point2D(getPosX(),y);
     }
 
 
@@ -77,7 +74,7 @@ public class Layout{
      * @return -  Y coordinate of Object
      */
     public double getPosX(){
-        return myLocX;
+        return myLocation.getX();
     }
 
     /**
@@ -85,8 +82,8 @@ public class Layout{
      * 
      * @return - returns Y coordinate of Object
      */
-    public double getPosY(double y){
-        return myLocY;
+    public double getPosY(){
+        return myLocation.getY();
     }
 
 
@@ -104,7 +101,7 @@ public class Layout{
      * 
      * @param h - Height of Object
      */
-    public double getSizeHeight(int h){
+    public double getSizeHeight(){
         return mySizeHeight;
     }
 
@@ -113,7 +110,7 @@ public class Layout{
      * 
      * @param w - Width of Object
      */
-    public double getSizeWidth(int w){
+    public double getSizeWidth(){
         return mySizeWidth;
     }
 

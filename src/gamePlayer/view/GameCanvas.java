@@ -25,8 +25,4 @@ public class GameCanvas implements ViewController{
 		myCanvas.getChildren().clear();
 	}
 	
-	
-
-	
-	
 }
