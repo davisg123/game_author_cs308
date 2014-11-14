@@ -6,7 +6,7 @@ import gamePlayer.view.PlayerView;
 
 public class PlayerModel {
 
-	private DataWrapper myWrapper; 
+	private DataWrapper myWrapper;
 	private PlayerView myPlayerView;
 	
 	public PlayerModel() {
@@ -16,6 +16,5 @@ public class PlayerModel {
 	public void initializeView() throws IOException {
 		myPlayerView.initialize();
 	}
-	
 	
 }
