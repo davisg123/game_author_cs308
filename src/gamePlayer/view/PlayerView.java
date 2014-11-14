@@ -8,6 +8,7 @@ import application.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -43,9 +44,9 @@ public class PlayerView {
 	}
 
 	private void initializeGUIElements() {
-		MenuBar myMenuBar = (MenuBar) myScene.lookup("menuBar");
+//		MenuBar myMenuBar = (MenuBar) myScene.lookup("#menuBar");
 		VBox myCanvasVBox = (VBox) myScene.lookup("#canvasVBox");
-		myCanvasVBox.getChildren().add(myCanvas.getNode());
-		myRoot.getChildren().addAll(myMenuBar, myCanvasVBox);
+		myCanvasVBox.getChildren().addAll(new Label("HI"), myCanvas.getNode());
+		myRoot.getChildren().addAll(myCanvasVBox);
 	}
 }

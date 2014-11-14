@@ -21,34 +21,37 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.Menu?>
 
-<BorderPane fx:id="background" prefWidth="1000.0" prefHeight="1000.0" xmlns:fx="http://javafx.com/fxml">
-    <top>
-    	<Label text="Game Player GUI"/>
-    	<MenuBar fx:id="menuBar" 
-    		<menus>
-    			<Menu text="Options">
-    				<items>
-    					<MenuItem text="New"/>
-    					<MenuItem text="Load"/>
-    					<MenuItem text="Save"/>
-    					<MenuItem text="Switch Game"/>
-    					<MenuItem text="Pause"/>
-    					<MenuItem text="Quit"/>
-    				</items>
-    			</Menu>
-    			<Menu text="Preferences"?
-    				<items>
-    					<MenuItem text="Sound"/>
-    					<MenuItem text="KeyCombos"/>    				
-    				</items>
-    		</menus>
-    </top>
-    <center>
-    	<VBox fx:id="canvasVBox">
-    	</VBox>
-    </center>
-    <bottom></bottom>
-     
+<BorderPane fx:id="background" prefWidth="1000.0" prefHeight="1000.0"
+	xmlns:fx="http://javafx.com/fxml">
+	<top>
+		<Label text="Game Player GUI" />
+		<MenuBar fx:id="menuBar">
+			<menus>
+				<Menu text="Options">
+					<items>
+						<MenuItem text="New" />
+						<MenuItem text="Load" />
+						<MenuItem text="Save" />
+						<MenuItem text="Switch Game" />
+						<MenuItem text="Pause" />
+						<MenuItem text="Quit" />
+					</items>
+				</Menu>
+				<Menu text="Preferences" ?
+    				
+					<items>
+						<MenuItem text="Sound" />
+						<MenuItem text="KeyCombos" />
+					</items>
+			</menus>
+		</MenuBar>
+	</top>
+	<center>
+		<VBox fx:id="canvasVBox">
+		</VBox>
+	</center>
+	<bottom></bottom>
+
 </BorderPane>
 
 
