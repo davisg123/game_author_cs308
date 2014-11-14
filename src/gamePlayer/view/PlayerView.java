@@ -1,11 +1,14 @@
 package gamePlayer.view;
 
 import gamePlayer.model.PlayerModel;
+
 import java.io.IOException;
+
 import application.Main;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
@@ -46,8 +49,10 @@ public class PlayerView {
 	}
 	
 	private void initializeGUIElements(){
-		VBox myCanvasVBox = (VBox) myScene.lookup("#canvasVBox");
+		myCanvasVBox = (VBox) myScene.lookup("#canvasVBox");
 		myCanvasVBox.getChildren().add(myCanvas.getNode());
+		Label l = new Label("Here");
+		myCanvasVBox.getChildren().add(l);
 	}	
 	
 }
