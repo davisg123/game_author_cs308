@@ -17,14 +17,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
-<?import application.Constants?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.Menu?>
 
 <BorderPane fx:id="background" prefWidth="1000.0" prefHeight="1000.0" xmlns:fx="http://javafx.com/fxml">
     <top>
     	<Label text="Game Player GUI"/>
-    	<MenuBar fx:id="menuBar" 
+    	<MenuBar fx:id="menuBar"> 
     		<menus>
     			<Menu text="Options">
     				<items>
@@ -33,15 +32,17 @@
     					<MenuItem text="Save"/>
     					<MenuItem text="Switch Game"/>
     					<MenuItem text="Pause"/>
-    					<MenuItem text="Quit"/>
+    					<MenuItem text="Quit"/> 
     				</items>
-    			</Menu>
-    			<Menu text="Preferences"?
+    			</Menu> 
+    			<Menu text="Preferences">
     				<items>
     					<MenuItem text="Sound"/>
     					<MenuItem text="KeyCombos"/>    				
     				</items>
+    			</Menu>
     		</menus>
+    	</MenuBar>
     </top>
     <center>
     	<VBox fx:id="canvasVBox">
