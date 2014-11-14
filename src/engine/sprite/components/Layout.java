@@ -3,11 +3,11 @@ package engine.sprite.components;
 
 
 import java.awt.Point;
-
 import java.awt.geom.Point2D;
 import java.util.List;
 import java.util.Map;
 
+import engine.sprite.components.properties.IProperty;
 import javafx.scene.Node;
 
 /**
@@ -17,24 +17,10 @@ import javafx.scene.Node;
  * This Class holds Layout Information for Sprite;
  *
  */
-public class Layout{
-	private Point2D myLocation;
-	private double mySizeHeight;
-	private double mySizeWidth;
-	private Node myRenderedNode;
-	//TODO check to see how movement/orientation rendering works
-	private Map<String, String> myImagePaths;
-	private String myOrientation;
+public class Layout extends SpriteComponent{
+	
 
-	public Layout (Point2D point, double height, double width, Map<String, String> imagePaths, String orientation){
-		myLocation = point;
-		mySizeHeight = height;
-		mySizeWidth = width;
-		myImagePaths = imagePaths;
-		myOrientation = orientation;
-		//TODO change this into own method...?
-		
-	}
+	
 
 
 //	/**
@@ -45,97 +31,18 @@ public class Layout{
 //		return myRenderedNode;
 //	}
 
-	//TODO Check deprecation in the future for X and Y since we implemented Points...
-		/**
-		 * Sets X-Coordinate of Object
-		 * 
-		 * @param x - New X coordinate of Object
-		 */
-		public void setPosX (double xCoord) {
-			myLocation.setLocation(xCoord, myLocation.getY());
-		}
 
-		/**
-		 * Sets Y- Coordinate of Object
-		 * 
-		 * @param y - New Y coordinate of Object
-		 */
-		public void setPosY (double yCoord) {
-			myLocation.setLocation(myLocation.getX(), yCoord);
+		@Override
+		public void addProperty(IProperty property) {
+			// TODO Auto-generated method stub
+			
 		}
 
 
-		/**
-		 * Sets Location of object
-		 * 
-		 * @param point - new Location Point
-		 */
-		public void setPos (Point2D point){
-			myLocation.setLocation(point);
-		}
-
-		/**
-		 * Sets Height of object
-		 * 
-		 * @param h - Height of Object
-		 */
-		public void setSizeHeight(double h){
-			mySizeHeight = h;
-		}
-
-		/**
-		 * Sets Width of object
-		 * 
-		 * @param w - Width of Object
-		 */
-		public void setSizeWidth(double w){
-			mySizeWidth = w;
-		}
-
-		/**
-		 * Return X-Coordinate of Object
-		 * 
-		 * @return -  Y coordinate of Object
-		 */
-		public double getPosX(){
-			return myLocation.getX();
-		}
-
-		/**
-		 * Return Y-Coordinate of Object
-		 * 
-		 * @return - returns Y coordinate of Object
-		 */
-		public double getPosY(){
-			return myLocation.getY();
-		}
-
-
-		/**
-		 * Sets Location of object
-		 * 
-		 * @param point - new Location Point
-		 */
-		public Point2D getPos(Point2D point){
-			return myLocation;
-		}
-
-		/**
-		 * Sets Height of object
-		 * 
-		 * @param h - Height of Object
-		 */
-		public double getSizeHeight(){
-			return mySizeHeight;
-		}
-
-		/**
-		 * Sets Width of object
-		 * 
-		 * @param w - Width of Object
-		 */
-		public double getSizeWidth(){
-			return mySizeWidth;
+		@Override
+		public void update() {
+			// TODO Auto-generated method stub
+			
 		}
 
 
