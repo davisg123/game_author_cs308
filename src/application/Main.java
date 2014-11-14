@@ -9,10 +9,7 @@ public class Main extends Application{
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		SplashScreen screen = new SplashScreen();
-		Scene scene = screen.initialize();
-		primaryStage.setScene(scene);
-		primaryStage.show(); 
-		
+		screen.show();
 	}
 	
 	

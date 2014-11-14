@@ -1,6 +1,7 @@
-package gamePlayer.model;
+package gamePlayer.view;
 
-import gamePlayer.view.GameCanvas;
+import gamePlayer.model.DataHandler;
+import gamePlayer.model.DataWrapper;
 
 import java.io.IOException;
 
@@ -9,16 +10,22 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
-public class GamePlayerLoop {
+public class PlayerView {
 
 	// private GameEngine myGameEngine;
+	private Stage myStage;
 	private DataWrapper myWrapper;
 	private DataHandler myHandler; 
 	private Scene myScene;
 	private Group myRoot; 
 	private VBox myCanvasVBox; 
 	private GameCanvas myCanvas;
+	
+	public PlayerView() {
+		myStage = new Stage();
+	}
 	
 	public void initialize() throws IOException{
 		myRoot.getChildren().add(FXMLLoader.load(getClass().getResource("RootLayout.fxml")));

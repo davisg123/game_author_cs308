@@ -2,14 +2,14 @@ package application;
 
 import java.io.IOException;
 
-import viewcontroller.View;
-import gamePlayer.model.GamePlayerLoop;
+import gamePlayer.view.PlayerView;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
+import javafx.stage.Stage;
 
 public class SplashScreen {
 
@@ -18,14 +18,20 @@ public class SplashScreen {
 	private Button myAuthorButton; 
 	private Button myPlayButton;
 	//private AuthoringEnvironmentObject myAuthoringEnvironmentObject
-	private GamePlayerLoop myGamePlayerLoop; 
+	private PlayerView myPlayerView;
+	protected Stage myStage;
 	
-	public Scene initialize() {
+	public SplashScreen() {
+		myStage = new Stage();
 		myGroup = new Group();
 		initializeButtons();
 		myGroup.getChildren().addAll(myAuthorButton, myPlayButton);
 		myScene = new Scene(myGroup, 1000, 1000, Color.WHITE);
-		return myScene;
+		myStage.setScene(myScene);
+	}
+	
+	public void show() {
+		myStage.show();
 	}
 	
 	private void initializeButtons() {
@@ -33,16 +39,26 @@ public class SplashScreen {
 		myAuthorButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-				myStage.close();
-				View view = new View(myStage, myLanguageChooser.getValue());
-				view.init();
+				
 			}
 		});
+		
 		myPlayButton = new Button();
+		myPlayButton.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent event) {
+				myStage.close();
+				try {
+					play();
+				} catch (IOException e) {
+			
+				}
+			}
+		});
 	}
 
 	private void play() throws IOException{
-		myGamePlayerLoop.initialize();
+		myPlayerView.initialize();
 	}
 	
 	private void author(){
