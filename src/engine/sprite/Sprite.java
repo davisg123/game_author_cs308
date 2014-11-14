@@ -38,6 +38,11 @@ public class Sprite {
    public void setNode(Node n){
        myRenderedNode = n;
    }
+   
+   public void getPhysicsBody()
+   {
+	   return myPhysicsBody;
+   }
     
    /**
     * This method updates the component in the Sprite. 
