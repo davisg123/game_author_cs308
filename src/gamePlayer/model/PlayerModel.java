@@ -4,17 +4,18 @@ import java.io.IOException;
 
 import gamePlayer.view.PlayerView;
 
-public class Model {
+public class PlayerModel {
 
 	private DataWrapper myWrapper; 
 	private PlayerView myPlayerView;
 	
-	public Model() throws IOException {
+	public PlayerModel() {
 		myPlayerView = new PlayerView(this);
-		myPlayerView.initialize();
 	}
 	
-	
+	public void initializeView() throws IOException {
+		myPlayerView.initialize();
+	}
 	
 	
 }
