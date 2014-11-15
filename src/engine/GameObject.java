@@ -1,3 +1,4 @@
+//Deprecated, change name of sprites to game objects
 package engine;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import engine.sprite.components.SpriteComponent;
  * @author Arihant Jain
  *
  */
-
+@Deprecated 
 public abstract class GameObject {
     
     protected List<SpriteComponent> myComponents;
