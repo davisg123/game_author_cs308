@@ -1,11 +1,11 @@
 package engine.tests;
 
+import java.awt.geom.Point2D;
+import java.awt.geom.Point2D.Double;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.geometry.Point2D;
 import engine.GameManager;
 import engine.sprite.Sprite;
-import engine.sprite.components.Layout;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -41,11 +41,10 @@ public class MainEngineTests extends Application {
     }
     
     public void createSprite(){
-        javafx.geometry.Point2D location = new Point2D(50,50);
-        //Layout spriteLayout = new Layout(location,50.0,50.0);
-        //Sprite sprite = new Sprite(null,spriteLayout,null);
+        Point2D location = new Point2D.Double(50,50);
+        Sprite sprite = new Sprite(null,location,0.0);
         List<Sprite> mySpriteList = new ArrayList<Sprite>();
-        //mySpriteList.add(sprite);
+        mySpriteList.add(sprite);
         myGameManager = new GameManager(null,mySpriteList,myRootGroup);
     }
     

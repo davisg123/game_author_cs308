@@ -3,12 +3,11 @@ package engine.sprite;
 import engine.sprite.components.*;
 import java.awt.geom.Dimension2D;
 import java.awt.geom.Point2D;
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 
 /**
  * This class initiates a list of components which are characteristics of the sprite. 
@@ -61,8 +60,8 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
         myComponents  = components;
         myImages   = images;
         mySounds   = sounds;
-        myXPosition.set(position.getX());
-        myYPosition.set(position.getY());
+        myXPosition = new SimpleDoubleProperty(position.getX());
+        myYPosition = new SimpleDoubleProperty(position.getY());
         myOrientation = orientation;
     }
 
