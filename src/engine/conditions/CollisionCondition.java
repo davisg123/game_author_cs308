@@ -14,12 +14,6 @@ import engine.actions.Action;
 public class CollisionCondition extends Condition {
 
     @Override
-    public boolean isEnabled () {
-        // TODO Auto-generated method stub
-        return false;
-    }
-
-    @Override
     public List<Action> getEvents () {
         // TODO Auto-generated method stub
         return null;

@@ -14,8 +14,6 @@ public abstract class Condition {
     private List<Action> myEvents = new ArrayList<Action>();
     private List<Sprite> mySprites = new ArrayList<Sprite>();
     
-    public abstract boolean isEnabled();
-    
     public List<Action> getEvents(){
         return myEvents;
     }
