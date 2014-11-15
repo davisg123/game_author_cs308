@@ -10,7 +10,7 @@ import engine.sprite.Sprite;
  * @author Davis
  *
  */
-public abstract class MovementCondition {
+public abstract class MovementCondition extends Condition {
     private List<Action> myActions = new ArrayList<Action>();
     private List<Sprite> mySprites = new ArrayList<Sprite>();
     
@@ -29,7 +29,8 @@ public abstract class MovementCondition {
         return mySprites;
     }
     
-    protected void executeEvents(){
+    @Override
+    protected void executeActions(){
         for (Action a : myActions){
             a.execute();
         }

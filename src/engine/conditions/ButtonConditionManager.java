@@ -3,10 +3,8 @@ package engine.conditions;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -20,7 +18,7 @@ import engine.actions.Action;
  *
  */
 
-public class ButtonConditionManager {
+public class ButtonConditionManager extends Condition {
     private Map<KeyCode, List<Action>> myKeyMap;
     private Map<KeyCode, Integer> myActiveKeyBuffer;
     
@@ -30,7 +28,8 @@ public class ButtonConditionManager {
         myKeyMap = new HashMap<KeyCode, List<Action>>();
     }
     
-    public void executeActions() {
+    @Override
+    protected void executeActions() {
         //get active keys from our buffer
         Collection<KeyCode> activeKeys = myActiveKeyBuffer.keySet();
         for (KeyCode code : activeKeys){
@@ -87,6 +86,11 @@ public class ButtonConditionManager {
      */
     public void clearAllBindings () {
         myKeyMap.clear();
+    }
+
+    @Override
+    protected boolean isFrameBased () {
+        return true;
     }
 
 }
