@@ -14,13 +14,13 @@ import engine.sprite.components.Layout;
 public class SpriteRenderer {
     public void renderSprites(List<Sprite> spriteList){
         for (Sprite s : spriteList){
-            Layout spriteLayout = s.getLayout();
+            //Layout spriteLayout = s.getLayout();
             //everything is a circle in my simple game world
             Circle circle = new Circle();
-            circle.setCenterX(spriteLayout.getPosX());
-            circle.setCenterY(spriteLayout.getPosY());
-            circle.setRadius(spriteLayout.getSizeHeight());
-            s.setNode(circle);
+            //circle.setCenterX(spriteLayout.getPosX());
+            //circle.setCenterY(spriteLayout.getPosY());
+            //circle.setRadius(spriteLayout.getSizeHeight());
+            //s.setNode(circle);
         }
     }
 }
