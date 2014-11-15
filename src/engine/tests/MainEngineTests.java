@@ -45,10 +45,10 @@ public class MainEngineTests extends Application {
     
     public void createSprite(){
         javafx.geometry.Point2D location = new Point2D(50,50);
-        Layout spriteLayout = new Layout(location,50.0,50.0);
-        Sprite sprite = new Sprite(null,spriteLayout,null);
+        //Layout spriteLayout = new Layout(location,50.0,50.0);
+        //Sprite sprite = new Sprite(null,spriteLayout,null);
         List<Sprite> mySpriteList = new ArrayList<Sprite>();
-        mySpriteList.add(sprite);
+        //mySpriteList.add(sprite);
         myGameManager = new GameManager(null,mySpriteList,myRootGroup);
     }
     

@@ -37,8 +37,8 @@ public abstract class MovementCondition {
     
     private void assignListeners(){
         for(Sprite s : mySprites){
-            s.getNode().layoutXProperty().addListener(changeEvent -> xLayoutChange());
-            s.getNode().layoutXProperty().addListener(changeEvent -> yLayoutChange());
+            s.getXPositionProperty().addListener(changeEvent -> xLayoutChange());
+            s.getYPositionProperty().addListener(changeEvent -> yLayoutChange());
         }
     }
     

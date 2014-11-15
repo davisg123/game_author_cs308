@@ -1,6 +1,8 @@
 package engine.level;
 
+import java.util.Iterator;
 import java.util.List;
+import engine.conditions.ButtonConditionManager;
 import engine.conditions.MovementCondition;
 import engine.sprite.Sprite;
 
@@ -14,7 +16,8 @@ import engine.sprite.Sprite;
 public class Level {
 
     private List<Sprite> mySprites;
-    private List<MovementCondition> myActions;
+    private List<MovementCondition> myConditions;
+    private ButtonConditionManager myButtonConditionManager;
     
     
     /**
@@ -22,9 +25,9 @@ public class Level {
      * @param sprites
      * @param actions
      */
-    public Level(List<Sprite> sprites, List<MovementCondition> actions) {
+    public Level(List<Sprite> sprites, List<MovementCondition> conditions) {
         mySprites = sprites;
-        myActions = actions;
+        myConditions = conditions;
     }
     
     /**
@@ -34,4 +37,10 @@ public class Level {
         
     }
     
+    public Iterator<Sprite> getSprites () {
+        return mySprites.iterator();
+    }
+    public Iterator<MovementCondition> getConditions () {
+        return myConditions.iterator();
+    }
 }

@@ -30,13 +30,7 @@ public class CollisionCondition extends MovementCondition {
     }
     
     private void checkCollision() {
-        Node node1 = getSprites().get(0).getNode();
-        Node node2 = getSprites().get(1).getNode();
-        if (node1.getBoundsInParent().intersects(node2.getBoundsInParent())){
-            for (Action e : getActions()){
-                e.execute();
-            }
-        }
+        //use the detector class
     }
 
    

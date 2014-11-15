@@ -35,7 +35,7 @@ public class GameManager {
     
     private void addFramesToGroup(){
         for (Sprite s : myGameSprites){
-            myRootGroup.getChildren().add(s.getNode());
+            //myRootGroup.getChildren().add(s.getNode());
         }
     }
 
