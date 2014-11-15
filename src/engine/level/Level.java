@@ -25,9 +25,10 @@ public class Level {
      * @param sprites
      * @param actions
      */
-    public Level(List<Sprite> sprites, List<MovementCondition> conditions) {
+    public Level(List<Sprite> sprites, List<MovementCondition> conditions, ButtonConditionManager buttonManager) {
         mySprites = sprites;
         myConditions = conditions;
+        myButtonConditionManager = buttonManager;
     }
     
     /**

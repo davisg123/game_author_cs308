@@ -18,12 +18,10 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 public class MainEngineTests extends Application {
-    
-    private Timeline myAnimation;
+
     private GameManager myGameManager;
     private Stage myStage;
     private Group myRootGroup;
-    private static double DEFAULT_SPEED = 60.0;
     
     public static void main(String[] args) throws Exception {
         launch(args);
@@ -32,7 +30,7 @@ public class MainEngineTests extends Application {
     @Override
     public void start (Stage arg0) throws Exception {
         myStage = arg0;
-        myStage.setTitle("Mirror Man");
+        myStage.setTitle("");
 
         myRootGroup = new Group();
 
@@ -40,7 +38,6 @@ public class MainEngineTests extends Application {
         myStage.setScene(myScene);
         myStage.show();
         createSprite();
-        setGameSpeed(DEFAULT_SPEED,true);
     }
     
     public void createSprite(){
@@ -52,37 +49,4 @@ public class MainEngineTests extends Application {
         myGameManager = new GameManager(null,mySpriteList,myRootGroup);
     }
     
-    /**
-    *
-    * change the game speed
-    *
-    * @param speed
-    *            speed of the simulation
-    * @param play
-    *            whether the animation should play after the speed change
-    */
-   public void setGameSpeed(double speed, boolean play) {
-       // set game loop
-       KeyFrame frame = new KeyFrame(Duration.millis(1000 / speed), oneFrame);
-       if (myAnimation == null) {
-           myAnimation = new Timeline();
-       }
-       myAnimation.stop();
-       myAnimation.setCycleCount(Animation.INDEFINITE);
-       myAnimation.getKeyFrames().clear();
-       myAnimation.getKeyFrames().add(frame);
-       if (play) {
-           myAnimation.play();
-       }
-   }
-   
-   /**
-    * Function to do each game frame
-    */
-   private EventHandler<ActionEvent> oneFrame = new EventHandler<ActionEvent>() {
-       @Override
-       public void handle(ActionEvent evt) {
-           myGameManager.processFrame();
-       }
-   };
 }
