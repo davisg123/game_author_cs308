@@ -13,7 +13,7 @@ import java.util.List;
  * @author Will Chang
  *
  */
-public class Sprite implements Iterable<SpriteComponent>{
+public class Sprite implements IEnabled, Iterable<SpriteComponent>{
     private List<SpriteComponent> myComponents; 
     //Temporary solution for extension to use Images and Sounds
     //Create actions which update the image paths...
@@ -22,6 +22,9 @@ public class Sprite implements Iterable<SpriteComponent>{
     //Place inside sprite or inside the renderer package?...
     //Will cause an error if path does not exist... 
     //Maybe create an image and a sound component?
+    //Should we have specific component fields??
+    //Rendering, Camera, Physics, Attributes/current state
+    //Make it a state machine as well???s
     private ImageReference myImages;
     private SoundReference mySounds;
 
@@ -29,10 +32,14 @@ public class Sprite implements Iterable<SpriteComponent>{
     //Include this in constructor
     private Point2D myPosition;
     private double  myOrientation;
-    
+    private String  myID;
+
     //Potentially used to set size???... or can just extend Dimesion2D
     private Dimension2D d;
-
+    
+    //TODO Interface???
+    //Should it be included in constructor?
+    private boolean enabled;
 
     /**
      * Constructors
@@ -53,6 +60,7 @@ public class Sprite implements Iterable<SpriteComponent>{
         myPosition    = position;
         myOrientation = orientation;
     }
+
 
 
     /**
@@ -104,17 +112,52 @@ public class Sprite implements Iterable<SpriteComponent>{
         return myPosition;
     }
 
+    public ImageReference getImageReferences () {
+        return myImages;
+    }
+
+    public SoundReference getSoundReferences () {
+        return mySounds;
+    }
+
+
+    public String getID () {
+        return myID;
+    }
+
     /**
      * Updates all components of Sprite
+     * TODO Check if necessary... 
      */
     public void update () {
         for(SpriteComponent component : myComponents) {
             component.update();
         }
     }
+    
+    /**
+     * Temporary Map based getter...
+     * @param iD
+     * @return
+     */
+    public SpriteComponent getComponent (String iD) {
+        return null;
+    }
 
     @Override
     public Iterator<SpriteComponent> iterator () {
         return myComponents.iterator();
+    }
+    
+    public void enable() {
+        enabled = true;
+    }
+    
+    public void disable() {
+        enabled = false;
+    }
+    
+    public boolean isEnabled() {
+        return enabled;
     }
 }

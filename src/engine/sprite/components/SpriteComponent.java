@@ -13,7 +13,7 @@ import engine.sprite.components.properties.IProperty;
  */
 
 //Alternate design, instead of using Properties with the components,
-//Give everything an id, and put components in a map
+//Give everything an id, and put components in a map, or put them in a manager?
 //Just make everything an individual component... would solve search issues?...
 
 
