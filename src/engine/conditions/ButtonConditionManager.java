@@ -1,9 +1,12 @@
 package engine.conditions;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -25,6 +28,20 @@ public class ButtonConditionManager extends Condition {
     public ButtonConditionManager () {
         super();
         myKeyMap = new HashMap<KeyCode, List<Action>>();
+    }
+    
+    public void executeActions() {
+        //get active keys from our buffer
+        Collection<KeyCode> activeKeys = myActiveKeyBuffer.keySet();
+        for (KeyCode code : activeKeys){
+            //check if the active keycode exists in the key to action map
+            if (myKeyMap.containsKey(code)){
+                //execute the associated actions for that key
+                for (Action action : myKeyMap.get(code)){
+                    action.execute();
+                }
+            }
+        }
     }
     
     public void beginListeningToScene (Scene scene) {
@@ -51,6 +68,7 @@ public class ButtonConditionManager extends Condition {
     public void addBinding (KeyCode key, Action action) {
         boolean bindingsExist = myKeyMap.containsKey(key);
         List<Action> actions = bindingsExist ? myKeyMap.get(key) : new ArrayList<Action>();
+        actions.add(action);
         myKeyMap.put(key, actions);
     }
     

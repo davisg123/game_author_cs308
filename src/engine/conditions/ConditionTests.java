@@ -48,5 +48,10 @@ public class ConditionTests {
     public void testStageExists(){
         assertNotEquals(myStage,null);
     }
+    
+    @Test
+    public void testButtonCondition(){
+        ButtonConditionManager manager = new ButtonConditionManager();
+    }
 
 }
