@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import com.sun.javafx.css.StyleCache.Key;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -18,18 +17,15 @@ import engine.actions.Action;
  *
  */
 
-public class ButtonCondition extends Condition {
+public class ButtonConditionManager extends Condition {
     private Map<KeyCode, List<Action>> myKeyMap;
     private Map<KeyCode, Integer> myActiveKeyBuffer;
     
     
-    
-
-    public ButtonCondition () {
+    public ButtonConditionManager () {
         super();
         myKeyMap = new HashMap<KeyCode, List<Action>>();
     }
-    
     
     public void beginListeningToScene (Scene scene) {
         scene.setOnKeyPressed(event -> keyPressed(event));
