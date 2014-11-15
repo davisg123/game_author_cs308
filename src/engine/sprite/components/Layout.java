@@ -1,3 +1,4 @@
+//Class is Deprecated
 package engine.sprite.components;
 
 
@@ -17,33 +18,29 @@ import javafx.scene.Node;
  * This Class holds Layout Information for Sprite;
  *
  */
+@Deprecated 
 public class Layout extends SpriteComponent{
-	
-
-	
 
 
-//	/**
-//	 *    
-//	 * @return
-//	 */
-//	public Node getNode(){
-//		return myRenderedNode;
-//	}
+    @Override
+    public void addProperty(IProperty property) {
+        // TODO Auto-generated method stub
+
+    }
 
 
-		@Override
-		public void addProperty(IProperty property) {
-			// TODO Auto-generated method stub
-			
-		}
+    @Override
+    public void update() {
+        // TODO Auto-generated method stub
+
+    }
 
 
-		@Override
-		public void update() {
-			// TODO Auto-generated method stub
-			
-		}
+    @Override
+    public void removeProperty (IProperty property) {
+        // TODO Auto-generated method stub
+        
+    }
 
 
 }

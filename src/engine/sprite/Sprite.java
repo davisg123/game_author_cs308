@@ -1,92 +1,120 @@
 package engine.sprite;
 
 import engine.sprite.components.*;
-
+import java.awt.geom.Dimension2D;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
-
-
-
 /**
-* 
-* @author Arihant Jain
-* @author Will Chang
-*
-*
-*This class initiates a list of components which are characteristics of the sprite. 
-*/
-public class Sprite {
-   protected List<SpriteComponent> myComponents; 
-   
-   //We have to have a default. 
-   protected Point2D myPosition;
-   
-   /**
-    * 
-    */
-   public Sprite () {
-	   //TODO Temporary Fix for Location
-	   this(new ArrayList<SpriteComponent>(), new Point2D.Double());
-   }
-   public Sprite (List<SpriteComponent> components, Point2D position) {
-       myComponents = components;
-       myPosition = position;
-   }
-   
-   
-   //TODO turn into iterator
-   public List<SpriteComponent> getComponents(){
-       return myComponents;
-   }
-   
-   
-   //temporarily deprecatedd
-//   public void setNode(Node n){
-//       myRenderedNode = n;
-//   }
-//    
-   
-   
-	//TODO Check deprecation in the future for X and Y since we implemented Points...
-	/**
-	 * Sets X-Coordinate of Object
-	 * 
-	 * @param x - New X coordinate of Object
-	 */
-	public void setPosX (double xCoord) {
-		myPosition.setLocation(xCoord, myPosition.getY());
-	}
+ * This class initiates a list of components which are characteristics of the sprite. 
+ * @author Arihant Jain
+ * @author Will Chang
+ *
+ */
+public class Sprite implements Iterable<SpriteComponent>{
+    private List<SpriteComponent> myComponents; 
+    //Temporary solution for extension to use Images and Sounds
+    //Create actions which update the image paths...
+    //Maybe connect it with a properties file
+    //Create an Image and Path manager that works with the Renderer
+    //Place inside sprite or inside the renderer package?...
+    //Will cause an error if path does not exist... 
+    //Maybe create an image and a sound component?
+    private ImageReference myImages;
+    private SoundReference mySounds;
 
-	/**
-	 * Sets Y- Coordinate of Object
-	 * 
-	 * @param y - New Y coordinate of Object
-	 */
-	public void setPosY (double yCoord) {
-		myPosition.setLocation(myPosition.getX(), yCoord);
-	}
-
-
-		/**
-		 * Sets Location of object
-		 * 
-		 * @param point - new Location Point
-		 */
-		public void setPos (Point2D point){
-			myPosition.setLocation(point);
-		}
-
-   
-   
-   /**
-    * This method updates the component in the Sprite. 
-    */
-   public void update(){
-        
-   }
+    //We have to have a default... default sprite values... somehow
+    //Include this in constructor
+    private Point2D myPosition;
+    private double  myOrientation;
     
-    
-    
+    //Potentially used to set size???... or can just extend Dimesion2D
+    private Dimension2D d;
+
+
+    /**
+     * Constructors
+     */
+    public Sprite () {
+        this(new ArrayList<SpriteComponent>(), new Point2D.Double(), 0);
+    }
+
+    public Sprite (List<SpriteComponent> components, Point2D position, double rotation) {
+        this(new ArrayList<SpriteComponent>(), new ImageReference(), new SoundReference(), position, rotation);
+    }
+
+    public Sprite (List<SpriteComponent> components, ImageReference images, SoundReference sounds, 
+                   Point2D position, double orientation) {
+        myComponents  = components;
+        myImages   = images;
+        mySounds   = sounds;
+        myPosition    = position;
+        myOrientation = orientation;
+    }
+
+
+    /**
+     * Sets X-Coordinate of Object
+     * @param x - New X coordinate of Object
+     */
+    public void setX (double xCoord) {
+        myPosition.setLocation(xCoord, myPosition.getY());
+    }
+
+    /**
+     * Sets Y-Coordinate of Object
+     * @param y - New Y coordinate of Object
+     */
+    public void setY (double yCoord) {
+        myPosition.setLocation(myPosition.getX(), yCoord);
+    }
+
+
+    /**
+     * Sets Location of Sprite
+     * @param point - new Location Point
+     */
+    public void setPosition (Point2D point) {
+        myPosition.setLocation(point);
+    }
+
+    /**
+     * Sets Orientation of Sprite
+     * @param orientation
+     */
+    public void setOrientation(double orientation) {
+        myOrientation = orientation;
+    }
+
+    /**
+     * Gets the Orientation of Sprite
+     * @return
+     */
+    public double getOrientation () {
+        return myOrientation;
+    }
+
+    /**
+     * Gets the Position of Sprite
+     * @return myPosition
+     */
+    public Point2D getPosition () {
+        return myPosition;
+    }
+
+    /**
+     * Updates all components of Sprite
+     */
+    public void update () {
+        for(SpriteComponent component : myComponents) {
+            component.update();
+        }
+    }
+
+    @Override
+    public Iterator<SpriteComponent> iterator () {
+        return myComponents.iterator();
+    }
 }
