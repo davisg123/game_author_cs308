@@ -1,7 +1,7 @@
 package engine.level;
 
 import java.util.List;
-import engine.conditions.Condition;
+import engine.conditions.MovementCondition;
 import engine.sprite.Sprite;
 
 /**
@@ -14,7 +14,7 @@ import engine.sprite.Sprite;
 public class Level {
 
     private List<Sprite> mySprites;
-    private List<Condition> myActions;
+    private List<MovementCondition> myActions;
     
     
     /**
@@ -22,7 +22,7 @@ public class Level {
      * @param sprites
      * @param actions
      */
-    public Level(List<Sprite> sprites, List<Condition> actions) {
+    public Level(List<Sprite> sprites, List<MovementCondition> actions) {
         mySprites = sprites;
         myActions = actions;
     }

@@ -12,14 +12,14 @@ import engine.sprite.*;
  */
 
 public class GameManager {
-    private List<Condition> myGameConditions;
+    private List<MovementCondition> myGameConditions;
     private List<Sprite> myGameSprites;
     private SpriteRenderer mySpriteRenderer;
     private Group myRootGroup;
     
     
     
-    public GameManager (List<Condition> myGameConditions, List<Sprite> myGameSprites, Group myRootGroup) {
+    public GameManager (List<MovementCondition> myGameConditions, List<Sprite> myGameSprites, Group myRootGroup) {
         super();
         this.myGameConditions = myGameConditions;
         this.myGameSprites = myGameSprites;

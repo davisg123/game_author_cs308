@@ -20,7 +20,7 @@ import engine.actions.Action;
  *
  */
 
-public class ButtonConditionManager extends Condition {
+public class ButtonConditionManager {
     private Map<KeyCode, List<Action>> myKeyMap;
     private Map<KeyCode, Integer> myActiveKeyBuffer;
     
@@ -87,11 +87,6 @@ public class ButtonConditionManager extends Condition {
      */
     public void clearAllBindings () {
         myKeyMap.clear();
-    }
-
-    @Override
-    public List<Action> getEvents () {
-        return null;
     }
 
 }
