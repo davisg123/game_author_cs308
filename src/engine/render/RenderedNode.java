@@ -1,5 +1,6 @@
 package engine.render;
 
+import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
@@ -32,4 +33,8 @@ public class RenderedNode extends Group {
         return myCollisionBody;
     }
 
+    @Override
+    public boolean intersects (Bounds localBounds) {
+        return (myCollisionBody != null) ? myCollisionBody.intersects(localBounds): false;
+    }
 }

@@ -6,6 +6,7 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import javafx.beans.property.DoubleProperty;
 import javafx.scene.image.Image;
 
 /**
@@ -98,6 +99,14 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
         myRenderedNode.setTranslateY(yCoord);
     }
 
+    public double getTranslateX () {
+        return myRenderedNode.getTranslateX();
+    }
+    
+    public double getTranslateY () {
+        return myRenderedNode.getTranslateY();
+    }
+    
     /**
      * Sets Location of Sprite
      * @param point - new Location Point
@@ -123,18 +132,20 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
     }
 
     /**
+     * Deprecated, all transforms are performed on the node
      * Gets the x position property of the sprite (for listeners)
      */
-   // public DoubleProperty getXPositionProperty(){
-      //  return myRenderedNode.getTranslateX();
-    //}
+    public DoubleProperty getXPositionProperty(){
+        return null;
+    }
 
     /**
+     * Deprecated, all transforms are performed on the node
      * Gets the y position property of the sprite (for listeners)
      */
-    /*public DoubleProperty getYPositionProperty(){
-        return myYPosition;
-    }*/
+    public DoubleProperty getYPositionProperty(){
+        return null;
+    }
 
     /**
      * Gets the Position of Sprite
