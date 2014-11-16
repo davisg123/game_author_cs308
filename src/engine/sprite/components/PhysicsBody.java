@@ -1,93 +1,125 @@
 package engine.sprite.components;
 
-import java.awt.geom.Point2D;
+import java.util.ArrayList;
 import java.util.List;
 
-import javafx.scene.Node;
-import javafx.scene.shape.Circle;
+import javafx.geometry.Point2D;
+import engine.physics.Acceleration;
+import engine.physics.BEngine;
+import engine.physics.Force;
+import engine.physics.Impulse;
+import engine.physics.Mass;
+import engine.physics.NormalUpdate;
+import engine.physics.Vector;
+import engine.physics.Velocity;
 
 /**
  * 
  * @author ArihantJain
  *
- *This class holds Physical Information for a Sprite.
+ *         This class holds Physical Information for a Sprite.
  *
  */
-public abstract class PhysicsBody {
-    protected double myVelocity;
-    protected double myMass;
-    protected Point2D myLocation;
-    protected double myHeight;
-    protected double myWidth;
-    protected List<Point2D> myPoints;
-    protected Node myRenderedNode;
+public class PhysicsBody {
+	private static final double FRAMES_PER_SECOND = 60.0;
+	private List<Impulse> myImpulses;
+	private List<Force> myActiveForces;
+	private List<Double> myNetForce;
+	private Acceleration myAcceleration;
+	private Velocity myVelocity;
+	private Mass myMass;
+	private NormalUpdate myUpdate;
+	private boolean haveForcesChanged;
+	private List<Double> myBalancedForcesMag;
 
+	public PhysicsBody() {
+		myImpulses = new ArrayList<Impulse>();
+		myAcceleration = new Acceleration(0, 0);
+		myVelocity = new Velocity(0, 0);
+		myMass = new Mass(0);
+		myUpdate = new NormalUpdate();
+		myActiveForces = new ArrayList<Force>();
+		haveForcesChanged = false;
+		myBalancedForcesMag = new ArrayList<Double>();
+	}
 
+	/**
+	 * Sets Velocity of object
+	 * 
+	 * @param v
+	 *            - new Velocity of object
+	 */
+	public void setVelocity(Velocity v) {
+		myVelocity = v;
+	}
 
-    public PhysicsBody (Point2D location, double height, double width, double v, double m, List<Double> sideLengths) {
-        myLocation = location;
-        myHeight = height;
-        myWidth = width;
-        myVelocity = v;
-        myMass = m;	
+	/**
+	 * Sets mass of object
+	 * 
+	 * @param m
+	 *            - new Mass of object
+	 */
+	public void setMass(Mass m) {
+		myMass = m;
+	}
 
+	/**
+	 * Return X-Coordinate of Object
+	 * 
+	 * @return - Y coordinate of Object
+	 */
+	public Velocity getVelocity() {
+		return myVelocity;
+	}
 
+	/**
+	 * Return Y-Coordinate of Object
+	 * 
+	 * @return - returns Y coordinate of Object
+	 */
+	public Mass getMass(double y) {
+		return myMass;
+	}
 
-    }
+	public Vector getPositionChange() {
+		doImpulses();
+		if (haveForcesChanged) {
+			balanceForces();
+		}
+		changeAcceleration();
+		changeVelocity();
+		// return changePosition
+		return new Vector(myVelocity.getX() / FRAMES_PER_SECOND,
+				myVelocity.getY() / FRAMES_PER_SECOND);
+	}
 
+	private void doImpulses() {
+		for (Impulse cur : myImpulses) {
+			myVelocity.delta(cur);
+		}
+	}
 
-    public PhysicsBody (Point2D location, double height, double width) {
-        myLocation = location;
-        myHeight = height;
-        myWidth = width;
+	private void balanceForces() {
+		double x = 0.0;
+		double y = 0.0;
+		for (Force cur : myActiveForces) {
+			x += cur.getX();
+			y += cur.getY();
+		}
+		myBalancedForcesMag.set(0, x);
+		myBalancedForcesMag.set(1, y);
+		haveForcesChanged = false;
+	}
 
+	private void changeAcceleration() {
+		myAcceleration = new Acceleration(myBalancedForcesMag.get(0)
+				/ myMass.getValue(), myBalancedForcesMag.get(1)
+				/ myMass.getValue());
+	}
 
-
-    }
-    public void createNode(){
-        myRenderedNode = initializeNode();
-    }
-
-    protected abstract Node initializeNode();
-
-
-    /**
-     * Sets Velocity of object
-     * 
-     * @param v - new Velocity of object
-     */
-    public void setVelocity(double v){
-        myVelocity = v;
-    }
-
-    /**
-     * Sets mass of object
-     * @param m - new Mass of object
-     */
-    public void setMass(double m){
-        myMass = m;
-    }
-
-    /**
-     * Return X-Coordinate of Object
-     * 
-     * @return -  Y coordinate of Object
-     */
-    public double getVelocity(){
-        return myVelocity;
-    }
-
-    /**
-     * Return Y-Coordinate of Object
-     * 
-     * @return - returns Y coordinate of Object
-     */
-    public double getMass(double y){
-        return myMass;
-    }
-
-
-
-
+	private void changeVelocity() {
+		myVelocity.delta(myAcceleration.getX() / FRAMES_PER_SECOND,
+				myAcceleration.getY() / FRAMES_PER_SECOND);
+	}
 
 }
