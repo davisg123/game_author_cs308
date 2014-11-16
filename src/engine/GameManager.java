@@ -37,14 +37,8 @@ public class GameManager {
         this.myGameConditions = myGameConditions;
         this.myGameSprites = myGameSprites;
         this.myRootGroup = myRootGroup;
-        renderSprites();
         addFramesToGroup();
         setGameSpeed(DEFAULT_SPEED,true);
-    }
-    
-    private void renderSprites(){
-        SpriteRenderer mySpriteRenderer = new SpriteRenderer();
-        //mySpriteRenderer.renderSprites(myGameSprites);
     }
     
     private void addFramesToGroup(){

@@ -30,10 +30,6 @@ public class SpriteRenderer {
     private Map<String, Node> myHitBoxes;
     private Level myCurrentLevel;
 
-    public SpriteRenderer () {
-
-    }
-
     public SpriteRenderer (GameCanvas canvas) {
         myCanvas = canvas;
         myRenderedNodes = new HashMap<>();
@@ -67,7 +63,7 @@ public class SpriteRenderer {
     }
 
     public void initializeNodesFrom(Level level) {
-        myCanvas.clear();
+        //myCanvas.clear();
         myCurrentLevel = level;
         for(Iterator<Sprite> spriteIter = level.getSprites(); spriteIter.hasNext();) {
             Sprite sprite = spriteIter.next();

@@ -5,6 +5,8 @@ import java.awt.geom.Point2D.Double;
 import java.util.ArrayList;
 import java.util.List;
 import engine.GameManager;
+import engine.level.Level;
+import engine.render.SpriteRenderer;
 import engine.sprite.Sprite;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -46,6 +48,11 @@ public class MainEngineTests extends Application {
         List<Sprite> mySpriteList = new ArrayList<Sprite>();
         mySpriteList.add(sprite);
         myGameManager = new GameManager(null,mySpriteList,myRootGroup);
+        Level level0 = new Level(mySpriteList,null);
+        SpriteRenderer mySpriteRenderer = new SpriteRenderer(null);
+        mySpriteRenderer.initializeNodesFrom(level0);
+        
     }
+
     
 }
