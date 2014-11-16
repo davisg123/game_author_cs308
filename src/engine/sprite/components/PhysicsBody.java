@@ -4,8 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javafx.geometry.Point2D;
+import engine.physics.Acceleration;
 import engine.physics.BEngine;
+import engine.physics.Force;
+import engine.physics.Impulse;
+import engine.physics.Mass;
 import engine.physics.NormalUpdate;
+import engine.physics.Vector;
+import engine.physics.Velocity;
 
 /**
  * 
@@ -15,20 +21,26 @@ import engine.physics.NormalUpdate;
  *
  */
 public class PhysicsBody {
-	private List<Double> myImpulse;
-	private List<Double> myAcceleration;
-	private List<Double> myVelocity;
-	private double myGravityConstant;
-	private double myMass;
+	private static final double FRAMES_PER_SECOND = 60.0;
+	private List<Impulse> myImpulses;
+	private List<Force> myActiveForces;
+	private List<Double> myNetForce;
+	private Acceleration myAcceleration;
+	private Velocity myVelocity;
+	private Mass myMass;
 	private NormalUpdate myUpdate;
+	private boolean haveForcesChanged;
+	private List<Double> myBalancedForcesMag;
 
-	public PhysicsBody(List<Double> initialVelocity, double mass, double gravity) {
-		myImpulse = new ArrayList<Double>();
-		myAcceleration = new ArrayList<Double>();
-		myVelocity = initialVelocity;
-		myMass = mass;
-		myGravityConstant = gravity;
+	public PhysicsBody() {
+		myImpulses = new ArrayList<Impulse>();
+		myAcceleration = new Acceleration(0, 0);
+		myVelocity = new Velocity(0, 0);
+		myMass = new Mass(0);
 		myUpdate = new NormalUpdate();
+		myActiveForces = new ArrayList<Force>();
+		haveForcesChanged = false;
+		myBalancedForcesMag = new ArrayList<Double>();
 	}
 
 	/**
@@ -37,7 +49,7 @@ public class PhysicsBody {
 	 * @param v
 	 *            - new Velocity of object
 	 */
-	public void setVelocity(List<Double> v) {
+	public void setVelocity(Velocity v) {
 		myVelocity = v;
 	}
 
@@ -47,7 +59,7 @@ public class PhysicsBody {
 	 * @param m
 	 *            - new Mass of object
 	 */
-	public void setMass(double m) {
+	public void setMass(Mass m) {
 		myMass = m;
 	}
 
@@ -56,7 +68,7 @@ public class PhysicsBody {
 	 * 
 	 * @return - Y coordinate of Object
 	 */
-	public List getVelocity() {
+	public Velocity getVelocity() {
 		return myVelocity;
 	}
 
@@ -65,30 +77,49 @@ public class PhysicsBody {
 	 * 
 	 * @return - returns Y coordinate of Object
 	 */
-	public double getMass(double y) {
+	public Mass getMass(double y) {
 		return myMass;
 	}
 
-	public List<Double> getPositionChange() {
-		// update velocity with impulse
-		for (int i = 0; i < 2; i++) {
-			double a = myVelocity.get(i);
-			a += myUpdate.impulseAndVelocity(myImpulse.get(i), myMass);
-			myVelocity.set(i, a);
+	public Vector getPositionChange() {
+		doImpulses();
+		if (haveForcesChanged) {
+			balanceForces();
 		}
-
-		// update velocity with acceleration
-		for (int i = 0; i < 2; i++) {
-			double a = myVelocity.get(i);
-			a += myUpdate.calculateLinearChange(myAcceleration.get(i));
-			myVelocity.set(i, a);
-		}
-
-		// find delta position
-		List<Double> a=new ArrayList<Double>();
-		for (int i = 0; i < 2; i++) {
-			a.add(myUpdate.calculateLinearChange(myVelocity.get(i)));
-		}
-		return a;
+		changeAcceleration();
+		changeVelocity();
+		// return changePosition
+		return new Vector(myVelocity.getX() / FRAMES_PER_SECOND,
+				myVelocity.getY() / FRAMES_PER_SECOND);
 	}
+
+	private void doImpulses() {
+		for (Impulse cur : myImpulses) {
+			myVelocity.delta(cur);
+		}
+	}
+
+	private void balanceForces() {
+		double x = 0.0;
+		double y = 0.0;
+		for (Force cur : myActiveForces) {
+			x += cur.getX();
+			y += cur.getY();
+		}
+		myBalancedForcesMag.set(0, x);
+		myBalancedForcesMag.set(1, y);
+		haveForcesChanged = false;
+	}
+
+	private void changeAcceleration() {
+		myAcceleration = new Acceleration(myBalancedForcesMag.get(0)
+				/ myMass.getValue(), myBalancedForcesMag.get(1)
+				/ myMass.getValue());
+	}
+
+	private void changeVelocity() {
+		myVelocity.delta(myAcceleration.getX() / FRAMES_PER_SECOND,
+				myAcceleration.getY() / FRAMES_PER_SECOND);
+	}
+
 }

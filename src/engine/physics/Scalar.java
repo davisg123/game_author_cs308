@@ -7,7 +7,7 @@ public class Scalar extends PhysicsComponent{
 		myValue = value;
 	}
 
-	protected double getValue() {
+	public double getValue() {
 		return myValue;
 	}
 }

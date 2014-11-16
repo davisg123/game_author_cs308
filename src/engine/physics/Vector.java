@@ -1,6 +1,6 @@
 package engine.physics;
 
-public class Vector extends PhysicsComponent{
+public class Vector extends PhysicsComponent {
 	protected double myXComponent, myYComponent, myMagnitude;
 
 	// might need direction/quadrant
