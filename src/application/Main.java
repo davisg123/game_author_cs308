@@ -1,6 +1,6 @@
 package application;
 
-import authoring.AuthoringView;
+import authoring.view.AuthoringScene;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -13,7 +13,7 @@ public class Main extends Application{
 		//Scene scene = screen.initialize();
 		//primaryStage.setScene(scene);
 		//primaryStage.show(); 
-		AuthoringView view = new AuthoringView(primaryStage);
+		AuthoringScene view = new AuthoringScene(primaryStage);
 		
 		
 	}
