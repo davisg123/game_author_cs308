@@ -16,4 +16,6 @@ public class Gravity extends Force {
 	protected double calculateForce() {
 		return mass * gravityConstant * GRAVITY_ACCELERATION;
 	}
+	
+	//write something that switches/negates gravity
 }
