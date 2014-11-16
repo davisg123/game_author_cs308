@@ -1,5 +1,6 @@
 package engine.sprite;
 
+import java.util.ArrayList;
 import java.util.List;
 import engine.sprite.components.SpriteComponent;
 import engine.sprite.components.properties.IProperty;
@@ -12,7 +13,18 @@ import engine.sprite.components.properties.IProperty;
 
 public class ImageReference extends SpriteComponent {
     private List<String> myImagePaths;
+    private String myCurrentImage;
+
+    public ImageReference() {
+        myImagePaths = new ArrayList<>();
+    }
     
+    public ImageReference (List<String> imagePaths) {
+        myImagePaths = imagePaths;
+        
+    }
+    
+
     public List<String> getImagePaths () {
         return myImagePaths;
     }
@@ -35,9 +47,12 @@ public class ImageReference extends SpriteComponent {
         
     }
 
+    public void setCurrentImage(String imagePath) {
+        myCurrentImage = imagePath;
+    }
+    
     public String getCurrentImage () {
-        // TODO Auto-generated method stub
-        return null;
+        return myCurrentImage;
     }
 
 }

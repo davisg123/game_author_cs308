@@ -16,6 +16,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -37,20 +39,29 @@ public class MainEngineTests extends Application {
         myRootGroup = new Group();
 
         Scene myScene = new Scene(myRootGroup,300,300);
+       /* ImageView view = new ImageView();
+       
+        Image image = new Image(getClass().getResourceAsStream("resources/images/slowpoke.jpg"));
+        view.setImage(image);
+        Group asdf = new Group();
+        asdf.getChildren().add(view);
+        myRootGroup.getChildren().add(asdf);*/
         myStage.setScene(myScene);
         myStage.show();
-        createSprite();
+        createSprite(myRootGroup);
+        
     }
     
-    public void createSprite(){
+    public void createSprite (Group group) {
         Point2D location = new Point2D.Double(50,50);
-        Sprite sprite = new Sprite(null,location,0.0);
+        Sprite sprite = new Sprite(null,"slowpoke.jpg",
+                                   location, 100, 100, 0, "TestSprite");
         List<Sprite> mySpriteList = new ArrayList<Sprite>();
         mySpriteList.add(sprite);
-        myGameManager = new GameManager(null,mySpriteList,myRootGroup);
+        myGameManager = new GameManager(null,mySpriteList,group);
         Level level0 = new Level(mySpriteList,null);
-        SpriteRenderer mySpriteRenderer = new SpriteRenderer(null);
-        mySpriteRenderer.initializeNodesFrom(level0);
+        SpriteRenderer mySpriteRenderer = new SpriteRenderer(group);
+        mySpriteRenderer.renderSprites(level0);
         
     }
 

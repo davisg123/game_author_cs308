@@ -1,17 +1,14 @@
 package engine.render;
-import java.awt.geom.Point2D;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import engine.level.Level;
 import engine.sprite.*;
-import engine.sprite.components.Layout;
 import gamePlayer.view.GameCanvas;
 
 /**
@@ -24,50 +21,29 @@ import gamePlayer.view.GameCanvas;
  */
 
 public class SpriteRenderer {
-    private GameCanvas myCanvas;
-    private Map<String, Node> myRenderedNodes;
-    private Map<String, ImageView> myImageViews;
-    private Map<String, Node> myHitBoxes;
+    //private GameCanvas myCanvas;
+    private Group myCanvas;
+    private Map<String, RenderedNode> myRenderedNodes;
     private Level myCurrentLevel;
 
-    public SpriteRenderer (GameCanvas canvas) {
+    //Group Change to GameCanvas
+    public SpriteRenderer (Group canvas) {
         myCanvas = canvas;
         myRenderedNodes = new HashMap<>();
-        myImageViews = new HashMap<>();
-        myHitBoxes = new HashMap<>();
     }
 
-    //Before this is called in each keyframe in the primary timeline
-    //All time based events/updates must update the states in all the sprites
-    public void renderSprites () {        
-        for (Iterator<Sprite> spriteIter = myCurrentLevel.getSprites(); spriteIter.hasNext();) {
-            Sprite sprite = spriteIter.next();
-            if(sprite.isEnabled()) {
-                updateRenderedNode(myRenderedNodes.get(sprite.getID()), sprite);
-            }
-        }
-    }
+    
+    
+    //public void update?
 
-    private void updateRenderedNode(Node renderedNode, Sprite sprite) {
-        
-        //Include a check within Sprite that says it needs to be updated???
-        Point2D position = sprite.getPosition();
-        renderedNode.setTranslateX(position.getX());
-        renderedNode.setTranslateY(position.getY());
-        //rotates the node, must determine final implementation of Orientation
-        //renderedNode.setRotate(sprite.getOrientation());
-        //resizes the node
-        //renderedNode.???()
-        myImageViews.get(sprite.getID()).setImage(new Image(sprite.getImageReferences().getCurrentImage()));;
-
-    }
-
-    public void initializeNodesFrom(Level level) {
+    //Called once at the start of every level
+    public void renderSprites (Level level) {
         //myCanvas.clear();
+        myCanvas.getChildren().clear();
         myCurrentLevel = level;
-        for(Iterator<Sprite> spriteIter = level.getSprites(); spriteIter.hasNext();) {
+        for(Iterator<Sprite> spriteIter = myCurrentLevel.getSprites(); spriteIter.hasNext();) {
             Sprite sprite = spriteIter.next();
-            String spriteID = sprite.getID();
+            //String spriteID = sprite.getID();
             createAndAssignRenderedNode(sprite);
         }
     }
@@ -77,55 +53,53 @@ public class SpriteRenderer {
     //Need to use the Canvas dimensions
     //Change GameCanvas into a scene?
     public void createAndAssignRenderedNode (Sprite sprite) {
-        //Needs to be based off of the Default or current state of the sprite
-
-        Group group = new Group();
-        ImageView view = createImageAndView(sprite);
-        Node hitbox = createHitBox(sprite);
-        group.getChildren().addAll(view, hitbox);
-        myImageViews.put(sprite.getID(), view);
-        myHitBoxes.put(sprite.getID(), hitbox);
-        myRenderedNodes.put(sprite.getID(), group);
-
-        group.setLayoutX(0);
-        group.setLayoutY(0);
-        group.setTranslateX(sprite.getPosition().getX());
-        group.setTranslateY(sprite.getPosition().getY());
-        myRenderedNodes.put(sprite.getID(), group);
+        RenderedNode node = new RenderedNode();
+        node.setImageView(createImageAndView(sprite));
+        node.setCollisionBody(createHitBox(sprite));
+        node.setLayoutX(0);
+        node.setLayoutY(0);
+        node.setTranslateX(sprite.getDefaultPosition().getX());
+        node.setTranslateY(sprite.getDefaultPosition().getY());
+        node.setId(sprite.getID());
+        myRenderedNodes.put(sprite.getID(), node);
         //TODO talk to Player group, ask them to change function call/functionality of Canvas
-        myCanvas.addToGroup(group);
+        //myCanvas.addToGroup(node);
+        myCanvas.getChildren().add(node);
+        sprite.setRenderedNode(node);
     }
 
     private ImageView createImageAndView(Sprite sprite) {
-
-        String imagePath = sprite.getImageReferences().getCurrentImage();
-        //Refactor after discussing implementation, 
-        //need to associate images with orientations somehow
-        //Needs image files in a predefined location
-        //This might need to throw errors
-        ImageView view = new ImageView(new Image(imagePath));
-        //Get the Dimensions from the Sprite...
-        view.setFitHeight(100);
-        view.setFitWidth(100);
-
-        view.setPreserveRatio(true);
-        view.setSmooth(true);
-        view.setCache(true);
-        return view;
-
+        String imagePath = sprite.getCurrentImagePath();
+        
+        if(imagePath != null) {  
+            
+            //This is total bullshit, but Image only searches the local package,
+            //and ../ does not go to the directory above, have to set specific folders
+            //and file paths inside the package that Sprite Renderer is located in...
+            //Need to figure out workaround, URI's????
+            Image image = new Image(getClass().getResourceAsStream(imagePath));
+            ImageView view = new ImageView();
+            view.setImage(image);
+            view.setFitHeight(sprite.getHeight());
+            view.setFitWidth(sprite.getWidth());
+            view.setPreserveRatio(true);
+            view.setSmooth(true);
+            view.setCache(true);
+            return view;
+        }
+        return null;
     }
 
     private Node createHitBox(Sprite sprite) {
-        //Refactor
-        sprite.getComponent("physicsBody");
-        //return a new node accordingly...
-        return null;
+        sprite.getPhysicsBody();
+        //Temporary
+        Rectangle asdf = new Rectangle(100,100);
+        asdf.setVisible(false);
+        return asdf;
     }
 
     public void removeRenderedNode(String nodeID) {
         //myCanvas.remove(myRenderedNodes.get(nodeID));
         myRenderedNodes.remove(nodeID);
-        myImageViews.remove(nodeID);
-        myHitBoxes.remove(nodeID);
     }
 }

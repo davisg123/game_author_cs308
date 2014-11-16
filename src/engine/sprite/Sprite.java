@@ -1,13 +1,12 @@
 package engine.sprite;
 
+import engine.render.RenderedNode;
 import engine.sprite.components.*;
-import java.awt.geom.Dimension2D;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
+import javafx.scene.image.Image;
 
 /**
  * This class initiates a list of components which are characteristics of the sprite. 
@@ -27,20 +26,27 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
     //Should we have specific component fields??
     //Rendering, Camera, Physics, Attributes/current state
     //Make it a state machine as well???s
-    private ImageReference myImages;
-    private SoundReference mySounds;
+    //private ImageReference myImages;
+    //private SoundReference mySounds;
 
     //We have to have a default... default sprite values... somehow
     //Include this in constructor
-    private DoubleProperty myXPosition;
-    private DoubleProperty myYPosition;
-    private double  myOrientation;
-    private String  myID;
+    //private DoubleProperty myXPosition;
+    //private DoubleProperty myYPosition;
+    private double myRotation;
+    private String myCurrentImagePath;
+    private String myID;
+    private PhysicsBody myPhysicsBody;
 
     //Potentially used to set size???... or can just extend Dimesion2D
-    private Dimension2D d;
-    
-    //TODO Interface???
+    //private Dimension2D myDimension; 
+    private double myHeight;
+    private double myWidth;
+    private Point2D myDefaultPosition;
+
+    private transient RenderedNode myRenderedNode;
+
+
     //Should it be included in constructor?
     private boolean enabled;
 
@@ -48,21 +54,30 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
      * Constructors
      */
     public Sprite () {
-        this(new ArrayList<SpriteComponent>(), new Point2D.Double(), 0);
+        this("");
     }
 
-    public Sprite (List<SpriteComponent> components, Point2D position, double rotation) {
-        this(new ArrayList<SpriteComponent>(), new ImageReference(), new SoundReference(), position, rotation);
+    public Sprite (String iD) {
+        this(new ArrayList<SpriteComponent>(), "", new Point2D.Double(), 0, 0, 0, iD);
     }
 
-    public Sprite (List<SpriteComponent> components, ImageReference images, SoundReference sounds, 
-                   Point2D position, double orientation) {
+    public Sprite (List<SpriteComponent> components, String imagePath, Point2D position, 
+                   double height, double width, double rotation, String iD) {
+        this(components, imagePath, new SoundReference(), position,
+             height, width, rotation, iD);
+    }
+
+    public Sprite (List<SpriteComponent> components, String imagePath, SoundReference sounds, 
+                   Point2D position, double height, double width, double rotation, String iD) {
         myComponents  = components;
-        myImages   = images;
-        mySounds   = sounds;
-        myXPosition = new SimpleDoubleProperty(position.getX());
-        myYPosition = new SimpleDoubleProperty(position.getY());
-        myOrientation = orientation;
+        //myImages   = images;
+        //mySounds   = sounds;
+        myCurrentImagePath = imagePath;
+        myDefaultPosition = position;
+        myHeight = height;
+        myWidth = width;
+        myRotation = rotation;
+        myID = iD;
     }
 
 
@@ -71,26 +86,24 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
      * Sets X-Coordinate of Object
      * @param x - New X coordinate of Object
      */
-    public void setX (double xCoord) {
-        myXPosition.set(xCoord);
+    public void setTranslateX (double xCoord) {
+        myRenderedNode.setTranslateX(xCoord);
     }
 
     /**
      * Sets Y-Coordinate of Object
      * @param y - New Y coordinate of Object
      */
-    public void setY (double yCoord) {
-        myYPosition.set(yCoord);
+    public void setTranslateY (double yCoord) {
+        myRenderedNode.setTranslateY(yCoord);
     }
-
 
     /**
      * Sets Location of Sprite
      * @param point - new Location Point
      */
     public void setPosition (Point2D point) {
-        myXPosition.set(point.getX());
-        myYPosition.set(point.getY());
+        myDefaultPosition = point;
     }
 
     /**
@@ -98,7 +111,7 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
      * @param orientation
      */
     public void setOrientation(double orientation) {
-        myOrientation = orientation;
+        myRenderedNode.setRotate(orientation);
     }
 
     /**
@@ -106,38 +119,52 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
      * @return
      */
     public double getOrientation () {
-        return myOrientation;
+        return myRenderedNode.getRotate();
     }
-    
+
     /**
      * Gets the x position property of the sprite (for listeners)
      */
-    public DoubleProperty getXPositionProperty(){
-        return myXPosition;
-    }
-    
+   // public DoubleProperty getXPositionProperty(){
+      //  return myRenderedNode.getTranslateX();
+    //}
+
     /**
      * Gets the y position property of the sprite (for listeners)
      */
-    public DoubleProperty getYPositionProperty(){
+    /*public DoubleProperty getYPositionProperty(){
         return myYPosition;
-    }
+    }*/
 
     /**
      * Gets the Position of Sprite
      * @return myPosition
      */
     public Point2D getPosition () {
-        return new Point2D.Double(myXPosition.get(),myYPosition.get());
+        return new Point2D.Double(myRenderedNode.getTranslateX(),
+                                  myRenderedNode.getTranslateY());
     }
 
-    public ImageReference getImageReferences () {
+
+    public void setDefaultPosition (Point2D position) {
+        myDefaultPosition = position;
+    }
+
+    /**
+     * Gets the Position of Sprite
+     * @return myPosition
+     */
+    public Point2D getDefaultPosition () {
+        return myDefaultPosition;
+    }
+
+    /*public ImageReference getImageReferences () {
         return myImages;
     }
 
     public SoundReference getSoundReferences () {
         return mySounds;
-    }
+    }*/
 
 
     public String getID () {
@@ -148,12 +175,17 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
      * Updates all components of Sprite
      * TODO Check if necessary... 
      */
+    /*
     public void update () {
         for(SpriteComponent component : myComponents) {
             component.update();
         }
+    }*/
+
+    public void setRenderedNode(RenderedNode node) {
+        myRenderedNode = node;
     }
-    
+
     /**
      * Temporary Map based getter...
      * @param iD
@@ -163,19 +195,48 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
         return null;
     }
 
+    public String getCurrentImagePath () { 
+        return myCurrentImagePath;
+    }
+
+    public void setCurrentImagePath (String imagePath) { 
+        myCurrentImagePath = imagePath;
+        myRenderedNode.getImageView().setImage(new Image(getClass().getResourceAsStream(imagePath)));
+    }
+
     @Override
     public Iterator<SpriteComponent> iterator () {
         return myComponents.iterator();
     }
-    
+
+    public void saveCurrentState() {
+
+    }
+
+    public void setPhysicsBody (PhysicsBody physicsBody) {
+        myPhysicsBody = physicsBody;
+    }
+
+    public PhysicsBody getPhysicsBody () {
+        return myPhysicsBody;
+    }
+
+    public double getHeight () {
+        return myHeight;
+    }
+
+    public double getWidth () {
+        return myWidth;
+    }
+
     public void enable() {
         enabled = true;
     }
-    
+
     public void disable() {
         enabled = false;
     }
-    
+
     public boolean isEnabled() {
         return enabled;
     }
