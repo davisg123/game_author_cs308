@@ -2,5 +2,7 @@ package engine.conditions;
 
 public abstract class Condition {
     protected abstract void executeActions();
-    protected abstract boolean isFrameBased();
+    public void frameElapsed(){
+        //overridden by frame based conditions
+    }
 }

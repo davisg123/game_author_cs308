@@ -2,6 +2,7 @@ package engine.render;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.ResourceBundle;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.image.Image;
@@ -25,11 +26,17 @@ public class SpriteRenderer {
     private Group myCanvas;
     private Map<String, RenderedNode> myRenderedNodes;
     private Level myCurrentLevel;
+    private static ResourceBundle ourAssetMapBundle;
+    private static final String SLASH = "/";
+    private static final String DOT = ".";
+    private static final String BASE_ASSET_PATH = "assets";
+    private static final String ASSET_MAP_NAME = "asset_map";
 
     //Group Change to GameCanvas
     public SpriteRenderer (Group canvas) {
         myCanvas = canvas;
         myRenderedNodes = new HashMap<>();
+        ourAssetMapBundle = ResourceBundle.getBundle(BASE_ASSET_PATH+DOT+ASSET_MAP_NAME);
     }
 
     
@@ -69,15 +76,12 @@ public class SpriteRenderer {
     }
 
     private ImageView createImageAndView(Sprite sprite) {
-        String imagePath = sprite.getCurrentImagePath();
+        String imageName = sprite.getCurrentImageName();
         
-        if(imagePath != null) {  
-            
-            //This is total bullshit, but Image only searches the local package,
-            //and ../ does not go to the directory above, have to set specific folders
-            //and file paths inside the package that Sprite Renderer is located in...
-            //Need to figure out workaround, URI's????
-            Image image = new Image(getClass().getResourceAsStream(imagePath));
+        if(imageName != null) {  
+            //convert image name to a filepath using the asset_map
+            String filepath = ourAssetMapBundle.getString(imageName);
+            Image image = new Image(getClass().getResourceAsStream(SLASH+BASE_ASSET_PATH+SLASH+filepath));
             ImageView view = new ImageView();
             view.setImage(image);
             view.setFitHeight(sprite.getHeight());

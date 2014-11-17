@@ -53,9 +53,9 @@ public class MainEngineTests extends Application {
     }
     
     public void createSprite (Group group) {
-        Point2D location = new Point2D.Double(0,0);
-        Sprite sprite = new Sprite(null,"slowpoke.jpg",
-                                   location, 300, 300, 0, "TestSprite");
+        Point2D location = new Point2D.Double(50,50);
+        Sprite sprite = new Sprite(null,"slowpoke",
+                                   location, 100, 100, 0, "TestSprite");
         List<Sprite> mySpriteList = new ArrayList<Sprite>();
         mySpriteList.add(sprite);
         myGameManager = new GameManager(null,mySpriteList,group);

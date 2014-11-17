@@ -33,10 +33,5 @@ public class CollisionCondition extends MovementCondition {
         //use the detector class
     }
 
-    @Override
-    protected boolean isFrameBased () {
-        return false;
-    }
-
    
 }
