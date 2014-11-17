@@ -17,6 +17,13 @@ import authoring.view.levelview.SingleLevelView;
 import authoring.view.soundsview.SoundsView;
 import authoring.view.spritesview.SpritesView;
 
+/**
+ * Controller class that interacts between model and view. Holds and constructs
+ * all the view components in order to allow communication between them.
+ * 
+ * @author Kevin Li
+ *
+ */
 public class AuthoringController {
 	private AuthoringView myView;
 	private AuthoringModel myModel;
@@ -40,6 +47,11 @@ public class AuthoringController {
 
 	}
 
+	/**
+	 * Sets the contents of the AuthoringView - which is essentially an empty
+	 * borderpane.
+	 */
+
 	private void initializeView() {
 		initializeViewComponents();
 		myView.setCenter(myLevels);
@@ -48,6 +60,11 @@ public class AuthoringController {
 
 	}
 
+	/**
+	 * Initializes all the view components that have a 1 to 1 relationship with
+	 * backend data components.
+	 */
+
 	private void initializeViewComponents() {
 		myLevels = new LevelsView(myLanguage, myWidth, myHeight);
 		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
@@ -55,6 +72,12 @@ public class AuthoringController {
 		mySprites = new SpritesView(myLanguage, myWidth, myHeight);
 
 	}
+
+	/**
+	 * Initializes what goes on the left side of the borderpane.
+	 * 
+	 * @return AccordianView a node.
+	 */
 
 	private AccordianView initializeLeft() {
 		AccordianView leftView = new AccordianView(myWidth, myHeight);
@@ -67,6 +90,12 @@ public class AuthoringController {
 		BorderPane.setAlignment(leftView, Pos.TOP_RIGHT);
 		return leftView;
 	}
+
+	/**
+	 * Initializes what goes on the right of the borderpane.
+	 * 
+	 * @return AccordianView a node.
+	 */
 
 	private AccordianView initializeRight() {
 		AccordianView rightView = new AccordianView(myWidth, myHeight);
