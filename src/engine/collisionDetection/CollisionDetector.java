@@ -1,6 +1,8 @@
 package engine.collisionDetection;
 
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import javafx.scene.Node;
 
 /**
@@ -13,7 +15,7 @@ import javafx.scene.Node;
 
 public class CollisionDetector {
 
-    
+    private Map<String,Integer> myCollisionMap = new HashMap<String,Integer>();
     //Should they just be enabled nodes? or should they be all the nodes?
     //Discuss definition of enabled
     public void checkCollisions (Iterator<Node> enabledNodes) {
@@ -21,12 +23,15 @@ public class CollisionDetector {
             Node outerNode = outerIter.next();
             for(Iterator<Node> innerIter = enabledNodes; innerIter.hasNext();) {
                 Node innerNode = innerIter.next();
-                //Update the equals method, implement comparable, 
-                //change to ID comparison
-                if(!outerNode.equals(innerNode)) {
+                //Update the equals method, implement comparable
+                if(!outerNode.getId().equals(innerNode.getId())) {
                     //Do intersect sequence
-                    //TODO what do I do with this information?
-                    outerNode.intersects(innerNode.getBoundsInLocal());
+                    //make sure the opposite collision hasn't already happened (a with b == b with a)
+                    String uniqueCollisionIdentifier = innerNode.getId()+outerNode.getId();
+                    if(outerNode.intersects(innerNode.getBoundsInLocal()) && !myCollisionMap.containsKey(uniqueCollisionIdentifier)){
+                        myCollisionMap.put(innerNode.getId()+outerNode.getId(), 1);
+                        //call physics manager with collided nodes
+                    }
                 }
             }
         }
