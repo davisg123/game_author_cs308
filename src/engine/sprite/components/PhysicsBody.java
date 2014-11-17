@@ -6,10 +6,12 @@ import java.util.List;
 import javafx.geometry.Point2D;
 import engine.physics.Acceleration;
 import engine.physics.BEngine;
+import engine.physics.CollisionConstant;
 import engine.physics.Force;
 import engine.physics.Impulse;
 import engine.physics.Mass;
 import engine.physics.NormalUpdate;
+import engine.physics.Scalar;
 import engine.physics.Vector;
 import engine.physics.Velocity;
 
@@ -31,6 +33,7 @@ public class PhysicsBody {
 	private NormalUpdate myUpdate;
 	private boolean haveForcesChanged;
 	private List<Double> myBalancedForcesMag;
+	private CollisionConstant myCollision;
 
 	public PhysicsBody() {
 		myImpulses = new ArrayList<Impulse>();
@@ -88,9 +91,13 @@ public class PhysicsBody {
 		}
 		changeAcceleration();
 		changeVelocity();
-		// return changePosition
 		return new Vector(myVelocity.getX() / FRAMES_PER_SECOND,
 				myVelocity.getY() / FRAMES_PER_SECOND);
+	}
+	
+	public Scalar getCollisionConstant()
+	{
+		return myCollision;
 	}
 
 	private void doImpulses() {
