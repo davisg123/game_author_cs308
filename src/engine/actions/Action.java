@@ -37,4 +37,6 @@ public interface Action {
      */
     public abstract void execute ();
     
+    //Add an ID method ???
+    
 }

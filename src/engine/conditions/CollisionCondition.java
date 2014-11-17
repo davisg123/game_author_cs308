@@ -1,7 +1,9 @@
 package engine.conditions;
 
 import java.util.List;
+import javafx.scene.Node;
 import engine.actions.Action;
+import engine.sprite.Sprite;
 
 /**
  * 
@@ -11,18 +13,25 @@ import engine.actions.Action;
  *
  */
 
-public class CollisionCondition extends Condition {
+public class CollisionCondition extends MovementCondition {
 
-    @Override
-    public boolean isEnabled () {
-        // TODO Auto-generated method stub
-        return false;
+    public CollisionCondition (List<Action> myActions, List<Sprite> mySprites) {
+        super(myActions, mySprites);
     }
 
     @Override
-    public List<Action> getEvents () {
-        // TODO Auto-generated method stub
-        return null;
+    protected void xLayoutChange () {
+        checkCollision();
+    }
+
+    @Override
+    protected void yLayoutChange () {
+        checkCollision();
     }
     
+    private void checkCollision() {
+        //use the detector class
+    }
+
+   
 }
