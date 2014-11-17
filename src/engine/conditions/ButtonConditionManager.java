@@ -87,10 +87,10 @@ public class ButtonConditionManager extends Condition {
     public void clearAllBindings () {
         myKeyMap.clear();
     }
-
+    
     @Override
-    protected boolean isFrameBased () {
-        return true;
+    public void frameElapsed () {
+        
     }
 
 }

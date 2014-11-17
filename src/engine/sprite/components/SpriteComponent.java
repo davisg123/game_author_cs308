@@ -39,6 +39,4 @@ public abstract class SpriteComponent implements Iterable<IProperty> {
     public abstract void update();
 
 
-
-
 }
