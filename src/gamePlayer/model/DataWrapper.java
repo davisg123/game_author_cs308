@@ -10,6 +10,11 @@ public class DataWrapper {
 	 private List<Sprite> mySprites;
 	 private List<Condition> myConditions;
 	 
+	 public DataWrapper(List<Sprite> sprites, List<Condition> conditions){
+		 mySprites=sprites;
+		 myConditions=conditions;
+	 }
+	 
 	 public List<Sprite> getSprites(){
 		 return mySprites;
 	 }
@@ -17,5 +22,11 @@ public class DataWrapper {
 	 public List<Condition> getConditions(){
 		 return myConditions;
 	 }
+	 
+	 public DataWrapper copyOf() throws CloneNotSupportedException{
+		 return (DataWrapper) this.clone();
+	 }
+	 
+	 
 	
 }

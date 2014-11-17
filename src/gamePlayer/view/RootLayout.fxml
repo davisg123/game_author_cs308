@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<?import java.lang.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Region?>
@@ -19,20 +20,20 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.Menu?>
+<?import gamePlayer.view.*?>
 
-<BorderPane fx:id="background" prefWidth="1000.0" prefHeight="1000.0" xmlns:fx="http://javafx.com/fxml">
+<BorderPane prefWidth="1000.0" prefHeight="1000.0" xmlns:fx="http://javafx.com/fxml" fx:controller="gamePlayer.view.MenuBarController">
     <top>
     	<Label text="Game Player GUI"/>
-    	<MenuBar fx:id="menuBar"> 
+    	<MenuBar fx:id="menuBar" > 
     		<menus>
     			<Menu text="Options">
     				<items>
-    					<MenuItem text="New"/>
-    					<MenuItem text="Load"/>
-    					<MenuItem text="Save"/>
-    					<MenuItem text="Switch Game"/>
-    					<MenuItem text="Pause"/>
-    					<MenuItem text="Quit"/> 
+    					<MenuItem text="New" onAction="#newGame"/>
+    					<MenuItem text="Load" onAction="#load"/>
+    					<MenuItem text="Save" onAction="#save"/>
+    					<MenuItem text="Pause" onAction="#pause"/>
+    					<MenuItem text="Quit" onAction="#quit"/> 
     				</items>
     			</Menu> 
     			<Menu text="Preferences">

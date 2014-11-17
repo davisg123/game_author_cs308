@@ -1,13 +1,14 @@
 package gamePlayer.view;
 
 import gamePlayer.model.PlayerModel;
+
+
 import java.io.IOException;
-import application.Main;
+
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.MenuBar;
-import javafx.scene.layout.VBox;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class PlayerView {
@@ -15,35 +16,37 @@ public class PlayerView {
 	private PlayerModel myPlayerModel;
 	private Stage myStage;
 	private Scene myScene;
-	private Group myRoot;
-	private VBox myCanvasVBox;
 	private GameCanvas myCanvas;
-
-	public PlayerView(PlayerModel playerModel) {
+	private BorderPane myRoot;
+	
+	public PlayerView(PlayerModel playerModel) throws IOException {
 		myPlayerModel = playerModel;
 		myStage = new Stage();
-		myRoot = new Group();
-		myScene = new Scene(myRoot, Main.SIZE.width, Main.SIZE.height);
-		myStage.setTitle("MY PLAYER VIEW");
-		myStage.setScene(myScene);
-		myStage.show();
 	}
 
 	public void initialize() throws IOException {
-		myRoot.getChildren().add(
-				FXMLLoader.load(getClass().getResource("RootLayout.fxml")));
+		FXMLLoader loader = new FXMLLoader(getClass().getResource("RootLayout.fxml"));
+		myRoot = (BorderPane) loader.load();
+		MenuBarController myController = loader.<MenuBarController>getController();
+		myController.setModel(myPlayerModel);
+		myScene = new Scene(myRoot);
+		myStage.setTitle("MY PLAYER VIEW");
+		myStage.setScene(myScene);
+		myStage.show();
 		initializeGUIComponents();
-		initializeGUIElements();
 	}
 
 	private void initializeGUIComponents() {
 		myCanvas = new GameCanvas();
 	}
-
-	private void initializeGUIElements() {
-		MenuBar myMenuBar = (MenuBar) myScene.lookup("#menuBar");
-		myCanvasVBox = (VBox) myScene.lookup("#canvasVBox");
-		myCanvasVBox.getChildren().add(myCanvas.getNode());
-		myRoot.getChildren().addAll(myMenuBar, myCanvasVBox);
+	
+	public Node getGroup(){
+		return myCanvas.getNode();
 	}
+	
+	public void close(){
+		myStage.close();
+	}
+	
+	
 }
