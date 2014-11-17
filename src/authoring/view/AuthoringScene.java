@@ -19,14 +19,14 @@ public class AuthoringScene {
 	private Scene myScene;
 	private BorderPane myRoot;
 	private TabPane myTabs;
-	private MenuView myMenu;
+	private ProgramMenu myMenu;
 
 	public AuthoringScene(Stage stage, Locale locale, double width,
 			double height) {
 
 		myRoot = new BorderPane();
 		myTabs = new TabPane();
-		myMenu = new MenuView(myTabs, locale, width, height);
+		myMenu = new ProgramMenu(myTabs, locale, width, height);
 		myRoot.setTop(myMenu);
 		myRoot.setCenter(myTabs);
 		myScene = new Scene(myRoot, width, height);

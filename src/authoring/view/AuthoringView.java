@@ -1,28 +1,22 @@
 package authoring.view;
 
-import javafx.scene.layout.BorderPane;
+import java.util.ResourceBundle;
 
-public class AuthoringView extends BorderPane {
+import authoring.view.baseclasses.BPView;
+
+/**
+ * Borderpane that holds the view.
+ * 
+ * @author Kevin Li
+ *
+ */
+public class AuthoringView extends BPView {
+
 	private static final double VIEW_HEIGHT_RATIO = .92;
 
-	public AuthoringView(double width, double height) {
+	public AuthoringView(ResourceBundle language, double width, double height) {
+		super(language, width, height);
 		setVisible(true);
-		setView(width, height * VIEW_HEIGHT_RATIO);
+		setView(super.myWidth, super.myHeight * VIEW_HEIGHT_RATIO);
 	}
-
-	/**
-	 * Sets the correct size of the view. Is code that is replicated throughout
-	 * the program. If there is a way to extract, that would be useful.
-	 * 
-	 * @param width
-	 *            Width the view is to be set at.
-	 * @param height
-	 *            Height the view is to be set at.
-	 */
-	private void setView(double width, double height) {
-		setPrefSize(width, height);
-		setMinSize(width, height);
-		setMaxSize(width, height);
-	}
-
 }

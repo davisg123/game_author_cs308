@@ -3,15 +3,13 @@ package authoring.view;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
-import authoring.controller.AuthoringController;
-import authoring.model.AuthoringModel;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import authoring.controller.AuthoringController;
+import authoring.model.AuthoringModel;
 
 /**
  * Class that contains the MenuBar for the authoring environments. Users can
@@ -21,7 +19,7 @@ import javafx.scene.control.TabPane;
  * @author Kevin Li
  *
  */
-public class MenuView extends MenuBar {
+public class ProgramMenu extends MenuBar {
 	private static final String DEFAULT_RESOURCE = "authoring.resources.languages/language";
 	private Locale myLocale;
 	private ResourceBundle myLanguage;
@@ -30,13 +28,14 @@ public class MenuView extends MenuBar {
 	private double myWidth;
 	private double myHeight;
 
-	public MenuView(TabPane tab, Locale locale, double width, double height) {
+	public ProgramMenu(TabPane tab, Locale locale, double width, double height) {
 		myWidth = width;
 		myHeight = height;
 		myLocale = locale;
 		myTabs = tab;
 		myLanguage = ResourceBundle.getBundle(DEFAULT_RESOURCE, myLocale);
 		this.getMenus().add(FileMenu());
+		addNew();
 
 	}
 
@@ -55,29 +54,31 @@ public class MenuView extends MenuBar {
 
 	/**
 	 * Creates a menuItem that allows the user to open new instances of
-	 * authoring environments.
+	 * authoring environments. This is where the controller, view, and model are
+	 * instantiated and connected with one another.
 	 * 
-	 * @return MenuItem that allows
+	 * @return MenuItem that allows new files to be created.
 	 */
 
 	private MenuItem newFile() {
 		MenuItem newFile = new MenuItem(myLanguage.getString("New"));
-		newFile.setOnAction(new EventHandler<ActionEvent>() {
-			public void handle(ActionEvent t) {
-
-				Tab tab = new Tab(myLanguage.getString("Program"));
-				AuthoringView newView = new AuthoringView(myWidth,
-						myHeight);
-				AuthoringModel newModel = new AuthoringModel();
-				AuthoringController newController = new AuthoringController(
-						newView, newModel, myWidth, myHeight, myLanguage);
-				tab.setContent(newView);
-				myTabs.getTabs().add(tab);
-				myTabs.getSelectionModel().select(tab);
-			}
-		});
+		newFile.setOnAction(handle -> addNew());
 		return newFile;
 
 	}
 
+	/**
+	 * Method for adding a new tab.
+	 */
+
+	private void addNew() {
+		Tab tab = new Tab(myLanguage.getString("Program"));
+		AuthoringView newView = new AuthoringView(myLanguage, myWidth, myHeight);
+		AuthoringModel newModel = new AuthoringModel();
+		AuthoringController newController = new AuthoringController(newView,
+				newModel, myWidth, myHeight, myLanguage);
+		tab.setContent(newView);
+		myTabs.getTabs().add(tab);
+		myTabs.getSelectionModel().select(tab);
+	}
 }
