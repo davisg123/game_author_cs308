@@ -19,6 +19,7 @@ public class CollisionDetector {
     //Should they just be enabled nodes? or should they be all the nodes?
     //Discuss definition of enabled
     public void checkCollisions (Iterator<Node> enabledNodes) {
+        myCollisionMap.clear();
         for(Iterator<Node> outerIter = enabledNodes; outerIter.hasNext();) {
             Node outerNode = outerIter.next();
             for(Iterator<Node> innerIter = enabledNodes; innerIter.hasNext();) {

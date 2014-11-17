@@ -196,6 +196,10 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
     public void setRenderedNode(RenderedNode node) {
         myRenderedNode = node;
     }
+    
+    public RenderedNode getRenderedNode(RenderedNode node) {
+        return myRenderedNode;
+    }
 
     /**
      * Temporary Map based getter...
