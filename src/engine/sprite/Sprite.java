@@ -81,8 +81,6 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
         myID = iD;
     }
 
-
-
     /**
      * Sets X-Coordinate of Object
      * @param x - New X coordinate of Object
