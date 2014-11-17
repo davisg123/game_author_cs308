@@ -1,43 +1,25 @@
 package engine.conditions;
 
-import java.util.ArrayList;
 import java.util.List;
 import engine.actions.Action;
 import engine.sprite.Sprite;
 
-/**
- * 
- * @author Davis
- *
- */
-public abstract class MovementCondition extends Condition {
-    private List<Action> myActions = new ArrayList<Action>();
-    private List<Sprite> mySprites = new ArrayList<Sprite>();
-    
+public abstract class MovementCondition extends SpriteCondition {
+
     public MovementCondition (List<Action> myActions, List<Sprite> mySprites) {
-        super();
-        this.myActions = myActions;
-        this.mySprites = mySprites;
+        super(myActions, mySprites);
         assignListeners();
     }
 
-    public List<Action> getActions(){
-        return myActions;
-    }
-    
-    public List<Sprite> getSprites(){
-        return mySprites;
-    }
-    
     @Override
     protected void executeActions(){
-        for (Action a : myActions){
+        for (Action a : getActions()){
             a.execute();
         }
     }
     
     private void assignListeners(){
-        for(Sprite s : mySprites){
+        for(Sprite s : getSprites()){
             s.getXPositionProperty().addListener(changeEvent -> xLayoutChange());
             s.getYPositionProperty().addListener(changeEvent -> yLayoutChange());
         }
