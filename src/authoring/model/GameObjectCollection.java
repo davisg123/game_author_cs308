@@ -1,4 +1,4 @@
-package authoring;
+package authoring.model;
 
 import java.util.ArrayList;
 import java.util.Iterator;

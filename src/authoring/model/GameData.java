@@ -1,4 +1,4 @@
-package authoring;
+package authoring.model;
 
 import java.io.Serializable;
 
@@ -19,10 +19,10 @@ public class GameData implements Serializable{
 	private static final long serialVersionUID = 6633782568176674709L;
 	
 	
-	private LevelCollection myLevels;
-	private SoundCollection mySounds;
-	private ImageCollection myImages;
-	private SpriteCollection mySprites;
+	private LevelsCollection myLevels;
+	private SoundsCollection mySounds;
+	private GraphicsCollection myImages;
+	private SpritesCollection mySprites;
 //	private EventCollection myEvents; //events prompt actions and hold onto their corresponding action
 //	private VariableCollection myVariables;
 	
