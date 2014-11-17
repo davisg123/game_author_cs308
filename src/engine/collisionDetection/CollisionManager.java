@@ -11,7 +11,7 @@ import javafx.scene.Node;
  *
  */
 
-public class CollisionDetector {
+public class CollisionManager {
 
     
     //Should they just be enabled nodes? or should they be all the nodes?

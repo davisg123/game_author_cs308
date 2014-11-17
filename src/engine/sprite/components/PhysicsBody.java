@@ -1,9 +1,9 @@
 package engine.sprite.components;
 
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.geometry.Point2D;
 import engine.physics.Acceleration;
 import engine.physics.BEngine;
 import engine.physics.CollisionConstant;
@@ -14,6 +14,7 @@ import engine.physics.NormalUpdate;
 import engine.physics.Scalar;
 import engine.physics.Vector;
 import engine.physics.Velocity;
+import engine.sprite.Sprite;
 
 /**
  * 
@@ -84,19 +85,20 @@ public class PhysicsBody {
 		return myMass;
 	}
 
-	public Vector getPositionChange() {
+	public void doPositionChange(Sprite sprite) {
 		doImpulses();
 		if (haveForcesChanged) {
 			balanceForces();
 		}
 		changeAcceleration();
 		changeVelocity();
-		return new Vector(myVelocity.getX() / FRAMES_PER_SECOND,
-				myVelocity.getY() / FRAMES_PER_SECOND);
+		sprite.setPosition(new Point2D.Double(myVelocity.getX() / FRAMES_PER_SECOND,
+				myVelocity.getY() / FRAMES_PER_SECOND));
+		// return new Vector(myVelocity.getX() / FRAMES_PER_SECOND,
+		// myVelocity.getY() / FRAMES_PER_SECOND);
 	}
-	
-	public Scalar getCollisionConstant()
-	{
+
+	public Scalar getCollisionConstant() {
 		return myCollision;
 	}
 
@@ -104,6 +106,7 @@ public class PhysicsBody {
 		for (Impulse cur : myImpulses) {
 			myVelocity.delta(cur);
 		}
+		myImpulses.clear();
 	}
 
 	private void balanceForces() {
