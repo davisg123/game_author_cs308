@@ -1,6 +1,7 @@
 package application;
 
 import java.awt.Dimension;
+import authoring.view.AuthoringScene;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -12,6 +13,13 @@ public class Main extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		SplashScreen screen = new SplashScreen();
 		screen.show();
+		//SplashScreen screen = new SplashScreen();
+		//Scene scene = screen.initialize();
+		//primaryStage.setScene(scene);
+		//primaryStage.show(); 
+//		AuthoringScene view = new AuthoringScene(primaryStage);
+		
+		
 	}
 	
 	
