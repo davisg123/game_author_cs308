@@ -2,6 +2,7 @@ package application;
 
 import java.io.IOException;
 
+import authoring.AuthoringModel;
 import gamePlayer.model.PlayerModel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -17,7 +18,7 @@ public class SplashScreen {
 	private Group myGroup;
 	private Button myAuthorButton;
 	private Button myPlayButton;
-	// private AuthoringEnvironmentObject myAuthoringEnvironmentObject
+	private AuthoringModel myAuthoringModel;
 	private PlayerModel myPlayerModel;
 	protected Stage myStage;
 
@@ -35,15 +36,16 @@ public class SplashScreen {
 	}
 
 	private void initializeButtons() {
-		myAuthorButton = new Button();
+		myAuthorButton = new Button("Authoring Environment");
 		myAuthorButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
-
+				myStage.close();
+				author();
 			}
 		});
 
-		myPlayButton = new Button();
+		myPlayButton = new Button("Player Environment");
 		myPlayButton.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent event) {
@@ -55,6 +57,10 @@ public class SplashScreen {
 				}
 			}
 		});
+	}
+	
+	private void author() {
+		myAuthoringModel = new AuthoringModel();
 	}
 
 	private void play() throws IOException {

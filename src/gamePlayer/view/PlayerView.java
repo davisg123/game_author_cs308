@@ -1,6 +1,7 @@
 package gamePlayer.view;
 
 import gamePlayer.model.PlayerModel;
+import javafx.scene.control.TabPane;
 import java.io.IOException;
 import application.Main;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,7 @@ public class PlayerView {
 	private Scene myScene;
 	private Group myRoot;
 	private VBox myCanvasVBox;
+	private MenuBar myMenuBar;
 	private GameCanvas myCanvas;
 
 	public PlayerView(PlayerModel playerModel) {
@@ -33,17 +35,11 @@ public class PlayerView {
 		myRoot.getChildren().add(
 				FXMLLoader.load(getClass().getResource("RootLayout.fxml")));
 		initializeGUIComponents();
-		initializeGUIElements();
 	}
 
 	private void initializeGUIComponents() {
+		myMenuBar = new MenuBar();
 		myCanvas = new GameCanvas();
 	}
 
-	private void initializeGUIElements() {
-		MenuBar myMenuBar = (MenuBar) myScene.lookup("#menuBar");
-		myCanvasVBox = (VBox) myScene.lookup("#canvasVBox");
-		myCanvasVBox.getChildren().add(myCanvas.getNode());
-		myRoot.getChildren().addAll(myMenuBar, myCanvasVBox);
-	}
 }

@@ -20,7 +20,8 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.Menu?>
 
-<BorderPane fx:id="background" prefWidth="1000.0" prefHeight="1000.0" xmlns:fx="http://javafx.com/fxml">
+<BorderPane fx:id="background" prefWidth="1000.0" prefHeight="1000.0" 
+	xmlns:fx="http://javafx.com/fxml">
     <top>
     	<Label text="Game Player GUI"/>
     	<MenuBar fx:id="menuBar"> 
@@ -30,7 +31,6 @@
     					<MenuItem text="New"/>
     					<MenuItem text="Load"/>
     					<MenuItem text="Save"/>
-    					<MenuItem text="Switch Game"/>
     					<MenuItem text="Pause"/>
     					<MenuItem text="Quit"/> 
     				</items>
@@ -45,12 +45,13 @@
     	</MenuBar>
     </top>
     <center>
-    	<VBox fx:id="canvasVBox">
-    		<Label text="Game Canvas"/>
+    	<VBox fx:id="canvasVBox" styleClass = "segmented-button-bar" 
+    		style="-fx-border-width: 1; -fx-border-style: solid; -fx-spacing: 5.0"
+    		prefWidth="1000" prefHeight="700">
     	</VBox>
     </center>
     <bottom>
-    	<VBox fx:id="statsVBox">
+    	<VBox fx:id="statsVBox" style="-fx-border-width: 1; -fx-border-style: solid;" prefWidth="1000" prefHeight="250">
     		<Label text="Game Stats"/>
     	</VBox>
     </bottom>
