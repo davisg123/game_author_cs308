@@ -5,6 +5,12 @@ import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.image.ImageView;
 
+/**
+ * 
+ * @author Will
+ *
+ */
+
 public class RenderedNode extends Group {
     private ImageView myImageView;
     private Node myCollisionBody;
