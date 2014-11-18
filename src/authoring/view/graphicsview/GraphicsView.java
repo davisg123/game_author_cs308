@@ -41,6 +41,7 @@ public class GraphicsView extends ScrollView implements Observer {
 	
 	public void addImage(String s, EventHandler<MouseEvent> handler){
 		Graphic graphic = new Graphic(s, handler);
+		myName = s;
 		myVbox.getChildren().add(graphic.makeGraphic());
 		
 	}
@@ -51,32 +52,6 @@ public class GraphicsView extends ScrollView implements Observer {
 	
 	public String getMyName(){
 		return myName;
-	}
-	
-	public class Graphic {
-		
-		private String myName;
-		private EventHandler<MouseEvent> myOnClick;
-		
-		public Graphic(String s, EventHandler<MouseEvent> eh){
-			myName = s;
-			myOnClick = eh;
-		}
-		
-		public VBox makeGraphic(){
-			VBox imageBox = new VBox();
-			Image image = new Image(getClass().getResourceAsStream(myName));
-			ImageView im = new ImageView(image);
-			im.setFitHeight(100);
-			im.setFitWidth(100);
-			imageBox.getChildren().add(im);
-			imageBox.getChildren().add(new Text(myName));
-			
-			imageBox.setOnMouseClicked(myOnClick);
-			
-			return imageBox;
-		}
-		
 	}
 
 }
