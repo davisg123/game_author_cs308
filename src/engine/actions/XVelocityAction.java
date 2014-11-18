@@ -1,6 +1,6 @@
-package engine.physics;
+package engine.actions;
 
-import engine.actions.PhysicsAction;
+import engine.physics.Velocity;
 import engine.sprite.Sprite;
 
 public class XVelocityAction extends PhysicsAction{
