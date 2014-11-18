@@ -26,7 +26,7 @@ public class GraphicsView extends ScrollView implements Observer {
 	private static final double VIEW_WIDTH_RATIO = 0.2;
 	private VBox myVbox = new VBox();	
 	private EventHandler<MouseEvent> myOnClick;
-	private String myLastString = "";
+	private String myName;
 	
 	public GraphicsView(ResourceBundle language, double width, double height) {
 		super(language, width, height);
@@ -36,7 +36,6 @@ public class GraphicsView extends ScrollView implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		myLastString = (String) arg;
 		addImage((String) arg, myOnClick);
 	}
 	
@@ -50,7 +49,34 @@ public class GraphicsView extends ScrollView implements Observer {
 		myOnClick = action;
 	}
 	
-	public String getMyLastString(){
-		return myLastString;
+	public String getMyName(){
+		return myName;
 	}
+	
+	public class Graphic {
+		
+		private String myName;
+		private EventHandler<MouseEvent> myOnClick;
+		
+		public Graphic(String s, EventHandler<MouseEvent> eh){
+			myName = s;
+			myOnClick = eh;
+		}
+		
+		public VBox makeGraphic(){
+			VBox imageBox = new VBox();
+			Image image = new Image(getClass().getResourceAsStream(myName));
+			ImageView im = new ImageView(image);
+			im.setFitHeight(100);
+			im.setFitWidth(100);
+			imageBox.getChildren().add(im);
+			imageBox.getChildren().add(new Text(myName));
+			
+			imageBox.setOnMouseClicked(myOnClick);
+			
+			return imageBox;
+		}
+		
+	}
+
 }

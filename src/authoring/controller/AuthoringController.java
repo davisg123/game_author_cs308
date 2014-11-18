@@ -11,6 +11,7 @@ import authoring.view.AuthoringView;
 import authoring.view.baseclasses.AccordianView;
 import authoring.view.graphicsview.GraphicsView;
 import authoring.view.levelview.LevelsView;
+import authoring.view.propertiesview.PropertiesView;
 import authoring.view.soundsview.SoundsView;
 import authoring.view.spritesview.SpritesView;
 
@@ -23,6 +24,7 @@ public class AuthoringController {
 	private SpritesView mySprites;
 	private GraphicsView myGraphics;
 	private SoundsView mySounds;
+	private PropertiesView myProperties;
 	private double myWidth;
 	private double myHeight;
 
@@ -49,16 +51,16 @@ public class AuthoringController {
 		myLevels = new LevelsView(myLanguage, myWidth, myHeight);
 		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
 		myGraphics = new GraphicsView(myLanguage, myWidth, myHeight);
-		myGraphics.setAction(event -> graphicsOnClick(myGraphics.getMyLastString()));
+		myGraphics.setAction(event -> graphicsOnClick(myGraphics));
+		myProperties = new PropertiesView(myLanguage, myWidth, myHeight);
 		mySprites = new SpritesView(myLanguage, myWidth, myHeight);
 
 	}
 	
 	//TEMPORARY HARDCODE - learning to drag javafx objects
 	//should be in controller to interact with other objects on GUI
-	private void graphicsOnClick(String s){
-		mySounds.addImage(s);
-		myModel.getImages().addImage("mario.png");
+	private void graphicsOnClick(GraphicsView g){
+		myProperties.fillContents(g);
 	}
 	
 
@@ -86,11 +88,12 @@ public class AuthoringController {
 		return leftView;
 	}
 
-	private AccordianView initializeRight() {
-		AccordianView rightView = new AccordianView(myWidth, myHeight);
-		TitledPane properties = new TitledPane(myLanguage.getString("Properties"), mySprites);
-		rightView.getPanes().addAll(properties);
-		return rightView;
+	private TitledPane initializeRight() {
+		//AccordianView rightView = new AccordianView(myWidth, myHeight);
+		TitledPane properties = new TitledPane(myLanguage.getString("Properties"), myProperties);
+		properties.setCollapsible(false);
+		//rightView.getPanes().addAll(properties);
+		return properties;
 	}
 
 }

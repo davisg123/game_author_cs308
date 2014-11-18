@@ -21,5 +21,7 @@ public class SpritesView extends ScrollView {
 		super(language, width, height);
 		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
 	}
+	
+	
 
 }
