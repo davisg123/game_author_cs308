@@ -2,7 +2,7 @@ package application;
 
 import java.io.IOException;
 
-import authoring.AuthoringModel;
+import authoring.model.AuthoringModel;
 import gamePlayer.model.PlayerModel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

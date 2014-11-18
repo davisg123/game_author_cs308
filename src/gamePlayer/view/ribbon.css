@@ -1,0 +1,17 @@
+/* 
+    Document   : ribbon
+    Description: Style the Ribbon Bar.
+*/
+
+/**
+ * This style creates the gradient effect across the entire "Ribbon Strip"
+ * background. This is an HBox in FX application. The HBox is in any Ribbon
+   Tab class.
+ */
+
+#container {
+    -fx-padding: 3px;
+    -fx-background-color: 
+        linear-gradient(#ffffff 0%, #ced3da 4%, #c1c6cf 17%, #b4bbc5 18%, #e5ebeb 100%);
+	-fx-spacing: 5;
+}

@@ -20,30 +20,35 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.Menu?>
 
-<BorderPane fx:id="background" prefWidth="1000.0" prefHeight="1000.0" 
-	xmlns:fx="http://javafx.com/fxml">
-    <top>
-    	<Label text="Game Player GUI"/>
-    	<MenuBar fx:id="menuBar"> 
-    		<menus>
-    			<Menu text="Options">
-    				<items>
-    					<MenuItem text="New"/>
-    					<MenuItem text="Load"/>
-    					<MenuItem text="Save"/>
-    					<MenuItem text="Pause"/>
-    					<MenuItem text="Quit"/> 
-    				</items>
-    			</Menu> 
-    			<Menu text="Preferences">
-    				<items>
-    					<MenuItem text="Sound"/>
-    					<MenuItem text="KeyCombos"/>    				
-    				</items>
-    			</Menu>
-    		</menus>
-    	</MenuBar>
-    </top>
+<BorderPane prefWidth="1000.0" prefHeight="1000.0" 
+	xmlns:fx="http://javafx.com/fxml" fx:controller="gamePlayer.view.RibbonControl">
+	<top>
+		<TabPane>
+			<Tab fx:id="GameSelector">
+				<HBox>
+					<Button text="Load Game">
+						<graphic>
+							<ImageView>
+								<Image url="load_button.png"/>
+							</ImageView>
+						</graphic>
+					</Button>
+				</HBox>
+			</Tab>
+			<Tab fx:id="GameOptions">
+				<HBox>
+					<Button>
+					</Button>
+				</HBox>
+			</Tab>
+			<Tab fx:id="GamePreferences">
+				<HBox>
+					<Button>
+					</Button>
+				</HBox>
+			</Tab>
+		</TabPane>
+	</top>
     <center>
     	<VBox fx:id="canvasVBox" styleClass = "segmented-button-bar" 
     		style="-fx-border-width: 1; -fx-border-style: solid; -fx-spacing: 5.0"

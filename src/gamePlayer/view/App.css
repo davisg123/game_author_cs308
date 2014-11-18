@@ -1,0 +1,11 @@
+/* 
+    Document   : App
+    Description: General styles for program
+*/
+
+/**
+ * Set the background color of the Scene.
+ */
+#app { 
+    -fx-background-color: #333;
+}
