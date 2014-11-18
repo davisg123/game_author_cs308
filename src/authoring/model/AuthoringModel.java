@@ -27,5 +27,9 @@ public class AuthoringModel {
 		// TODO - adds data to current authoring environment
 
 	}
+	
+	public GraphicsCollection getImages(){
+		return myGame.getImages();
+	}
 
 }

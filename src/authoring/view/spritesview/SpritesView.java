@@ -2,6 +2,7 @@ package authoring.view.spritesview;
 
 import java.util.ResourceBundle;
 
+import javafx.scene.text.Text;
 import authoring.view.baseclasses.ScrollView;
 
 /**

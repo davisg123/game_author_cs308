@@ -17,12 +17,22 @@ public class GameData implements Serializable{
 	 * Maybe put in properties file?
 	 */
 	private static final long serialVersionUID = 6633782568176674709L;
-	
-	
+		
 	private LevelsCollection myLevels;
 	private SoundsCollection mySounds;
 	private GraphicsCollection myImages;
 	private SpritesCollection mySprites;
+	
+	public GameData(){
+		myImages = new GraphicsCollection();
+	}
+	
+	
+	
+	public GraphicsCollection getImages(){
+		return myImages;
+	}
+	
 //	private EventCollection myEvents; //events prompt actions and hold onto their corresponding action
 //	private VariableCollection myVariables;
 	

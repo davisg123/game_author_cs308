@@ -2,18 +2,15 @@ package authoring.controller;
 
 import java.util.ResourceBundle;
 
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import authoring.model.AuthoringModel;
 import authoring.view.AuthoringView;
 import authoring.view.baseclasses.AccordianView;
 import authoring.view.graphicsview.GraphicsView;
 import authoring.view.levelview.LevelsView;
-import authoring.view.levelview.SingleLevelView;
 import authoring.view.soundsview.SoundsView;
 import authoring.view.spritesview.SpritesView;
 
@@ -52,28 +49,47 @@ public class AuthoringController {
 		myLevels = new LevelsView(myLanguage, myWidth, myHeight);
 		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
 		myGraphics = new GraphicsView(myLanguage, myWidth, myHeight);
+		myGraphics.setAction(event -> graphicsOnClick(myGraphics.getMyLastString()));
 		mySprites = new SpritesView(myLanguage, myWidth, myHeight);
 
 	}
+	
+	//TEMPORARY HARDCODE - learning to drag javafx objects
+	//should be in controller to interact with other objects on GUI
+	private void graphicsOnClick(String s){
+		mySounds.addImage(s);
+		myModel.getImages().addImage("mario.png");
+	}
+	
 
 	private AccordianView initializeLeft() {
 		AccordianView leftView = new AccordianView(myWidth, myHeight);
+		String im = "mario.png";
+		
+		myModel.getImages().addObserver(myGraphics);
+		myModel.getImages().addImage(im);
+		
+
 		TitledPane graphics = new TitledPane(myLanguage.getString("Graphics"),
 				myGraphics);
+		
+		
 		TitledPane sounds = new TitledPane(myLanguage.getString("Sounds"),
 				mySounds);
+		TitledPane sprites = new TitledPane(myLanguage.getString("Sprites"),
+				mySprites);
 
-		leftView.getPanes().addAll(graphics, sounds);
+
+		leftView.getPanes().addAll(graphics, sounds, sprites);
 		BorderPane.setAlignment(leftView, Pos.TOP_RIGHT);
+		
 		return leftView;
 	}
 
 	private AccordianView initializeRight() {
 		AccordianView rightView = new AccordianView(myWidth, myHeight);
-		TitledPane sprites = new TitledPane(myLanguage.getString("Sprites"),
-				mySprites);
-
-		rightView.getPanes().addAll(sprites);
+		TitledPane properties = new TitledPane(myLanguage.getString("Properties"), mySprites);
+		rightView.getPanes().addAll(properties);
 		return rightView;
 	}
 
