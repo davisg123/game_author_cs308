@@ -2,14 +2,18 @@
 package engine.sprite.components;
 
 
-
-import java.awt.Point;
-import java.awt.geom.Point2D;
-import java.util.List;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Properties;
+import java.util.ResourceBundle;
+import java.util.Set;
 
 import engine.sprite.components.properties.IProperty;
-import javafx.scene.Node;
+
 
 /**
  * Contains Image of Sprite, its location, will be grouped with Physics body to be rendered.
@@ -21,6 +25,37 @@ import javafx.scene.Node;
 @Deprecated 
 public class Layout extends SpriteComponent{
 
+	protected HashMap<String,Double> myPropertiesMap;
+    private final String resources = "resources/";
+    Properties defaultProps = new Properties();
+    
+	
+	
+	 public void constructPropertiesMap (String comp) {
+	        Map<String, Double> propertiesMap = new HashMap<String, Double>();
+	        ResourceBundle properties = ResourceBundle.getBundle(resources + comp);
+	       try{
+	        FileInputStream in = new FileInputStream(properties.toString());
+	        defaultProps.load(in);
+	        in.close();
+	       }
+	       catch (FileNotFoundException e){
+	       }
+	       catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+	       }
+		
+	        Enumeration<String> enumerator = properties.getKeys();
+	        
+	        while (enumerator.hasMoreElements()) {
+	        	String prop = enumerator.nextElement();
+	            propertiesMap.put(prop, Double.parseDouble(defaultProps.getProperty(prop)));
+	            
+	        }
+	       
+	    }
+	
 
     @Override
     public void addProperty(IProperty property) {
