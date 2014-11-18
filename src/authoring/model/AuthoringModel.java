@@ -14,6 +14,17 @@ public class AuthoringModel {
 		myGame = new GameData();
 	}
 
+	public GameData getData(){
+		return myGame;
+	}
+	
+	public void modifyModel(Query q){
+		//AuthoringController.getModel().getThing(Levels).get(level1).getSprites().get(Sprite1).getComponents.get(health).set(20)
+		//AuthoringController.change(object::method)
+	}
+	
+	
+	
 	public void save() {
 		// TODO - Data
 	}

@@ -2,6 +2,8 @@ package authoring.controller;
 
 import java.util.ResourceBundle;
 
+import engine.actions.Action;
+import engine.conditions.Condition;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
@@ -106,4 +108,74 @@ public class AuthoringController {
 		return rightView;
 	}
 
+	/**
+	 * Here lie the sad, sad public methods of this controller
+	 */
+	
+	/**
+	 * Sprite Methods
+	 */
+	public void editSprite(){
+		
+	}
+	
+	public void addSprite(){
+		
+	}
+	
+	public void removeSprite(){
+		
+	}
+	
+	public void editSpriteOnLevel(){
+		
+	}
+	
+	/**
+	 * Level Methods
+	 */
+	public void addSpriteToLevel(){
+		
+	}
+	
+	public void removeSpriteFromLevel(){
+		
+	}
+	
+	public void addLevel(){
+		
+	}
+	
+	public void removeLevel(){
+		
+	}
+
+	/**
+	 * Condition Methods
+	 */
+	
+	public void addButtonCondition(){
+		
+	}
+	
+	public void removeButtonCondition(){
+		
+	}
+	
+	public void addSpriteCondition(Condition c){
+		
+	}
+	
+	public void removeSpriteCondition(Condition c){
+		
+	}
+	
+	public void addAction(Condition c, Action a){
+		
+	}
+	
+	public void removeAction(Condition c, Action a){
+		
+	}
+	
 }
