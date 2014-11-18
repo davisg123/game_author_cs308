@@ -2,6 +2,9 @@ package authoring.controller;
 
 import java.util.ResourceBundle;
 
+import engine.actions.Action;
+import engine.conditions.Condition;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
@@ -15,6 +18,13 @@ import authoring.view.propertiesview.PropertiesView;
 import authoring.view.soundsview.SoundsView;
 import authoring.view.spritesview.SpritesView;
 
+/**
+ * Controller class that interacts between model and view. Holds and constructs
+ * all the view components in order to allow communication between them.
+ * 
+ * @author Kevin Li
+ *
+ */
 public class AuthoringController {
 	private AuthoringView myView;
 	private AuthoringModel myModel;
@@ -39,6 +49,11 @@ public class AuthoringController {
 
 	}
 
+	/**
+	 * Sets the contents of the AuthoringView - which is essentially an empty
+	 * borderpane.
+	 */
+
 	private void initializeView() {
 		initializeViewComponents();
 		myView.setCenter(myLevels);
@@ -46,6 +61,11 @@ public class AuthoringController {
 		myView.setRight(initializeRight());
 
 	}
+
+	/**
+	 * Initializes all the view components that have a 1 to 1 relationship with
+	 * backend data components.
+	 */
 
 	private void initializeViewComponents() {
 		myLevels = new LevelsView(myLanguage, myWidth, myHeight);
@@ -63,6 +83,12 @@ public class AuthoringController {
 		myProperties.fillContents(g);
 	}
 	
+
+	/**
+	 * Initializes what goes on the left side of the borderpane.
+	 * 
+	 * @return AccordianView a node.
+	 */
 
 	private AccordianView initializeLeft() {
 		AccordianView leftView = new AccordianView(myWidth, myHeight);
@@ -96,4 +122,74 @@ public class AuthoringController {
 		return properties;
 	}
 
+	/**
+	 * Here lie the sad, sad public methods of this controller
+	 */
+	
+	/**
+	 * Sprite Methods
+	 */
+	public void editSprite(){
+		
+	}
+	
+	public void addSprite(){
+		
+	}
+	
+	public void removeSprite(){
+		
+	}
+	
+	public void editSpriteOnLevel(){
+		
+	}
+	
+	/**
+	 * Level Methods
+	 */
+	public void addSpriteToLevel(){
+		
+	}
+	
+	public void removeSpriteFromLevel(){
+		
+	}
+	
+	public void addLevel(){
+		
+	}
+	
+	public void removeLevel(){
+		
+	}
+
+	/**
+	 * Condition Methods
+	 */
+	
+	public void addButtonCondition(){
+		
+	}
+	
+	public void removeButtonCondition(){
+		
+	}
+	
+	public void addSpriteCondition(Condition c){
+		
+	}
+	
+	public void removeSpriteCondition(Condition c){
+		
+	}
+	
+	public void addAction(Condition c, Action a){
+		
+	}
+	
+	public void removeAction(Condition c, Action a){
+		
+	}
+	
 }

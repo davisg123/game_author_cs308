@@ -1,120 +1,80 @@
+//Class is Deprecated
 package engine.sprite.components;
 
-import javafx.geometry.Point2D;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
+import java.util.ResourceBundle;
+import java.util.Set;
+
+import engine.sprite.components.properties.IProperty;
+
 
 /**
- * 
+ * Contains Image of Sprite, its location, will be grouped with Physics body to be rendered.
  * @author ArihantJain
  * 
- * This Class holds a Layout State for Sprite;
+ * This Class holds Layout Information for Sprite;
  *
  */
-public class Layout{
-    private Point2D myLocation;
-    private double myLocX = myLocation.getX();
-    private double myLocY = myLocation.getY();
-    private double mySizeHeight;
-    private double mySizeWidth;
+@Deprecated 
+public class Layout extends SpriteComponent{
 
+	protected HashMap<String,Double> myPropertiesMap;
+    private final String resources = "resources/";
+    Properties defaultProps = new Properties();
+    
+	
+	
+	 public void constructPropertiesMap (String comp) {
+	        Map<String, Double> propertiesMap = new HashMap<String, Double>();
+	        ResourceBundle properties = ResourceBundle.getBundle(resources + comp);
+	       try{
+	        FileInputStream in = new FileInputStream(properties.toString());
+	        defaultProps.load(in);
+	        in.close();
+	       }
+	       catch (FileNotFoundException e){
+	       }
+	       catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+	       }
+		
+	        Enumeration<String> enumerator = properties.getKeys();
+	        
+	        while (enumerator.hasMoreElements()) {
+	        	String prop = enumerator.nextElement();
+	            propertiesMap.put(prop, Double.parseDouble(defaultProps.getProperty(prop)));
+	            
+	        }
+	       
+	    }
+	
 
-    public Layout(Point2D point, double height, double width){
-        myLocX = point.getX();
-        myLocY  = point.getY();;
-        mySizeHeight = height;
-        mySizeWidth = width;
+    @Override
+    public void addProperty(IProperty property) {
+        // TODO Auto-generated method stub
+
     }
 
 
-    /**
-     * Sets X-Coordinate of Object
-     * 
-     * @param x - New X coordinate of Object
-     */
-    public void setPosX(double x){
-        myLocX = x;
-    }
+    @Override
+    public void update() {
+        // TODO Auto-generated method stub
 
-    /**
-     * Sets Y- Coordinate of Object
-     * 
-     * @param y - New Y coordinate of Object
-     */
-    public void setPosY(double y){
-        myLocY = y;
     }
 
 
-    /**
-     * Sets Location of object
-     * 
-     * @param point - new Location Point
-     */
-    public void setPos(Point2D point){
-        myLocation = point;
-    }
-
-    /**
-     * Sets Height of object
-     * 
-     * @param h - Height of Object
-     */
-    public void setSizeHeight(double h){
-        mySizeHeight = h;
-    }
-
-    /**
-     * Sets Width of object
-     * 
-     * @param w - Width of Object
-     */
-    public void setSizeWidth(double w){
-        mySizeWidth = w;
-    }
-
-    /**
-     * Return X-Coordinate of Object
-     * 
-     * @return -  Y coordinate of Object
-     */
-    public double getPosX(){
-        return myLocX;
-    }
-
-    /**
-     * Return Y-Coordinate of Object
-     * 
-     * @return - returns Y coordinate of Object
-     */
-    public double getPosY(double y){
-        return myLocY;
-    }
-
-
-    /**
-     * Sets Location of object
-     * 
-     * @param point - new Location Point
-     */
-    public Point2D getPos(Point2D point){
-        return myLocation;
-    }
-
-    /**
-     * Sets Height of object
-     * 
-     * @param h - Height of Object
-     */
-    public double getSizeHeight(int h){
-        return mySizeHeight;
-    }
-
-    /**
-     * Sets Width of object
-     * 
-     * @param w - Width of Object
-     */
-    public double getSizeWidth(int w){
-        return mySizeWidth;
+    @Override
+    public void removeProperty (IProperty property) {
+        // TODO Auto-generated method stub
+        
     }
 
 

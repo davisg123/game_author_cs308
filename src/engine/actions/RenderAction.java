@@ -1,4 +1,4 @@
-package engine.events;
+package engine.actions;
 
 import java.util.List;
 import engine.sprite.Sprite;
@@ -9,11 +9,11 @@ import engine.sprite.Sprite;
  *
  */
 
-public class RenderEvent implements Event {
+public class RenderAction implements Action {
 
     private List<Sprite> mySprites;
     
-    public RenderEvent (List<Sprite> sprites) {
+    public RenderAction (List<Sprite> sprites) {
         mySprites = sprites;
     }
 

@@ -1,12 +1,12 @@
-package engine.events;
+package engine.actions;
 
 import java.util.List;
 import engine.sprite.Sprite;
 
-public class PhysicsEvent implements Event {
+public class PhysicsAction implements Action {
     
     
-    public PhysicsEvent (List<Sprite> sprites, List<Double> values) {
+    public PhysicsAction (List<Sprite> sprites, List<Double> values) {
 
     }
     @Override

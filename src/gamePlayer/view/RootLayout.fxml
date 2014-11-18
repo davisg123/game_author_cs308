@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.ColorPicker?>
+<?import javafx.scene.control.ComboBox?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<?import application.Constants?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.Menu?>
+
+<BorderPane fx:id="background" prefWidth="1000.0" prefHeight="1000.0" xmlns:fx="http://javafx.com/fxml">
+    <top>
+    	<Label text="Game Player GUI"/>
+    	<MenuBar fx:id="menuBar" 
+    		<menus>
+    			<Menu text="Options">
+    				<items>
+    					<MenuItem text="New"/>
+    					<MenuItem text="Load"/>
+    					<MenuItem text="Save"/>
+    					<MenuItem text="Switch Game"/>
+    					<MenuItem text="Pause"/>
+    					<MenuItem text="Quit"/>
+    				</items>
+    			</Menu>
+    			<Menu text="Preferences"?
+    				<items>
+    					<MenuItem text="Sound"/>
+    					<MenuItem text="KeyCombos"/>    				
+    				</items>
+    		</menus>
+    </top>
+    <center>
+    	<VBox fx:id="canvasVBox">
+    	</VBox>
+    </center>
+    <bottom></bottom>
+     
+</BorderPane>
+
+
+
