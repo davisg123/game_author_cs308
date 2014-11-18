@@ -34,7 +34,7 @@ public class PhysicsBody {
 	private NormalUpdate myUpdate;
 	private boolean haveForcesChanged;
 	private List<Double> myBalancedForcesMag;
-	private CollisionConstant myCollision;
+	private boolean myCollision;
 
 	public PhysicsBody() {
 		myImpulses = new ArrayList<Impulse>();
@@ -98,8 +98,20 @@ public class PhysicsBody {
 		// myVelocity.getY() / FRAMES_PER_SECOND);
 	}
 
-	public Scalar getCollisionConstant() {
+	public boolean getCollisionConstant() {
 		return myCollision;
+	}
+	
+	public void handleCollisions(PhysicsBody a)
+	{
+		if(myCollision)
+		{
+			//do nothing
+		}
+		else if (a.getCollisionConstant())
+		{
+			
+		}
 	}
 
 	private void doImpulses() {
