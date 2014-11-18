@@ -37,8 +37,16 @@ public class GameManager {
         this.myGameConditions = myGameConditions;
         this.myGameSprites = myGameSprites;
         this.myRootGroup = myRootGroup;
+    }
+    
+    public void initialize(){
         addFramesToGroup();
         setGameSpeed(DEFAULT_SPEED,true);
+    }
+    
+    public void clear(){
+        myAnimation.stop();
+        //other cleanup
     }
     
     private void addFramesToGroup(){
@@ -71,6 +79,15 @@ public class GameManager {
        }
    }
    
+   public void togglePause(){
+       if (myAnimation.getStatus() == Animation.Status.RUNNING){
+           myAnimation.pause();
+       }
+       else{
+           myAnimation.play();
+       }
+   }
+   
    /**
     * Function to do each game frame
     */
@@ -85,6 +102,12 @@ public class GameManager {
      * run updates on every sprite and every condition
      */
     public void processFrame(){
-        //System.out.println("frame");
+        updateFrameBasedConditions();
+    }
+    
+    private void updateFrameBasedConditions(){
+        for (Condition s : myGameConditions){
+            s.frameElapsed();
+        }
     }
 }

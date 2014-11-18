@@ -35,7 +35,7 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
     //private DoubleProperty myXPosition;
     //private DoubleProperty myYPosition;
     private double myRotation;
-    private String myCurrentImagePath;
+    private String myCurrentImageName;
     private String myID;
     private PhysicsBody myPhysicsBody;
 
@@ -68,20 +68,18 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
              height, width, rotation, iD);
     }
 
-    public Sprite (List<SpriteComponent> components, String imagePath, SoundReference sounds, 
+    public Sprite (List<SpriteComponent> components, String imageName, SoundReference sounds, 
                    Point2D position, double height, double width, double rotation, String iD) {
         myComponents  = components;
         //myImages   = images;
         //mySounds   = sounds;
-        myCurrentImagePath = imagePath;
+        myCurrentImageName = imageName;
         myDefaultPosition = position;
         myHeight = height;
         myWidth = width;
         myRotation = rotation;
         myID = iD;
     }
-
-
 
     /**
      * Sets X-Coordinate of Object
@@ -196,6 +194,10 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
     public void setRenderedNode(RenderedNode node) {
         myRenderedNode = node;
     }
+    
+    public RenderedNode getRenderedNode(RenderedNode node) {
+        return myRenderedNode;
+    }
 
     /**
      * Temporary Map based getter...
@@ -206,13 +208,13 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
         return null;
     }
 
-    public String getCurrentImagePath () { 
-        return myCurrentImagePath;
+    public String getCurrentImageName () { 
+        return myCurrentImageName;
     }
 
-    public void setCurrentImagePath (String imagePath) { 
-        myCurrentImagePath = imagePath;
-        myRenderedNode.getImageView().setImage(new Image(getClass().getResourceAsStream(imagePath)));
+    public void setCurrentImagePath (String imageName) { 
+        myCurrentImageName = imageName;
+        myRenderedNode.getImageView().setImage(new Image(getClass().getResourceAsStream(imageName)));
     }
 
     @Override
