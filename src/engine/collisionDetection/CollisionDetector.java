@@ -32,6 +32,7 @@ public class CollisionDetector {
                     if(outerNode.intersects(innerNode.getBoundsInLocal()) && !myCollisionMap.containsKey(uniqueCollisionIdentifier)){
                         myCollisionMap.put(innerNode.getId()+outerNode.getId(), 1);
                         //call physics manager with collided nodes
+                        
                     }
                 }
             }
