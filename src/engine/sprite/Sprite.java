@@ -195,7 +195,7 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
         myRenderedNode = node;
     }
     
-    public RenderedNode getRenderedNode(RenderedNode node) {
+    public RenderedNode getRenderedNode() {
         return myRenderedNode;
     }
 

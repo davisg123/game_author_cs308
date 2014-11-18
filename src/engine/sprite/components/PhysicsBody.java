@@ -1,23 +1,21 @@
 package engine.sprite.components;
 
-import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
+import javafx.geometry.Point2D;
 import engine.physics.Acceleration;
 import engine.physics.BEngine;
-import engine.physics.CollisionConstant;
 import engine.physics.Force;
 import engine.physics.Impulse;
 import engine.physics.Mass;
 import engine.physics.NormalUpdate;
-import engine.physics.Scalar;
 import engine.physics.Vector;
 import engine.physics.Velocity;
-import engine.sprite.Sprite;
 
 /**
  * 
+ * @author Ben Reisner
  * @author ArihantJain
  *
  *         This class holds Physical Information for a Sprite.
@@ -34,9 +32,19 @@ public class PhysicsBody {
 	private NormalUpdate myUpdate;
 	private boolean haveForcesChanged;
 	private List<Double> myBalancedForcesMag;
-	private boolean myCollision;
+	
+	//Temorary, initial implementation and location
+	//of the collision body as rectangular shape is in Physics Body,
+	//will refactor later to Polygon/Circle and place into proper place
+	//with relation to RenderedNode
+	private double myCollisionBodyWidth;
+	private double myCollisionBodyHeight;
 
-	public PhysicsBody() {
+	public PhysicsBody () {
+	    this(0,0);
+	}
+	
+	public PhysicsBody(double collisionBodyWidth, double collisionBodyHeight) {
 		myImpulses = new ArrayList<Impulse>();
 		myAcceleration = new Acceleration(0, 0);
 		myVelocity = new Velocity(0, 0);
@@ -45,6 +53,8 @@ public class PhysicsBody {
 		myActiveForces = new ArrayList<Force>();
 		haveForcesChanged = false;
 		myBalancedForcesMag = new ArrayList<Double>();
+		myCollisionBodyWidth = collisionBodyWidth;
+		myCollisionBodyHeight = collisionBodyHeight;
 	}
 
 	/**
@@ -85,40 +95,22 @@ public class PhysicsBody {
 		return myMass;
 	}
 
-	public void doPositionChange(Sprite sprite) {
+	public Vector getPositionChange() {
 		doImpulses();
 		if (haveForcesChanged) {
 			balanceForces();
 		}
 		changeAcceleration();
 		changeVelocity();
-		sprite.setPosition(new Point2D.Double(myVelocity.getX() / FRAMES_PER_SECOND,
-				myVelocity.getY() / FRAMES_PER_SECOND));
-		// return new Vector(myVelocity.getX() / FRAMES_PER_SECOND,
-		// myVelocity.getY() / FRAMES_PER_SECOND);
-	}
-
-	public boolean getCollisionConstant() {
-		return myCollision;
-	}
-	
-	public void handleCollisions(PhysicsBody a)
-	{
-		if(myCollision)
-		{
-			//do nothing
-		}
-		else if (a.getCollisionConstant())
-		{
-			
-		}
+		// return changePosition
+		return new Vector(myVelocity.getX() / FRAMES_PER_SECOND,
+				myVelocity.getY() / FRAMES_PER_SECOND);
 	}
 
 	private void doImpulses() {
 		for (Impulse cur : myImpulses) {
 			myVelocity.delta(cur);
 		}
-		myImpulses.clear();
 	}
 
 	private void balanceForces() {
@@ -144,4 +136,12 @@ public class PhysicsBody {
 				myAcceleration.getY() / FRAMES_PER_SECOND);
 	}
 
+	
+	public double getCollisionBodyHeight() {
+	    return myCollisionBodyHeight;
+	}
+	
+	public double getCollisionBodyWidth() {
+            return myCollisionBodyWidth;
+        }
 }
