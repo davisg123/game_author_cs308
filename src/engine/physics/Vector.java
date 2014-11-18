@@ -47,4 +47,11 @@ public class Vector extends PhysicsComponent {
 	{
 		return myMagnitude;
 	}
+	
+	public void scalarMultiplication(double multiply)
+	{
+		myXComponent*=multiply;
+		myYComponent*=multiply;
+		myMagnitude=calculateMagnitude(myXComponent, myYComponent);
+	}
 }

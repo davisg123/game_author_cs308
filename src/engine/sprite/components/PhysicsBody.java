@@ -110,8 +110,10 @@ public class PhysicsBody {
 
 	private void doImpulses() {
 		for (Impulse cur : myImpulses) {
+			cur.scalarMultiplication(1.0/myMass.getValue());
 			myVelocity.delta(cur);
 		}
+		myImpulses.clear();
 	}
 
 	private void balanceForces() {
@@ -188,7 +190,7 @@ public class PhysicsBody {
 		}
 	}
 
-	public double collisionHelper(double centerOne, double centerTwo,
+	private double collisionHelper(double centerOne, double centerTwo,
 			double measureOne, double measureTwo) {
 		return (centerTwo + measureTwo) - (centerOne - measureOne);
 	}
