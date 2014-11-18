@@ -1,9 +1,9 @@
 package engine.sprite.components;
 
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.geometry.Point2D;
 import engine.physics.Acceleration;
 import engine.physics.BEngine;
 import engine.physics.Force;
@@ -17,6 +17,7 @@ import engine.sprite.Sprite;
 /**
  * 
  * @author Ben Reisner
+ * 
  * @author ArihantJain
  *
  *         This class holds Physical Information for a Sprite.
@@ -32,7 +33,7 @@ public class PhysicsBody {
 	private Mass myMass;
 	private NormalUpdate myUpdate;
 	private boolean haveForcesChanged;
-	private List<Double> myBalancedForcesMag;
+	private Vector myBalancedForcesMag;
 
 	// Temorary, initial implementation and location
 	// of the collision body as rectangular shape is in Physics Body,
@@ -53,7 +54,7 @@ public class PhysicsBody {
 		myUpdate = new NormalUpdate();
 		myActiveForces = new ArrayList<Force>();
 		haveForcesChanged = false;
-		myBalancedForcesMag = new ArrayList<Double>();
+		myBalancedForcesMag = new Vector();
 		myCollisionBodyWidth = collisionBodyWidth;
 		myCollisionBodyHeight = collisionBodyHeight;
 	}
@@ -96,7 +97,7 @@ public class PhysicsBody {
 		return myMass;
 	}
 
-	public Vector getPositionChange() {
+	public void getPositionChange(Sprite sprite) {
 		doImpulses();
 		if (haveForcesChanged) {
 			balanceForces();
@@ -104,13 +105,14 @@ public class PhysicsBody {
 		changeAcceleration();
 		changeVelocity();
 		// return changePosition
-		return new Vector(myVelocity.getX() / FRAMES_PER_SECOND,
-				myVelocity.getY() / FRAMES_PER_SECOND);
+
+		sprite.setPosition(new Point2D.Double(myVelocity.getX()
+				/ FRAMES_PER_SECOND, myVelocity.getY() / FRAMES_PER_SECOND));
 	}
 
 	private void doImpulses() {
 		for (Impulse cur : myImpulses) {
-			cur.scalarMultiplication(1.0/myMass.getValue());
+			cur.scalarMultiplication(1.0 / myMass.getValue());
 			myVelocity.delta(cur);
 		}
 		myImpulses.clear();
@@ -123,14 +125,14 @@ public class PhysicsBody {
 			x += cur.getX();
 			y += cur.getY();
 		}
-		myBalancedForcesMag.set(0, x);
-		myBalancedForcesMag.set(1, y);
+		myBalancedForcesMag.setX(x);
+		myBalancedForcesMag.setY(y);
 		haveForcesChanged = false;
 	}
 
 	private void changeAcceleration() {
-		myAcceleration = new Acceleration(myBalancedForcesMag.get(0)
-				/ myMass.getValue(), myBalancedForcesMag.get(1)
+		myAcceleration = new Acceleration(myBalancedForcesMag.getX()
+				/ myMass.getValue(), myBalancedForcesMag.getY()
 				/ myMass.getValue());
 	}
 

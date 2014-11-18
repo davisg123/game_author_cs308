@@ -12,14 +12,15 @@ public class Vector extends PhysicsComponent {
 		this(0, 0);
 	}
 
-	protected double calculateMagnitude(double x, double y) {
-		return Math.sqrt(x * x + y * y);
+	protected void calculateMagnitude() {
+		myMagnitude = Math.sqrt(myXComponent * myXComponent + myYComponent
+				* myYComponent);
 	}
 
 	protected void constructionHelper(double x, double y) {
 		myXComponent = x;
 		myYComponent = y;
-		myMagnitude = calculateMagnitude(x, y);
+		calculateMagnitude();
 	}
 
 	public double getX() {
@@ -37,21 +38,33 @@ public class Vector extends PhysicsComponent {
 	public void delta(double x, double y) {
 		myXComponent += x;
 		myYComponent += y;
+		calculateMagnitude();
+
 	}
 
 	public void delta(Vector vector) {
 		delta(vector.getX(), vector.getY());
 	}
-	
-	public double getMagnitude()
-	{
+
+	public double getMagnitude() {
 		return myMagnitude;
 	}
-	
-	public void scalarMultiplication(double multiply)
-	{
-		myXComponent*=multiply;
-		myYComponent*=multiply;
-		myMagnitude=calculateMagnitude(myXComponent, myYComponent);
+
+	public void scalarMultiplication(double multiply) {
+		myXComponent *= multiply;
+		myYComponent *= multiply;
+		calculateMagnitude();
+	}
+
+	public void setX(double x) {
+		myXComponent = x;
+		calculateMagnitude();
+
+	}
+
+	public void setY(double y) {
+		myYComponent = y;
+		calculateMagnitude();
+
 	}
 }
