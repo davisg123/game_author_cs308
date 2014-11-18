@@ -34,11 +34,11 @@ public class RenderedNode extends Group {
     public ImageView getImageView() {
         return myImageView;
     }
-    
+
     public Node getCollisionBody () {
         return myCollisionBody;
     }
-    
+
     @Override
     public boolean intersects (Bounds localBounds) {
         return (myCollisionBody != null) ? myCollisionBody.intersects(localBounds): false;

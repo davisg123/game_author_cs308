@@ -17,21 +17,12 @@ import javafx.scene.image.Image;
  */
 public class Sprite implements IEnabled, Iterable<SpriteComponent>{
     private List<SpriteComponent> myComponents; 
-    //Temporary solution for extension to use Images and Sounds
-    //Create actions which update the image paths...
     //Maybe connect it with a properties file
     //Create an Image and Path manager that works with the Renderer
-    //Place inside sprite or inside the renderer package?...
     //Will cause an error if path does not exist... 
-    //Maybe create an image and a sound component?
-    //Should we have specific component fields??
-    //Rendering, Camera, Physics, Attributes/current state
-    //Make it a state machine as well???s
     //private ImageReference myImages;
     //private SoundReference mySounds;
 
-    //We have to have a default... default sprite values... somehow
-    //Include this in constructor
     //private DoubleProperty myXPosition;
     //private DoubleProperty myYPosition;
     private double myRotation;
@@ -154,7 +145,6 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
                                   myRenderedNode.getTranslateY());
     }
 
-
     public void setDefaultPosition (Point2D position) {
         myDefaultPosition = position;
     }
@@ -167,15 +157,6 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
         return myDefaultPosition;
     }
 
-    /*public ImageReference getImageReferences () {
-        return myImages;
-    }
-
-    public SoundReference getSoundReferences () {
-        return mySounds;
-    }*/
-
-
     public String getID () {
         return myID;
     }
@@ -184,12 +165,14 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
      * Updates all components of Sprite
      * TODO Check if necessary... 
      */
-    /*
+    
     public void update () {
         for(SpriteComponent component : myComponents) {
+            //component.update(this); Should include current Level???... 
+            //update methods should be specific to each component...
             component.update();
         }
-    }*/
+    }
 
     public void setRenderedNode(RenderedNode node) {
         myRenderedNode = node;
