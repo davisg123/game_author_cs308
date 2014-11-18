@@ -38,7 +38,7 @@ public class RenderedNode extends Group {
     public Node getCollisionBody () {
         return myCollisionBody;
     }
-
+    
     @Override
     public boolean intersects (Bounds localBounds) {
         return (myCollisionBody != null) ? myCollisionBody.intersects(localBounds): false;

@@ -15,6 +15,7 @@ import engine.physics.Velocity;
 
 /**
  * 
+ * @author Ben Reisner
  * @author ArihantJain
  *
  *         This class holds Physical Information for a Sprite.
@@ -31,8 +32,19 @@ public class PhysicsBody {
 	private NormalUpdate myUpdate;
 	private boolean haveForcesChanged;
 	private List<Double> myBalancedForcesMag;
+	
+	//Temorary, initial implementation and location
+	//of the collision body as rectangular shape is in Physics Body,
+	//will refactor later to Polygon/Circle and place into proper place
+	//with relation to RenderedNode
+	private double myCollisionBodyWidth;
+	private double myCollisionBodyHeight;
 
-	public PhysicsBody() {
+	public PhysicsBody () {
+	    this(0,0);
+	}
+	
+	public PhysicsBody(double collisionBodyWidth, double collisionBodyHeight) {
 		myImpulses = new ArrayList<Impulse>();
 		myAcceleration = new Acceleration(0, 0);
 		myVelocity = new Velocity(0, 0);
@@ -41,6 +53,8 @@ public class PhysicsBody {
 		myActiveForces = new ArrayList<Force>();
 		haveForcesChanged = false;
 		myBalancedForcesMag = new ArrayList<Double>();
+		myCollisionBodyWidth = collisionBodyWidth;
+		myCollisionBodyHeight = collisionBodyHeight;
 	}
 
 	/**
@@ -122,4 +136,12 @@ public class PhysicsBody {
 				myAcceleration.getY() / FRAMES_PER_SECOND);
 	}
 
+	
+	public double getCollisionBodyHeight() {
+	    return myCollisionBodyHeight;
+	}
+	
+	public double getCollisionBodyWidth() {
+            return myCollisionBodyWidth;
+        }
 }
