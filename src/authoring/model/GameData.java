@@ -29,11 +29,6 @@ public class GameData implements Serializable{
 	private List<Sprite> mySprites;
 	private List<Condition> myConditions;
 	
-	public GameData (){
-		myLevels = new ArrayList<Level>();
-		mySprites = new ArrayList<Sprite>();
-		myConditions = new ArrayList<Condition>();
-	}
 	
 	public void addLevel(Level l){
 		myLevels.add(l);
@@ -63,6 +58,23 @@ public class GameData implements Serializable{
 //	private SoundsCollection mySounds;
 //	private GraphicsCollection myImages;
 //	private SpritesCollection mySprites;
+		
+	private SoundsCollection mySounds;
+	private GraphicsCollection myImages;
+	
+	public GameData(){
+		myLevels = new ArrayList<Level>();
+		mySprites = new ArrayList<Sprite>();
+		myConditions = new ArrayList<Condition>();
+		myImages = new GraphicsCollection();
+	}
+	
+	
+	
+	public GraphicsCollection getImages(){
+		return myImages;
+	}
+	
 //	private EventCollection myEvents; //events prompt actions and hold onto their corresponding action
 //	private VariableCollection myVariables;
 	

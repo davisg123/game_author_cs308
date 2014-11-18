@@ -3,9 +3,11 @@ package authoring.model;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Observable;
+
 import engine.GameObject;
 
-public class GameObjectCollection implements Iterable<GameObject>{
+public abstract class GameObjectCollection extends Observable implements Iterable<GameObject>{
 	
 	private List<GameObject> myGameObjects;
 
