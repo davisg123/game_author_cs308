@@ -42,4 +42,9 @@ public class Vector extends PhysicsComponent {
 	public void delta(Vector vector) {
 		delta(vector.getX(), vector.getY());
 	}
+	
+	public double getMagnitude()
+	{
+		return myMagnitude;
+	}
 }

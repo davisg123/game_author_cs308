@@ -12,6 +12,7 @@ import engine.physics.Mass;
 import engine.physics.NormalUpdate;
 import engine.physics.Vector;
 import engine.physics.Velocity;
+import engine.sprite.Sprite;
 
 /**
  * 
@@ -32,18 +33,18 @@ public class PhysicsBody {
 	private NormalUpdate myUpdate;
 	private boolean haveForcesChanged;
 	private List<Double> myBalancedForcesMag;
-	
-	//Temorary, initial implementation and location
-	//of the collision body as rectangular shape is in Physics Body,
-	//will refactor later to Polygon/Circle and place into proper place
-	//with relation to RenderedNode
+
+	// Temorary, initial implementation and location
+	// of the collision body as rectangular shape is in Physics Body,
+	// will refactor later to Polygon/Circle and place into proper place
+	// with relation to RenderedNode
 	private double myCollisionBodyWidth;
 	private double myCollisionBodyHeight;
 
-	public PhysicsBody () {
-	    this(0,0);
+	public PhysicsBody() {
+		this(0, 0);
 	}
-	
+
 	public PhysicsBody(double collisionBodyWidth, double collisionBodyHeight) {
 		myImpulses = new ArrayList<Impulse>();
 		myAcceleration = new Acceleration(0, 0);
@@ -136,12 +137,60 @@ public class PhysicsBody {
 				myAcceleration.getY() / FRAMES_PER_SECOND);
 	}
 
-	
 	public double getCollisionBodyHeight() {
-	    return myCollisionBodyHeight;
+		return myCollisionBodyHeight;
 	}
-	
+
 	public double getCollisionBodyWidth() {
-            return myCollisionBodyWidth;
-        }
+		return myCollisionBodyWidth;
+	}
+
+	public void handleCollision(Sprite thisSprite, Sprite sprite) {
+		double xCenterOne = thisSprite.getPosition().getX();
+		double yCenterOne = thisSprite.getPosition().getY();
+		double xCenterTwo = sprite.getPosition().getX();
+		double yCenterTwo = sprite.getPosition().getY();
+		double widthOne = thisSprite.getPhysicsBody().getCollisionBodyWidth();
+		double lengthOne = thisSprite.getPhysicsBody().getCollisionBodyHeight();
+		double widthTwo = sprite.getPhysicsBody().getCollisionBodyWidth();
+		double lengthTwo = sprite.getPhysicsBody().getCollisionBodyHeight();
+		double xChange = 0.0;
+		double yChange = 0.0;
+
+		xChange = ((xCenterOne > yCenterOne) ? collisionHelper(xCenterOne,
+				xCenterTwo, widthOne, widthTwo) : collisionHelper(xCenterTwo,
+				xCenterOne, widthTwo, widthOne));
+		yChange = ((yCenterOne > yCenterOne) ? collisionHelper(yCenterOne,
+				yCenterTwo, lengthOne, lengthTwo) : collisionHelper(yCenterTwo,
+				yCenterOne, lengthTwo, lengthOne));
+
+		Sprite cur = ((thisSprite.getPhysicsBody().getVelocity().getMagnitude() == 0.0) ? sprite
+				: thisSprite);
+		Sprite other = (!(thisSprite.getPhysicsBody().getVelocity()
+				.getMagnitude() == 0.0) ? sprite : thisSprite);
+		double curX = cur.getPhysicsBody().getVelocity().getX();
+		double curY = cur.getPhysicsBody().getVelocity().getY();
+		// collides in x is true, y is false;
+		boolean xOrY = (xChange / curX > yChange / curY);
+
+		// create new condition to stop x or y
+		if (!cur.getCollisionConstant()) {
+			if (xOrY) {
+				cur.getPhysicsBody().setVelocity(
+						new Velocity(0.0, cur.getPhysicsBody().getVelocity()
+								.getY()));
+			} else {
+				cur.getPhysicsBody().setVelocity(
+						new Velocity(cur.getPhysicsBody().getVelocity().getX(),
+								0.0));
+
+			}
+		}
+	}
+
+	public double collisionHelper(double centerOne, double centerTwo,
+			double measureOne, double measureTwo) {
+		return (centerTwo + measureTwo) - (centerOne - measureOne);
+	}
+
 }
