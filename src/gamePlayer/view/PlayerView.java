@@ -19,7 +19,7 @@ public class PlayerView {
 	private GameCanvas myCanvas;
 	private BorderPane myRoot;
 	
-	public PlayerView(PlayerModel playerModel) throws IOException {
+	public PlayerView(PlayerModel playerModel) {
 		myPlayerModel = playerModel;
 		myStage = new Stage();
 	}

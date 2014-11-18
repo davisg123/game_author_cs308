@@ -1,5 +1,7 @@
 package data;
 
+import gamePlayer.model.DataWrapper;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -20,8 +22,8 @@ public class DataManager {
 	 * @param file Name Name of Json file.
 	 * @return Returns true if successfully writes file.
 	 */
-	public boolean writeGameFile(GameObject obj, String fileName) {
-		return writeFile(obj, gameDatapath, fileName);
+	public boolean writeGameFile(DataWrapper wrapper, String fileName) {
+		return writeFile(wrapper, gameDatapath, fileName);
 	}
 	
 	/**
@@ -29,8 +31,8 @@ public class DataManager {
 	 * @param fileName Name of Json file.
 	 * @return Object representing game.
 	 */
-	public GameObject readGameFile(String fileName) {
-		return (GameObject)readFile(GameObject.class, gameDatapath, fileName);
+	public DataWrapper readGameFile(String fileName) {
+		return (DataWrapper)readFile(DataWrapper.class, gameDatapath, fileName);
 	}
 	
 	/**

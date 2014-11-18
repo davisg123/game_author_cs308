@@ -21,12 +21,5 @@ public class DataWrapper {
 	 
 	 public List<Condition> getConditions(){
 		 return myConditions;
-	 }
-	 
-	 public DataWrapper copyOf() throws CloneNotSupportedException{
-		 return (DataWrapper) this.clone();
-	 }
-	 
-	 
-	
+	 }	
 }

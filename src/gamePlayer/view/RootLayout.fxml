@@ -20,23 +20,31 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.Menu?>
-<?import gamePlayer.view.*?>
+<?import gamePlayer.view.GameSelector?>
 
 <BorderPane prefWidth="1000.0" prefHeight="1000.0" xmlns:fx="http://javafx.com/fxml" fx:controller="gamePlayer.view.MenuBarController">
     <top>
     	<Label text="Game Player GUI"/>
-    	<MenuBar fx:id="menuBar" > 
+    	<GameSelector/>
+    	<MenuBar> 
     		<menus>
-    			<Menu text="Options">
+    			<Menu fx:id="gameSelector" text="Game Selector">
     				<items>
-    					<MenuItem text="New" onAction="#newGame"/>
-    					<MenuItem text="Load" onAction="#load"/>
-    					<MenuItem text="Save" onAction="#save"/>
-    					<MenuItem text="Pause" onAction="#pause"/>
-    					<MenuItem text="Quit" onAction="#quit"/> 
+    					<MenuItem text="Home" onAction="#goHome"/>
+						<MenuItem text="Load Game File" onAction="#loadGameFile"/>
+						<MenuItem text="Exit Game" onAction="#exitFromGame"/>
     				</items>
     			</Menu> 
-    			<Menu text="Preferences">
+    			<Menu fx:id="gameOptions" text="Game Options" disable="true">
+    				<items>
+    					<MenuItem text="New" onAction="#newGame"/>
+    					<MenuItem text="Load from Save File" onAction="#loadFromSave"/>
+    					<MenuItem text="Save" onAction="#saveGame"/>
+    					<MenuItem text="Pause" onAction="#pauseGame"/>
+    					<MenuItem text="Quit" onAction="#quitGame"/> 
+    				</items>	
+    			</Menu>
+    			<Menu fx:id="gamePreferences" text="Preferences" disable="true">
     				<items>
     					<MenuItem text="Sound"/>
     					<MenuItem text="KeyCombos"/>    				
