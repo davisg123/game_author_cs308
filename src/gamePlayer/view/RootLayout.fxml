@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
+<?import java.lang.*?>
+<?import javafx.scene.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Region?>
@@ -19,48 +20,49 @@
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.Menu?>
+<?import gamePlayer.view.GameSelector?>
 
-<BorderPane prefWidth="1000.0" prefHeight="1000.0" 
-	xmlns:fx="http://javafx.com/fxml" fx:controller="gamePlayer.view.RibbonControl">
-	<top>
-		<TabPane>
-			<Tab fx:id="GameSelector">
-				<HBox>
-					<Button text="Load Game">
-						<graphic>
-							<ImageView>
-								<Image url="load_button.png"/>
-							</ImageView>
-						</graphic>
-					</Button>
-				</HBox>
-			</Tab>
-			<Tab fx:id="GameOptions">
-				<HBox>
-					<Button>
-					</Button>
-				</HBox>
-			</Tab>
-			<Tab fx:id="GamePreferences">
-				<HBox>
-					<Button>
-					</Button>
-				</HBox>
-			</Tab>
-		</TabPane>
-	</top>
+<BorderPane prefWidth="1000.0" prefHeight="1000.0" xmlns:fx="http://javafx.com/fxml" fx:controller="gamePlayer.view.MenuBarController">
+    <top>
+    	<Label text="Game Player GUI"/>
+    	<GameSelector/>
+    	<MenuBar> 
+    		<menus>
+    			<Menu fx:id="gameSelector" text="Game Selector">
+    				<items>
+    					<MenuItem text="Home" onAction="#goHome"/>
+						<MenuItem text="Load Game File" onAction="#loadGameFile"/>
+						<MenuItem text="Exit Game" onAction="#exitFromGame"/>
+    				</items>
+    			</Menu> 
+    			<Menu fx:id="gameOptions" text="Game Options" disable="true">
+    				<items>
+    					<MenuItem text="New" onAction="#newGame"/>
+    					<MenuItem text="Load from Save File" onAction="#loadFromSave"/>
+    					<MenuItem text="Save" onAction="#saveGame"/>
+    					<MenuItem text="Pause" onAction="#pauseGame"/>
+    					<MenuItem text="Quit" onAction="#quitGame"/> 
+    				</items>	
+    			</Menu>
+    			<Menu fx:id="gamePreferences" text="Preferences" disable="true">
+    				<items>
+    					<MenuItem text="Sound"/>
+    					<MenuItem text="KeyCombos"/>    				
+    				</items>
+    			</Menu>
+    		</menus>
+    	</MenuBar>
+    </top>
     <center>
-    	<VBox fx:id="canvasVBox" styleClass = "segmented-button-bar" 
-    		style="-fx-border-width: 1; -fx-border-style: solid; -fx-spacing: 5.0"
-    		prefWidth="1000" prefHeight="700">
+    	<VBox fx:id="canvasVBox">
+    		<Label text="Game Canvas"/>
     	</VBox>
     </center>
     <bottom>
-    	<VBox fx:id="statsVBox" style="-fx-border-width: 1; -fx-border-style: solid;" prefWidth="1000" prefHeight="250">
+    	<VBox fx:id="statsVBox">
     		<Label text="Game Stats"/>
     	</VBox>
     </bottom>
      
 </BorderPane>
-
 
