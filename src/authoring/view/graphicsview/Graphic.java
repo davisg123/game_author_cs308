@@ -11,6 +11,11 @@ public class Graphic extends VBox{
 	
 	private String myName;
 	private EventHandler<MouseEvent> myOnClick;
+	private boolean myIsVisible = true;
+	
+	public boolean getVisible(){
+		return myIsVisible;
+	}
 	
 	public Graphic(String s, EventHandler<MouseEvent> eh){
 		myName = s;
