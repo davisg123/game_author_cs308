@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.TitledPane;
+import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import authoring.model.AuthoringModel;
@@ -18,6 +19,7 @@ import authoring.view.soundsview.SoundsView;
 import authoring.view.spritesview.SpritesView;
 import engine.actions.Action;
 import engine.conditions.Condition;
+import engine.sprite.Sprite;
 
 /**
  * Controller class that interacts between model and view. Holds and constructs
@@ -73,7 +75,7 @@ public class AuthoringController {
 		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
 		myGraphics = new GraphicsView(myLanguage, myWidth, myHeight, new GraphicsEventHandler());
 		myProperties = new PropertiesView(myLanguage, myWidth, myHeight);
-		mySprites = new SpritesView(myLanguage, myWidth, myHeight);
+		mySprites = new SpritesView(myLanguage, myWidth, myHeight, new GraphicsEventHandler());
 
 	}
 
@@ -86,7 +88,24 @@ public class AuthoringController {
 			Graphic g = (Graphic) event.getSource();
 //			System.out.println(g.getName());
 			myProperties.fillContents(g);
+			double x = event.getSceneX();
+			double y = event.getSceneY();
+			//g.setLayoutY(70);
+			myLevels.addSpriteToView(g,x,y, new GraphicsDragHandler());
 			
+		}
+		
+	}
+	public class GraphicsDragHandler implements EventHandler<MouseEvent>{
+
+		@Override
+		public void handle(MouseEvent event) {
+			Graphic g = (Graphic) event.getSource();
+//			System.out.println(g.getName());
+			myProperties.fillContents(g);
+			double x = event.getSceneX();
+			double y = event.getSceneY();
+			myLevels.moveSpriteOnLevel(g,x,y);
 		}
 		
 	}
@@ -104,8 +123,11 @@ public class AuthoringController {
 		String im2 = "Luigi.jpg";
 		
 		myModel.getImages().addObserver(myGraphics);
+		myModel.getSprites().addObserver(mySprites);
+		
 		myModel.getImages().addImage(im);
 		myModel.getImages().addImage(im2);
+		//myModel.getSprites().addSprite(im);
 
 		TitledPane graphics = new TitledPane(myLanguage.getString("Graphics"),
 				myGraphics);

@@ -1,41 +1,42 @@
 package authoring.view.graphicsview;
 
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
-public class Graphic extends VBox{
-	
+public class Graphic extends VBox {
+
 	private String myName;
 	private EventHandler<MouseEvent> myOnClick;
 	private boolean myIsVisible = true;
-	
-	public boolean getVisible(){
+
+	public boolean getVisible() {
 		return myIsVisible;
 	}
-	
-	public Graphic(String s, EventHandler<MouseEvent> eh){
+
+	public Graphic(String s, EventHandler<MouseEvent> event) {
 		myName = s;
-		myOnClick = eh;
+		myOnClick = event;
 	}
-	
-	public void makeGraphic(){
+
+	public void makeGraphic(EventType<MouseEvent> event) {
 		Image image = new Image(getClass().getResourceAsStream(myName));
-		ImageView im = new ImageView(image);
-		im.setFitHeight(100);
-		im.setFitWidth(100);
-		this.getChildren().add(im);
+		ImageView imageView = new ImageView(image);
+		imageView.setFitHeight(70);
+		imageView.setFitWidth(70);
+		this.getChildren().add(imageView);
 		this.getChildren().add(new Text(myName));
-		
-		this.addEventFilter(MouseEvent.MOUSE_CLICKED, myOnClick);
+
+		this.addEventFilter(event, myOnClick);
 
 	}
-	
-	public String getName(){
+
+	public String getName() {
 		return myName;
 	}
-	
+
 }
