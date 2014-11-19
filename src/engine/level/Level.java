@@ -46,6 +46,11 @@ public class Level {
         }
     }
     
+    /**
+     * Enables and initializes the Game Objects specified in this Level
+     * 
+     * @param sprites
+     */
     public void setEnabledSprites(List<Sprite> sprites) {
        for(Sprite sprite : sprites) {
            if(myEnabledSprites.get(sprite.getID())) {
@@ -64,6 +69,10 @@ public class Level {
         }
     }*/
     
+    /**
+     * Enables the Conditions specified in this Level
+     * @param conditions
+     */
     public void setEnabledConditions(List<Condition> conditions) {
         for(Condition condition : conditions) {
             //if(myEnabledConditions.get(condition.getID()) {
@@ -73,6 +82,10 @@ public class Level {
         }
     }
 
+    /**
+     * Iterator for the List of enabled Game Objects in the Level
+     * @return
+     */
     public Iterator<Sprite> getSprites () {
         return mySprites.iterator();
     }

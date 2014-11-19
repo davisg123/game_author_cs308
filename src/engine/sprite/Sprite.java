@@ -206,7 +206,9 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
     }
 
     public void saveCurrentState() {
-
+        myRotation = myRenderedNode.getRotate();
+        myDefaultPosition = new Point2D.Double(myRenderedNode.getTranslateX(), 
+                                               myRenderedNode.getTranslateY());
     }
 
     public void setPhysicsBody (PhysicsBody physicsBody) {
