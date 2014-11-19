@@ -11,6 +11,7 @@ import engine.actions.TransformX;
 import engine.actions.TransformY;
 import engine.conditions.ButtonConditionManager;
 import engine.conditions.Condition;
+import engine.conditions.TimeCondition;
 import engine.level.Level;
 import engine.render.SpriteRenderer;
 import engine.sprite.Sprite;
@@ -77,13 +78,16 @@ public class MainEngineTests extends Application {
         buttonManager.addBinding(KeyCode.S, c);
         buttonManager.addBinding(KeyCode.W, d);
         buttonManager.beginListeningToScene(myScene);
+        ArrayList<Action> condList = new ArrayList<Action>();
+        condList.add(c);
+        Condition cond = new TimeCondition(condList,mySpriteList,.5,true);
         myConditionList.add(buttonManager);
+        myConditionList.add(cond);
         myGameManager = new GameManager(myConditionList,mySpriteList,group);
         Level level0 = new Level(mySpriteList,null);
         SpriteRenderer mySpriteRenderer = new SpriteRenderer(group);
         mySpriteRenderer.renderSprites(level0);
         myGameManager.initialize();
-        
     }
 
     
