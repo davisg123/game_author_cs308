@@ -28,10 +28,11 @@ public class GraphicsView extends ScrollView implements Observer {
 	private EventHandler<MouseEvent> myOnClick;
 	private String myName;
 	
-	public GraphicsView(ResourceBundle language, double width, double height) {
+	public GraphicsView(ResourceBundle language, double width, double height, EventHandler<MouseEvent> action) {
 		super(language, width, height);
 		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
 		this.setContent(myVbox);
+		myOnClick = action;
 	}
 
 	@Override
@@ -45,10 +46,6 @@ public class GraphicsView extends ScrollView implements Observer {
 		myName = s;
 		myVbox.getChildren().add(graphic);
 		
-	}
-	
-	public void setAction(EventHandler<MouseEvent> action){
-		myOnClick = action;
 	}
 	
 	public String getMyName(){

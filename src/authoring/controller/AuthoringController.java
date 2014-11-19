@@ -71,8 +71,7 @@ public class AuthoringController {
 	private void initializeViewComponents() {
 		myLevels = new LevelsView(myLanguage, myWidth, myHeight);
 		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
-		myGraphics = new GraphicsView(myLanguage, myWidth, myHeight);
-		myGraphics.addEventFilter(MouseEvent.MOUSE_CLICKED, new GraphicsEventHandler());
+		myGraphics = new GraphicsView(myLanguage, myWidth, myHeight, new GraphicsEventHandler());
 		myProperties = new PropertiesView(myLanguage, myWidth, myHeight);
 		mySprites = new SpritesView(myLanguage, myWidth, myHeight);
 
@@ -100,10 +99,11 @@ public class AuthoringController {
 	private AccordianView initializeLeft() {
 		AccordianView leftView = new AccordianView(myWidth, myHeight);
 		String im = "mario.png";
+		String im2 = "Luigi.jpg";
 		
 		myModel.getImages().addObserver(myGraphics);
 		myModel.getImages().addImage(im);
-		
+		myModel.getImages().addImage(im2);
 
 		TitledPane graphics = new TitledPane(myLanguage.getString("Graphics"),
 				myGraphics);

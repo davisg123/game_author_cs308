@@ -25,7 +25,7 @@ public class Graphic extends VBox{
 		this.getChildren().add(im);
 		this.getChildren().add(new Text(myName));
 		
-		this.setOnMouseClicked(myOnClick);
+		this.addEventFilter(MouseEvent.MOUSE_CLICKED, myOnClick);
 
 	}
 	
