@@ -2,21 +2,22 @@ package authoring.controller;
 
 import java.util.ResourceBundle;
 
-import engine.actions.Action;
-import engine.conditions.Condition;
-import javafx.geometry.Insets;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.TitledPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.text.Text;
 import authoring.model.AuthoringModel;
 import authoring.view.AuthoringView;
 import authoring.view.baseclasses.AccordianView;
+import authoring.view.graphicsview.Graphic;
 import authoring.view.graphicsview.GraphicsView;
 import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
 import authoring.view.soundsview.SoundsView;
 import authoring.view.spritesview.SpritesView;
+import engine.actions.Action;
+import engine.conditions.Condition;
 
 /**
  * Controller class that interacts between model and view. Holds and constructs
@@ -71,16 +72,22 @@ public class AuthoringController {
 		myLevels = new LevelsView(myLanguage, myWidth, myHeight);
 		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
 		myGraphics = new GraphicsView(myLanguage, myWidth, myHeight);
-		myGraphics.setAction(event -> graphicsOnClick(myGraphics));
+		myGraphics.addEventFilter(MouseEvent.MOUSE_CLICKED, new GraphicsEventHandler());
 		myProperties = new PropertiesView(myLanguage, myWidth, myHeight);
 		mySprites = new SpritesView(myLanguage, myWidth, myHeight);
 
 	}
+
 	
-	//TEMPORARY HARDCODE - learning to drag javafx objects
-	//should be in controller to interact with other objects on GUI
-	private void graphicsOnClick(GraphicsView g){
-		myProperties.fillContents(g);
+	
+	private class GraphicsEventHandler implements EventHandler<MouseEvent>{
+
+		@Override
+		public void handle(MouseEvent event) {
+			Graphic g = (Graphic) event.getSource();
+			System.out.println(g.getName());
+		}
+		
 	}
 	
 

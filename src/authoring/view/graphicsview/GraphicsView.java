@@ -41,8 +41,9 @@ public class GraphicsView extends ScrollView implements Observer {
 	
 	public void addImage(String s, EventHandler<MouseEvent> handler){
 		Graphic graphic = new Graphic(s, handler);
+		graphic.makeGraphic();
 		myName = s;
-		myVbox.getChildren().add(graphic.makeGraphic());
+		myVbox.getChildren().add(graphic);
 		
 	}
 	
