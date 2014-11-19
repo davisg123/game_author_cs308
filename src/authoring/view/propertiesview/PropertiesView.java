@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import authoring.view.baseclasses.ScrollView;
+import authoring.view.graphicsview.Graphic;
 
 public class PropertiesView extends ScrollView{
 
@@ -22,9 +23,9 @@ public class PropertiesView extends ScrollView{
 		this.setContent(myContents);
 	}
 	
-	public void fillContents(ScrollView v){
+	public void fillContents(Graphic g){
 		myContents.getChildren().clear();
-		myContents.getChildren().add(new SpriteProperties(v));
+		myContents.getChildren().add(new SpriteProperties(g));
 	}
 	
 }

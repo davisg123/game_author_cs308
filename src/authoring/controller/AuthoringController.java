@@ -85,6 +85,7 @@ public class AuthoringController {
 		public void handle(MouseEvent event) {
 			Graphic g = (Graphic) event.getSource();
 			System.out.println(g.getName());
+			myProperties.fillContents(g);
 		}
 		
 	}
