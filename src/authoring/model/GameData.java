@@ -1,6 +1,14 @@
 package authoring.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
+import authoring.view.graphicsview.Graphic;
+import engine.actions.Action;
+import engine.conditions.Condition;
+import engine.level.*;
+import engine.sprite.Sprite;
 
 /**
  * Passive data object that holds onto all of the
@@ -18,11 +26,59 @@ public class GameData implements Serializable{
 	 */
 	private static final long serialVersionUID = 6633782568176674709L;
 	
+	private List<Level> myLevels;
+	//private List<Sprite> mySprites;
+	private List<Condition> myConditions;
 	
-	private LevelsCollection myLevels;
+	
+	public void addLevel(Level l){
+		myLevels.add(l);
+	}
+	
+	public void removeLevel(Level l){
+		myLevels.remove(l);
+	}
+	
+	public void addSprite(Sprite s){
+		mySprites.addSprite(s);
+	}
+	
+//	public void removeSprite(Sprite s){
+//		mySprites.remove(s);
+//	}
+	
+	public void addCondition(Condition c){
+		myConditions.add(c);
+	}
+	
+	public void removeCondition(Condition c){
+		myConditions.remove(c);
+	}
+	
+//	private LevelsCollection myLevels;
+//	private SoundsCollection mySounds;
+//	private GraphicsCollection myImages;
+	private SpritesCollection mySprites;
+		
 	private SoundsCollection mySounds;
 	private GraphicsCollection myImages;
-	private SpritesCollection mySprites;
+	
+	public GameData(){
+		myLevels = new ArrayList<Level>();
+		mySprites = new SpritesCollection();
+		myConditions = new ArrayList<Condition>();
+		myImages = new GraphicsCollection();
+	}
+	
+	
+	
+	public GraphicsCollection getImages(){
+		return myImages;
+	}
+	public SpritesCollection getSprites(){
+		return mySprites;
+	}
+	
 //	private EventCollection myEvents; //events prompt actions and hold onto their corresponding action
 //	private VariableCollection myVariables;
 	

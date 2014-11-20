@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import engine.level.Level;
 import engine.sprite.*;
+import engine.sprite.components.PhysicsBody;
 import gamePlayer.view.GameCanvas;
 
 /**
@@ -95,9 +96,9 @@ public class SpriteRenderer {
     }
 
     private Node createHitBox(Sprite sprite) {
-        sprite.getPhysicsBody();
         //Temporary
-        Rectangle asdf = new Rectangle(100,100);
+        PhysicsBody body = sprite.getPhysicsBody();
+        Rectangle asdf = new Rectangle(body.getCollisionBodyHeight(),body.getCollisionBodyWidth());
         asdf.setVisible(false);
         return asdf;
     }

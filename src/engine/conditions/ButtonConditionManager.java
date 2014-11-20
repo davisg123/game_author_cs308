@@ -26,6 +26,7 @@ public class ButtonConditionManager extends Condition {
     public ButtonConditionManager () {
         super();
         myKeyMap = new HashMap<KeyCode, List<Action>>();
+        myActiveKeyBuffer = new HashMap<KeyCode, Integer>();
     }
     
     @Override
@@ -90,7 +91,7 @@ public class ButtonConditionManager extends Condition {
     
     @Override
     public void frameElapsed () {
-        
+        executeActions();
     }
 
 }
