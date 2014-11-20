@@ -47,7 +47,9 @@ public class LevelsView extends BPView implements Observer {
 		g.makeGraphic(MouseEvent.MOUSE_DRAGGED);
 		g.setLayoutX(x -230);
 		g.setLayoutY(y - 100);
-		this.getChildren().add(g);
+		SingleLevelView v = (SingleLevelView) myLevels.getSelectionModel().getSelectedItem().getContent();
+		v.getChildren().add(g);
+		//this.getChildren().add(g);
 		
 		
 	}
