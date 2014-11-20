@@ -32,9 +32,13 @@ public abstract class SpriteComponent implements Iterable<IProperty> {
         return myProperties.iterator();
     }
 
-    public abstract void addProperty(IProperty property); 
+    public void addProperty(IProperty property){
+        myProperties.add(property);
+    }
     
-    public abstract void removeProperty(IProperty property);
+    public void removeProperty(IProperty property){
+        myProperties.remove(property);
+    }
 
     public abstract void update();
 

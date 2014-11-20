@@ -5,7 +5,10 @@ import java.util.Observer;
 import java.util.ResourceBundle;
 
 import javafx.scene.control.TabPane;
+import javafx.scene.input.MouseEvent;
+import authoring.controller.AuthoringController.GraphicsDragHandler;
 import authoring.view.baseclasses.BPView;
+import authoring.view.graphicsview.Graphic;
 
 /**
  * View class that contains all the levels in the program. Corresponds with
@@ -37,4 +40,22 @@ public class LevelsView extends BPView implements Observer {
 		// TODO Auto-generated method stub
 
 	}
+	
+	public void addSpriteToView(Graphic graphic, double x, double y, GraphicsDragHandler handler){
+		//g.makeGraphic();
+		Graphic g = new Graphic(graphic.getName(), handler);
+		g.makeGraphic(MouseEvent.MOUSE_DRAGGED);
+		g.setLayoutX(x -230);
+		g.setLayoutY(y - 100);
+		this.getChildren().add(g);
+		
+		
+	}
+	public void moveSpriteOnLevel(Graphic g, double x, double y){
+		//g.makeGraphic();
+		g.setLayoutX(x-230);
+		g.setLayoutY(y-100);
+		
+	}
+	
 }
