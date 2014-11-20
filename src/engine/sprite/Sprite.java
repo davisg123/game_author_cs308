@@ -43,7 +43,7 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
     //private Dimension2D myDimension; 
     private double myHeight;
     private double myWidth;
-    private Point2D myDefaultPosition;
+    private transient Point2D myDefaultPosition;
 
     private transient RenderedNode myRenderedNode;
 
