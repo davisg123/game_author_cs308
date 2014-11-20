@@ -225,8 +225,4 @@ public class PhysicsBody {
 			double measureOne, double measureTwo) {
 		return (centerTwo + measureTwo) - (centerOne - measureOne);
 	}
-	
-	public void addForce(Force f)
-	{}
-
 }
