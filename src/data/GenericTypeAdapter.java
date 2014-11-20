@@ -11,14 +11,33 @@ import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 
-public class TypeAdapter<T> implements JsonSerializer<T>, JsonDeserializer<T>{
+/**
+ * Allows for JSON serialization and deserialization of object's specific 
+ * subclass even if declared as its superclass.
+ * 
+ * Code based off http://stackoverflow.com/questions/16872492/
+ * 					gson-and-abstract-superclasses-deserialization-issue
+ * 
+ * @author Eli Lichtenberg
+ *
+ * @param <T> Class for which the TypeAdapter is being created.
+ */
+public class GenericTypeAdapter<T> implements JsonSerializer<T>, JsonDeserializer<T>{
 	
 	private String myPackageName;
 	
-	public TypeAdapter(String packageName) {
+	/**
+	 * Constructor for GenericTypeAdapter.
+	 * @param packageName Name of package holding the superclass and subclass.
+	 * 					  May need to be in same package for code to work.
+	 */
+	public GenericTypeAdapter(String packageName) {
 		myPackageName = packageName;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public JsonElement serialize(T src, Type typeOfSrc,
 			JsonSerializationContext context) {
@@ -28,6 +47,9 @@ public class TypeAdapter<T> implements JsonSerializer<T>, JsonDeserializer<T>{
 		return result;
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public T deserialize(JsonElement json, Type typeOfT,
 			JsonDeserializationContext context) throws JsonParseException {
@@ -36,8 +58,7 @@ public class TypeAdapter<T> implements JsonSerializer<T>, JsonDeserializer<T>{
 		JsonElement element = jsonObject.get("properties");
 		
 		try {
-			//String thepackage = "engine.conditions.";
-			return context.deserialize(element, Class.forName(myPackageName + type));
+			return context.deserialize(element, Class.forName(myPackageName + "." + type));
 		} catch (ClassNotFoundException cnfe) {
 			throw new JsonParseException("Unknown element type: " + type, cnfe);
 		}

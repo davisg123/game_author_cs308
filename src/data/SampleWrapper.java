@@ -45,7 +45,7 @@ public class SampleWrapper {
 	private void addConditions() {
 		// TODO Auto-generated method stub
 		List<Action> actionList = createActionList();
-		Condition c1 = new TimeCondition(actionList, spriteList);
+		Condition c1 = new TimeCondition(actionList, spriteList, 5, false);
 		conditionList.add(c1);
 	}
 	

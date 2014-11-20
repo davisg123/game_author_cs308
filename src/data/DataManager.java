@@ -24,12 +24,12 @@ public class DataManager {
 	public DataManager() {
 		gson = new GsonBuilder();
 		//gson.registerTypeAdapter(Condition.class, new ConditionTypeAdapter());
-		Class[] classes = {Condition.class, Action.class};
-		String[] packages = {"engine.conditions.", "engine.actions."};
+		//Class[] classes = {Condition.class, Action.class};
+		//String[] packages = {"engine.conditions", "engine.actions"};
 		//for(int i = 0; i < classes.length; i++) {
-			//gson.registerTypeAdapter(classes[i], new TypeAdapter<classes[i]>(packages[i]));
-			gson.registerTypeAdapter(Condition.class, new TypeAdapter<Condition>("engine.conditions."));
-			gson.registerTypeAdapter(Action.class, new TypeAdapter<Action>("engine.actions."));
+			//gson.registerTypeAdapter(classes[i], new GenericTypeAdapter<classes[i]>(packages[i]));
+			gson.registerTypeAdapter(Condition.class, new GenericTypeAdapter<Condition>("engine.conditions"));
+			gson.registerTypeAdapter(Action.class, new GenericTypeAdapter<Action>("engine.actions"));
 		//}
 	}
 	
