@@ -3,6 +3,7 @@ package engine.collisionDetection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import engine.sprite.Sprite;
 import javafx.scene.Node;
 
 /**
@@ -18,20 +19,22 @@ public class CollisionDetector {
     private Map<String,Integer> myCollisionMap = new HashMap<String,Integer>();
     //Should they just be enabled nodes? or should they be all the nodes?
     //Discuss definition of enabled
-    public void checkCollisions (Iterator<Node> enabledNodes) {
+    public void checkCollisions (Iterator<Sprite> enabledSprites) {
         myCollisionMap.clear();
-        for(Iterator<Node> outerIter = enabledNodes; outerIter.hasNext();) {
-            Node outerNode = outerIter.next();
-            for(Iterator<Node> innerIter = enabledNodes; innerIter.hasNext();) {
-                Node innerNode = innerIter.next();
+        for(Iterator<Sprite> outerIter = enabledSprites; outerIter.hasNext();) {
+            Sprite outerSprite = outerIter.next();
+            for(Iterator<Sprite> innerIter = enabledSprites; innerIter.hasNext();) {
+                Sprite innerSprite = innerIter.next();
                 //Update the equals method, implement comparable
-                if(!outerNode.getId().equals(innerNode.getId())) {
+                if(!outerSprite.getID().equals(innerSprite.getID())) {
                     //Do intersect sequence
                     //make sure the opposite collision hasn't already happened (a with b == b with a)
-                    String uniqueCollisionIdentifier = innerNode.getId()+outerNode.getId();
-                    if(outerNode.intersects(innerNode.getBoundsInLocal()) && !myCollisionMap.containsKey(uniqueCollisionIdentifier)){
-                        myCollisionMap.put(innerNode.getId()+outerNode.getId(), 1);
+                    String uniqueCollisionIdentifier = innerSprite.getID()+outerSprite.getID();
+                    if(outerSprite.getRenderedNode().intersects(innerSprite.getRenderedNode().getCollisionBody().getBoundsInLocal()) 
+                            && !myCollisionMap.containsKey(uniqueCollisionIdentifier)){
+                        myCollisionMap.put(innerSprite.getID()+outerSprite.getID(), 1);
                         //call physics manager with collided nodes
+                        
                     }
                 }
             }
