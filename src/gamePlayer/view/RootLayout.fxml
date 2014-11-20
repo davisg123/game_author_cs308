@@ -24,6 +24,14 @@
 
 <BorderPane prefWidth="1000.0" prefHeight="1000.0" xmlns:fx="http://javafx.com/fxml" fx:controller="gamePlayer.view.MenuBarController">
     <top>
+    	<TabPane>
+    		<tabs>
+    			<Tab text="Menu"/>
+    			<Tab text="Options"/>
+    			<Tab text="Preferences"/>
+    		</tabs>
+    	</TabPane>
+    	<!--
     	<Label text="Game Player GUI"/>
     	<GameSelector/>
     	<MenuBar> 
@@ -52,6 +60,7 @@
     			</Menu>
     		</menus>
     	</MenuBar>
+    	-->
     </top>
     <center>
     	<VBox fx:id="canvasVBox">

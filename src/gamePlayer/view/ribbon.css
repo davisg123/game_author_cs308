@@ -15,3 +15,8 @@
         linear-gradient(#ffffff 0%, #ced3da 4%, #c1c6cf 17%, #b4bbc5 18%, #e5ebeb 100%);
 	-fx-spacing: 5;
 }
+
+#button {
+	-fx-background-image: url("new_button.png");
+	-fx-background-size: 18 18;
+}

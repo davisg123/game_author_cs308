@@ -32,7 +32,9 @@ public class PlayerView {
 		myScene = new Scene(myRoot);
 		myStage.setTitle("MY PLAYER VIEW");
 		myStage.setScene(myScene);
+		System.out.println("HI2");
 		myStage.show();
+		System.out.println("HI3");
 		initializeGUIComponents();
 	}
 
