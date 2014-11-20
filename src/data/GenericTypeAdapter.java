@@ -18,6 +18,10 @@ import com.google.gson.JsonSerializer;
  * Code based off http://stackoverflow.com/questions/16872492/
  * 					gson-and-abstract-superclasses-deserialization-issue
  * 
+ * To use, construct a new GsonBuilder, and call gsonBuilder.registerTypeAdapter, 
+ * with first parameter being the Class object of the superclass, and second 
+ * parameter being this GenericTypeAdapter.
+ * 
  * @author Eli Lichtenberg
  *
  * @param <T> Class for which the TypeAdapter is being created.
