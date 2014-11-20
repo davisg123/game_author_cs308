@@ -13,8 +13,8 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import engine.conditions.*;
-import engine.render.SpriteRenderer;
-import engine.sprite.*;
+import engine.render.GameObjectRenderer;
+import engine.gameObject.*;
 
 /**
  * 
@@ -24,18 +24,18 @@ import engine.sprite.*;
 
 public class GameManager {
     private List<Condition> myGameConditions;
-    private List<Sprite> myGameSprites;
-    private SpriteRenderer mySpriteRenderer;
+    private List<GameObject> myGameObjects;
+    private GameObjectRenderer myGameObjectRenderer;
     private Group myRootGroup;
     private Timeline myAnimation;
     private Stage myStage;
     private static final double DEFAULT_SPEED = 60.0;
     
     
-    public GameManager (List<Condition> myGameConditions, List<Sprite> myGameSprites, Group myRootGroup) {
+    public GameManager (List<Condition> myGameConditions, List<GameObject> myGameGameObjects, Group myRootGroup) {
         super();
         this.myGameConditions = myGameConditions;
-        this.myGameSprites = myGameSprites;
+        this.myGameObjects = myGameGameObjects;
         this.myRootGroup = myRootGroup;
     }
     
@@ -50,7 +50,7 @@ public class GameManager {
     }
     
     private void addFramesToGroup(){
-        for (Sprite s : myGameSprites){
+        for (GameObject s : myGameObjects){
             //myRootGroup.getChildren().add(s.getNode());
         }
     }

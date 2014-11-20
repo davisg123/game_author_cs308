@@ -3,7 +3,7 @@ package engine.conditions;
 import java.util.List;
 import javafx.scene.Node;
 import engine.actions.Action;
-import engine.sprite.Sprite;
+import engine.gameObject.GameObject;
 
 /**
  * 
@@ -15,8 +15,8 @@ import engine.sprite.Sprite;
 
 public class CollisionCondition extends MovementCondition {
 
-    public CollisionCondition (List<Action> myActions, List<Sprite> mySprites) {
-        super(myActions, mySprites);
+    public CollisionCondition (List<Action> myActions, List<GameObject> myGameObjects) {
+        super(myActions, myGameObjects);
     }
 
     @Override

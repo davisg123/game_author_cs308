@@ -1,4 +1,4 @@
-package engine.sprite;
+package engine.gameObject;
 
 public interface IEnabled {
     public void enable ();

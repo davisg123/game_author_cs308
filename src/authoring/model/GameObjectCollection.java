@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
 
-import engine.GameObject;
+import engine.gameObject.GameObject;
 
 public abstract class GameObjectCollection extends Observable implements Iterable<GameObject>{
 	

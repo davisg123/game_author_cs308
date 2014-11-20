@@ -19,7 +19,6 @@ import authoring.view.soundsview.SoundsView;
 import authoring.view.spritesview.SpritesView;
 import engine.actions.Action;
 import engine.conditions.Condition;
-import engine.sprite.Sprite;
 
 /**
  * Controller class that interacts between model and view. Holds and constructs

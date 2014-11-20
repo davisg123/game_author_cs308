@@ -1,6 +1,6 @@
 package engine.render;
 
-import engine.sprite.components.PhysicsBody;
+import engine.gameObject.components.PhysicsBody;
 import javafx.geometry.Point2D;
 import javafx.scene.Node;
 import javafx.scene.shape.Circle;

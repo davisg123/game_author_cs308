@@ -1,6 +1,6 @@
-package engine.sprite.components;
+package engine.gameObject.components;
 
-import engine.sprite.components.properties.IProperty;
+import engine.gameObject.components.properties.IProperty;
 
 /**
  * This Class holds State Information for Sprite;
@@ -8,7 +8,7 @@ import engine.sprite.components.properties.IProperty;
  * @author Will Chang
  * 
  */
-public class Attributes extends SpriteComponent{
+public class Attributes extends ComponentComponent{
 
     
     //TODO figure out implementation

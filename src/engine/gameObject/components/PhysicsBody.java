@@ -1,9 +1,9 @@
-package engine.sprite.components;
+package engine.gameObject.components;
 
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
-
+import engine.gameObject.GameObject;
 import engine.physics.Acceleration;
 import engine.physics.BEngine;
 import engine.physics.Force;
@@ -12,7 +12,6 @@ import engine.physics.Mass;
 import engine.physics.NormalUpdate;
 import engine.physics.Vector;
 import engine.physics.Velocity;
-import engine.sprite.Sprite;
 
 /**
  * 
@@ -97,7 +96,7 @@ public class PhysicsBody {
 		return myMass;
 	}
 
-	public void getPositionChange(Sprite sprite) {
+	public void getPositionChange(GameObject sprite) {
 		doImpulses();
 		if (haveForcesChanged) {
 			balanceForces();
@@ -149,7 +148,7 @@ public class PhysicsBody {
 		return myCollisionBodyWidth;
 	}
 
-	public void handleCollision(Sprite thisSprite, Sprite sprite) {
+	public void handleCollision(GameObject thisSprite, GameObject sprite) {
 		double xCenterOne = thisSprite.getPosition().getX();
 		double yCenterOne = thisSprite.getPosition().getY();
 		double xCenterTwo = sprite.getPosition().getX();
@@ -168,9 +167,9 @@ public class PhysicsBody {
 				yCenterTwo, lengthOne, lengthTwo) : collisionHelper(yCenterTwo,
 				yCenterOne, lengthTwo, lengthOne));
 
-		Sprite cur = ((thisSprite.getPhysicsBody().getVelocity().getMagnitude() == 0.0) ? sprite
+		GameObject cur = ((thisSprite.getPhysicsBody().getVelocity().getMagnitude() == 0.0) ? sprite
 				: thisSprite);
-		Sprite other = (!(thisSprite.getPhysicsBody().getVelocity()
+		GameObject other = (!(thisSprite.getPhysicsBody().getVelocity()
 				.getMagnitude() == 0.0) ? sprite : thisSprite);
 		double curX = cur.getPhysicsBody().getVelocity().getX();
 		double curY = cur.getPhysicsBody().getVelocity().getY();
