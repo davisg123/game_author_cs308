@@ -37,6 +37,8 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
     private Point2D myDefaultPosition;
 
     private transient RenderedNode myRenderedNode;
+    
+    private boolean myCollision;
 
 
     //Should it be included in constructor?
@@ -237,5 +239,10 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
 
     public boolean isEnabled() {
         return enabled;
+    }
+    
+    public boolean getCollisionConstant()
+    {
+    	return myCollision;
     }
 }

@@ -3,16 +3,18 @@ package engine.actions;
 import java.util.List;
 import engine.sprite.Sprite;
 
-public class PhysicsAction implements Action {
+public abstract class PhysicsAction implements Action {
     
-    
-    public PhysicsAction (List<Sprite> sprites, List<Double> values) {
-
+    protected Sprite mySprite;
+    protected double myValue;
+    public PhysicsAction (Sprite sprite, double value) {
+    	mySprite=sprite;
+    	myValue=value;
     }
     @Override
     public void execute () {
-        // TODO Auto-generated method stub
-
+    	applyPhysics();
     }
 
+    public abstract void applyPhysics();
 }
