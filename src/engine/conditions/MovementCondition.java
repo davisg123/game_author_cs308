@@ -2,12 +2,12 @@ package engine.conditions;
 
 import java.util.List;
 import engine.actions.Action;
-import engine.sprite.Sprite;
+import engine.gameObject.GameObject;
 
-public abstract class MovementCondition extends SpriteCondition {
+public abstract class MovementCondition extends GameObjectCondition {
 
-    public MovementCondition (List<Action> myActions, List<Sprite> mySprites) {
-        super(myActions, mySprites);
+    public MovementCondition (List<Action> myActions, List<GameObject> myGameObjects) {
+        super(myActions, myGameObjects);
         assignListeners();
     }
 
@@ -19,7 +19,7 @@ public abstract class MovementCondition extends SpriteCondition {
     }
     
     private void assignListeners(){
-        for(Sprite s : getSprites()){
+        for(GameObject s : getGameObjects()){
             s.getXPositionProperty().addListener(changeEvent -> xLayoutChange());
             s.getYPositionProperty().addListener(changeEvent -> yLayoutChange());
         }

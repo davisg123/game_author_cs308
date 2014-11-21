@@ -1,6 +1,14 @@
 package authoring.model;
 
 import java.io.Serializable;
+import authoring.model.collections.ConditionsCollection;
+import authoring.model.collections.GameObjectsCollection;
+import authoring.model.collections.GraphicsCollection;
+import authoring.model.collections.LevelsCollection;
+import authoring.model.collections.SoundsCollection;
+import engine.conditions.Condition;
+import engine.level.*;
+import engine.gameObject.GameObject;
 
 /**
  * Passive data object that holds onto all of the
@@ -18,13 +26,84 @@ public class GameData implements Serializable{
 	 */
 	private static final long serialVersionUID = 6633782568176674709L;
 	
-	
 	private LevelsCollection myLevels;
-	private SoundsCollection mySounds;
+	private ConditionsCollection myConditions;
+	private GameObjectsCollection myGameObjects;
 	private GraphicsCollection myImages;
-	private SpritesCollection mySprites;
-//	private EventCollection myEvents; //events prompt actions and hold onto their corresponding action
-//	private VariableCollection myVariables;
+	private SoundsCollection mySounds;
+	
+	public GameData(){
+		myLevels = new LevelsCollection();
+		myGameObjects = new GameObjectsCollection();
+		myConditions = new ConditionsCollection();
+		myImages = new GraphicsCollection();
+		mySounds = new SoundsCollection();
+	}
+	
+	/**
+	 * Level Methods
+	 */
+	
+	public LevelsCollection getLevels(){
+		return myLevels;
+	}
+	
+	public void addLevel(Level l){
+		myLevels.add(l);
+	}
+	
+	public void removeLevel(Level l){
+		myLevels.remove(l);
+	}
+	
+	/**
+	 * GameObject Methods
+	 */
+	
+	public GameObjectsCollection getGameObjects(){
+		return myGameObjects;
+	}
+	
+	public void addGameObject(GameObject s){
+		myGameObjects.add(s);
+	}
+	
+	public void removeGameObject(GameObject s){
+		myGameObjects.remove(s);
+	}
+	
+	/**
+	 * Condition Methods
+	 */
+	
+	public ConditionsCollection getConditions(){
+		return myConditions;
+	}
+	
+	public void addCondition(Condition c){
+		myConditions.add(c);
+	}
+	
+	public void removeCondition(Condition c){
+		myConditions.remove(c);
+	}
+	
+	/**
+	 * Graphic Methods
+	 */
+	
+	public GraphicsCollection getImages(){
+		return myImages;
+	}
+	
+	/**
+	 * Sound Methods
+	 */
+	
+	public SoundsCollection getSounds(){
+		return mySounds;
+	}
+	
 	
 	
 }
