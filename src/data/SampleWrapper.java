@@ -8,7 +8,7 @@ import engine.actions.RenderAction;
 import engine.conditions.Condition;
 import engine.conditions.TimeCondition;
 import engine.gameObject.GameObject;
-import engine.gameObject.components.ComponentComponent;
+import engine.gameObject.components.Component;
 
 public class SampleWrapper {
 	
@@ -35,7 +35,7 @@ public class SampleWrapper {
 	private void addSprites() {
 		// TODO Auto-generated method stub
 		GameObject s1 = new GameObject("duvall");
-		GameObject s2 = new GameObject(new ArrayList<ComponentComponent>(), "name of image", new Point2D.Double(1, 4), 
+		GameObject s2 = new GameObject(new ArrayList<Component>(), "name of image", new Point2D.Double(1, 4), 
 				50.0, 20.0, 45.0, "hank");
 		spriteList.add(s1);
 		spriteList.add(s2);

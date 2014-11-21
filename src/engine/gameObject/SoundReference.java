@@ -1,10 +1,10 @@
 package engine.gameObject;
 
 import java.util.List;
-import engine.gameObject.components.ComponentComponent;
+import engine.gameObject.components.Component;
 import engine.gameObject.components.properties.IProperty;
 
-public class SoundReference extends ComponentComponent {
+public class SoundReference extends Component {
 
     private List<String> mySoundPaths;
     
