@@ -25,7 +25,7 @@ public class PropertiesView extends ScrollView{
 	
 	public void fillContents(Graphic g){
 		myContents.getChildren().clear();
-		myContents.getChildren().add(new SpriteProperties(g));
+		myContents.getChildren().add(new GameObejctsProperties(g));
 	}
 	
 }

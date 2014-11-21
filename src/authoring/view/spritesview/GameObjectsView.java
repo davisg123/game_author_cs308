@@ -20,14 +20,14 @@ import authoring.view.graphicsview.Graphic;
  * @author Kevin Li
  *
  */
-public class SpritesView extends ScrollView implements Observer {
+public class GameObjectsView extends ScrollView implements Observer {
 
 	private static final double VIEW_HEIGHT_RATIO = .95;
 	private static final double VIEW_WIDTH_RATIO = 0.2;
 	private EventHandler<MouseEvent> myOnClick;
 	private VBox myVbox = new VBox();	
 
-	public SpritesView(ResourceBundle language, double width, double height, EventHandler<MouseEvent> action) {
+	public GameObjectsView(ResourceBundle language, double width, double height, EventHandler<MouseEvent> action) {
 		super(language, width, height);
 		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
 		myOnClick = action;

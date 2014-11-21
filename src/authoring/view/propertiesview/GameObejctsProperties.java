@@ -8,9 +8,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
-public class SpriteProperties extends Properties{
+public class GameObejctsProperties extends Properties{
 
-	public SpriteProperties(Graphic g) {
+	public GameObejctsProperties(Graphic g) {
 		super(g);
 	}
 
