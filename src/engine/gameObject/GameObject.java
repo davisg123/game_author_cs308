@@ -1,7 +1,7 @@
-package engine.sprite;
+package engine.gameObject;
 
+import engine.gameObject.components.*;
 import engine.render.RenderedNode;
-import engine.sprite.components.*;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -15,23 +15,14 @@ import javafx.scene.image.Image;
  * @author Will Chang
  *
  */
-public class Sprite implements IEnabled, Iterable<SpriteComponent>{
-    private List<SpriteComponent> myComponents; 
-    //Temporary solution for extension to use Images and Sounds
-    //Create actions which update the image paths...
+public class GameObject implements IEnabled, Iterable<ComponentComponent>{
+    private List<ComponentComponent> myComponents; 
     //Maybe connect it with a properties file
     //Create an Image and Path manager that works with the Renderer
-    //Place inside sprite or inside the renderer package?...
     //Will cause an error if path does not exist... 
-    //Maybe create an image and a sound component?
-    //Should we have specific component fields??
-    //Rendering, Camera, Physics, Attributes/current state
-    //Make it a state machine as well???s
     //private ImageReference myImages;
     //private SoundReference mySounds;
 
-    //We have to have a default... default sprite values... somehow
-    //Include this in constructor
     //private DoubleProperty myXPosition;
     //private DoubleProperty myYPosition;
     private double myRotation;
@@ -43,9 +34,11 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
     //private Dimension2D myDimension; 
     private double myHeight;
     private double myWidth;
-    private Point2D myDefaultPosition;
+    private transient Point2D myDefaultPosition;
 
     private transient RenderedNode myRenderedNode;
+    
+    private boolean myCollision;
 
 
     //Should it be included in constructor?
@@ -54,21 +47,21 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
     /**
      * Constructors
      */
-    public Sprite () {
+    public GameObject () {
         this("");
     }
 
-    public Sprite (String iD) {
-        this(new ArrayList<SpriteComponent>(), "", new Point2D.Double(), 0, 0, 0, iD);
+    public GameObject (String iD) {
+        this(new ArrayList<ComponentComponent>(), "", new Point2D.Double(), 0, 0, 0, iD);
     }
 
-    public Sprite (List<SpriteComponent> components, String imagePath, Point2D position, 
+    public GameObject (List<ComponentComponent> components, String imagePath, Point2D position, 
                    double height, double width, double rotation, String iD) {
         this(components, imagePath, new SoundReference(), position,
              height, width, rotation, iD);
     }
 
-    public Sprite (List<SpriteComponent> components, String imageName, SoundReference sounds, 
+    public GameObject (List<ComponentComponent> components, String imageName, SoundReference sounds, 
                    Point2D position, double height, double width, double rotation, String iD) {
         myComponents  = components;
         //myImages   = images;
@@ -154,7 +147,6 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
                                   myRenderedNode.getTranslateY());
     }
 
-
     public void setDefaultPosition (Point2D position) {
         myDefaultPosition = position;
     }
@@ -167,15 +159,6 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
         return myDefaultPosition;
     }
 
-    /*public ImageReference getImageReferences () {
-        return myImages;
-    }
-
-    public SoundReference getSoundReferences () {
-        return mySounds;
-    }*/
-
-
     public String getID () {
         return myID;
     }
@@ -184,12 +167,14 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
      * Updates all components of Sprite
      * TODO Check if necessary... 
      */
-    /*
+    
     public void update () {
-        for(SpriteComponent component : myComponents) {
+        for(ComponentComponent component : myComponents) {
+            //component.update(this); Should include current Level???... 
+            //update methods should be specific to each component...
             component.update();
         }
-    }*/
+    }
 
     public void setRenderedNode(RenderedNode node) {
         myRenderedNode = node;
@@ -204,7 +189,7 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
      * @param iD
      * @return
      */
-    public SpriteComponent getComponent (String iD) {
+    public ComponentComponent getComponent (String iD) {
         return null;
     }
 
@@ -218,12 +203,14 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
     }
 
     @Override
-    public Iterator<SpriteComponent> iterator () {
+    public Iterator<ComponentComponent> iterator () {
         return myComponents.iterator();
     }
 
     public void saveCurrentState() {
-
+        myRotation = myRenderedNode.getRotate();
+        myDefaultPosition = new Point2D.Double(myRenderedNode.getTranslateX(), 
+                                               myRenderedNode.getTranslateY());
     }
 
     public void setPhysicsBody (PhysicsBody physicsBody) {
@@ -252,5 +239,10 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
 
     public boolean isEnabled() {
         return enabled;
+    }
+    
+    public boolean getCollisionConstant()
+    {
+    	return myCollision;
     }
 }

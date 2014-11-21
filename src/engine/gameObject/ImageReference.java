@@ -1,9 +1,9 @@
-package engine.sprite;
+package engine.gameObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import engine.sprite.components.SpriteComponent;
-import engine.sprite.components.properties.IProperty;
+import engine.gameObject.components.ComponentComponent;
+import engine.gameObject.components.properties.IProperty;
 
 /**
  * 
@@ -11,7 +11,7 @@ import engine.sprite.components.properties.IProperty;
  *
  */
 
-public class ImageReference extends SpriteComponent {
+public class ImageReference extends ComponentComponent {
     private List<String> myImagePaths;
     private String myCurrentImage;
 

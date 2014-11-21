@@ -8,13 +8,13 @@ import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
+import engine.gameObject.*;
+import engine.gameObject.components.PhysicsBody;
 import engine.level.Level;
-import engine.sprite.*;
-import engine.sprite.components.PhysicsBody;
 import gamePlayer.view.GameCanvas;
 
 /**
- * Renders Sprites on a given Canvas by generating 
+ * Renders GameObjects on a given Canvas by generating 
  * JavaFX nodes and Images from state information 
  * 
  * @author Will Chang
@@ -22,7 +22,7 @@ import gamePlayer.view.GameCanvas;
  *
  */
 
-public class SpriteRenderer {
+public class GameObjectRenderer {
     //private GameCanvas myCanvas;
     private Group myCanvas;
     private Map<String, RenderedNode> myRenderedNodes;
@@ -34,7 +34,7 @@ public class SpriteRenderer {
     private static final String ASSET_MAP_NAME = "asset_map";
 
     //Group Change to GameCanvas
-    public SpriteRenderer (Group canvas) {
+    public GameObjectRenderer (Group canvas) {
         myCanvas = canvas;
         myRenderedNodes = new HashMap<>();
         ourAssetMapBundle = ResourceBundle.getBundle(BASE_ASSET_PATH+DOT+ASSET_MAP_NAME);
@@ -45,14 +45,14 @@ public class SpriteRenderer {
     //public void update?
 
     //Called once at the start of every level
-    public void renderSprites (Level level) {
+    public void renderGameObjects (Level level) {
         //myCanvas.clear();
         myCanvas.getChildren().clear();
         myCurrentLevel = level;
-        for(Iterator<Sprite> spriteIter = myCurrentLevel.getSprites(); spriteIter.hasNext();) {
-            Sprite sprite = spriteIter.next();
+        for(Iterator<GameObject> iter = myCurrentLevel.getGameObjects(); iter.hasNext();) {
+            GameObject obj = iter.next();
             //String spriteID = sprite.getID();
-            createAndAssignRenderedNode(sprite);
+            createAndAssignRenderedNode(obj);
         }
     }
 
@@ -60,23 +60,23 @@ public class SpriteRenderer {
     //Otherwise, set to the bottom lefthand corner
     //Need to use the Canvas dimensions
     //Change GameCanvas into a scene?
-    public void createAndAssignRenderedNode (Sprite sprite) {
+    public void createAndAssignRenderedNode (GameObject obj) {
         RenderedNode node = new RenderedNode();
-        node.setImageView(createImageAndView(sprite));
-        node.setCollisionBody(createHitBox(sprite));
+        node.setImageView(createImageAndView(obj));
+        node.setCollisionBody(createHitBox(obj));
         node.setLayoutX(0);
         node.setLayoutY(0);
-        node.setTranslateX(sprite.getDefaultPosition().getX());
-        node.setTranslateY(sprite.getDefaultPosition().getY());
-        node.setId(sprite.getID());
-        myRenderedNodes.put(sprite.getID(), node);
+        node.setTranslateX(obj.getDefaultPosition().getX());
+        node.setTranslateY(obj.getDefaultPosition().getY());
+        node.setId(obj.getID());
+        myRenderedNodes.put(obj.getID(), node);
         //TODO talk to Player group, ask them to change function call/functionality of Canvas
         //myCanvas.addToGroup(node);
         myCanvas.getChildren().add(node);
-        sprite.setRenderedNode(node);
+        obj.setRenderedNode(node);
     }
 
-    private ImageView createImageAndView(Sprite sprite) {
+    private ImageView createImageAndView(GameObject sprite) {
         String imageName = sprite.getCurrentImageName();
         
         if(imageName != null) {  
@@ -95,7 +95,7 @@ public class SpriteRenderer {
         return null;
     }
 
-    private Node createHitBox(Sprite sprite) {
+    private Node createHitBox(GameObject sprite) {
         //Temporary
         PhysicsBody body = sprite.getPhysicsBody();
         Rectangle asdf = new Rectangle(body.getCollisionBodyHeight(),body.getCollisionBodyWidth());

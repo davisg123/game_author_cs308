@@ -2,17 +2,13 @@ package authoring.controller;
 
 import java.util.ResourceBundle;
 
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.TitledPane;
-import javafx.scene.input.MouseDragEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import authoring.eventhandlers.GraphicsEventHandler;
 import authoring.model.AuthoringModel;
 import authoring.view.AuthoringView;
 import authoring.view.baseclasses.AccordianView;
-import authoring.view.graphicsview.Graphic;
 import authoring.view.graphicsview.GraphicsView;
 import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
@@ -20,7 +16,6 @@ import authoring.view.soundsview.SoundsView;
 import authoring.view.spritesview.SpritesView;
 import engine.actions.Action;
 import engine.conditions.Condition;
-import engine.sprite.Sprite;
 
 /**
  * Controller class that interacts between model and view. Holds and constructs
@@ -45,7 +40,7 @@ public class AuthoringController {
 	 * back-end; Levels, Sprites, Graphics, Sounds
 	 */
 	private LevelsView myLevels;
-	private SpritesView mySprites;
+	private SpritesView myGameObjects;
 	private GraphicsView myGraphics;
 	private SoundsView mySounds;
 	private PropertiesView myProperties;
@@ -83,14 +78,16 @@ public class AuthoringController {
 	private void initializeViewComponents() {
 		myLevels = new LevelsView(myLanguage, myWidth, myHeight);
 		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
+		myProperties = new PropertiesView(myLanguage, myWidth, myHeight);
 		myGraphics = new GraphicsView(myLanguage, myWidth, myHeight,
 				new GraphicsEventHandler(myProperties, myLevels));
-		myProperties = new PropertiesView(myLanguage, myWidth, myHeight);
-		mySprites = new SpritesView(myLanguage, myWidth, myHeight,
-				new GraphicsEventHandler(myProperties, myLevels));
+		myGameObjects = new SpritesView(myLanguage, myWidth, myHeight, new GraphicsEventHandler(myProperties, myLevels));
 
 	}
 
+	
+	
+	
 
 	/**
 	 * Initializes what goes on the left side of the borderpane.
@@ -105,18 +102,20 @@ public class AuthoringController {
 		// interactions
 		String im = "mario.png";
 		String im2 = "Luigi.jpg";
+		
+		myModel.getImages().addObserver(myGraphics);
+		myModel.getGameObjectCollection().addObserver(myGameObjects);
+		
 		myModel.getImages().addImage(im);
 		myModel.getImages().addImage(im2);
 
-		myModel.getImages().addObserver(myGraphics);
-		myModel.getSprites().addObserver(mySprites);
 
 		TitledPane graphics = new TitledPane(myLanguage.getString("Graphics"),
 				myGraphics);
 		TitledPane sounds = new TitledPane(myLanguage.getString("Sounds"),
 				mySounds);
 		TitledPane sprites = new TitledPane(myLanguage.getString("Sprites"),
-				mySprites);
+				myGameObjects);
 
 		leftView.getPanes().addAll(graphics, sounds, sprites);
 		BorderPane.setAlignment(leftView, Pos.TOP_RIGHT);

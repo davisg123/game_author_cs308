@@ -1,6 +1,6 @@
 package engine.actions;
 
-import engine.sprite.Sprite;
+import engine.gameObject.GameObject;
 
 /**
  * 
@@ -9,10 +9,10 @@ import engine.sprite.Sprite;
  */
 
 public abstract class TransformAction implements Action {
-    protected Sprite mySprite;
+    protected GameObject mySprite;
     protected double myValue;
     
-    public TransformAction (Sprite sprite, double value) {
+    public TransformAction (GameObject sprite, double value) {
         mySprite = sprite;
         myValue = value;
     }

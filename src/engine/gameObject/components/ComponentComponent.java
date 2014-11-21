@@ -1,9 +1,9 @@
-package engine.sprite.components;
+package engine.gameObject.components;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import engine.sprite.components.properties.IProperty;
+import engine.gameObject.components.properties.IProperty;
 
 /**
  * Components of the Sprite Class
@@ -17,14 +17,14 @@ import engine.sprite.components.properties.IProperty;
 //Just make everything an individual component... would solve search issues?...
 
 
-public abstract class SpriteComponent implements Iterable<IProperty> {
+public abstract class ComponentComponent implements Iterable<IProperty> {
     protected List<IProperty> myProperties;
 
-    public SpriteComponent () {
+    public ComponentComponent () {
         this(new ArrayList<IProperty>());
     }
 
-    public SpriteComponent (List<IProperty> properties){
+    public ComponentComponent (List<IProperty> properties){
         myProperties = properties;
     }
 
@@ -32,9 +32,13 @@ public abstract class SpriteComponent implements Iterable<IProperty> {
         return myProperties.iterator();
     }
 
-    public abstract void addProperty(IProperty property); 
+    public void addProperty(IProperty property){
+        myProperties.add(property);
+    }
     
-    public abstract void removeProperty(IProperty property);
+    public void removeProperty(IProperty property){
+        myProperties.remove(property);
+    }
 
     public abstract void update();
 

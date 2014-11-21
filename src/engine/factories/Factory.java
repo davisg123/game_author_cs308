@@ -1,5 +1,10 @@
 package engine.factories;
 
-public class Factory {
+import java.awt.geom.Point2D;
+import java.util.List;
+import engine.gameObject.components.ComponentComponent;
 
+public class Factory {
+    
+   
 }
