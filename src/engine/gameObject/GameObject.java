@@ -164,7 +164,7 @@ public class GameObject implements IEnabled, Iterable<Component>{
     }
 
     /**
-     * Updates all components of Sprite
+     * Updates all components of GameObject
      * TODO Check if necessary... 
      */
     
