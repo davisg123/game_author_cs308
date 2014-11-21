@@ -1,8 +1,14 @@
 package engine.physics;
 
-public class CollisionConstant extends Scalar{
-	public CollisionConstant(double value)
-	{
+/**
+ * constant for collisions, says if the object is fixed upon collisions or if it
+ * moves by the laws of physics
+ * 
+ * @author Ben
+ *
+ */
+public class CollisionConstant extends Scalar {
+	public CollisionConstant(double value) {
 		super(value);
 	}
 }
