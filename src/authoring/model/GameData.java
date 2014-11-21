@@ -3,9 +3,6 @@ package authoring.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
-import authoring.view.graphicsview.Graphic;
-import engine.actions.Action;
 import engine.conditions.Condition;
 import engine.level.*;
 import engine.gameObject.GameObject;
@@ -27,23 +24,40 @@ public class GameData implements Serializable{
 	private static final long serialVersionUID = 6633782568176674709L;
 	
 	private LevelsCollection myLevels;
-	private List<Condition> myConditions;
-	private GameObjectCollection myGameObjects;
+	private ConditionsCollection myConditions;
+	private GameObjectsCollection myGameObjects;
 	private GraphicsCollection myImages;
 	
 	public GameData(){
 		myLevels = new LevelsCollection();
-		myGameObjects = new GameObjectCollection();
-		myConditions = new ArrayList<Condition>();
+		myGameObjects = new GameObjectsCollection();
+		myConditions = new ConditionsCollection();
 		myImages = new GraphicsCollection();
 	
 	}
+	
+	/**
+	 * Level Methods
+	 */
+	
+	public LevelsCollection getLevels(){
+		return myLevels;
+	}
+	
 	public void addLevel(Level l){
 		myLevels.add(l);
 	}
 	
 	public void removeLevel(Level l){
 		myLevels.remove(l);
+	}
+	
+	/**
+	 * GameObject Methods
+	 */
+	
+	public GameObjectsCollection getGameObjects(){
+		return myGameObjects;
 	}
 	
 	public void addGameObject(GameObject s){
@@ -54,6 +68,14 @@ public class GameData implements Serializable{
 		myGameObjects.remove(s);
 	}
 	
+	/**
+	 * Condition Methods
+	 */
+	
+	public ConditionsCollection getConditions(){
+		return myConditions;
+	}
+	
 	public void addCondition(Condition c){
 		myConditions.add(c);
 	}
@@ -62,16 +84,13 @@ public class GameData implements Serializable{
 		myConditions.remove(c);
 	}
 	
+	/**
+	 * Graphics Methods
+	 */
 	
 	public GraphicsCollection getImages(){
 		return myImages;
 	}
-	public GameObjectCollection getGameObjects(){
-		return myGameObjects;
-	}
-	
-//	private EventCollection myEvents; //events prompt actions and hold onto their corresponding action
-//	private VariableCollection myVariables;
 	
 	
 }

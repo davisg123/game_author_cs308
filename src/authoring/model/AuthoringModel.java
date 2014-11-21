@@ -33,8 +33,17 @@ public class AuthoringModel {
 	public GraphicsCollection getImages(){
 		return myGame.getImages();
 	}
-	public GameObjectCollection getGameObjectCollection(){
+	
+	public GameObjectsCollection getGameObjectCollection(){
 		return myGame.getGameObjects();
 	}
+	
+	public LevelsCollection getLevels(){
+		return myGame.getLevels();
+	}
 
+	public ConditionsCollection getConditions(){
+		return myGame.getConditions();
+	}
+	
 }

@@ -5,11 +5,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
 
-import engine.level.Level;
-
 public abstract class GeneralCollection<T> extends Observable implements Iterable<T> {
 	
-	private List<T> myObjects;
+	//it can be protected so that all subclasses can access it, tradeoff for repeated code reduction
+	protected List<T> myObjects;
 
 	public GeneralCollection(){
 		myObjects = new ArrayList<T>();
