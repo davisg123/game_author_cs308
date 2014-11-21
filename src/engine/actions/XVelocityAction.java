@@ -1,11 +1,11 @@
 package engine.actions;
 
+import engine.gameObject.GameObject;
 import engine.physics.Velocity;
-import engine.sprite.Sprite;
 
 public class XVelocityAction extends PhysicsAction{
 
-	public XVelocityAction(Sprite sprite, double value) {
+	public XVelocityAction(GameObject sprite, double value) {
 		super(sprite, value);
 	}
 

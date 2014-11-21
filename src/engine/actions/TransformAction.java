@@ -1,18 +1,18 @@
 package engine.actions;
 
-import engine.sprite.Sprite;
+import engine.gameObject.GameObject;
 
 /**
- * 
+ * Action that performs GameObject Transforms/Movements
  * @author Will
  *
  */
 
 public abstract class TransformAction implements Action {
-    protected Sprite mySprite;
+    protected GameObject mySprite;
     protected double myValue;
     
-    public TransformAction (Sprite sprite, double value) {
+    public TransformAction (GameObject sprite, double value) {
         mySprite = sprite;
         myValue = value;
     }
@@ -21,6 +21,9 @@ public abstract class TransformAction implements Action {
         applyTransform();
     }
     
+    /**
+     * Applies the specific transform in X and Y
+     */
     public abstract void applyTransform ();
     
 }

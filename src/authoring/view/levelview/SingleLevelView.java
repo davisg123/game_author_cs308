@@ -5,6 +5,7 @@ import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
 /**
@@ -22,7 +23,6 @@ public class SingleLevelView extends Pane {
 	public SingleLevelView(double width, double height) {
 		this.setBackground(myDefaultBackground);
 		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
-
 	}
 
 	private void setView(double width, double height) {
@@ -30,4 +30,5 @@ public class SingleLevelView extends Pane {
 		setMinSize(width, height);
 		setMaxSize(width, height);
 	}
+	
 }

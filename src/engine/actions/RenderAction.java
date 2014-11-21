@@ -1,7 +1,7 @@
 package engine.actions;
 
 import java.util.List;
-import engine.sprite.Sprite;
+import engine.gameObject.GameObject;
 
 /**
  * Does rendering for all Sprites.
@@ -11,10 +11,10 @@ import engine.sprite.Sprite;
 
 public class RenderAction implements Action {
 
-    private List<Sprite> mySprites;
+    private List<GameObject> myGameObjects;
     
-    public RenderAction (List<Sprite> sprites) {
-        mySprites = sprites;
+    public RenderAction (List<GameObject> objects) {
+        myGameObjects = objects;
     }
 
     @Override

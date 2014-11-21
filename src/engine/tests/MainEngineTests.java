@@ -12,9 +12,9 @@ import engine.actions.TransformY;
 import engine.conditions.ButtonConditionManager;
 import engine.conditions.Condition;
 import engine.conditions.TimeCondition;
+import engine.gameObject.GameObject;
 import engine.level.Level;
-import engine.render.SpriteRenderer;
-import engine.sprite.Sprite;
+import engine.render.GameObjectRenderer;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -57,16 +57,16 @@ public class MainEngineTests extends Application {
         myRootGroup.getChildren().add(asdf);*/
         myStage.setScene(myScene);
         myStage.show();
-        createSprite(myRootGroup);
+        createGameObject(myRootGroup);
         
     }
     
-    public void createSprite (Group group) {
+    public void createGameObject (Group group) {
         Point2D location = new Point2D.Double(50,50);
-        Sprite sprite = new Sprite(null,"slowpoke",
-                                   location, 100, 100, 0, "TestSprite");
-        List<Sprite> mySpriteList = new ArrayList<Sprite>();
-        mySpriteList.add(sprite);
+        GameObject sprite = new GameObject(null,"slowpoke",
+                                   location, 100, 100, 0, "TestGameObject");
+        List<GameObject> myGameObjectList = new ArrayList<GameObject>();
+        myGameObjectList.add(sprite);
         List<Condition> myConditionList = new ArrayList<Condition>();
         ButtonConditionManager buttonManager = new ButtonConditionManager();
         Action a = new TransformX(sprite,-2.0);
@@ -80,13 +80,13 @@ public class MainEngineTests extends Application {
         buttonManager.beginListeningToScene(myScene);
         ArrayList<Action> condList = new ArrayList<Action>();
         condList.add(c);
-        Condition cond = new TimeCondition(condList,mySpriteList,.5,true);
+        Condition cond = new TimeCondition(condList,myGameObjectList,.5,true);
         myConditionList.add(buttonManager);
         myConditionList.add(cond);
-        myGameManager = new GameManager(myConditionList,mySpriteList,group);
-        Level level0 = new Level(mySpriteList,null);
-        SpriteRenderer mySpriteRenderer = new SpriteRenderer(group);
-        mySpriteRenderer.renderSprites(level0);
+        myGameManager = new GameManager(myConditionList,myGameObjectList,group);
+        Level level0 = new Level(myGameObjectList,null);
+        GameObjectRenderer myGameObjectRenderer = new GameObjectRenderer(group);
+        myGameObjectRenderer.renderGameObjects(level0);
         myGameManager.initialize();
     }
 

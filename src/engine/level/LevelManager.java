@@ -4,8 +4,8 @@ import java.util.Iterator;
 import java.util.List;
 import engine.collisionDetection.CollisionDetector;
 import engine.conditions.Condition;
-import engine.render.SpriteRenderer;
-import engine.sprite.Sprite;
+import engine.render.GameObjectRenderer;
+import engine.gameObject.GameObject;
 
 /**
  * Manages the Levels, and progression of the Game
@@ -15,11 +15,11 @@ import engine.sprite.Sprite;
 
 public class LevelManager implements Iterable<Level> {
     private List<Level> myLevels;
-    private List<Sprite> mySprites;
+    private List<GameObject> myGameObjects;
     private List<Condition> myConditions;
     private Level myCurrentLevel;
     private int myCurrentIndex;
-    private SpriteRenderer myRenderer;
+    private GameObjectRenderer myRenderer;
     private CollisionDetector myDetector; 
     
     /**
@@ -30,9 +30,9 @@ public class LevelManager implements Iterable<Level> {
      * @param renderer
      * @param detector
      */
-    public LevelManager (List<Sprite> sprites, List<Level> levels, List<Condition> conditions, 
-                         SpriteRenderer renderer, CollisionDetector detector) {
-        mySprites = sprites;
+    public LevelManager (List<GameObject> sprites, List<Level> levels, List<Condition> conditions, 
+                         GameObjectRenderer renderer, CollisionDetector detector) {
+        myGameObjects = sprites;
         myLevels = levels;
         myConditions = conditions;
         myCurrentIndex = 0;
@@ -81,9 +81,9 @@ public class LevelManager implements Iterable<Level> {
      * Initializes the Current Level
      */
     public void initializeCurrentLevel() {
-        myCurrentLevel.setEnabledSprites(mySprites);
+        myCurrentLevel.setEnabledGameObjects(myGameObjects);
         myCurrentLevel.setEnabledConditions(myConditions);
-        myRenderer.renderSprites(myCurrentLevel);
+        myRenderer.renderGameObjects(myCurrentLevel);
     }
     
 }

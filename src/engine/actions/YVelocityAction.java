@@ -1,14 +1,13 @@
 package engine.actions;
 
 import java.util.List;
-
+import engine.gameObject.GameObject;
 import engine.physics.Vector;
 import engine.physics.Velocity;
-import engine.sprite.Sprite;
 
 public class YVelocityAction extends PhysicsAction{
 
-	public YVelocityAction(Sprite sprite, double value) {
+	public YVelocityAction(GameObject sprite, double value) {
 		super(sprite, value);
 	}
 
