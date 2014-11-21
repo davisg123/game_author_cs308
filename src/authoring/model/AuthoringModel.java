@@ -42,8 +42,8 @@ public class AuthoringModel {
 	public GraphicsCollection getImages(){
 		return myGame.getImages();
 	}
-	public SpritesCollection getSprites(){
-		return myGame.getSprites();
+	public GameObjectCollection getGameObjectCollection(){
+		return myGame.getGameObjects();
 	}
 
 }

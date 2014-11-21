@@ -1,6 +1,6 @@
 package engine.physics;
 
-import engine.sprite.Sprite;
+import engine.gameObject.GameObject;
 
 public class NormalUpdate extends BEngine {
 	public double impulseAndVelocity(double impulse, double mass) {

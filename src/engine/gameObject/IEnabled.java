@@ -1,4 +1,4 @@
-package engine.sprite;
+package engine.gameObject;
 
 public interface IEnabled {
     public void enable ();
@@ -6,4 +6,7 @@ public interface IEnabled {
     public void disable ();
     
     public boolean isEnabled ();
+    
+    public String getID ();
+    
 }
