@@ -13,7 +13,7 @@ import authoring.view.graphicsview.GraphicsView;
 import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
 import authoring.view.soundsview.SoundsView;
-import authoring.view.spritesview.SpritesView;
+import authoring.view.spritesview.GameObjectsView;
 import engine.actions.Action;
 import engine.conditions.Condition;
 
@@ -40,7 +40,7 @@ public class AuthoringController {
 	 * back-end; Levels, Sprites, Graphics, Sounds
 	 */
 	private LevelsView myLevels;
-	private SpritesView myGameObjects;
+	private GameObjectsView myGameObjects;
 	private GraphicsView myGraphics;
 	private SoundsView mySounds;
 	private PropertiesView myProperties;
@@ -81,13 +81,10 @@ public class AuthoringController {
 		myProperties = new PropertiesView(myLanguage, myWidth, myHeight);
 		myGraphics = new GraphicsView(myLanguage, myWidth, myHeight,
 				new GraphicsEventHandler(myProperties, myLevels));
-		myGameObjects = new SpritesView(myLanguage, myWidth, myHeight, new GraphicsEventHandler(myProperties, myLevels));
+		myGameObjects = new GameObjectsView(myLanguage, myWidth, myHeight,
+				new GraphicsEventHandler(myProperties, myLevels));
 
 	}
-
-	
-	
-	
 
 	/**
 	 * Initializes what goes on the left side of the borderpane.
@@ -102,13 +99,12 @@ public class AuthoringController {
 		// interactions
 		String im = "mario.png";
 		String im2 = "Luigi.jpg";
-		
+
 		myModel.getImages().addObserver(myGraphics);
 		myModel.getGameObjectCollection().addObserver(myGameObjects);
-		
+
 		myModel.getImages().addImage(im);
 		myModel.getImages().addImage(im2);
-
 
 		TitledPane graphics = new TitledPane(myLanguage.getString("Graphics"),
 				myGraphics);
