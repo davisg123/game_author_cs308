@@ -1,9 +1,6 @@
 package authoring.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
 import authoring.model.collections.ConditionsCollection;
 import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.GraphicsCollection;

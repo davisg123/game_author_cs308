@@ -9,7 +9,7 @@ import authoring.model.collections.SoundsCollection;
 /**
  * The Model of the MVC, gets changes in information from the controller and
  * directly updates the view. Individual components observed by the view.
- *
+ * @author Arjun Jain
  */
 public class AuthoringModel {
 	private GameData myGame;
