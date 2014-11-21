@@ -34,6 +34,10 @@ public class GameObjectRenderer {
     private static final String ASSET_MAP_NAME = "asset_map";
 
     //Group Change to GameCanvas
+    /**
+     * Constructor takes in a group as the Canvas of the game 
+     * @param canvas
+     */
     public GameObjectRenderer (Group canvas) {
         myCanvas = canvas;
         myRenderedNodes = new HashMap<>();
@@ -45,6 +49,10 @@ public class GameObjectRenderer {
     //public void update?
 
     //Called once at the start of every level
+    /**
+     * Renders all GameObjects within a Level
+     * @param level
+     */
     public void renderGameObjects (Level level) {
         //myCanvas.clear();
         myCanvas.getChildren().clear();
@@ -60,10 +68,15 @@ public class GameObjectRenderer {
     //Otherwise, set to the bottom lefthand corner
     //Need to use the Canvas dimensions
     //Change GameCanvas into a scene?
+    /**
+     * Generates the JavaFX Node for a GameObject, giving it its image and CollisionBody
+     * 
+     * @param obj
+     */
     public void createAndAssignRenderedNode (GameObject obj) {
         RenderedNode node = new RenderedNode();
         node.setImageView(createImageAndView(obj));
-        node.setCollisionBody(createHitBox(obj));
+        node.setCollisionBody(createCollisionBody(obj));
         node.setLayoutX(0);
         node.setLayoutY(0);
         node.setTranslateX(obj.getDefaultPosition().getX());
@@ -76,8 +89,13 @@ public class GameObjectRenderer {
         obj.setRenderedNode(node);
     }
 
-    private ImageView createImageAndView(GameObject sprite) {
-        String imageName = sprite.getCurrentImageName();
+    /**
+     * Creates the Image and ImageView for the RenderedNode if specified
+     * @param obj
+     * @return
+     */
+    private ImageView createImageAndView(GameObject obj) {
+        String imageName = obj.getCurrentImageName();
         
         if(imageName != null) {  
             //convert image name to a filepath using the asset_map
@@ -85,8 +103,8 @@ public class GameObjectRenderer {
             Image image = new Image(getClass().getResourceAsStream(SLASH+BASE_ASSET_PATH+SLASH+filepath));
             ImageView view = new ImageView();
             view.setImage(image);
-            view.setFitHeight(sprite.getHeight());
-            view.setFitWidth(sprite.getWidth());
+            view.setFitHeight(obj.getHeight());
+            view.setFitWidth(obj.getWidth());
             view.setPreserveRatio(true);
             view.setSmooth(true);
             view.setCache(true);
@@ -95,14 +113,23 @@ public class GameObjectRenderer {
         return null;
     }
 
-    private Node createHitBox(GameObject sprite) {
+    /**
+     * Creates the CollisionBody of the GameObject
+     * @param sprite
+     * @return
+     */
+    private Node createCollisionBody(GameObject obj) {
         //Temporary
-        PhysicsBody body = sprite.getPhysicsBody();
+        PhysicsBody body = obj.getPhysicsBody();
         Rectangle asdf = new Rectangle(body.getCollisionBodyHeight(),body.getCollisionBodyWidth());
         asdf.setVisible(false);
         return asdf;
     }
 
+    /**
+     * Removes a rendered Node from the list of currently rendered Nodes
+     * @param nodeID
+     */
     public void removeRenderedNode(String nodeID) {
         //myCanvas.remove(myRenderedNodes.get(nodeID));
         myRenderedNodes.remove(nodeID);

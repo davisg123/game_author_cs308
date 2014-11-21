@@ -19,6 +19,12 @@ public class CollisionDetector {
     private Map<String,Integer> myCollisionMap = new HashMap<String,Integer>();
     //Should they just be enabled nodes? or should they be all the nodes?
     //Discuss definition of enabled
+    
+    /**
+     * Checks whether any of the GameObjects have collided, and calls the GameObjects
+     * to handle the collisions.
+     * @param enabledNodes
+     */
     public void checkCollisions (Iterator<GameObject> enabledGameObjects) {
         myCollisionMap.clear();
         for(Iterator<GameObject> outerIter = enabledGameObjects; outerIter.hasNext();) {
