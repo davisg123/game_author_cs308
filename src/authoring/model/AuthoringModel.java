@@ -1,5 +1,11 @@
 package authoring.model;
 
+import authoring.model.collections.ConditionsCollection;
+import authoring.model.collections.GameObjectsCollection;
+import authoring.model.collections.GraphicsCollection;
+import authoring.model.collections.LevelsCollection;
+import authoring.model.collections.SoundsCollection;
+
 /**
  * The Model of the MVC, gets changes in information from the controller and
  * directly updates the view. Individual components observed by the view.
@@ -44,6 +50,10 @@ public class AuthoringModel {
 
 	public ConditionsCollection getConditions(){
 		return myGame.getConditions();
+	}
+
+	public SoundsCollection getSounds(){
+		return myGame.getSounds();
 	}
 	
 }

@@ -3,6 +3,12 @@ package authoring.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+
+import authoring.model.collections.ConditionsCollection;
+import authoring.model.collections.GameObjectsCollection;
+import authoring.model.collections.GraphicsCollection;
+import authoring.model.collections.LevelsCollection;
+import authoring.model.collections.SoundsCollection;
 import engine.conditions.Condition;
 import engine.level.*;
 import engine.gameObject.GameObject;
@@ -27,13 +33,14 @@ public class GameData implements Serializable{
 	private ConditionsCollection myConditions;
 	private GameObjectsCollection myGameObjects;
 	private GraphicsCollection myImages;
+	private SoundsCollection mySounds;
 	
 	public GameData(){
 		myLevels = new LevelsCollection();
 		myGameObjects = new GameObjectsCollection();
 		myConditions = new ConditionsCollection();
 		myImages = new GraphicsCollection();
-	
+		mySounds = new SoundsCollection();
 	}
 	
 	/**
@@ -85,12 +92,21 @@ public class GameData implements Serializable{
 	}
 	
 	/**
-	 * Graphics Methods
+	 * Graphic Methods
 	 */
 	
 	public GraphicsCollection getImages(){
 		return myImages;
 	}
+	
+	/**
+	 * Sound Methods
+	 */
+	
+	public SoundsCollection getSounds(){
+		return mySounds;
+	}
+	
 	
 	
 }

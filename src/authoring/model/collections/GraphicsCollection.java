@@ -1,4 +1,4 @@
-package authoring.model;
+package authoring.model.collections;
 
 public class GraphicsCollection extends GeneralCollection<String>{
 

@@ -1,4 +1,4 @@
-package authoring.model;
+package authoring.model.collections;
 
 
 import engine.gameObject.GameObject;
