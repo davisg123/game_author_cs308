@@ -22,15 +22,24 @@ public class AuthoringModel {
 		return myGame;
 	}
 	
+	/**
+	 * Save the current GameData using serialization
+	 */
 	public void save() {
 		// TODO - Data
 	}
-
-	public GameData load() {
+	
+	/**
+	 * Replaces the current GameData file with a new file that is loaded in
+	 */
+	public void load() {
 		// TODO - Data
-		return null;
 	}
 
+	/**
+	 * Allows the user to extract certain elements from a GameData object to import into their current project
+	 * @param gd Represents the GameData object from which we want to extract elements
+	 */
 	public void importData(GameData gd) {
 		// TODO - adds data to current authoring environment
 
