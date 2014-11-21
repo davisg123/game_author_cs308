@@ -8,6 +8,7 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import authoring.eventhandlers.GraphicsEventHandler;
 import authoring.model.AuthoringModel;
 import authoring.view.AuthoringView;
 import authoring.view.baseclasses.AccordianView;
@@ -23,23 +24,31 @@ import engine.sprite.Sprite;
 
 /**
  * Controller class that interacts between model and view. Holds and constructs
- * all the view components in order to allow communication between them.
+ * all the view components in order to allow communication between them. Allows
+ * the Model and View to exchange data without knowledge of each other.
  * 
  * @author Kevin Li
+ * @author Wesley Valentine
+ * @author Chris Bernt
+ * @author Arjun Jain
  *
  */
 public class AuthoringController {
 	private AuthoringView myView;
 	private AuthoringModel myModel;
 	private ResourceBundle myLanguage;
+	private double myWidth;
+	private double myHeight;
 
+	/**
+	 * Contains front-end representations of all Game Data stored in the
+	 * back-end; Levels, Sprites, Graphics, Sounds
+	 */
 	private LevelsView myLevels;
 	private SpritesView mySprites;
 	private GraphicsView myGraphics;
 	private SoundsView mySounds;
 	private PropertiesView myProperties;
-	private double myWidth;
-	private double myHeight;
 
 	public AuthoringController(AuthoringView view, AuthoringModel model,
 			double width, double height, ResourceBundle language) {
@@ -67,49 +76,21 @@ public class AuthoringController {
 
 	/**
 	 * Initializes all the view components that have a 1 to 1 relationship with
-	 * backend data components.
+	 * backend data components. Provides event handlers for View objects to
+	 * handle sending data to the backend
 	 */
 
 	private void initializeViewComponents() {
 		myLevels = new LevelsView(myLanguage, myWidth, myHeight);
 		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
-		myGraphics = new GraphicsView(myLanguage, myWidth, myHeight, new GraphicsEventHandler());
+		myGraphics = new GraphicsView(myLanguage, myWidth, myHeight,
+				new GraphicsEventHandler(myProperties, myLevels));
 		myProperties = new PropertiesView(myLanguage, myWidth, myHeight);
-		mySprites = new SpritesView(myLanguage, myWidth, myHeight, new GraphicsEventHandler());
+		mySprites = new SpritesView(myLanguage, myWidth, myHeight,
+				new GraphicsEventHandler(myProperties, myLevels));
 
 	}
 
-	
-	
-	private class GraphicsEventHandler implements EventHandler<MouseEvent>{
-
-		@Override
-		public void handle(MouseEvent event) {
-			Graphic g = (Graphic) event.getSource();
-//			System.out.println(g.getName());
-			myProperties.fillContents(g);
-			double x = event.getSceneX();
-			double y = event.getSceneY();
-			//g.setLayoutY(70);
-			myLevels.addSpriteToView(g,x,y, new GraphicsDragHandler());
-			
-		}
-		
-	}
-	public class GraphicsDragHandler implements EventHandler<MouseEvent>{
-
-		@Override
-		public void handle(MouseEvent event) {
-			Graphic g = (Graphic) event.getSource();
-//			System.out.println(g.getName());
-			myProperties.fillContents(g);
-			double x = event.getSceneX();
-			double y = event.getSceneY();
-			myLevels.moveSpriteOnLevel(g,x,y);
-		}
-		
-	}
-	
 
 	/**
 	 * Initializes what goes on the left side of the borderpane.
@@ -119,108 +100,106 @@ public class AuthoringController {
 
 	private AccordianView initializeLeft() {
 		AccordianView leftView = new AccordianView(myWidth, myHeight);
+
+		// Some hard-coded images used to test events and observable/observer
+		// interactions
 		String im = "mario.png";
 		String im2 = "Luigi.jpg";
-		
-		myModel.getImages().addObserver(myGraphics);
-		myModel.getSprites().addObserver(mySprites);
-		
 		myModel.getImages().addImage(im);
 		myModel.getImages().addImage(im2);
-		//myModel.getSprites().addSprite(im);
+
+		myModel.getImages().addObserver(myGraphics);
+		myModel.getSprites().addObserver(mySprites);
 
 		TitledPane graphics = new TitledPane(myLanguage.getString("Graphics"),
 				myGraphics);
-		
-		
 		TitledPane sounds = new TitledPane(myLanguage.getString("Sounds"),
 				mySounds);
 		TitledPane sprites = new TitledPane(myLanguage.getString("Sprites"),
 				mySprites);
 
-
 		leftView.getPanes().addAll(graphics, sounds, sprites);
 		BorderPane.setAlignment(leftView, Pos.TOP_RIGHT);
-		
+
 		return leftView;
 	}
 
 	private TitledPane initializeRight() {
-		//AccordianView rightView = new AccordianView(myWidth, myHeight);
-		TitledPane properties = new TitledPane(myLanguage.getString("Properties"), myProperties);
+		TitledPane properties = new TitledPane(
+				myLanguage.getString("Properties"), myProperties);
 		properties.setCollapsible(false);
-		//rightView.getPanes().addAll(properties);
 		return properties;
 	}
 
 	/**
-	 * Here lie the sad, sad public methods of this controller
+	 * Here lie the sad, sad public methods of this controller (To be filled in
+	 * when Game Engine classes are solidified and created)
 	 */
-	
+
 	/**
 	 * Sprite Methods
 	 */
-	public void editSprite(){
-		
+	public void editSprite() {
+
 	}
-	
-	public void addSprite(){
-		
+
+	public void addSprite() {
+
 	}
-	
-	public void removeSprite(){
-		
+
+	public void removeSprite() {
+
 	}
-	
-	public void editSpriteOnLevel(){
-		
+
+	public void editSpriteOnLevel() {
+
 	}
-	
+
 	/**
 	 * Level Methods
 	 */
-	public void addSpriteToLevel(){
-		
+	public void addSpriteToLevel() {
+
 	}
-	
-	public void removeSpriteFromLevel(){
-		
+
+	public void removeSpriteFromLevel() {
+
 	}
-	
-	public void addLevel(){
-		
+
+	public void addLevel() {
+
 	}
-	
-	public void removeLevel(){
-		
+
+	public void removeLevel() {
+
 	}
 
 	/**
 	 * Condition Methods
 	 */
-	
-	public void addButtonCondition(){
-		
+
+	public void addButtonCondition() {
+
 	}
-	
-	public void removeButtonCondition(){
-		
+
+	public void removeButtonCondition() {
+
 	}
-	
-	public void addSpriteCondition(Condition c){
-		
+
+	public void addSpriteCondition(Condition c) {
+
 	}
-	
-	public void removeSpriteCondition(Condition c){
-		
+
+	public void removeSpriteCondition(Condition c) {
+
 	}
-	
-	public void addAction(Condition c, Action a){
-		
+
+	public void addAction(Condition c, Action a) {
+
 	}
-	
-	public void removeAction(Condition c, Action a){
-		
+
+	public void removeAction(Condition c, Action a) {
+
 	}
-	
+
 }
