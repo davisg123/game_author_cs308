@@ -6,6 +6,7 @@ import engine.actions.Action;
 import engine.gameObject.GameObject;
 
 /**
+ * abstract class for conditions based on the position of game objects
  * 
  * @author Davis
  *
