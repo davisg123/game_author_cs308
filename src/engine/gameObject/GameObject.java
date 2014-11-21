@@ -1,7 +1,7 @@
-package engine.sprite;
+package engine.gameObject;
 
+import engine.gameObject.components.*;
 import engine.render.RenderedNode;
-import engine.sprite.components.*;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -15,8 +15,8 @@ import javafx.scene.image.Image;
  * @author Will Chang
  *
  */
-public class Sprite implements IEnabled, Iterable<SpriteComponent>{
-    private List<SpriteComponent> myComponents; 
+public class GameObject implements IEnabled, Iterable<ComponentComponent>{
+    private List<ComponentComponent> myComponents; 
     //Maybe connect it with a properties file
     //Create an Image and Path manager that works with the Renderer
     //Will cause an error if path does not exist... 
@@ -47,21 +47,21 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
     /**
      * Constructors
      */
-    public Sprite () {
+    public GameObject () {
         this("");
     }
 
-    public Sprite (String iD) {
-        this(new ArrayList<SpriteComponent>(), "", new Point2D.Double(), 0, 0, 0, iD);
+    public GameObject (String iD) {
+        this(new ArrayList<ComponentComponent>(), "", new Point2D.Double(), 0, 0, 0, iD);
     }
 
-    public Sprite (List<SpriteComponent> components, String imagePath, Point2D position, 
+    public GameObject (List<ComponentComponent> components, String imagePath, Point2D position, 
                    double height, double width, double rotation, String iD) {
         this(components, imagePath, new SoundReference(), position,
              height, width, rotation, iD);
     }
 
-    public Sprite (List<SpriteComponent> components, String imageName, SoundReference sounds, 
+    public GameObject (List<ComponentComponent> components, String imageName, SoundReference sounds, 
                    Point2D position, double height, double width, double rotation, String iD) {
         myComponents  = components;
         //myImages   = images;
@@ -169,7 +169,7 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
      */
     
     public void update () {
-        for(SpriteComponent component : myComponents) {
+        for(ComponentComponent component : myComponents) {
             //component.update(this); Should include current Level???... 
             //update methods should be specific to each component...
             component.update();
@@ -189,7 +189,7 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
      * @param iD
      * @return
      */
-    public SpriteComponent getComponent (String iD) {
+    public ComponentComponent getComponent (String iD) {
         return null;
     }
 
@@ -203,7 +203,7 @@ public class Sprite implements IEnabled, Iterable<SpriteComponent>{
     }
 
     @Override
-    public Iterator<SpriteComponent> iterator () {
+    public Iterator<ComponentComponent> iterator () {
         return myComponents.iterator();
     }
 

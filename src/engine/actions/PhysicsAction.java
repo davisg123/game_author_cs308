@@ -1,13 +1,13 @@
 package engine.actions;
 
 import java.util.List;
-import engine.sprite.Sprite;
+import engine.gameObject.GameObject;
 
 public abstract class PhysicsAction implements Action {
     
-    protected Sprite mySprite;
+    protected GameObject mySprite;
     protected double myValue;
-    public PhysicsAction (Sprite sprite, double value) {
+    public PhysicsAction (GameObject sprite, double value) {
     	mySprite=sprite;
     	myValue=value;
     }

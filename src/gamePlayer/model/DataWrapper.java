@@ -3,20 +3,20 @@ package gamePlayer.model;
 import java.util.List;
 
 import engine.conditions.Condition;
-import engine.sprite.Sprite;
+import engine.gameObject.GameObject;
 
 public class DataWrapper {
 
-	 private List<Sprite> mySprites;
+	 private List<GameObject> myGameObjects;
 	 private List<Condition> myConditions;
 	 
-	 public DataWrapper(List<Sprite> sprites, List<Condition> conditions){
-		 mySprites=sprites;
+	 public DataWrapper(List<GameObject> sprites, List<Condition> conditions){
+		 myGameObjects=sprites;
 		 myConditions=conditions;
 	 }
 	 
-	 public List<Sprite> getSprites(){
-		 return mySprites;
+	 public List<GameObject> getGameObjects(){
+		 return myGameObjects;
 	 }
 	 
 	 public List<Condition> getConditions(){

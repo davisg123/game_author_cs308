@@ -3,13 +3,12 @@ package data;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
-
 import engine.actions.Action;
 import engine.actions.RenderAction;
 import engine.conditions.Condition;
 import engine.conditions.TimeCondition;
-import engine.sprite.Sprite;
-import engine.sprite.components.SpriteComponent;
+import engine.gameObject.GameObject;
+import engine.gameObject.components.ComponentComponent;
 
 public class SampleWrapper {
 	
@@ -23,11 +22,11 @@ public class SampleWrapper {
 //		word = "qwerty";
 //	}
 	
-	private List<Sprite> spriteList;
+	private List<GameObject> spriteList;
 	private List<Condition> conditionList;
 	
 	public SampleWrapper() {
-		spriteList = new ArrayList<Sprite>();
+		spriteList = new ArrayList<GameObject>();
 		conditionList = new ArrayList<Condition>();
 		addSprites();
 		addConditions();
@@ -35,8 +34,8 @@ public class SampleWrapper {
 
 	private void addSprites() {
 		// TODO Auto-generated method stub
-		Sprite s1 = new Sprite("duvall");
-		Sprite s2 = new Sprite(new ArrayList<SpriteComponent>(), "name of image", new Point2D.Double(1, 4), 
+		GameObject s1 = new GameObject("duvall");
+		GameObject s2 = new GameObject(new ArrayList<ComponentComponent>(), "name of image", new Point2D.Double(1, 4), 
 				50.0, 20.0, 45.0, "hank");
 		spriteList.add(s1);
 		spriteList.add(s2);

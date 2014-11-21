@@ -1,6 +1,6 @@
 package engine.actions;
 
-import engine.sprite.Sprite;
+import engine.gameObject.GameObject;
 
 /**
  * 
@@ -10,7 +10,7 @@ import engine.sprite.Sprite;
 
 public class TransformY extends TransformAction {
 
-    public TransformY (Sprite sprite, double value) {
+    public TransformY (GameObject sprite, double value) {
         super(sprite, value);
     }
 

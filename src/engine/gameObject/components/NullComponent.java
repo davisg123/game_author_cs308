@@ -1,13 +1,13 @@
-package engine.sprite.components;
+package engine.gameObject.components;
 
-import engine.sprite.components.properties.IProperty;
+import engine.gameObject.components.properties.IProperty;
 
 /**
  * Takes the place of a Null Object.
  * @author Will Chang
  */
 
-public class NullComponent extends SpriteComponent {
+public class NullComponent extends ComponentComponent {
 
     @Override
     public void addProperty (IProperty property) {

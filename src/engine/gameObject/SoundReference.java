@@ -1,11 +1,10 @@
-package engine.sprite;
+package engine.gameObject;
 
 import java.util.List;
+import engine.gameObject.components.ComponentComponent;
+import engine.gameObject.components.properties.IProperty;
 
-import engine.sprite.components.SpriteComponent;
-import engine.sprite.components.properties.IProperty;
-
-public class SoundReference extends SpriteComponent {
+public class SoundReference extends ComponentComponent {
 
     private List<String> mySoundPaths;
     
