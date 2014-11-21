@@ -11,6 +11,7 @@ import authoring.view.propertiesview.PropertiesView;
  * PropertiesView and/or creates copy of selected graphic on the active level.
  * 
  * @author Wesley Valentine
+ * @author Chris Bernt
  *
  */
 public class GraphicsEventHandler implements EventHandler<MouseEvent> {
