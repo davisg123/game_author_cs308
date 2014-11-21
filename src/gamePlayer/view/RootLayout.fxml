@@ -26,9 +26,14 @@
     <top>
     	<TabPane>
     		<tabs>
-    			<Tab text="Menu"/>
-    			<Tab text="Options"/>
-    			<Tab text="Preferences"/>
+    			<Tab text="Menu" closable="false">
+    				<Button>
+					<Button />
+    			</Tab>
+    			<Tab text="Options" closable="false">
+    			</Tab>
+    			<Tab text="Preferences" closable="false">
+    			</Tab>
     		</tabs>
     	</TabPane>
     	<!--
