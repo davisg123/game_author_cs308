@@ -29,7 +29,14 @@ public class GameData implements Serializable{
 	private List<Level> myLevels;
 	//private List<GameObject> myGameObjects;
 	private List<Condition> myConditions;
+	private GameObjectCollection myGameObjects;
 	
+	public GameData(){
+		myLevels = new ArrayList<Level>();
+		myGameObjects = new GameObjectCollection();
+		myConditions = new ArrayList<Condition>();
+		myImages = new GraphicsCollection();
+	}
 	
 	public void addLevel(Level l){
 		myLevels.add(l);
@@ -58,24 +65,16 @@ public class GameData implements Serializable{
 //	private LevelsCollection myLevels;
 //	private SoundsCollection mySounds;
 //	private GraphicsCollection myImages;
-	private GameObjectsCollection myGameObjects;
 		
 	private SoundsCollection mySounds;
 	private GraphicsCollection myImages;
-	
-	public GameData(){
-		myLevels = new ArrayList<Level>();
-		myGameObjects = new GameObjectsCollection();
-		myConditions = new ArrayList<Condition>();
-		myImages = new GraphicsCollection();
-	}
 	
 	
 	
 	public GraphicsCollection getImages(){
 		return myImages;
 	}
-	public GameObjectsCollection getGameObjects(){
+	public GameObjectCollection getGameObjects(){
 		return myGameObjects;
 	}
 	

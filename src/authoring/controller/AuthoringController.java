@@ -33,7 +33,7 @@ public class AuthoringController {
 	private ResourceBundle myLanguage;
 
 	private LevelsView myLevels;
-	private SpritesView mySprites;
+	private SpritesView myGameObjects;
 	private GraphicsView myGraphics;
 	private SoundsView mySounds;
 	private PropertiesView myProperties;
@@ -74,7 +74,7 @@ public class AuthoringController {
 		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
 		myGraphics = new GraphicsView(myLanguage, myWidth, myHeight, new GraphicsEventHandler());
 		myProperties = new PropertiesView(myLanguage, myWidth, myHeight);
-		mySprites = new SpritesView(myLanguage, myWidth, myHeight, new GraphicsEventHandler());
+		myGameObjects = new SpritesView(myLanguage, myWidth, myHeight, new GraphicsEventHandler());
 
 	}
 
@@ -122,7 +122,7 @@ public class AuthoringController {
 		String im2 = "Luigi.jpg";
 		
 		myModel.getImages().addObserver(myGraphics);
-		myModel.getSprites().addObserver(mySprites);
+		myModel.getGameObjectCollection().addObserver(myGameObjects);
 		
 		myModel.getImages().addImage(im);
 		myModel.getImages().addImage(im2);
@@ -135,7 +135,7 @@ public class AuthoringController {
 		TitledPane sounds = new TitledPane(myLanguage.getString("Sounds"),
 				mySounds);
 		TitledPane sprites = new TitledPane(myLanguage.getString("Sprites"),
-				mySprites);
+				myGameObjects);
 
 
 		leftView.getPanes().addAll(graphics, sounds, sprites);
