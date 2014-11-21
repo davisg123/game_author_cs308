@@ -26,18 +26,18 @@ public class GameData implements Serializable{
 	 */
 	private static final long serialVersionUID = 6633782568176674709L;
 	
-	private List<Level> myLevels;
-	//private List<GameObject> myGameObjects;
+	private LevelsCollection myLevels;
 	private List<Condition> myConditions;
 	private GameObjectCollection myGameObjects;
+	private GraphicsCollection myImages;
 	
 	public GameData(){
-		myLevels = new ArrayList<Level>();
+		myLevels = new LevelsCollection();
 		myGameObjects = new GameObjectCollection();
 		myConditions = new ArrayList<Condition>();
 		myImages = new GraphicsCollection();
-	}
 	
+	}
 	public void addLevel(Level l){
 		myLevels.add(l);
 	}
@@ -47,12 +47,12 @@ public class GameData implements Serializable{
 	}
 	
 	public void addGameObject(GameObject s){
-		myGameObjects.addGameObject(s);
+		myGameObjects.add(s);
 	}
 	
-//	public void removeGameObject(GameObject s){
-//		myGameObjects.remove(s);
-//	}
+	public void removeGameObject(GameObject s){
+		myGameObjects.remove(s);
+	}
 	
 	public void addCondition(Condition c){
 		myConditions.add(c);
@@ -61,14 +61,6 @@ public class GameData implements Serializable{
 	public void removeCondition(Condition c){
 		myConditions.remove(c);
 	}
-	
-//	private LevelsCollection myLevels;
-//	private SoundsCollection mySounds;
-//	private GraphicsCollection myImages;
-		
-	private SoundsCollection mySounds;
-	private GraphicsCollection myImages;
-	
 	
 	
 	public GraphicsCollection getImages(){
