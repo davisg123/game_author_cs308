@@ -88,6 +88,8 @@ public class Level extends Observable {
 	}
 	public void addGameObject(GameObject gameObject){
 		myGameObjects.add(gameObject);
+		setChanged();
+		notifyObservers(this);
 	}
 	
 	public GameObjectsCollection getGameObjectsCollection(){

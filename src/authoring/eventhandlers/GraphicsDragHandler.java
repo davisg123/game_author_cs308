@@ -3,8 +3,7 @@ package authoring.eventhandlers;
 import javafx.event.EventType;
 import javafx.scene.input.MouseEvent;
 import authoring.view.graphicsview.Graphic;
-import authoring.view.levelview.LevelsView;
-import authoring.view.propertiesview.PropertiesView;
+import authoring.view.levelview.SingleLevelView;
 
 /**
  * Event handler for dragging graphics on the level view. Fills properties view
@@ -15,12 +14,10 @@ import authoring.view.propertiesview.PropertiesView;
  */
 
 public class GraphicsDragHandler implements GameHandler<MouseEvent>{
-	private PropertiesView myProperties;
-	private LevelsView myLevels;
+	private SingleLevelView myLevel;
 
-	public GraphicsDragHandler(PropertiesView properties, LevelsView levels) {
-		myProperties = properties;
-		myLevels = levels;
+	public GraphicsDragHandler(SingleLevelView levels) {
+		myLevel = levels;
 	}
 
 	@Override
@@ -28,7 +25,7 @@ public class GraphicsDragHandler implements GameHandler<MouseEvent>{
 		Graphic g = (Graphic) event.getSource();
 		double x = event.getSceneX();
 		double y = event.getSceneY();
-		myLevels.moveSpriteOnLevel(g, x, y);
+		myLevel.moveSpriteOnLevel(g, x, y);
 	}
 
 	@Override

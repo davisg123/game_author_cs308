@@ -35,7 +35,7 @@ public class GameObejctsProperties extends Properties{
 //		yField.getChildren().add(new Text("Y: "));
 //		yField.getChildren().add(new TextField(Double.toString(gameObject.getPosition().getY())));
 //		this.getChildren().add(yField);
-		
+
 		HBox widthField = new HBox();
 		widthField.getChildren().add(new Text("Width: "));
 		widthField.getChildren().add(new TextField(Double.toString(gameObject.getWidth())));
@@ -57,7 +57,7 @@ public class GameObejctsProperties extends Properties{
 		Button submit = new Button("Submit");
 		submit.setOnMouseClicked(event -> submit());
 		this.getChildren().add(submit);
-		
+
 	}
 	
 	public void submit(){
