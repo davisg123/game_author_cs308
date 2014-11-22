@@ -1,22 +1,10 @@
 package engine.level;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-<<<<<<< HEAD
 import java.util.Observable;
 
-=======
-
-import authoring.model.collections.ConditionsCollection;
 import authoring.model.collections.GameObjectsCollection;
->>>>>>> master
-import engine.collisionDetection.CollisionDetector;
-import engine.conditions.Condition;
-import engine.gameObject.IEnabled;
 import engine.gameObject.GameObject;
-import engine.render.GameObjectRenderer;
 
 /**
  * A Level of the game. Contains all GameObjects and Actions and coordinates
