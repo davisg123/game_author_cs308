@@ -1,5 +1,6 @@
 package authoring.view.graphicsview;
 
+import java.util.Collection;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
@@ -11,6 +12,7 @@ import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.ScrollView;
 
 /**
@@ -26,10 +28,10 @@ public class GraphicsView extends ScrollView implements Observer {
 	private static final double VIEW_HEIGHT_RATIO = .95;
 	private static final double VIEW_WIDTH_RATIO = 0.2;
 	private VBox myVbox = new VBox();	
-	private EventHandler<MouseEvent> myOnClick;
+	private GameHandler[] myOnClick;
 	private String myName;
 	
-	public GraphicsView(ResourceBundle language, double width, double height, EventHandler<MouseEvent> action) {
+	public GraphicsView(ResourceBundle language, double width, double height, GameHandler ... action) {
 		super(language, width, height);
 		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
 		this.setContent(myVbox);
@@ -41,9 +43,9 @@ public class GraphicsView extends ScrollView implements Observer {
 		addImage((String) arg, myOnClick);
 	}
 	
-	public void addImage(String s, EventHandler<MouseEvent> handler){
+	public void addImage(String s, GameHandler ... handler){
 		Graphic graphic = new Graphic(s, handler);
-		graphic.makeGraphic(MouseEvent.MOUSE_RELEASED);
+		graphic.makeGraphic();
 		myName = s;
 		myVbox.getChildren().add(graphic);
 		

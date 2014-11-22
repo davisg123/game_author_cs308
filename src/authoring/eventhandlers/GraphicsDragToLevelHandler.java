@@ -1,6 +1,6 @@
 package authoring.eventhandlers;
 
-import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.scene.input.MouseEvent;
 import authoring.view.graphicsview.Graphic;
 import authoring.view.levelview.LevelsView;
@@ -14,11 +14,11 @@ import authoring.view.propertiesview.PropertiesView;
  * @author Chris Bernt
  *
  */
-public class GraphicsEventHandler implements EventHandler<MouseEvent> {
+public class GraphicsDragToLevelHandler implements GameHandler<MouseEvent> {
 	private PropertiesView myProperties;
 	private LevelsView myLevels;
 
-	public GraphicsEventHandler(PropertiesView properties, LevelsView levels) {
+	public GraphicsDragToLevelHandler(PropertiesView properties, LevelsView levels) {
 		myProperties = properties;
 		myLevels = levels;
 	}
@@ -26,12 +26,16 @@ public class GraphicsEventHandler implements EventHandler<MouseEvent> {
 	@Override
 	public void handle(MouseEvent event) {
 		Graphic g = (Graphic) event.getSource();
-		myProperties.fillContents(g);
 		double x = event.getSceneX();
 		double y = event.getSceneY();
 		myLevels.addSpriteToView(g, x, y, new GraphicsDragHandler(myProperties,
-				myLevels));
+				myLevels), new GraphicsClickHandler(myProperties, myLevels));
 
+	}
+
+	@Override
+	public EventType<MouseEvent> getEventType() {
+		return MouseEvent.MOUSE_RELEASED;
 	}
 
 }

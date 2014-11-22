@@ -6,19 +6,11 @@ import authoring.view.graphicsview.Graphic;
 import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
 
-/**
- * Event handler for dragging graphics on the level view. Fills properties view
- * with status and allows user to drag objects to adjust the level.
- * 
- * @author Wesley Valentine
- *
- */
-
-public class GraphicsDragHandler implements GameHandler<MouseEvent>{
+public class GraphicsClickHandler implements GameHandler<MouseEvent>{
 	private PropertiesView myProperties;
 	private LevelsView myLevels;
 
-	public GraphicsDragHandler(PropertiesView properties, LevelsView levels) {
+	public GraphicsClickHandler(PropertiesView properties, LevelsView levels) {
 		myProperties = properties;
 		myLevels = levels;
 	}
@@ -26,14 +18,11 @@ public class GraphicsDragHandler implements GameHandler<MouseEvent>{
 	@Override
 	public void handle(MouseEvent event) {
 		Graphic g = (Graphic) event.getSource();
-		double x = event.getSceneX();
-		double y = event.getSceneY();
-		myLevels.moveSpriteOnLevel(g, x, y);
+		myProperties.fillContents(g);
 	}
 
 	@Override
 	public EventType<MouseEvent> getEventType() {
-		return MouseEvent.MOUSE_DRAGGED;
+		return MouseEvent.MOUSE_PRESSED;
 	}
-
 }

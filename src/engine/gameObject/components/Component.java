@@ -17,14 +17,14 @@ import engine.gameObject.components.properties.IProperty;
 //Just make everything an individual component... would solve search issues?...
 
 
-public abstract class ComponentComponent implements Iterable<IProperty> {
+public abstract class Component implements Iterable<IProperty> {
     protected List<IProperty> myProperties;
 
-    public ComponentComponent () {
+    public Component () {
         this(new ArrayList<IProperty>());
     }
 
-    public ComponentComponent (List<IProperty> properties){
+    public Component (List<IProperty> properties){
         myProperties = properties;
     }
 
