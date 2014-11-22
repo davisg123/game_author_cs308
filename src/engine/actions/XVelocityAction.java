@@ -3,12 +3,19 @@ package engine.actions;
 import engine.gameObject.GameObject;
 import engine.physics.Velocity;
 
+/**
+ * 
+ * @author Ben
+ *
+ */
+
 public class XVelocityAction extends PhysicsAction{
 
 	public XVelocityAction(GameObject sprite, double value) {
 		super(sprite, value);
 	}
 
+	//TODO refactor after physics body discussion
 	@Override
 	public void applyPhysics() {
 		Velocity a=mySprite.getPhysicsBody().getVelocity();
