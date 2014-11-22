@@ -1,11 +1,15 @@
 package authoring.model;
 
-import java.util.Observable;
+import authoring.model.collections.ConditionsCollection;
+import authoring.model.collections.GameObjectsCollection;
+import authoring.model.collections.GraphicsCollection;
+import authoring.model.collections.LevelsCollection;
+import authoring.model.collections.SoundsCollection;
 
 /**
  * The Model of the MVC, gets changes in information from the controller and
  * directly updates the view. Individual components observed by the view.
- *
+ * @author Arjun Jain
  */
 public class AuthoringModel {
 	private GameData myGame;
@@ -18,22 +22,24 @@ public class AuthoringModel {
 		return myGame;
 	}
 	
-	public void modifyModel(Query q){
-		//AuthoringController.getModel().getThing(Levels).get(level1).getSprites().get(Sprite1).getComponents.get(health).set(20)
-		//AuthoringController.change(object::method)
-	}
-	
-	
-	
+	/**
+	 * Save the current GameData using serialization
+	 */
 	public void save() {
 		// TODO - Data
 	}
-
-	public GameData load() {
+	
+	/**
+	 * Replaces the current GameData file with a new file that is loaded in
+	 */
+	public void load() {
 		// TODO - Data
-		return null;
 	}
 
+	/**
+	 * Allows the user to extract certain elements from a GameData object to import into their current project
+	 * @param gd Represents the GameData object from which we want to extract elements
+	 */
 	public void importData(GameData gd) {
 		// TODO - adds data to current authoring environment
 
@@ -42,8 +48,21 @@ public class AuthoringModel {
 	public GraphicsCollection getImages(){
 		return myGame.getImages();
 	}
-	public GameObjectCollection getGameObjectCollection(){
+	
+	public GameObjectsCollection getGameObjectCollection(){
 		return myGame.getGameObjects();
 	}
+	
+	public LevelsCollection getLevels(){
+		return myGame.getLevels();
+	}
 
+	public ConditionsCollection getConditions(){
+		return myGame.getConditions();
+	}
+
+	public SoundsCollection getSounds(){
+		return myGame.getSounds();
+	}
+	
 }
