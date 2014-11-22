@@ -1,17 +1,10 @@
 package authoring.view.graphicsview;
 
-import java.util.Collection;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
 
-import javafx.event.EventHandler;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseDragEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.ScrollView;
 

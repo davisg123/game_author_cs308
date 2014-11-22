@@ -1,15 +1,13 @@
 package authoring.view.propertiesview;
 
 import javafx.scene.layout.VBox;
-import authoring.view.baseclasses.ScrollView;
-import authoring.view.graphicsview.Graphic;
 
 public abstract class Properties extends VBox{
 
-	public Properties(Graphic g){
-		initializeProperties(g);
+	public Properties(Object o){ //game object, level, sound, image...
+		initializeProperties(o);
 	}
 	
-	public abstract void initializeProperties(Graphic g);
+	public abstract void initializeProperties(Object o);
 
 }

@@ -2,6 +2,8 @@ package authoring.eventhandlers;
 
 import javafx.event.EventType;
 import javafx.scene.input.MouseEvent;
+import authoring.model.AuthoringModel;
+import authoring.model.collections.LevelsCollection;
 import authoring.view.graphicsview.Graphic;
 import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
@@ -18,9 +20,9 @@ public class GraphicsDragToLevelHandler implements GameHandler<MouseEvent> {
 	private PropertiesView myProperties;
 	private LevelsView myLevels;
 
-	public GraphicsDragToLevelHandler(PropertiesView properties, LevelsView levels) {
+	public GraphicsDragToLevelHandler(PropertiesView properties, LevelsView levelsView) {
 		myProperties = properties;
-		myLevels = levels;
+		myLevels = levelsView;
 	}
 
 	@Override

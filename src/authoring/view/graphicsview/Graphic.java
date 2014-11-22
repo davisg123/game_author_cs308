@@ -1,15 +1,10 @@
 package authoring.view.graphicsview;
 
-import java.util.Collection;
-
-import authoring.eventhandlers.GameHandler;
-import javafx.event.EventHandler;
-import javafx.event.EventType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import authoring.eventhandlers.GameHandler;
 
 /**
  * Represents an image, but does not instantiate JavaFX object so that the

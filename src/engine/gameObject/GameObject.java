@@ -238,7 +238,7 @@ public class GameObject implements IEnabled, Iterable<Component>{
     }
 
     public boolean isEnabled() {
-        return enabled;
+    	return enabled;
     }
     
     public boolean getCollisionConstant()
