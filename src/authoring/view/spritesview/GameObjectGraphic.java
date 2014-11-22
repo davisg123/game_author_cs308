@@ -8,8 +8,8 @@ public class GameObjectGraphic extends Graphic{
 
 	private GameObject myGameObject;
 	
-	public GameObjectGraphic(GameObject gameObject, String s, GameHandler[] event) {
-		super(s, event);
+	public GameObjectGraphic(GameObject gameObject, GameHandler ...event) {
+		super(gameObject.getCurrentImageName(), event);
 		myGameObject = gameObject;
 	}
 	

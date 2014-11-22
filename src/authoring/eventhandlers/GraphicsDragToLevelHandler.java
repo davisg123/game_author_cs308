@@ -2,8 +2,7 @@ package authoring.eventhandlers;
 
 import javafx.event.EventType;
 import javafx.scene.input.MouseEvent;
-import authoring.view.graphicsview.Graphic;
-import authoring.view.levelview.LevelsView;
+import authoring.view.levelview.SingleLevelView;
 import authoring.view.propertiesview.PropertiesView;
 import authoring.view.spritesview.GameObjectGraphic;
 
@@ -17,11 +16,11 @@ import authoring.view.spritesview.GameObjectGraphic;
  */
 public class GraphicsDragToLevelHandler implements GameHandler<MouseEvent> {
 	private PropertiesView myProperties;
-	private LevelsView myLevels;
+	private SingleLevelView myLevel;
 
-	public GraphicsDragToLevelHandler(PropertiesView properties, LevelsView levelsView) {
+	public GraphicsDragToLevelHandler(PropertiesView properties, SingleLevelView levelsView) {
 		myProperties = properties;
-		myLevels = levelsView;
+		myLevel = levelsView;
 	}
 
 	@Override
@@ -29,8 +28,8 @@ public class GraphicsDragToLevelHandler implements GameHandler<MouseEvent> {
 		GameObjectGraphic g = (GameObjectGraphic) event.getSource();
 		double x = event.getSceneX();
 		double y = event.getSceneY();
-		myLevels.addGameObjectToView(g, x, y, new GraphicsDragHandler(myProperties,
-				myLevels), new GameObjectClickHandler(myProperties));
+		myLevel.addGameObjectToView(g.getGameObject(), x, y, new GraphicsDragHandler(
+				myLevel), new GameObjectClickHandler(myProperties));
 
 	}
 
