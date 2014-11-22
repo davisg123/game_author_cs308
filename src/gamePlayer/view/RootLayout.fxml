@@ -27,12 +27,22 @@
     	<TabPane>
     		<tabs>
     			<Tab text="Menu" closable="false">
-    				<Button>
-					<Button />
+    				<content>
+    					<Button id="home" text="Home" />
+	    				<Button id="load" text="Load Game File" />
+    					<Button id="exit" text="Exit Game" />
+    				</content>
     			</Tab>
     			<Tab text="Options" closable="false">
+    				<Button text="New" />
+    				<Button text="Load from Save File" />
+    				<Button text="Save" />
+    				<Button text="Pause" />
+    				<Button text="Quit" />
     			</Tab>
     			<Tab text="Preferences" closable="false">
+    				<Button text="Sound" />
+    				<Button text="Key Combos" />
     			</Tab>
     		</tabs>
     	</TabPane>
