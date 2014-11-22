@@ -79,12 +79,12 @@ public class ProgramMenu extends MenuBar {
 		File gameFile = myFileChooser.showSaveDialog(new Stage());
 		if (gameFile != null) {
 			makeFolders(gameFile);
-			Tab tab = new Tab(gameFile.getPath());
+			Tab tab = new Tab(gameFile.getName());
 			AuthoringView newView = new AuthoringView(myLanguage, myWidth,
 					myHeight);
 			AuthoringModel newModel = new AuthoringModel();
 			AuthoringController newController = new AuthoringController(
-					newView, newModel, myWidth, myHeight, myLanguage);
+					newView, newModel, myWidth, myHeight, myLanguage, gameFile);
 			tab.setContent(newView);
 			myTabs.getTabs().add(tab);
 			myTabs.getSelectionModel().select(tab);
