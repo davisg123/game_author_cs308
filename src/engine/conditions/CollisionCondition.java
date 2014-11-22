@@ -9,7 +9,7 @@ import engine.gameObject.GameObject;
  * 
  * @author Davis
  * 
- * actions caused by collisions of two nodes
+ * conditions caused by collisions of two nodes
  *
  */
 

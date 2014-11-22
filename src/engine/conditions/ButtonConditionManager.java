@@ -14,7 +14,7 @@ import engine.actions.Action;
  * 
  * @author Davis
  * 
- * actions caused by a button press
+ * condition manager for conditions caused by a button press
  *
  */
 
@@ -44,6 +44,11 @@ public class ButtonConditionManager extends Condition {
         }
     }
     
+    /**
+     * tell the button condition manager to begin listening for key presses in a particular scene
+     * @param scene
+     * the scene to listen to
+     */
     public void beginListeningToScene (Scene scene) {
         scene.setOnKeyPressed(event -> keyPressed(event));
         scene.setOnKeyReleased(event -> keyReleased(event));
