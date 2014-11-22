@@ -3,6 +3,7 @@ package engine.gameObject.components;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import engine.gameObject.GameObject;
 import engine.gameObject.components.properties.IProperty;
 
 /**
@@ -17,7 +18,7 @@ import engine.gameObject.components.properties.IProperty;
 //Just make everything an individual component... would solve search issues?...
 
 
-public abstract class Component implements Iterable<IProperty> {
+public abstract class Component implements Iterable<IProperty>, IEnabled {
     protected List<IProperty> myProperties;
     
     //Not sure if it should be included in constructor but we might need to know if this component is enabled or not.
@@ -62,18 +63,7 @@ public abstract class Component implements Iterable<IProperty> {
         myProperties.remove(property);
     }
 
-  
-    
-    /**
-     * updates all properties of Components
-     */
-    public void update(){
-        for(IProperty property : myProperties) {
-            //property.update(this); Should include current Component?... 
-            //update methods should be specific to each component...
-            property.update();
-        }
-    }
+    public abstract void update(GameObject object);
 
     public void enable() {
         enabled = true;

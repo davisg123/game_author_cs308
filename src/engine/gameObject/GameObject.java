@@ -34,10 +34,13 @@ public class GameObject implements IEnabled, Iterable<Component>{
     //private Dimension2D myDimension; 
     private double myHeight;
     private double myWidth;
+    
+    //refactor the Point2D
     private transient Point2D myDefaultPosition;
 
     private transient RenderedNode myRenderedNode;
     
+    //refactor this into the PhysicsBody
     private boolean myCollision;
 
 
@@ -172,7 +175,7 @@ public class GameObject implements IEnabled, Iterable<Component>{
         for(Component component : myComponents) {
             //component.update(this); Should include current Level???... 
             //update methods should be specific to each component...
-            component.update();
+            component.update(null);
         }
     }
 

@@ -27,7 +27,7 @@ public class SoundReference extends Component {
     }
 
     @Override
-    public void update () {
+    public void update (GameObject object) {
         // TODO Auto-generated method stub
         
     }
