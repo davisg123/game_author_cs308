@@ -15,7 +15,6 @@ public class GameObjectClickHandler implements GameHandler<MouseEvent>{
 	
 	@Override
 	public void handle(MouseEvent event) {
-		System.out.println("GAME OBJECT");
 		GameObjectGraphic g = (GameObjectGraphic) event.getSource();
 		myProperties.makeProperties(g.getGameObject());
 		
@@ -23,7 +22,7 @@ public class GameObjectClickHandler implements GameHandler<MouseEvent>{
 
 	@Override
 	public EventType<MouseEvent> getEventType() {
-		return MouseEvent.MOUSE_CLICKED;
+		return MouseEvent.MOUSE_PRESSED;
 	}
 
 }

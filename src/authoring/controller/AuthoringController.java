@@ -1,6 +1,7 @@
 package authoring.controller;
 
 import java.awt.geom.Point2D;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -52,14 +53,16 @@ public class AuthoringController {
 	private GraphicsView myGraphics;
 	private SoundsView mySounds;
 	private PropertiesView myProperties;
+	private File myGameLocation;
 
 	public AuthoringController(AuthoringView view, AuthoringModel model,
-			double width, double height, ResourceBundle language) {
+			double width, double height, ResourceBundle language, File gameLoc) {
 		myView = view;
 		myModel = model;
 		myWidth = width;
 		myHeight = height;
 		myLanguage = language;
+		myGameLocation = gameLoc;
 		initializeView();
 
 	}
@@ -88,9 +91,10 @@ public class AuthoringController {
 		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
 		myProperties = new PropertiesView(myLanguage, myWidth, myHeight);
 		myGraphics = new GraphicsView(myLanguage, myWidth, myHeight,
-				new GraphicsDragToLevelHandler(myProperties, myLevels), new GraphicsClickHandler(myProperties, myLevels));
+				new GraphicsClickHandler(myProperties, myLevels));
 		myGameObjects = new GameObjectsView(myLanguage, myWidth, myHeight,
-				new GraphicsDragToLevelHandler(myProperties, myLevels), new GameObjectClickHandler(myProperties));
+				new GraphicsDragToLevelHandler(myProperties, myLevels),
+				new GameObjectClickHandler(myProperties));
 
 	}
 
@@ -111,10 +115,11 @@ public class AuthoringController {
 		myModel.getImages().addObserver(myGraphics);
 		myModel.getGameObjectCollection().addObserver(myGameObjects);
 
-		GameObject test = new GameObject(new ArrayList<Component>(), im, new Point2D.Double(), 0, 0, 0, "Mario");
-		//System.out.println(test.getCurrentImageName());
+		GameObject test = new GameObject(new ArrayList<Component>(), im,
+				new Point2D.Double(), 0, 0, 0, "Mario");
+		// System.out.println(test.getCurrentImageName());
 		myModel.getGameObjectCollection().addGameObject(test);
-		
+
 		myModel.getImages().addImage(im);
 		myModel.getImages().addImage(im2);
 
@@ -122,8 +127,8 @@ public class AuthoringController {
 				myGraphics);
 		TitledPane sounds = new TitledPane(myLanguage.getString("Sounds"),
 				mySounds);
-		TitledPane gameObjects = new TitledPane(myLanguage.getString("GameObjects"),
-				myGameObjects);
+		TitledPane gameObjects = new TitledPane(
+				myLanguage.getString("GameObjects"), myGameObjects);
 
 		leftView.getPanes().addAll(graphics, sounds, gameObjects);
 		BorderPane.setAlignment(leftView, Pos.TOP_RIGHT);
