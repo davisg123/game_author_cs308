@@ -26,7 +26,6 @@ public class GraphicsDragHandler implements GameHandler<MouseEvent>{
 	@Override
 	public void handle(MouseEvent event) {
 		Graphic g = (Graphic) event.getSource();
-		myProperties.fillContents(g);
 		double x = event.getSceneX();
 		double y = event.getSceneY();
 		myLevels.moveSpriteOnLevel(g, x, y);
