@@ -3,7 +3,7 @@ package authoring.model;
 import java.io.Serializable;
 import authoring.model.collections.ConditionsCollection;
 import authoring.model.collections.GameObjectsCollection;
-import authoring.model.collections.GraphicsCollection;
+import authoring.model.collections.ImagesCollection;
 import authoring.model.collections.LevelsCollection;
 import authoring.model.collections.SoundsCollection;
 import engine.conditions.Condition;
@@ -29,14 +29,14 @@ public class GameData implements Serializable{
 	private LevelsCollection myLevels;
 	private ConditionsCollection myConditions;
 	private GameObjectsCollection myGameObjects;
-	private GraphicsCollection myImages;
+	private ImagesCollection myImages;
 	private SoundsCollection mySounds;
 	
 	public GameData(){
 		myLevels = new LevelsCollection();
 		myGameObjects = new GameObjectsCollection();
 		myConditions = new ConditionsCollection();
-		myImages = new GraphicsCollection();
+		myImages = new ImagesCollection();
 		mySounds = new SoundsCollection();
 	}
 	
@@ -92,7 +92,7 @@ public class GameData implements Serializable{
 	 * Graphic Methods
 	 */
 	
-	public GraphicsCollection getImages(){
+	public ImagesCollection getImages(){
 		return myImages;
 	}
 	
