@@ -50,8 +50,8 @@ public class Graphic extends VBox {
 		imageView.setFitWidth(70);
 		this.getChildren().add(imageView);
 		this.getChildren().add(new Text(myName));
-		for(int x = 0; x < myOnClick.length; x++){
-			this.addEventFilter(myOnClick[x].getEventType(), myOnClick[x]);
+		for(GameHandler g: myOnClick){
+			this.addEventFilter(g.getEventType(), g);
 		}
 	}
 
