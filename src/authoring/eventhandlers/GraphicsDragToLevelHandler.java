@@ -27,7 +27,6 @@ public class GraphicsDragToLevelHandler implements GameHandler<MouseEvent> {
 		Graphic g = (Graphic) event.getSource();
 		double x = event.getSceneX();
 		double y = event.getSceneY();
-		myProperties.fillContents(g);
 		myLevels.addSpriteToView(g, x, y, new GraphicsDragHandler(myProperties,
 				myLevels), new GraphicsClickHandler(myProperties, myLevels));
 
