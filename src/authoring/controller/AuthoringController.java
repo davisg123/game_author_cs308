@@ -55,13 +55,13 @@ public class AuthoringController {
 	private File myGameLocation;
 
 	public AuthoringController(AuthoringView view, AuthoringModel model,
-			double width, double height, ResourceBundle language, File gameLoc) {
+			double width, double height, ResourceBundle language /*,File gameLoc*/ ) {
 		myView = view;
 		myModel = model;
 		myWidth = width;
 		myHeight = height;
 		myLanguage = language;
-		myGameLocation = gameLoc;
+		//myGameLocation = gameLoc;
 		initializeView();
 
 	}
