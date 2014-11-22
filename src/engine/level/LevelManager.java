@@ -10,7 +10,7 @@ import engine.gameObject.GameObject;
 /**
  * Manages the Levels, and progression of the Game
  * @author Will Chang
- *
+ * @author Abhishek Balakrishnan
  */
 
 public class LevelManager implements Iterable<Level> {
