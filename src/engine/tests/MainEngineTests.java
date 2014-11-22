@@ -84,7 +84,8 @@ public class MainEngineTests extends Application {
         myConditionList.add(buttonManager);
         myConditionList.add(cond);
         myGameManager = new GameManager(myConditionList,myGameObjectList,group);
-        Level level0 = new Level(myGameObjectList,null);
+        Level level0 = new Level();
+        // Level level0 = new Level(myGameObjectList,null);
         GameObjectRenderer myGameObjectRenderer = new GameObjectRenderer(group);
         myGameObjectRenderer.renderGameObjects(level0);
         myGameManager.initialize();
