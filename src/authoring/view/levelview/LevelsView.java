@@ -5,11 +5,11 @@ import java.util.Observer;
 import java.util.ResourceBundle;
 
 import javafx.scene.control.TabPane;
-import javafx.scene.input.MouseEvent;
 import authoring.eventhandlers.GameHandler;
-import authoring.eventhandlers.GraphicsDragHandler;
 import authoring.view.baseclasses.BPView;
 import authoring.view.graphicsview.Graphic;
+import authoring.view.spritesview.GameObjectGraphic;
+import engine.gameObject.GameObject;
 
 /**
  * View class that contains all the levels in the program. Corresponds with
@@ -52,9 +52,9 @@ public class LevelsView extends BPView implements Observer {
 	 * @param y
 	 * @param handler
 	 */
-	public void addSpriteToView(Graphic graphic, double x, double y,
+	public void addGameObjectToView(GameObjectGraphic graphic, double x, double y,
 			GameHandler ... handler) {
-		Graphic g = new Graphic(graphic.getName(), handler);
+		Graphic g = new GameObjectGraphic(graphic.getGameObject(), graphic.getGameObject().getCurrentImageName(), handler);
 		g.makeGraphic();
 		g.setLayoutX(x - 230);
 		g.setLayoutY(y - 100);

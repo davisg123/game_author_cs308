@@ -87,7 +87,7 @@ public class AuthoringController {
 		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
 		myProperties = new PropertiesView(myLanguage, myWidth, myHeight);
 		myGraphics = new GraphicsView(myLanguage, myWidth, myHeight,
-				new GraphicsDragToLevelHandler(myProperties, myLevels), new GraphicsClickHandler(myProperties, myLevels));
+				new GraphicsClickHandler(myProperties, myLevels));
 		myGameObjects = new GameObjectsView(myLanguage, myWidth, myHeight,
 				new GraphicsDragToLevelHandler(myProperties, myLevels), new GameObjectClickHandler(myProperties));
 

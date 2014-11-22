@@ -2,11 +2,10 @@ package authoring.eventhandlers;
 
 import javafx.event.EventType;
 import javafx.scene.input.MouseEvent;
-import authoring.model.AuthoringModel;
-import authoring.model.collections.LevelsCollection;
 import authoring.view.graphicsview.Graphic;
 import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
+import authoring.view.spritesview.GameObjectGraphic;
 
 /**
  * Handles user click on graphic objects. Projects graphic properties in
@@ -27,11 +26,11 @@ public class GraphicsDragToLevelHandler implements GameHandler<MouseEvent> {
 
 	@Override
 	public void handle(MouseEvent event) {
-		Graphic g = (Graphic) event.getSource();
+		GameObjectGraphic g = (GameObjectGraphic) event.getSource();
 		double x = event.getSceneX();
 		double y = event.getSceneY();
-		myLevels.addSpriteToView(g, x, y, new GraphicsDragHandler(myProperties,
-				myLevels), new GraphicsClickHandler(myProperties, myLevels));
+		myLevels.addGameObjectToView(g, x, y, new GraphicsDragHandler(myProperties,
+				myLevels), new GameObjectClickHandler(myProperties));
 
 	}
 

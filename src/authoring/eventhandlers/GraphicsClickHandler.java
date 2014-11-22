@@ -19,7 +19,6 @@ public class GraphicsClickHandler implements GameHandler<MouseEvent>{
 	public void handle(MouseEvent event) {
 		Graphic g = (Graphic) event.getSource();
 		myProperties.makeProperties(g);
-		System.out.println("IMAGE");
 	}
 
 	@Override
