@@ -14,6 +14,7 @@ import authoring.view.AuthoringView;
 import authoring.view.baseclasses.AccordianView;
 import authoring.view.graphicsview.GraphicsView;
 import authoring.view.levelview.LevelsView;
+import authoring.view.levelview.SingleLevelView;
 import authoring.view.propertiesview.PropertiesView;
 import authoring.view.soundsview.SoundsView;
 import authoring.view.spritesview.GameObjectsView;
@@ -68,7 +69,7 @@ public class AuthoringController {
 
 	private void initializeView() {
 		initializeViewComponents();
-		myView.setCenter(myLevels);
+		myView.setCenter(new SingleLevelView(myWidth, myHeight));
 		myView.setLeft(initializeLeft());
 		myView.setRight(initializeRight());
 
