@@ -2,7 +2,7 @@ package authoring.model;
 
 import authoring.model.collections.ConditionsCollection;
 import authoring.model.collections.GameObjectsCollection;
-import authoring.model.collections.GraphicsCollection;
+import authoring.model.collections.ImagesCollection;
 import authoring.model.collections.LevelsCollection;
 import authoring.model.collections.SoundsCollection;
 
@@ -45,7 +45,7 @@ public class AuthoringModel {
 
 	}
 	
-	public GraphicsCollection getImages(){
+	public ImagesCollection getImages(){
 		return myGame.getImages();
 	}
 	
