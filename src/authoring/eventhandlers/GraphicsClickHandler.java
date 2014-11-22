@@ -23,6 +23,6 @@ public class GraphicsClickHandler implements GameHandler<MouseEvent>{
 
 	@Override
 	public EventType<MouseEvent> getEventType() {
-		return MouseEvent.MOUSE_CLICKED;
+		return MouseEvent.MOUSE_PRESSED;
 	}
 }

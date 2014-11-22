@@ -4,14 +4,12 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
 
-import javafx.event.EventHandler;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+import javafx.event.Event;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
+import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.ScrollView;
 import authoring.view.graphicsview.Graphic;
+import engine.gameObject.GameObject;
 
 /**
  * View component for the backend model data - SpritesCollection. Updates
@@ -24,24 +22,26 @@ public class GameObjectsView extends ScrollView implements Observer {
 
 	private static final double VIEW_HEIGHT_RATIO = .95;
 	private static final double VIEW_WIDTH_RATIO = 0.2;
-	private EventHandler<MouseEvent> myOnClick;
+	private GameHandler[] myEvents;
 	private VBox myVbox = new VBox();	
 
-	public GameObjectsView(ResourceBundle language, double width, double height, EventHandler<MouseEvent> action) {
+	@SafeVarargs
+	public GameObjectsView(ResourceBundle language, double width, double height, GameHandler ... action) {
 		super(language, width, height);
 		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
-		myOnClick = action;
+		myEvents = action;
 		this.setContent(myVbox);
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
-		addSprite((String) arg, myOnClick);
+		addGameObject((GameObject) arg, myEvents);
 	}
 
-	private void addSprite(String s, EventHandler<MouseEvent> handler) {
-		Graphic graphic = new Graphic(s, handler);
-		graphic.makeGraphic(MouseEvent.MOUSE_CLICKED);
+	@SuppressWarnings("unchecked")
+	private void addGameObject(GameObject gameObject, GameHandler ... handler) {
+		Graphic graphic = new Graphic(gameObject.getCurrentImageName(), handler);
+		graphic.makeGraphic();
 		myVbox.getChildren().add(graphic);
 	}
 	

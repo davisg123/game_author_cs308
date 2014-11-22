@@ -36,5 +36,5 @@ public abstract class GeneralCollection<T> extends Observable implements Iterabl
 	public void add(T a){
 		myObjects.add(a);
 	}
-
+	
 }
