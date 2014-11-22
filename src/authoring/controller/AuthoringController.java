@@ -69,7 +69,7 @@ public class AuthoringController {
 
 	private void initializeView() {
 		initializeViewComponents();
-		myView.setCenter(new SingleLevelView(myWidth, myHeight));
+		myView.setCenter(myLevels);
 		myView.setLeft(initializeLeft());
 		myView.setRight(initializeRight());
 

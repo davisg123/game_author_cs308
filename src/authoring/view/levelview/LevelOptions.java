@@ -22,13 +22,13 @@ public class LevelOptions extends ToolBar {
 		myWidth = width;
 		myHeight = height;
 		addNewTabButton();
-		addTab();
+		addNewLevel();
 	}
 
 	private void addNewTabButton() {
 		this.getItems().add(
 				makeButton(myLanguage.getString("Add_Level"),
-						handle -> addTab()));
+						handle -> addNewLevel()));
 	}
 
 	private Button makeButton(String property, EventHandler<ActionEvent> handler) {
@@ -38,11 +38,12 @@ public class LevelOptions extends ToolBar {
 		return result;
 	}
 
-	public void addTab() {
+	public SingleLevelView addNewLevel() {
 		Tab tab = new Tab(myLanguage.getString("New_Level"));
 		SingleLevelView newView = new SingleLevelView(myWidth, myHeight);
 		tab.setContent(newView);
 		myLevels.getTabs().add(tab);
 		myLevels.getSelectionModel().select(tab);
+		return newView;
 	}
 }

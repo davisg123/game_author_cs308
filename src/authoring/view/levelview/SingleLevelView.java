@@ -1,5 +1,8 @@
 package authoring.view.levelview;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import javafx.geometry.Insets;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -14,7 +17,7 @@ import javafx.scene.paint.Color;
  * @author Kevin Li
  *
  */
-public class SingleLevelView extends Pane {
+public class SingleLevelView extends Pane implements Observer {
 	private Background myDefaultBackground = new Background(new BackgroundFill(
 			Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY));
 	private static final double VIEW_HEIGHT_RATIO = .85;
@@ -29,6 +32,12 @@ public class SingleLevelView extends Pane {
 		setPrefSize(width, height);
 		setMinSize(width, height);
 		setMaxSize(width, height);
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

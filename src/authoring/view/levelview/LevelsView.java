@@ -75,5 +75,9 @@ public class LevelsView extends BPView implements Observer {
 		g.setLayoutX(x - 230);
 		g.setLayoutY(y - 100);
 	}
+	
+	public LevelOptions getLevelOptions(){
+		return myLevelOptions;
+	}
 
 }

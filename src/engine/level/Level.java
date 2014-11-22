@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Observable;
+
 import engine.collisionDetection.CollisionDetector;
 import engine.conditions.Condition;
 import engine.gameObject.IEnabled;
@@ -17,7 +19,7 @@ import engine.render.GameObjectRenderer;
  *
  */
 
-public class Level {
+public class Level extends Observable {
 
     private List<GameObject> myGameObjects;
     //private List<Condition> myConditions;
