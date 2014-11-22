@@ -70,7 +70,7 @@ public class AuthoringController {
 
 	private void initializeView() {
 		initializeViewComponents();
-		myView.setCenter(myLevels);
+		myView.setCenter(new SingleLevelView(myWidth, myHeight));
 		myView.setLeft(initializeLeft());
 		myView.setRight(initializeRight());
 
@@ -110,7 +110,7 @@ public class AuthoringController {
 		myModel.getImages().addObserver(myGraphics);
 		myModel.getGameObjectCollection().addObserver(myGameObjects);
 
-		GameObject test = new GameObject(new ArrayList<Component>(), im, new Point2D.Double(0,0), 0, 0, 0, "Mario");
+		GameObject test = new GameObject(new ArrayList<Component>(), im, new Point2D.Double(), 0, 0, 0, "Mario");
 		//System.out.println(test.getCurrentImageName());
 		myModel.getGameObjectCollection().addGameObject(test);
 		
