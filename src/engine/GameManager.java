@@ -17,6 +17,8 @@ import engine.render.GameObjectRenderer;
 import engine.gameObject.*;
 
 /**
+ * central game manager responsible for holding game data, setting the timeline speed
+ * and processing each game frame
  * 
  * @author Davis
  *
@@ -39,11 +41,17 @@ public class GameManager {
         this.myRootGroup = myRootGroup;
     }
     
+    /**
+     * initialize the game
+     */
     public void initialize(){
         addFramesToGroup();
         setGameSpeed(DEFAULT_SPEED,true);
     }
     
+    /**
+     * remove and cleanup the existing game
+     */
     public void clear(){
         myAnimation.stop();
         //other cleanup
@@ -79,6 +87,9 @@ public class GameManager {
        }
    }
    
+   /**
+    * toggle the play/pause state of the game timeline
+    */
    public void togglePause(){
        if (myAnimation.getStatus() == Animation.Status.RUNNING){
            myAnimation.pause();

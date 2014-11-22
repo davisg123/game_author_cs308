@@ -81,8 +81,8 @@ public class LevelManager implements Iterable<Level> {
      * Initializes the Current Level
      */
     public void initializeCurrentLevel() {
-        myCurrentLevel.setEnabledGameObjects(myGameObjects);
-        myCurrentLevel.setEnabledConditions(myConditions);
+//        myCurrentLevel.setEnabledGameObjects(myGameObjects);
+//        myCurrentLevel.setEnabledConditions(myConditions);
         myRenderer.renderGameObjects(myCurrentLevel);
     }
     

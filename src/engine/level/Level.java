@@ -1,98 +1,98 @@
 package engine.level;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 import java.util.Observable;
 
-import engine.collisionDetection.CollisionDetector;
-import engine.conditions.Condition;
-import engine.gameObject.IEnabled;
+import authoring.model.collections.GameObjectsCollection;
 import engine.gameObject.GameObject;
-import engine.render.GameObjectRenderer;
 
 /**
- * A Level of the game. Contains all GameObjects and Actions and coordinates their interactions
- * for linear progression through the game.
- * @author Will Chang
+ * A Level of the game. Contains all GameObjects and Actions and coordinates
+ * their interactions for linear progression through the game.
+ * 
+ * @author Will Chang,
  *
  */
 
 public class Level extends Observable {
 
-    private List<GameObject> myGameObjects;
-    //private List<Condition> myConditions;
-    private Map<String, Boolean> myEnabledGameObjects;
-    private Map<String, Boolean> myEnabledConditions;
-    private GameObjectRenderer myRenderer;
-    private CollisionDetector myDetector;
+	private GameObjectsCollection myGameObjects;
+//	private ConditionsCollection myConditions;
 
+	/**
+	 * Constructor
+	 * @param Game Objects Collection
+	 */
+	public Level(GameObjectsCollection gameObjects) {
+		myGameObjects = gameObjects;
+	}
+	
+	/**
+	 * Updates all GameObjects.
+	 */
+	public void update() {
+		for (GameObject sprite : myGameObjects) {
+			sprite.update();
+		}
+	}
 
-    /**
-     * Constructor 
-     * @param EnabledGameObjectsMap
-     * @param EnabledActionsMap
-     */
-    public Level(Map<String, Boolean> enabledGameObjects, Map<String, Boolean> enabledConditions) {
-        myEnabledGameObjects = enabledGameObjects;
-        myEnabledConditions = enabledConditions;
-    }
+	/**
+	 * SET INITIAL VALUES FOR THE MAIN CHARACTER
+	 */
+	public void updateMainCharacter() {
+		
+	}
+	
+	/**
+	 * Enables and initializes the Game Objects specified in this Level
+	 * 
+	 * @param sprites
+	 */
+	/*
+	 * public void setEnabledGameObjects(List<GameObject> sprites) {
+	 * for(GameObject sprite : sprites) {
+	 * if(myEnabledGameObjects.get(sprite.getID())) { //sprite.enable(); ??
+	 * //copy of??? //Initialize the sprite to location???
+	 * myGameObjects.add(sprite); } } } /* public void setEnabled(String type,
+	 * List<IEnabled> enabledObjects) {
+	 * 
+	 * for(IEnabled enabledObject : enabledObjects) {
+	 * if(myEnabledGameObjects.get(sprite.getID()) } }
+	 */
 
-    /**
-     * Updates all GameObjects.
-     */
-    public void update() {
-        for(GameObject sprite : myGameObjects) {
-            sprite.update();
-        }
-    }
-    
-    /**
-     * Enables and initializes the Game Objects specified in this Level
-     * 
-     * @param sprites
-     */
-    public void setEnabledGameObjects(List<GameObject> sprites) {
-       for(GameObject sprite : sprites) {
-           if(myEnabledGameObjects.get(sprite.getID())) {
-               //sprite.enable(); ??
-               //copy of???
-               //Initialize the sprite to location???
-               myGameObjects.add(sprite);
-           }
-       }
-    }
+	/**
+	 * Enables the Conditions specified in this Level
+	 * 
+	 * @param conditions
+	 */
+	/*
+	 * public void setEnabledConditions(List<Condition> conditions) {
+	 * for(Condition condition : conditions) {
+	 * //if(myEnabledConditions.get(condition.getID()) { //TODO have Conditions
+	 * Implement IEnabled // condition.enable(); //} } }
+	 */
+	/*
+	public void setEnabledConditions(List<Condition> conditions) {
+		 for(Condition condition : conditions) {
+		 if(myEnabledConditions.get(condition.getID()) { //TODO have Conditions
+		 //Implement IEnabled 
+		 condition.enable(); } } }
+*/
+	/**
+	 * Iterator for the List of enabled Game Objects in the Level
+	 * 
+	 * @return
+	 */
+	public Iterator<GameObject> getGameObjects() {
+		return myGameObjects.iterator();
+	}
+	
+	public GameObjectsCollection getGameObjectsCollection(){
+		return myGameObjects;
+	}
+	
 /*
-    public void setEnabled(String type, List<IEnabled> enabledObjects) {
-        
-        for(IEnabled enabledObject : enabledObjects) {
-            if(myEnabledGameObjects.get(sprite.getID())
-        }
-    }*/
-    
-    /**
-     * Enables the Conditions specified in this Level
-     * @param conditions
-     */
-    public void setEnabledConditions(List<Condition> conditions) {
-        for(Condition condition : conditions) {
-            //if(myEnabledConditions.get(condition.getID()) {
-                //TODO have Conditions Implement IEnabled
-              //  condition.enable();
-            //}
-        }
-    }
-
-    /**
-     * Iterator for the List of enabled Game Objects in the Level
-     * @return
-     */
-    public Iterator<GameObject> getGameObjects () {
-        return myGameObjects.iterator();
-    }
-    
-    /*public Iterator<Condition> getConditions () {
-        return myConditions.iterator();
-    }*/
+	public Iterator<Condition> getConditions() {
+		return myConditions.iterator();
+	} */
 }

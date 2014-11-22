@@ -27,12 +27,20 @@ public class SoundReference extends Component {
     }
 
     @Override
-    public void update () {
+    public void update (GameObject object) {
         // TODO Auto-generated method stub
         
     }
 
     public String getCurrentSound () {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+
+
+    @Override
+    public String getID () {
         // TODO Auto-generated method stub
         return null;
     }

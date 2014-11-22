@@ -1,5 +1,6 @@
 package engine.gameObject.components;
 
+import engine.gameObject.GameObject;
 import engine.gameObject.components.properties.IProperty;
 
 /**
@@ -13,9 +14,15 @@ public class Attributes extends Component{
     
     //TODO figure out implementation
     @Override
-    public void update () {
+    public void update (GameObject object) {
         // TODO Auto-generated method stub
         
+    }
+
+    @Override
+    public String getID () {
+        // TODO Auto-generated method stub
+        return null;
     }
 
   
