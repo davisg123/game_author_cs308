@@ -36,6 +36,18 @@ public class GameObejctsProperties extends Properties{
 //		yField.getChildren().add(new TextField(Double.toString(gameObject.getPosition().getY())));
 //		this.getChildren().add(yField);
 		
+		HBox widthField = new HBox();
+		widthField.getChildren().add(new Text("Width: "));
+		widthField.getChildren().add(new TextField(Double.toString(gameObject.getWidth())));
+		this.getChildren().add(widthField);
+		
+		HBox heightField = new HBox();
+		heightField.getChildren().add(new Text("Height: "));
+		heightField.getChildren().add(new TextField(Double.toString(gameObject.getHeight())));
+		this.getChildren().add(heightField);
+		
+		
+		
 		HBox visibilityField = new HBox();
 		CheckBox cb = new CheckBox("Enabled");
 		cb.setSelected(gameObject.isEnabled());
@@ -44,6 +56,7 @@ public class GameObejctsProperties extends Properties{
 		
 		Button submit = new Button("Submit");
 		submit.setOnMouseClicked(event -> submit());
+		this.getChildren().add(submit);
 		
 	}
 	
