@@ -86,6 +86,11 @@ public class Level extends Observable {
 	public Iterator<GameObject> getGameObjects() {
 		return myGameObjects.iterator();
 	}
+	
+	public GameObjectsCollection getGameObjectsCollection(){
+		return myGameObjects;
+	}
+	
 /*
 	public Iterator<Condition> getConditions() {
 		return myConditions.iterator();
