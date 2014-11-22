@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import javafx.scene.control.TabPane;
 import javafx.scene.input.MouseEvent;
+import authoring.eventhandlers.GameHandler;
 import authoring.eventhandlers.GraphicsDragHandler;
 import authoring.view.baseclasses.BPView;
 import authoring.view.graphicsview.Graphic;
@@ -52,9 +53,9 @@ public class LevelsView extends BPView implements Observer {
 	 * @param handler
 	 */
 	public void addSpriteToView(Graphic graphic, double x, double y,
-			GraphicsDragHandler handler) {
+			GameHandler ... handler) {
 		Graphic g = new Graphic(graphic.getName(), handler);
-		g.makeGraphic(MouseEvent.MOUSE_DRAGGED);
+		g.makeGraphic();
 		g.setLayoutX(x - 230);
 		g.setLayoutY(y - 100);
 		SingleLevelView currentLevelView = (SingleLevelView) myLevels

@@ -1,5 +1,8 @@
 package authoring.view.graphicsview;
 
+import java.util.Collection;
+
+import authoring.eventhandlers.GameHandler;
 import javafx.event.EventHandler;
 import javafx.event.EventType;
 import javafx.scene.image.Image;
@@ -21,14 +24,14 @@ import javafx.scene.text.Text;
 public class Graphic extends VBox {
 
 	private String myName;
-	private EventHandler<MouseEvent> myOnClick;
+	private GameHandler[] myOnClick;
 	private boolean myIsVisible = true;
 
 	public boolean getVisible() {
 		return myIsVisible;
 	}
 
-	public Graphic(String s, EventHandler<MouseEvent> event) {
+	public Graphic(String s, GameHandler ... event) {
 		myName = s;
 		myOnClick = event;
 	}
@@ -40,16 +43,16 @@ public class Graphic extends VBox {
 	 * 
 	 * @param event
 	 */
-	public void makeGraphic(EventType<MouseEvent> event) {
+	public void makeGraphic() {
 		Image image = new Image(getClass().getResourceAsStream(myName));
 		ImageView imageView = new ImageView(image);
 		imageView.setFitHeight(70);
 		imageView.setFitWidth(70);
 		this.getChildren().add(imageView);
 		this.getChildren().add(new Text(myName));
-
-		this.addEventFilter(event, myOnClick);
-
+		for(int x = 0; x < myOnClick.length; x++){
+			this.addEventFilter(myOnClick[x].getEventType(), myOnClick[x]);
+		}
 	}
 
 	public String getName() {

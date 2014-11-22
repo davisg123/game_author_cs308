@@ -5,7 +5,8 @@ import java.util.ResourceBundle;
 import javafx.geometry.Pos;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
-import authoring.eventhandlers.GraphicsEventHandler;
+import authoring.eventhandlers.GraphicsClickHandler;
+import authoring.eventhandlers.GraphicsDragToLevelHandler;
 import authoring.model.AuthoringModel;
 import authoring.view.AuthoringView;
 import authoring.view.baseclasses.AccordianView;
@@ -80,9 +81,9 @@ public class AuthoringController {
 		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
 		myProperties = new PropertiesView(myLanguage, myWidth, myHeight);
 		myGraphics = new GraphicsView(myLanguage, myWidth, myHeight,
-				new GraphicsEventHandler(myProperties, myLevels));
+				new GraphicsDragToLevelHandler(myProperties, myLevels), new GraphicsClickHandler(myProperties, myLevels));
 		myGameObjects = new GameObjectsView(myLanguage, myWidth, myHeight,
-				new GraphicsEventHandler(myProperties, myLevels));
+				new GraphicsDragToLevelHandler(myProperties, myLevels));
 
 	}
 
