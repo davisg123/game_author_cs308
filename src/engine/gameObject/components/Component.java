@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import engine.gameObject.GameObject;
+import engine.gameObject.IEnabled;
 import engine.gameObject.components.properties.IProperty;
 
 /**

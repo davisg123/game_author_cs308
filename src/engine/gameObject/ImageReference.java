@@ -55,4 +55,10 @@ public class ImageReference extends Component {
         return myCurrentImage;
     }
 
+    @Override
+    public String getID () {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }

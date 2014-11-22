@@ -25,4 +25,10 @@ public class NullComponent extends Component {
         return;
     }
 
+    @Override
+    public String getID () {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
 }
