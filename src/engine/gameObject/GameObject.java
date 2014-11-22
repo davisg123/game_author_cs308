@@ -15,8 +15,8 @@ import javafx.scene.image.Image;
  * @author Will Chang
  *
  */
-public class GameObject implements IEnabled, Iterable<ComponentComponent>{
-    private List<ComponentComponent> myComponents; 
+public class GameObject implements IEnabled, Iterable<Component>{
+    private List<Component> myComponents; 
     //Maybe connect it with a properties file
     //Create an Image and Path manager that works with the Renderer
     //Will cause an error if path does not exist... 
@@ -52,16 +52,16 @@ public class GameObject implements IEnabled, Iterable<ComponentComponent>{
     }
 
     public GameObject (String iD) {
-        this(new ArrayList<ComponentComponent>(), "", new Point2D.Double(), 0, 0, 0, iD);
+        this(new ArrayList<Component>(), "", new Point2D.Double(), 0, 0, 0, iD);
     }
 
-    public GameObject (List<ComponentComponent> components, String imagePath, Point2D position, 
+    public GameObject (List<Component> components, String imagePath, Point2D position, 
                    double height, double width, double rotation, String iD) {
         this(components, imagePath, new SoundReference(), position,
              height, width, rotation, iD);
     }
 
-    public GameObject (List<ComponentComponent> components, String imageName, SoundReference sounds, 
+    public GameObject (List<Component> components, String imageName, SoundReference sounds, 
                    Point2D position, double height, double width, double rotation, String iD) {
         myComponents  = components;
         //myImages   = images;
@@ -169,7 +169,7 @@ public class GameObject implements IEnabled, Iterable<ComponentComponent>{
      */
     
     public void update () {
-        for(ComponentComponent component : myComponents) {
+        for(Component component : myComponents) {
             //component.update(this); Should include current Level???... 
             //update methods should be specific to each component...
             component.update();
@@ -189,7 +189,7 @@ public class GameObject implements IEnabled, Iterable<ComponentComponent>{
      * @param iD
      * @return
      */
-    public ComponentComponent getComponent (String iD) {
+    public Component getComponent (String iD) {
         return null;
     }
 
@@ -203,7 +203,7 @@ public class GameObject implements IEnabled, Iterable<ComponentComponent>{
     }
 
     @Override
-    public Iterator<ComponentComponent> iterator () {
+    public Iterator<Component> iterator () {
         return myComponents.iterator();
     }
 

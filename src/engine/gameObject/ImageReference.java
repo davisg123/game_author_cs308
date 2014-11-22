@@ -2,16 +2,16 @@ package engine.gameObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import engine.gameObject.components.ComponentComponent;
+import engine.gameObject.components.Component;
 import engine.gameObject.components.properties.IProperty;
 
 /**
- * 
+ * Temporary Implementation of 
  * @author Will
  *
  */
 
-public class ImageReference extends ComponentComponent {
+public class ImageReference extends Component {
     private List<String> myImagePaths;
     private String myCurrentImage;
 

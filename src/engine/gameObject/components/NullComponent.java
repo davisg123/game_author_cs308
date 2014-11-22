@@ -7,7 +7,7 @@ import engine.gameObject.components.properties.IProperty;
  * @author Will Chang
  */
 
-public class NullComponent extends ComponentComponent {
+public class NullComponent extends Component {
 
     @Override
     public void addProperty (IProperty property) {

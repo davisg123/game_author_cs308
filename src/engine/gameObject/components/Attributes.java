@@ -8,7 +8,7 @@ import engine.gameObject.components.properties.IProperty;
  * @author Will Chang
  * 
  */
-public class Attributes extends ComponentComponent{
+public class Attributes extends Component{
 
     
     //TODO figure out implementation

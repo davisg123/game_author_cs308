@@ -3,7 +3,7 @@ package engine.actions;
 import engine.gameObject.GameObject;
 
 /**
- * 
+ * Action that performs GameObject Transforms/Movements
  * @author Will
  *
  */
@@ -21,6 +21,9 @@ public abstract class TransformAction implements Action {
         applyTransform();
     }
     
+    /**
+     * Applies the specific transform in X and Y
+     */
     public abstract void applyTransform ();
     
 }
