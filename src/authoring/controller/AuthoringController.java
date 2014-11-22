@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import javafx.geometry.Pos;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
+import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.GameObjectClickHandler;
 import authoring.eventhandlers.GraphicsClickHandler;
 import authoring.eventhandlers.GraphicsDragToLevelHandler;
@@ -83,7 +84,7 @@ public class AuthoringController {
 	 */
 
 	private void initializeViewComponents() {
-		myLevels = new LevelsView(myLanguage, myWidth, myHeight);
+		myLevels = new LevelsView(myLanguage, myWidth, myHeight, new AddLevelHandler(myModel.getLevels()));
 		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
 		myProperties = new PropertiesView(myLanguage, myWidth, myHeight);
 		myGraphics = new GraphicsView(myLanguage, myWidth, myHeight,

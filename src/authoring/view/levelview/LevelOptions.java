@@ -2,6 +2,7 @@ package authoring.view.levelview;
 
 import java.util.ResourceBundle;
 
+import authoring.eventhandlers.GameHandler;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -14,27 +15,30 @@ public class LevelOptions extends ToolBar {
 	private TabPane myLevels;
 	private double myHeight;
 	private double myWidth;
+	private GameHandler[] myHandlers;
 
 	public LevelOptions(ResourceBundle language, TabPane levels, double width,
-			double height) {
+			double height, GameHandler ...gameHandlers) {
 		myLanguage = language;
 		myLevels = levels;
 		myWidth = width;
 		myHeight = height;
+		myHandlers = gameHandlers;
 		addNewTabButton();
-		addNewLevel();
 	}
 
 	private void addNewTabButton() {
 		this.getItems().add(
 				makeButton(myLanguage.getString("Add_Level"),
-						handle -> addNewLevel()));
+						myHandlers));
 	}
 
-	private Button makeButton(String property, EventHandler<ActionEvent> handler) {
+	private Button makeButton(String property, GameHandler ... handler) {
 		Button result = new Button();
 		result.setText(property);
-		result.setOnAction(handler);
+		for (GameHandler h : handler){
+			result.setOnAction(h);
+		}
 		return result;
 	}
 
@@ -46,4 +50,5 @@ public class LevelOptions extends ToolBar {
 		myLevels.getSelectionModel().select(tab);
 		return newView;
 	}
+	
 }

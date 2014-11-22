@@ -3,6 +3,8 @@ package authoring.view.levelview;
 import java.util.Observable;
 import java.util.Observer;
 
+import authoring.eventhandlers.GameHandler;
+import authoring.view.graphicsview.Graphic;
 import javafx.geometry.Insets;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -36,8 +38,7 @@ public class SingleLevelView extends Pane implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-		
+			
 	}
 	
 }

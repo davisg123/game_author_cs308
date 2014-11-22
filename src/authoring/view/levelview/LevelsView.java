@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import javafx.scene.control.TabPane;
 import javafx.scene.input.MouseEvent;
+import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.GameHandler;
 import authoring.eventhandlers.GraphicsDragHandler;
 import authoring.view.baseclasses.BPView;
@@ -25,13 +26,15 @@ public class LevelsView extends BPView implements Observer {
 	private static final double VIEW_WIDTH_RATIO = 0.6;
 	private LevelOptions myLevelOptions;
 	private TabPane myLevels;
+	private AddLevelHandler myHandler;
 
-	public LevelsView(ResourceBundle language, double width, double height) {
+	public LevelsView(ResourceBundle language, double width, double height, AddLevelHandler handler) {
 		super(language, width, height);
+		myHandler = handler;
+		myHandler.setLevelOptions(this);
 		myLevels = new TabPane();
-		myLevelOptions = new LevelOptions(language, myLevels, width, height);
+		myLevelOptions = new LevelOptions(language, myLevels, width, height, myHandler);
 		super.setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
-
 		this.setTop(myLevelOptions);
 		this.setCenter(myLevels);
 
