@@ -7,6 +7,7 @@ import java.util.ResourceBundle;
 import javafx.geometry.Pos;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
+import authoring.eventhandlers.GameObjectClickHandler;
 import authoring.eventhandlers.GraphicsClickHandler;
 import authoring.eventhandlers.GraphicsDragToLevelHandler;
 import authoring.model.AuthoringModel;
@@ -88,7 +89,7 @@ public class AuthoringController {
 		myGraphics = new GraphicsView(myLanguage, myWidth, myHeight,
 				new GraphicsDragToLevelHandler(myProperties, myLevels), new GraphicsClickHandler(myProperties, myLevels));
 		myGameObjects = new GameObjectsView(myLanguage, myWidth, myHeight,
-				new GraphicsDragToLevelHandler(myProperties, myLevels));
+				new GraphicsDragToLevelHandler(myProperties, myLevels), new GameObjectClickHandler(myProperties));
 
 	}
 

@@ -14,6 +14,7 @@ import authoring.view.baseclasses.ScrollView;
  * observer/observable.
  * 
  * @author Kevin Li
+ * @author Chris Bernt
  *
  */
 public class GraphicsView extends ScrollView implements Observer {

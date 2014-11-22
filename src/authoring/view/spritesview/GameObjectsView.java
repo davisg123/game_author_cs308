@@ -40,7 +40,7 @@ public class GameObjectsView extends ScrollView implements Observer {
 
 	@SuppressWarnings("unchecked")
 	private void addGameObject(GameObject gameObject, GameHandler ... handler) {
-		Graphic graphic = new Graphic(gameObject.getCurrentImageName(), handler);
+		Graphic graphic = new GameObjectGraphic(gameObject, gameObject.getCurrentImageName(), handler);
 		graphic.makeGraphic();
 		myVbox.getChildren().add(graphic);
 	}

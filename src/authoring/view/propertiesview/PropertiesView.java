@@ -2,6 +2,7 @@ package authoring.view.propertiesview;
 
 import java.util.ResourceBundle;
 
+import engine.gameObject.GameObject;
 import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -23,9 +24,14 @@ public class PropertiesView extends ScrollView{
 		this.setContent(myContents);
 	}
 	
-	public void fillContents(Graphic g){
+	public void makeProperties(Graphic g){
 		myContents.getChildren().clear();
-		myContents.getChildren().add(new GameObejctsProperties(g));
+		this.setContent(new GraphicsProperties(g));
+	}
+	
+	public void makeProperties(GameObject gameObj){
+		myContents.getChildren().clear();
+		this.setContent(new GameObejctsProperties(gameObj));
 	}
 	
 }
