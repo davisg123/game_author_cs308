@@ -8,11 +8,11 @@ import engine.gameObject.GameObject;
  *
  */
 
-public abstract class TransformAction implements Action {
+public abstract class TranslateAction implements Action {
     protected GameObject mySprite;
     protected double myValue;
     
-    public TransformAction (GameObject sprite, double value) {
+    public TranslateAction (GameObject sprite, double value) {
         mySprite = sprite;
         myValue = value;
     }
