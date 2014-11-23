@@ -46,6 +46,7 @@ public class DataManager {
 		System.out.println("data written: " + success);
 		SampleWrapper readSW = manager.readSampleFile("sampleTwo.json");
 		System.out.println(readSW);
+		System.out.println(readSW.getSpriteName());
 	}
 	
 	public boolean writeSampleFile(SampleWrapper sw, String fileName) throws IOException {

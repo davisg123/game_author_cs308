@@ -59,4 +59,8 @@ public class SampleWrapper {
 	public String toString() {
 		return spriteList.toString() + "\n" + conditionList.toString();
 	}
+	
+	public String getSpriteName() {
+		return spriteList.get(0).getID();
+	}
 }
