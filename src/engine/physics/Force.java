@@ -8,7 +8,7 @@ package engine.physics;
  */
 public abstract class Force extends Vector {
 	protected double myForceValue;
-
+	
 	public Force(double x, double y) {
 		super(x, y);
 		myForceValue = calculateForce();
@@ -20,12 +20,18 @@ public abstract class Force extends Vector {
 	public Force() {
 		this(0, 0);
 	}
+	
+	@Override
+	public String toString()
+	{
+		return this.getClass().getName();
+	}
 
 	/**
 	 * abstract method that is used in force subclasses to calculate force based
 	 * on instance variables
 	 * 
 	 * @return value of force
-	 */
+	 */	
 	protected abstract double calculateForce();
 }

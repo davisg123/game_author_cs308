@@ -2,8 +2,10 @@ package engine.gameObject.components;
 
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import engine.gameObject.GameObject;
+import java.util.Map;
 import engine.physics.Acceleration;
 import engine.physics.BEngine;
 import engine.physics.Force;
@@ -25,12 +27,12 @@ import engine.physics.Velocity;
 public class PhysicsBody {
 	private static final double FRAMES_PER_SECOND = 60.0;
 	private List<Impulse> myImpulses;
-	private List<Force> myActiveForces;
-	private List<Double> myNetForce;
-	private Acceleration myAcceleration;
-	private Velocity myVelocity;
+	private Map<String, Force> myActiveForces;
+	// private List<Double> myNetForce;
+	private Vector myAcceleration;
+	private Vector myVelocity;
 	private Mass myMass;
-	private NormalUpdate myUpdate;
+	// private NormalUpdate myUpdate;
 	private boolean haveForcesChanged;
 	private Vector myBalancedForcesMag;
 
@@ -47,11 +49,11 @@ public class PhysicsBody {
 
 	public PhysicsBody(double collisionBodyWidth, double collisionBodyHeight) {
 		myImpulses = new ArrayList<Impulse>();
-		myAcceleration = new Acceleration(0, 0);
-		myVelocity = new Velocity(0, 0);
+		myAcceleration = new Vector();
+		myVelocity = new Vector();
 		myMass = new Mass(0);
-		myUpdate = new NormalUpdate();
-		myActiveForces = new ArrayList<Force>();
+		// myUpdate = new NormalUpdate();
+		myActiveForces = new HashMap<String, Force>();
 		haveForcesChanged = false;
 		myBalancedForcesMag = new Vector();
 		myCollisionBodyWidth = collisionBodyWidth;
@@ -64,7 +66,7 @@ public class PhysicsBody {
 	 * @param v
 	 *            - new Velocity of object
 	 */
-	public void setVelocity(Velocity v) {
+	public void setVelocity(Vector v) {
 		myVelocity = v;
 	}
 
@@ -82,10 +84,23 @@ public class PhysicsBody {
 	 * 
 	 * @return the velocity of the object
 	 */
-	public Velocity getVelocity() {
+	public Vector getVelocity() {
 		return myVelocity;
 	}
 
+	public Vector getAcceleration() {
+		return myAcceleration;
+	}
+
+	public void setAcceleration(Vector v) {
+		myAcceleration = v;
+	}
+
+	/**
+	 * Return Y-Coordinate of Object
+	 * 
+	 * @return - returns Y coordinate of Object
+	 */
 	public Mass getMass(double y) {
 		return myMass;
 	}
@@ -128,7 +143,7 @@ public class PhysicsBody {
 	private void balanceForces() {
 		double x = 0.0;
 		double y = 0.0;
-		for (Force cur : myActiveForces) {
+		for (Force cur : this.myActiveForces.values()) {
 			x += cur.getX();
 			y += cur.getY();
 		}
@@ -153,6 +168,18 @@ public class PhysicsBody {
 	private void changeVelocity() {
 		myVelocity.delta(myAcceleration.getX() / FRAMES_PER_SECOND,
 				myAcceleration.getY() / FRAMES_PER_SECOND);
+	}
+
+	public void addForce(Force f) {
+		if (this.myActiveForces.containsKey(f.toString())) {
+			this.myActiveForces.replace(f.toString(), f);
+		} else {
+			this.myActiveForces.put(f.toString(), f);
+		}
+	}
+
+	public void addImpulse(Impulse i) {
+		this.myImpulses.add(i);
 	}
 
 	/**
@@ -241,5 +268,4 @@ public class PhysicsBody {
 			double measureOne, double measureTwo) {
 		return (centerTwo + measureTwo) - (centerOne - measureOne);
 	}
-
 }
