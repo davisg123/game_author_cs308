@@ -42,9 +42,9 @@ public class DataManager {
 		DataManager manager = new DataManager();
 		SampleWrapper sw = new SampleWrapper();
 		System.out.println(sw);
-		boolean success = manager.writeSampleFile(sw, "sampleTwo.json");
+		boolean success = manager.writeSampleFile(sw, "sampleFour.json");
 		System.out.println("data written: " + success);
-		SampleWrapper readSW = manager.readSampleFile("sampleTwo.json");
+		SampleWrapper readSW = manager.readSampleFile("sampleFour.json");
 		System.out.println(readSW);
 	}
 	
