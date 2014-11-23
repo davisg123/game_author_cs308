@@ -10,7 +10,7 @@ import engine.gameObject.GameObject;
 /**
  * Manages the Levels, and progression of the Game
  * @author Will Chang
- *
+ * @author Abhishek Balakrishnan
  */
 
 public class LevelManager implements Iterable<Level> {
@@ -24,15 +24,15 @@ public class LevelManager implements Iterable<Level> {
     
     /**
      * Constructor for a level
-     * @param sprites
+     * @param gameObjects
      * @param levels
      * @param conditions
      * @param renderer
      * @param detector
      */
-    public LevelManager (List<GameObject> sprites, List<Level> levels, List<Condition> conditions, 
+    public LevelManager (List<GameObject> gameObjects, List<Level> levels, List<Condition> conditions,
                          GameObjectRenderer renderer, CollisionDetector detector) {
-        myGameObjects = sprites;
+        myGameObjects = gameObjects;
         myLevels = levels;
         myConditions = conditions;
         myCurrentIndex = 0;
