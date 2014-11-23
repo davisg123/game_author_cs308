@@ -58,6 +58,7 @@ public class PhysicsBody {
 		myAcceleration = new Vector();
 		myVelocity = new Vector();
 		myActiveForces = new HashMap<String, Force>();
+		myConstants = new HashMap<String, Scalar>();
 		initializeMap();
 		haveForcesChanged = false;
 		myBalancedForcesMag = new Vector();
@@ -83,6 +84,7 @@ public class PhysicsBody {
 		myConstants.put("Density", new Density(0.0));
 		myConstants.put("GravityConstant", new GravityConstant(1.0));
 		myConstants.put("Volume", new Volume(1.0));
+		myConstants.put("Mass", new Mass(1.0));
 		myActiveForces.put("Gravity", new Gravity(0, 0,
 				myConstants.get("Mass"), myConstants.get("GravityConstant")));
 		myActiveForces.put(

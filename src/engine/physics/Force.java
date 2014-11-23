@@ -1,5 +1,6 @@
 package engine.physics;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,6 +36,7 @@ public abstract class Force extends Vector {
 	}
 
 	protected void initializeMap(Scalar[] scalar) {
+		System.out.println(Arrays.asList(scalar).toString());
 		for (Scalar cur : scalar) {
 			myValues.put(cur.toString(), cur.getValue());
 		}
