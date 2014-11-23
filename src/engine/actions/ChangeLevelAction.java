@@ -6,10 +6,10 @@ import engine.level.LevelManager;
 public class ChangeLevelAction implements Action, Initializable{
 
 	LevelManager myLevelManager; 
-	int index; 
+	String myID; 
 	
-	public ChangeLevelAction(int index){
-		index=id; 
+	public ChangeLevelAction(String id){
+		myID=id; 
 	}
 	
 	@Override
@@ -20,6 +20,6 @@ public class ChangeLevelAction implements Action, Initializable{
 
 	@Override
 	public void execute() {
-		myLevelManager.changeLevel(index);
+		myLevelManager.changeLevel(myID);
 	}
 }

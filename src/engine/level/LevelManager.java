@@ -118,6 +118,14 @@ public class LevelManager implements Iterable<Level> {
 		}
 	}
 	
+	public void changeLevel(String id){
+//		for (Level l: LevelsCollection){
+//			if (l.getID().equals(id)){
+//				myCurrentLevel=l;
+//			}
+//		}
+	}
+	
 	/**
 	 * 
 	 */

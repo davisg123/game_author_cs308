@@ -11,7 +11,7 @@ import engine.render.GameObjectRenderer;
  *
  */
 
-public abstract class RenderAction implements Action {
+public abstract class RenderAction implements Action, Initializable {
 
     protected List<GameObject> myGameObjects;
     protected GameObjectRenderer myRenderer;
