@@ -17,6 +17,7 @@ public abstract class Force extends Vector {
 		super(x, y);
 		myValues = new HashMap<String, Double>();
 		initializeMap(scalar);
+		setDefaultValues();
 		calculateForce();
 	}
 
@@ -39,6 +40,19 @@ public abstract class Force extends Vector {
 		}
 	}
 
+	// following two methods are to add a direction to the force. for example,
+	// if you want to make gravity in both x and y when it's only in y, just
+	// pass through 1 to x
+	public void setX(double x) {
+		myXComponent = x * myForceValue;
+		calculateMagnitude();
+	}
+
+	public void setY(double y) {
+		myYComponent = y * myForceValue;
+		calculateMagnitude();
+	}
+
 	/**
 	 * abstract method that is used in force subclasses to calculate force based
 	 * on instance variables
@@ -46,4 +60,6 @@ public abstract class Force extends Vector {
 	 * @return value of force
 	 */
 	protected abstract void calculateForce();
+
+	protected abstract void setDefaultValues();
 }

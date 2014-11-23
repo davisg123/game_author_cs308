@@ -24,4 +24,13 @@ public class Buoyancy extends Force {
 				* myValues.get("Volume");
 	}
 
+	protected void setDefaultValues() {
+		if (myValues.get("Density") == null) {
+			myValues.put("Density", 1.0);
+		}
+		if (myValues.get("Volume") == null) {
+			myValues.put("Volume", 1.0);
+		}
+	}
+
 }
