@@ -17,6 +17,7 @@ public abstract class Force extends Vector {
 		super(x, y);
 		myValues = new HashMap<String, Double>();
 		initializeMap(scalar);
+		setDefaultValues();
 		calculateForce();
 	}
 
@@ -46,4 +47,5 @@ public abstract class Force extends Vector {
 	 * @return value of force
 	 */
 	protected abstract void calculateForce();
+	protected abstract void setDefaultValues();
 }

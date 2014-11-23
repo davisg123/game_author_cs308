@@ -78,9 +78,9 @@ public class PhysicsBody {
 	 * initialize those to 0 too
 	 */
 	private void initializeMap() {
-		myActiveForces.put("gravity", new Gravity(0, 0, new Mass(1), new GravityConstant(1)));
-		myActiveForces.put("buoyancy", new Buoyancy(0, 0, new Volume(1), new Density(1)));
-		myActiveForces.put("friction", new Friction(0, 0, new CoefficientOfFriction(1), new Mass(1)));
+		myActiveForces.put("gravity", new Gravity(0, 0));
+		myActiveForces.put("buoyancy", new Buoyancy(0, 0));
+		myActiveForces.put("friction", new Friction(0, 0));
 	}
 
 	public void setVelocity(Vector v) {

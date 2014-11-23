@@ -23,4 +23,12 @@ public class Gravity extends Force {
 				* GRAVITY_ACCELERATION;
 	}
 
+	protected void setDefaultValues() {
+		if (myValues.get("Mass") == null) {
+			myValues.put("Mass", 1.0);
+		}
+		if (myValues.get("GravityConstant") == null) {
+			myValues.put("GravityConstant", 1.0);
+		}
+	}
 }
