@@ -79,7 +79,7 @@ public class ProgramMenu extends MenuBar {
 
 	private void addNew() {
 		Tab tab = new Tab(myLanguage.getString("Program"));
-		AuthoringView newView = new AuthoringView(myLanguage, myWidth, myHeight);
+		AuthoringView newView = new AuthoringView(myWidth, myHeight);
 		AuthoringModel newModel = new AuthoringModel();
 		AuthoringController newController = new AuthoringController(newView,
 				newModel, myWidth, myHeight, myLanguage);

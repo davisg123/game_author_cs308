@@ -12,15 +12,11 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.ToolBar;
 
 public class LevelOptions extends CollectionsTool {
-	private TabPane myLevels;
 	private GameHandler myButtonHandler;
-	private GameHandler[] myEvents;
 	private Button addLevelButton;
 
-	public LevelOptions(ResourceBundle language, TabPane levels, double width,
-			double height) {
+	public LevelOptions(ResourceBundle language, double width, double height) {
 		super(language, width, height);
-		myLevels = levels;
 		addNewTabButton();
 	}
 
@@ -38,19 +34,4 @@ public class LevelOptions extends CollectionsTool {
 	public void setButtonBehavior(GameHandler handler) {
 		addLevelButton.setOnAction(handler);
 	}
-
-	public void setEventHandlers(GameHandler... handlers) {
-		myEvents = handlers;
-	}
-
-	public SingleLevelView addNewLevel(String ID) {
-		Tab tab = new Tab(ID);
-		SingleLevelView newView = new SingleLevelView(myWidth, myHeight,
-				myEvents);
-		tab.setContent(newView);
-		myLevels.getTabs().add(tab);
-		myLevels.getSelectionModel().select(tab);
-		return newView;
-	}
-
 }

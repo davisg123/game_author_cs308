@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
 import authoring.eventhandlers.AddLevelHandler;
@@ -14,10 +16,12 @@ import authoring.eventhandlers.GameObjectDragToLevelHandler;
 import authoring.eventhandlers.ImagesClickHandler;
 import authoring.model.AuthoringModel;
 import authoring.view.AuthoringView;
-import authoring.view.baseclasses.AccordianView;
+import authoring.view.baseclasses.AccordionContainer;
+import authoring.view.baseclasses.BPContainer;
 import authoring.view.gameobjectsview.GameObjectsView;
 import authoring.view.graphicsview.ImagesView;
 import authoring.view.levelview.LevelsAccordianView;
+import authoring.view.levelview.LevelOptions;
 import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
 import authoring.view.soundsview.SoundsView;
@@ -38,6 +42,8 @@ import engine.gameObject.components.Component;
  *
  */
 public class AuthoringController {
+	private static final double CENTER_HEIGHT_RATIO = .92;
+	private static final double CENTER_WIDTH_RATIO = .6;
 	private AuthoringView myView;
 	private AuthoringModel myModel;
 	private ResourceBundle myLanguage;
@@ -49,6 +55,8 @@ public class AuthoringController {
 	 * back-end; Levels, Sprites, Graphics, Sounds
 	 */
 	private LevelsView myLevels;
+	private LevelOptions myLevelOptions;
+
 	private GameObjectsView myGameObjects;
 	private ImagesView myGraphics;
 	private SoundsView mySounds;
@@ -75,7 +83,7 @@ public class AuthoringController {
 
 	private void initializeView() {
 		initializeViewComponents();
-		myView.setCenter(myLevels);
+		myView.setCenter(intitializeCenter());
 		myView.setLeft(initializeLeft());
 		myView.setRight(initializeRight());
 		initializeGameHandlers();
@@ -97,6 +105,15 @@ public class AuthoringController {
 
 	}
 
+	private BorderPane intitializeCenter() {
+		BPContainer center = new BPContainer(myWidth * CENTER_WIDTH_RATIO,
+				myHeight * CENTER_HEIGHT_RATIO);
+		center.setTop(myLevelOptions);
+		center.setCenter(myLevels);
+		return center;
+
+	}
+
 	/**
 	 * Initializes all the view components that have a 1 to 1 relationship with
 	 * backend data components. Provides event handlers for View objects to
@@ -106,6 +123,7 @@ public class AuthoringController {
 	private void initializeViewComponents() {
 		myProperties = new PropertiesView(myLanguage, myWidth, myHeight);
 		myLevels = new LevelsView(myLanguage, myWidth, myHeight);
+		myLevelOptions = new LevelOptions(myLanguage, myWidth, myHeight);
 		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
 		myGraphics = new ImagesView(myLanguage, myWidth, myHeight);
 		myGameObjects = new GameObjectsView(myLanguage, myWidth, myHeight);
@@ -114,9 +132,15 @@ public class AuthoringController {
 
 	private void initializeGameHandlers() {
 		myGraphics.setEvents(new ImagesClickHandler(myProperties));
-		myGameObjects.setEvents(new GameObjectClickHandler(myProperties), new GameObjectDragToLevelHandler(myLevels, myModel.getLevels()));
-		myLevels.getLevelOptions().setButtonBehavior(new AddLevelHandler(myModel.getLevels(), myLevels));
-		myLevels.getLevelOptions().setEventHandlers(new GameObjectClickHandler(myProperties), new GameObjectDragHandler(myLevels, myModel.getLevels()));
+		myGameObjects
+				.setEvents(
+						new GameObjectClickHandler(myProperties),
+						new GameObjectDragToLevelHandler(myLevels, myModel
+								.getLevels()));
+		myLevelOptions.setButtonBehavior(new AddLevelHandler(myModel
+				.getLevels(), myLevels));
+		myLevels.setEventHandlers(new GameObjectClickHandler(myProperties),
+				new GameObjectDragHandler(myLevels, myModel.getLevels()));
 	}
 
 	/**
@@ -125,8 +149,8 @@ public class AuthoringController {
 	 * @return AccordianView a node.
 	 */
 
-	private AccordianView initializeLeft() {
-		AccordianView leftView = new AccordianView(myWidth, myHeight);
+	private AccordionContainer initializeLeft() {
+		AccordionContainer leftView = new AccordionContainer(myWidth, myHeight);
 
 		TitledPane graphics = new TitledPane(myLanguage.getString("Images"),
 				myGraphics);

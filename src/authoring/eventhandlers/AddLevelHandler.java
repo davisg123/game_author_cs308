@@ -15,45 +15,44 @@ import authoring.view.levelview.LevelsView;
 import authoring.view.levelview.SingleLevelView;
 import engine.level.Level;
 
-
 public class AddLevelHandler implements GameHandler<Event> {
-	
+
 	private LevelsView myLevels;
 	private LevelsCollection myLevelsCollection;
 	private String myLevelID;
 
-	public AddLevelHandler (LevelsCollection levelsCollection, LevelsView levelView){
+	public AddLevelHandler(LevelsCollection levelsCollection,
+			LevelsView levelView) {
 		myLevelsCollection = levelsCollection;
 		myLevels = levelView;
 	}
-	
+
 	@Override
 	public void handle(Event arg0) {
 		promptLevelID();
-	
-		
-		
-//		String im = "/assets/mario.png";
-//		GameObject test = new GameObject(new ArrayList<Component>(), im, new Point2D.Double(), 0, 0, 0, "Mario");
-//		levelData.addGameObject(test);
+
+		// String im = "/assets/mario.png";
+		// GameObject test = new GameObject(new ArrayList<Component>(), im, new
+		// Point2D.Double(), 0, 0, 0, "Mario");
+		// levelData.addGameObject(test);
 	}
-	
-	public void createLevel(){
-		SingleLevelView newLevelView = myLevels.getLevelOptions().addNewLevel(myLevelID);
+
+	public void createLevel() {
+		SingleLevelView newLevelView = myLevels.addNewLevel(myLevelID);
 		Level levelData = new Level(new GameObjectsCollection());
 		myLevelsCollection.add(levelData);
 		levelData.addObserver(newLevelView);
 		newLevelView.setID(myLevelID);
 		levelData.setLevelID(myLevelID);
-		
+
 	}
 
 	@Override
 	public EventType<Event> getEventType() {
 		return Event.ANY;
 	}
-	
-	private void promptLevelID(){
+
+	private void promptLevelID() {
 		Stage dialog = new Stage();
 		dialog.initStyle(StageStyle.UTILITY);
 		Group root = new Group();
@@ -71,11 +70,11 @@ public class AddLevelHandler implements GameHandler<Event> {
 		dialog.setScene(scene);
 		dialog.show();
 	}
-	
-	private void getPrompt(TextField t, Stage s){
+
+	private void getPrompt(TextField t, Stage s) {
 		myLevelID = t.getText();
 		createLevel();
 		s.close();
 	}
-	
+
 }
