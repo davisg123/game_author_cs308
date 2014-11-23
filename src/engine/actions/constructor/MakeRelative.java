@@ -1,19 +1,34 @@
-package engine.actions;
+package engine.actions.constructor;
 
+import java.util.List;
+import engine.actions.render.PaintCanvas;
 import engine.gameObject.GameObject;
 import engine.level.Level;
 
-public class MakeRelative extends InitializationAction {
+public class MakeRelative extends ConstructorAction {
 
-    public MakeRelative (GameObject object, Level level) {
+    private List<GameObject> myRelatedGameObjects;
+    
+    public MakeRelative (GameObject object, List<GameObject> objects, Level level) {
         super(object, level);
-        // TODO Auto-generated constructor stub
+        //Objects need to be copied...
+        myRelatedGameObjects = objects;
+        myPaintCanvasAction = new PaintCanvas(objects, null, level);
     }
+    
+    //Add Initializable interface.
+    //
+    //initialize PaintCanvasAction
 
     @Override
-    protected void initialize () {
-        // TODO Auto-generated method stub
-
+    protected void construct () {
+        for(GameObject o : myRelatedGameObjects) {
+            //Objects need to be copied...
+            o.setOrientation(myGameObject.getOrientation());
+            o.setX(myGameObject.getX());
+            o.setY(myGameObject.getY());
+        }
+        myPaintCanvasAction.execute();
     }
 
 }
