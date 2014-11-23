@@ -1,7 +1,10 @@
 package engine.physics;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * super for all scalar components, wrapper
@@ -9,11 +12,15 @@ import java.util.LinkedList;
  * @author Ben
  *
  */
-public class Scalar extends PhysicsComponent {
+public abstract class Scalar extends PhysicsComponent implements
+		Iterable<String> {
 	protected double myValue;
+	protected List<String> myAssociatedForces;
 
 	public Scalar(double value) {
 		myValue = value;
+		myAssociatedForces = new ArrayList<String>();
+		initializeForceList();
 	}
 
 	/**
@@ -25,4 +32,10 @@ public class Scalar extends PhysicsComponent {
 		return myValue;
 	}
 
+	@Override
+	public Iterator<String> iterator() {
+		return myAssociatedForces.iterator();
+	}
+
+	protected abstract void initializeForceList();
 }

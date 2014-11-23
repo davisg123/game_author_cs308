@@ -1,5 +1,7 @@
 package engine.physics;
 
+import java.util.ArrayList;
+
 /**
  * mass constant
  * 
@@ -11,8 +13,10 @@ public class Mass extends Scalar {
 		super(value);
 	}
 
-	public static void main(String[] args) {
-		Mass a = new Mass(2.0);
-		System.out.println(a.toString());
+	@Override
+	protected void initializeForceList() {
+		myAssociatedForces.add("Gravity");
+		myAssociatedForces.add("Friction");
 	}
+
 }
