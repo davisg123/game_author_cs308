@@ -1,5 +1,9 @@
 package engine.conditions;
 
+import java.util.ArrayList;
+import java.util.List;
+import engine.actions.Action;
+
 /**
  * root class for conditions, or the event that triggers actions
  * 
@@ -8,6 +12,33 @@ package engine.conditions;
  */
 
 public abstract class Condition {
+
+    private List<Action> myActions = new ArrayList<Action>();
+    private String myID;
+    private boolean myEnabled;
+    
+    public Condition(List<Action> actions, String ID){
+        myActions = actions;
+        myID = ID;
+    }
+    
+    public List<Action> getActions(){
+        return myActions;
+    }
+    
+    public String getID(){
+        return myID;
+    }
+    
+    public void setEnabled(boolean enabled){
+        myEnabled = enabled;
+    }
+    
+    public boolean isEnabled(){
+        return myEnabled;
+    }
+    
+    
     /**
      * method to call for executing the associated action/s
      */
