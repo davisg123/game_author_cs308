@@ -22,7 +22,7 @@ import authoring.view.baseclasses.BPContainer;
 import authoring.view.gameobjectsview.GameObjectsView;
 import authoring.view.graphicsview.GraphicsTools;
 import authoring.view.graphicsview.ImagesView;
-import authoring.view.levelview.LevelsAccordianView;
+import authoring.view.levelview.LevelsAccordionView;
 import authoring.view.levelview.LevelOptions;
 import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
@@ -68,7 +68,7 @@ public class AuthoringController {
 
 	private SoundsView mySounds;
 	private PropertiesView myProperties;
-	private LevelsAccordianView myLevelsAccordianView;
+	private LevelsAccordionView myLevelsAccordionView;
 	private File myGameLocation;
 
 	public AuthoringController(AuthoringView view, AuthoringModel model,
@@ -106,7 +106,7 @@ public class AuthoringController {
 				0, 0, 0, "Mario");
 		myModel.getGameObjectCollection().addGameObject(test);
 
-		myModel.getLevels().addObserver(myLevelsAccordianView);
+		myModel.getLevels().addObserver(myLevelsAccordionView);
 	}
 
 	/**
@@ -126,7 +126,7 @@ public class AuthoringController {
 		myGraphicsTools = new GraphicsTools(myLanguage, myWidth, myHeight);
 
 		myGameObjects = new GameObjectsView(myLanguage, myWidth, myHeight);
-		myLevelsAccordianView = new LevelsAccordianView(myLanguage, myWidth,
+		myLevelsAccordionView = new LevelsAccordionView(myLanguage, myWidth,
 				myHeight);
 
 	}
@@ -176,7 +176,8 @@ public class AuthoringController {
 		TitledPane gameObjects = new TitledPane(
 				myLanguage.getString("GameObjects"), myGameObjects);
 		TitledPane levels = new TitledPane(myLanguage.getString("Levels"),
-				myLevelsAccordianView);
+				myLevelsAccordionView);
+
 		leftView.getPanes().addAll(graphics, sounds, gameObjects, levels);
 		BorderPane.setAlignment(leftView, Pos.TOP_RIGHT);
 
