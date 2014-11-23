@@ -39,6 +39,7 @@ public class GameData implements Serializable {
 	public GameData() {
 		myLevels = new LevelsCollection();
 		myConditions = new ConditionsCollection();
+		myGameObjects = new GameObjectsCollection();
 		myLevels = new LevelsCollection();
 		myImages = new ImagesCollection();
 		mySounds = new SoundsCollection();

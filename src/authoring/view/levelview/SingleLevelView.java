@@ -32,8 +32,8 @@ public class SingleLevelView extends Pane implements Observer {
 	private static final double VIEW_WIDTH_RATIO = 0.6;
 	private GameHandler[] myEvents;
 	private String myID;
-	
-	public SingleLevelView(double width, double height, GameHandler ... handlers) {
+
+	public SingleLevelView(double width, double height, GameHandler... handlers) {
 		this.setBackground(myDefaultBackground);
 		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
 		myEvents = handlers;
@@ -47,41 +47,42 @@ public class SingleLevelView extends Pane implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-			Level level = ((Level) arg);
-			this.getChildren().clear();
-			//level.getGameObjectsCollection().clear();
-			//System.out.println(level.getLevelID());
-			for (GameObject g: level.getGameObjectsCollection()){
-				//removeGameObjectFromView(g);
-				addGameObjectToView(g, g.getX(), g.getY(), myEvents);
-			}
+		Level level = ((Level) arg);
+		this.getChildren().clear();
+		// level.getGameObjectsCollection().clear();
+		// System.out.println(level.getLevelID());
+		for (GameObject g : level.getGameObjectsCollection()) {
+			// removeGameObjectFromView(g);
+			addGameObjectToView(g, g.getX(), g.getY(), myEvents);
+		}
 	}
 
 	private void addGameObjectToView(GameObject gameObject, double x, double y,
-			GameHandler ... handler) {
-		GameObjectGraphic g = new GameObjectGraphic(gameObject,handler);
+			GameHandler... handler) {
+		GameObjectGraphic g = new GameObjectGraphic(gameObject, handler);
 		g.makeGraphic();
 		g.setLayoutX(x - 230);
 		g.setLayoutY(y - 100);
 		this.getChildren().add(g);
-		
+
 	}
-	public void removeGameObjectFromView(GameObject gameObject){
+
+	public void removeGameObjectFromView(GameObject gameObject) {
 		GameObjectGraphic g = new GameObjectGraphic(gameObject, myEvents);
 		this.getChildren().remove(g);
 	}
-	
-	public void setID(String ID){
+
+	public void setID(String ID) {
 		myID = ID;
 	}
-	
-	public String getID(){
+
+	public String getID() {
 		return myID;
 	}
-	
+
 	public void moveSpriteOnLevel(Graphic g, double x, double y) {
 		g.setLayoutX(x - 230);
 		g.setLayoutY(y - 100);
 	}
-	
+
 }
