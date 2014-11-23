@@ -31,8 +31,8 @@ public class AddImageHandler implements GameHandler<MouseEvent> {
 		if (imageFile != null) {
 			try {
 				BufferedImage bi = ImageIO.read(imageFile);
-			File newImageFile  = new File(myGameFile.getPath()
-					+ "/images/" + imageFile.getName());
+				File newImageFile = new File(myGameFile.getPath() + "/images/"
+						+ imageFile.getName());
 				ImageIO.write(bi, "png", newImageFile);
 				myImagesCollection.addImage(newImageFile.getPath());
 			} catch (IOException e) {
