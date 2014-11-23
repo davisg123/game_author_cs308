@@ -12,6 +12,7 @@ import engine.conditions.ButtonConditionManager;
 import engine.gameObject.GameObject;
 import engine.gameObject.components.PhysicsBody;
 import engine.level.Level;
+import engine.physics.Acceleration;
 import engine.physics.Velocity;
 import engine.render.GameObjectRenderer;
 import javafx.application.Application;
@@ -64,20 +65,30 @@ public class MainEngineTests extends Application {
         /*****
          * create a sprite and put it in a collection
          *****/
-        GameObject sprite = new GameObject(null,"floor",
-                                   75, 100, 20, 200, 0, "TestGameObject");
-        //ugh, why do we have to set this explicitly?
-        PhysicsBody body = new PhysicsBody(20,200);
-        Velocity vel = new Velocity(5,0);
-        body.setVelocity(vel);
-        sprite.setPhysicsBody(body);
         GameObjectsCollection myGameObjects = new GameObjectsCollection();
-        myGameObjects.add(sprite);
+        //create the floor
+        GameObject floor = new GameObject(null,"floor",
+                                   75, 200, 20, 200, 0, "floor_object");
+        //ugh, why do we have to set this explicitly?
+        PhysicsBody floorBody = new PhysicsBody(20,200);
+        Velocity vel = new Velocity(5,0);
+        Acceleration acc = new Acceleration(20,0);
+        floorBody.setVelocity(vel);
+        floorBody.setAcceleration(acc);
+        floor.setPhysicsBody(floorBody);
+        myGameObjects.add(floor);
+        //create a ball
+        GameObject ball = new GameObject(null,"ball",150,50,30,30,0,"ball_object");
+        PhysicsBody ballBody = new PhysicsBody(30,30);
+        ballBody.setVelocity(new Velocity(0,15));
+        ball.setPhysicsBody(ballBody);
+        myGameObjects.add(ball);
+        
         /******
          * conditions
          ******/
         ConditionsCollection myConditions = new ConditionsCollection();
-        Action aAct = new TranslateX(sprite,-2.0);
+        Action aAct = new TranslateX(floor,-2.0);
         ArrayList<Action> actionList = new ArrayList<Action>();
         actionList.add(aAct);
         ButtonCondition aCon = new ButtonCondition(actionList,"a_button",KeyCode.A);

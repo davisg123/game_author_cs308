@@ -162,7 +162,7 @@ public class PhysicsBody {
 		if (haveForcesChanged) {
 			balanceForces();
 		}
-		//changeAcceleration();
+		changeAcceleration();
 		changeVelocity();
 		// return changePosition
 

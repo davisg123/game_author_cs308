@@ -36,8 +36,9 @@ public class CollisionDetector {
                     //Do intersect sequence
                     //make sure the opposite collision hasn't already happened (a with b == b with a)
                     String uniqueCollisionIdentifier = innerGameObject.getID()+outerGameObject.getID();
-                    if(outerGameObject.getRenderedNode().intersects(innerGameObject.getRenderedNode().getCollisionBody().getBoundsInLocal()) 
+                    if(outerGameObject.getRenderedNode().getBoundsInParent().intersects(innerGameObject.getRenderedNode().getBoundsInParent()) 
                             && !myCollisionMap.containsKey(uniqueCollisionIdentifier)){
+                        System.out.println("collision");
                         myCollisionMap.put(innerGameObject.getID()+outerGameObject.getID(), 1);
                         //call physics manager with collided nodes
                         
