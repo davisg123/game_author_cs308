@@ -95,14 +95,13 @@ public class AuthoringController {
 
 		myModel.getImages().addObserver(myGraphics);
 		myModel.getGameObjectCollection().addObserver(myGameObjects);
-
 		GameObject test = new GameObject(new ArrayList<Component>(), im, 0, 0,
 				0, 0, 0, "Mario");
 		myModel.getGameObjectCollection().addGameObject(test);
 
 		myModel.getImages().addImage(im);
 		myModel.getImages().addImage(im2);
-
+		myModel.getLevels().addObserver(myLevelsAccordianView);
 	}
 
 	private BorderPane intitializeCenter() {
