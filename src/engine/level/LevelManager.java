@@ -72,9 +72,20 @@ public class LevelManager implements Iterable<Level> {
     
     /**
      * Update call, updates the current level
+     * Happens every frame
      */
     public void update () {
         myCurrentLevel.update();
+        updateFrameBasedConditions();
+    }
+    
+    /**
+     * update the conditions that rely on frame calculations
+     */
+    private void updateFrameBasedConditions(){
+        for (Condition s : myConditions){
+            s.frameElapsed();
+        }
     }
     
     /**

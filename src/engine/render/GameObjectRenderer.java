@@ -76,8 +76,8 @@ public class GameObjectRenderer {
         node.setCollisionBody(createCollisionBody(obj));
         node.setLayoutX(0);
         node.setLayoutY(0);
-        node.setTranslateX(obj.getDefaultPosition().getX());
-        node.setTranslateY(obj.getDefaultPosition().getY());
+        node.setTranslateX(obj.getX());
+        node.setTranslateY(obj.getY());
         node.setId(obj.getID());
         myRenderedNodes.put(obj.getID(), node);
         //TODO talk to Player group, ask them to change function call/functionality of Canvas
