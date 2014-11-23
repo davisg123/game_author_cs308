@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
+import authoring.eventhandlers.AddImageHandler;
 import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.GameObjectClickHandler;
 import authoring.eventhandlers.GameObjectDragHandler;
@@ -43,6 +44,8 @@ import engine.gameObject.components.Component;
  *
  */
 public class AuthoringController {
+	private static final double LEFT_ACCORDION_HEIGHT_RATIO = .74;
+	private static final double LEFT_ACCORDION_WIDTH_RATIO = .2;
 	private static final double CENTER_HEIGHT_RATIO = .92;
 	private static final double CENTER_WIDTH_RATIO = .6;
 	private AuthoringView myView;
@@ -69,13 +72,13 @@ public class AuthoringController {
 	private File myGameLocation;
 
 	public AuthoringController(AuthoringView view, AuthoringModel model,
-			double width, double height, ResourceBundle language /* ,File gameLoc */) {
+			double width, double height, ResourceBundle language, File gameLoc) {
 		myView = view;
 		myModel = model;
 		myWidth = width;
 		myHeight = height;
 		myLanguage = language;
-		// myGameLocation = gameLoc;
+		myGameLocation = gameLoc;
 		initializeView();
 
 	}
@@ -103,8 +106,6 @@ public class AuthoringController {
 				0, 0, 0, "Mario");
 		myModel.getGameObjectCollection().addGameObject(test);
 
-		myModel.getImages().addImage(im);
-		myModel.getImages().addImage(im2);
 		myModel.getLevels().addObserver(myLevelsAccordianView);
 	}
 
@@ -120,7 +121,8 @@ public class AuthoringController {
 		myLevelOptions = new LevelOptions(myLanguage, myWidth, myHeight);
 		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
 
-		myGraphics = new ImagesView(myLanguage, myWidth, myHeight);
+		myGraphics = new ImagesView(myLanguage, myWidth, myHeight,
+				myGameLocation);
 		myGraphicsTools = new GraphicsTools(myLanguage, myWidth, myHeight);
 
 		myGameObjects = new GameObjectsView(myLanguage, myWidth, myHeight);
@@ -138,8 +140,8 @@ public class AuthoringController {
 								.getLevels()));
 		myLevelOptions.setButtonBehavior(new AddLevelHandler(myModel
 				.getLevels(), myLevels));
-		myGraphicsTools.setButtonBehavior(new AddLevelHandler(myModel
-				.getLevels(), myLevels));
+		myGraphicsTools.setButtonBehavior(new AddImageHandler(myModel
+				.getImages(), myGameLocation));
 		myLevels.setEventHandlers(new GameObjectClickHandler(myProperties),
 				new GameObjectDragHandler(myLevels, myModel.getLevels()));
 	}
@@ -161,7 +163,9 @@ public class AuthoringController {
 	private AccordionContainer initializeLeft() {
 		AccordionContainer leftView = new AccordionContainer(myWidth, myHeight);
 
-		BPContainer graphicsBP = new BPContainer(myWidth*.2, myHeight*.74);
+		BPContainer graphicsBP = new BPContainer(myWidth
+				* LEFT_ACCORDION_WIDTH_RATIO, myHeight
+				* LEFT_ACCORDION_HEIGHT_RATIO);
 		graphicsBP.setTop(myGraphicsTools);
 		graphicsBP.setCenter(myGraphics);
 

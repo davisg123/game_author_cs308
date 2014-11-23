@@ -1,5 +1,6 @@
 package authoring.view.graphicsview;
 
+import java.io.File;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
@@ -20,33 +21,36 @@ import authoring.view.baseclasses.ScrollView;
 public class ImagesView extends ScrollView implements Observer {
 	private static final double VIEW_HEIGHT_RATIO = .69;
 	private static final double VIEW_WIDTH_RATIO = 0.2;
-	private VBox myVbox = new VBox();	
+	private VBox myVbox = new VBox();
 	private GameHandler[] myEvents;
+	private File myGameLocation;
 	private String myName;
-	
-	public ImagesView(ResourceBundle language, double width, double height) {
+
+	public ImagesView(ResourceBundle language, double width, double height,
+			File gameLoc) {
 		super(language, width, height);
 		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
 		this.setContent(myVbox);
+		myGameLocation = gameLoc;
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
-		addImage((String) arg, myEvents);
+		addImage((String) arg);
 	}
-	
-	public void setEvents(GameHandler ... gameHandlers){
+
+	public void setEvents(GameHandler... gameHandlers) {
 		myEvents = gameHandlers;
 	}
-	
-	public void addImage(String s, GameHandler ... handler){
-		Graphic graphic = new Graphic(s, handler);
-		graphic.makeGraphic();
+
+	public void addImage(String s) {
+		Graphic graphic = new Graphic(s, myEvents);
+		graphic.makeGraphic(myGameLocation);
 		myName = s;
 		myVbox.getChildren().add(graphic);
 	}
-	
-	public String getMyName(){
+
+	public String getMyName() {
 		return myName;
 	}
 
