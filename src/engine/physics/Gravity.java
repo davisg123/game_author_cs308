@@ -6,7 +6,7 @@ public class Gravity extends Force {
 	private double gravityConstant;
 
 	public Gravity(double x, double y, double mass, double gravityConstant) {
-		super("gravity");
+		super();
 		this.mass = mass;
 		this.gravityConstant = gravityConstant;
 		constructionHelper(x*myForceValue, y*myForceValue);

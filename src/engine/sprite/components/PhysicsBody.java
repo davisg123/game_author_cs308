@@ -155,13 +155,13 @@ public class PhysicsBody {
 	
 	public void addForce(Force f)
 	{
-		if(this.myActiveForces.containsKey(f.getForceType()))
+		if(this.myActiveForces.containsKey(f.toString()))
 		{
-			this.myActiveForces.replace(f.getForceType(), f);
+			this.myActiveForces.replace(f.toString(), f);
 		}
 		else
 		{
-			this.myActiveForces.put(f.getForceType(), f);
+			this.myActiveForces.put(f.toString(), f);
 		}
 	}
 

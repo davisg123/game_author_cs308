@@ -11,7 +11,7 @@ public class Buoyancy extends Force {
 		this.densityOfFluid = density;
 		constructionHelper(x*myForceValue, y*myForceValue);
 	}
-
+	
 	protected double calculateForce() {
 		return densityOfFluid * GRAVITY_ACCELERATION * volume;
 	}

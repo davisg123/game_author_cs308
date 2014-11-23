@@ -2,21 +2,20 @@ package engine.physics;
 
 public abstract class Force extends Vector {
 	protected double myForceValue;
-	protected String myForceType;
 	
-	public Force(double x, double y, String forceType) {
+	public Force(double x, double y) {
 		super(x, y);
-		this.myForceType = forceType;
 		myForceValue = calculateForce();
 	}
 
-	public Force(String forceType) {
-		this(0, 0, forceType);
+	public Force() {
+		this(0, 0);
 	}
-
-	public String getForceType()
+	
+	@Override
+	public String toString()
 	{
-		return this.myForceType;
+		return this.getClass().getName();
 	}
 	protected abstract double calculateForce();
 }
