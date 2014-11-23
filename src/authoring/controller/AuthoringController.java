@@ -20,7 +20,7 @@ import authoring.view.baseclasses.AccordionContainer;
 import authoring.view.baseclasses.BPContainer;
 import authoring.view.gameobjectsview.GameObjectsView;
 import authoring.view.graphicsview.ImagesView;
-import authoring.view.levelview.LevelsAccordianView;
+import authoring.view.levelview.LevelsAccordionView;
 import authoring.view.levelview.LevelOptions;
 import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
@@ -61,7 +61,7 @@ public class AuthoringController {
 	private ImagesView myGraphics;
 	private SoundsView mySounds;
 	private PropertiesView myProperties;
-	private LevelsAccordianView myLevelsAccordianView;
+	private LevelsAccordionView myLevelsAccordionView;
 	private File myGameLocation;
 
 	public AuthoringController(AuthoringView view, AuthoringModel model,
@@ -101,7 +101,7 @@ public class AuthoringController {
 
 		myModel.getImages().addImage(im);
 		myModel.getImages().addImage(im2);
-		myModel.getLevels().addObserver(myLevelsAccordianView);
+		myModel.getLevels().addObserver(myLevelsAccordionView);
 	}
 
 	private BorderPane intitializeCenter() {
@@ -126,7 +126,7 @@ public class AuthoringController {
 		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
 		myGraphics = new ImagesView(myLanguage, myWidth, myHeight);
 		myGameObjects = new GameObjectsView(myLanguage, myWidth, myHeight);
-		myLevelsAccordianView = new LevelsAccordianView(myLanguage, myWidth, myHeight);
+		myLevelsAccordionView = new LevelsAccordionView(myLanguage, myWidth, myHeight);
 	}
 
 	private void initializeGameHandlers() {
@@ -158,7 +158,7 @@ public class AuthoringController {
 		TitledPane gameObjects = new TitledPane(
 				myLanguage.getString("GameObjects"), myGameObjects);
 		TitledPane levels = new TitledPane(
-				myLanguage.getString("Levels"), myLevelsAccordianView);
+				myLanguage.getString("Levels"), myLevelsAccordionView);
 		leftView.getPanes().addAll(graphics, sounds, gameObjects, levels);
 		BorderPane.setAlignment(leftView, Pos.TOP_RIGHT);
 
