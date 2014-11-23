@@ -1,6 +1,7 @@
 package engine.tests;
 
 import java.util.ArrayList;
+
 import authoring.model.collections.ConditionsCollection;
 import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.LevelsCollection;
