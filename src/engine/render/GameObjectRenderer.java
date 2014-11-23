@@ -44,11 +44,8 @@ public class GameObjectRenderer {
         ourAssetMapBundle = ResourceBundle.getBundle(BASE_ASSET_PATH+DOT+ASSET_MAP_NAME);
     }
 
-    
-    
-    //public void update?
-
     //Called once at the start of every level
+    //TODO move this to a Condition/Action pair???
     /**
      * Renders all GameObjects within a Level
      * @param level

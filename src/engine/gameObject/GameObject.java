@@ -125,6 +125,10 @@ public class GameObject implements IEnabled, Iterable<Component>{
         return myRenderedNode.getRotate();
     }
 
+   /* public GameObject copy() {
+        return new GameObject(this);
+    }*/
+    
     /**
      * Deprecated, all transforms are performed on the node
      * Gets the x position property of the sprite (for listeners)
