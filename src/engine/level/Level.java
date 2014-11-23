@@ -2,9 +2,8 @@ package engine.level;
 
 import java.util.Iterator;
 
-import authoring.model.collections.ConditionsCollection;
+import authoring.model.collections.ConditionIDsCollection;
 import authoring.model.collections.GameObjectsCollection;
-import engine.conditions.Condition;
 import engine.gameObject.GameObject;
 
 /**
@@ -17,8 +16,9 @@ import engine.gameObject.GameObject;
 
 public class Level {
 
+	private String myLevelID;
 	private GameObjectsCollection myGameObjects;
-//	private ConditionsCollection myConditions;
+	private ConditionIDsCollection myConditionIDs;
 
 	/**
 	 * Constructor
@@ -43,52 +43,19 @@ public class Level {
 	public void updateMainCharacter() {
 		
 	}
-	
-	/**
-	 * Enables and initializes the Game Objects specified in this Level
-	 * 
-	 * @param sprites
-	 */
-	/*
-	 * public void setEnabledGameObjects(List<GameObject> sprites) {
-	 * for(GameObject sprite : sprites) {
-	 * if(myEnabledGameObjects.get(sprite.getID())) { //sprite.enable(); ??
-	 * //copy of??? //Initialize the sprite to location???
-	 * myGameObjects.add(sprite); } } } /* public void setEnabled(String type,
-	 * List<IEnabled> enabledObjects) {
-	 * 
-	 * for(IEnabled enabledObject : enabledObjects) {
-	 * if(myEnabledGameObjects.get(sprite.getID()) } }
-	 */
 
 	/**
-	 * Enables the Conditions specified in this Level
-	 * 
-	 * @param conditions
+	 * @return Iterator for GameObjectCollection
 	 */
-	/*
-	 * public void setEnabledConditions(List<Condition> conditions) {
-	 * for(Condition condition : conditions) {
-	 * //if(myEnabledConditions.get(condition.getID()) { //TODO have Conditions
-	 * Implement IEnabled // condition.enable(); //} } }
-	 */
-	/*
-	public void setEnabledConditions(List<Condition> conditions) {
-		 for(Condition condition : conditions) {
-		 if(myEnabledConditions.get(condition.getID()) { //TODO have Conditions
-		 //Implement IEnabled 
-		 condition.enable(); } } }
-*/
-	/**
-	 * Iterator for the List of enabled Game Objects in the Level
-	 * 
-	 * @return
-	 */
-	public Iterator<GameObject> getGameObjects() {
+	public Iterator<GameObject> getGameObjectIterator() {
 		return myGameObjects.iterator();
 	}
-/*
-	public Iterator<Condition> getConditions() {
-		return myConditions.iterator();
-	} */
+	
+	/**
+	 * @return Iterator for the ConditionIDsCollection
+	 */
+	public Iterator<String> getConditionIDsIterator() {
+		return myConditionIDs.iterator();
+	}
+
 }
