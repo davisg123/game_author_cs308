@@ -4,14 +4,21 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 import engine.gameObject.GameObject;
+
 import java.util.Map;
+
 import engine.physics.Acceleration;
 import engine.physics.BEngine;
+import engine.physics.Buoyancy;
 import engine.physics.Force;
+import engine.physics.Friction;
+import engine.physics.Gravity;
 import engine.physics.Impulse;
 import engine.physics.Mass;
 import engine.physics.NormalUpdate;
+import engine.physics.Scalar;
 import engine.physics.Vector;
 import engine.physics.Velocity;
 
@@ -24,7 +31,7 @@ import engine.physics.Velocity;
  *         This class holds Physical Information for a Sprite.
  *
  */
-public class PhysicsBody {
+public class PhysicsBody{
 	private static final double FRAMES_PER_SECOND = 60.0;
 	private List<Impulse> myImpulses;
 	private Map<String, Force> myActiveForces;
@@ -54,6 +61,7 @@ public class PhysicsBody {
 		myMass = new Mass(0);
 		// myUpdate = new NormalUpdate();
 		myActiveForces = new HashMap<String, Force>();
+		initializeMap();
 		haveForcesChanged = false;
 		myBalancedForcesMag = new Vector();
 		myCollisionBodyWidth = collisionBodyWidth;
@@ -66,6 +74,13 @@ public class PhysicsBody {
 	 * @param v
 	 *            - new Velocity of object
 	 */
+
+	private void initializeMap() {
+		myActiveForces.put("gravity", new Gravity(0, 0, 0, 0));
+		myActiveForces.put("buoyancy", new Buoyancy(0, 0, 0, 0));
+		myActiveForces.put("friction", new Friction(0, 0, 0, 0));
+	}
+
 	public void setVelocity(Vector v) {
 		myVelocity = v;
 	}
@@ -80,6 +95,10 @@ public class PhysicsBody {
 		myMass = m;
 	}
 
+	public void setAcceleration(Vector v) {
+		myAcceleration = v;
+	}
+
 	/**
 	 * 
 	 * @return the velocity of the object
@@ -92,10 +111,6 @@ public class PhysicsBody {
 		return myAcceleration;
 	}
 
-	public void setAcceleration(Vector v) {
-		myAcceleration = v;
-	}
-
 	/**
 	 * Return Y-Coordinate of Object
 	 * 
@@ -106,11 +121,47 @@ public class PhysicsBody {
 	}
 
 	/**
+	 * makes a new acceleration vector based on the magnitude of the forces and
+	 * the mass
+	 */
+	private void changeAcceleration() {
+		myAcceleration = new Acceleration(myBalancedForcesMag.getX()
+				/ myMass.getValue(), myBalancedForcesMag.getY()
+				/ myMass.getValue());
+	}
+
+	/**
+	 * changes velocity based on acceleration
+	 */
+	private void changeVelocity() {
+		myVelocity.delta(myAcceleration.getX() / FRAMES_PER_SECOND,
+				myAcceleration.getY() / FRAMES_PER_SECOND);
+	}
+
+	/**
+	 * getter for height of hitbox
+	 * 
+	 * @return height of hitbox
+	 */
+	public double getCollisionBodyHeight() {
+		return myCollisionBodyHeight;
+	}
+
+	/**
+	 * getter for width of hitbox
+	 * 
+	 * @return width of hitbox
+	 */
+	public double getCollisionBodyWidth() {
+		return myCollisionBodyWidth;
+	}
+
+	/**
 	 * updates all the physical vector characteristics for object
 	 * 
 	 * @Param - Game object to change things for
 	 */
-	public void getPositionChange(GameObject sprite) {
+	public void updatePhysicalCharacteristics(GameObject sprite) {
 		doImpulses();
 		if (haveForcesChanged) {
 			balanceForces();
@@ -152,24 +203,6 @@ public class PhysicsBody {
 		haveForcesChanged = false;
 	}
 
-	/**
-	 * makes a new acceleration vector based on the magnitude of the forces and
-	 * the mass
-	 */
-	private void changeAcceleration() {
-		myAcceleration = new Acceleration(myBalancedForcesMag.getX()
-				/ myMass.getValue(), myBalancedForcesMag.getY()
-				/ myMass.getValue());
-	}
-
-	/**
-	 * changes velocity based on acceleration
-	 */
-	private void changeVelocity() {
-		myVelocity.delta(myAcceleration.getX() / FRAMES_PER_SECOND,
-				myAcceleration.getY() / FRAMES_PER_SECOND);
-	}
-
 	public void addForce(Force f) {
 		if (this.myActiveForces.containsKey(f.toString())) {
 			this.myActiveForces.replace(f.toString(), f);
@@ -182,24 +215,14 @@ public class PhysicsBody {
 		this.myImpulses.add(i);
 	}
 
-	/**
-	 * getter for height of hitbox
-	 * 
-	 * @return height of hitbox
-	 */
-	public double getCollisionBodyHeight() {
-		return myCollisionBodyHeight;
+	private void addScalar(Scalar a)
+	{
+		//
 	}
-
-	/**
-	 * getter for width of hitbox
-	 * 
-	 * @return width of hitbox
-	 */
-	public double getCollisionBodyWidth() {
-		return myCollisionBodyWidth;
+	public void massComponent(Mass mass)
+	{
+		myMass=mass;
 	}
-
 	/**
 	 * deals with collisions-axis, deals with velocities and will properly move
 	 * things that are intersecting
@@ -268,4 +291,5 @@ public class PhysicsBody {
 			double measureOne, double measureTwo) {
 		return (centerTwo + measureTwo) - (centerOne - measureOne);
 	}
+
 }
