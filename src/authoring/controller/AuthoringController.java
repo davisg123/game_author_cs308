@@ -17,6 +17,7 @@ import authoring.view.AuthoringView;
 import authoring.view.baseclasses.AccordianView;
 import authoring.view.gameobjectsview.GameObjectsView;
 import authoring.view.graphicsview.ImagesView;
+import authoring.view.levelview.LevelsAccordianView;
 import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
 import authoring.view.soundsview.SoundsView;
@@ -52,6 +53,7 @@ public class AuthoringController {
 	private ImagesView myGraphics;
 	private SoundsView mySounds;
 	private PropertiesView myProperties;
+	private LevelsAccordianView myLevelsAccordianView;
 	private File myGameLocation;
 
 	public AuthoringController(AuthoringView view, AuthoringModel model,
@@ -107,6 +109,7 @@ public class AuthoringController {
 		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
 		myGraphics = new ImagesView(myLanguage, myWidth, myHeight);
 		myGameObjects = new GameObjectsView(myLanguage, myWidth, myHeight);
+		myLevelsAccordianView = new LevelsAccordianView(myLanguage, myWidth, myHeight);
 	}
 
 	private void initializeGameHandlers() {
@@ -131,8 +134,9 @@ public class AuthoringController {
 				mySounds);
 		TitledPane gameObjects = new TitledPane(
 				myLanguage.getString("GameObjects"), myGameObjects);
-
-		leftView.getPanes().addAll(graphics, sounds, gameObjects);
+		TitledPane levels = new TitledPane(
+				myLanguage.getString("Levels"), myLevelsAccordianView);
+		leftView.getPanes().addAll(graphics, sounds, gameObjects, levels);
 		BorderPane.setAlignment(leftView, Pos.TOP_RIGHT);
 
 		return leftView;
