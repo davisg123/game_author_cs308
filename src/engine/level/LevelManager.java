@@ -59,12 +59,20 @@ public class LevelManager implements Iterable<Level> {
 	 * Primitive implementation of level loop...
 	 */
 	public void nextLevel() {
-		if (myCurrentIndex < myLevels.size() - 1) {
-			myCurrentIndex += 1;
-			myCurrentLevel = myLevels.get(myCurrentIndex);
-		} else {
+		if(myLevels.iterator().hasNext()) {
+			myCurrentIndex++;
+			myCurrentLevel = myLevels.iterator().next();
+		}
+		else {
 			myCurrentIndex = 0;
 		}
+		
+//		if (myCurrentIndex < myLevels.size() - 1) {
+//			myCurrentIndex += 1;
+//			myCurrentLevel = myLevels.get(myCurrentIndex);
+//		} else {
+//			myCurrentIndex = 0;
+//		}
 	}
 
 	/**
