@@ -27,7 +27,7 @@ public class Friction extends Force {
 			myValues.put("Mass", 1.0);
 		}
 		if (myValues.get("CoefficientOfFriction") == null) {
-			myValues.put("CoefficientOfFriction", 1.0);
+			myValues.put("CoefficientOfFriction", 0.0);
 		}
 	}
 

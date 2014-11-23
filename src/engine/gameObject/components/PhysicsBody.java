@@ -5,12 +5,16 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+
 import engine.gameObject.GameObject;
+
 import java.util.Map;
+
 import engine.physics.Acceleration;
 import engine.physics.BEngine;
 import engine.physics.Buoyancy;
 import engine.physics.CoefficientOfFriction;
+import engine.physics.CollisionConstant;
 import engine.physics.Density;
 import engine.physics.Force;
 import engine.physics.Friction;
@@ -36,16 +40,12 @@ import engine.physics.Volume;
 public class PhysicsBody {
 	private static final double FRAMES_PER_SECOND = 60.0;
 	private List<Impulse> myImpulses;
-	private Map<String, Force> myActiveForces;
 	private Vector myAcceleration;
 	private Vector myVelocity;
 	private boolean haveForcesChanged;
 	private Vector myBalancedForcesMag;
+	private Map<String, Force> myActiveForces;
 	private Map<String, Scalar> myConstants;
-	// Temorary, initial implementation and location
-	// of the collision body as rectangular shape is in Physics Body,
-	// will refactor later to Polygon/Circle and place into proper place
-	// with relation to RenderedNode
 	private double myCollisionBodyWidth;
 	private double myCollisionBodyHeight;
 
@@ -57,7 +57,6 @@ public class PhysicsBody {
 		myImpulses = new ArrayList<Impulse>();
 		myAcceleration = new Vector();
 		myVelocity = new Vector();
-		// myUpdate = new NormalUpdate();
 		myActiveForces = new HashMap<String, Force>();
 		initializeMap();
 		haveForcesChanged = false;
@@ -78,9 +77,21 @@ public class PhysicsBody {
 	 * initialize those to 0 too
 	 */
 	private void initializeMap() {
-		myActiveForces.put("gravity", new Gravity(0, 0));
-		myActiveForces.put("buoyancy", new Buoyancy(0, 0));
-		myActiveForces.put("friction", new Friction(0, 0));
+		myConstants
+				.put("CoefficientOfFriction", new CoefficientOfFriction(0.0));
+		myConstants.put("CollisionConstant", new CollisionConstant(0.0));
+		myConstants.put("Density", new Density(0.0));
+		myConstants.put("GravityConstant", new GravityConstant(1.0));
+		myConstants.put("Volume", new Volume(1.0));
+		myActiveForces.put("Gravity", new Gravity(0, 0,
+				myConstants.get("Mass"), myConstants.get("GravityConstant")));
+		myActiveForces.put(
+				"Buoyancy",
+				new Buoyancy(0, 0, myConstants.get("Volume"), myConstants
+						.get("Density")));
+		myActiveForces.put("Friction",
+				new Friction(0, 0, myConstants.get("CoefficientOfFriction"),
+						myConstants.get("Mass")));
 	}
 
 	public void setVelocity(Vector v) {
@@ -190,11 +201,13 @@ public class PhysicsBody {
 	}
 
 	public void addForce(Force f) {
-		if (this.myActiveForces.containsKey(f.toString())) {
-			this.myActiveForces.replace(f.toString(), f);
-		} else {
-			this.myActiveForces.put(f.toString(), f);
-		}
+		/*
+		 * String temp = f.toString(); if
+		 * (this.myActiveForces.containsKey(temp)) {
+		 * this.myActiveForces.replace(temp, f); } else {
+		 * this.myActiveForces.put(temp, f); }
+		 */
+		this.myActiveForces.put(f.toString(), f);
 	}
 
 	public void addImpulse(Impulse i) {
