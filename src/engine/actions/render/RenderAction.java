@@ -1,6 +1,7 @@
-package engine.actions;
+package engine.actions.render;
 
 import java.util.List;
+import engine.actions.Action;
 import engine.gameObject.GameObject;
 import engine.level.Level;
 import engine.render.GameObjectRenderer;
