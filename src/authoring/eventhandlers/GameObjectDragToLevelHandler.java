@@ -35,12 +35,13 @@ public class GameObjectDragToLevelHandler implements GameHandler<MouseEvent> {
 		double x = event.getSceneX();
 		double y = event.getSceneY();
 		GameObject gameObject = g.getGameObject();
-		gameObject.setX(x);
-		gameObject.setY(y);
+		GameObject newGameObject = new GameObject(gameObject);
+		newGameObject.setX(x);
+		newGameObject.setY(y);
 		String id = myLevelView.getCurrentLevel().getID();
 		for (Level level : myLevelsCollection) {
 			if (level.getLevelID().equals(id)) {
-				level.addGameObject(gameObject);
+				level.addGameObject(newGameObject);
 			}
 		}
 

@@ -39,4 +39,8 @@ public abstract class GeneralCollection<T> extends Observable implements Iterabl
 		System.out.println("Added");
 	}
 	
+	public String toString(){
+		return myObjects.toString();
+	}
+	
 }
