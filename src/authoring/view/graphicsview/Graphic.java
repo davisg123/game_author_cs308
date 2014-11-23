@@ -29,13 +29,10 @@ public class Graphic extends VBox {
 	private GameHandler[] myOnClick;
 	private boolean myIsVisible = true;
 
-	public boolean getVisible() {
-		return myIsVisible;
-	}
-
 	public Graphic(String s, GameHandler... event) {
 		myName = s;
 		myOnClick = event;
+
 	}
 
 	/**
@@ -48,8 +45,8 @@ public class Graphic extends VBox {
 	public void makeGraphic() {
 		Image image = new Image(getClass().getResourceAsStream(myName));
 		ImageView imageView = new ImageView(image);
-		imageView.setFitHeight(70);
-		imageView.setFitWidth(70);
+		imageView.setPreserveRatio(true);
+		imageView.setFitWidth(50);
 		this.getChildren().add(imageView);
 		this.getChildren().add(new Text(myName));
 		for (GameHandler g : myOnClick) {
@@ -64,7 +61,7 @@ public class Graphic extends VBox {
 			bufferedImage = ImageIO.read(file);
 			Image image = SwingFXUtils.toFXImage(bufferedImage, null);
 			ImageView imageView = new ImageView(image);
-			imageView.setFitHeight(70);
+			imageView.setPreserveRatio(true);
 			imageView.setFitWidth(70);
 			this.getChildren().add(imageView);
 			this.getChildren().add(new Text(myName));
@@ -79,6 +76,10 @@ public class Graphic extends VBox {
 
 	public String getName() {
 		return myName;
+	}
+
+	public boolean getVisible() {
+		return myIsVisible;
 	}
 
 }
