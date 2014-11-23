@@ -107,6 +107,7 @@ public class LevelManager implements Iterable<Level> {
 	 * Initializes the Current Level
 	 */
 	public void initializeCurrentLevel() {
+		disableAllConditions();
 		setLevelEnabledConditions();
 		myRenderer.renderGameObjects(myCurrentLevel);
 	}
@@ -131,5 +132,10 @@ public class LevelManager implements Iterable<Level> {
 	/**
 	 * Disable all conditions
 	 */
+	private void disableAllConditions() {
+		for(Iterator<Condition> conditionIterator = myConditions.iterator(); conditionIterator.hasNext();) {
+			conditionIterator.next().setEnabled(false);
+		}
+	}
 	
 }
