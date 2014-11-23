@@ -8,4 +8,11 @@ public class GravityConstant extends Scalar {
 	public GravityConstant(double value) {
 		super(value);
 	}
+
+	@Override
+	protected void initializeForceList() {
+		myAssociatedForces.add("Gravity");
+	}
+	
+	
 }

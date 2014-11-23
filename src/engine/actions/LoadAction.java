@@ -21,5 +21,4 @@ public class LoadAction implements Action, Initializable{
 		myGameManager=manager;
 		myDataManager = new DataManager();
 	}
-
 }

@@ -3,6 +3,7 @@ package engine.gameObject.components;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import engine.gameObject.GameObject;
@@ -35,14 +36,11 @@ public class PhysicsBody {
 	private static final double FRAMES_PER_SECOND = 60.0;
 	private List<Impulse> myImpulses;
 	private Map<String, Force> myActiveForces;
-	// private List<Double> myNetForce;
 	private Vector myAcceleration;
 	private Vector myVelocity;
-	private Mass myMass;
-	// private NormalUpdate myUpdate;
 	private boolean haveForcesChanged;
 	private Vector myBalancedForcesMag;
-
+	private Map<String, Scalar> myConstants;
 	// Temorary, initial implementation and location
 	// of the collision body as rectangular shape is in Physics Body,
 	// will refactor later to Polygon/Circle and place into proper place
@@ -58,7 +56,6 @@ public class PhysicsBody {
 		myImpulses = new ArrayList<Impulse>();
 		myAcceleration = new Vector();
 		myVelocity = new Vector();
-		myMass = new Mass(0);
 		// myUpdate = new NormalUpdate();
 		myActiveForces = new HashMap<String, Force>();
 		initializeMap();
@@ -89,16 +86,6 @@ public class PhysicsBody {
 		myVelocity = v;
 	}
 
-	/**
-	 * Sets mass of object
-	 * 
-	 * @param m
-	 *            - new Mass of object
-	 */
-	public void setMass(Mass m) {
-		myMass = m;
-	}
-
 	public void setAcceleration(Vector v) {
 		myAcceleration = v;
 	}
@@ -116,22 +103,13 @@ public class PhysicsBody {
 	}
 
 	/**
-	 * Return Y-Coordinate of Object
-	 * 
-	 * @return - returns Y coordinate of Object
-	 */
-	public Mass getMass(double y) {
-		return myMass;
-	}
-
-	/**
 	 * makes a new acceleration vector based on the magnitude of the forces and
 	 * the mass
 	 */
 	private void changeAcceleration() {
 		myAcceleration = new Acceleration(myBalancedForcesMag.getX()
-				/ myMass.getValue(), myBalancedForcesMag.getY()
-				/ myMass.getValue());
+				/ myConstants.get("Mass").getValue(),
+				myBalancedForcesMag.getY() / myConstants.get("Mass").getValue());
 	}
 
 	/**
@@ -174,11 +152,10 @@ public class PhysicsBody {
 		changeVelocity();
 		// return changePosition
 
-		//sprite.setPosition(new Point2D.Double(myVelocity.getX()
-				/// FRAMES_PER_SECOND, myVelocity.getY() / FRAMES_PER_SECOND));
-		
-		sprite.setX(myVelocity.getX()
-				/FRAMES_PER_SECOND);
+		// sprite.setPosition(new Point2D.Double(myVelocity.getX()
+		// / FRAMES_PER_SECOND, myVelocity.getY() / FRAMES_PER_SECOND));
+
+		sprite.setX(myVelocity.getX() / FRAMES_PER_SECOND);
 		sprite.setY(myVelocity.getY() / FRAMES_PER_SECOND);
 	}
 
@@ -188,7 +165,7 @@ public class PhysicsBody {
 	 */
 	private void doImpulses() {
 		for (Impulse cur : myImpulses) {
-			cur.scalarMultiplication(1.0 / myMass.getValue());
+			cur.scalarMultiplication(1.0 / myConstants.get("Mass").getValue());
 			myVelocity.delta(cur);
 		}
 		myImpulses.clear();
@@ -223,12 +200,13 @@ public class PhysicsBody {
 		this.myImpulses.add(i);
 	}
 
-	private void addScalar(Scalar a) {
-		//
-	}
-
-	public void massComponent(Mass mass) {
-		myMass = mass;
+	public void addScalar(Scalar a) {
+		myConstants.put(a.toString(), a);
+		Iterator<String> itr = a.iterator();
+		while (itr.hasNext()) {
+			String cur = itr.next();
+			myActiveForces.get(cur).addOrChangeValue(a);
+		}
 	}
 
 	/**

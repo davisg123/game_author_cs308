@@ -16,6 +16,7 @@ import engine.gameObject.GameObject;
  * 
  * @author Will Chang
  * @author Abhishek Balakrishnan
+ * @author Eli Lichtenberg
  */
 
 public class LevelManager implements Iterable<Level> {
@@ -36,9 +37,9 @@ public class LevelManager implements Iterable<Level> {
 	 * @param renderer
 	 * @param detector
 	 */
-	public LevelManager(LevelsCollection levels, GameObjectsCollection gameObjects,
-			ConditionsCollection conditions, GameObjectRenderer renderer,
-			CollisionDetector detector) {
+	public LevelManager(LevelsCollection levels,
+			GameObjectsCollection gameObjects, ConditionsCollection conditions,
+			GameObjectRenderer renderer, CollisionDetector detector) {
 		myLevels = levels;
 		myGameObjects = gameObjects;
 		myConditions = conditions;
@@ -59,12 +60,20 @@ public class LevelManager implements Iterable<Level> {
 	 * Primitive implementation of level loop...
 	 */
 	public void nextLevel() {
-		if (myCurrentIndex < myLevels.size() - 1) {
-			myCurrentIndex += 1;
-			myCurrentLevel = myLevels.get(myCurrentIndex);
-		} else {
+		if(myLevels.iterator().hasNext()) {
+			myCurrentIndex++;
+			myCurrentLevel = myLevels.iterator().next();
+		}
+		else {
 			myCurrentIndex = 0;
 		}
+		
+//		if (myCurrentIndex < myLevels.size() - 1) {
+//			myCurrentIndex += 1;
+//			myCurrentLevel = myLevels.get(myCurrentIndex);
+//		} else {
+//			myCurrentIndex = 0;
+//		}
 	}
 
 	/**
@@ -98,23 +107,25 @@ public class LevelManager implements Iterable<Level> {
 	 * Initializes the Current Level
 	 */
 	public void initializeCurrentLevel() {
+		disableAllConditions();
 		setLevelEnabledConditions();
 		myRenderer.renderGameObjects(myCurrentLevel);
 	}
 
 	/**
-     * Set conditions in this level to 
-     */
+	 * Enable or disable conditions on myConditions
+	 */
 	private void setLevelEnabledConditions() {
-		for (Iterator<String> conditionIDIterator = myCurrentLevel.getConditionIDsIterator(); conditionIDIterator
-				.hasNext();) {
+		for (Iterator<String> conditionIDIterator = myCurrentLevel
+				.getConditionIDsIterator(); conditionIDIterator.hasNext();) {
 			String conditionID = conditionIDIterator.next();
 			
-//			for (Iterator<Condition> conditionIterator = myConditions.iterator() )
-			/*
-			 * find the condition in myConditions specified by this conditionID
-			 * and set it enabled
-			 */
+			for (Iterator<Condition> conditionIterator = myConditions
+					.iterator(); conditionIterator.hasNext();) {
+				Condition condition = conditionIterator.next();
+				if (condition.getID() == conditionID)
+					condition.setEnabled(true);
+			}
 		}
 	}
 	
@@ -127,7 +138,12 @@ public class LevelManager implements Iterable<Level> {
 	}
 	
 	/**
-	 * 
+	 * Disable all conditions
 	 */
-
+	private void disableAllConditions() {
+		for(Iterator<Condition> conditionIterator = myConditions.iterator(); conditionIterator.hasNext();) {
+			conditionIterator.next().setEnabled(false);
+		}
+	}
+	
 }
