@@ -29,14 +29,12 @@ public abstract class GeneralCollection<T> extends Observable implements Iterabl
 		return myObjects.get(i);
 	}
 	
-	public void remove(T a){
-		myObjects.remove(a);
-		System.out.println("removed");
+	public boolean remove(T a){
+		return myObjects.remove(a);
 	}
 	
 	public void add(T a){
 		myObjects.add(a);
-		System.out.println("Added");
 	}
 	
 	public String toString(){

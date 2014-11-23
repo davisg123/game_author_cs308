@@ -5,6 +5,7 @@ import javafx.scene.input.MouseEvent;
 import authoring.model.collections.LevelsCollection;
 import authoring.view.gameobjectsview.GameObjectGraphic;
 import authoring.view.levelview.LevelsView;
+import authoring.view.propertiesview.PropertiesView;
 import engine.level.Level;
 
 /**
@@ -19,26 +20,29 @@ public class GameObjectDragHandler implements GameHandler<MouseEvent> {
 
 	private LevelsView myLevelView;
 	private LevelsCollection myLevelsCollection;
+	private PropertiesView myProperties;
 
-	public GameObjectDragHandler(LevelsView levelView, LevelsCollection data) {
+
+	public GameObjectDragHandler(LevelsView levelView, LevelsCollection data, PropertiesView props) {
 		myLevelView = levelView;
 		myLevelsCollection = data;
+		myProperties = props;
 	}
 
 	@Override
 	public void handle(MouseEvent event) {
-		System.out.println("reached");
+		//System.out.println("reached");
 		GameObjectGraphic g = (GameObjectGraphic) event.getSource();
 		double x = event.getSceneX();
 		double y = event.getSceneY();
 		String id = myLevelView.getCurrentLevel().getID();
-		System.out.println(myLevelsCollection);
 		for (Level level : myLevelsCollection) {
 			if (level.getLevelID().equals(id)) {
 				level.removeGameObject(g.getGameObject());
 				g.getGameObject().setX(x);
 				g.getGameObject().setY(y);
 				level.addGameObject(g.getGameObject());
+				myProperties.makeProperties(g.getGameObject());
 			}
 		}
 
