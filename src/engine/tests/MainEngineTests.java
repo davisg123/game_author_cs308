@@ -1,6 +1,7 @@
 package engine.tests;
 
 import java.util.ArrayList;
+
 import authoring.model.collections.ConditionsCollection;
 import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.LevelsCollection;
@@ -12,6 +13,7 @@ import engine.conditions.ButtonConditionManager;
 import engine.gameObject.GameObject;
 import engine.gameObject.components.PhysicsBody;
 import engine.level.Level;
+import engine.physics.Acceleration;
 import engine.physics.Velocity;
 import engine.render.GameObjectRenderer;
 import javafx.application.Application;
@@ -68,8 +70,11 @@ public class MainEngineTests extends Application {
                                    75, 100, 20, 200, 0, "TestGameObject");
         //ugh, why do we have to set this explicitly?
         PhysicsBody body = new PhysicsBody(20,200);
-        Velocity vel = new Velocity(5,0);
+        Velocity vel = new Velocity(5.0,0.0);
         body.setVelocity(vel);
+        Acceleration ac=new Acceleration(100.0, 0.0);
+        body.setAcceleration(ac);
+        System.out.println(body.getAcceleration().getX());
         sprite.setPhysicsBody(body);
         GameObjectsCollection myGameObjects = new GameObjectsCollection();
         myGameObjects.add(sprite);

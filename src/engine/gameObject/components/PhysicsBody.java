@@ -121,15 +121,18 @@ public class PhysicsBody {
 	 * the mass
 	 */
 	private void changeAcceleration() {
-		myAcceleration = new Acceleration(myBalancedForcesMag.getX()
-				/ myConstants.get("Mass").getValue(),
-				myBalancedForcesMag.getY() / myConstants.get("Mass").getValue());
+		myAcceleration.delta(
+				myBalancedForcesMag.getX() / myConstants.get("Mass").getValue()
+						/ FRAMES_PER_SECOND, myBalancedForcesMag.getY()
+						/ myConstants.get("Mass").getValue()
+						/ FRAMES_PER_SECOND);
 	}
 
 	/**
 	 * changes velocity based on acceleration
 	 */
 	private void changeVelocity() {
+		// System.out.println(myAcceleration.getX()/ FRAMES_PER_SECOND);
 		myVelocity.delta(myAcceleration.getX() / FRAMES_PER_SECOND,
 				myAcceleration.getY() / FRAMES_PER_SECOND);
 	}
@@ -158,18 +161,21 @@ public class PhysicsBody {
 	 * @Param - Game object to change things for
 	 */
 	public void updatePhysicalCharacteristics(GameObject sprite) {
+		System.out.println(myVelocity.getX());
 		doImpulses();
 		if (haveForcesChanged) {
 			balanceForces();
 		}
-		//changeAcceleration();
+		changeAcceleration();
 		changeVelocity();
 		// return changePosition
 
 		// sprite.setPosition(new Point2D.Double(myVelocity.getX()
 		// / FRAMES_PER_SECOND, myVelocity.getY() / FRAMES_PER_SECOND));
-		sprite.setTranslateX(sprite.getTranslateX() + myVelocity.getX() / FRAMES_PER_SECOND);
-		sprite.setTranslateY(sprite.getTranslateY() + myVelocity.getY() / FRAMES_PER_SECOND);
+		sprite.setTranslateX(sprite.getTranslateX() + myVelocity.getX()
+				/ FRAMES_PER_SECOND);
+		sprite.setTranslateY(sprite.getTranslateY() + myVelocity.getY()
+				/ FRAMES_PER_SECOND);
 	}
 
 	/**
