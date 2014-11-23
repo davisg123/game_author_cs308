@@ -1,17 +1,28 @@
 package gamePlayer.model;
 
+/**
+ * 
+ * @author Shreyas B
+ * @author Abhishek B
+ *
+ */
 public class DataHandler {
 	
-	//private DataModuleObject myDataModuleObject
+	private DataValidation myDataValidator;
 	
-	public DataWrapper getData(){
-		//myDataModuleObject.getNewData()
+	public DataHandler() {
+		myDataValidator = new DataValidation();
+	}
+
+	public DataWrapper getData() {
+		// send data to myDataValidator to verify
+		// myDataModuleObject.getNewData()
 		return null;
 	}
-	
-//	public DataWrapper getSavedData(){
-//		//myDataModuleObject.getSavedData();
-//		return null;
-//	}
+
+	// public DataWrapper getSavedData(){
+	// //myDataModuleObject.getSavedData();
+	// return null;
+	// }
 
 }
