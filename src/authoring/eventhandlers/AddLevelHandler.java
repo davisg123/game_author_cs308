@@ -32,23 +32,14 @@ public class AddLevelHandler implements GameHandler<Event> {
 		myLevelsCollection.add(levelData);
 		levelData.addObserver(newLevelView);
 		
-		String im = "/assets/mario.png";
-		GameObject test = new GameObject(new ArrayList<Component>(), im, new Point2D.Double(), 0, 0, 0, "Mario");
-		levelData.addGameObject(test);
-		
+//		String im = "/assets/mario.png";
+//		GameObject test = new GameObject(new ArrayList<Component>(), im, new Point2D.Double(), 0, 0, 0, "Mario");
+//		levelData.addGameObject(test);
 	}
 	
 	public void setLevelOptions(LevelsView l){
 		myLevels = l;
 	}
-
-//	@Override
-//	public void handle(Event arg0) {
-//		SingleLevelView newLevelView = myLevels.addNewLevel();
-//		Level levelData = new Level(new GameObjectsCollection());
-//		myLevelsCollection.add(levelData);
-//		levelData.addObserver(newLevelView);
-//	}
 
 	@Override
 	public EventType<Event> getEventType() {

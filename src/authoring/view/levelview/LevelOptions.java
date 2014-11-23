@@ -19,21 +19,17 @@ public class LevelOptions extends ToolBar {
 	private GameHandler[] myEvents;
 
 	public LevelOptions(ResourceBundle language, TabPane levels, double width,
-			double height, GameHandler gameHandlers, GameHandler ... events) {
+			double height) {
 		myLanguage = language;
 		myLevels = levels;
 		myWidth = width;
 		myHeight = height;
-		myButtonHandler = gameHandlers;
-		myEvents = events;
-		
 		addNewTabButton();
 	}
 
 	private void addNewTabButton() {
 		this.getItems().add(
-				makeButton(myLanguage.getString("Add_Level"),
-						myButtonHandler));
+				makeButton(myLanguage.getString("Add_Level"), myButtonHandler));
 	}
 
 	private Button makeButton(String property, GameHandler handler) {
@@ -45,11 +41,12 @@ public class LevelOptions extends ToolBar {
 
 	public SingleLevelView addNewLevel() {
 		Tab tab = new Tab(myLanguage.getString("New_Level"));
-		SingleLevelView newView = new SingleLevelView(myWidth, myHeight, myEvents);
+		SingleLevelView newView = new SingleLevelView(myWidth, myHeight,
+				myEvents);
 		tab.setContent(newView);
 		myLevels.getTabs().add(tab);
 		myLevels.getSelectionModel().select(tab);
 		return newView;
 	}
-	
+
 }

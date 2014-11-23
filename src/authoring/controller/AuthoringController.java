@@ -10,18 +10,18 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
 import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.GameObjectClickHandler;
-import authoring.eventhandlers.GraphicsClickHandler;
-import authoring.eventhandlers.GraphicsDragHandler;
-import authoring.eventhandlers.GraphicsDragToLevelHandler;
+import authoring.eventhandlers.ImagesClickHandler;
+import authoring.eventhandlers.GameObjectDragHandler;
+import authoring.eventhandlers.GameObjectDragToLevelHandler;
 import authoring.model.AuthoringModel;
 import authoring.view.AuthoringView;
 import authoring.view.baseclasses.AccordianView;
-import authoring.view.graphicsview.GraphicsView;
+import authoring.view.gameobjectsview.GameObjectsView;
+import authoring.view.graphicsview.ImagesView;
 import authoring.view.levelview.LevelsView;
 import authoring.view.levelview.SingleLevelView;
 import authoring.view.propertiesview.PropertiesView;
 import authoring.view.soundsview.SoundsView;
-import authoring.view.spritesview.GameObjectsView;
 import engine.actions.Action;
 import engine.conditions.Condition;
 import engine.gameObject.GameObject;
@@ -51,19 +51,19 @@ public class AuthoringController {
 	 */
 	private LevelsView myLevels;
 	private GameObjectsView myGameObjects;
-	private GraphicsView myGraphics;
+	private ImagesView myGraphics;
 	private SoundsView mySounds;
 	private PropertiesView myProperties;
 	private File myGameLocation;
 
 	public AuthoringController(AuthoringView view, AuthoringModel model,
-			double width, double height, ResourceBundle language /*,File gameLoc*/ ) {
+			double width, double height, ResourceBundle language /* ,File gameLoc */) {
 		myView = view;
 		myModel = model;
 		myWidth = width;
 		myHeight = height;
 		myLanguage = language;
-		//myGameLocation = gameLoc;
+		// myGameLocation = gameLoc;
 		initializeView();
 
 	}
@@ -78,35 +78,7 @@ public class AuthoringController {
 		myView.setCenter(myLevels);
 		myView.setLeft(initializeLeft());
 		myView.setRight(initializeRight());
-
-	}
-
-	/**
-	 * Initializes all the view components that have a 1 to 1 relationship with
-	 * backend data components. Provides event handlers for View objects to
-	 * handle sending data to the backend
-	 */
-
-	private void initializeViewComponents() {
-		myProperties = new PropertiesView(myLanguage, myWidth, myHeight);
-		myLevels = new LevelsView(myLanguage, myWidth, myHeight, new AddLevelHandler(myModel.getLevels()), new GameObjectClickHandler(myProperties));
-		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
-		myGraphics = new GraphicsView(myLanguage, myWidth, myHeight,
-				new GraphicsClickHandler(myProperties, myLevels));
-		myGameObjects = new GameObjectsView(myLanguage, myWidth, myHeight,
-				new GraphicsDragToLevelHandler(myProperties, myLevels.getCurrentLevel()),
-				new GameObjectClickHandler(myProperties));
-
-	}
-
-	/**
-	 * Initializes what goes on the left side of the borderpane.
-	 * 
-	 * @return AccordianView a node.
-	 */
-
-	private AccordianView initializeLeft() {
-		AccordianView leftView = new AccordianView(myWidth, myHeight);
+		initializeGameHandlers();
 
 		// Some hard-coded images used to test events and observable/observer
 		// interactions
@@ -123,6 +95,36 @@ public class AuthoringController {
 
 		myModel.getImages().addImage(im);
 		myModel.getImages().addImage(im2);
+
+	}
+
+	/**
+	 * Initializes all the view components that have a 1 to 1 relationship with
+	 * backend data components. Provides event handlers for View objects to
+	 * handle sending data to the backend
+	 */
+
+	private void initializeViewComponents() {
+		myProperties = new PropertiesView(myLanguage, myWidth, myHeight);
+		myLevels = new LevelsView(myLanguage, myWidth, myHeight);
+		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
+		myGraphics = new ImagesView(myLanguage, myWidth, myHeight);
+		myGameObjects = new GameObjectsView(myLanguage, myWidth, myHeight);
+	}
+
+	private void initializeGameHandlers() {
+		myGraphics.setEvents(new ImagesClickHandler(myProperties));
+		myGameObjects.setEvents(new GameObjectClickHandler(myProperties));
+	}
+
+	/**
+	 * Initializes what goes on the left side of the borderpane.
+	 * 
+	 * @return AccordianView a node.
+	 */
+
+	private AccordianView initializeLeft() {
+		AccordianView leftView = new AccordianView(myWidth, myHeight);
 
 		TitledPane graphics = new TitledPane(myLanguage.getString("Images"),
 				myGraphics);

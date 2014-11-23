@@ -1,4 +1,4 @@
-package authoring.view.spritesview;
+package authoring.view.gameobjectsview;
 
 import authoring.eventhandlers.GameHandler;
 import authoring.view.graphicsview.Graphic;

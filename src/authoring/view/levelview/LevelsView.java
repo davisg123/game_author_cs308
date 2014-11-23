@@ -8,8 +8,8 @@ import javafx.scene.control.TabPane;
 import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.BPView;
+import authoring.view.gameobjectsview.GameObjectGraphic;
 import authoring.view.graphicsview.Graphic;
-import authoring.view.spritesview.GameObjectGraphic;
 
 /**
  * View class that contains all the levels in the program. Corresponds with
@@ -27,17 +27,14 @@ public class LevelsView extends BPView implements Observer {
 	private TabPane myLevelTabs;
 	private AddLevelHandler myHandler;
 
-	public LevelsView(ResourceBundle language, double width, double height, AddLevelHandler handler, GameHandler ... events) {
+	public LevelsView(ResourceBundle language, double width, double height) {
 		super(language, width, height);
-		myHandler = handler;
-		myHandler.setLevelOptions(this);
 		myLevelTabs = new TabPane();
-		myLevelOptions = new LevelOptions(language, myLevelTabs, width, height, myHandler, events);
+		myLevelOptions = new LevelOptions(language, myLevelTabs, width, height);
 		super.setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
 		this.setTop(myLevelOptions);
 		this.setCenter(myLevelTabs);
 		myLevelOptions.addNewLevel();
-
 	}
 
 	@Override
@@ -55,6 +52,8 @@ public class LevelsView extends BPView implements Observer {
 	 * @param y
 	 * @param handler
 	 */
+	
+	//PROBABLY NEEDS TO BE REMOVED
 	public void addGameObjectToView(GameObjectGraphic graphic, double x, double y,
 			GameHandler ... handler) {
 		Graphic g = new GameObjectGraphic(graphic.getGameObject(),handler);

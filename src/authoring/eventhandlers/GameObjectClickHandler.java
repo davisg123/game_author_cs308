@@ -2,8 +2,8 @@ package authoring.eventhandlers;
 
 import javafx.event.EventType;
 import javafx.scene.input.MouseEvent;
+import authoring.view.gameobjectsview.GameObjectGraphic;
 import authoring.view.propertiesview.PropertiesView;
-import authoring.view.spritesview.GameObjectGraphic;
 
 public class GameObjectClickHandler implements GameHandler<MouseEvent>{
 
@@ -16,7 +16,6 @@ public class GameObjectClickHandler implements GameHandler<MouseEvent>{
 	@Override
 	public void handle(MouseEvent event) {
 		GameObjectGraphic g = (GameObjectGraphic) event.getSource();
-		//System.out.println(g.getGameObject().getCurrentImageName());
 		myProperties.makeProperties(g.getGameObject());
 		
 	}

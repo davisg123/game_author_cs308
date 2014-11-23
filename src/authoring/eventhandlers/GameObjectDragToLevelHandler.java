@@ -1,10 +1,12 @@
 package authoring.eventhandlers;
 
 import javafx.event.EventType;
+import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
-import authoring.view.levelview.SingleLevelView;
+import authoring.view.gameobjectsview.GameObjectGraphic;
 import authoring.view.propertiesview.PropertiesView;
-import authoring.view.spritesview.GameObjectGraphic;
+import engine.gameObject.GameObject;
+import engine.level.Level;
 
 /**
  * Handles user click on graphic objects. Projects graphic properties in
@@ -14,13 +16,13 @@ import authoring.view.spritesview.GameObjectGraphic;
  * @author Chris Bernt
  *
  */
-public class GraphicsDragToLevelHandler implements GameHandler<MouseEvent> {
+public class GameObjectDragToLevelHandler implements GameHandler<MouseEvent> {
 	private PropertiesView myProperties;
-	private SingleLevelView myLevel;
+	private Level myLevel;
 
-	public GraphicsDragToLevelHandler(PropertiesView properties, SingleLevelView levelsView) {
+	public GameObjectDragToLevelHandler(PropertiesView properties, Level level) {
 		myProperties = properties;
-		myLevel = levelsView;
+		myLevel = level;
 	}
 
 	@Override
@@ -28,9 +30,10 @@ public class GraphicsDragToLevelHandler implements GameHandler<MouseEvent> {
 		GameObjectGraphic g = (GameObjectGraphic) event.getSource();
 		double x = event.getSceneX();
 		double y = event.getSceneY();
-		myLevel.addGameObjectToView(g.getGameObject(), x, y, new GraphicsDragHandler(
-				myLevel), new GameObjectClickHandler(myProperties));
-
+		GameObject gO = g.getGameObject();
+		//gO.setPosition(new Point2D(x,y));
+		myLevel.addGameObject(g.getGameObject());
+	
 	}
 
 	@Override

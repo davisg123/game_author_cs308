@@ -2,8 +2,8 @@ package authoring.eventhandlers;
 
 import javafx.event.EventType;
 import javafx.scene.input.MouseEvent;
-import authoring.view.graphicsview.Graphic;
-import authoring.view.levelview.SingleLevelView;
+import authoring.view.gameobjectsview.GameObjectGraphic;
+import engine.level.Level;
 
 /**
  * Event handler for dragging graphics on the level view. Fills properties view
@@ -13,19 +13,20 @@ import authoring.view.levelview.SingleLevelView;
  *
  */
 
-public class GraphicsDragHandler implements GameHandler<MouseEvent>{
-	private SingleLevelView myLevel;
+public class GameObjectDragHandler implements GameHandler<MouseEvent>{
+	private Level myLevel;
 
-	public GraphicsDragHandler(SingleLevelView levels) {
-		myLevel = levels;
+	public GameObjectDragHandler(Level level) {
+		myLevel = level;
 	}
 
 	@Override
 	public void handle(MouseEvent event) {
-		Graphic g = (Graphic) event.getSource();
+		GameObjectGraphic g = (GameObjectGraphic) event.getSource();
 		double x = event.getSceneX();
 		double y = event.getSceneY();
-		myLevel.moveSpriteOnLevel(g, x, y);
+		//myLevel.moveSpriteOnLevel(g, x, y);
+		
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package authoring.view.baseclasses;
 
 import java.util.ResourceBundle;
 
+import authoring.eventhandlers.GameHandler;
 import javafx.scene.control.ScrollPane;
 
 /**
@@ -14,6 +15,7 @@ public class ScrollView extends ScrollPane {
 	protected ResourceBundle myLanguage;
 	protected double myHeight;
 	protected double myWidth;
+	protected GameHandler[] myEvents;
 
 	public ScrollView(ResourceBundle language, double width, double height) {
 		myLanguage = language;
@@ -25,5 +27,9 @@ public class ScrollView extends ScrollPane {
 		setPrefSize(width, height);
 		setMinSize(width, height);
 		setMaxSize(width, height);
+	}
+	
+	public void setEvents(GameHandler ... gameHandlers){
+		myEvents = gameHandlers;
 	}
 }
