@@ -38,11 +38,32 @@ public class SingleLevelView extends Pane implements Observer {
 		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
 		myEvents = handlers;
 	}
+	/**
+	 * REPEATED CODE WE NEED TO FIX
+	 * @param width
+	 * @param height
+	 * @param l
+	 * @param handlers
+	 */
+	public SingleLevelView(double width, double height, Level l, GameHandler... handlers){
+		this.setBackground(myDefaultBackground);
+		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
+		myEvents = handlers;
+		recreateLevel(l);
+		
+	}
 
 	private void setView(double width, double height) {
 		setPrefSize(width, height);
 		setMinSize(width, height);
 		setMaxSize(width, height);
+	}
+	
+	public void recreateLevel(Level l){
+		//System.out.println(myEvents.length);
+		for (GameObject g: l.getGameObjectsCollection()){
+			addGameObjectToView(g, g.getX(), g.getY(), myEvents);
+		}
 	}
 
 	@Override
@@ -52,10 +73,7 @@ public class SingleLevelView extends Pane implements Observer {
 			//System.out.println(level.getGameObjectsCollection());
 			//level.getGameObjectsCollection().clear();
 			//System.out.println(level.getLevelID());
-			for (GameObject g: level.getGameObjectsCollection()){
-				//removeGameObjectFromView(g);
-				addGameObjectToView(g, g.getX(), g.getY(), myEvents);
-			}
+			recreateLevel(level);
 	}
 
 	private void addGameObjectToView(GameObject gameObject, double x, double y,

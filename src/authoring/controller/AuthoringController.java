@@ -15,6 +15,7 @@ import authoring.eventhandlers.GameObjectClickHandler;
 import authoring.eventhandlers.GameObjectDragHandler;
 import authoring.eventhandlers.GameObjectDragToLevelHandler;
 import authoring.eventhandlers.ImagesClickHandler;
+import authoring.eventhandlers.LevelToViewHandler;
 import authoring.model.AuthoringModel;
 import authoring.view.AuthoringView;
 import authoring.view.baseclasses.AccordionContainer;
@@ -143,6 +144,9 @@ public class AuthoringController {
 		myGraphicsTools.setButtonBehavior(new AddImageHandler(myModel
 				.getImages(), myGameLocation));
 		myLevels.setEventHandlers(new GameObjectClickHandler(myProperties),
+				new GameObjectDragHandler(myLevels, myModel.getLevels()));
+		myLevelsAccordionView.setEvents(new LevelToViewHandler(myLevels));
+		myLevelsAccordionView.setLevelEvents(new GameObjectClickHandler(myProperties),
 				new GameObjectDragHandler(myLevels, myModel.getLevels()));
 	}
 

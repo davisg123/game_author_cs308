@@ -25,8 +25,8 @@ import authoring.eventhandlers.GameHandler;
  */
 public class Graphic extends VBox {
 
-	private String myName;
-	private GameHandler[] myOnClick;
+	protected String myName;
+	protected GameHandler[] myOnClick;
 	private boolean myIsVisible = true;
 
 	public boolean getVisible() {

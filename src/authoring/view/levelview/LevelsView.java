@@ -4,6 +4,7 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
 
+import engine.level.Level;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import authoring.eventhandlers.AddLevelHandler;
@@ -79,6 +80,7 @@ public class LevelsView extends TabView implements Observer {
 		g.setLayoutX(x - 230);
 		g.setLayoutY(y - 100);
 	}
+	
 	public SingleLevelView addNewLevel(String myLevelID) {
 		Tab tab = new Tab(myLevelID);
 		SingleLevelView newView = new SingleLevelView(myWidth, myHeight,
@@ -88,6 +90,20 @@ public class LevelsView extends TabView implements Observer {
 		this.getSelectionModel().select(tab);
 		return newView;
 
+	}
+	/**
+	 * THIS IS REPEATED CODE WE NEED TO FIX
+	 * @param l
+	 * @return
+	 */
+	public SingleLevelView addExistingLevel(Level l, GameHandler ... events){
+		Tab tab = new Tab(l.getLevelID());
+		SingleLevelView newView = new SingleLevelView(myWidth, myHeight,l,events);
+		//System.out.println(events.length);
+		tab.setContent(newView);
+		this.getTabs().add(tab);
+		this.getSelectionModel().select(tab);
+		return newView;
 	}
 
 	public void setEventHandlers(GameHandler... handlers) {

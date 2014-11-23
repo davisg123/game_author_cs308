@@ -16,6 +16,7 @@ public class LevelsAccordionView extends ScrollView implements Observer{
 	private static final double VIEW_WIDTH_RATIO = 0.2;
 	private VBox myVbox = new VBox();	
 	private GameHandler[] myEvents;
+	private GameHandler[] levelEvents;
 	private String myName;
 	
 	public LevelsAccordionView(ResourceBundle language, double width,
@@ -27,7 +28,7 @@ public class LevelsAccordionView extends ScrollView implements Observer{
 
 	@Override
 	public void update(Observable o, Object arg) {
-		addLevel((Level) arg, myEvents);
+		addLevel((Level) arg);
 		
 	}
 	
@@ -35,9 +36,16 @@ public class LevelsAccordionView extends ScrollView implements Observer{
 		myEvents = gameHandlers;
 	}
 	
-	public void addLevel(Level l, GameHandler ... handler){
+	public void setLevelEvents(GameHandler ... gameHandlers){
+		levelEvents = gameHandlers;
+	}
+	
+	public void addLevel(Level l){
 		myName = l.getLevelID();
-		myVbox.getChildren().add(new Text(myName));
+		LevelGraphic newLevel = new LevelGraphic(myName, myEvents, l,levelEvents);
+	//	System.out.println(levelEvents.length);
+		newLevel.makeGraphic();
+		myVbox.getChildren().add(newLevel);
 	}
 	
 	public String getMyName(){

@@ -50,7 +50,7 @@ public class AddLevelHandler implements GameHandler<Event> {
 		newLevelView.setID(myLevelID);
 		levelData.setLevelID(myLevelID);
 		myLevelsCollection.add(levelData);
-		
+		//System.out.println(levelData);		
 	}
 
 	@Override
