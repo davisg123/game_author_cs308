@@ -15,6 +15,7 @@ public abstract class Condition {
 
     private List<Action> myActions = new ArrayList<Action>();
     private String myID;
+    private boolean myEnabled;
     
     public Condition(List<Action> actions, String ID){
         myActions = actions;
@@ -27,6 +28,14 @@ public abstract class Condition {
     
     public String getID(){
         return myID;
+    }
+    
+    public void setEnabled(boolean enabled){
+        myEnabled = enabled;
+    }
+    
+    public boolean isEnabled(){
+        return myEnabled;
     }
     
     
