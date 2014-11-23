@@ -162,15 +162,14 @@ public class PhysicsBody {
 		if (haveForcesChanged) {
 			balanceForces();
 		}
-		changeAcceleration();
+		//changeAcceleration();
 		changeVelocity();
 		// return changePosition
 
 		// sprite.setPosition(new Point2D.Double(myVelocity.getX()
 		// / FRAMES_PER_SECOND, myVelocity.getY() / FRAMES_PER_SECOND));
-
-		sprite.setX(myVelocity.getX() / FRAMES_PER_SECOND);
-		sprite.setY(myVelocity.getY() / FRAMES_PER_SECOND);
+		sprite.setTranslateX(sprite.getTranslateX() + myVelocity.getX() / FRAMES_PER_SECOND);
+		sprite.setTranslateY(sprite.getTranslateY() + myVelocity.getY() / FRAMES_PER_SECOND);
 	}
 
 	/**

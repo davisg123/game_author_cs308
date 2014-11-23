@@ -64,10 +64,10 @@ public class MainEngineTests extends Application {
         /*****
          * create a sprite and put it in a collection
          *****/
-        GameObject sprite = new GameObject(null,"slowpoke",
-                                   50, 50, 100, 100, 0, "TestGameObject");
+        GameObject sprite = new GameObject(null,"floor",
+                                   75, 100, 20, 200, 0, "TestGameObject");
         //ugh, why do we have to set this explicitly?
-        PhysicsBody body = new PhysicsBody(100,100);
+        PhysicsBody body = new PhysicsBody(20,200);
         Velocity vel = new Velocity(5,0);
         body.setVelocity(vel);
         sprite.setPhysicsBody(body);
