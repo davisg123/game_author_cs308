@@ -58,7 +58,7 @@ public class PhysicsBody {
 		myVelocity = new Vector();
 		// myUpdate = new NormalUpdate();
 		myActiveForces = new HashMap<String, Force>();
-		initializeMap();
+		initializeMaps();
 		haveForcesChanged = false;
 		myBalancedForcesMag = new Vector();
 		myCollisionBodyWidth = collisionBodyWidth;
@@ -76,7 +76,7 @@ public class PhysicsBody {
 	 * need to work out two things: hardcode Scalar... scalar-->probably need to
 	 * initialize those to 0 too
 	 */
-	private void initializeMap() {
+	private void initializeMaps() {
 		myActiveForces.put("gravity", new Gravity(0, 0));
 		myActiveForces.put("buoyancy", new Buoyancy(0, 0));
 		myActiveForces.put("friction", new Friction(0, 0));
@@ -189,11 +189,7 @@ public class PhysicsBody {
 	}
 
 	public void addForce(Force f) {
-		if (this.myActiveForces.containsKey(f.toString())) {
-			this.myActiveForces.replace(f.toString(), f);
-		} else {
-			this.myActiveForces.put(f.toString(), f);
-		}
+		myActiveForces.put(f.toString(), f);
 	}
 
 	public void addImpulse(Impulse i) {
