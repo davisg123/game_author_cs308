@@ -36,7 +36,6 @@ public class PropertiesView extends ScrollView{
 	public void makeProperties(GameObject gameObj){
 		myContents.getChildren().clear();
 		myCurrentGameObject = gameObj;
-		//System.out.println(myEditBehavior);
 		myGameObjectsProperties = new GameObjectsProperties(gameObj, this.myEditBehavior);
 		this.setContent(myGameObjectsProperties);
 	}
@@ -50,7 +49,6 @@ public class PropertiesView extends ScrollView{
 	}
 	
 	public void setEditButtonBehavior(GameHandler gh){
-		System.out.println("reached setter");
 		myEditBehavior = gh;
 	}
 	

@@ -15,13 +15,10 @@ public class GameObjectsProperties extends Properties {
 	private Map<String, PropertyTextField> textProperties;
 	private Map<String, CheckBox> booleanProperties;
 	private GameHandler myHandler;
-	private GameObject myGameObject;
 
 	public GameObjectsProperties(GameObject gObj, GameHandler handler) {
 		super(gObj);
-		myGameObject = gObj;
 		myHandler = handler;
-		System.out.println(myHandler);
 		initializeProperties(gObj);
 	}
 
@@ -74,7 +71,6 @@ public class GameObjectsProperties extends Properties {
 		Button editButton = new Button("Edit");
 		//System.out.println(myHandler);
 		editButton.setOnAction(myHandler);
-		System.out.println("action set");
 		this.getChildren().add(editButton);
 
 		Button saveAsNew = new Button("Save as New");

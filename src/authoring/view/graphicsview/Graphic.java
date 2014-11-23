@@ -69,8 +69,7 @@ public class Graphic extends VBox {
 				this.addEventFilter(g.getEventType(), g);
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Bad File");
 		}
 	}
 

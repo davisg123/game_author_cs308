@@ -269,4 +269,8 @@ public class GameObject implements IEnabled, Iterable<Component>{
     	return myCollision;
     }
     
+    public String toString(){
+    	return myID;
+    }
+    
 }

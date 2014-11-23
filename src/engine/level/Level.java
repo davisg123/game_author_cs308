@@ -73,10 +73,11 @@ public class Level extends Observable {
 		setChanged();
 		notifyObservers(this);
 	}
-	public void removeGameObject(GameObject g){
-		myGameObjects.remove(g);
+	public boolean removeGameObject(GameObject g){
+		boolean ret = myGameObjects.remove(g);
 		setChanged();
 		notifyObservers(this);
+		return ret;
 	}
 
 	public GameObjectsCollection getGameObjectsCollection() {

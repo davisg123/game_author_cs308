@@ -23,16 +23,15 @@ public class EditGameObjectHandler implements GameHandler<Event>{
 	@Override
 	public void handle(Event arg0) {
 		
-		System.out.println("GHFGHGFHS");
-		
 		String id = myLevelsView.getCurrentLevel().getID();
 		for (Level level : myLevelsCol) {
 			if (level.getLevelID().equals(id)) {
 				
-				level.removeGameObject(myPropertiesView.getCurrentGameObject());
-				level.addGameObject(myPropertiesView.getEditedGameObject());
-				
-				
+					if(level.removeGameObject(myPropertiesView.getCurrentGameObject())){
+						level.addGameObject(myPropertiesView.getEditedGameObject());
+					}
+					
+				//System.out.println(level.getGameObjectsCollection());
 			}
 		}
 	}
