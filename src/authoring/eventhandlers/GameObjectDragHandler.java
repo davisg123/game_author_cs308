@@ -37,7 +37,7 @@ public class GameObjectDragHandler implements GameHandler<MouseEvent> {
 		double y = event.getSceneY();
 		String id = myLevelView.getCurrentLevel().getID();
 		for (Level level : myLevelsCollection) {
-			if (level.getLevelID().equals(id)) {
+			if (level.getLevelID().equals(id) && myLevelView.contains(x-230, y-100)) {
 				level.removeGameObject(g.getGameObject());
 				g.getGameObject().setX(x);
 				g.getGameObject().setY(y);
