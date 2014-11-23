@@ -8,6 +8,7 @@ import java.util.ResourceBundle;
 import javafx.geometry.Pos;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
+import authoring.eventhandlers.AddImageHandler;
 import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.GameObjectClickHandler;
 import authoring.eventhandlers.GraphicsClickHandler;
@@ -57,13 +58,13 @@ public class AuthoringController {
 	private File myGameLocation;
 
 	public AuthoringController(AuthoringView view, AuthoringModel model,
-			double width, double height, ResourceBundle language /*,File gameLoc*/ ) {
+			double width, double height, ResourceBundle language, File gameLoc) {
 		myView = view;
 		myModel = model;
 		myWidth = width;
 		myHeight = height;
 		myLanguage = language;
-		//myGameLocation = gameLoc;
+		myGameLocation = gameLoc;
 		initializeView();
 
 	}
@@ -84,19 +85,22 @@ public class AuthoringController {
 	/**
 	 * Initializes all the view components that have a 1 to 1 relationship with
 	 * backend data components. Provides event handlers for View objects to
-	 * handle sending data to the backend
+	 * handle sending data to the backend.
 	 */
 
 	private void initializeViewComponents() {
 		myProperties = new PropertiesView(myLanguage, myWidth, myHeight);
-		myLevels = new LevelsView(myLanguage, myWidth, myHeight, new AddLevelHandler(myModel.getLevels()), new GameObjectClickHandler(myProperties));
+		myLevels = new LevelsView(myLanguage, myWidth, myHeight,
+				new AddLevelHandler(myModel.getLevels()),
+				new GameObjectClickHandler(myProperties));
 		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
 		myGraphics = new GraphicsView(myLanguage, myWidth, myHeight,
-				new GraphicsClickHandler(myProperties, myLevels));
-		myGameObjects = new GameObjectsView(myLanguage, myWidth, myHeight,
-				new GraphicsDragToLevelHandler(myProperties, myLevels.getCurrentLevel()),
-				new GameObjectClickHandler(myProperties));
-
+				myGameLocation);
+		myGraphics.setEvents(new GraphicsClickHandler(myProperties, myLevels));
+		myGameObjects = new GameObjectsView(myLanguage, myWidth, myHeight);
+		myGameObjects.setEvents(new GraphicsDragToLevelHandler(myProperties,
+				myLevels.getCurrentLevel()), new GameObjectClickHandler(
+				myProperties));
 	}
 
 	/**
@@ -121,9 +125,10 @@ public class AuthoringController {
 		// System.out.println(test.getCurrentImageName());
 		myModel.getGameObjectCollection().addGameObject(test);
 
-		myModel.getImages().addImage(im);
-		myModel.getImages().addImage(im2);
-
+		// myModel.getImages().addImage(im);
+		// myModel.getImages().addImage(im2);
+		myGraphics.setButton(new AddImageHandler(myModel.getImages(),
+				myGameLocation));
 		TitledPane graphics = new TitledPane(myLanguage.getString("Images"),
 				myGraphics);
 		TitledPane sounds = new TitledPane(myLanguage.getString("Sounds"),
