@@ -23,13 +23,8 @@ public abstract class Force extends Vector {
 	/**
 	 * other constructor, used to solve a problem we had
 	 */
-	public Force(Scalar[] scalar) {
+	public Force(Scalar... scalar) {
 		this(0, 0, scalar);
-	}
-
-	@Override
-	public String toString() {
-		return this.getClass().getName();
 	}
 
 	public void addOrChangeValue(Scalar cur) {
