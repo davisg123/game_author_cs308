@@ -2,14 +2,23 @@ package engine.gameObject.components;
 
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+
 import engine.gameObject.GameObject;
+
+import java.util.Map;
+
 import engine.physics.Acceleration;
 import engine.physics.BEngine;
+import engine.physics.Buoyancy;
 import engine.physics.Force;
+import engine.physics.Friction;
+import engine.physics.Gravity;
 import engine.physics.Impulse;
 import engine.physics.Mass;
 import engine.physics.NormalUpdate;
+import engine.physics.Scalar;
 import engine.physics.Vector;
 import engine.physics.Velocity;
 
@@ -25,12 +34,12 @@ import engine.physics.Velocity;
 public class PhysicsBody {
 	private static final double FRAMES_PER_SECOND = 60.0;
 	private List<Impulse> myImpulses;
-	private List<Force> myActiveForces;
-	private List<Double> myNetForce;
-	private Acceleration myAcceleration;
-	private Velocity myVelocity;
+	private Map<String, Force> myActiveForces;
+	// private List<Double> myNetForce;
+	private Vector myAcceleration;
+	private Vector myVelocity;
 	private Mass myMass;
-	private NormalUpdate myUpdate;
+	// private NormalUpdate myUpdate;
 	private boolean haveForcesChanged;
 	private Vector myBalancedForcesMag;
 
@@ -47,11 +56,12 @@ public class PhysicsBody {
 
 	public PhysicsBody(double collisionBodyWidth, double collisionBodyHeight) {
 		myImpulses = new ArrayList<Impulse>();
-		myAcceleration = new Acceleration(0, 0);
-		myVelocity = new Velocity(0, 0);
+		myAcceleration = new Vector();
+		myVelocity = new Vector();
 		myMass = new Mass(0);
-		myUpdate = new NormalUpdate();
-		myActiveForces = new ArrayList<Force>();
+		// myUpdate = new NormalUpdate();
+		myActiveForces = new HashMap<String, Force>();
+		initializeMap();
 		haveForcesChanged = false;
 		myBalancedForcesMag = new Vector();
 		myCollisionBodyWidth = collisionBodyWidth;
@@ -64,7 +74,18 @@ public class PhysicsBody {
 	 * @param v
 	 *            - new Velocity of object
 	 */
-	public void setVelocity(Velocity v) {
+
+	/*
+	 * need to work out two things: hardcode Scalar... scalar-->probably need to
+	 * initialize those to 0 too
+	 */
+	private void initializeMap() {
+		myActiveForces.put("gravity", new Gravity(0, 0));
+		myActiveForces.put("buoyancy", new Buoyancy(0, 0));
+		myActiveForces.put("friction", new Friction(0, 0));
+	}
+
+	public void setVelocity(Vector v) {
 		myVelocity = v;
 	}
 
@@ -78,63 +99,29 @@ public class PhysicsBody {
 		myMass = m;
 	}
 
+	public void setAcceleration(Vector v) {
+		myAcceleration = v;
+	}
+
 	/**
 	 * 
 	 * @return the velocity of the object
 	 */
-	public Velocity getVelocity() {
+	public Vector getVelocity() {
 		return myVelocity;
 	}
 
+	public Vector getAcceleration() {
+		return myAcceleration;
+	}
+
+	/**
+	 * Return Y-Coordinate of Object
+	 * 
+	 * @return - returns Y coordinate of Object
+	 */
 	public Mass getMass(double y) {
 		return myMass;
-	}
-
-	/**
-	 * updates all the physical vector characteristics for object
-	 * 
-	 * @Param - Game object to change things for
-	 */
-	public void getPositionChange(GameObject sprite) {
-		doImpulses();
-		if (haveForcesChanged) {
-			balanceForces();
-		}
-		changeAcceleration();
-		changeVelocity();
-		// return changePosition
-
-		sprite.setPosition(new Point2D.Double(myVelocity.getX()
-				/ FRAMES_PER_SECOND, myVelocity.getY() / FRAMES_PER_SECOND));
-	}
-
-	/**
-	 * goes through impulses, imparts them, clears all of them once they are all
-	 * done
-	 */
-	private void doImpulses() {
-		for (Impulse cur : myImpulses) {
-			cur.scalarMultiplication(1.0 / myMass.getValue());
-			myVelocity.delta(cur);
-		}
-		myImpulses.clear();
-	}
-
-	/**
-	 * balances forces-gives a vector of what the forces in each direction are,
-	 * sets haveForcesChanged to false because this is called only when in the
-	 * frame force are changed
-	 */
-	private void balanceForces() {
-		double x = 0.0;
-		double y = 0.0;
-		for (Force cur : myActiveForces) {
-			x += cur.getX();
-			y += cur.getY();
-		}
-		myBalancedForcesMag.setX(x);
-		myBalancedForcesMag.setY(y);
-		haveForcesChanged = false;
 	}
 
 	/**
@@ -171,6 +158,77 @@ public class PhysicsBody {
 	 */
 	public double getCollisionBodyWidth() {
 		return myCollisionBodyWidth;
+	}
+
+	/**
+	 * updates all the physical vector characteristics for object
+	 * 
+	 * @Param - Game object to change things for
+	 */
+	public void updatePhysicalCharacteristics(GameObject sprite) {
+		doImpulses();
+		if (haveForcesChanged) {
+			balanceForces();
+		}
+		changeAcceleration();
+		changeVelocity();
+		// return changePosition
+
+		//sprite.setPosition(new Point2D.Double(myVelocity.getX()
+				/// FRAMES_PER_SECOND, myVelocity.getY() / FRAMES_PER_SECOND));
+		
+		sprite.setX(myVelocity.getX()
+				/FRAMES_PER_SECOND);
+		sprite.setY(myVelocity.getY() / FRAMES_PER_SECOND);
+	}
+
+	/**
+	 * goes through impulses, imparts them, clears all of them once they are all
+	 * done
+	 */
+	private void doImpulses() {
+		for (Impulse cur : myImpulses) {
+			cur.scalarMultiplication(1.0 / myMass.getValue());
+			myVelocity.delta(cur);
+		}
+		myImpulses.clear();
+	}
+
+	/**
+	 * balances forces-gives a vector of what the forces in each direction are,
+	 * sets haveForcesChanged to false because this is called only when in the
+	 * frame force are changed
+	 */
+	private void balanceForces() {
+		double x = 0.0;
+		double y = 0.0;
+		for (Force cur : this.myActiveForces.values()) {
+			x += cur.getX();
+			y += cur.getY();
+		}
+		myBalancedForcesMag.setX(x);
+		myBalancedForcesMag.setY(y);
+		haveForcesChanged = false;
+	}
+
+	public void addForce(Force f) {
+		if (this.myActiveForces.containsKey(f.toString())) {
+			this.myActiveForces.replace(f.toString(), f);
+		} else {
+			this.myActiveForces.put(f.toString(), f);
+		}
+	}
+
+	public void addImpulse(Impulse i) {
+		this.myImpulses.add(i);
+	}
+
+	private void addScalar(Scalar a) {
+		//
+	}
+
+	public void massComponent(Mass mass) {
+		myMass = mass;
 	}
 
 	/**

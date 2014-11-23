@@ -2,6 +2,8 @@ package engine.actions;
 
 import java.util.List;
 import engine.gameObject.GameObject;
+import engine.level.Level;
+import engine.render.GameObjectRenderer;
 
 /**
  * Does rendering for all Sprites.
@@ -9,18 +11,31 @@ import engine.gameObject.GameObject;
  *
  */
 
-public class RenderAction implements Action {
+public abstract class RenderAction implements Action {
 
-    private List<GameObject> myGameObjects;
+    protected List<GameObject> myGameObjects;
+    protected GameObjectRenderer myRenderer;
+    protected Level myLevel;
     
-    public RenderAction (List<GameObject> objects) {
+    /**
+     * 
+     * @param objects
+     */
+    //potentially just give it the ID of the objects??
+    //or just give it an iterator?
+    public RenderAction (List<GameObject> objects, GameObjectRenderer renderer, Level level) {
         myGameObjects = objects;
+        myRenderer = renderer;
+        myLevel = level;
     }
 
     @Override
     public void execute () {
-        // TODO Auto-generated method stub
-
+        applyRender();
     }
+    
+    protected abstract void applyRender ();
+    
+    
 
 }

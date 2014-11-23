@@ -8,9 +8,9 @@ import engine.gameObject.GameObject;
  *
  */
 
-public class TransformX extends TransformAction {
+public class TranslateX extends TranslateAction {
 
-    public TransformX (GameObject sprite, double value) {
+    public TranslateX (GameObject sprite, double value) {
         super(sprite, value);
     }
 

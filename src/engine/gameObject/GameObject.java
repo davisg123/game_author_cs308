@@ -36,8 +36,9 @@ public class GameObject implements IEnabled, Iterable<Component>{
     private double myWidth;
     
     //refactor the Point2D
-    private transient Point2D myDefaultPosition;
-
+    //private transient Point2D myDefaultPosition;
+    private double myXCoord;
+    private double myYCoord;
     private transient RenderedNode myRenderedNode;
     
     //refactor this into the PhysicsBody
@@ -55,22 +56,23 @@ public class GameObject implements IEnabled, Iterable<Component>{
     }
 
     public GameObject (String iD) {
-        this(new ArrayList<Component>(), "", new Point2D.Double(), 0, 0, 0, iD);
+        this(new ArrayList<Component>(), "", 0, 0, 0, 0, 0, iD);
     }
 
-    public GameObject (List<Component> components, String imagePath, Point2D position, 
+    public GameObject (List<Component> components, String imagePath, double x, double y, 
                    double height, double width, double rotation, String iD) {
-        this(components, imagePath, new SoundReference(), position,
+        this(components, imagePath, new SoundReference(), x, y,
              height, width, rotation, iD);
     }
 
     public GameObject (List<Component> components, String imageName, SoundReference sounds, 
-                   Point2D position, double height, double width, double rotation, String iD) {
+                   double x, double y, double height, double width, double rotation, String iD) {
         myComponents  = components;
         //myImages   = images;
         //mySounds   = sounds;
         myCurrentImageName = imageName;
-        myDefaultPosition = position;
+        myXCoord = x;
+        myYCoord = y;
         myHeight = height;
         myWidth = width;
         myRotation = rotation;
@@ -102,11 +104,15 @@ public class GameObject implements IEnabled, Iterable<Component>{
     }
     
     /**
-     * Sets Location of Sprite
+     * Sets Initial Location of GameObject
      * @param point - new Location Point
      */
-    public void setPosition (Point2D point) {
-        myDefaultPosition = point;
+    public void setX (double x) {
+        myXCoord = x;
+    }
+    
+    public void setY (double y) {
+        myYCoord = y;
     }
 
     /**
@@ -125,6 +131,10 @@ public class GameObject implements IEnabled, Iterable<Component>{
         return myRenderedNode.getRotate();
     }
 
+   /* public GameObject copy() {
+        return new GameObject(this);
+    }*/
+    
     /**
      * Deprecated, all transforms are performed on the node
      * Gets the x position property of the sprite (for listeners)
@@ -150,18 +160,17 @@ public class GameObject implements IEnabled, Iterable<Component>{
                                   myRenderedNode.getTranslateY());
     }
 
-    public void setDefaultPosition (Point2D position) {
-        myDefaultPosition = position;
-    }
+    
 
-    /**
-     * Gets the Position of Sprite
-     * @return myPosition
-     */
-    public Point2D getDefaultPosition () {
-        return myDefaultPosition;
+    
+    public double getX () {
+        return myXCoord;
     }
-
+    
+    public double getY () {
+        return myYCoord;
+    }
+    
     public String getID () {
         return myID;
     }
@@ -212,8 +221,8 @@ public class GameObject implements IEnabled, Iterable<Component>{
 
     public void saveCurrentState() {
         myRotation = myRenderedNode.getRotate();
-        myDefaultPosition = new Point2D.Double(myRenderedNode.getTranslateX(), 
-                                               myRenderedNode.getTranslateY());
+        myXCoord = myRenderedNode.getTranslateX();
+        myYCoord = myRenderedNode.getTranslateY();
     }
 
     public void setPhysicsBody (PhysicsBody physicsBody) {
@@ -244,8 +253,7 @@ public class GameObject implements IEnabled, Iterable<Component>{
     	return enabled;
     }
     
-    public boolean getCollisionConstant()
-    {
+    public boolean getCollisionConstant() {
     	return myCollision;
     }
 }
