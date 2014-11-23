@@ -28,7 +28,7 @@ import javafx.scene.paint.Color;
 public class SingleLevelView extends Pane implements Observer {
 	private Background myDefaultBackground = new Background(new BackgroundFill(
 			Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY));
-	private static final double VIEW_HEIGHT_RATIO = .85;
+	private static final double VIEW_HEIGHT_RATIO = .87;
 	private static final double VIEW_WIDTH_RATIO = 0.6;
 	private GameHandler[] myEvents;
 	private String myID;

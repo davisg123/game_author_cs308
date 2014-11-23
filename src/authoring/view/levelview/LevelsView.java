@@ -23,7 +23,7 @@ import authoring.view.graphicsview.Graphic;
  *
  */
 public class LevelsView extends TabView implements Observer {
-	private static final double VIEW_HEIGHT_RATIO = .92;
+	private static final double VIEW_HEIGHT_RATIO = .87;
 	private static final double VIEW_WIDTH_RATIO = 0.6;
 	private GameHandler[] myEvents;
 
