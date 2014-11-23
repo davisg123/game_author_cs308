@@ -1,5 +1,7 @@
 package authoring.controller;
 
+import java.awt.geom.Point2D;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.geometry.Pos;
@@ -17,6 +19,8 @@ import authoring.view.soundsview.SoundsView;
 import authoring.view.spritesview.GameObjectsView;
 import engine.actions.Action;
 import engine.conditions.Condition;
+import engine.gameObject.GameObject;
+import engine.gameObject.components.Component;
 
 /**
  * Controller class that interacts between model and view. Holds and constructs
@@ -98,23 +102,27 @@ public class AuthoringController {
 
 		// Some hard-coded images used to test events and observable/observer
 		// interactions
-		String im = "mario.png";
-		String im2 = "Luigi.jpg";
+		String im = "/assets/mario.png";
+		String im2 = "/assets/Luigi.jpg";
 
 		myModel.getImages().addObserver(myGraphics);
 		myModel.getGameObjectCollection().addObserver(myGameObjects);
 
+		GameObject test = new GameObject(new ArrayList<Component>(), im, new Point2D.Double(), 0, 0, 0, "Mario");
+		//System.out.println(test.getCurrentImageName());
+		myModel.getGameObjectCollection().addGameObject(test);
+		
 		myModel.getImages().addImage(im);
 		myModel.getImages().addImage(im2);
 
-		TitledPane graphics = new TitledPane(myLanguage.getString("Graphics"),
+		TitledPane graphics = new TitledPane(myLanguage.getString("Images"),
 				myGraphics);
 		TitledPane sounds = new TitledPane(myLanguage.getString("Sounds"),
 				mySounds);
-		TitledPane sprites = new TitledPane(myLanguage.getString("Sprites"),
+		TitledPane gameObjects = new TitledPane(myLanguage.getString("GameObjects"),
 				myGameObjects);
 
-		leftView.getPanes().addAll(graphics, sounds, sprites);
+		leftView.getPanes().addAll(graphics, sounds, gameObjects);
 		BorderPane.setAlignment(leftView, Pos.TOP_RIGHT);
 
 		return leftView;
