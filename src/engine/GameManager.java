@@ -11,6 +11,7 @@ import javafx.scene.Group;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import engine.render.GameObjectRenderer;
+import engine.conditions.ButtonConditionManager;
 import engine.gameObject.*;
 import engine.level.LevelManager;
 
@@ -28,7 +29,6 @@ public class GameManager {
     private GameObjectRenderer myGameObjectRenderer;
     private Group myRootGroup;
     private Timeline myAnimation;
-    private Stage myStage;
     private LevelManager myLevelManager;
     private LevelsCollection myLevels;
     private static final double DEFAULT_SPEED = 60.0;
