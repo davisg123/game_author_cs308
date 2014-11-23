@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+import javafx.event.Event;
 import javafx.event.EventType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
@@ -13,7 +14,7 @@ import javax.imageio.ImageIO;
 
 import authoring.model.collections.ImagesCollection;
 
-public class AddImageHandler implements GameHandler<MouseEvent> {
+public class AddImageHandler implements GameHandler<Event> {
 
 	ImagesCollection myImagesCollection;
 	File myGameFile;
@@ -26,7 +27,7 @@ public class AddImageHandler implements GameHandler<MouseEvent> {
 	}
 
 	@Override
-	public void handle(MouseEvent arg0) {
+	public void handle(Event arg0) {
 		File imageFile = myFileChooser.showOpenDialog(new Stage());
 		if (imageFile != null) {
 			try {
@@ -34,7 +35,8 @@ public class AddImageHandler implements GameHandler<MouseEvent> {
 				File newImageFile = new File(myGameFile.getPath() + "/images/"
 						+ imageFile.getName());
 				ImageIO.write(bi, "png", newImageFile);
-				myImagesCollection.addImage(newImageFile.getPath());
+				System.out.println(newImageFile.getPath());
+				myImagesCollection.addImage(newImageFile.getName());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -44,9 +46,8 @@ public class AddImageHandler implements GameHandler<MouseEvent> {
 	}
 
 	@Override
-	public EventType<MouseEvent> getEventType() {
+	public EventType<Event> getEventType() {
 		// TODO Auto-generated method stub
-		return MouseEvent.MOUSE_CLICKED;
+		return Event.ANY;
 	}
-
 }

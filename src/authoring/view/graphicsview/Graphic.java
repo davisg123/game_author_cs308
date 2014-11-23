@@ -1,5 +1,12 @@
 package authoring.view.graphicsview;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
@@ -22,13 +29,10 @@ public class Graphic extends VBox {
 	private GameHandler[] myOnClick;
 	private boolean myIsVisible = true;
 
-	public boolean getVisible() {
-		return myIsVisible;
-	}
-
-	public Graphic(String s, GameHandler ... event) {
+	public Graphic(String s, GameHandler... event) {
 		myName = s;
 		myOnClick = event;
+
 	}
 
 	/**
@@ -41,17 +45,41 @@ public class Graphic extends VBox {
 	public void makeGraphic() {
 		Image image = new Image(getClass().getResourceAsStream(myName));
 		ImageView imageView = new ImageView(image);
-		imageView.setFitHeight(70);
-		imageView.setFitWidth(70);
+		imageView.setPreserveRatio(true);
+		imageView.setFitWidth(50);
 		this.getChildren().add(imageView);
 		this.getChildren().add(new Text(myName));
-		for(GameHandler g: myOnClick){
+		for (GameHandler g : myOnClick) {
 			this.addEventFilter(g.getEventType(), g);
+		}
+	}
+
+	public void makeGraphic(File gameLoc) {
+		File file = new File(gameLoc.getPath() + "/images/" + myName);
+		BufferedImage bufferedImage;
+		try {
+			bufferedImage = ImageIO.read(file);
+			Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+			ImageView imageView = new ImageView(image);
+			imageView.setPreserveRatio(true);
+			imageView.setFitWidth(70);
+			this.getChildren().add(imageView);
+			this.getChildren().add(new Text(myName));
+			for (GameHandler g : myOnClick) {
+				this.addEventFilter(g.getEventType(), g);
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
 	public String getName() {
 		return myName;
+	}
+
+	public boolean getVisible() {
+		return myIsVisible;
 	}
 
 }

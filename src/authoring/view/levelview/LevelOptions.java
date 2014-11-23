@@ -12,7 +12,6 @@ import javafx.scene.control.TabPane;
 import javafx.scene.control.ToolBar;
 
 public class LevelOptions extends CollectionsTool {
-	private GameHandler myButtonHandler;
 	private Button addLevelButton;
 
 	public LevelOptions(ResourceBundle language, double width, double height) {
@@ -21,14 +20,8 @@ public class LevelOptions extends CollectionsTool {
 	}
 
 	private void addNewTabButton() {
-		this.getItems().add(
-				makeButton(myLanguage.getString("Add_Level"), myButtonHandler));
-	}
-
-	private Button makeButton(String property, GameHandler handler) {
-		addLevelButton = new Button();
-		addLevelButton.setText(property);
-		return addLevelButton;
+		addLevelButton = makeButton(myLanguage.getString("Add_Level"));
+		this.getItems().add(addLevelButton);
 	}
 
 	public void setButtonBehavior(GameHandler handler) {

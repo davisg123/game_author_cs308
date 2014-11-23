@@ -10,7 +10,7 @@ import javafx.scene.control.Accordion;
  */
 public class AccordionContainer extends Accordion {
 
-	private static final double VIEW_HEIGHT_RATIO = .95;
+	private static final double VIEW_HEIGHT_RATIO = .92;
 	private static final double VIEW_WIDTH_RATIO = 0.20;
 
 	public AccordionContainer(double width, double height) {
