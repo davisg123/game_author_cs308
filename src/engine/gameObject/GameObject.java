@@ -268,4 +268,5 @@ public class GameObject implements IEnabled, Iterable<Component>{
     public boolean getCollisionConstant() {
     	return myCollision;
     }
+    
 }
