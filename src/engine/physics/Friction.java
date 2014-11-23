@@ -9,10 +9,8 @@ package engine.physics;
 public class Friction extends Force {
 	private static final double GRAVITY_ACCELERATION = 9.8;
 
-	public Friction(double x, double y, double mass, double friction) {
-		super();
-		myValues.put("mass", mass);
-		myValues.put("friction", friction);
+	public Friction(double x, double y, Scalar...scalar) {
+		super(scalar);
 		constructionHelper(x * myForceValue, y * myForceValue);
 	}
 

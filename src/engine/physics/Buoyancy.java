@@ -9,10 +9,8 @@ package engine.physics;
 public class Buoyancy extends Force {
 	private static final double GRAVITY_ACCELERATION = 9.8;
 
-	public Buoyancy(double x, double y, double volume, double density) {
-		super();
-		myValues.put("volume", volume);
-		myValues.put("density", density);
+	public Buoyancy(double x, double y, Scalar... scalar) {
+		super(scalar);
 		constructionHelper(x * myForceValue, y * myForceValue);
 	}
 

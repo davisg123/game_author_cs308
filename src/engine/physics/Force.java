@@ -13,17 +13,18 @@ public abstract class Force extends Vector {
 	protected double myForceValue;
 	protected Map<String, Double> myValues;
 
-	public Force(double x, double y) {
+	public Force(double x, double y, Scalar... scalar) {
 		super(x, y);
 		calculateForce();
 		myValues = new HashMap<String, Double>();
+		initializeMap(scalar);
 	}
 
 	/**
 	 * other constructor, used to solve a problem we had
 	 */
-	public Force() {
-		this(0, 0);
+	public Force(Scalar[] scalar) {
+		this(0, 0, scalar);
 	}
 
 	@Override
@@ -35,6 +36,12 @@ public abstract class Force extends Vector {
 		myValues.put(cur.toString(), cur.getValue());
 		calculateForce();
 		calculateMagnitude();
+	}
+
+	protected void initializeMap(Scalar[] scalar) {
+		for (Scalar cur : scalar) {
+			myValues.put(cur.toString(), cur.getValue());
+		}
 	}
 
 	/**

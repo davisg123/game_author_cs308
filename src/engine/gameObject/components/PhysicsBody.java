@@ -31,7 +31,7 @@ import engine.physics.Velocity;
  *         This class holds Physical Information for a Sprite.
  *
  */
-public class PhysicsBody{
+public class PhysicsBody {
 	private static final double FRAMES_PER_SECOND = 60.0;
 	private List<Impulse> myImpulses;
 	private Map<String, Force> myActiveForces;
@@ -75,10 +75,14 @@ public class PhysicsBody{
 	 *            - new Velocity of object
 	 */
 
+	/*
+	 * need to work out two things: hardcode Scalar... scalar-->probably need to
+	 * initialize those to 0 too
+	 */
 	private void initializeMap() {
-		myActiveForces.put("gravity", new Gravity(0, 0, 0, 0));
-		myActiveForces.put("buoyancy", new Buoyancy(0, 0, 0, 0));
-		myActiveForces.put("friction", new Friction(0, 0, 0, 0));
+		myActiveForces.put("gravity", new Gravity(0, 0));
+		myActiveForces.put("buoyancy", new Buoyancy(0, 0));
+		myActiveForces.put("friction", new Friction(0, 0));
 	}
 
 	public void setVelocity(Vector v) {
@@ -170,8 +174,12 @@ public class PhysicsBody{
 		changeVelocity();
 		// return changePosition
 
-		sprite.setPosition(new Point2D.Double(myVelocity.getX()
-				/ FRAMES_PER_SECOND, myVelocity.getY() / FRAMES_PER_SECOND));
+		//sprite.setPosition(new Point2D.Double(myVelocity.getX()
+				/// FRAMES_PER_SECOND, myVelocity.getY() / FRAMES_PER_SECOND));
+		
+		sprite.setX(myVelocity.getX()
+				/FRAMES_PER_SECOND);
+		sprite.setY(myVelocity.getY() / FRAMES_PER_SECOND);
 	}
 
 	/**
@@ -215,14 +223,14 @@ public class PhysicsBody{
 		this.myImpulses.add(i);
 	}
 
-	private void addScalar(Scalar a)
-	{
+	private void addScalar(Scalar a) {
 		//
 	}
-	public void massComponent(Mass mass)
-	{
-		myMass=mass;
+
+	public void massComponent(Mass mass) {
+		myMass = mass;
 	}
+
 	/**
 	 * deals with collisions-axis, deals with velocities and will properly move
 	 * things that are intersecting

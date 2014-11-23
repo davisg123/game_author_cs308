@@ -9,10 +9,8 @@ package engine.physics;
 public class Gravity extends Force {
 	private static final double GRAVITY_ACCELERATION = 9.8;
 
-	public Gravity(double x, double y, double mass, double gravityConstant) {
-		super();
-		myValues.put("mass", mass);
-		myValues.put("gravity constant", gravityConstant);
+	public Gravity(double x, double y, Scalar... scalar) {
+		super(scalar);
 		constructionHelper(x * myForceValue, y * myForceValue);
 	}
 
