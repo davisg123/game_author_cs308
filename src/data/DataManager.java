@@ -11,10 +11,15 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class DataManager {
+	
+	//next try with adding GameObjects to GameObjectsCollection in SampleWrapper actionList
 	
 	private GsonBuilder gson;
 	private static final String gameDatapath = "/data/games/";
@@ -42,10 +47,11 @@ public class DataManager {
 		DataManager manager = new DataManager();
 		SampleWrapper sw = new SampleWrapper();
 		System.out.println(sw);
-		boolean success = manager.writeSampleFile(sw, "sampleTwo.json");
+		boolean success = manager.writeSampleFile(sw, "sampleThree.json");
 		System.out.println("data written: " + success);
-		SampleWrapper readSW = manager.readSampleFile("sampleTwo.json");
+		SampleWrapper readSW = manager.readSampleFile("sampleThree.json");
 		System.out.println(readSW);
+		readSW.printSpriteName();
 	}
 	
 	public boolean writeSampleFile(SampleWrapper sw, String fileName) throws IOException {
@@ -123,6 +129,7 @@ public class DataManager {
 	
 	//check 
 	private Object readFile(Class cl, String datapath, String fileName) {
+//		File f = getFileFromChooser();
 		if(hasValidName(fileName)) {
 			fileName = checkForExtension(fileName);
 			try {
@@ -151,4 +158,11 @@ public class DataManager {
 		if(fileName.endsWith(".json")) return fileName;
 		else return fileName + ".json";
 	}
+	
+//	private File getFileFromChooser() {
+//		Stage stage = new Stage();
+//		FileChooser fileChooser = new FileChooser();
+//		fileChooser.setTitle("Find File");
+//		fileChooser.showOpenDialog(stage);
+//	}
 }

@@ -32,8 +32,7 @@ public class GenericTypeAdapter<T> implements JsonSerializer<T>, JsonDeserialize
 	
 	/**
 	 * Constructor for GenericTypeAdapter.
-	 * @param packageName Name of package holding the superclass and subclass.
-	 * 					  May need to be in same package for code to work.
+	 * @param packageName Name of package holding the subclass.
 	 */
 	public GenericTypeAdapter(String packageName) {
 		myPackageName = packageName;
