@@ -18,21 +18,28 @@ import engine.actions.Action;
  *
  */
 
-public class ButtonConditionManager extends Condition {
-    private Map<KeyCode, List<Action>> myKeyMap;
+public class ButtonConditionManager {
     private Map<KeyCode, Integer> myActiveKeyBuffer;
     
+    private static ButtonConditionManager sharedInstance;
+
+    // Singleton
+    public static ButtonConditionManager getInstance() {
+        if (sharedInstance == null) {
+            sharedInstance = new ButtonConditionManager();
+        }
+        return sharedInstance;
+    }
     
-    public ButtonConditionManager () {
-        super();
-        myKeyMap = new HashMap<KeyCode, List<Action>>();
+    private ButtonConditionManager () {
         myActiveKeyBuffer = new HashMap<KeyCode, Integer>();
     }
     
-    @Override
-    protected void executeActions() {
+    protected boolean keyIsActive(KeyCode key) {
         //get active keys from our buffer
         Collection<KeyCode> activeKeys = myActiveKeyBuffer.keySet();
+        return false;
+        /*
         for (KeyCode code : activeKeys){
             //check if the active keycode exists in the key to action map
             if (myKeyMap.containsKey(code)){
@@ -42,6 +49,7 @@ public class ButtonConditionManager extends Condition {
                 }
             }
         }
+        */
     }
     
     /**
@@ -60,43 +68,6 @@ public class ButtonConditionManager extends Condition {
     
     private void keyPressed(KeyEvent event){
         myActiveKeyBuffer.put(event.getCode(), 1);
-    }
-
-    /**
-     * bind a key event to an action object
-     * 
-     * @param key
-     * trigger key as a KeyCode
-     * @param action
-     * action to be executed
-     */
-    public void addBinding (KeyCode key, Action action) {
-        boolean bindingsExist = myKeyMap.containsKey(key);
-        List<Action> actions = bindingsExist ? myKeyMap.get(key) : new ArrayList<Action>();
-        actions.add(action);
-        myKeyMap.put(key, actions);
-    }
-    
-    /**
-     * remove a binding for an existing key
-     * 
-     * @param key
-     * trigger key as a KeyCode
-     */
-    public void removeBinding (KeyCode key) {
-        myKeyMap.remove(key);
-    }
-    
-    /**
-     * clear all of the bindings
-     */
-    public void clearAllBindings () {
-        myKeyMap.clear();
-    }
-    
-    @Override
-    public void frameElapsed () {
-        executeActions();
     }
 
 }

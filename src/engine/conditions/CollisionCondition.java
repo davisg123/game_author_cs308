@@ -15,8 +15,8 @@ import engine.gameObject.GameObject;
 
 public class CollisionCondition extends MovementCondition {
 
-    public CollisionCondition (List<Action> myActions, List<GameObject> myGameObjects) {
-        super(myActions, myGameObjects);
+    public CollisionCondition (List<Action> myActions, List<GameObject> myGameObjects, String identifier) {
+        super(myActions, myGameObjects, identifier);
     }
 
     @Override

@@ -12,8 +12,8 @@ import engine.gameObject.GameObject;
 
 public abstract class MovementCondition extends GameObjectCondition {
 
-    public MovementCondition (List<Action> myActions, List<GameObject> myGameObjects) {
-        super(myActions, myGameObjects);
+    public MovementCondition (List<Action> myActions, List<GameObject> myGameObjects, String identifier) {
+        super(myActions, myGameObjects, identifier);
         assignListeners();
     }
 

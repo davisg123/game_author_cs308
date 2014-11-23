@@ -11,8 +11,8 @@ public class TimeCondition extends GameObjectCondition {
     private boolean repeats;
     private boolean expired;
 
-    public TimeCondition (List<Action> myActions, List<GameObject> myGameObjects, double secondsToExecute, boolean repeats) {
-        super(myActions, myGameObjects);
+    public TimeCondition (List<Action> myActions, List<GameObject> myGameObjects, String identifier, double secondsToExecute, boolean repeats) {
+        super(myActions, myGameObjects, identifier);
         mySecondsToExecute = secondsToExecute;
         this.repeats = repeats;
     }
