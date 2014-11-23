@@ -17,40 +17,44 @@ import engine.gameObject.GameObject;
 public class Level {
 
 	private String myLevelID;
-	private GameObjectsCollection myGameObjects;
+	private GameObjectsCollection myDefaultGameObjects;
+	private GameObjectsCollection myWorkingGameObjects;
 	private ConditionIDsCollection myConditionIDs;
 
 	/**
 	 * Constructor
-	 * @param Game Objects Collection
+	 * 
+	 * @param Game
+	 *            Objects Collection
 	 */
 	public Level(GameObjectsCollection gameObjects) {
-		myGameObjects = gameObjects;
+		myDefaultGameObjects = gameObjects;
+		myWorkingGameObjects = gameObjects;
 	}
-	
+
+	/**
+	 * Reset method for the GameObjects
+	 */
+	public void reset() {
+		myWorkingGameObjects = myDefaultGameObjects;
+	}
+
 	/**
 	 * Updates all GameObjects.
 	 */
 	public void update() {
-		for (GameObject sprite : myGameObjects) {
+		for (GameObject sprite : myWorkingGameObjects) {
 			sprite.update();
 		}
-	}
-
-	/**
-	 * SET INITIAL VALUES FOR THE MAIN CHARACTER
-	 */
-	public void updateMainCharacter() {
-		
 	}
 
 	/**
 	 * @return Iterator for GameObjectCollection
 	 */
 	public Iterator<GameObject> getGameObjectIterator() {
-		return myGameObjects.iterator();
+		return myWorkingGameObjects.iterator();
 	}
-	
+
 	/**
 	 * @return Iterator for the ConditionIDsCollection
 	 */
