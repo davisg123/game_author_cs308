@@ -1,4 +1,4 @@
-package engine.actions;
+package engine.actions.translate;
 
 import engine.gameObject.GameObject;
 
