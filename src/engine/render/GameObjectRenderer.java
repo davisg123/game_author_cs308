@@ -54,7 +54,7 @@ public class GameObjectRenderer {
         //myCanvas.clear();
         myCanvas.getChildren().clear();
         myCurrentLevel = level;
-        for(Iterator<GameObject> iter = myCurrentLevel.getGameObjects(); iter.hasNext();) {
+        for(Iterator<GameObject> iter = myCurrentLevel.getGameObjectIterator(); iter.hasNext();) {
             GameObject obj = iter.next();
             //String spriteID = sprite.getID();
             createAndAssignRenderedNode(obj);
