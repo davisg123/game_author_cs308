@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
 import authoring.eventhandlers.AddLevelHandler;
@@ -17,6 +19,7 @@ import authoring.view.AuthoringView;
 import authoring.view.baseclasses.AccordianView;
 import authoring.view.gameobjectsview.GameObjectsView;
 import authoring.view.graphicsview.ImagesView;
+import authoring.view.levelview.LevelOptions;
 import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
 import authoring.view.soundsview.SoundsView;
@@ -48,6 +51,8 @@ public class AuthoringController {
 	 * back-end; Levels, Sprites, Graphics, Sounds
 	 */
 	private LevelsView myLevels;
+	private LevelOptions myLevelOptions;
+
 	private GameObjectsView myGameObjects;
 	private ImagesView myGraphics;
 	private SoundsView mySounds;
@@ -73,7 +78,7 @@ public class AuthoringController {
 
 	private void initializeView() {
 		initializeViewComponents();
-		myView.setCenter(myLevels);
+		myView.setCenter(intitializeCenter());
 		myView.setLeft(initializeLeft());
 		myView.setRight(initializeRight());
 		initializeGameHandlers();
@@ -95,6 +100,14 @@ public class AuthoringController {
 
 	}
 
+	private BorderPane intitializeCenter() {
+		BorderPane center = new BorderPane();
+		center.setTop(myLevelOptions);
+		center.setCenter(myLevels);
+		return center;
+
+	}
+
 	/**
 	 * Initializes all the view components that have a 1 to 1 relationship with
 	 * backend data components. Provides event handlers for View objects to
@@ -104,6 +117,7 @@ public class AuthoringController {
 	private void initializeViewComponents() {
 		myProperties = new PropertiesView(myLanguage, myWidth, myHeight);
 		myLevels = new LevelsView(myLanguage, myWidth, myHeight);
+		myLevelOptions = new LevelOptions(myLanguage, myWidth, myHeight);
 		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
 		myGraphics = new ImagesView(myLanguage, myWidth, myHeight);
 		myGameObjects = new GameObjectsView(myLanguage, myWidth, myHeight);
@@ -111,9 +125,15 @@ public class AuthoringController {
 
 	private void initializeGameHandlers() {
 		myGraphics.setEvents(new ImagesClickHandler(myProperties));
-		myGameObjects.setEvents(new GameObjectClickHandler(myProperties), new GameObjectDragToLevelHandler(myLevels, myModel.getLevels()));
-		myLevels.getLevelOptions().setButtonBehavior(new AddLevelHandler(myModel.getLevels(), myLevels));
-		myLevels.setEventHandlers(new GameObjectClickHandler(myProperties), new GameObjectDragHandler(myLevels, myModel.getLevels()));
+		myGameObjects
+				.setEvents(
+						new GameObjectClickHandler(myProperties),
+						new GameObjectDragToLevelHandler(myLevels, myModel
+								.getLevels()));
+		myLevelOptions.setButtonBehavior(new AddLevelHandler(myModel
+				.getLevels(), myLevels));
+		myLevels.setEventHandlers(new GameObjectClickHandler(myProperties),
+				new GameObjectDragHandler(myLevels, myModel.getLevels()));
 	}
 
 	/**

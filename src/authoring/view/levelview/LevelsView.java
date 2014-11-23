@@ -9,6 +9,7 @@ import javafx.scene.control.TabPane;
 import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.BPView;
+import authoring.view.baseclasses.TabView;
 import authoring.view.gameobjectsview.GameObjectGraphic;
 import authoring.view.graphicsview.Graphic;
 
@@ -21,19 +22,14 @@ import authoring.view.graphicsview.Graphic;
  * @author Wesley Valentine
  *
  */
-public class LevelsView extends TabPane implements Observer {
+public class LevelsView extends TabView implements Observer {
 	private static final double VIEW_HEIGHT_RATIO = .92;
 	private static final double VIEW_WIDTH_RATIO = 0.6;
-	private LevelOptions myLevelOptions;
-	private TabPane myLevelTabs;
 	private GameHandler[] myEvents;
 
 	public LevelsView(ResourceBundle language, double width, double height) {
 		super(language, width, height);
-		myLevelOptions = new LevelOptions(language, myLevelTabs, width, height);
 		super.setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
-		this.setTop(myLevelOptions);
-		this.setCenter(myLevelTabs);
 	}
 
 	@Override
@@ -68,8 +64,8 @@ public class LevelsView extends TabPane implements Observer {
 	// }
 
 	public SingleLevelView getCurrentLevel() {
-		return (SingleLevelView) myLevelTabs.getSelectionModel()
-				.getSelectedItem().getContent();
+		return (SingleLevelView) this.getSelectionModel().getSelectedItem()
+				.getContent();
 	}
 
 	/**
@@ -83,18 +79,13 @@ public class LevelsView extends TabPane implements Observer {
 		g.setLayoutX(x - 230);
 		g.setLayoutY(y - 100);
 	}
-
-	public LevelOptions getLevelOptions() {
-		return myLevelOptions;
-	}
-
 	public SingleLevelView addNewLevel(String myLevelID) {
 		Tab tab = new Tab(myLevelID);
 		SingleLevelView newView = new SingleLevelView(myWidth, myHeight,
 				myEvents);
 		tab.setContent(newView);
-		myLevelTabs.getTabs().add(tab);
-		myLevelTabs.getSelectionModel().select(tab);
+		this.getTabs().add(tab);
+		this.getSelectionModel().select(tab);
 		return newView;
 
 	}

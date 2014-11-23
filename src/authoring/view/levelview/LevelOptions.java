@@ -15,8 +15,7 @@ public class LevelOptions extends CollectionsTool {
 	private GameHandler myButtonHandler;
 	private Button addLevelButton;
 
-	public LevelOptions(ResourceBundle language, TabPane levels, double width,
-			double height) {
+	public LevelOptions(ResourceBundle language, double width, double height) {
 		super(language, width, height);
 		addNewTabButton();
 	}
