@@ -78,6 +78,10 @@ public class GameObject implements IEnabled, Iterable<Component>{
         myRotation = rotation;
         myID = iD;
     }
+    
+    public GameObject (GameObject g){
+    	this(g.getComponents(), g.getCurrentImageName(), g.getX(), g.getY(), g.getHeight(), g.getWidth(), g.getRotation(), g.getID());
+    }
 
     /**
      * Sets X-Coordinate of Object
@@ -131,6 +135,10 @@ public class GameObject implements IEnabled, Iterable<Component>{
         return myRenderedNode.getRotate();
     }
 
+    public double getRotation(){
+    	return this.myRotation;
+    }
+    
    /* public GameObject copy() {
         return new GameObject(this);
     }*/
@@ -205,6 +213,10 @@ public class GameObject implements IEnabled, Iterable<Component>{
         return null;
     }
 
+    public List<Component> getComponents(){
+    	return this.myComponents;
+    }
+    
     public String getCurrentImageName () { 
         return myCurrentImageName;
     }
@@ -250,10 +262,15 @@ public class GameObject implements IEnabled, Iterable<Component>{
     }
 
     public boolean isEnabled() {
-        return enabled;
+    	return enabled;
     }
     
     public boolean getCollisionConstant() {
     	return myCollision;
     }
+    
+    public String toString(){
+    	return myID;
+    }
+    
 }
