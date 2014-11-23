@@ -1,14 +1,14 @@
 package authoring.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
-import authoring.view.graphicsview.Graphic;
-import engine.actions.Action;
+import authoring.model.collections.ConditionsCollection;
+import authoring.model.collections.GameObjectsCollection;
+import authoring.model.collections.GraphicsCollection;
+import authoring.model.collections.LevelsCollection;
+import authoring.model.collections.SoundsCollection;
 import engine.conditions.Condition;
 import engine.level.*;
-import engine.sprite.Sprite;
+import engine.gameObject.GameObject;
 
 /**
  * Passive data object that holds onto all of the
@@ -26,10 +26,27 @@ public class GameData implements Serializable{
 	 */
 	private static final long serialVersionUID = 6633782568176674709L;
 	
-	private List<Level> myLevels;
-	//private List<Sprite> mySprites;
-	private List<Condition> myConditions;
+	private LevelsCollection myLevels;
+	private ConditionsCollection myConditions;
+	private GameObjectsCollection myGameObjects;
+	private GraphicsCollection myImages;
+	private SoundsCollection mySounds;
 	
+	public GameData(){
+		myLevels = new LevelsCollection();
+		myGameObjects = new GameObjectsCollection();
+		myConditions = new ConditionsCollection();
+		myImages = new GraphicsCollection();
+		mySounds = new SoundsCollection();
+	}
+	
+	/**
+	 * Level Methods
+	 */
+	
+	public LevelsCollection getLevels(){
+		return myLevels;
+	}
 	
 	public void addLevel(Level l){
 		myLevels.add(l);
@@ -39,13 +56,29 @@ public class GameData implements Serializable{
 		myLevels.remove(l);
 	}
 	
-	public void addSprite(Sprite s){
-		mySprites.addSprite(s);
+	/**
+	 * GameObject Methods
+	 */
+	
+	public GameObjectsCollection getGameObjects(){
+		return myGameObjects;
 	}
 	
-//	public void removeSprite(Sprite s){
-//		mySprites.remove(s);
-//	}
+	public void addGameObject(GameObject s){
+		myGameObjects.add(s);
+	}
+	
+	public void removeGameObject(GameObject s){
+		myGameObjects.remove(s);
+	}
+	
+	/**
+	 * Condition Methods
+	 */
+	
+	public ConditionsCollection getConditions(){
+		return myConditions;
+	}
 	
 	public void addCondition(Condition c){
 		myConditions.add(c);
@@ -55,32 +88,22 @@ public class GameData implements Serializable{
 		myConditions.remove(c);
 	}
 	
-//	private LevelsCollection myLevels;
-//	private SoundsCollection mySounds;
-//	private GraphicsCollection myImages;
-	private SpritesCollection mySprites;
-		
-	private SoundsCollection mySounds;
-	private GraphicsCollection myImages;
-	
-	public GameData(){
-		myLevels = new ArrayList<Level>();
-		mySprites = new SpritesCollection();
-		myConditions = new ArrayList<Condition>();
-		myImages = new GraphicsCollection();
-	}
-	
-	
+	/**
+	 * Graphic Methods
+	 */
 	
 	public GraphicsCollection getImages(){
 		return myImages;
 	}
-	public SpritesCollection getSprites(){
-		return mySprites;
+	
+	/**
+	 * Sound Methods
+	 */
+	
+	public SoundsCollection getSounds(){
+		return mySounds;
 	}
 	
-//	private EventCollection myEvents; //events prompt actions and hold onto their corresponding action
-//	private VariableCollection myVariables;
 	
 	
 }

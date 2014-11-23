@@ -1,8 +1,7 @@
 package engine.collisionDetection;
 
 import java.util.Iterator;
-
-import engine.sprite.Sprite;
+import engine.gameObject.GameObject;
 import javafx.scene.Node;
 
 /**
@@ -33,7 +32,7 @@ public class CollisionManager {
 		}
 	}
 
-	public void handleCollisions(Sprite a, Sprite b) {
+	public void handleCollisions(GameObject a, GameObject b) {
 
 	}
 

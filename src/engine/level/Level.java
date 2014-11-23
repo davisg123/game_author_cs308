@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 import engine.collisionDetection.CollisionDetector;
 import engine.conditions.Condition;
-import engine.render.SpriteRenderer;
-import engine.sprite.IEnabled;
-import engine.sprite.Sprite;
+import engine.gameObject.IEnabled;
+import engine.gameObject.GameObject;
+import engine.render.GameObjectRenderer;
 
 /**
- * A Level of the game. Contains all Sprites and Actions and coordinates their interactions
+ * A Level of the game. Contains all GameObjects and Actions and coordinates their interactions
  * for linear progression through the game.
  * @author Will Chang
  *
@@ -19,29 +19,29 @@ import engine.sprite.Sprite;
 
 public class Level {
 
-    private List<Sprite> mySprites;
+    private List<GameObject> myGameObjects;
     //private List<Condition> myConditions;
-    private Map<String, Boolean> myEnabledSprites;
+    private Map<String, Boolean> myEnabledGameObjects;
     private Map<String, Boolean> myEnabledConditions;
-    private SpriteRenderer myRenderer;
+    private GameObjectRenderer myRenderer;
     private CollisionDetector myDetector;
 
 
     /**
      * Constructor 
-     * @param EnabledSpritesMap
+     * @param EnabledGameObjectsMap
      * @param EnabledActionsMap
      */
-    public Level(Map<String, Boolean> enabledSprites, Map<String, Boolean> enabledConditions) {
-        myEnabledSprites = enabledSprites;
+    public Level(Map<String, Boolean> enabledGameObjects, Map<String, Boolean> enabledConditions) {
+        myEnabledGameObjects = enabledGameObjects;
         myEnabledConditions = enabledConditions;
     }
 
     /**
-     * Updates all Sprites.
+     * Updates all GameObjects.
      */
     public void update() {
-        for(Sprite sprite : mySprites) {
+        for(GameObject sprite : myGameObjects) {
             sprite.update();
         }
     }
@@ -51,13 +51,13 @@ public class Level {
      * 
      * @param sprites
      */
-    public void setEnabledSprites(List<Sprite> sprites) {
-       for(Sprite sprite : sprites) {
-           if(myEnabledSprites.get(sprite.getID())) {
+    public void setEnabledGameObjects(List<GameObject> sprites) {
+       for(GameObject sprite : sprites) {
+           if(myEnabledGameObjects.get(sprite.getID())) {
                //sprite.enable(); ??
                //copy of???
                //Initialize the sprite to location???
-               mySprites.add(sprite);
+               myGameObjects.add(sprite);
            }
        }
     }
@@ -65,7 +65,7 @@ public class Level {
     public void setEnabled(String type, List<IEnabled> enabledObjects) {
         
         for(IEnabled enabledObject : enabledObjects) {
-            if(myEnabledSprites.get(sprite.getID())
+            if(myEnabledGameObjects.get(sprite.getID())
         }
     }*/
     
@@ -86,8 +86,8 @@ public class Level {
      * Iterator for the List of enabled Game Objects in the Level
      * @return
      */
-    public Iterator<Sprite> getSprites () {
-        return mySprites.iterator();
+    public Iterator<GameObject> getGameObjects () {
+        return myGameObjects.iterator();
     }
     
     /*public Iterator<Condition> getConditions () {

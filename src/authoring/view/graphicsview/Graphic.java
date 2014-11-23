@@ -8,6 +8,16 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 
+/**
+ * Represents an image, but does not instantiate JavaFX object so that the
+ * object can easily be serialized if necessary.
+ * 
+ * @author Chris Bernt
+ * @author Kevin Li
+ * @author Arjun Jain
+ * @author Wesley Valentine
+ *
+ */
 public class Graphic extends VBox {
 
 	private String myName;
@@ -23,6 +33,13 @@ public class Graphic extends VBox {
 		myOnClick = event;
 	}
 
+	/**
+	 * creates an instance of the JavaFX object that can be displayed on the
+	 * GUI. Takes in a MouseEvent so that the graphic will respond to the
+	 * specified events.
+	 * 
+	 * @param event
+	 */
 	public void makeGraphic(EventType<MouseEvent> event) {
 		Image image = new Image(getClass().getResourceAsStream(myName));
 		ImageView imageView = new ImageView(image);

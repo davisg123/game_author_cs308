@@ -6,7 +6,7 @@ import java.util.ResourceBundle;
 
 import javafx.scene.control.TabPane;
 import javafx.scene.input.MouseEvent;
-import authoring.controller.AuthoringController.GraphicsDragHandler;
+import authoring.eventhandlers.GraphicsDragHandler;
 import authoring.view.baseclasses.BPView;
 import authoring.view.graphicsview.Graphic;
 
@@ -16,6 +16,7 @@ import authoring.view.graphicsview.Graphic;
  * observer/observable.
  * 
  * @author Kevin Li
+ * @author Wesley Valentine
  *
  */
 public class LevelsView extends BPView implements Observer {
@@ -40,22 +41,38 @@ public class LevelsView extends BPView implements Observer {
 		// TODO Auto-generated method stub
 
 	}
-	
-	public void addSpriteToView(Graphic graphic, double x, double y, GraphicsDragHandler handler){
-		//g.makeGraphic();
+
+	/**
+	 * Creates a copy of a passed in Graphic and adds it to the current level.
+	 * Passes in Event Handler to the Graphic, handling drag events.
+	 * 
+	 * @param graphic
+	 * @param x
+	 * @param y
+	 * @param handler
+	 */
+	public void addSpriteToView(Graphic graphic, double x, double y,
+			GraphicsDragHandler handler) {
 		Graphic g = new Graphic(graphic.getName(), handler);
 		g.makeGraphic(MouseEvent.MOUSE_DRAGGED);
-		g.setLayoutX(x -230);
+		g.setLayoutX(x - 230);
 		g.setLayoutY(y - 100);
-		this.getChildren().add(g);
-		
-		
+		SingleLevelView currentLevelView = (SingleLevelView) myLevels
+				.getSelectionModel().getSelectedItem().getContent();
+		currentLevelView.getChildren().add(g);
+
 	}
-	public void moveSpriteOnLevel(Graphic g, double x, double y){
-		//g.makeGraphic();
-		g.setLayoutX(x-230);
-		g.setLayoutY(y-100);
-		
+
+	/**
+	 * Moves Sprite to new location on level view.
+	 * 
+	 * @param g
+	 * @param x
+	 * @param y
+	 */
+	public void moveSpriteOnLevel(Graphic g, double x, double y) {
+		g.setLayoutX(x - 230);
+		g.setLayoutY(y - 100);
 	}
-	
+
 }
