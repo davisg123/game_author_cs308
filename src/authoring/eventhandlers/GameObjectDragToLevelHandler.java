@@ -3,7 +3,9 @@ package authoring.eventhandlers;
 import javafx.event.EventType;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
+import authoring.model.collections.LevelsCollection;
 import authoring.view.gameobjectsview.GameObjectGraphic;
+import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
 import engine.gameObject.GameObject;
 import engine.level.Level;
@@ -14,13 +16,17 @@ import engine.level.Level;
  * 
  * @author Wesley Valentine
  * @author Chris Bernt
+ * 
  *
  */
 public class GameObjectDragToLevelHandler implements GameHandler<MouseEvent> {
-	private Level myLevel;
+	private LevelsView myLevelView;
+	private LevelsCollection myLevelsCollection;
 
-	public GameObjectDragToLevelHandler(Level level) {
-		myLevel = level;
+	public GameObjectDragToLevelHandler(LevelsView levelView,
+			LevelsCollection data) {
+		myLevelView = levelView;
+		myLevelsCollection = data;
 	}
 
 	@Override
@@ -31,8 +37,13 @@ public class GameObjectDragToLevelHandler implements GameHandler<MouseEvent> {
 		GameObject gameObject = g.getGameObject();
 		gameObject.setX(x);
 		gameObject.setY(y);
-		myLevel.addGameObject(gameObject);
-	
+		String id = myLevelView.getCurrentLevel().getID();
+		for (Level level : myLevelsCollection) {
+			if (level.getLevelID().equals(id)) {
+				level.addGameObject(gameObject);
+			}
+		}
+
 	}
 
 	@Override

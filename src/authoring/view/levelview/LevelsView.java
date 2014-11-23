@@ -34,7 +34,6 @@ public class LevelsView extends BPView implements Observer {
 		super.setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
 		this.setTop(myLevelOptions);
 		this.setCenter(myLevelTabs);
-		myLevelOptions.addNewLevel();
 	}
 
 	@Override

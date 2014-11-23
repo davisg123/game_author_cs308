@@ -4,6 +4,7 @@ import javafx.event.Event;
 import javafx.event.EventType;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -19,25 +20,32 @@ public class AddLevelHandler implements GameHandler<Event> {
 	
 	private LevelsView myLevels;
 	private LevelsCollection myLevelsCollection;
+	private String myLevelID;
 
-	public AddLevelHandler (LevelsCollection levelsCollection){
+	public AddLevelHandler (LevelsCollection levelsCollection, LevelsView levelView){
 		myLevelsCollection = levelsCollection;
+		myLevels = levelView;
 	}
 	
 	@Override
 	public void handle(Event arg0) {
-		SingleLevelView newLevelView = myLevels.getLevelOptions().addNewLevel();
-		Level levelData = new Level(new GameObjectsCollection());
-		myLevelsCollection.add(levelData);
-		levelData.addObserver(newLevelView);
+		promptLevelID();
+	
+		
 		
 //		String im = "/assets/mario.png";
 //		GameObject test = new GameObject(new ArrayList<Component>(), im, new Point2D.Double(), 0, 0, 0, "Mario");
 //		levelData.addGameObject(test);
 	}
 	
-	public void setLevelOptions(LevelsView l){
-		myLevels = l;
+	public void createLevel(){
+		SingleLevelView newLevelView = myLevels.getLevelOptions().addNewLevel(myLevelID);
+		Level levelData = new Level(new GameObjectsCollection());
+		myLevelsCollection.add(levelData);
+		levelData.addObserver(newLevelView);
+		newLevelView.setID(myLevelID);
+		levelData.setLevelID(myLevelID);
+		
 	}
 
 	@Override
@@ -45,17 +53,29 @@ public class AddLevelHandler implements GameHandler<Event> {
 		return Event.ANY;
 	}
 	
-	public void promptLevelID(){
+	private void promptLevelID(){
 		Stage dialog = new Stage();
 		dialog.initStyle(StageStyle.UTILITY);
 		Group root = new Group();
 		Text t = new Text(25, 25, "Level ID:");
 		TextField input = new TextField();
-		input.setLayoutX(50);
-		input.setLayoutY(50);
-		root.getChildren().addAll(t, input);
-		Scene scene = new Scene(root, 300, 300);
+		input.setLayoutX(25);
+		input.setLayoutY(55);
+		Button submit = new Button();
+		submit.setLayoutX(25);
+		submit.setLayoutY(90);
+		submit.setOnAction(event -> getPrompt(input, dialog));
+		submit.setText("Submit");
+		root.getChildren().addAll(t, input, submit);
+		Scene scene = new Scene(root, 300, 150);
 		dialog.setScene(scene);
 		dialog.show();
 	}
+	
+	private void getPrompt(TextField t, Stage s){
+		myLevelID = t.getText();
+		createLevel();
+		s.close();
+	}
+	
 }

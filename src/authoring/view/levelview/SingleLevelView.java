@@ -31,11 +31,12 @@ public class SingleLevelView extends Pane implements Observer {
 	private static final double VIEW_HEIGHT_RATIO = .85;
 	private static final double VIEW_WIDTH_RATIO = 0.6;
 	private GameHandler[] myEvents;
+	private String myID;
 	
-	public SingleLevelView(double width, double height,GameHandler ... events) {
+	public SingleLevelView(double width, double height, GameHandler ... handlers) {
 		this.setBackground(myDefaultBackground);
 		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
-		myEvents = events;
+		myEvents = handlers;
 	}
 
 	private void setView(double width, double height) {
@@ -48,7 +49,7 @@ public class SingleLevelView extends Pane implements Observer {
 	public void update(Observable o, Object arg) {
 			Level level = ((Level) arg);
 			for (GameObject g: level.getGameObjectsCollection()){
-				addGameObjectToView(g,300, 300, myEvents);
+				addGameObjectToView(g, g.getX(), g.getY(), myEvents);
 			}
 	}
 
@@ -61,7 +62,14 @@ public class SingleLevelView extends Pane implements Observer {
 		this.getChildren().add(g);
 		
 	}
-
+	public void setID(String ID){
+		myID = ID;
+	}
+	
+	public String getID(){
+		return myID;
+	}
+	
 	public void moveSpriteOnLevel(Graphic g, double x, double y) {
 		g.setLayoutX(x - 230);
 		g.setLayoutY(y - 100);

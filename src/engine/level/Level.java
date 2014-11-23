@@ -22,12 +22,14 @@ public class Level extends Observable {
 
 	/**
 	 * Constructor
-	 * @param Game Objects Collection
+	 * 
+	 * @param Game
+	 *            Objects Collection
 	 */
 	public Level(GameObjectsCollection gameObjects) {
 		myGameObjects = gameObjects;
 	}
-	
+
 	/**
 	 * Updates all GameObjects.
 	 */
@@ -37,11 +39,19 @@ public class Level extends Observable {
 		}
 	}
 
+	public void setLevelID(String ID) {
+		myLevelID = ID;
+	}
+
+	public String getLevelID() {
+		return myLevelID;
+	}
+
 	/**
 	 * SET INITIAL VALUES FOR THE MAIN CHARACTER
 	 */
 	public void updateMainCharacter() {
-		
+
 	}
 
 	/**
@@ -50,27 +60,27 @@ public class Level extends Observable {
 	public Iterator<GameObject> getGameObjectIterator() {
 		return myGameObjects.iterator();
 	}
-	
+
 	/**
 	 * @return Iterator for the ConditionIDsCollection
 	 */
 	public Iterator<String> getConditionIDsIterator() {
 		return myConditionIDs.iterator();
 	}
-	public void addGameObject(GameObject gameObject){
+
+	public void addGameObject(GameObject gameObject) {
 		myGameObjects.add(gameObject);
 		setChanged();
 		notifyObservers(this);
 	}
-	
-	public GameObjectsCollection getGameObjectsCollection(){
+
+	public GameObjectsCollection getGameObjectsCollection() {
 		return myGameObjects;
 	}
-	
-	
-/*
-	public Iterator<Condition> getConditions() {
-		return myConditions.iterator();
-	} */
+
+	/*
+	 * public Iterator<Condition> getConditions() { return
+	 * myConditions.iterator(); }
+	 */
 
 }
