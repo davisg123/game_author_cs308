@@ -25,7 +25,6 @@ public class LevelsView extends BPView implements Observer {
 	private static final double VIEW_WIDTH_RATIO = 0.6;
 	private LevelOptions myLevelOptions;
 	private TabPane myLevelTabs;
-	private AddLevelHandler myHandler;
 
 	public LevelsView(ResourceBundle language, double width, double height) {
 		super(language, width, height);
@@ -53,17 +52,18 @@ public class LevelsView extends BPView implements Observer {
 	 */
 	
 	//PROBABLY NEEDS TO BE REMOVED
-	public void addGameObjectToView(GameObjectGraphic graphic, double x, double y,
-			GameHandler ... handler) {
-		Graphic g = new GameObjectGraphic(graphic.getGameObject(),handler);
-		g.makeGraphic();
-		g.setLayoutX(x - 230);
-		g.setLayoutY(y - 100);
-		SingleLevelView currentLevelView = (SingleLevelView) myLevelTabs
-				.getSelectionModel().getSelectedItem().getContent();
-		currentLevelView.getChildren().add(g);
-
-	}
+//	public void addGameObjectToView(GameObjectGraphic graphic, double x, double y,
+//			GameHandler ... handler) {
+//		System.out.println("called");
+//		Graphic g = new GameObjectGraphic(graphic.getGameObject(),handler);
+//		g.makeGraphic();
+//		g.setLayoutX(x - 230);
+//		g.setLayoutY(y - 100);
+//		SingleLevelView currentLevelView = (SingleLevelView) myLevelTabs
+//				.getSelectionModel().getSelectedItem().getContent();
+//		currentLevelView.getChildren().add(g);
+//
+//	}
 	
 	public SingleLevelView getCurrentLevel(){
 		return (SingleLevelView) myLevelTabs.getSelectionModel().getSelectedItem().getContent();

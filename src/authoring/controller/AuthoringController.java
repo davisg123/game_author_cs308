@@ -1,6 +1,5 @@
 package authoring.controller;
 
-import java.awt.geom.Point2D;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -10,16 +9,15 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
 import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.GameObjectClickHandler;
-import authoring.eventhandlers.ImagesClickHandler;
 import authoring.eventhandlers.GameObjectDragHandler;
 import authoring.eventhandlers.GameObjectDragToLevelHandler;
+import authoring.eventhandlers.ImagesClickHandler;
 import authoring.model.AuthoringModel;
 import authoring.view.AuthoringView;
 import authoring.view.baseclasses.AccordianView;
 import authoring.view.gameobjectsview.GameObjectsView;
 import authoring.view.graphicsview.ImagesView;
 import authoring.view.levelview.LevelsView;
-import authoring.view.levelview.SingleLevelView;
 import authoring.view.propertiesview.PropertiesView;
 import authoring.view.soundsview.SoundsView;
 import engine.actions.Action;
@@ -115,7 +113,7 @@ public class AuthoringController {
 		myGraphics.setEvents(new ImagesClickHandler(myProperties));
 		myGameObjects.setEvents(new GameObjectClickHandler(myProperties), new GameObjectDragToLevelHandler(myLevels, myModel.getLevels()));
 		myLevels.getLevelOptions().setButtonBehavior(new AddLevelHandler(myModel.getLevels(), myLevels));
-		myLevels.getLevelOptions().setEventHandlers(new GameObjectClickHandler(myProperties));
+		myLevels.getLevelOptions().setEventHandlers(new GameObjectClickHandler(myProperties), new GameObjectDragHandler(myLevels, myModel.getLevels()));
 	}
 
 	/**

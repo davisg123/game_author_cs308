@@ -31,6 +31,7 @@ public abstract class GeneralCollection<T> extends Observable implements Iterabl
 	
 	public void remove(T a){
 		myObjects.remove(a);
+		System.out.println("removed");
 	}
 	
 	public void add(T a){
