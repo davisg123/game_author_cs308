@@ -188,6 +188,9 @@ public class GameObject implements IEnabled, Iterable<Component>{
                 component.update(null);
             }
         }
+        if (myPhysicsBody != null){
+            myPhysicsBody.updatePhysicalCharacteristics(this);
+        }
     }
 
     public void setRenderedNode(RenderedNode node) {

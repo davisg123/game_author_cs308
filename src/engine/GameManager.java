@@ -120,6 +120,6 @@ public class GameManager {
     }
     
     private void createLevelManager(){
-        myLevelManager = new LevelManager(myLevels,myGameObjects,myGameConditions,myGameObjectRenderer,null);
+        myLevelManager = new LevelManager(myLevels,myGameObjects,myGameConditions,myGameObjectRenderer);
     }
 }
