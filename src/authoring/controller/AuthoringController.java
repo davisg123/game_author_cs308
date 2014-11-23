@@ -16,7 +16,8 @@ import authoring.eventhandlers.GameObjectDragToLevelHandler;
 import authoring.eventhandlers.ImagesClickHandler;
 import authoring.model.AuthoringModel;
 import authoring.view.AuthoringView;
-import authoring.view.baseclasses.AccordianView;
+import authoring.view.baseclasses.AccordionContainer;
+import authoring.view.baseclasses.BPContainer;
 import authoring.view.gameobjectsview.GameObjectsView;
 import authoring.view.graphicsview.ImagesView;
 import authoring.view.levelview.LevelOptions;
@@ -40,6 +41,8 @@ import engine.gameObject.components.Component;
  *
  */
 public class AuthoringController {
+	private static final double CENTER_HEIGHT_RATIO = .92;
+	private static final double CENTER_WIDTH_RATIO = .6;
 	private AuthoringView myView;
 	private AuthoringModel myModel;
 	private ResourceBundle myLanguage;
@@ -101,7 +104,8 @@ public class AuthoringController {
 	}
 
 	private BorderPane intitializeCenter() {
-		BorderPane center = new BorderPane();
+		BPContainer center = new BPContainer(myWidth * CENTER_WIDTH_RATIO,
+				myHeight * CENTER_HEIGHT_RATIO);
 		center.setTop(myLevelOptions);
 		center.setCenter(myLevels);
 		return center;
@@ -142,8 +146,8 @@ public class AuthoringController {
 	 * @return AccordianView a node.
 	 */
 
-	private AccordianView initializeLeft() {
-		AccordianView leftView = new AccordianView(myWidth, myHeight);
+	private AccordionContainer initializeLeft() {
+		AccordionContainer leftView = new AccordionContainer(myWidth, myHeight);
 
 		TitledPane graphics = new TitledPane(myLanguage.getString("Images"),
 				myGraphics);

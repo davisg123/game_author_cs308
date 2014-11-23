@@ -8,12 +8,12 @@ import javafx.scene.control.Accordion;
  * @author Kevin Li
  *
  */
-public class AccordianView extends Accordion {
+public class AccordionContainer extends Accordion {
 
 	private static final double VIEW_HEIGHT_RATIO = .95;
 	private static final double VIEW_WIDTH_RATIO = 0.20;
 
-	public AccordianView(double width, double height) {
+	public AccordionContainer(double width, double height) {
 		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
 	}
 

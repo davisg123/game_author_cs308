@@ -8,7 +8,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.GameHandler;
-import authoring.view.baseclasses.BPView;
+import authoring.view.baseclasses.BPContainer;
 import authoring.view.baseclasses.TabView;
 import authoring.view.gameobjectsview.GameObjectGraphic;
 import authoring.view.graphicsview.Graphic;

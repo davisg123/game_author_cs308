@@ -10,15 +10,10 @@ import javafx.scene.layout.BorderPane;
  * @author Kevin Li
  *
  */
-public class BPView extends BorderPane {
-	protected ResourceBundle myLanguage;
-	protected double myHeight;
-	protected double myWidth;
+public class BPContainer extends BorderPane {
 
-	public BPView(ResourceBundle language, double width, double height) {
-		myLanguage = language;
-		myHeight = height;
-		myWidth = width;
+	public BPContainer(double width, double height) {
+		setView(width, height);
 	}
 
 	/**
