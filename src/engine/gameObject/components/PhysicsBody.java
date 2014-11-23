@@ -5,23 +5,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-
 import engine.gameObject.GameObject;
-
 import java.util.Map;
-
 import engine.physics.Acceleration;
 import engine.physics.BEngine;
 import engine.physics.Buoyancy;
+import engine.physics.CoefficientOfFriction;
+import engine.physics.Density;
 import engine.physics.Force;
 import engine.physics.Friction;
 import engine.physics.Gravity;
+import engine.physics.GravityConstant;
 import engine.physics.Impulse;
 import engine.physics.Mass;
 import engine.physics.NormalUpdate;
 import engine.physics.Scalar;
 import engine.physics.Vector;
 import engine.physics.Velocity;
+import engine.physics.Volume;
 
 /**
  * 
@@ -58,7 +59,7 @@ public class PhysicsBody {
 		myVelocity = new Vector();
 		// myUpdate = new NormalUpdate();
 		myActiveForces = new HashMap<String, Force>();
-		initializeMaps();
+		initializeMap();
 		haveForcesChanged = false;
 		myBalancedForcesMag = new Vector();
 		myCollisionBodyWidth = collisionBodyWidth;
@@ -76,10 +77,10 @@ public class PhysicsBody {
 	 * need to work out two things: hardcode Scalar... scalar-->probably need to
 	 * initialize those to 0 too
 	 */
-	private void initializeMaps() {
-		myActiveForces.put("gravity", new Gravity(0, 0));
-		myActiveForces.put("buoyancy", new Buoyancy(0, 0));
-		myActiveForces.put("friction", new Friction(0, 0));
+	private void initializeMap() {
+		myActiveForces.put("gravity", new Gravity(0, 0, new Mass(1), new GravityConstant(1)));
+		myActiveForces.put("buoyancy", new Buoyancy(0, 0, new Volume(1), new Density(1)));
+		myActiveForces.put("friction", new Friction(0, 0, new CoefficientOfFriction(1), new Mass(1)));
 	}
 
 	public void setVelocity(Vector v) {
@@ -189,7 +190,11 @@ public class PhysicsBody {
 	}
 
 	public void addForce(Force f) {
-		myActiveForces.put(f.toString(), f);
+		if (this.myActiveForces.containsKey(f.toString())) {
+			this.myActiveForces.replace(f.toString(), f);
+		} else {
+			this.myActiveForces.put(f.toString(), f);
+		}
 	}
 
 	public void addImpulse(Impulse i) {

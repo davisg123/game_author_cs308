@@ -181,10 +181,12 @@ public class GameObject implements IEnabled, Iterable<Component>{
      */
     
     public void update () {
-        for(Component component : myComponents) {
-            //component.update(this); Should include current Level???... 
-            //update methods should be specific to each component...
-            component.update(null);
+        if (myComponents != null){
+            for(Component component : myComponents) {
+                //component.update(this); Should include current Level???... 
+                //update methods should be specific to each component...
+                component.update(null);
+            }
         }
     }
 

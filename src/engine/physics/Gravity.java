@@ -19,7 +19,7 @@ public class Gravity extends Force {
 	 */
 	@Override
 	protected void calculateForce() {
-		myForceValue = myValues.get("mass") * myValues.get("gravity constant")
+		myForceValue = myValues.get("Mass") * myValues.get("GravityConstant")
 				* GRAVITY_ACCELERATION;
 	}
 
