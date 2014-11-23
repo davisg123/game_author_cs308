@@ -113,7 +113,7 @@ public class AuthoringController {
 		myGraphics.setEvents(new ImagesClickHandler(myProperties));
 		myGameObjects.setEvents(new GameObjectClickHandler(myProperties), new GameObjectDragToLevelHandler(myLevels, myModel.getLevels()));
 		myLevels.getLevelOptions().setButtonBehavior(new AddLevelHandler(myModel.getLevels(), myLevels));
-		myLevels.getLevelOptions().setEventHandlers(new GameObjectClickHandler(myProperties), new GameObjectDragHandler(myLevels, myModel.getLevels()));
+		myLevels.setEventHandlers(new GameObjectClickHandler(myProperties), new GameObjectDragHandler(myLevels, myModel.getLevels()));
 	}
 
 	/**

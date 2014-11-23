@@ -4,6 +4,7 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.ResourceBundle;
 
+import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.GameHandler;
@@ -20,15 +21,15 @@ import authoring.view.graphicsview.Graphic;
  * @author Wesley Valentine
  *
  */
-public class LevelsView extends BPView implements Observer {
+public class LevelsView extends TabPane implements Observer {
 	private static final double VIEW_HEIGHT_RATIO = .92;
 	private static final double VIEW_WIDTH_RATIO = 0.6;
 	private LevelOptions myLevelOptions;
 	private TabPane myLevelTabs;
+	private GameHandler[] myEvents;
 
 	public LevelsView(ResourceBundle language, double width, double height) {
 		super(language, width, height);
-		myLevelTabs = new TabPane();
 		myLevelOptions = new LevelOptions(language, myLevelTabs, width, height);
 		super.setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
 		this.setTop(myLevelOptions);
@@ -50,23 +51,25 @@ public class LevelsView extends BPView implements Observer {
 	 * @param y
 	 * @param handler
 	 */
-	
-	//PROBABLY NEEDS TO BE REMOVED
-//	public void addGameObjectToView(GameObjectGraphic graphic, double x, double y,
-//			GameHandler ... handler) {
-//		System.out.println("called");
-//		Graphic g = new GameObjectGraphic(graphic.getGameObject(),handler);
-//		g.makeGraphic();
-//		g.setLayoutX(x - 230);
-//		g.setLayoutY(y - 100);
-//		SingleLevelView currentLevelView = (SingleLevelView) myLevelTabs
-//				.getSelectionModel().getSelectedItem().getContent();
-//		currentLevelView.getChildren().add(g);
-//
-//	}
-	
-	public SingleLevelView getCurrentLevel(){
-		return (SingleLevelView) myLevelTabs.getSelectionModel().getSelectedItem().getContent();
+
+	// PROBABLY NEEDS TO BE REMOVED
+	// public void addGameObjectToView(GameObjectGraphic graphic, double x,
+	// double y,
+	// GameHandler ... handler) {
+	// System.out.println("called");
+	// Graphic g = new GameObjectGraphic(graphic.getGameObject(),handler);
+	// g.makeGraphic();
+	// g.setLayoutX(x - 230);
+	// g.setLayoutY(y - 100);
+	// SingleLevelView currentLevelView = (SingleLevelView) myLevelTabs
+	// .getSelectionModel().getSelectedItem().getContent();
+	// currentLevelView.getChildren().add(g);
+	//
+	// }
+
+	public SingleLevelView getCurrentLevel() {
+		return (SingleLevelView) myLevelTabs.getSelectionModel()
+				.getSelectedItem().getContent();
 	}
 
 	/**
@@ -80,9 +83,23 @@ public class LevelsView extends BPView implements Observer {
 		g.setLayoutX(x - 230);
 		g.setLayoutY(y - 100);
 	}
-	
-	public LevelOptions getLevelOptions(){
+
+	public LevelOptions getLevelOptions() {
 		return myLevelOptions;
 	}
 
+	public SingleLevelView addNewLevel(String myLevelID) {
+		Tab tab = new Tab(myLevelID);
+		SingleLevelView newView = new SingleLevelView(myWidth, myHeight,
+				myEvents);
+		tab.setContent(newView);
+		myLevelTabs.getTabs().add(tab);
+		myLevelTabs.getSelectionModel().select(tab);
+		return newView;
+
+	}
+
+	public void setEventHandlers(GameHandler... handlers) {
+		myEvents = handlers;
+	}
 }

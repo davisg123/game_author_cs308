@@ -39,7 +39,7 @@ public class AddLevelHandler implements GameHandler<Event> {
 	}
 	
 	public void createLevel(){
-		SingleLevelView newLevelView = myLevels.getLevelOptions().addNewLevel(myLevelID);
+		SingleLevelView newLevelView = myLevels.addNewLevel(myLevelID);
 		Level levelData = new Level(new GameObjectsCollection());
 		myLevelsCollection.add(levelData);
 		levelData.addObserver(newLevelView);
