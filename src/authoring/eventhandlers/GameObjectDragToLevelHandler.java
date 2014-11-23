@@ -17,11 +17,9 @@ import engine.level.Level;
  *
  */
 public class GameObjectDragToLevelHandler implements GameHandler<MouseEvent> {
-	private PropertiesView myProperties;
 	private Level myLevel;
 
-	public GameObjectDragToLevelHandler(PropertiesView properties, Level level) {
-		myProperties = properties;
+	public GameObjectDragToLevelHandler(Level level) {
 		myLevel = level;
 	}
 
@@ -30,9 +28,10 @@ public class GameObjectDragToLevelHandler implements GameHandler<MouseEvent> {
 		GameObjectGraphic g = (GameObjectGraphic) event.getSource();
 		double x = event.getSceneX();
 		double y = event.getSceneY();
-		GameObject gO = g.getGameObject();
-		//gO.setPosition(new Point2D(x,y));
-		myLevel.addGameObject(g.getGameObject());
+		GameObject gameObject = g.getGameObject();
+		gameObject.setX(x);
+		gameObject.setY(y);
+		myLevel.addGameObject(gameObject);
 	
 	}
 

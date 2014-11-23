@@ -1,18 +1,17 @@
 package authoring.eventhandlers;
 
-import java.awt.geom.Point2D;
-import java.util.ArrayList;
-
 import javafx.event.Event;
 import javafx.event.EventType;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.LevelsCollection;
-import authoring.view.levelview.LevelOptions;
 import authoring.view.levelview.LevelsView;
 import authoring.view.levelview.SingleLevelView;
-import engine.gameObject.GameObject;
-import engine.gameObject.components.Component;
 import engine.level.Level;
 
 
@@ -45,7 +44,18 @@ public class AddLevelHandler implements GameHandler<Event> {
 	public EventType<Event> getEventType() {
 		return Event.ANY;
 	}
-
 	
-
+	public void promptLevelID(){
+		Stage dialog = new Stage();
+		dialog.initStyle(StageStyle.UTILITY);
+		Group root = new Group();
+		Text t = new Text(25, 25, "Level ID:");
+		TextField input = new TextField();
+		input.setLayoutX(50);
+		input.setLayoutY(50);
+		root.getChildren().addAll(t, input);
+		Scene scene = new Scene(root, 300, 300);
+		dialog.setScene(scene);
+		dialog.show();
+	}
 }

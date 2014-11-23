@@ -88,9 +88,8 @@ public class AuthoringController {
 		myModel.getImages().addObserver(myGraphics);
 		myModel.getGameObjectCollection().addObserver(myGameObjects);
 
-		GameObject test = new GameObject(new ArrayList<Component>(), im,
-				new Point2D.Double(), 0, 0, 0, "Mario");
-		// System.out.println(test.getCurrentImageName());
+		GameObject test = new GameObject(new ArrayList<Component>(), im, 0, 0,
+				0, 0, 0, "Mario");
 		myModel.getGameObjectCollection().addGameObject(test);
 
 		myModel.getImages().addImage(im);

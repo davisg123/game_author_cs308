@@ -15,6 +15,8 @@ import javafx.util.Duration;
 import engine.conditions.*;
 import engine.render.GameObjectRenderer;
 import engine.gameObject.*;
+import engine.level.Level;
+import engine.level.LevelManager;
 
 /**
  * central game manager responsible for holding game data, setting the timeline speed
@@ -31,14 +33,19 @@ public class GameManager {
     private Group myRootGroup;
     private Timeline myAnimation;
     private Stage myStage;
+    private LevelManager myLevelManager;
+    private List<Level> myLevels;
     private static final double DEFAULT_SPEED = 60.0;
     
     
-    public GameManager (List<Condition> myGameConditions, List<GameObject> myGameGameObjects, Group myRootGroup) {
+    public GameManager (List<Condition> myGameConditions, List<GameObject> myGameObjects, List<Level> myLevels, Group myRootGroup) {
         super();
         this.myGameConditions = myGameConditions;
-        this.myGameObjects = myGameGameObjects;
+        this.myGameObjects = myGameObjects;
         this.myRootGroup = myRootGroup;
+        this.myLevels = myLevels;
+        this.myGameObjectRenderer = new GameObjectRenderer(myRootGroup);
+        createLevelManager();
     }
     
     /**
@@ -110,15 +117,13 @@ public class GameManager {
    };
 
     /**
-     * run updates on every sprite and every condition
+     * run updates on the level
      */
     public void processFrame(){
-        updateFrameBasedConditions();
+        myLevelManager.update();
     }
     
-    private void updateFrameBasedConditions(){
-        for (Condition s : myGameConditions){
-            s.frameElapsed();
-        }
+    private void createLevelManager(){
+        myLevelManager = new LevelManager(myGameObjects,myLevels,myGameConditions,myGameObjectRenderer,null);
     }
 }
