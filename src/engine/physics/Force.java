@@ -1,5 +1,8 @@
 package engine.physics;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * class for force, extends vector, super for all forces
  * 
@@ -8,17 +11,37 @@ package engine.physics;
  */
 public abstract class Force extends Vector {
 	protected double myForceValue;
+	protected Map<String, Double> myValues;
 
-	public Force(double x, double y) {
+	public Force(double x, double y, Scalar... scalar) {
 		super(x, y);
-		myForceValue = calculateForce();
+		calculateForce();
+		myValues = new HashMap<String, Double>();
+		initializeMap(scalar);
 	}
 
 	/**
 	 * other constructor, used to solve a problem we had
 	 */
-	public Force() {
-		this(0, 0);
+	public Force(Scalar[] scalar) {
+		this(0, 0, scalar);
+	}
+
+	@Override
+	public String toString() {
+		return this.getClass().getName();
+	}
+
+	public void addOrChangeValue(Scalar cur) {
+		myValues.put(cur.toString(), cur.getValue());
+		calculateForce();
+		calculateMagnitude();
+	}
+
+	protected void initializeMap(Scalar[] scalar) {
+		for (Scalar cur : scalar) {
+			myValues.put(cur.toString(), cur.getValue());
+		}
 	}
 
 	/**
@@ -27,5 +50,5 @@ public abstract class Force extends Vector {
 	 * 
 	 * @return value of force
 	 */
-	protected abstract double calculateForce();
+	protected abstract void calculateForce();
 }
