@@ -2,6 +2,7 @@ package authoring.view.generalcollectionview;
 
 import java.util.ResourceBundle;
 
+import javafx.scene.control.Button;
 import javafx.scene.control.ToolBar;
 
 public class CollectionsTool extends ToolBar {
@@ -13,5 +14,11 @@ public class CollectionsTool extends ToolBar {
 		myLanguage = language;
 		myHeight = height;
 		myWidth = width;
+	}
+
+	protected Button makeButton(String property) {
+		Button button = new Button();
+		button.setText(property);
+		return button;
 	}
 }

@@ -19,6 +19,7 @@ import authoring.view.AuthoringView;
 import authoring.view.baseclasses.AccordionContainer;
 import authoring.view.baseclasses.BPContainer;
 import authoring.view.gameobjectsview.GameObjectsView;
+import authoring.view.graphicsview.GraphicsTools;
 import authoring.view.graphicsview.ImagesView;
 import authoring.view.levelview.LevelsAccordionView;
 import authoring.view.levelview.LevelOptions;
@@ -58,7 +59,10 @@ public class AuthoringController {
 	private LevelOptions myLevelOptions;
 
 	private GameObjectsView myGameObjects;
+
 	private ImagesView myGraphics;
+	private GraphicsTools myGraphicsTools;
+
 	private SoundsView mySounds;
 	private PropertiesView myProperties;
 	private LevelsAccordionView myLevelsAccordionView;
@@ -104,15 +108,6 @@ public class AuthoringController {
 		myModel.getLevels().addObserver(myLevelsAccordionView);
 	}
 
-	private BorderPane intitializeCenter() {
-		BPContainer center = new BPContainer(myWidth * CENTER_WIDTH_RATIO,
-				myHeight * CENTER_HEIGHT_RATIO);
-		center.setTop(myLevelOptions);
-		center.setCenter(myLevels);
-		return center;
-
-	}
-
 	/**
 	 * Initializes all the view components that have a 1 to 1 relationship with
 	 * backend data components. Provides event handlers for View objects to
@@ -124,9 +119,13 @@ public class AuthoringController {
 		myLevels = new LevelsView(myLanguage, myWidth, myHeight);
 		myLevelOptions = new LevelOptions(myLanguage, myWidth, myHeight);
 		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
+
 		myGraphics = new ImagesView(myLanguage, myWidth, myHeight);
+		myGraphicsTools = new GraphicsTools(myLanguage, myWidth, myHeight);
+
 		myGameObjects = new GameObjectsView(myLanguage, myWidth, myHeight);
 		myLevelsAccordionView = new LevelsAccordionView(myLanguage, myWidth, myHeight);
+
 	}
 
 	private void initializeGameHandlers() {
@@ -138,6 +137,8 @@ public class AuthoringController {
 								.getLevels()));
 		myLevelOptions.setButtonBehavior(new AddLevelHandler(myModel
 				.getLevels(), myLevels));
+		myGraphicsTools.setButtonBehavior(new AddLevelHandler(myModel
+				.getLevels(), myLevels));
 		myLevels.setEventHandlers(new GameObjectClickHandler(myProperties),
 				new GameObjectDragHandler(myLevels, myModel.getLevels()));
 	}
@@ -147,18 +148,31 @@ public class AuthoringController {
 	 * 
 	 * @return AccordianView a node.
 	 */
+	private BorderPane intitializeCenter() {
+		BPContainer center = new BPContainer(myWidth * CENTER_WIDTH_RATIO,
+				myHeight * CENTER_HEIGHT_RATIO);
+		center.setTop(myLevelOptions);
+		center.setCenter(myLevels);
+		return center;
+
+	}
 
 	private AccordionContainer initializeLeft() {
 		AccordionContainer leftView = new AccordionContainer(myWidth, myHeight);
 
+		BPContainer graphicsBP = new BPContainer(myWidth*.2, myHeight*.74);
+		graphicsBP.setTop(myGraphicsTools);
+		graphicsBP.setCenter(myGraphics);
+
 		TitledPane graphics = new TitledPane(myLanguage.getString("Images"),
-				myGraphics);
+				graphicsBP);
 		TitledPane sounds = new TitledPane(myLanguage.getString("Sounds"),
 				mySounds);
 		TitledPane gameObjects = new TitledPane(
 				myLanguage.getString("GameObjects"), myGameObjects);
 		TitledPane levels = new TitledPane(
 				myLanguage.getString("Levels"), myLevelsAccordionView);
+
 		leftView.getPanes().addAll(graphics, sounds, gameObjects, levels);
 		BorderPane.setAlignment(leftView, Pos.TOP_RIGHT);
 

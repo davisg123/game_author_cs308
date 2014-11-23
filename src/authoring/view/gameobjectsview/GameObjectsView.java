@@ -19,7 +19,7 @@ import engine.gameObject.GameObject;
  */
 public class GameObjectsView extends ScrollView implements Observer {
 
-	private static final double VIEW_HEIGHT_RATIO = .95;
+	private static final double VIEW_HEIGHT_RATIO = .74;
 	private static final double VIEW_WIDTH_RATIO = 0.2;
 	private VBox myVbox = new VBox();	
 

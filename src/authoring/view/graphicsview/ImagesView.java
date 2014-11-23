@@ -18,7 +18,7 @@ import authoring.view.baseclasses.ScrollView;
  *
  */
 public class ImagesView extends ScrollView implements Observer {
-	private static final double VIEW_HEIGHT_RATIO = .95;
+	private static final double VIEW_HEIGHT_RATIO = .69;
 	private static final double VIEW_WIDTH_RATIO = 0.2;
 	private VBox myVbox = new VBox();	
 	private GameHandler[] myEvents;
