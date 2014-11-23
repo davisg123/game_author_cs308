@@ -15,9 +15,9 @@ public abstract class Force extends Vector {
 
 	public Force(double x, double y, Scalar... scalar) {
 		super(x, y);
+                myValues = new HashMap<String, Double>();
+                initializeMap(scalar);
 		calculateForce();
-		myValues = new HashMap<String, Double>();
-		initializeMap(scalar);
 	}
 
 	/**

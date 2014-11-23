@@ -12,6 +12,7 @@ import engine.conditions.ButtonConditionManager;
 import engine.gameObject.GameObject;
 import engine.gameObject.components.PhysicsBody;
 import engine.level.Level;
+import engine.physics.Velocity;
 import engine.render.GameObjectRenderer;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -67,6 +68,8 @@ public class MainEngineTests extends Application {
                                    50, 50, 100, 100, 0, "TestGameObject");
         //ugh, why do we have to set this explicitly?
         PhysicsBody body = new PhysicsBody(100,100);
+        Velocity vel = new Velocity(5,0);
+        body.setVelocity(vel);
         sprite.setPhysicsBody(body);
         GameObjectsCollection myGameObjects = new GameObjectsCollection();
         myGameObjects.add(sprite);

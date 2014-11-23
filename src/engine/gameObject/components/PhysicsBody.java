@@ -5,23 +5,24 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-
 import engine.gameObject.GameObject;
-
 import java.util.Map;
-
 import engine.physics.Acceleration;
 import engine.physics.BEngine;
 import engine.physics.Buoyancy;
+import engine.physics.CoefficientOfFriction;
+import engine.physics.Density;
 import engine.physics.Force;
 import engine.physics.Friction;
 import engine.physics.Gravity;
+import engine.physics.GravityConstant;
 import engine.physics.Impulse;
 import engine.physics.Mass;
 import engine.physics.NormalUpdate;
 import engine.physics.Scalar;
 import engine.physics.Vector;
 import engine.physics.Velocity;
+import engine.physics.Volume;
 
 /**
  * 
@@ -77,9 +78,9 @@ public class PhysicsBody {
 	 * initialize those to 0 too
 	 */
 	private void initializeMap() {
-		myActiveForces.put("gravity", new Gravity(0, 0));
-		myActiveForces.put("buoyancy", new Buoyancy(0, 0));
-		myActiveForces.put("friction", new Friction(0, 0));
+		myActiveForces.put("gravity", new Gravity(0, 0, new Mass(1), new GravityConstant(1)));
+		myActiveForces.put("buoyancy", new Buoyancy(0, 0, new Volume(1), new Density(1)));
+		myActiveForces.put("friction", new Friction(0, 0, new CoefficientOfFriction(1), new Mass(1)));
 	}
 
 	public void setVelocity(Vector v) {

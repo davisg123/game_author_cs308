@@ -18,7 +18,7 @@ public class Friction extends Force {
 	 * calculates value of friction force
 	 */
 	protected void calculateForce() {
-		myForceValue = myValues.get("friction") * myValues.get("mass")
+		myForceValue = myValues.get("CoefficientOfFriction") * myValues.get("Mass")
 				* GRAVITY_ACCELERATION;
 	}
 }

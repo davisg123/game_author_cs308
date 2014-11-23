@@ -20,8 +20,8 @@ public class Buoyancy extends Force {
 	 * @return the value of the force
 	 */
 	protected void calculateForce() {
-		myForceValue = myValues.get("density") * GRAVITY_ACCELERATION
-				* myValues.get("volume");
+		myForceValue = myValues.get("Density") * GRAVITY_ACCELERATION
+				* myValues.get("Volume");
 	}
 
 }
