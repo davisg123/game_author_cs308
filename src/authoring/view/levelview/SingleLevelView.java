@@ -49,6 +49,7 @@ public class SingleLevelView extends Pane implements Observer {
 	public void update(Observable o, Object arg) {
 			Level level = ((Level) arg);
 			this.getChildren().clear();
+			//System.out.println(level.getGameObjectsCollection());
 			//level.getGameObjectsCollection().clear();
 			//System.out.println(level.getLevelID());
 			for (GameObject g: level.getGameObjectsCollection()){
@@ -66,10 +67,14 @@ public class SingleLevelView extends Pane implements Observer {
 		this.getChildren().add(g);
 		
 	}
+	
+	/**
 	public void removeGameObjectFromView(GameObject gameObject){
 		GameObjectGraphic g = new GameObjectGraphic(gameObject, myEvents);
+		System.out.println(this.getChildren().contains(g));
 		this.getChildren().remove(g);
 	}
+	**/
 	
 	public void setID(String ID){
 		myID = ID;
