@@ -6,6 +6,7 @@ import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.LevelsCollection;
 import engine.GameManager;
 import engine.actions.Action;
+import engine.actions.FrameRateAction;
 import engine.actions.translate.TranslateX;
 import engine.actions.translate.TranslateY;
 import engine.conditions.BoundaryConditionY;
@@ -118,6 +119,17 @@ public class MainEngineTests extends Application {
         watchObjectList.add(floorLeft);
         BoundaryConditionY boundaryCondition = new BoundaryConditionY(boundaryActionList,watchObjectList,"bound_cond",-50,false);
         myConditions.add(boundaryCondition);
+        
+        Action pauseAct = new FrameRateAction(0.0);
+        ArrayList<Action> pauseActList = new ArrayList<Action>();
+        pauseActList.add(pauseAct);
+        ButtonCondition pCon = new ButtonCondition(pauseActList,"pause_button",KeyCode.P);
+        Action playAct = new FrameRateAction(60.0);
+        ArrayList<Action> playListAct = new ArrayList<Action>();
+        playListAct.add(playAct);
+        ButtonCondition uCon = new ButtonCondition(playListAct,"play_button",KeyCode.U);
+        myConditions.add(pCon);
+        myConditions.add(uCon);
         
         /*******
          * levels
