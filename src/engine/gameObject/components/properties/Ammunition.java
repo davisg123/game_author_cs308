@@ -23,5 +23,11 @@ public class Ammunition implements IProperty {
             
     }
 
+	@Override
+	public IProperty getClone() {
+		// TODO Auto-generated method stub
+		return new Ammunition(myAmmunition);
+	}
+
     
 }

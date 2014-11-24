@@ -47,6 +47,9 @@ public class GameObject implements IEnabled, Iterable<Component>{
 
     //Should it be included in constructor?
     private boolean enabled;
+    
+    //Holds onto the default data for reinitialization. 
+    private DefaultData myDefaultData; 
 
     /**
      * Constructors
@@ -77,9 +80,20 @@ public class GameObject implements IEnabled, Iterable<Component>{
         myWidth = width;
         myRotation = rotation;
         myID = iD;
+        setDefaultData(); 
     }
     
-    public GameObject (GameObject g){
+    private void setDefaultData() {
+		// TODO Auto-generated method stub
+		List<Component> defaultComponents= new ArrayList<Component>(); 
+		for (Component c: myComponents){
+			defaultComponents.add(c.getClone());
+		}
+		myDefaultData = new DefaultData(defaultComponents, myCurrentImageName, myXCoord, myYCoord,  
+				myHeight, myWidth, myRotation); 
+	}
+
+	public GameObject (GameObject g){
     	this(g.getComponents(), g.getCurrentImageName(), g.getX(), g.getY(), g.getCollisionHeight(), g.getCollisionWidth(), g.getRotation(), g.getID());
     }
 
@@ -293,5 +307,17 @@ public class GameObject implements IEnabled, Iterable<Component>{
     public String toString(){
     	return myID;
     }
+    
+    public void reset(){
+    	myRotation=myDefaultData.getRotation();
+    	myXCoord=myDefaultData.getXCoordinate();
+    	myYCoord=myDefaultData.getYCoordinate();
+    	myCurrentImageName=myDefaultData.getImageName();
+    	myComponents.clear();
+    	for (Component c: myDefaultData.getComponents()){
+    		myComponents.add(c.getClone());
+    	}
+    }
+    
     
 }

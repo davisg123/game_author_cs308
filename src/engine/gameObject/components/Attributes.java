@@ -1,5 +1,7 @@
 package engine.gameObject.components;
 
+import java.util.List;
+
 import engine.gameObject.GameObject;
 import engine.gameObject.components.properties.IProperty;
 
@@ -12,6 +14,10 @@ import engine.gameObject.components.properties.IProperty;
 public class Attributes extends Component{
 
     
+	public Attributes(List<IProperty> properties){
+		super(); 
+	}
+	
     //TODO figure out implementation
     @Override
     public void update (GameObject object) {
@@ -23,6 +29,12 @@ public class Attributes extends Component{
     public String getID () {
         // TODO Auto-generated method stub
         return null;
+    }
+    
+    @Override
+    public Attributes getClone(){
+    	List<IProperty> clonesOfProperties = copyProperties(); 
+    	return new Attributes(clonesOfProperties);
     }
 
   

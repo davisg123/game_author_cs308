@@ -1,5 +1,6 @@
 package engine.actions;
 
+import authoring.model.GameData;
 import data.DataManager;
 import engine.GameManager;
 import gamePlayer.model.DataWrapper;
@@ -21,7 +22,7 @@ public class SaveAction implements Action, Initializable{
 		// TODO Auto-generated method stub
 //		DataWrapper wrapper = myGameManager.getDataWrapper(); 
 		GameData data = myGameManager.getDataWrapper(); 
-		myDataManager.writeProgressFile(wrapper, "TestFile"); 
+		myDataManager.writeGameFile(data, "TestFile"); 
 	}
 
 }

@@ -23,6 +23,12 @@ public class Armor implements IProperty {
         this.myArmor = armor;
     }
 
+	@Override
+	public IProperty getClone() {
+		// TODO Auto-generated method stub
+		return new Armor(myArmor);
+	}
+
    
     
 

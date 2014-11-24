@@ -25,7 +25,6 @@ public abstract class Component implements Iterable<IProperty>, IEnabled {
     //Not sure if it should be included in constructor but we might need to know if this component is enabled or not.
     protected Boolean enabled;
     // Probably will create a Properties files with types of Components
-    // 
     
     /**
      * Constructors
@@ -77,4 +76,14 @@ public abstract class Component implements Iterable<IProperty>, IEnabled {
     public boolean isEnabled() {
         return enabled;
     }
+    
+    protected List<IProperty> copyProperties(){
+    	List<IProperty> clonesOfProperties = new ArrayList<IProperty>();
+    	for (IProperty prop: myProperties){
+    		clonesOfProperties.add(prop.getClone());
+    	}
+    	return clonesOfProperties; 
+    }
+    
+    public abstract Component getClone(); 
 }

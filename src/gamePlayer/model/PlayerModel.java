@@ -2,20 +2,22 @@ package gamePlayer.model;
 
 import java.io.IOException;
 
+import data.DataManager;
 import application.SplashScreen;
+import authoring.model.GameData;
 import engine.GameManager;
 import gamePlayer.view.PlayerView;
 
 public class PlayerModel {
 
 	private DataWrapper myWrapper;
-	private DataHandler myHandler; 
+	private DataManager myManager; 
 	private PlayerView myPlayerView;
 	private GameManager myGameManager; 
 	
 	public PlayerModel() throws IOException {
 		myPlayerView = new PlayerView(this);
-		myHandler = new DataHandler();
+		myManager = new DataManager();
 	}
 	
 	public void initializeView() throws IOException {

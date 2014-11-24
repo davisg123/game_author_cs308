@@ -34,4 +34,10 @@ public class Lives implements IProperty {
     public void gainLife(){
     	myLives++; 
     }
+
+	@Override
+	public IProperty getClone() {
+		// TODO Auto-generated method stub
+		return new Lives(myLives);
+	}
 }
