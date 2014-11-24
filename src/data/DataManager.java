@@ -11,6 +11,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import authoring.model.GameData;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -42,9 +44,9 @@ public class DataManager {
 		DataManager manager = new DataManager();
 		SampleWrapper sw = new SampleWrapper();
 		System.out.println(sw);
-		boolean success = manager.writeSampleFile(sw, "sampleTwo.json");
+		boolean success = manager.writeSampleFile(sw, "sampleFour.json");
 		System.out.println("data written: " + success);
-		SampleWrapper readSW = manager.readSampleFile("sampleTwo.json");
+		SampleWrapper readSW = manager.readSampleFile("sampleFour.json");
 		System.out.println(readSW);
 	}
 	
@@ -63,8 +65,8 @@ public class DataManager {
 	 * @return Returns true if successfully writes file.
 	 * @throws IOException 
 	 */
-	public boolean writeGameFile(DataWrapper wrapper, String fileName) throws IOException {
-		return writeFile(wrapper, gameDatapath, fileName);
+	public boolean writeGameFile(GameData data, String fileName) throws IOException {
+		return writeFile(data, gameDatapath, fileName);
 	}
 	
 	/**
@@ -72,8 +74,8 @@ public class DataManager {
 	 * @param fileName Name of Json file.
 	 * @return Object representing game.
 	 */
-	public DataWrapper readGameFile(String fileName) {
-		return (DataWrapper)readFile(DataWrapper.class, gameDatapath, fileName);
+	public GameData readGameFile(String fileName) {
+		return (GameData)readFile(GameData.class, gameDatapath, fileName);
 	}
 	
 //	/**

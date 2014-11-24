@@ -1,5 +1,7 @@
 package authoring.eventhandlers;
 
+import static authoring.view.levelview.SingleLevelView.OBJECT_X_OFFSET;
+import static authoring.view.levelview.SingleLevelView.OBJECT_Y_OFFSET;
 import javafx.event.EventType;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
@@ -22,11 +24,13 @@ import engine.level.Level;
 public class GameObjectDragToLevelHandler implements GameHandler<MouseEvent> {
 	private LevelsView myLevelView;
 	private LevelsCollection myLevelsCollection;
+	private PropertiesView myProps;
 
 	public GameObjectDragToLevelHandler(LevelsView levelView,
-			LevelsCollection data) {
+			LevelsCollection data, PropertiesView props) {
 		myLevelView = levelView;
 		myLevelsCollection = data;
+		myProps = props;
 	}
 
 	@Override
@@ -40,8 +44,10 @@ public class GameObjectDragToLevelHandler implements GameHandler<MouseEvent> {
 		newGameObject.setY(y);
 		String id = myLevelView.getCurrentLevel().getID();
 		for (Level level : myLevelsCollection) {
-			if (level.getLevelID().equals(id)) {
+			if (level.getLevelID().equals(id) && myLevelView.contains(x + OBJECT_X_OFFSET, y + OBJECT_Y_OFFSET)) {
 				level.addGameObject(newGameObject);
+				
+				myProps.makeProperties(newGameObject);
 			}
 		}
 

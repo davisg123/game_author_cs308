@@ -2,6 +2,7 @@ package authoring.view;
 
 import java.io.File;
 import java.util.Locale;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import javafx.scene.control.Menu;
@@ -31,6 +32,7 @@ public class ProgramMenu extends MenuBar {
 	private double myWidth;
 	private double myHeight;
 	FileChooser myFileChooser;
+	Map ControllerMap;
 
 	public ProgramMenu(TabPane tab, Locale locale, double width, double height) {
 		myWidth = width;
@@ -38,7 +40,7 @@ public class ProgramMenu extends MenuBar {
 		myLocale = locale;
 		myTabs = tab;
 		myLanguage = ResourceBundle.getBundle(DEFAULT_RESOURCE, myLocale);
-
+		// ControllerMap = new HashMap<>
 		myFileChooser = new FileChooser();
 		this.getMenus().add(FileMenu());
 
@@ -53,7 +55,7 @@ public class ProgramMenu extends MenuBar {
 	 */
 	private Menu FileMenu() {
 		Menu FileMenu = new Menu(myLanguage.getString("File"));
-		FileMenu.getItems().add(newFile());
+		FileMenu.getItems().addAll(newFile(), saveFile());
 		return FileMenu;
 	}
 
@@ -72,6 +74,19 @@ public class ProgramMenu extends MenuBar {
 
 	}
 
+	private MenuItem saveFile() {
+		MenuItem saveFile = new MenuItem(myLanguage.getString("Save"));
+		saveFile.setOnAction(handle -> saveData());
+		return saveFile;
+	}
+
+	private void saveData() {
+		int currentTab = myTabs.getSelectionModel().getSelectedIndex();
+		((AuthoringView) myTabs.getTabs().get(currentTab).getContent())
+				.getController().saveData();
+
+	}
+
 	/**
 	 * Method for adding a new tab.
 	 */
@@ -86,6 +101,7 @@ public class ProgramMenu extends MenuBar {
 			AuthoringModel newModel = new AuthoringModel();
 			AuthoringController newController = new AuthoringController(
 					newView, newModel, myWidth, myHeight, myLanguage, gameFile);
+			newView.setController(newController);
 			tab.setContent(newView);
 			myTabs.getTabs().add(tab);
 			myTabs.getSelectionModel().select(tab);

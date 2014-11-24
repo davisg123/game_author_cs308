@@ -38,8 +38,7 @@ public class AddImageHandler implements GameHandler<Event> {
 				System.out.println(newImageFile.getPath());
 				myImagesCollection.addImage(newImageFile.getName());
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("Bad File");
 			}
 		}
 
@@ -47,7 +46,6 @@ public class AddImageHandler implements GameHandler<Event> {
 
 	@Override
 	public EventType<Event> getEventType() {
-		// TODO Auto-generated method stub
 		return Event.ANY;
 	}
 }

@@ -29,9 +29,9 @@ public class Graphic extends VBox {
 	protected GameHandler[] myOnClick;
 	private boolean myIsVisible = true;
 
-	public Graphic(String s, GameHandler... event) {
-		myName = s;
+	public Graphic(String name, GameHandler... event) {
 		myOnClick = event;
+		myName = name;
 
 	}
 
@@ -48,7 +48,7 @@ public class Graphic extends VBox {
 		imageView.setPreserveRatio(true);
 		imageView.setFitWidth(50);
 		this.getChildren().add(imageView);
-		this.getChildren().add(new Text(myName));
+		// this.getChildren().add(new Text(myName));
 		for (GameHandler g : myOnClick) {
 			this.addEventFilter(g.getEventType(), g);
 		}
@@ -69,7 +69,7 @@ public class Graphic extends VBox {
 				this.addEventFilter(g.getEventType(), g);
 			}
 		} catch (IOException e) {
-			System.out.println("Bad File");
+			makeGraphic();
 		}
 	}
 
