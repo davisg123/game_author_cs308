@@ -37,6 +37,8 @@ public class SingleLevelView extends Pane implements Observer {
 
 	private GameHandler[] myEvents;
 	private String myID;
+	private double myViewWidth;
+	private double myViewHeight;
 
 	public SingleLevelView(File gameLoc, double width, double height,
 			GameHandler... handlers) {
@@ -47,24 +49,20 @@ public class SingleLevelView extends Pane implements Observer {
 	}
 
 	/**
-	 * REPEATED CODE WE NEED TO FIX
-	 * 
 	 * @param width
 	 * @param height
 	 * @param l
 	 * @param handlers
 	 */
-	public SingleLevelView(File gameLoc, double width, double height, Level l,
-			GameHandler... handlers) {
-		this.setBackground(myDefaultBackground);
-		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
-		myEvents = handlers;
-		myGameLocation = gameLoc;
-		recreateLevel(l);
+	public SingleLevelView(File gameLoc, double width, double height, Level l, GameHandler... handlers){
+		this(gameLoc, width,height, handlers);
 
+		recreateLevel(l);
 	}
 
 	private void setView(double width, double height) {
+		this.myViewWidth = width;
+		this.myViewHeight = height;
 		setPrefSize(width, height);
 		setMinSize(width, height);
 		setMaxSize(width, height);
@@ -91,8 +89,7 @@ public class SingleLevelView extends Pane implements Observer {
 			GameHandler... handler) {
 		GameObjectGraphic g = new GameObjectGraphic(gameObject, handler);
 		g.makeGraphic(myGameLocation);
-		g.setLayoutX(x + OBJECT_X_OFFSET);
-		g.setLayoutY(y + OBJECT_Y_OFFSET);
+		this.moveSpriteOnLevel(g, x, y);
 		this.getChildren().add(g);
 
 	}
@@ -117,4 +114,15 @@ public class SingleLevelView extends Pane implements Observer {
 		g.setLayoutY(y + OBJECT_Y_OFFSET);
 	}
 
+	public double getViewWidth()
+	{
+		System.out.println(this.myViewWidth);
+		return this.myViewWidth;
+	}
+	
+	public double getViewHeight()
+	{
+		System.out.println(this.myViewHeight);
+		return this.myViewHeight;
+	}
 }
