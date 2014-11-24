@@ -6,6 +6,7 @@ import authoring.model.collections.LevelsCollection;
 import authoring.view.gameobjectsview.GameObjectGraphic;
 import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
+import engine.gameObject.GameObject;
 import engine.level.Level;
 
 /**
@@ -37,12 +38,21 @@ public class GameObjectDragHandler implements GameHandler<MouseEvent> {
 		double y = event.getSceneY();
 		String id = myLevelView.getCurrentLevel().getID();
 		for (Level level : myLevelsCollection) {
-			if (level.getLevelID().equals(id) && myLevelView.contains(x-230, y-100)) {
-				level.removeGameObject(g.getGameObject());
-				g.getGameObject().setX(x);
-				g.getGameObject().setY(y);
-				level.addGameObject(g.getGameObject());
-				myProperties.makeProperties(g.getGameObject());
+			if (level.getLevelID().equals(id)) {
+				GameObject go = g.getGameObject();
+				level.removeGameObject(go);
+				if(!myLevelView.contains(x-230, y-100))
+				{
+					go.setX(230);
+					go.setY(100);
+				}
+				else
+				{
+					go.setX(x);
+					go.setY(y);
+				}
+				level.addGameObject(go);
+				myProperties.makeProperties(go);
 			}
 		}
 

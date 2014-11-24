@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.control.TabPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
 import authoring.eventhandlers.AddImageHandler;
@@ -21,11 +19,12 @@ import authoring.model.AuthoringModel;
 import authoring.view.AuthoringView;
 import authoring.view.baseclasses.AccordionContainer;
 import authoring.view.baseclasses.BPContainer;
+import authoring.view.conditionsview.ConditionsAccordionView;
 import authoring.view.gameobjectsview.GameObjectsView;
 import authoring.view.graphicsview.GraphicsTools;
 import authoring.view.graphicsview.ImagesView;
-import authoring.view.levelview.LevelsAccordionView;
 import authoring.view.levelview.LevelOptions;
+import authoring.view.levelview.LevelsAccordionView;
 import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
 import authoring.view.soundsview.SoundsView;
@@ -71,6 +70,7 @@ public class AuthoringController {
 	private SoundsView mySounds;
 	private PropertiesView myProperties;
 	private LevelsAccordionView myLevelsAccordionView;
+	private ConditionsAccordionView myConditionsAccordionView;
 	private File myGameLocation;
 
 	public AuthoringController(AuthoringView view, AuthoringModel model,
@@ -130,6 +130,8 @@ public class AuthoringController {
 		myGameObjects = new GameObjectsView(myLanguage, myWidth, myHeight);
 		myLevelsAccordionView = new LevelsAccordionView(myLanguage, myWidth,
 				myHeight);
+		myConditionsAccordionView = new ConditionsAccordionView(myLanguage, myWidth,
+				myHeight);
 
 	}
 
@@ -186,7 +188,10 @@ public class AuthoringController {
 		TitledPane levels = new TitledPane(myLanguage.getString("Levels"),
 				myLevelsAccordionView);
 
-		leftView.getPanes().addAll(graphics, sounds, gameObjects, levels);
+		TitledPane conditions = new TitledPane(myLanguage.getString("Conditions"),
+				myConditionsAccordionView);
+		
+		leftView.getPanes().addAll(graphics, sounds, gameObjects, levels, conditions);
 		BorderPane.setAlignment(leftView, Pos.TOP_RIGHT);
 
 		return leftView;
