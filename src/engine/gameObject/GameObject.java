@@ -35,8 +35,6 @@ public class GameObject implements IEnabled, Iterable<Component>{
     private double myHeight;
     private double myWidth;
     
-    //refactor the Point2D
-    //private transient Point2D myDefaultPosition;
     private double myXCoord;
     private double myYCoord;
     private transient RenderedNode myRenderedNode;
@@ -80,7 +78,7 @@ public class GameObject implements IEnabled, Iterable<Component>{
     }
     
     public GameObject (GameObject g){
-    	this(g.getComponents(), g.getCurrentImageName(), g.getX(), g.getY(), g.getHeight(), g.getWidth(), g.getRotation(), g.getID());
+    	this(g.getComponents(), g.getCurrentImageName(), g.getX(), g.getY(), g.getCollisionHeight(), g.getCollisionWidth(), g.getRotation(), g.getID());
     }
 
     /**
@@ -274,6 +272,14 @@ public class GameObject implements IEnabled, Iterable<Component>{
         return myWidth;
     }
 
+    public void setCollisionHeight (double height) {
+        myHeight = height;
+    }
+
+    public void setCollisionWidth (double width) {
+        myWidth = width;
+    }
+    
     public void enable() {
         enabled = true;
     }
