@@ -1,15 +1,16 @@
 package authoring.eventhandlers;
 
+import static authoring.view.levelview.SingleLevelView.OBJECT_X_OFFSET;
+import static authoring.view.levelview.SingleLevelView.OBJECT_Y_OFFSET;
 import javafx.event.EventType;
 import javafx.scene.input.MouseEvent;
 import authoring.model.collections.LevelsCollection;
 import authoring.view.gameobjectsview.GameObjectGraphic;
 import authoring.view.levelview.LevelsView;
+import authoring.view.levelview.SingleLevelView;
 import authoring.view.propertiesview.PropertiesView;
 import engine.gameObject.GameObject;
 import engine.level.Level;
-import static authoring.view.levelview.SingleLevelView.OBJECT_X_OFFSET;
-import static authoring.view.levelview.SingleLevelView.OBJECT_Y_OFFSET;
 
 
 
@@ -40,6 +41,7 @@ public class GameObjectDragHandler implements GameHandler<MouseEvent> {
 		GameObjectGraphic g = (GameObjectGraphic) event.getSource();
 		double x = event.getSceneX();
 		double y = event.getSceneY();
+		SingleLevelView slv = myLevelView.getCurrentLevel();
 		String id = myLevelView.getCurrentLevel().getID();
 		for (Level level : myLevelsCollection) {
 			if (level.getLevelID().equals(id)) {
@@ -48,25 +50,27 @@ public class GameObjectDragHandler implements GameHandler<MouseEvent> {
 				
 				double dragX = x + OBJECT_X_OFFSET;
 				double dragY = y + OBJECT_Y_OFFSET;
+				double newX = x;
+				double newY = y;
 				
 				if(dragX < 0){
 					System.out.println("off left");
-					dragX = 0;
+					newX = -1*OBJECT_X_OFFSET;
 				}
-				if(dragX > myLevelView.getWidth()){
+				if(dragX > slv.getViewWidth()){
 					System.out.println("off right");
-					dragX = myLevelView.getWidth();
+					newX = slv.getViewWidth() - OBJECT_X_OFFSET - go.getImageWidth();
 				}
 				if(dragY < 0){
 					System.out.println("off top");
-					dragY = 0;
+					newY = -1*OBJECT_Y_OFFSET;
 				}
-				if(dragY > myLevelView.getHeight()){
+				if(dragY > slv.getViewHeight()){
 					System.out.println("off bottom");
-					dragY = myLevelView.getHeight();
+					newY = slv.getViewHeight() - OBJECT_Y_OFFSET - go.getImageHeight();
 				}
-				go.setX(x);
-				go.setY(y);
+				go.setX(newX);
+				go.setY(newY);
 				
 				level.addGameObject(go);
 				myProperties.makeProperties(go);
