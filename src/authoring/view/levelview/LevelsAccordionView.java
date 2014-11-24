@@ -44,7 +44,7 @@ public class LevelsAccordionView extends ScrollView implements Observer{
 		myName = l.getLevelID();
 		LevelGraphic newLevel = new LevelGraphic(myName, myEvents, l,levelEvents);
 	//	System.out.println(levelEvents.length);
-		newLevel.makeGraphic();
+		newLevel.makeGraphic(0,0,0);
 		myVbox.getChildren().add(newLevel);
 	}
 	

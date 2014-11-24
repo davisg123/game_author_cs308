@@ -19,7 +19,7 @@ public class LevelGraphic extends Graphic {
 	}
 
 	@Override
-	public void makeGraphic() {
+	public void makeGraphic(double width, double height, double rotate) {
 		Text text = new Text(myName);
 		text.setFont(new Font(20));
 		this.getChildren().add(text);

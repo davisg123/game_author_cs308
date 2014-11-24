@@ -42,17 +42,22 @@ public class Graphic extends VBox {
 	 * 
 	 * @param event
 	 */
-	public void makeGraphic() {
+	public void makeGraphic(double width, double height, double rotate) {
 		Image image = new Image(getClass().getResourceAsStream(myName));
 		ImageView imageView = new ImageView(image);
-		imageView.setPreserveRatio(true);
-		imageView.setFitWidth(50);
+
+		imageView.setPreserveRatio(false);
+		imageView.setFitWidth(width);
+		imageView.setFitHeight(height);
+		imageView.setRotate(rotate);
+		
 		this.getChildren().add(imageView);
 		// this.getChildren().add(new Text(myName));
 		for (GameHandler g : myOnClick) {
 			this.addEventFilter(g.getEventType(), g);
 		}
 	}
+
 
 	public void makeGraphic(File gameLoc) {
 		File file = new File(gameLoc.getPath() + "/images/" + myName);
@@ -61,15 +66,42 @@ public class Graphic extends VBox {
 			bufferedImage = ImageIO.read(file);
 			Image image = SwingFXUtils.toFXImage(bufferedImage, null);
 			ImageView imageView = new ImageView(image);
-			imageView.setPreserveRatio(true);
-			imageView.setFitWidth(70);
+			
+			imageView.setPreserveRatio(false);
+			imageView.setFitWidth(50);
+			
 			this.getChildren().add(imageView);
 			//this.getChildren().add(new Text(myName));
 			for (GameHandler g : myOnClick) {
 				this.addEventFilter(g.getEventType(), g);
 			}
 		} catch (IOException e) {
-			makeGraphic();
+			makeGraphic(50,70, 0);
+		}
+	}
+	
+	public void makeGraphic(File gameLoc, double width, double height, double rotate){
+		//LOL
+		File file = new File(gameLoc.getPath() + "/images/" + myName);
+		BufferedImage bufferedImage;
+		try {
+			bufferedImage = ImageIO.read(file);
+			Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+			
+			ImageView imageView = new ImageView(image);
+			
+			imageView.setPreserveRatio(false);
+			imageView.setFitWidth(width);
+			imageView.setFitHeight(height);
+			imageView.setRotate(rotate);
+			
+			this.getChildren().add(imageView);
+			//this.getChildren().add(new Text(myName));
+			for (GameHandler g : myOnClick) {
+				this.addEventFilter(g.getEventType(), g);
+			}
+		} catch (IOException e) {
+			makeGraphic(width, height, rotate);
 		}
 	}
 
