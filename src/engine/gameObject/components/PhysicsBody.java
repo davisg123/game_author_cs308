@@ -3,6 +3,7 @@ package engine.gameObject.components;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import engine.gameObject.GameObject;
@@ -12,15 +13,20 @@ import java.util.Map;
 import engine.physics.Acceleration;
 import engine.physics.BEngine;
 import engine.physics.Buoyancy;
+import engine.physics.CoefficientOfFriction;
+import engine.physics.CollisionConstant;
+import engine.physics.Density;
 import engine.physics.Force;
 import engine.physics.Friction;
 import engine.physics.Gravity;
+import engine.physics.GravityConstant;
 import engine.physics.Impulse;
 import engine.physics.Mass;
 import engine.physics.NormalUpdate;
 import engine.physics.Scalar;
 import engine.physics.Vector;
 import engine.physics.Velocity;
+import engine.physics.Volume;
 
 /**
  * 
@@ -34,19 +40,12 @@ import engine.physics.Velocity;
 public class PhysicsBody {
 	private static final double FRAMES_PER_SECOND = 60.0;
 	private List<Impulse> myImpulses;
-	private Map<String, Force> myActiveForces;
-	// private List<Double> myNetForce;
 	private Vector myAcceleration;
 	private Vector myVelocity;
-	private Mass myMass;
-	// private NormalUpdate myUpdate;
 	private boolean haveForcesChanged;
 	private Vector myBalancedForcesMag;
-
-	// Temorary, initial implementation and location
-	// of the collision body as rectangular shape is in Physics Body,
-	// will refactor later to Polygon/Circle and place into proper place
-	// with relation to RenderedNode
+	private Map<String, Force> myActiveForces;
+	private Map<String, Scalar> myConstants;
 	private double myCollisionBodyWidth;
 	private double myCollisionBodyHeight;
 
@@ -58,9 +57,8 @@ public class PhysicsBody {
 		myImpulses = new ArrayList<Impulse>();
 		myAcceleration = new Vector();
 		myVelocity = new Vector();
-		myMass = new Mass(0);
-		// myUpdate = new NormalUpdate();
 		myActiveForces = new HashMap<String, Force>();
+		myConstants = new HashMap<String, Scalar>();
 		initializeMap();
 		haveForcesChanged = false;
 		myBalancedForcesMag = new Vector();
@@ -80,23 +78,26 @@ public class PhysicsBody {
 	 * initialize those to 0 too
 	 */
 	private void initializeMap() {
-		myActiveForces.put("gravity", new Gravity(0, 0));
-		myActiveForces.put("buoyancy", new Buoyancy(0, 0));
-		myActiveForces.put("friction", new Friction(0, 0));
+		myConstants
+				.put("CoefficientOfFriction", new CoefficientOfFriction(0.0));
+		myConstants.put("CollisionConstant", new CollisionConstant(0.0));
+		myConstants.put("Density", new Density(0.0));
+		myConstants.put("GravityConstant", new GravityConstant(1.0));
+		myConstants.put("Volume", new Volume(1.0));
+		myConstants.put("Mass", new Mass(1.0));
+		myActiveForces.put("Gravity", new Gravity(0, 0,
+				myConstants.get("Mass"), myConstants.get("GravityConstant")));
+		myActiveForces.put(
+				"Buoyancy",
+				new Buoyancy(0, 0, myConstants.get("Volume"), myConstants
+						.get("Density")));
+		myActiveForces.put("Friction",
+				new Friction(0, 0, myConstants.get("CoefficientOfFriction"),
+						myConstants.get("Mass")));
 	}
 
 	public void setVelocity(Vector v) {
 		myVelocity = v;
-	}
-
-	/**
-	 * Sets mass of object
-	 * 
-	 * @param m
-	 *            - new Mass of object
-	 */
-	public void setMass(Mass m) {
-		myMass = m;
 	}
 
 	public void setAcceleration(Vector v) {
@@ -116,28 +117,22 @@ public class PhysicsBody {
 	}
 
 	/**
-	 * Return Y-Coordinate of Object
-	 * 
-	 * @return - returns Y coordinate of Object
-	 */
-	public Mass getMass(double y) {
-		return myMass;
-	}
-
-	/**
 	 * makes a new acceleration vector based on the magnitude of the forces and
 	 * the mass
 	 */
 	private void changeAcceleration() {
-		myAcceleration = new Acceleration(myBalancedForcesMag.getX()
-				/ myMass.getValue(), myBalancedForcesMag.getY()
-				/ myMass.getValue());
+		myAcceleration.delta(
+				myBalancedForcesMag.getX() / myConstants.get("Mass").getValue()
+						/ FRAMES_PER_SECOND, myBalancedForcesMag.getY()
+						/ myConstants.get("Mass").getValue()
+						/ FRAMES_PER_SECOND);
 	}
 
 	/**
 	 * changes velocity based on acceleration
 	 */
 	private void changeVelocity() {
+		// System.out.println(myAcceleration.getX()/ FRAMES_PER_SECOND);
 		myVelocity.delta(myAcceleration.getX() / FRAMES_PER_SECOND,
 				myAcceleration.getY() / FRAMES_PER_SECOND);
 	}
@@ -174,12 +169,12 @@ public class PhysicsBody {
 		changeVelocity();
 		// return changePosition
 
-		//sprite.setPosition(new Point2D.Double(myVelocity.getX()
-				/// FRAMES_PER_SECOND, myVelocity.getY() / FRAMES_PER_SECOND));
-		
-		sprite.setX(myVelocity.getX()
-				/FRAMES_PER_SECOND);
-		sprite.setY(myVelocity.getY() / FRAMES_PER_SECOND);
+		// sprite.setPosition(new Point2D.Double(myVelocity.getX()
+		// / FRAMES_PER_SECOND, myVelocity.getY() / FRAMES_PER_SECOND));
+		sprite.setTranslateX(sprite.getTranslateX() + myVelocity.getX()
+				/ FRAMES_PER_SECOND);
+		sprite.setTranslateY(sprite.getTranslateY() + myVelocity.getY()
+				/ FRAMES_PER_SECOND);
 	}
 
 	/**
@@ -188,7 +183,7 @@ public class PhysicsBody {
 	 */
 	private void doImpulses() {
 		for (Impulse cur : myImpulses) {
-			cur.scalarMultiplication(1.0 / myMass.getValue());
+			cur.scalarMultiplication(1.0 / myConstants.get("Mass").getValue());
 			myVelocity.delta(cur);
 		}
 		myImpulses.clear();
@@ -212,23 +207,26 @@ public class PhysicsBody {
 	}
 
 	public void addForce(Force f) {
-		if (this.myActiveForces.containsKey(f.toString())) {
-			this.myActiveForces.replace(f.toString(), f);
-		} else {
-			this.myActiveForces.put(f.toString(), f);
-		}
+		/*
+		 * String temp = f.toString(); if
+		 * (this.myActiveForces.containsKey(temp)) {
+		 * this.myActiveForces.replace(temp, f); } else {
+		 * this.myActiveForces.put(temp, f); }
+		 */
+		this.myActiveForces.put(f.toString(), f);
 	}
 
 	public void addImpulse(Impulse i) {
 		this.myImpulses.add(i);
 	}
 
-	private void addScalar(Scalar a) {
-		//
-	}
-
-	public void massComponent(Mass mass) {
-		myMass = mass;
+	public void addScalar(Scalar a) {
+		myConstants.put(a.toString(), a);
+		Iterator<String> itr = a.iterator();
+		while (itr.hasNext()) {
+			String cur = itr.next();
+			myActiveForces.get(cur).addOrChangeValue(a);
+		}
 	}
 
 	/**
@@ -271,14 +269,20 @@ public class PhysicsBody {
 		// create new condition to stop x or y
 		if (!cur.getCollisionConstant()) {
 			if (xOrY) {
-				cur.getPhysicsBody().setVelocity(
-						new Velocity(0.0, cur.getPhysicsBody().getVelocity()
-								.getY()));
+				//cancel out current velocity
+			        cur.setTranslateX(cur.getTranslateX() - cur.getPhysicsBody().getVelocity().getX()
+			                                 / FRAMES_PER_SECOND);
+			        //apply rivaling velocity
+			        cur.setTranslateX(cur.getTranslateX() + other.getPhysicsBody().getVelocity().getX()
+			                                  / FRAMES_PER_SECOND);
 			} else {
-				cur.getPhysicsBody().setVelocity(
-						new Velocity(cur.getPhysicsBody().getVelocity().getX(),
-								0.0));
-
+				//cancel out current velocity
+                                cur.setTranslateY(cur.getTranslateY() - myVelocity.getY()
+                                                         / FRAMES_PER_SECOND);
+                                
+                                //apply rivaling velocity
+                                cur.setTranslateY(cur.getTranslateY() + other.getPhysicsBody().getVelocity().getY()
+                                                          / FRAMES_PER_SECOND);
 			}
 		}
 	}

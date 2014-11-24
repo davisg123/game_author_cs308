@@ -2,6 +2,9 @@ package gamePlayer.model;
 
 import java.util.List;
 
+import authoring.model.collections.ConditionsCollection;
+import authoring.model.collections.GameObjectsCollection;
+import authoring.model.collections.LevelsCollection;
 import engine.conditions.Condition;
 import engine.gameObject.GameObject;
 import engine.level.Level;
@@ -15,25 +18,25 @@ import engine.level.Level;
 
 public class DataWrapper {
 
-	private List<Level> myLevels;
-	private List<GameObject> myGameObjects;
-	private List<Condition> myConditions;
+	private LevelsCollection myLevels;
+	private GameObjectsCollection myGameObjects;
+	private ConditionsCollection myConditions;
 	 
-	 public DataWrapper(List<Level> levels, List<GameObject> sprites, List<Condition> conditions){
+	 public DataWrapper(LevelsCollection levels, GameObjectsCollection objects, ConditionsCollection conditions){
 		 myLevels = levels;
-		 myGameObjects=sprites;
+		 myGameObjects=objects;
 		 myConditions=conditions;
 	 }
 	 
-	 public List<Level> getLevels(){
+	 public LevelsCollection getLevels(){
 		 return myLevels;
 	 }
 	 
-	 public List<GameObject> getGameObjects(){
+	 public GameObjectsCollection getGameObjects(){
 		 return myGameObjects;
 	 }
 	 
-	 public List<Condition> getConditions(){
+	 public ConditionsCollection getConditions(){
 		 return myConditions;
 	 }	
 }
