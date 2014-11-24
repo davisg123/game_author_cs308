@@ -128,7 +128,7 @@ public class AuthoringController {
 				myGameLocation);
 		myGraphicsAdd = new GraphicsTools(myLanguage, myWidth, myHeight);
 		
-		myGameObjects = new GameObjectsView(myLanguage, myWidth, myHeight);
+		myGameObjects = new GameObjectsView(myLanguage, myWidth, myHeight, myGameLocation);
 		myObjectsAdd = new GameObjectsTools(myLanguage, myWidth, myHeight);
 		
 		myLevelsAccordionView = new LevelsAccordionView(myLanguage, myWidth,

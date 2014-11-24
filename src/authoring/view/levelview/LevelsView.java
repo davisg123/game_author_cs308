@@ -104,8 +104,8 @@ public class LevelsView extends TabView implements Observer {
 	 */
 	public SingleLevelView addExistingLevel(Level l, GameHandler... events) {
 		Tab tab = new Tab(l.getLevelID());
-		SingleLevelView newView = new SingleLevelView(myGameLocation, myWidth, myHeight, l,
-				events);
+		SingleLevelView newView = new SingleLevelView(myGameLocation, myWidth,
+				myHeight, l, events);
 		// System.out.println(events.length);
 		tab.setContent(newView);
 		this.getTabs().add(tab);
