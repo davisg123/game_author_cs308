@@ -1,8 +1,8 @@
 package authoring.view.propertiesview;
 
+import java.io.File;
 import static authoring.view.levelview.SingleLevelView.OBJECT_X_OFFSET;
 import static authoring.view.levelview.SingleLevelView.OBJECT_Y_OFFSET;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +13,6 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.layout.HBox;
 import authoring.eventhandlers.GameHandler;
 import engine.gameObject.GameObject;
-
 
 public class GameObjectsProperties extends Properties {
 
@@ -37,8 +36,8 @@ public class GameObjectsProperties extends Properties {
 		textProperties = new HashMap<String, PropertyTextField>();
 		booleanProperties = new HashMap<String, CheckBox>();
 
-		textProperties.put("name", new PropertyTextField("Name: ",
-		gameObject.getID()));
+		textProperties.put("name",
+				new PropertyTextField("Name: ", gameObject.getID()));
 		textProperties.put(
 				"image",
 				new PropertyTextField("Image: ", gameObject
@@ -51,14 +50,14 @@ public class GameObjectsProperties extends Properties {
 				"height",
 				new PropertyTextField("Height: ", Double.toString(gameObject
 						.getHeight())));
-		textProperties
-				.put("x",
-						new PropertyTextField("X: ", Double.toString(gameObject
-								.getX() + OBJECT_X_OFFSET)));
-		textProperties
-				.put("y",
-						new PropertyTextField("Y: ", Double.toString(gameObject
-								.getY() + OBJECT_Y_OFFSET)));
+		textProperties.put(
+				"x",
+				new PropertyTextField("X: ", Double.toString(gameObject.getX()
+						+ OBJECT_X_OFFSET)));
+		textProperties.put(
+				"y",
+				new PropertyTextField("Y: ", Double.toString(gameObject.getY()
+						+ OBJECT_Y_OFFSET)));
 		textProperties.put("rotation", new PropertyTextField("Rotation: ",
 				Double.toString(gameObject.getRotation())));
 
@@ -74,7 +73,7 @@ public class GameObjectsProperties extends Properties {
 		booleanProperties.put("enabled", cb);
 
 		Button editButton = new Button("Edit");
-		//System.out.println(myHandler);
+		// System.out.println(myHandler);
 		editButton.setOnAction(myHandler);
 		this.getChildren().add(editButton);
 
@@ -90,25 +89,25 @@ public class GameObjectsProperties extends Properties {
 		// SoundReference sounds,
 		// double x, double y, double height, double width, double rotation,
 		// String iD)
-
 		GameObject edited = new GameObject(g.getComponents(), textProperties
 				.get("image").getInformation(),
-				Double.parseDouble(textProperties.get("x").getInformation()) - OBJECT_X_OFFSET,
-				Double.parseDouble(textProperties.get("y").getInformation()) - OBJECT_Y_OFFSET,
+				Double.parseDouble(textProperties.get("x").getInformation())
+						- OBJECT_X_OFFSET, Double.parseDouble(textProperties
+						.get("y").getInformation()) - OBJECT_Y_OFFSET,
 				Double.parseDouble(textProperties.get("height")
 						.getInformation()), Double.parseDouble(textProperties
 						.get("width").getInformation()),
 				Double.parseDouble(textProperties.get("rotation")
 						.getInformation()), textProperties.get("name")
 						.getInformation());
-		
-		//remove g
-		//add edited
+
+		// remove g
+		// add edited
 		return edited;
 	}
-	
-	public Button setUpForNewObject(){
-		for(String s: textProperties.keySet()){
+
+	public Button setUpForNewObject() {
+		for (String s : textProperties.keySet()) {
 			PropertyTextField cleared = textProperties.get(s);
 			cleared.setString("");
 			textProperties.put(s, cleared);
