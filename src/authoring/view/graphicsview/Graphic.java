@@ -46,7 +46,7 @@ public class Graphic extends VBox {
 		Image image = new Image(getClass().getResourceAsStream(myName));
 		ImageView imageView = new ImageView(image);
 
-		imageView.setPreserveRatio(false);
+		imageView.setPreserveRatio(true);
 		imageView.setFitWidth(width);
 		imageView.setFitHeight(height);
 		imageView.setRotate(rotate);
@@ -67,7 +67,8 @@ public class Graphic extends VBox {
 			Image image = SwingFXUtils.toFXImage(bufferedImage, null);
 			ImageView imageView = new ImageView(image);
 			
-			imageView.setPreserveRatio(false);
+			//this one is for images on the side bar are being made
+			imageView.setPreserveRatio(true);
 			imageView.setFitWidth(50);
 			
 			this.getChildren().add(imageView);

@@ -110,7 +110,7 @@ public class AuthoringController {
 		test.setWidth(50);
 		test.setHeight(70);
 		
-		myModel.getGameObjectCollection().addGameObject(test);
+		//myModel.getGameObjectCollection().addGameObject(test);
 
 		myModel.getLevels().addObserver(myLevelsAccordionView);
 	}
