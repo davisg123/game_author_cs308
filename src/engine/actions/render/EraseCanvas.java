@@ -1,7 +1,9 @@
 package engine.actions.render;
 
 import java.util.List;
+
 import javafx.scene.Group;
+import engine.GameManager;
 import engine.gameObject.GameObject;
 import engine.level.Level;
 import engine.render.GameObjectRenderer;
@@ -21,5 +23,11 @@ public class EraseCanvas extends RenderAction {
             
         }
     }
+
+	@Override
+	public void initialize(GameManager manager) {
+		// TODO Auto-generated method stub
+		
+	}
     
 }
