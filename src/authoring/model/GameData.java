@@ -23,13 +23,13 @@ import engine.gameObject.GameObject;
  * @author Kevin Li
  *
  */
-public class GameData implements Serializable {
+public class GameData {//implements Serializable {
 
 	/**
 	 * Maybe put in properties file?
 	 */
-	private static final long serialVersionUID = 6633782568176674709L;
-	private Map<String, GeneralCollection> myCollections;
+//	private static final long serialVersionUID = 6633782568176674709L;
+//	private Map<String, GeneralCollection> myCollections;
 	private LevelsCollection myLevels;
 	private ConditionsCollection myConditions;
 	private GameObjectsCollection myGameObjects;
@@ -43,25 +43,25 @@ public class GameData implements Serializable {
 		myLevels = new LevelsCollection();
 		myImages = new ImagesCollection();
 		mySounds = new SoundsCollection();
-		myCollections = new HashMap<String, GeneralCollection>();
-		addAllToMyCollections(new LevelsCollection(),
-				new GameObjectsCollection(), new ConditionsCollection(),
-				new ImagesCollection(), new SoundsCollection());
+//		myCollections = new HashMap<String, GeneralCollection>();
+//		addAllToMyCollections(new LevelsCollection(),
+//				new GameObjectsCollection(), new ConditionsCollection(),
+//				new ImagesCollection(), new SoundsCollection());
 	}
 
-	/**
-	 * Changing collections to be a map, so that the get method duplication is
-	 * removed.
-	 * 
-	 * @param collection
-	 */
-	private void addAllToMyCollections(GeneralCollection... collection) {
-		for (GeneralCollection c : collection) {
-			String classKey = c.getClass().getSimpleName();
-			classKey = classKey.toLowerCase();
-			myCollections.put(classKey, c);
-		}
-	}
+//	/**
+//	 * Changing collections to be a map, so that the get method duplication is
+//	 * removed.
+//	 * 
+//	 * @param collection
+//	 */
+//	private void addAllToMyCollections(GeneralCollection... collection) {
+//		for (GeneralCollection c : collection) {
+//			String classKey = c.getClass().getSimpleName();
+//			classKey = classKey.toLowerCase();
+//			myCollections.put(classKey, c);
+//		}
+//	}
 
 	public LevelsCollection getLevels() {
 		return myLevels;

@@ -3,6 +3,8 @@ package data;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
+
+import authoring.model.GameData;
 import engine.actions.Action;
 import engine.actions.RenderAction;
 import engine.conditions.Condition;
@@ -22,40 +24,43 @@ public class SampleWrapper {
 //		word = "qwerty";
 //	}
 	
-	private List<GameObject> spriteList;
-	private List<Condition> conditionList;
+//	private List<GameObject> spriteList;
+//	private List<Condition> conditionList;
+	
+	private GameData myGameData;
 	
 	public SampleWrapper() {
-		spriteList = new ArrayList<GameObject>();
-		conditionList = new ArrayList<Condition>();
-		addSprites();
-		addConditions();
+//		spriteList = new ArrayList<GameObject>();
+//		conditionList = new ArrayList<Condition>();
+//		addSprites();
+//		addConditions();
+		myGameData = new GameData();
 	}
 
-	private void addSprites() {
-		// TODO Auto-generated method stub
-		GameObject s1 = new GameObject("duvall");
-		GameObject s2 = new GameObject(new ArrayList<Component>(), "name of image", new Point2D.Double(1, 4), 
-				50.0, 20.0, 45.0, "hank");
-		spriteList.add(s1);
-		spriteList.add(s2);
-	}
-
-	private void addConditions() {
-		// TODO Auto-generated method stub
-		List<Action> actionList = createActionList();
-		Condition c1 = new TimeCondition(actionList, spriteList, 5, false);
-		conditionList.add(c1);
-	}
+//	private void addSprites() {
+//		// TODO Auto-generated method stub
+//		GameObject s1 = new GameObject("duvall");
+//		GameObject s2 = new GameObject(new ArrayList<Component>(), "name of image", new Point2D.Double(1, 4), 
+//				50.0, 20.0, 45.0, "hank");
+//		spriteList.add(s1);
+//		spriteList.add(s2);
+//	}
+//
+//	private void addConditions() {
+//		// TODO Auto-generated method stub
+//		List<Action> actionList = createActionList();
+//		Condition c1 = new TimeCondition(actionList, spriteList, 5, false);
+//		conditionList.add(c1);
+//	}
+//	
+//	private List<Action> createActionList() {
+//		Action a1 = new RenderAction(spriteList);
+//		List<Action> actionList = new ArrayList<Action>();
+//		actionList.add(a1);
+//		return actionList;
+//	}
 	
-	private List<Action> createActionList() {
-		Action a1 = new RenderAction(spriteList);
-		List<Action> actionList = new ArrayList<Action>();
-		actionList.add(a1);
-		return actionList;
-	}
-	
-	public String toString() {
-		return spriteList.toString() + "\n" + conditionList.toString();
-	}
+//	public String toString() {
+//		return spriteList.toString() + "\n" + conditionList.toString();
+//	}
 }
