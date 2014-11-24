@@ -2,10 +2,10 @@ package authoring.eventhandlers;
 
 import javafx.event.Event;
 import javafx.event.EventType;
-import javafx.scene.input.MouseEvent;
 import authoring.model.collections.LevelsCollection;
 import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
+import engine.gameObject.GameObject;
 import engine.level.Level;
 
 public class EditGameObjectHandler implements GameHandler<Event>{
@@ -28,7 +28,9 @@ public class EditGameObjectHandler implements GameHandler<Event>{
 			if (level.getLevelID().equals(id)) {
 				
 					if(level.removeGameObject(myPropertiesView.getCurrentGameObject())){
-						level.addGameObject(myPropertiesView.getEditedGameObject());
+						GameObject editedOne = myPropertiesView.getEditedGameObject(); 
+						level.addGameObject(editedOne);
+						myPropertiesView.makeProperties(editedOne);
 					}
 					
 				//System.out.println(level.getGameObjectsCollection());
