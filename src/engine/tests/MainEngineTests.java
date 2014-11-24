@@ -1,6 +1,8 @@
 package engine.tests;
 
 import java.util.ArrayList;
+import data.DataManager;
+import authoring.model.GameData;
 import authoring.model.collections.ConditionsCollection;
 import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.LevelsCollection;
@@ -19,6 +21,7 @@ import engine.physics.Acceleration;
 import engine.physics.CollisionConstant;
 import engine.physics.Velocity;
 import engine.render.GameObjectRenderer;
+import gamePlayer.model.DataWrapper;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -75,23 +78,23 @@ public class MainEngineTests extends Application {
                                    200, 200, 20, 200, 0, "floor_right");
         //ugh, why do we have to set this explicitly?
         PhysicsBody floorRightBody = new PhysicsBody(20,200);
-        floorRightBody.setVelocity(new Velocity(0,-40));
+        floorRightBody.setVelocity(new Velocity(0,-80));
         floorRightBody.addScalar((new CollisionConstant(1.0)));
         floorRight.setPhysicsBody(floorRightBody);
         GameObject floorLeft = new GameObject(null,"floor",
                                                -50, 200, 20, 200, 0, "floor_left");
         //ugh, why do we have to set this explicitly?
         PhysicsBody floorLeftBody = new PhysicsBody(20,200);
-        floorLeftBody.setVelocity(new Velocity(0,-40));
+        floorLeftBody.setVelocity(new Velocity(0,-80));
         floorLeftBody.addScalar((new CollisionConstant(1.0)));
         floorLeft.setPhysicsBody(floorLeftBody);
         //floorBody.setAcceleration(new Acceleration(0.0,-77.0));
         myGameObjects.add(floorRight);
         myGameObjects.add(floorLeft);
         //create a ball
-        GameObject ball = new GameObject(null,"ball",150,50,30,30,0,"ball_object");
+        GameObject ball = new GameObject(null,"duvall",150,50,40,40,0,"ball_object");
         PhysicsBody ballBody = new PhysicsBody(30,30);
-        ballBody.setVelocity(new Velocity(0,10));
+        ballBody.setVelocity(new Velocity(0,15));
         ball.setPhysicsBody(ballBody);
         myGameObjects.add(ball);
         
@@ -128,8 +131,8 @@ public class MainEngineTests extends Application {
         ArrayList<Action> playListAct = new ArrayList<Action>();
         playListAct.add(playAct);
         ButtonCondition uCon = new ButtonCondition(playListAct,"play_button",KeyCode.U);
-        myConditions.add(pCon);
-        myConditions.add(uCon);
+        //myConditions.add(pCon);
+        //myConditions.add(uCon);
         
         /*******
          * levels
