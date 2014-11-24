@@ -59,7 +59,7 @@ public class GameObjectDragHandler implements GameHandler<MouseEvent> {
 				}
 				if(dragX > slv.getViewWidth()){
 					System.out.println("off right");
-					newX = slv.getViewWidth() - OBJECT_X_OFFSET - go.getImageWidth();
+					newX = slv.getViewWidth() - OBJECT_X_OFFSET - g.getWidth();
 				}
 				if(dragY < 0){
 					System.out.println("off top");
@@ -67,7 +67,7 @@ public class GameObjectDragHandler implements GameHandler<MouseEvent> {
 				}
 				if(dragY > slv.getViewHeight()){
 					System.out.println("off bottom");
-					newY = slv.getViewHeight() - OBJECT_Y_OFFSET - go.getImageHeight();
+					newY = slv.getViewHeight() - OBJECT_Y_OFFSET - g.getHeight();
 				}
 				go.setX(newX);
 				go.setY(newY);
