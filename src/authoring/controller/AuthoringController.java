@@ -105,10 +105,18 @@ public class AuthoringController {
 
 		myModel.getImages().addObserver(myGraphics);
 		myModel.getGameObjectCollection().addObserver(myGameObjects);
+		
+		
+		/**
 		GameObject test = new GameObject(new ArrayList<Component>(), im, 0, 0,
 				0, 0, 0, "Mario");
-		myModel.getGameObjectCollection().addGameObject(test);
+		test.setWidth(50);
+		test.setHeight(70);
+		
+		//myModel.getGameObjectCollection().addGameObject(test);
 
+		myModel.getGameObjectCollection().addGameObject(test);
+		 **/
 		myModel.getLevels().addObserver(myLevelsAccordionView);
 	}
 
