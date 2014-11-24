@@ -19,8 +19,9 @@ public class SaveAction implements Action, Initializable{
 	@Override
 	public void execute() {
 		// TODO Auto-generated method stub
-		DataWrapper wrapper = myGameManager.getDataWrapper(); 
-		myDataManager.writeProgressFile(wrapper); 
+//		DataWrapper wrapper = myGameManager.getDataWrapper(); 
+		GameData data = myGameManager.getDataWrapper(); 
+		myDataManager.writeProgressFile(wrapper, "TestFile"); 
 	}
 
 }

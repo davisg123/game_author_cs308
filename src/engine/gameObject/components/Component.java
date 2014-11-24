@@ -24,7 +24,7 @@ public abstract class Component implements Iterable<IProperty>, IEnabled {
     
     //Not sure if it should be included in constructor but we might need to know if this component is enabled or not.
     protected Boolean enabled;
-    // Propbably will create a Properties files with types of Components
+    // Probably will create a Properties files with types of Components
     // 
     
     /**
