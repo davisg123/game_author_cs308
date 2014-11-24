@@ -17,13 +17,10 @@ public class GameObjectsProperties extends Properties {
 	private Map<String, PropertyTextField> textProperties;
 	private Map<String, CheckBox> booleanProperties;
 	private GameHandler myHandler;
-	private File myGameLocation;
 
-	public GameObjectsProperties(GameObject gObj, GameHandler handler,
-			File gameLoc) {
+	public GameObjectsProperties(GameObject gObj, GameHandler handler) {
 		super(gObj);
 		myHandler = handler;
-		myGameLocation = gameLoc;
 		initializeProperties(gObj);
 	}
 
@@ -90,9 +87,6 @@ public class GameObjectsProperties extends Properties {
 		// SoundReference sounds,
 		// double x, double y, double height, double width, double rotation,
 		// String iD)
-		String filePath = new String(myGameLocation.getPath() + "/images/"
-				+ textProperties.get("image").getInformation());
-		System.out.println(filePath);
 		GameObject edited = new GameObject(g.getComponents(), textProperties
 				.get("image").getInformation(),
 				Double.parseDouble(textProperties.get("x").getInformation())

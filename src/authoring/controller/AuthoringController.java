@@ -119,7 +119,7 @@ public class AuthoringController {
 	 */
 
 	private void initializeViewComponents() {
-		myProperties = new PropertiesView(myLanguage, myWidth, myHeight, myGameLocation);
+		myProperties = new PropertiesView(myLanguage, myWidth, myHeight);
 		myLevels = new LevelsView(myLanguage, myWidth, myHeight, myGameLocation);
 		myLevelOptions = new LevelOptions(myLanguage, myWidth, myHeight);
 		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
