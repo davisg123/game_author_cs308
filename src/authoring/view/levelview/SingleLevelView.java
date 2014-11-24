@@ -29,7 +29,7 @@ import javafx.scene.paint.Color;
  */
 public class SingleLevelView extends Pane implements Observer {
 	private Background myDefaultBackground = new Background(new BackgroundFill(
-			Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY));
+			Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY));
 	private static final double VIEW_HEIGHT_RATIO = .82;
 	private static final double VIEW_WIDTH_RATIO = 0.6;
 	public static final double OBJECT_X_OFFSET = -Main.SCREEN_WIDTH*.2;
