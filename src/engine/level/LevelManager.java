@@ -44,6 +44,7 @@ public class LevelManager implements Iterable<Level> {
 		myCurrentIndex = 0;
 		myCurrentLevel = myLevels.get(myCurrentIndex);
 		myRenderer = renderer;
+		myRenderer.renderGameObjects(myCurrentLevel);
 		myDetector = new CollisionDetector();
 	}
 

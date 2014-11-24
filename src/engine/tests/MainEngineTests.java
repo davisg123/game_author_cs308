@@ -1,14 +1,17 @@
 package engine.tests;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import data.DataManager;
+import authoring.model.GameData;
 import authoring.model.collections.ConditionsCollection;
 import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.LevelsCollection;
 import engine.GameManager;
 import engine.actions.Action;
 import engine.actions.FrameRateAction;
-import engine.actions.translate.TranslateX;
-import engine.actions.translate.TranslateY;
+import engine.actions.TranslateX;
+import engine.actions.TranslateY;
 import engine.conditions.BoundaryConditionY;
 import engine.conditions.ButtonCondition;
 import engine.conditions.ButtonConditionManager;
@@ -137,6 +140,23 @@ public class MainEngineTests extends Application {
         LevelsCollection myLevels = new LevelsCollection();
         Level level0 = new Level(myGameObjects);
         myLevels.add(level0);
+        
+        GameData data = new GameData();
+        data.addLevel(level0);
+        data.addCondition(aCon);
+        data.addCondition(dCon);
+        //data.addCondition(boundaryCondition);
+        data.addGameObject(ball);
+        data.addGameObject(floorLeft);
+        data.addGameObject(floorRight);
+        DataManager manager = new DataManager();
+        try {
+            manager.writeGameFile(data, "fd_final.json");
+        }
+        catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         
         /*******
          * game
