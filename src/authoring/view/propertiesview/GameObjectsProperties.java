@@ -45,11 +45,11 @@ public class GameObjectsProperties extends Properties {
 		textProperties.put(
 				"width",
 				new PropertyTextField("Width: ", Double.toString(gameObject
-						.getWidth())));
+						.getCollisionWidth())));
 		textProperties.put(
 				"height",
 				new PropertyTextField("Height: ", Double.toString(gameObject
-						.getHeight())));
+						.getCollisionHeight())));
 		textProperties.put(
 				"x",
 				new PropertyTextField("X: ", Double.toString(gameObject.getX()

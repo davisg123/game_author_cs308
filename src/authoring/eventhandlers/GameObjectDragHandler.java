@@ -12,8 +12,6 @@ import authoring.view.propertiesview.PropertiesView;
 import engine.gameObject.GameObject;
 import engine.level.Level;
 
-
-
 /**
  * Event handler for dragging graphics on the level view. Fills properties view
  * with status and allows user to drag objects to adjust the level.
@@ -28,8 +26,8 @@ public class GameObjectDragHandler implements GameHandler<MouseEvent> {
 	private LevelsCollection myLevelsCollection;
 	private PropertiesView myProperties;
 
-
-	public GameObjectDragHandler(LevelsView levelView, LevelsCollection data, PropertiesView props) {
+	public GameObjectDragHandler(LevelsView levelView, LevelsCollection data,
+			PropertiesView props) {
 		myLevelView = levelView;
 		myLevelsCollection = data;
 		myProperties = props;
@@ -37,7 +35,7 @@ public class GameObjectDragHandler implements GameHandler<MouseEvent> {
 
 	@Override
 	public void handle(MouseEvent event) {
-		//System.out.println("reached");
+		// System.out.println("reached");
 		GameObjectGraphic g = (GameObjectGraphic) event.getSource();
 		double x = event.getSceneX();
 		double y = event.getSceneY();
@@ -47,31 +45,31 @@ public class GameObjectDragHandler implements GameHandler<MouseEvent> {
 			if (level.getLevelID().equals(id)) {
 				GameObject go = g.getGameObject();
 				level.removeGameObject(go);
-				
+
 				double dragX = x + OBJECT_X_OFFSET;
 				double dragY = y + OBJECT_Y_OFFSET;
 				double newX = x;
 				double newY = y;
-				
-				if(dragX < 0){
+
+				if (dragX < 0) {
 					System.out.println("off left");
-					newX = -1*OBJECT_X_OFFSET;
+					newX = -1 * OBJECT_X_OFFSET;
 				}
-				if(dragX > slv.getViewWidth()){
+				if (dragX > slv.getViewWidth()) {
 					System.out.println("off right");
-					newX = slv.getViewWidth() - OBJECT_X_OFFSET - go.getImageWidth();
+					newX = slv.getViewWidth() - OBJECT_X_OFFSET - g.getWidth();
 				}
-				if(dragY < 0){
+				if (dragY < 0) {
 					System.out.println("off top");
-					newY = -1*OBJECT_Y_OFFSET;
+					newY = -1 * OBJECT_Y_OFFSET;
 				}
-				if(dragY > slv.getViewHeight()){
+				if (dragY > slv.getViewHeight()) {
 					System.out.println("off bottom");
-					newY = slv.getViewHeight() - OBJECT_Y_OFFSET - go.getImageHeight();
+					newY = slv.getViewHeight() - OBJECT_Y_OFFSET - g.getHeight();
 				}
 				go.setX(newX);
 				go.setY(newY);
-				
+
 				level.addGameObject(go);
 				myProperties.makeProperties(go);
 			}

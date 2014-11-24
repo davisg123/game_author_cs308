@@ -29,7 +29,7 @@ import javafx.scene.paint.Color;
 public class SingleLevelView extends Pane implements Observer {
 	private Background myDefaultBackground = new Background(new BackgroundFill(
 			Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY));
-	private static final double VIEW_HEIGHT_RATIO = .87;
+	private static final double VIEW_HEIGHT_RATIO = .82;
 	private static final double VIEW_WIDTH_RATIO = 0.6;
 	public static final double OBJECT_X_OFFSET = -215;
 	public static final double OBJECT_Y_OFFSET = -165;
@@ -56,6 +56,7 @@ public class SingleLevelView extends Pane implements Observer {
 	 */
 	public SingleLevelView(File gameLoc, double width, double height, Level l, GameHandler... handlers){
 		this(gameLoc, width,height, handlers);
+
 		recreateLevel(l);
 	}
 
@@ -87,9 +88,8 @@ public class SingleLevelView extends Pane implements Observer {
 	private void addGameObjectToView(GameObject gameObject, double x, double y,
 			GameHandler... handler) {
 		GameObjectGraphic g = new GameObjectGraphic(gameObject, handler);
-		g.makeGraphic();
-		this.moveSpriteOnLevel(g, x, y);
 		g.makeGraphic(myGameLocation);
+		this.moveSpriteOnLevel(g, x, y);
 		this.getChildren().add(g);
 
 	}
@@ -116,13 +116,11 @@ public class SingleLevelView extends Pane implements Observer {
 
 	public double getViewWidth()
 	{
-		System.out.println(this.myViewWidth);
 		return this.myViewWidth;
 	}
 	
 	public double getViewHeight()
 	{
-		System.out.println(this.myViewHeight);
 		return this.myViewHeight;
 	}
 }
