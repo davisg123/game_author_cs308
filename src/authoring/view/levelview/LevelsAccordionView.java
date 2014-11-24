@@ -1,9 +1,9 @@
 package authoring.view.levelview;
 
-import java.util.Observable;
-import java.util.Observer;
 import java.util.ResourceBundle;
 
+import data.Observable;
+import data.Observer;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import authoring.eventhandlers.GameHandler;

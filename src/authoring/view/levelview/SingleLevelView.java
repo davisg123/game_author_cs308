@@ -2,9 +2,9 @@ package authoring.view.levelview;
 
 import java.io.File;
 import java.util.Arrays;
-import java.util.Observable;
-import java.util.Observer;
 
+import data.Observable;
+import data.Observer;
 import engine.gameObject.GameObject;
 import engine.level.Level;
 import authoring.eventhandlers.GameHandler;

@@ -3,7 +3,8 @@ package authoring.model.collections;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Observable;
+
+import data.Observable;
 
 /**
  * General Collection is the abstract superclass for all collections held in the game. Uses generics to share common behavior.

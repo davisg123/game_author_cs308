@@ -1,7 +1,8 @@
 package engine.level;
 
 import java.util.Iterator;
-import java.util.Observable;
+
+import data.Observable;
 import authoring.model.collections.ConditionIDsCollection;
 import authoring.model.collections.GameObjectsCollection;
 import engine.gameObject.GameObject;
