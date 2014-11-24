@@ -64,7 +64,7 @@ public class Graphic extends VBox {
 			imageView.setPreserveRatio(true);
 			imageView.setFitWidth(70);
 			this.getChildren().add(imageView);
-			this.getChildren().add(new Text(myName));
+			//this.getChildren().add(new Text(myName));
 			for (GameHandler g : myOnClick) {
 				this.addEventFilter(g.getEventType(), g);
 			}
