@@ -9,7 +9,7 @@ import engine.gameObject.GameObject;
  *
  */
 
-public abstract class TranslateAction implements Action {
+public abstract class TranslateAction implements Action, Initializable {
     protected GameObject mySprite;
     protected double myValue;
     

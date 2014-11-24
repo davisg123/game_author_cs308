@@ -3,7 +3,7 @@ package engine.actions;
 import java.util.List;
 import engine.gameObject.GameObject;
 
-public abstract class PhysicsAction implements Action {
+public abstract class PhysicsAction implements Action, Initializable {
     
     protected GameObject mySprite;
     protected double myValue;

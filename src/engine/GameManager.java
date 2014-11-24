@@ -14,6 +14,7 @@ import engine.render.GameObjectRenderer;
 import engine.conditions.ButtonConditionManager;
 import engine.gameObject.*;
 import engine.level.LevelManager;
+import gamePlayer.model.DataWrapper;
 
 /**
  * central game manager responsible for holding game data, setting the timeline speed
@@ -121,5 +122,19 @@ public class GameManager {
     
     private void createLevelManager(){
         myLevelManager = new LevelManager(myLevels,myGameObjects,myGameConditions,myGameObjectRenderer);
+    }
+    
+    public void load(DataWrapper wrapper){
+    	myLevels=wrapper.getLevels();
+    	myGameConditions=wrapper.getConditions();
+    	myGameObjects=wrapper.getGameObjects();
+    }
+    
+    public DataWrapper getDataWrapper(){
+    	return new DataWrapper(myLevels, myGameObjects, myGameConditions);
+    }
+    
+    public LevelManager getLevelManager(){
+    	return myLevelManager; 
     }
 }
