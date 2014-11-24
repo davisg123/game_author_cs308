@@ -1,10 +1,8 @@
 package gamePlayer.view;
 
+import engine.conditions.ButtonConditionManager;
 import gamePlayer.model.PlayerModel;
-
-
 import java.io.IOException;
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -30,6 +28,7 @@ public class PlayerView {
 		MenuBarController myController = loader.<MenuBarController>getController();
 		myController.setModel(myPlayerModel);
 		myScene = new Scene(myRoot);
+                ButtonConditionManager.getInstance().beginListeningToScene(myScene);
 		myStage.setTitle("MY PLAYER VIEW");
 		myStage.setScene(myScene);
 		myStage.show();
