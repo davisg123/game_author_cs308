@@ -119,6 +119,22 @@ public class GameObject implements IEnabled, Iterable<Component>{
         myYCoord = y;
     }
 
+    /*public void setImageWidth (double width) {
+        
+    }
+    
+    public void setImageHeight (double height) {
+        
+    }*/
+    
+    public double getImageWidth () {
+        return myRenderedNode.getImageView().getFitWidth();
+    }
+    
+    public double getImageHeight () {
+        return myRenderedNode.getImageView().getFitHeight();
+    }
+    
     /**
      * Sets Orientation of Sprite
      * @param orientation
@@ -249,12 +265,12 @@ public class GameObject implements IEnabled, Iterable<Component>{
     public PhysicsBody getPhysicsBody () {
         return myPhysicsBody;
     }
-
-    public double getHeight () {
+    
+    public double getCollisionHeight () {
         return myHeight;
     }
 
-    public double getWidth () {
+    public double getCollisionWidth () {
         return myWidth;
     }
 
