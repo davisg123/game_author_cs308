@@ -10,6 +10,7 @@ import engine.level.Level;
 import authoring.eventhandlers.GameHandler;
 import authoring.eventhandlers.GameObjectClickHandler;
 import authoring.eventhandlers.GameObjectDragHandler;
+import authoring.main.Main;
 import authoring.view.gameobjectsview.GameObjectGraphic;
 import authoring.view.graphicsview.Graphic;
 import javafx.geometry.Insets;
@@ -31,8 +32,8 @@ public class SingleLevelView extends Pane implements Observer {
 			Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY));
 	private static final double VIEW_HEIGHT_RATIO = .82;
 	private static final double VIEW_WIDTH_RATIO = 0.6;
-	public static final double OBJECT_X_OFFSET = -215;
-	public static final double OBJECT_Y_OFFSET = -165;
+	public static final double OBJECT_X_OFFSET = -Main.SCREEN_WIDTH*.2;
+	public static final double OBJECT_Y_OFFSET = -Main.SCREEN_HEIGHT*.202;
 	private File myGameLocation;
 
 	private GameHandler[] myEvents;
