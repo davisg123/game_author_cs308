@@ -50,21 +50,24 @@ public class GameObjectDragHandler implements GameHandler<MouseEvent> {
 				double dragY = y + OBJECT_Y_OFFSET;
 				
 				if(dragX < 0){
+					System.out.println("off left");
 					dragX = 0;
 				}
 				if(dragX > myLevelView.getWidth()){
+					System.out.println("off right");
 					dragX = myLevelView.getWidth();
 				}
-				
-				
-				if(!myLevelView.contains(x + OBJECT_X_OFFSET, y + OBJECT_Y_OFFSET)){
-					go.setX(230);
-					go.setY(100);
+				if(dragY < 0){
+					System.out.println("off top");
+					dragY = 0;
 				}
-				else{
-					go.setX(x);
-					go.setY(y);
+				if(dragY > myLevelView.getHeight()){
+					System.out.println("off bottom");
+					dragY = myLevelView.getHeight();
 				}
+				go.setX(x);
+				go.setY(y);
+				
 				level.addGameObject(go);
 				myProperties.makeProperties(go);
 			}
