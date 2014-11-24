@@ -1,25 +1,18 @@
 package engine;
-import java.util.ArrayList;
-import java.util.List;
-
 import authoring.model.collections.ConditionsCollection;
 import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.LevelsCollection;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Point2D;
 import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import engine.conditions.*;
 import engine.render.GameObjectRenderer;
+import engine.conditions.ButtonConditionManager;
 import engine.gameObject.*;
-import engine.level.Level;
 import engine.level.LevelManager;
 import gamePlayer.model.DataWrapper;
 
@@ -37,7 +30,6 @@ public class GameManager {
     private GameObjectRenderer myGameObjectRenderer;
     private Group myRootGroup;
     private Timeline myAnimation;
-    private Stage myStage;
     private LevelManager myLevelManager;
     private LevelsCollection myLevels;
     private static final double DEFAULT_SPEED = 60.0;
@@ -129,7 +121,7 @@ public class GameManager {
     }
     
     private void createLevelManager(){
-        myLevelManager = new LevelManager(myGameObjects,myLevels,myGameConditions,myGameObjectRenderer,null);
+        myLevelManager = new LevelManager(myLevels,myGameObjects,myGameConditions,myGameObjectRenderer);
     }
     
     public void load(DataWrapper wrapper){

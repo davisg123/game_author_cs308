@@ -39,14 +39,14 @@ public class LevelManager implements Iterable<Level> {
 	 */
 	public LevelManager(LevelsCollection levels,
 			GameObjectsCollection gameObjects, ConditionsCollection conditions,
-			GameObjectRenderer renderer, CollisionDetector detector) {
+			GameObjectRenderer renderer) {
 		myLevels = levels;
 		myGameObjects = gameObjects;
 		myConditions = conditions;
 		myCurrentIndex = 0;
 		myCurrentLevel = myLevels.get(myCurrentIndex);
 		myRenderer = renderer;
-		myDetector = detector;
+		myDetector = new CollisionDetector();
 	}
 
 	/**
@@ -92,6 +92,7 @@ public class LevelManager implements Iterable<Level> {
 	public void update() {
 		myCurrentLevel.update();
 		updateFrameBasedConditions();
+		myDetector.checkCollisions(myGameObjects);
 	}
 
 	/**
