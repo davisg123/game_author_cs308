@@ -1,5 +1,6 @@
 package authoring.view.propertiesview;
 
+import java.io.File;
 import java.util.ResourceBundle;
 
 import javafx.scene.layout.VBox;
@@ -20,12 +21,14 @@ public class PropertiesView extends ScrollView{
 	
 	private GameObjectsProperties myGameObjectsProperties;
 	private GameObject myCurrentGameObject;
+	private File myGameLocation;
 	
 	
-	public PropertiesView(ResourceBundle language, double width, double height) {
+	public PropertiesView(ResourceBundle language, double width, double height, File gameLoc) {
 		super(language, width, height);
 		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
 		this.setContent(myContents);
+		myGameLocation = gameLoc;
 	}
 	
 	public void makeProperties(Graphic g){
@@ -36,7 +39,7 @@ public class PropertiesView extends ScrollView{
 	public void makeProperties(GameObject gameObj){
 		myContents.getChildren().clear();
 		myCurrentGameObject = gameObj;
-		myGameObjectsProperties = new GameObjectsProperties(gameObj, this.myEditBehavior);
+		myGameObjectsProperties = new GameObjectsProperties(gameObj, this.myEditBehavior, myGameLocation);
 		this.setContent(myGameObjectsProperties);
 	}
 	

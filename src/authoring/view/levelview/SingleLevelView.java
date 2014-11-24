@@ -1,5 +1,6 @@
 package authoring.view.levelview;
 
+import java.io.File;
 import java.util.Arrays;
 import java.util.Observable;
 import java.util.Observer;
@@ -32,29 +33,34 @@ public class SingleLevelView extends Pane implements Observer {
 	private static final double VIEW_WIDTH_RATIO = 0.6;
 	public static final double OBJECT_X_OFFSET = -215;
 	public static final double OBJECT_Y_OFFSET = -165;
-	
-	
+	private File myGameLocation;
+
 	private GameHandler[] myEvents;
 	private String myID;
 
-	public SingleLevelView(double width, double height, GameHandler... handlers) {
+	public SingleLevelView(File gameLoc, double width, double height,
+			GameHandler... handlers) {
 		this.setBackground(myDefaultBackground);
 		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
 		myEvents = handlers;
+		myGameLocation = gameLoc;
 	}
+
 	/**
 	 * REPEATED CODE WE NEED TO FIX
+	 * 
 	 * @param width
 	 * @param height
 	 * @param l
 	 * @param handlers
 	 */
-	public SingleLevelView(double width, double height, Level l, GameHandler... handlers){
+	public SingleLevelView(double width, double height, Level l,
+			GameHandler... handlers) {
 		this.setBackground(myDefaultBackground);
 		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
 		myEvents = handlers;
 		recreateLevel(l);
-		
+
 	}
 
 	private void setView(double width, double height) {
@@ -62,28 +68,28 @@ public class SingleLevelView extends Pane implements Observer {
 		setMinSize(width, height);
 		setMaxSize(width, height);
 	}
-	
-	public void recreateLevel(Level l){
-		//System.out.println(myEvents.length);
-		for (GameObject g: l.getGameObjectsCollection()){
+
+	public void recreateLevel(Level l) {
+		// System.out.println(myEvents.length);
+		for (GameObject g : l.getGameObjectsCollection()) {
 			addGameObjectToView(g, g.getX(), g.getY(), myEvents);
 		}
 	}
 
 	@Override
 	public void update(Observable o, Object arg) {
-			Level level = ((Level) arg);
-			this.getChildren().clear();
-			//System.out.println(level.getGameObjectsCollection());
-			//level.getGameObjectsCollection().clear();
-			//System.out.println(level.getLevelID());
-			recreateLevel(level);
+		Level level = ((Level) arg);
+		this.getChildren().clear();
+		// System.out.println(level.getGameObjectsCollection());
+		// level.getGameObjectsCollection().clear();
+		// System.out.println(level.getLevelID());
+		recreateLevel(level);
 	}
 
 	private void addGameObjectToView(GameObject gameObject, double x, double y,
 			GameHandler... handler) {
 		GameObjectGraphic g = new GameObjectGraphic(gameObject, handler);
-		g.makeGraphic();
+		g.makeGraphic(myGameLocation);
 		g.setLayoutX(x + OBJECT_X_OFFSET);
 		g.setLayoutY(y + OBJECT_Y_OFFSET);
 		this.getChildren().add(g);
@@ -91,13 +97,12 @@ public class SingleLevelView extends Pane implements Observer {
 	}
 
 	/**
-	public void removeGameObjectFromView(GameObject gameObject) {
-		GameObjectGraphic g = new GameObjectGraphic(gameObject, myEvents);
-		System.out.println(this.getChildren().contains(g));
-		this.getChildren().remove(g);
-	}
-	**/
-	
+	 * public void removeGameObjectFromView(GameObject gameObject) {
+	 * GameObjectGraphic g = new GameObjectGraphic(gameObject, myEvents);
+	 * System.out.println(this.getChildren().contains(g));
+	 * this.getChildren().remove(g); }
+	 **/
+
 	public void setID(String ID) {
 		myID = ID;
 	}
