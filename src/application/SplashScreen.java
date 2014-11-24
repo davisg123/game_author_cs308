@@ -3,6 +3,7 @@ package application;
 import java.io.IOException;
 
 import authoring.model.AuthoringModel;
+import authoring.view.AuthoringScene;
 import gamePlayer.model.PlayerModel;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -60,7 +61,11 @@ public class SplashScreen {
 	}
 	
 	private void author() {
-		myAuthoringModel = new AuthoringModel();
+		primaryStage.setResizable(false);
+		myScene = new AuthoringScene(primaryStage, myDefaultLocale, SCREEN_WIDTH,
+				SCREEN_HEIGHT);
+		primaryStage.setScene(myScene.getScene());
+		primaryStage.show();
 	}
 
 	private void play() throws IOException {
