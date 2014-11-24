@@ -30,6 +30,10 @@ public class SingleLevelView extends Pane implements Observer {
 			Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY));
 	private static final double VIEW_HEIGHT_RATIO = .87;
 	private static final double VIEW_WIDTH_RATIO = 0.6;
+	public static final double OBJECT_X_OFFSET = -215;
+	public static final double OBJECT_Y_OFFSET = -165;
+	
+	
 	private GameHandler[] myEvents;
 	private String myID;
 
@@ -80,8 +84,8 @@ public class SingleLevelView extends Pane implements Observer {
 			GameHandler... handler) {
 		GameObjectGraphic g = new GameObjectGraphic(gameObject, handler);
 		g.makeGraphic();
-		g.setLayoutX(x - 230);
-		g.setLayoutY(y - 100);
+		g.setLayoutX(x + OBJECT_X_OFFSET);
+		g.setLayoutY(y + OBJECT_Y_OFFSET);
 		this.getChildren().add(g);
 
 	}
@@ -103,8 +107,8 @@ public class SingleLevelView extends Pane implements Observer {
 	}
 
 	public void moveSpriteOnLevel(Graphic g, double x, double y) {
-		g.setLayoutX(x - 230);
-		g.setLayoutY(y - 100);
+		g.setLayoutX(x + OBJECT_X_OFFSET);
+		g.setLayoutY(y + OBJECT_Y_OFFSET);
 	}
 
 }

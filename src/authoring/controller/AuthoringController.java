@@ -134,6 +134,7 @@ public class AuthoringController {
 	}
 
 	private void initializeGameHandlers() {
+
 		myGraphics.setEvents(new ImagesClickHandler(myProperties));
 		myGameObjects
 				.setEvents(
