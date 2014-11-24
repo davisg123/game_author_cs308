@@ -1,8 +1,6 @@
 package authoring.view;
 
-import java.util.ResourceBundle;
-
-import authoring.view.baseclasses.BPView;
+import authoring.view.baseclasses.BPContainer;
 
 /**
  * Borderpane that holds the view.
@@ -10,13 +8,12 @@ import authoring.view.baseclasses.BPView;
  * @author Kevin Li
  *
  */
-public class AuthoringView extends BPView {
+public class AuthoringView extends BPContainer {
 
 	private static final double VIEW_HEIGHT_RATIO = .92;
 
-	public AuthoringView(ResourceBundle language, double width, double height) {
-		super(language, width, height);
+	public AuthoringView(double width, double height) {
+		super(width, height*VIEW_HEIGHT_RATIO);
 		setVisible(true);
-		setView(super.myWidth, super.myHeight * VIEW_HEIGHT_RATIO);
 	}
 }

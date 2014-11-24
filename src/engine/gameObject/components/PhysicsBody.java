@@ -161,7 +161,6 @@ public class PhysicsBody {
 	 * @Param - Game object to change things for
 	 */
 	public void updatePhysicalCharacteristics(GameObject sprite) {
-		System.out.println(myVelocity.getX());
 		doImpulses();
 		if (haveForcesChanged) {
 			balanceForces();
@@ -270,14 +269,20 @@ public class PhysicsBody {
 		// create new condition to stop x or y
 		if (!cur.getCollisionConstant()) {
 			if (xOrY) {
-				cur.getPhysicsBody().setVelocity(
-						new Velocity(0.0, cur.getPhysicsBody().getVelocity()
-								.getY()));
+				//cancel out current velocity
+			        cur.setTranslateX(cur.getTranslateX() - cur.getPhysicsBody().getVelocity().getX()
+			                                 / FRAMES_PER_SECOND);
+			        //apply rivaling velocity
+			        cur.setTranslateX(cur.getTranslateX() + other.getPhysicsBody().getVelocity().getX()
+			                                  / FRAMES_PER_SECOND);
 			} else {
-				cur.getPhysicsBody().setVelocity(
-						new Velocity(cur.getPhysicsBody().getVelocity().getX(),
-								0.0));
-
+				//cancel out current velocity
+                                cur.setTranslateY(cur.getTranslateY() - myVelocity.getY()
+                                                         / FRAMES_PER_SECOND);
+                                
+                                //apply rivaling velocity
+                                cur.setTranslateY(cur.getTranslateY() + other.getPhysicsBody().getVelocity().getY()
+                                                          / FRAMES_PER_SECOND);
 			}
 		}
 	}

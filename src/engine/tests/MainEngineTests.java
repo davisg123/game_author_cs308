@@ -14,6 +14,7 @@ import engine.gameObject.GameObject;
 import engine.gameObject.components.PhysicsBody;
 import engine.level.Level;
 import engine.physics.Acceleration;
+import engine.physics.CollisionConstant;
 import engine.physics.Velocity;
 import engine.render.GameObjectRenderer;
 import javafx.application.Application;
@@ -72,16 +73,15 @@ public class MainEngineTests extends Application {
                                    75, 200, 20, 200, 0, "floor_object");
         //ugh, why do we have to set this explicitly?
         PhysicsBody floorBody = new PhysicsBody(20,200);
-        Velocity vel = new Velocity(5,0);
-        Acceleration acc = new Acceleration(20,0);
-        floorBody.setVelocity(vel);
-        floorBody.setAcceleration(acc);
+        floorBody.setVelocity(new Velocity(0,-23));
+        floorBody.addScalar((new CollisionConstant(1.0)));
+        //floorBody.setAcceleration(new Acceleration(0.0,-77.0));
         floor.setPhysicsBody(floorBody);
         myGameObjects.add(floor);
         //create a ball
         GameObject ball = new GameObject(null,"ball",150,50,30,30,0,"ball_object");
         PhysicsBody ballBody = new PhysicsBody(30,30);
-        ballBody.setVelocity(new Velocity(0,15));
+        ballBody.setVelocity(new Velocity(12,20));
         ball.setPhysicsBody(ballBody);
         myGameObjects.add(ball);
         
