@@ -24,11 +24,7 @@ public class PlayerModel {
 		myPlayerView.initialize();
 	}
 	
-	public void loadGameFile(){
-//		myWrapper=myHandler.loadGameFile();
-//		myGameManager = new GameManager(myWrapper.getConditions(), myWrapper.getSprites(), myPlayerView.getGroup());
-//		myGameManager.initialize();
-		
+	public void loadGameFile(){		
 		myGameData = myManager.readGameFile("TestFile");
 		myGameManager = new GameManager(myGameData.getConditions(), myGameData.getGameObjects(), myGameData.getLevels(), myPlayerView.getGroup());
 		myGameManager.initialize();
@@ -40,36 +36,9 @@ public class PlayerModel {
 		SplashScreen screen = new SplashScreen();
 		screen.show();	
 		}
-	
-	public void loadProgressFile() {
-//		myWrapper = myHandler.getData();
-//		myGameManager = new GameManager(myWrapper.getConditions(), myWrapper.getSprites(), myPlayerView.getGroup());
-		//myGameManager.initialize();
 
-	}
-	
-	public void newGame(){
-		//myGameManager.initialize();
-	}
-	
-	public void quitGame(){
-		//myGameManager.clear()
-	}
-	
-	public void goHome(){
-		//myGameManager.clear()
-		myPlayerView.close();
-		SplashScreen screen = new SplashScreen();
-		screen.show();
-	}
-	
 	public void pauseGame(){
-		//myGameManager.togglePause(); 
+		myGameManager.togglePause(); 
 	}
-	
-	public void saveGame(){
-		//myHandler.saveData(myWorkingWrapper);
-	}
-	
 	
 }
