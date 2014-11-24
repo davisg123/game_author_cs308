@@ -22,71 +22,60 @@
 <?import javafx.scene.control.Menu?>
 <?import gamePlayer.view.GameSelector?>
 
-<BorderPane prefWidth="1000.0" prefHeight="1000.0" xmlns:fx="http://javafx.com/fxml" fx:controller="gamePlayer.view.MenuBarController">
-    <top>
-    	<TabPane>
-    		<tabs>
-    			<Tab text="Menu" closable="false">
-    				<content>
-    					<Button id="home" text="Home" />
-	    				<Button id="load" text="Load Game File" />
-    					<Button id="exit" text="Exit Game" />
-    				</content>
-    			</Tab>
-    			<Tab text="Options" closable="false">
-    				<Button text="New" />
-    				<Button text="Load from Save File" />
-    				<Button text="Save" />
-    				<Button text="Pause" />
-    				<Button text="Quit" />
-    			</Tab>
-    			<Tab text="Preferences" closable="false">
-    				<Button text="Sound" />
-    				<Button text="Key Combos" />
-    			</Tab>
-    		</tabs>
-    	</TabPane>
-    	<!--
-    	<Label text="Game Player GUI"/>
-    	<GameSelector/>
-    	<MenuBar> 
-    		<menus>
-    			<Menu fx:id="gameSelector" text="Game Selector">
-    				<items>
-    					<MenuItem text="Home" onAction="#goHome"/>
-						<MenuItem text="Load Game File" onAction="#loadGameFile"/>
-						<MenuItem text="Exit Game" onAction="#exitFromGame"/>
-    				</items>
-    			</Menu> 
-    			<Menu fx:id="gameOptions" text="Game Options" disable="true">
-    				<items>
-    					<MenuItem text="New" onAction="#newGame"/>
-    					<MenuItem text="Load from Save File" onAction="#loadFromSave"/>
-    					<MenuItem text="Save" onAction="#saveGame"/>
-    					<MenuItem text="Pause" onAction="#pauseGame"/>
-    					<MenuItem text="Quit" onAction="#quitGame"/> 
-    				</items>	
-    			</Menu>
-    			<Menu fx:id="gamePreferences" text="Preferences" disable="true">
-    				<items>
-    					<MenuItem text="Sound"/>
-    					<MenuItem text="KeyCombos"/>    				
-    				</items>
-    			</Menu>
-    		</menus>
-    	</MenuBar>
-    	-->
-    </top>
-    <center>
-    	<VBox fx:id="canvasVBox">
-    		<Label text="Game Canvas"/>
-    	</VBox>
-    </center>
-    <bottom>
-    	<VBox fx:id="statsVBox">
-    		<Label text="Game Stats"/>
-    	</VBox>
-    </bottom>
-     
+<BorderPane prefWidth="1000.0" prefHeight="1000.0"
+	xmlns:fx="http://javafx.com/fxml" fx:controller="gamePlayer.view.MenuBarController">
+	<stylesheets>
+		<URL value="@App.css" />
+		<URL value="@ribbon.css" />
+	</stylesheets>
+	<top>
+		<TabPane>
+			<tabs>
+				<Tab text="Menu" closable="false">
+					<HBox spacing="10">
+						<Button id="home" text="Home" />
+						<Button id="load" text="Load Game File" />
+						<Button id="exit" text="Exit Game" />
+					</HBox>
+				</Tab>
+				<Tab text="Options" closable="false">
+					<HBox spacing="10">
+						<Button text="New" />
+						<Button text="Load from Save File" />
+						<Button text="Save" />
+						<Button text="Pause" />
+						<Button text="Quit" />
+					</HBox>
+				</Tab>
+				<Tab text="Preferences" closable="false">
+					<HBox>
+						<Button text="Sound" />
+						<Button text="Key Combos" />
+					</HBox>
+				</Tab>
+			</tabs>
+		</TabPane>
+		<!-- <Label text="Game Player GUI"/> <GameSelector/> <MenuBar> <menus> 
+			<Menu fx:id="gameSelector" text="Game Selector"> <items> <MenuItem text="Home" 
+			onAction="#goHome"/> <MenuItem text="Load Game File" onAction="#loadGameFile"/> 
+			<MenuItem text="Exit Game" onAction="#exitFromGame"/> </items> </Menu> <Menu 
+			fx:id="gameOptions" text="Game Options" disable="true"> <items> <MenuItem 
+			text="New" onAction="#newGame"/> <MenuItem text="Load from Save File" onAction="#loadFromSave"/> 
+			<MenuItem text="Save" onAction="#saveGame"/> <MenuItem text="Pause" onAction="#pauseGame"/> 
+			<MenuItem text="Quit" onAction="#quitGame"/> </items> </Menu> <Menu fx:id="gamePreferences" 
+			text="Preferences" disable="true"> <items> <MenuItem text="Sound"/> <MenuItem 
+			text="KeyCombos"/> </items> </Menu> </menus> </MenuBar> -->
+	</top>
+	<center>
+		<VBox fx:id="canvasVBox">
+			<Label text="Game Canvas" />
+		</VBox>
+	</center>
+	<bottom>
+		<VBox fx:id="statsVBox">
+			<Label text="Game Stats" />
+		</VBox>
+	</bottom>
+
 </BorderPane>
 
