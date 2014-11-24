@@ -10,4 +10,6 @@ public class DefaultData {
 	private double xCoord; 
 	private double yCoord; 
 	
+	
+	
 }

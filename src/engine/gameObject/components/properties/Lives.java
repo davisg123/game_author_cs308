@@ -14,8 +14,7 @@ public class Lives implements IProperty {
     @Override
     public void update() {
             // TODO Auto-generated method stub
-            if (loseLives)  {myLives--;}
-            else if(gainLives){myLives++;}
+
             
             
     }
@@ -28,6 +27,11 @@ public class Lives implements IProperty {
         this.myLives = lives;
     }
   
-    
+    public void loseLife(){
+    	myLives--;
+    }
 
+    public void gainLife(){
+    	myLives++; 
+    }
 }

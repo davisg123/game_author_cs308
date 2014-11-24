@@ -25,5 +25,13 @@ public class Health implements IProperty {
 		myHealth = health;	
 	}
 	
+	public void loseHealth(int healthLost){
+		myHealth-=healthLost;
+	}
+	
+	public void gainHealth(int healthGain){
+		myHealth+=healthGain; 
+	}
+	
 	
 }
