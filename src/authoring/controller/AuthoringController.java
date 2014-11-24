@@ -130,8 +130,8 @@ public class AuthoringController {
 		myGameObjects = new GameObjectsView(myLanguage, myWidth, myHeight);
 		myLevelsAccordionView = new LevelsAccordionView(myLanguage, myWidth,
 				myHeight);
-		myConditionsAccordionView = new ConditionsAccordionView(myLanguage, myWidth,
-				myHeight);
+		myConditionsAccordionView = new ConditionsAccordionView(myLanguage,
+				myWidth, myHeight);
 
 	}
 
@@ -148,11 +148,15 @@ public class AuthoringController {
 		myGraphicsTools.setButtonBehavior(new AddImageHandler(myModel
 				.getImages(), myGameLocation));
 		myLevels.setEventHandlers(new GameObjectClickHandler(myProperties),
-				new GameObjectDragHandler(myLevels, myModel.getLevels(), myProperties));
+				new GameObjectDragHandler(myLevels, myModel.getLevels(),
+						myProperties));
 		myLevelsAccordionView.setEvents(new LevelToViewHandler(myLevels));
-		myLevelsAccordionView.setLevelEvents(new GameObjectClickHandler(myProperties),
-				new GameObjectDragHandler(myLevels, myModel.getLevels(), myProperties));
-		myProperties.setEditButtonBehavior(new EditGameObjectHandler(myLevels , myModel.getLevels(), myProperties));
+		myLevelsAccordionView.setLevelEvents(new GameObjectClickHandler(
+				myProperties),
+				new GameObjectDragHandler(myLevels, myModel.getLevels(),
+						myProperties));
+		myProperties.setEditButtonBehavior(new EditGameObjectHandler(myLevels,
+				myModel.getLevels(), myProperties));
 
 	}
 
@@ -188,10 +192,11 @@ public class AuthoringController {
 		TitledPane levels = new TitledPane(myLanguage.getString("Levels"),
 				myLevelsAccordionView);
 
-		TitledPane conditions = new TitledPane(myLanguage.getString("Conditions"),
-				myConditionsAccordionView);
-		
-		leftView.getPanes().addAll(graphics, sounds, gameObjects, levels, conditions);
+		TitledPane conditions = new TitledPane(
+				myLanguage.getString("Conditions"), myConditionsAccordionView);
+
+		leftView.getPanes().addAll(graphics, sounds, gameObjects, levels,
+				conditions);
 		BorderPane.setAlignment(leftView, Pos.TOP_RIGHT);
 
 		return leftView;
@@ -272,6 +277,11 @@ public class AuthoringController {
 	}
 
 	public void removeAction(Condition c, Action a) {
+
+	}
+
+	public void saveData() {
+		myModel.save();
 
 	}
 
