@@ -9,6 +9,7 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
 import authoring.eventhandlers.AddImageHandler;
 import authoring.eventhandlers.AddLevelHandler;
+import authoring.eventhandlers.AddObjectHandler;
 import authoring.eventhandlers.EditGameObjectHandler;
 import authoring.eventhandlers.GameObjectClickHandler;
 import authoring.eventhandlers.GameObjectDragHandler;
@@ -150,8 +151,7 @@ public class AuthoringController {
 		myGraphicsAdd.setButtonBehavior(new AddImageHandler(myModel
 				.getImages(), myGameLocation));
 		
-		myObjectsAdd.setButtonBehavior(new AddImageHandler(myModel
-				.getImages(), myGameLocation));
+		myObjectsAdd.setButtonBehavior(new AddObjectHandler());
 		
 		myLevels.setEventHandlers(new GameObjectClickHandler(myProperties),
 				new GameObjectDragHandler(myLevels, myModel.getLevels(),

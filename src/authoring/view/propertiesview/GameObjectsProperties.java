@@ -1,17 +1,16 @@
 package authoring.view.propertiesview;
 
 import java.io.File;
+import static authoring.view.levelview.SingleLevelView.OBJECT_X_OFFSET;
+import static authoring.view.levelview.SingleLevelView.OBJECT_Y_OFFSET;
 import java.util.HashMap;
 import java.util.Map;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import authoring.eventhandlers.GameHandler;
 import engine.gameObject.GameObject;
-import static authoring.view.levelview.SingleLevelView.OBJECT_X_OFFSET;
-import static authoring.view.levelview.SingleLevelView.OBJECT_Y_OFFSET;
 
 public class GameObjectsProperties extends Properties {
 
@@ -109,6 +108,22 @@ public class GameObjectsProperties extends Properties {
 		// remove g
 		// add edited
 		return edited;
+	}
+
+	public void setUpForNewObject() {
+		for (String s : textProperties.keySet()) {
+			PropertyTextField cleared = textProperties.get(s);
+			cleared.setString("");
+			textProperties.put(s, cleared);
+		}
+		this.getChildren().clear();
+		for (String s : textProperties.keySet()) {
+			this.getChildren().add(textProperties.get(s));
+		}
+		Button b = new Button("Create");
+		b.setOnAction(myHandler);
+		this.getChildren().add(b);
+
 	}
 
 	public void saveAsNew() {

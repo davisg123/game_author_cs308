@@ -18,4 +18,8 @@ public class PropertyTextField extends HBox{
 	public String getInformation(){
 		return myField.getText();
 	}
+	
+	public void setString(String s){
+		myField.setText(s);
+	}
 }

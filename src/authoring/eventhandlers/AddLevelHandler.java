@@ -60,7 +60,7 @@ public class AddLevelHandler implements GameHandler<Event> {
 	
 	private void promptLevelID(){
 		Stage dialog = new Stage();
-		dialog.initStyle(StageStyle.UTILITY);
+		dialog.initStyle(StageStyle.DECORATED);
 		Group root = new Group();
 		Text t = new Text(25, 25, "Level ID:");
 		TextField input = new TextField();
