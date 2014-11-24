@@ -6,6 +6,8 @@ import static authoring.view.levelview.SingleLevelView.OBJECT_Y_OFFSET;
 import java.util.HashMap;
 import java.util.Map;
 
+import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.HBox;
@@ -105,7 +107,7 @@ public class GameObjectsProperties extends Properties {
 		return edited;
 	}
 	
-	public void setUpForNewObject(){
+	public Button setUpForNewObject(){
 		for(String s: textProperties.keySet()){
 			PropertyTextField cleared = textProperties.get(s);
 			cleared.setString("");
@@ -116,9 +118,8 @@ public class GameObjectsProperties extends Properties {
 			this.getChildren().add(textProperties.get(s));
 		}
 		Button b = new Button("Create");
-		b.setOnAction(myHandler);
 		this.getChildren().add(b);
-		
+		return b;
 	}
 
 	public void saveAsNew() {
