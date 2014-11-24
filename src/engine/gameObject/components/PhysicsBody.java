@@ -161,7 +161,6 @@ public class PhysicsBody {
 	 * @Param - Game object to change things for
 	 */
 	public void updatePhysicalCharacteristics(GameObject sprite) {
-		System.out.println(myVelocity.getX());
 		doImpulses();
 		if (haveForcesChanged) {
 			balanceForces();

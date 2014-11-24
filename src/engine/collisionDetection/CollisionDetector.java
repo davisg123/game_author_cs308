@@ -38,6 +38,7 @@ public class CollisionDetector {
                     String uniqueCollisionIdentifier = innerGameObject.getID()+outerGameObject.getID();
                     if(outerGameObject.getRenderedNode().getBoundsInParent().intersects(innerGameObject.getRenderedNode().getBoundsInParent()) 
                             && !myCollisionMap.containsKey(uniqueCollisionIdentifier)){
+                    	outerGameObject.getPhysicsBody().handleCollision(outerGameObject, innerGameObject);
                         System.out.println("collision");
                         myCollisionMap.put(innerGameObject.getID()+outerGameObject.getID(), 1);
                         //call physics manager with collided nodes
