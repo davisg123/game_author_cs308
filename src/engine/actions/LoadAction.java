@@ -1,5 +1,6 @@
 package engine.actions;
 
+import authoring.model.GameData;
 import data.DataManager;
 import javafx.stage.FileChooser;
 import engine.GameManager;
@@ -12,8 +13,8 @@ public class LoadAction implements Action, Initializable{
 	
 	@Override
 	public void execute() {
-		DataWrapper wrapper = myDataManager.readProgressFile();
-		myGameManager.load(wrapper); 
+		GameData data = myDataManager.readGameFile("TestFile");
+		myGameManager.load(data); 
 	}
 
 	@Override

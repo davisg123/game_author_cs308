@@ -10,7 +10,7 @@ import gamePlayer.view.PlayerView;
 
 public class PlayerModel {
 
-	private DataWrapper myWrapper;
+	private GameData myGameData;
 	private DataManager myManager; 
 	private PlayerView myPlayerView;
 	private GameManager myGameManager; 
@@ -28,6 +28,10 @@ public class PlayerModel {
 //		myWrapper=myHandler.loadGameFile();
 //		myGameManager = new GameManager(myWrapper.getConditions(), myWrapper.getSprites(), myPlayerView.getGroup());
 //		myGameManager.initialize();
+		
+		myGameData = myManager.readGameFile("TestFile");
+		myGameManager = new GameManager(myGameData.getConditions(), myGameData.getGameObjects(), myGameData.getLevels(), myPlayerView.getGroup());
+		myGameManager.initialize();
 	}
 	
 	public void exitFromGame(){
@@ -41,6 +45,7 @@ public class PlayerModel {
 //		myWrapper = myHandler.getData();
 //		myGameManager = new GameManager(myWrapper.getConditions(), myWrapper.getSprites(), myPlayerView.getGroup());
 		//myGameManager.initialize();
+
 	}
 	
 	public void newGame(){
