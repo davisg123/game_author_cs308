@@ -2,6 +2,9 @@ package data;
 
 import engine.actions.Action;
 import engine.conditions.Condition;
+import engine.gameObject.GameObject;
+import engine.gameObject.components.Component;
+import engine.level.Level;
 import gamePlayer.model.DataWrapper;
 
 import java.io.BufferedReader;
@@ -10,6 +13,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+
+import authoring.model.GameData;
+import authoring.model.collections.GameObjectsCollection;
 
 import authoring.model.GameData;
 
@@ -19,8 +26,8 @@ import com.google.gson.GsonBuilder;
 public class DataManager {
 	
 	private GsonBuilder gson;
-	private static final String gameDatapath = "/data/games/";
-	private static final String progressDatapath = "/data/progress/";
+	private static final String gameDatapath = "src/data/games/";
+	private static final String progressDatapath = "src/data/progress/";
 	private static final String sampleDatapath = "src/data/sample/";
 	
 	public DataManager() {
@@ -42,21 +49,40 @@ public class DataManager {
 	 */
 	public static void main(String[]args) throws IOException {
 		DataManager manager = new DataManager();
-		SampleWrapper sw = new SampleWrapper();
-		System.out.println(sw);
-		boolean success = manager.writeSampleFile(sw, "sampleFour.json");
+		
+//		SampleWrapper writeSW = new SampleWrapper();
+//		System.out.println(writeSW);
+//		boolean success = manager.writeSampleFile(writeSW, "sampleThree.json");
+//		System.out.println("wrapper written: " + success);
+//		SampleWrapper readSW = manager.readSampleFile("sampleThree.json");
+//		System.out.println(readSW);
+		
+		GameData writeData = new GameData();
+		
+		//adding levels to GameData
+		String im = "/assets/mario.png";
+		GameObject mario = new GameObject("Mario");
+		GameObjectsCollection goc = new GameObjectsCollection();
+		goc.addGameObject(mario);
+		Level level = new Level(goc);
+		writeData.addLevel(level);
+		
+		
+		String nameOfFile = "gameDataTwo.json";
+		System.out.println(writeData);
+		boolean success = manager.writeGameFile(writeData, nameOfFile);
 		System.out.println("data written: " + success);
-		SampleWrapper readSW = manager.readSampleFile("sampleFour.json");
-		System.out.println(readSW);
+		GameData readData = manager.readGameFile(nameOfFile);
+		System.out.println(readData);
 	}
 	
-	public boolean writeSampleFile(SampleWrapper sw, String fileName) throws IOException {
-		return writeFile(sw, sampleDatapath, fileName);
-	}
-	
-	public SampleWrapper readSampleFile(String fileName) {
-		return (SampleWrapper)readFile(SampleWrapper.class, sampleDatapath, fileName);
-	}
+//	public boolean writeSampleFile(SampleWrapper sw, String fileName) throws IOException {
+//		return writeFile(sw, sampleDatapath, fileName);
+//	}
+//	
+//	public SampleWrapper readSampleFile(String fileName) {
+//		return (SampleWrapper)readFile(SampleWrapper.class, sampleDatapath, fileName);
+//	}
 	
 	/**
 	 * Creates a Json file based on an object representing a game.
