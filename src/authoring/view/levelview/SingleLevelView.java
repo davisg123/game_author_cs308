@@ -54,11 +54,12 @@ public class SingleLevelView extends Pane implements Observer {
 	 * @param l
 	 * @param handlers
 	 */
-	public SingleLevelView(double width, double height, Level l,
+	public SingleLevelView(File gameLoc, double width, double height, Level l,
 			GameHandler... handlers) {
 		this.setBackground(myDefaultBackground);
 		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
 		myEvents = handlers;
+		myGameLocation = gameLoc;
 		recreateLevel(l);
 
 	}
