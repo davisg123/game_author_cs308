@@ -2,6 +2,7 @@ package authoring.view;
 
 import java.io.File;
 import java.util.Locale;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import javafx.scene.control.Menu;
@@ -31,6 +32,7 @@ public class ProgramMenu extends MenuBar {
 	private double myWidth;
 	private double myHeight;
 	FileChooser myFileChooser;
+	Map ControllerMap;
 
 	public ProgramMenu(TabPane tab, Locale locale, double width, double height) {
 		myWidth = width;
@@ -38,7 +40,7 @@ public class ProgramMenu extends MenuBar {
 		myLocale = locale;
 		myTabs = tab;
 		myLanguage = ResourceBundle.getBundle(DEFAULT_RESOURCE, myLocale);
-
+//ControllerMap = new HashMap<>
 		myFileChooser = new FileChooser();
 		this.getMenus().add(FileMenu());
 
