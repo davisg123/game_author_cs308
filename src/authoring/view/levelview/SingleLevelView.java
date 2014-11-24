@@ -89,7 +89,9 @@ public class SingleLevelView extends Pane implements Observer {
 	private void addGameObjectToView(GameObject gameObject, double x, double y,
 			GameHandler... handler) {
 		GameObjectGraphic g = new GameObjectGraphic(gameObject, handler);
-		g.makeGraphic(myGameLocation);
+		
+		g.makeGraphic(myGameLocation, gameObject.getWidth(), gameObject.getHeight(), gameObject.getRotation());
+		
 		this.moveSpriteOnLevel(g, x, y);
 		this.getChildren().add(g);
 
