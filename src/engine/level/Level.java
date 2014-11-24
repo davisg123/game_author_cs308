@@ -35,7 +35,7 @@ public class Level {
 	/**
 	 * Reset method for the GameObjects
 	 */
-	public void reset() {
+	public void resetLevel() {
 		myWorkingGameObjects = myDefaultGameObjects;
 	}
 

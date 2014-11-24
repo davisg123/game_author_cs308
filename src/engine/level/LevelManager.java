@@ -1,7 +1,6 @@
 package engine.level;
 
 import java.util.Iterator;
-import java.util.List;
 
 import authoring.model.collections.ConditionsCollection;
 import authoring.model.collections.GameObjectsCollection;
@@ -9,7 +8,6 @@ import authoring.model.collections.LevelsCollection;
 import engine.collisionDetection.CollisionDetector;
 import engine.conditions.Condition;
 import engine.render.GameObjectRenderer;
-import engine.gameObject.GameObject;
 
 /**
  * Manages the Levels, and progression of the Game
@@ -114,29 +112,38 @@ public class LevelManager implements Iterable<Level> {
 	}
 
 	/**
-	 * Enable or disable conditions on myConditions
+	 * Iterate through all level's condition IDs and turn on the corresponding
+	 * condition from master list
 	 */
 	private void setLevelEnabledConditions() {
 		for (Iterator<String> conditionIDIterator = myCurrentLevel
 				.getConditionIDsIterator(); conditionIDIterator.hasNext();) {
 			String conditionID = conditionIDIterator.next();
-			
-			for (Iterator<Condition> conditionIterator = myConditions
-					.iterator(); conditionIterator.hasNext();) {
-				Condition condition = conditionIterator.next();
-				if (condition.getID() == conditionID)
-					condition.setEnabled(true);
-			}
+			enableCondition(conditionID);
 		}
 	}
-	
+
 	/**
-	 * Disable all conditions
+	 * Find condition in master list and enable it
+	 * @param conditionID
+	 */
+	private void enableCondition(String conditionID) {
+		for (Iterator<Condition> conditionIterator = myConditions.iterator(); conditionIterator
+				.hasNext();) {
+			Condition condition = conditionIterator.next();
+			if (condition.getID() == conditionID)
+				condition.setEnabled(true);
+		}
+	}
+
+	/**
+	 * Disable all conditions before enabling the correct ones
 	 */
 	private void disableAllConditions() {
-		for(Iterator<Condition> conditionIterator = myConditions.iterator(); conditionIterator.hasNext();) {
+		for (Iterator<Condition> conditionIterator = myConditions.iterator(); conditionIterator
+				.hasNext();) {
 			conditionIterator.next().setEnabled(false);
 		}
 	}
-	
+
 }
