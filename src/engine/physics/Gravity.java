@@ -1,21 +1,34 @@
 package engine.physics;
 
+/**
+ * gravity force object
+ * 
+ * @author Ben
+ *
+ */
 public class Gravity extends Force {
 	private static final double GRAVITY_ACCELERATION = 9.8;
-	private double mass;
-	private double gravityConstant;
 
-	public Gravity(double x, double y, double mass, double gravityConstant) {
-		super();
-		this.mass = mass;
-		this.gravityConstant = gravityConstant;
-		constructionHelper(x*myForceValue, y*myForceValue);
+	public Gravity(double x, double y, Scalar... scalar) {
+		super(scalar);
+		constructionHelper(x * myForceValue, y * myForceValue);
 	}
 
+	/**
+	 * calculates gravitational force
+	 */
 	@Override
-	protected double calculateForce() {
-		return mass * gravityConstant * GRAVITY_ACCELERATION;
+	protected void calculateForce() {
+		myForceValue = myValues.get("Mass") * myValues.get("GravityConstant")
+				* GRAVITY_ACCELERATION;
 	}
-	
-	//write something that switches/negates gravity
+
+	protected void setDefaultValues() {
+		if (myValues.get("Mass") == null) {
+			myValues.put("Mass", 1.0);
+		}
+		if (myValues.get("GravityConstant") == null) {
+			myValues.put("GravityConstant", 1.0);
+		}
+	}
 }

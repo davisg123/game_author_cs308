@@ -12,8 +12,6 @@ public class Main extends Application{
 	public void start(Stage primaryStage) throws Exception {
 		SplashScreen screen = new SplashScreen();
 		screen.show();
-		System.out.println(System.getProperty("user.dir"));
-
 	}
 	
 	

@@ -1,5 +1,6 @@
 package authoring.view;
 
+import java.io.File;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -8,6 +9,8 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import authoring.controller.AuthoringController;
 import authoring.model.AuthoringModel;
 
@@ -27,6 +30,7 @@ public class ProgramMenu extends MenuBar {
 	TabPane myTabs;
 	private double myWidth;
 	private double myHeight;
+	FileChooser myFileChooser;
 
 	public ProgramMenu(TabPane tab, Locale locale, double width, double height) {
 		myWidth = width;
@@ -34,8 +38,9 @@ public class ProgramMenu extends MenuBar {
 		myLocale = locale;
 		myTabs = tab;
 		myLanguage = ResourceBundle.getBundle(DEFAULT_RESOURCE, myLocale);
+
+		myFileChooser = new FileChooser();
 		this.getMenus().add(FileMenu());
-		addNew();
 
 	}
 
@@ -72,13 +77,27 @@ public class ProgramMenu extends MenuBar {
 	 */
 
 	private void addNew() {
-		Tab tab = new Tab(myLanguage.getString("Program"));
-		AuthoringView newView = new AuthoringView(myLanguage, myWidth, myHeight);
-		AuthoringModel newModel = new AuthoringModel();
-		AuthoringController newController = new AuthoringController(newView,
-				newModel, myWidth, myHeight, myLanguage);
-		tab.setContent(newView);
-		myTabs.getTabs().add(tab);
-		myTabs.getSelectionModel().select(tab);
+
+		File gameFile = myFileChooser.showSaveDialog(new Stage());
+		if (gameFile != null) {
+			makeFolders(gameFile);
+			Tab tab = new Tab(gameFile.getName());
+			AuthoringView newView = new AuthoringView(myWidth, myHeight);
+			AuthoringModel newModel = new AuthoringModel();
+			AuthoringController newController = new AuthoringController(
+					newView, newModel, myWidth, myHeight, myLanguage, gameFile);
+			tab.setContent(newView);
+			myTabs.getTabs().add(tab);
+			myTabs.getSelectionModel().select(tab);
+		}
+	}
+
+	private void makeFolders(File gameFile) {
+		gameFile.mkdir();
+		File imageFolder = new File(gameFile.getPath() + "/images");
+		imageFolder.mkdir();
+		File soundFolder = new File(gameFile.getPath() + "/sounds");
+		soundFolder.mkdir();
+
 	}
 }

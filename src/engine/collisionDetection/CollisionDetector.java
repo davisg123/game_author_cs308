@@ -3,6 +3,7 @@ package engine.collisionDetection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import authoring.model.collections.GameObjectsCollection;
 import engine.gameObject.GameObject;
 import javafx.scene.Node;
 
@@ -23,24 +24,24 @@ public class CollisionDetector {
     /**
      * Checks whether any of the GameObjects have collided, and calls the GameObjects
      * to handle the collisions.
+     * A list is needed here vs. an iterator because of the double loop
      * @param enabledNodes
      */
-    public void checkCollisions (Iterator<GameObject> enabledGameObjects) {
+    public void checkCollisions (GameObjectsCollection enabledGameObjects) {
         myCollisionMap.clear();
-        for(Iterator<GameObject> outerIter = enabledGameObjects; outerIter.hasNext();) {
-            GameObject outerGameObject = outerIter.next();
-            for(Iterator<GameObject> innerIter = enabledGameObjects; innerIter.hasNext();) {
-                GameObject innerGameObject = innerIter.next();
+        for(GameObject innerGameObject : enabledGameObjects) {
+            for(GameObject outerGameObject : enabledGameObjects) {
                 //Update the equals method, implement comparable
                 if(!outerGameObject.getID().equals(innerGameObject.getID())) {
                     //Do intersect sequence
                     //make sure the opposite collision hasn't already happened (a with b == b with a)
                     String uniqueCollisionIdentifier = innerGameObject.getID()+outerGameObject.getID();
-                    if(outerGameObject.getRenderedNode().intersects(innerGameObject.getRenderedNode().getCollisionBody().getBoundsInLocal()) 
-                            && !myCollisionMap.containsKey(uniqueCollisionIdentifier)){
-                        myCollisionMap.put(innerGameObject.getID()+outerGameObject.getID(), 1);
-                        //call physics manager with collided nodes
-                        
+                    String reverseCollisionIdentifier = outerGameObject.getID()+innerGameObject.getID();
+                    boolean isDuplicate = myCollisionMap.containsKey(uniqueCollisionIdentifier) || myCollisionMap.containsKey(reverseCollisionIdentifier);
+                    if(outerGameObject.getRenderedNode().getBoundsInParent().intersects(innerGameObject.getRenderedNode().getBoundsInParent()) 
+                            && !isDuplicate){
+                    	outerGameObject.getPhysicsBody().handleCollision(outerGameObject, innerGameObject);
+                        myCollisionMap.put(uniqueCollisionIdentifier, 1);
                     }
                 }
             }

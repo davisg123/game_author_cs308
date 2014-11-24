@@ -1,21 +1,38 @@
 package authoring.controller;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.control.TabPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
-import authoring.eventhandlers.GraphicsEventHandler;
+import authoring.eventhandlers.AddImageHandler;
+import authoring.eventhandlers.AddLevelHandler;
+import authoring.eventhandlers.EditGameObjectHandler;
+import authoring.eventhandlers.GameObjectClickHandler;
+import authoring.eventhandlers.GameObjectDragHandler;
+import authoring.eventhandlers.GameObjectDragToLevelHandler;
+import authoring.eventhandlers.ImagesClickHandler;
+import authoring.eventhandlers.LevelToViewHandler;
 import authoring.model.AuthoringModel;
 import authoring.view.AuthoringView;
-import authoring.view.baseclasses.AccordianView;
-import authoring.view.graphicsview.GraphicsView;
+import authoring.view.baseclasses.AccordionContainer;
+import authoring.view.baseclasses.BPContainer;
+import authoring.view.gameobjectsview.GameObjectsView;
+import authoring.view.graphicsview.GraphicsTools;
+import authoring.view.graphicsview.ImagesView;
+import authoring.view.levelview.LevelsAccordionView;
+import authoring.view.levelview.LevelOptions;
 import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
 import authoring.view.soundsview.SoundsView;
-import authoring.view.spritesview.GameObjectsView;
 import engine.actions.Action;
 import engine.conditions.Condition;
+import engine.gameObject.GameObject;
+import engine.gameObject.components.Component;
 
 /**
  * Controller class that interacts between model and view. Holds and constructs
@@ -29,6 +46,10 @@ import engine.conditions.Condition;
  *
  */
 public class AuthoringController {
+	private static final double LEFT_ACCORDION_HEIGHT_RATIO = .74;
+	private static final double LEFT_ACCORDION_WIDTH_RATIO = .2;
+	private static final double CENTER_HEIGHT_RATIO = .92;
+	private static final double CENTER_WIDTH_RATIO = .6;
 	private AuthoringView myView;
 	private AuthoringModel myModel;
 	private ResourceBundle myLanguage;
@@ -40,18 +61,26 @@ public class AuthoringController {
 	 * back-end; Levels, Sprites, Graphics, Sounds
 	 */
 	private LevelsView myLevels;
+	private LevelOptions myLevelOptions;
+
 	private GameObjectsView myGameObjects;
-	private GraphicsView myGraphics;
+
+	private ImagesView myGraphics;
+	private GraphicsTools myGraphicsTools;
+
 	private SoundsView mySounds;
 	private PropertiesView myProperties;
+	private LevelsAccordionView myLevelsAccordionView;
+	private File myGameLocation;
 
 	public AuthoringController(AuthoringView view, AuthoringModel model,
-			double width, double height, ResourceBundle language) {
+			double width, double height, ResourceBundle language, File gameLoc) {
 		myView = view;
 		myModel = model;
 		myWidth = width;
 		myHeight = height;
 		myLanguage = language;
+		myGameLocation = gameLoc;
 		initializeView();
 
 	}
@@ -63,10 +92,23 @@ public class AuthoringController {
 
 	private void initializeView() {
 		initializeViewComponents();
-		myView.setCenter(myLevels);
+		myView.setCenter(intitializeCenter());
 		myView.setLeft(initializeLeft());
 		myView.setRight(initializeRight());
+		initializeGameHandlers();
 
+		// Some hard-coded images used to test events and observable/observer
+		// interactions
+		String im = "/assets/mario.png";
+		String im2 = "/assets/Luigi.jpg";
+
+		myModel.getImages().addObserver(myGraphics);
+		myModel.getGameObjectCollection().addObserver(myGameObjects);
+		GameObject test = new GameObject(new ArrayList<Component>(), im, 0, 0,
+				0, 0, 0, "Mario");
+		myModel.getGameObjectCollection().addGameObject(test);
+
+		myModel.getLevels().addObserver(myLevelsAccordionView);
 	}
 
 	/**
@@ -76,13 +118,38 @@ public class AuthoringController {
 	 */
 
 	private void initializeViewComponents() {
-		myLevels = new LevelsView(myLanguage, myWidth, myHeight);
-		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
 		myProperties = new PropertiesView(myLanguage, myWidth, myHeight);
-		myGraphics = new GraphicsView(myLanguage, myWidth, myHeight,
-				new GraphicsEventHandler(myProperties, myLevels));
-		myGameObjects = new GameObjectsView(myLanguage, myWidth, myHeight,
-				new GraphicsEventHandler(myProperties, myLevels));
+		myLevels = new LevelsView(myLanguage, myWidth, myHeight);
+		myLevelOptions = new LevelOptions(myLanguage, myWidth, myHeight);
+		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
+
+		myGraphics = new ImagesView(myLanguage, myWidth, myHeight,
+				myGameLocation);
+		myGraphicsTools = new GraphicsTools(myLanguage, myWidth, myHeight);
+
+		myGameObjects = new GameObjectsView(myLanguage, myWidth, myHeight);
+		myLevelsAccordionView = new LevelsAccordionView(myLanguage, myWidth,
+				myHeight);
+
+	}
+
+	private void initializeGameHandlers() {
+		myGraphics.setEvents(new ImagesClickHandler(myProperties));
+		myGameObjects
+				.setEvents(
+						new GameObjectClickHandler(myProperties),
+						new GameObjectDragToLevelHandler(myLevels, myModel
+								.getLevels()));
+		myLevelOptions.setButtonBehavior(new AddLevelHandler(myModel
+				.getLevels(), myLevels));
+		myGraphicsTools.setButtonBehavior(new AddImageHandler(myModel
+				.getImages(), myGameLocation));
+		myLevels.setEventHandlers(new GameObjectClickHandler(myProperties),
+				new GameObjectDragHandler(myLevels, myModel.getLevels(), myProperties));
+		myLevelsAccordionView.setEvents(new LevelToViewHandler(myLevels));
+		myLevelsAccordionView.setLevelEvents(new GameObjectClickHandler(myProperties),
+				new GameObjectDragHandler(myLevels, myModel.getLevels(), myProperties));
+		myProperties.setEditButtonBehavior(new EditGameObjectHandler(myLevels , myModel.getLevels(), myProperties));
 
 	}
 
@@ -91,29 +158,34 @@ public class AuthoringController {
 	 * 
 	 * @return AccordianView a node.
 	 */
+	private BorderPane intitializeCenter() {
+		BPContainer center = new BPContainer(myWidth * CENTER_WIDTH_RATIO,
+				myHeight * CENTER_HEIGHT_RATIO);
+		center.setTop(myLevelOptions);
+		center.setCenter(myLevels);
+		return center;
 
-	private AccordianView initializeLeft() {
-		AccordianView leftView = new AccordianView(myWidth, myHeight);
+	}
 
-		// Some hard-coded images used to test events and observable/observer
-		// interactions
-		String im = "mario.png";
-		String im2 = "Luigi.jpg";
+	private AccordionContainer initializeLeft() {
+		AccordionContainer leftView = new AccordionContainer(myWidth, myHeight);
 
-		myModel.getImages().addObserver(myGraphics);
-		myModel.getGameObjectCollection().addObserver(myGameObjects);
+		BPContainer graphicsBP = new BPContainer(myWidth
+				* LEFT_ACCORDION_WIDTH_RATIO, myHeight
+				* LEFT_ACCORDION_HEIGHT_RATIO);
+		graphicsBP.setTop(myGraphicsTools);
+		graphicsBP.setCenter(myGraphics);
 
-		myModel.getImages().addImage(im);
-		myModel.getImages().addImage(im2);
-
-		TitledPane graphics = new TitledPane(myLanguage.getString("Graphics"),
-				myGraphics);
+		TitledPane graphics = new TitledPane(myLanguage.getString("Images"),
+				graphicsBP);
 		TitledPane sounds = new TitledPane(myLanguage.getString("Sounds"),
 				mySounds);
-		TitledPane sprites = new TitledPane(myLanguage.getString("Sprites"),
-				myGameObjects);
+		TitledPane gameObjects = new TitledPane(
+				myLanguage.getString("GameObjects"), myGameObjects);
+		TitledPane levels = new TitledPane(myLanguage.getString("Levels"),
+				myLevelsAccordionView);
 
-		leftView.getPanes().addAll(graphics, sounds, sprites);
+		leftView.getPanes().addAll(graphics, sounds, gameObjects, levels);
 		BorderPane.setAlignment(leftView, Pos.TOP_RIGHT);
 
 		return leftView;

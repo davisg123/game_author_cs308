@@ -9,14 +9,14 @@ import engine.gameObject.GameObject;
  * 
  * @author Davis
  * 
- * actions caused by collisions of two nodes
+ * conditions caused by collisions of two nodes
  *
  */
 
 public class CollisionCondition extends MovementCondition {
 
-    public CollisionCondition (List<Action> myActions, List<GameObject> myGameObjects) {
-        super(myActions, myGameObjects);
+    public CollisionCondition (List<Action> myActions, List<GameObject> myGameObjects, String identifier) {
+        super(myActions, myGameObjects, identifier);
     }
 
     @Override

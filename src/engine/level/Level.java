@@ -1,96 +1,101 @@
 package engine.level;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import engine.collisionDetection.CollisionDetector;
-import engine.conditions.Condition;
-import engine.gameObject.IEnabled;
+import java.util.Observable;
+import authoring.model.collections.ConditionIDsCollection;
+import authoring.model.collections.GameObjectsCollection;
 import engine.gameObject.GameObject;
-import engine.render.GameObjectRenderer;
 
 /**
- * A Level of the game. Contains all GameObjects and Actions and coordinates their interactions
- * for linear progression through the game.
+ * A Level of the game. Contains all GameObjects and Actions and coordinates
+ * their interactions for linear progression through the game.
+ * 
  * @author Will Chang
- *
+ * @author Abhishek Balakrishnan
  */
 
-public class Level {
+public class Level extends Observable {
 
-    private List<GameObject> myGameObjects;
-    //private List<Condition> myConditions;
-    private Map<String, Boolean> myEnabledGameObjects;
-    private Map<String, Boolean> myEnabledConditions;
-    private GameObjectRenderer myRenderer;
-    private CollisionDetector myDetector;
+	private String myLevelID;
+	private GameObjectsCollection myDefaultGameObjects;
+	private GameObjectsCollection myWorkingGameObjects;
+	private ConditionIDsCollection myConditionIDs;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param Game
+	 *            Objects Collection
+	 */
+	public Level(GameObjectsCollection gameObjects) {
+		myDefaultGameObjects = gameObjects;
+		myWorkingGameObjects = gameObjects;
+	}
 
-    /**
-     * Constructor 
-     * @param EnabledGameObjectsMap
-     * @param EnabledActionsMap
-     */
-    public Level(Map<String, Boolean> enabledGameObjects, Map<String, Boolean> enabledConditions) {
-        myEnabledGameObjects = enabledGameObjects;
-        myEnabledConditions = enabledConditions;
-    }
+	/**
+	 * Reset method for the GameObjects
+	 */
+	public void resetLevel() {
+		myWorkingGameObjects = myDefaultGameObjects;
+	}
 
-    /**
-     * Updates all GameObjects.
-     */
-    public void update() {
-        for(GameObject sprite : myGameObjects) {
-            sprite.update();
-        }
-    }
-    
-    /**
-     * Enables and initializes the Game Objects specified in this Level
-     * 
-     * @param sprites
-     */
-    public void setEnabledGameObjects(List<GameObject> sprites) {
-       for(GameObject sprite : sprites) {
-           if(myEnabledGameObjects.get(sprite.getID())) {
-               //sprite.enable(); ??
-               //copy of???
-               //Initialize the sprite to location???
-               myGameObjects.add(sprite);
-           }
-       }
-    }
-/*
-    public void setEnabled(String type, List<IEnabled> enabledObjects) {
-        
-        for(IEnabled enabledObject : enabledObjects) {
-            if(myEnabledGameObjects.get(sprite.getID())
-        }
-    }*/
-    
-    /**
-     * Enables the Conditions specified in this Level
-     * @param conditions
-     */
-    public void setEnabledConditions(List<Condition> conditions) {
-        for(Condition condition : conditions) {
-            //if(myEnabledConditions.get(condition.getID()) {
-                //TODO have Conditions Implement IEnabled
-              //  condition.enable();
-            //}
-        }
-    }
+	/**
+	 * Updates all GameObjects.
+	 */
+	public void update() {
+		for (GameObject sprite : myWorkingGameObjects) {
+			sprite.update();
+		}
+	}
 
-    /**
-     * Iterator for the List of enabled Game Objects in the Level
-     * @return
-     */
-    public Iterator<GameObject> getGameObjects () {
-        return myGameObjects.iterator();
-    }
-    
-    /*public Iterator<Condition> getConditions () {
-        return myConditions.iterator();
-    }*/
+	public void setLevelID(String ID) {
+		myLevelID = ID;
+	}
+
+	public String getLevelID() {
+		return myLevelID;
+	}
+
+	/**
+	 * SET INITIAL VALUES FOR THE MAIN CHARACTER
+	 */
+	public void updateMainCharacter() {
+
+	}
+
+	/**
+	 * @return Iterator for GameObjectCollection
+	 */
+	public Iterator<GameObject> getGameObjectIterator() {
+		return myWorkingGameObjects.iterator();
+	}
+
+	/**
+	 * @return Iterator for the ConditionIDsCollection
+	 */
+	public Iterator<String> getConditionIDsIterator() {
+		return myConditionIDs.iterator();
+	}
+
+	public void addGameObject(GameObject gameObject) {
+		myGameObjects.add(gameObject);
+		setChanged();
+		notifyObservers(this);
+	}
+	public boolean removeGameObject(GameObject g){
+		boolean ret = myGameObjects.remove(g);
+		setChanged();
+		notifyObservers(this);
+		return ret;
+	}
+
+	public GameObjectsCollection getGameObjectsCollection() {
+		return myGameObjects;
+	}
+
+	/*
+	 * public Iterator<Condition> getConditions() { return
+	 * myConditions.iterator(); }
+	 */
+
 }

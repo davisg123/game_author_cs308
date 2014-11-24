@@ -1,12 +1,17 @@
 package authoring.view.graphicsview;
 
-import javafx.event.EventHandler;
-import javafx.event.EventType;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
+import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import authoring.eventhandlers.GameHandler;
 
 /**
  * Represents an image, but does not instantiate JavaFX object so that the
@@ -20,17 +25,14 @@ import javafx.scene.text.Text;
  */
 public class Graphic extends VBox {
 
-	private String myName;
-	private EventHandler<MouseEvent> myOnClick;
+	protected String myName;
+	protected GameHandler[] myOnClick;
 	private boolean myIsVisible = true;
 
-	public boolean getVisible() {
-		return myIsVisible;
-	}
-
-	public Graphic(String s, EventHandler<MouseEvent> event) {
+	public Graphic(String s, GameHandler... event) {
 		myName = s;
 		myOnClick = event;
+
 	}
 
 	/**
@@ -40,20 +42,43 @@ public class Graphic extends VBox {
 	 * 
 	 * @param event
 	 */
-	public void makeGraphic(EventType<MouseEvent> event) {
+	public void makeGraphic() {
 		Image image = new Image(getClass().getResourceAsStream(myName));
 		ImageView imageView = new ImageView(image);
-		imageView.setFitHeight(70);
-		imageView.setFitWidth(70);
+		imageView.setPreserveRatio(true);
+		imageView.setFitWidth(50);
 		this.getChildren().add(imageView);
 		this.getChildren().add(new Text(myName));
+		for (GameHandler g : myOnClick) {
+			this.addEventFilter(g.getEventType(), g);
+		}
+	}
 
-		this.addEventFilter(event, myOnClick);
-
+	public void makeGraphic(File gameLoc) {
+		File file = new File(gameLoc.getPath() + "/images/" + myName);
+		BufferedImage bufferedImage;
+		try {
+			bufferedImage = ImageIO.read(file);
+			Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+			ImageView imageView = new ImageView(image);
+			imageView.setPreserveRatio(true);
+			imageView.setFitWidth(70);
+			this.getChildren().add(imageView);
+			this.getChildren().add(new Text(myName));
+			for (GameHandler g : myOnClick) {
+				this.addEventFilter(g.getEventType(), g);
+			}
+		} catch (IOException e) {
+			System.out.println("Bad File");
+		}
 	}
 
 	public String getName() {
 		return myName;
+	}
+
+	public boolean getVisible() {
+		return myIsVisible;
 	}
 
 }

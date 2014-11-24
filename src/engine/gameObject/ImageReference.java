@@ -42,7 +42,7 @@ public class ImageReference extends Component {
     }
 
     @Override
-    public void update () {
+    public void update (GameObject object) {
         // TODO Auto-generated method stub
         
     }
@@ -53,6 +53,12 @@ public class ImageReference extends Component {
     
     public String getCurrentImage () {
         return myCurrentImage;
+    }
+
+    @Override
+    public String getID () {
+        // TODO Auto-generated method stub
+        return null;
     }
 
 }

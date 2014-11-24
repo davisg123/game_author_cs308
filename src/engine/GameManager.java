@@ -1,49 +1,61 @@
 package engine;
-import java.util.ArrayList;
-import java.util.List;
+import authoring.model.collections.ConditionsCollection;
+import authoring.model.collections.GameObjectsCollection;
+import authoring.model.collections.LevelsCollection;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.geometry.Point2D;
 import javafx.scene.Group;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import engine.conditions.*;
 import engine.render.GameObjectRenderer;
+import engine.conditions.ButtonConditionManager;
 import engine.gameObject.*;
+import engine.level.LevelManager;
+import gamePlayer.model.DataWrapper;
 
 /**
+ * central game manager responsible for holding game data, setting the timeline speed
+ * and processing each game frame
  * 
  * @author Davis
  *
  */
 
 public class GameManager {
-    private List<Condition> myGameConditions;
-    private List<GameObject> myGameObjects;
+    private ConditionsCollection myGameConditions;
+    private GameObjectsCollection myGameObjects;
     private GameObjectRenderer myGameObjectRenderer;
     private Group myRootGroup;
     private Timeline myAnimation;
-    private Stage myStage;
+    private LevelManager myLevelManager;
+    private LevelsCollection myLevels;
     private static final double DEFAULT_SPEED = 60.0;
     
     
-    public GameManager (List<Condition> myGameConditions, List<GameObject> myGameGameObjects, Group myRootGroup) {
+    public GameManager (ConditionsCollection myGameConditions, GameObjectsCollection myGameObjects, LevelsCollection myLevels, Group myRootGroup) {
         super();
         this.myGameConditions = myGameConditions;
-        this.myGameObjects = myGameGameObjects;
+        this.myGameObjects = myGameObjects;
         this.myRootGroup = myRootGroup;
+        this.myLevels = myLevels;
+        this.myGameObjectRenderer = new GameObjectRenderer(myRootGroup);
+        createLevelManager();
     }
     
+    /**
+     * initialize the game
+     */
     public void initialize(){
         addFramesToGroup();
         setGameSpeed(DEFAULT_SPEED,true);
     }
     
+    /**
+     * remove and cleanup the existing game
+     */
     public void clear(){
         myAnimation.stop();
         //other cleanup
@@ -79,6 +91,9 @@ public class GameManager {
        }
    }
    
+   /**
+    * toggle the play/pause state of the game timeline
+    */
    public void togglePause(){
        if (myAnimation.getStatus() == Animation.Status.RUNNING){
            myAnimation.pause();
@@ -99,15 +114,27 @@ public class GameManager {
    };
 
     /**
-     * run updates on every sprite and every condition
+     * run updates on the level
      */
     public void processFrame(){
-        updateFrameBasedConditions();
+        myLevelManager.update();
     }
     
-    private void updateFrameBasedConditions(){
-        for (Condition s : myGameConditions){
-            s.frameElapsed();
-        }
+    private void createLevelManager(){
+        myLevelManager = new LevelManager(myLevels,myGameObjects,myGameConditions,myGameObjectRenderer);
+    }
+    
+    public void load(DataWrapper wrapper){
+    	myLevels=wrapper.getLevels();
+    	myGameConditions=wrapper.getConditions();
+    	myGameObjects=wrapper.getGameObjects();
+    }
+    
+    public DataWrapper getDataWrapper(){
+    	return new DataWrapper(myLevels, myGameObjects, myGameConditions);
+    }
+    
+    public LevelManager getLevelManager(){
+    	return myLevelManager; 
     }
 }

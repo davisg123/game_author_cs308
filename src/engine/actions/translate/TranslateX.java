@@ -1,4 +1,4 @@
-package engine.actions;
+package engine.actions.translate;
 
 import engine.gameObject.GameObject;
 
@@ -8,9 +8,9 @@ import engine.gameObject.GameObject;
  *
  */
 
-public class TransformX extends TransformAction {
+public class TranslateX extends TranslateAction {
 
-    public TransformX (GameObject sprite, double value) {
+    public TranslateX (GameObject sprite, double value) {
         super(sprite, value);
     }
 
