@@ -9,6 +9,9 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import authoring.eventhandlers.GameHandler;
 import engine.gameObject.GameObject;
+import static authoring.view.levelview.SingleLevelView.OBJECT_X_OFFSET;
+import static authoring.view.levelview.SingleLevelView.OBJECT_Y_OFFSET;
+
 
 public class GameObjectsProperties extends Properties {
 
@@ -49,11 +52,11 @@ public class GameObjectsProperties extends Properties {
 		textProperties
 				.put("x",
 						new PropertyTextField("X: ", Double.toString(gameObject
-								.getX())));
+								.getX() + OBJECT_X_OFFSET)));
 		textProperties
 				.put("y",
 						new PropertyTextField("Y: ", Double.toString(gameObject
-								.getY())));
+								.getY() + OBJECT_Y_OFFSET)));
 		textProperties.put("rotation", new PropertyTextField("Rotation: ",
 				Double.toString(gameObject.getRotation())));
 
@@ -86,12 +89,10 @@ public class GameObjectsProperties extends Properties {
 		// double x, double y, double height, double width, double rotation,
 		// String iD)
 
-		
-		
 		GameObject edited = new GameObject(g.getComponents(), textProperties
 				.get("image").getInformation(),
-				Double.parseDouble(textProperties.get("x").getInformation()),
-				Double.parseDouble(textProperties.get("y").getInformation()),
+				Double.parseDouble(textProperties.get("x").getInformation()) - OBJECT_X_OFFSET,
+				Double.parseDouble(textProperties.get("y").getInformation()) - OBJECT_Y_OFFSET,
 				Double.parseDouble(textProperties.get("height")
 						.getInformation()), Double.parseDouble(textProperties
 						.get("width").getInformation()),

@@ -8,6 +8,10 @@ import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
 import engine.gameObject.GameObject;
 import engine.level.Level;
+import static authoring.view.levelview.SingleLevelView.OBJECT_X_OFFSET;
+import static authoring.view.levelview.SingleLevelView.OBJECT_Y_OFFSET;
+
+
 
 /**
  * Event handler for dragging graphics on the level view. Fills properties view
@@ -41,13 +45,23 @@ public class GameObjectDragHandler implements GameHandler<MouseEvent> {
 			if (level.getLevelID().equals(id)) {
 				GameObject go = g.getGameObject();
 				level.removeGameObject(go);
-				if(!myLevelView.contains(x-230, y-100))
-				{
+				
+				double dragX = x + OBJECT_X_OFFSET;
+				double dragY = y + OBJECT_Y_OFFSET;
+				
+				if(dragX < 0){
+					dragX = 0;
+				}
+				if(dragX > myLevelView.getWidth()){
+					dragX = myLevelView.getWidth();
+				}
+				
+				
+				if(!myLevelView.contains(x + OBJECT_X_OFFSET, y + OBJECT_Y_OFFSET)){
 					go.setX(230);
 					go.setY(100);
 				}
-				else
-				{
+				else{
 					go.setX(x);
 					go.setY(y);
 				}

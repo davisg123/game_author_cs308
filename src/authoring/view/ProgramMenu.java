@@ -55,7 +55,7 @@ public class ProgramMenu extends MenuBar {
 	 */
 	private Menu FileMenu() {
 		Menu FileMenu = new Menu(myLanguage.getString("File"));
-		FileMenu.getItems().add(newFile());
+		FileMenu.getItems().addAll(newFile(), saveFile());
 		return FileMenu;
 	}
 
@@ -73,7 +73,14 @@ public class ProgramMenu extends MenuBar {
 		return newFile;
 
 	}
+	
+	private MenuItem saveFile(){
+		MenuItem saveFile = new MenuItem(myLanguage.getString("Save"));
+		//saveFile.setOnAction();
+		return saveFile;
+	}
 
+	
 	/**
 	 * Method for adding a new tab.
 	 */
