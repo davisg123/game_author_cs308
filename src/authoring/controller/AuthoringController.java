@@ -145,7 +145,7 @@ public class AuthoringController {
 				.setEvents(
 						new GameObjectClickHandler(myProperties),
 						new GameObjectDragToLevelHandler(myLevels, myModel
-								.getLevels()));
+								.getLevels(), myProperties));
 		myLevelOptions.setButtonBehavior(new AddLevelHandler(myModel
 				.getLevels(), myLevels));
 		myGraphicsAdd.setButtonBehavior(new AddImageHandler(myModel

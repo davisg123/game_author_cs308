@@ -1,18 +1,19 @@
 package authoring.view.propertiesview;
 
-import java.io.File;
 import static authoring.view.levelview.SingleLevelView.OBJECT_X_OFFSET;
 import static authoring.view.levelview.SingleLevelView.OBJECT_Y_OFFSET;
+
 import java.util.HashMap;
 import java.util.Map;
 
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.HBox;
 import authoring.eventhandlers.GameHandler;
 import engine.gameObject.GameObject;
+import engine.gameObject.components.PhysicsBody;
+import engine.physics.CollisionConstant;
+import engine.physics.Vector;
 
 public class GameObjectsProperties extends Properties {
 
@@ -45,11 +46,11 @@ public class GameObjectsProperties extends Properties {
 		textProperties.put(
 				"width",
 				new PropertyTextField("Width: ", Double.toString(gameObject
-						.getWidth())));
+						.getCollisionWidth())));
 		textProperties.put(
 				"height",
 				new PropertyTextField("Height: ", Double.toString(gameObject
-						.getHeight())));
+						.getCollisionHeight())));
 		textProperties.put(
 				"x",
 				new PropertyTextField("X: ", Double.toString(gameObject.getX()
@@ -60,20 +61,31 @@ public class GameObjectsProperties extends Properties {
 						+ OBJECT_Y_OFFSET)));
 		textProperties.put("rotation", new PropertyTextField("Rotation: ",
 				Double.toString(gameObject.getRotation())));
+		
+		textProperties.put("collision", new PropertyTextField("Collision Constant", "0"));
+		textProperties.put("initXV", new PropertyTextField("Initial X Velocity", "0"));
+		textProperties.put("initYV", new PropertyTextField("Initial Y Velocity", "0"));
+		
 
 		for (String s : textProperties.keySet()) {
 			this.getChildren().add(textProperties.get(s));
 		}
 
 		HBox visibilityField = new HBox();
-		CheckBox cb = new CheckBox("Enabled");
-		cb.setSelected(gameObject.isEnabled());
-		visibilityField.getChildren().add(cb);
+		CheckBox cbVisibility = new CheckBox("Enabled");
+		cbVisibility.setSelected(gameObject.isEnabled());
+		visibilityField.getChildren().add(cbVisibility);
 		this.getChildren().add(visibilityField);
-		booleanProperties.put("enabled", cb);
+		booleanProperties.put("enabled", cbVisibility);
+
+		HBox physicsBody = new HBox();
+		CheckBox cbPhysics = new CheckBox("Physics Body");
+		cbPhysics.setSelected(gameObject.getPhysicsBody() != null);
+		physicsBody.getChildren().add(cbPhysics);
+		this.getChildren().add(physicsBody);
+		booleanProperties.put("has physics", cbPhysics);
 
 		Button editButton = new Button("Edit");
-		// System.out.println(myHandler);
 		editButton.setOnAction(myHandler);
 		this.getChildren().add(editButton);
 
@@ -85,10 +97,6 @@ public class GameObjectsProperties extends Properties {
 
 	public GameObject edit(GameObject g) {
 
-		// public GameObject (List<Component> components, String imageName,
-		// SoundReference sounds,
-		// double x, double y, double height, double width, double rotation,
-		// String iD)
 		GameObject edited = new GameObject(g.getComponents(), textProperties
 				.get("image").getInformation(),
 				Double.parseDouble(textProperties.get("x").getInformation())
@@ -101,8 +109,25 @@ public class GameObjectsProperties extends Properties {
 						.getInformation()), textProperties.get("name")
 						.getInformation());
 
-		// remove g
-		// add edited
+		System.out.println(booleanProperties.get("has physics"));
+		
+		
+		if (booleanProperties.get("has physics").isSelected()) {
+			
+			System.out.println("HAS PHYSICS");
+			
+			PhysicsBody pb = new PhysicsBody(Double.parseDouble(textProperties
+					.get("height").getInformation()),
+					Double.parseDouble(textProperties.get("width")
+							.getInformation()));
+
+			pb.addScalar(new CollisionConstant(Double.parseDouble(textProperties.get("collision").getInformation())));
+			pb.setVelocity(new Vector(Double.parseDouble(textProperties.get("initXV").getInformation()), Double.parseDouble(textProperties.get("initYV").getInformation())));
+			
+			System.out.println(pb);
+			edited.setPhysicsBody(pb);
+		}
+	
 		return edited;
 	}
 
