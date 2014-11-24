@@ -11,4 +11,10 @@ public class CollisionConstant extends Scalar {
 	public CollisionConstant(double value) {
 		super(value);
 	}
+
+	@Override
+	protected void initializeForceList() {
+		//doesn't do anything, no forces associated with it
+	}
+	
 }

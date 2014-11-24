@@ -10,4 +10,9 @@ public class Density extends Scalar {
 	public Density(double value) {
 		super(value);
 	}
+
+	@Override
+	protected void initializeForceList() {
+		myAssociatedForces.add("Buoyancy");
+	}
 }

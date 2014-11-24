@@ -4,7 +4,7 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 import engine.actions.Action;
-import engine.actions.RenderAction;
+import engine.actions.render.RenderAction;
 import engine.conditions.Condition;
 import engine.conditions.TimeCondition;
 import engine.gameObject.GameObject;

@@ -17,7 +17,8 @@ import engine.gameObject.GameObject;
 public class Level extends Observable {
 
 	private String myLevelID;
-	private GameObjectsCollection myGameObjects;
+	private GameObjectsCollection myDefaultGameObjects;
+	private GameObjectsCollection myWorkingGameObjects;
 	private ConditionIDsCollection myConditionIDs;
 
 	/**
@@ -27,14 +28,22 @@ public class Level extends Observable {
 	 *            Objects Collection
 	 */
 	public Level(GameObjectsCollection gameObjects) {
-		myGameObjects = gameObjects;
+		myDefaultGameObjects = gameObjects;
+		myWorkingGameObjects = gameObjects;
+	}
+
+	/**
+	 * Reset method for the GameObjects
+	 */
+	public void resetLevel() {
+		myWorkingGameObjects = myDefaultGameObjects;
 	}
 
 	/**
 	 * Updates all GameObjects.
 	 */
 	public void update() {
-		for (GameObject sprite : myGameObjects) {
+		for (GameObject sprite : myWorkingGameObjects) {
 			sprite.update();
 		}
 	}
@@ -58,7 +67,7 @@ public class Level extends Observable {
 	 * @return Iterator for GameObjectCollection
 	 */
 	public Iterator<GameObject> getGameObjectIterator() {
-		return myGameObjects.iterator();
+		return myWorkingGameObjects.iterator();
 	}
 
 	/**
