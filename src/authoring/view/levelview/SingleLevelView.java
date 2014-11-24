@@ -56,6 +56,7 @@ public class SingleLevelView extends Pane implements Observer {
 	 */
 	public SingleLevelView(File gameLoc, double width, double height, Level l, GameHandler... handlers){
 		this(gameLoc, width,height, handlers);
+
 		recreateLevel(l);
 	}
 
@@ -87,9 +88,8 @@ public class SingleLevelView extends Pane implements Observer {
 	private void addGameObjectToView(GameObject gameObject, double x, double y,
 			GameHandler... handler) {
 		GameObjectGraphic g = new GameObjectGraphic(gameObject, handler);
-		g.makeGraphic();
-		this.moveSpriteOnLevel(g, x, y);
 		g.makeGraphic(myGameLocation);
+		this.moveSpriteOnLevel(g, x, y);
 		this.getChildren().add(g);
 
 	}
