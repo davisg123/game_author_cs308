@@ -22,6 +22,13 @@ public class Strength implements IProperty {
     public void setStrength(double strength){
             myStrength = strength;      
     }
+
+	@Override
+	public IProperty getClone() {
+		// TODO Auto-generated method stub
+		return new Strength(myStrength);
+	}
+    
     
 
 }

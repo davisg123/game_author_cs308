@@ -2,8 +2,11 @@ package gamePlayer.view;
 
 import engine.conditions.ButtonConditionManager;
 import gamePlayer.model.PlayerModel;
+
 import java.io.IOException;
+
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -39,7 +42,7 @@ public class PlayerView {
 		myCanvas = new GameCanvas();
 	}
 	
-	public Node getGroup(){
+	public Group getGroup(){
 		return myCanvas.getNode();
 	}
 	

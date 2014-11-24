@@ -40,7 +40,6 @@ public class GameData {//implements Serializable {
 		myLevels = new LevelsCollection();
 		myConditions = new ConditionsCollection();
 		myGameObjects = new GameObjectsCollection();
-		myLevels = new LevelsCollection();
 		myImages = new ImagesCollection();
 		mySounds = new SoundsCollection();
 //		myCollections = new HashMap<String, GeneralCollection>();
@@ -48,20 +47,34 @@ public class GameData {//implements Serializable {
 //				new GameObjectsCollection(), new ConditionsCollection(),
 //				new ImagesCollection(), new SoundsCollection());
 	}
-
-//	/**
-//	 * Changing collections to be a map, so that the get method duplication is
-//	 * removed.
-//	 * 
-//	 * @param collection
-//	 */
-//	private void addAllToMyCollections(GeneralCollection... collection) {
-//		for (GeneralCollection c : collection) {
-//			String classKey = c.getClass().getSimpleName();
-//			classKey = classKey.toLowerCase();
-//			myCollections.put(classKey, c);
-//		}
-//	}
+	
+	//Will refactor this later. 
+	public GameData(LevelsCollection levels, ConditionsCollection conditions, GameObjectsCollection gameObjects){
+		myLevels=levels;
+		myConditions=conditions; 
+		myGameObjects=gameObjects; 
+		myImages = new ImagesCollection(); 
+		mySounds = new SoundsCollection(); 
+		myCollections = new HashMap<String, GeneralCollection>();
+		addAllToMyCollections(new LevelsCollection(),
+				new GameObjectsCollection(), new ConditionsCollection(),
+				new ImagesCollection(), new SoundsCollection());
+		
+	}
+	
+	/**
+	 * Changing collections to be a map, so that the get method duplication is
+	 * removed.
+	 * 
+	 * @param collection
+	 */
+	private void addAllToMyCollections(GeneralCollection... collection) {
+		for (GeneralCollection c : collection) {
+			String classKey = c.getClass().getSimpleName();
+			classKey = classKey.toLowerCase();
+			myCollections.put(classKey, c);
+		}
+	}
 
 	public LevelsCollection getLevels() {
 		return myLevels;
