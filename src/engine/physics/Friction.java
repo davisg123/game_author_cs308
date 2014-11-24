@@ -1,26 +1,34 @@
 package engine.physics;
+
 /**
  * friction force, subclass of force, is a vector
+ * 
  * @author Ben
  *
  */
-public class Friction extends Force{
+public class Friction extends Force {
 	private static final double GRAVITY_ACCELERATION = 9.8;
-	private double mass;
-	private double coefficientOfFriction;
-	
-	public Friction(double x, double y, double mass, double friction)
-	{
-		super();
-		this.mass=mass;
-		coefficientOfFriction=friction;
-		constructionHelper(x*myForceValue, y*myForceValue);
+
+	public Friction(double x, double y, Scalar... scalar) {
+		super(scalar);
+		constructionHelper(x * myForceValue, y * myForceValue);
 	}
+
 	/**
 	 * calculates value of friction force
 	 */
-	protected double calculateForce()
-	{
-		return coefficientOfFriction*mass*GRAVITY_ACCELERATION;
+	protected void calculateForce() {
+		myForceValue = myValues.get("CoefficientOfFriction")
+				* myValues.get("Mass") * GRAVITY_ACCELERATION;
 	}
+
+	protected void setDefaultValues() {
+		if (myValues.get("Mass") == null) {
+			myValues.put("Mass", 1.0);
+		}
+		if (myValues.get("CoefficientOfFriction") == null) {
+			myValues.put("CoefficientOfFriction", 0.0);
+		}
+	}
+
 }

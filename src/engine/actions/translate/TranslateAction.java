@@ -1,5 +1,7 @@
-package engine.actions;
+package engine.actions.translate;
 
+import engine.actions.Action;
+import engine.actions.Initializable;
 import engine.gameObject.GameObject;
 
 /**
@@ -8,11 +10,11 @@ import engine.gameObject.GameObject;
  *
  */
 
-public abstract class TransformAction implements Action {
+public abstract class TranslateAction implements Action, Initializable {
     protected GameObject mySprite;
     protected double myValue;
     
-    public TransformAction (GameObject sprite, double value) {
+    public TranslateAction (GameObject sprite, double value) {
         mySprite = sprite;
         myValue = value;
     }

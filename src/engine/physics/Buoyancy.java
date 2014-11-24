@@ -8,20 +8,29 @@ package engine.physics;
  */
 public class Buoyancy extends Force {
 	private static final double GRAVITY_ACCELERATION = 9.8;
-	private double volume;
-	private double densityOfFluid;
 
-	public Buoyancy(double x, double y, double volume, double density) {
-		super();
-		this.volume = volume;
-		this.densityOfFluid = density;
+	public Buoyancy(double x, double y, Scalar... scalar) {
+		super(scalar);
 		constructionHelper(x * myForceValue, y * myForceValue);
 	}
+
 	/**
 	 * calculates force of buoyancy
+	 * 
 	 * @return the value of the force
 	 */
-	protected double calculateForce() {
-		return densityOfFluid * GRAVITY_ACCELERATION * volume;
+	protected void calculateForce() {
+		myForceValue = myValues.get("Density") * GRAVITY_ACCELERATION
+				* myValues.get("Volume");
 	}
+
+	protected void setDefaultValues() {
+		if (myValues.get("Density") == null) {
+			myValues.put("Density", 1.0);
+		}
+		if (myValues.get("Volume") == null) {
+			myValues.put("Volume", 1.0);
+		}
+	}
+
 }

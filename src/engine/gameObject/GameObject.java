@@ -34,12 +34,13 @@ public class GameObject implements IEnabled, Iterable<Component>{
     //private Dimension2D myDimension; 
     private double myHeight;
     private double myWidth;
-    
-    //refactor the Point2D
-    private transient Point2D myDefaultPosition;
 
+    //refactor the Point2D
+    //private transient Point2D myDefaultPosition;
+    private double myXCoord;
+    private double myYCoord;
     private transient RenderedNode myRenderedNode;
-    
+
     //refactor this into the PhysicsBody
     private boolean myCollision;
 
@@ -55,26 +56,31 @@ public class GameObject implements IEnabled, Iterable<Component>{
     }
 
     public GameObject (String iD) {
-        this(new ArrayList<Component>(), "", new Point2D.Double(), 0, 0, 0, iD);
+        this(new ArrayList<Component>(), "", 0, 0, 0, 0, 0, iD);
     }
 
-    public GameObject (List<Component> components, String imagePath, Point2D position, 
-                   double height, double width, double rotation, String iD) {
-        this(components, imagePath, new SoundReference(), position,
+    public GameObject (List<Component> components, String imagePath, double x, double y, 
+                       double height, double width, double rotation, String iD) {
+        this(components, imagePath, new SoundReference(), x, y,
              height, width, rotation, iD);
     }
 
     public GameObject (List<Component> components, String imageName, SoundReference sounds, 
-                   Point2D position, double height, double width, double rotation, String iD) {
+                       double x, double y, double height, double width, double rotation, String iD) {
         myComponents  = components;
         //myImages   = images;
         //mySounds   = sounds;
         myCurrentImageName = imageName;
-        myDefaultPosition = position;
+        myXCoord = x;
+        myYCoord = y;
         myHeight = height;
         myWidth = width;
         myRotation = rotation;
         myID = iD;
+    }
+
+    public GameObject (GameObject g){
+        this(g.getComponents(), g.getCurrentImageName(), g.getX(), g.getY(), g.getHeight(), g.getWidth(), g.getRotation(), g.getID());
     }
 
     /**
@@ -96,17 +102,34 @@ public class GameObject implements IEnabled, Iterable<Component>{
     public double getTranslateX () {
         return myRenderedNode.getTranslateX();
     }
-    
+
     public double getTranslateY () {
         return myRenderedNode.getTranslateY();
     }
-    
+
     /**
-     * Sets Location of Sprite
+     * Sets Initial Location of GameObject
      * @param point - new Location Point
      */
-    public void setPosition (Point2D point) {
-        myDefaultPosition = point;
+    public void setX (double x) {
+        myXCoord = x;
+    }
+
+    public void setY (double y) {
+        myYCoord = y;
+    }
+
+    
+    /**
+     * Link this with the physics body in the future
+     * @param width
+     */
+    public void setWidth (double width) {
+        myWidth = width;   
+    }
+
+    public void setHeight (double height) {
+        myHeight = height;
     }
 
     /**
@@ -124,6 +147,14 @@ public class GameObject implements IEnabled, Iterable<Component>{
     public double getOrientation () {
         return myRenderedNode.getRotate();
     }
+
+    public double getRotation(){
+        return this.myRotation;
+    }
+
+    /* public GameObject copy() {
+        return new GameObject(this);
+    }*/
 
     /**
      * Deprecated, all transforms are performed on the node
@@ -150,16 +181,15 @@ public class GameObject implements IEnabled, Iterable<Component>{
                                   myRenderedNode.getTranslateY());
     }
 
-    public void setDefaultPosition (Point2D position) {
-        myDefaultPosition = position;
+
+
+
+    public double getX () {
+        return myXCoord;
     }
 
-    /**
-     * Gets the Position of Sprite
-     * @return myPosition
-     */
-    public Point2D getDefaultPosition () {
-        return myDefaultPosition;
+    public double getY () {
+        return myYCoord;
     }
 
     public String getID () {
@@ -170,19 +200,24 @@ public class GameObject implements IEnabled, Iterable<Component>{
      * Updates all components of GameObject
      * TODO Check if necessary... 
      */
-    
+
     public void update () {
-        for(Component component : myComponents) {
-            //component.update(this); Should include current Level???... 
-            //update methods should be specific to each component...
-            component.update(null);
+        if (myComponents != null){
+            for(Component component : myComponents) {
+                //component.update(this); Should include current Level???... 
+                //update methods should be specific to each component...
+                component.update(null);
+            }
+        }
+        if (myPhysicsBody != null){
+            myPhysicsBody.updatePhysicalCharacteristics(this);
         }
     }
 
     public void setRenderedNode(RenderedNode node) {
         myRenderedNode = node;
     }
-    
+
     public RenderedNode getRenderedNode() {
         return myRenderedNode;
     }
@@ -194,6 +229,10 @@ public class GameObject implements IEnabled, Iterable<Component>{
      */
     public Component getComponent (String iD) {
         return null;
+    }
+
+    public List<Component> getComponents(){
+        return this.myComponents;
     }
 
     public String getCurrentImageName () { 
@@ -212,8 +251,8 @@ public class GameObject implements IEnabled, Iterable<Component>{
 
     public void saveCurrentState() {
         myRotation = myRenderedNode.getRotate();
-        myDefaultPosition = new Point2D.Double(myRenderedNode.getTranslateX(), 
-                                               myRenderedNode.getTranslateY());
+        myXCoord = myRenderedNode.getTranslateX();
+        myYCoord = myRenderedNode.getTranslateY();
     }
 
     public void setPhysicsBody (PhysicsBody physicsBody) {
@@ -243,9 +282,13 @@ public class GameObject implements IEnabled, Iterable<Component>{
     public boolean isEnabled() {
         return enabled;
     }
-    
-    public boolean getCollisionConstant()
-    {
-    	return myCollision;
+
+    public boolean getCollisionConstant() {
+        return myCollision;
     }
+
+    public String toString(){
+        return myID;
+    }
+
 }

@@ -18,6 +18,8 @@ import java.util.ArrayList;
 import authoring.model.GameData;
 import authoring.model.collections.GameObjectsCollection;
 
+import authoring.model.GameData;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

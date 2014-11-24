@@ -1,100 +1,97 @@
 package engine.level;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-
-import authoring.model.collections.ConditionsCollection;
+import java.util.Observable;
+import authoring.model.collections.ConditionIDsCollection;
 import authoring.model.collections.GameObjectsCollection;
-import engine.collisionDetection.CollisionDetector;
-import engine.conditions.Condition;
-import engine.gameObject.IEnabled;
 import engine.gameObject.GameObject;
-import engine.render.GameObjectRenderer;
 
 /**
  * A Level of the game. Contains all GameObjects and Actions and coordinates
  * their interactions for linear progression through the game.
  * 
- * @author Will Chang,
- *
+ * @author Will Chang
+ * @author Abhishek Balakrishnan
  */
 
-public class Level {
+public class Level extends Observable {
 
-	private GameObjectsCollection myGameObjects;
-//	private ConditionsCollection myConditions;
+	private String myLevelID;
+	private GameObjectsCollection myDefaultGameObjects;
+	private GameObjectsCollection myWorkingGameObjects;
+	private ConditionIDsCollection myConditionIDs;
 
 	/**
 	 * Constructor
-	 * @param Game Objects Collection
+	 * 
+	 * @param Game
+	 *            Objects Collection
 	 */
 	public Level(GameObjectsCollection gameObjects) {
-		myGameObjects = gameObjects;
+		myDefaultGameObjects = gameObjects;
+		myWorkingGameObjects = gameObjects;
 	}
-	
+
+	/**
+	 * Reset method for the GameObjects
+	 */
+	public void resetLevel() {
+		myWorkingGameObjects = myDefaultGameObjects;
+	}
+
 	/**
 	 * Updates all GameObjects.
 	 */
 	public void update() {
-		for (GameObject sprite : myGameObjects) {
+		for (GameObject sprite : myWorkingGameObjects) {
 			sprite.update();
 		}
+	}
+
+	public void setLevelID(String ID) {
+		myLevelID = ID;
+	}
+
+	public String getLevelID() {
+		return myLevelID;
 	}
 
 	/**
 	 * SET INITIAL VALUES FOR THE MAIN CHARACTER
 	 */
 	public void updateMainCharacter() {
-		
+
 	}
-	
-	/**
-	 * Enables and initializes the Game Objects specified in this Level
-	 * 
-	 * @param sprites
-	 */
-	/*
-	 * public void setEnabledGameObjects(List<GameObject> sprites) {
-	 * for(GameObject sprite : sprites) {
-	 * if(myEnabledGameObjects.get(sprite.getID())) { //sprite.enable(); ??
-	 * //copy of??? //Initialize the sprite to location???
-	 * myGameObjects.add(sprite); } } } /* public void setEnabled(String type,
-	 * List<IEnabled> enabledObjects) {
-	 * 
-	 * for(IEnabled enabledObject : enabledObjects) {
-	 * if(myEnabledGameObjects.get(sprite.getID()) } }
-	 */
 
 	/**
-	 * Enables the Conditions specified in this Level
-	 * 
-	 * @param conditions
+	 * @return Iterator for GameObjectCollection
 	 */
-	/*
-	 * public void setEnabledConditions(List<Condition> conditions) {
-	 * for(Condition condition : conditions) {
-	 * //if(myEnabledConditions.get(condition.getID()) { //TODO have Conditions
-	 * Implement IEnabled // condition.enable(); //} } }
-	 */
-	/*
-	public void setEnabledConditions(List<Condition> conditions) {
-		 for(Condition condition : conditions) {
-		 if(myEnabledConditions.get(condition.getID()) { //TODO have Conditions
-		 //Implement IEnabled 
-		 condition.enable(); } } }
-*/
-	/**
-	 * Iterator for the List of enabled Game Objects in the Level
-	 * 
-	 * @return
-	 */
-	public Iterator<GameObject> getGameObjects() {
-		return myGameObjects.iterator();
+	public Iterator<GameObject> getGameObjectIterator() {
+		return myWorkingGameObjects.iterator();
 	}
-/*
-	public Iterator<Condition> getConditions() {
-		return myConditions.iterator();
-	} */
+
+	/**
+	 * @return Iterator for the ConditionIDsCollection
+	 */
+	public Iterator<String> getConditionIDsIterator() {
+		return myConditionIDs.iterator();
+	}
+
+	public void addGameObject(GameObject gameObject) {
+		myDefaultGameObjects.add(gameObject);
+		setChanged();
+		notifyObservers(this);
+	}
+	
+	public boolean removeGameObject(GameObject g){
+		boolean ret = myDefaultGameObjects.remove(g);
+		setChanged();
+		notifyObservers(this);
+		return ret;
+	}
+
+	public GameObjectsCollection getGameObjectsCollection() {
+		return myDefaultGameObjects;
+	}
+
 }

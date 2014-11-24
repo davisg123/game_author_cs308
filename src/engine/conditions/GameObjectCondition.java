@@ -12,17 +12,29 @@ import engine.gameObject.GameObject;
  *
  */
 public abstract class GameObjectCondition extends Condition {
-    private List<Action> myActions = new ArrayList<Action>();
     private List<GameObject> myGameObjects = new ArrayList<GameObject>();
     
-    public GameObjectCondition (List<Action> myActions, List<GameObject> myGameObjects) {
-        super();
-        this.myActions = myActions;
+    public GameObjectCondition (List<Action> myActions, List<GameObject> myGameObjects, String identifier) {
+        super(myActions,identifier);
         this.myGameObjects = myGameObjects;
     }
-
-    public List<Action> getActions(){
-        return myActions;
+    
+    public void setGameObjects(ArrayList<GameObject>gameObjects){
+        myGameObjects = gameObjects;
+    }
+    
+    public void addGameObject(GameObject object){
+        myGameObjects.add(object);
+    }
+    
+    public boolean removeGameObject(String objectId){
+        for (GameObject obj : myGameObjects){
+            if (obj.getID().equals(objectId)){
+                myGameObjects.remove(obj);
+                return true;
+            }
+        }
+        return false;
     }
     
     public List<GameObject> getGameObjects(){

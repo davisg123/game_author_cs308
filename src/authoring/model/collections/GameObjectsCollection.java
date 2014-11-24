@@ -11,4 +11,7 @@ public class GameObjectsCollection extends GeneralCollection<GameObject>{
 		notifyObservers(g);
 	}
 	
+//	public void clear(){
+//		myObjects = new ArrayList<GameObject>();
+//	}
 }

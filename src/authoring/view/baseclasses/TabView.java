@@ -2,20 +2,14 @@ package authoring.view.baseclasses;
 
 import java.util.ResourceBundle;
 
-import javafx.scene.layout.BorderPane;
+import javafx.scene.control.TabPane;
 
-/**
- * Base class that other classes can extend to make BorderPanes.
- * 
- * @author Kevin Li
- *
- */
-public class BPView extends BorderPane {
+public class TabView extends TabPane {
 	protected ResourceBundle myLanguage;
 	protected double myHeight;
 	protected double myWidth;
 
-	public BPView(ResourceBundle language, double width, double height) {
+	public TabView(ResourceBundle language, double width, double height) {
 		myLanguage = language;
 		myHeight = height;
 		myWidth = width;
