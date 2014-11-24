@@ -1,35 +1,36 @@
 package engine.tests;
 
-import java.awt.geom.Point2D;
-import java.awt.geom.Point2D.Double;
 import java.util.ArrayList;
-import java.util.List;
+
+import authoring.model.collections.ConditionsCollection;
+import authoring.model.collections.GameObjectsCollection;
+import authoring.model.collections.LevelsCollection;
 import engine.GameManager;
 import engine.actions.Action;
-import engine.actions.LayoutAction;
-import engine.actions.TranslateX;
-import engine.actions.TranslateY;
+import engine.actions.translate.TranslateX;
+import engine.conditions.ButtonCondition;
 import engine.conditions.ButtonConditionManager;
-import engine.conditions.Condition;
-import engine.conditions.TimeCondition;
 import engine.gameObject.GameObject;
+import engine.gameObject.components.PhysicsBody;
 import engine.level.Level;
+import engine.physics.Acceleration;
+import engine.physics.CollisionConstant;
+import engine.physics.Velocity;
 import engine.render.GameObjectRenderer;
-import javafx.animation.Animation;
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 public class MainEngineTests extends Application {
+    
+    /**
+     * @author Davis
+     * 
+     * the sandbox for engine
+     * used to get stuff on the screen and keep engine team morale high
+     */
 
     private GameManager myGameManager;
     private Stage myStage;
@@ -48,6 +49,7 @@ public class MainEngineTests extends Application {
         myRootGroup = new Group();
 
         myScene = new Scene(myRootGroup,300,300);
+        ButtonConditionManager.getInstance().beginListeningToScene(myScene);
        /* ImageView view = new ImageView();
        
         Image image = new Image(getClass().getResourceAsStream("resources/images/slowpoke.jpg"));
@@ -62,30 +64,49 @@ public class MainEngineTests extends Application {
     }
     
     public void createGameObject (Group group) {
-        Point2D location = new Point2D.Double(50,50);
-        GameObject sprite = new GameObject(null,"slowpoke",
-                                   location, 100, 100, 0, "TestGameObject");
-        List<GameObject> myGameObjectList = new ArrayList<GameObject>();
-        myGameObjectList.add(sprite);
-        List<Condition> myConditionList = new ArrayList<Condition>();
-        ButtonConditionManager buttonManager = new ButtonConditionManager();
-        Action a = new TranslateX(sprite,-2.0);
-        Action b = new TranslateX(sprite,2.0);
-        Action c = new TranslateY(sprite,2.0);
-        Action d = new TranslateY(sprite,-2.0);
-        buttonManager.addBinding(KeyCode.A, a);
-        buttonManager.addBinding(KeyCode.D, b);
-        buttonManager.addBinding(KeyCode.S, c);
-        buttonManager.addBinding(KeyCode.W, d);
-        buttonManager.beginListeningToScene(myScene);
-        ArrayList<Action> condList = new ArrayList<Action>();
-        condList.add(c);
-        Condition cond = new TimeCondition(condList,myGameObjectList,.5,true);
-        myConditionList.add(buttonManager);
-        myConditionList.add(cond);
-        myGameManager = new GameManager(myConditionList,myGameObjectList,group);
-        Level level0 = new Level();
-        // Level level0 = new Level(myGameObjectList,null);
+        /*****
+         * create a sprite and put it in a collection
+         *****/
+        GameObjectsCollection myGameObjects = new GameObjectsCollection();
+        //create the floor
+        GameObject floor = new GameObject(null,"floor",
+                                   75, 200, 20, 200, 0, "floor_object");
+        //ugh, why do we have to set this explicitly?
+        PhysicsBody floorBody = new PhysicsBody(20,200);
+        floorBody.setVelocity(new Velocity(0,-23));
+        floorBody.addScalar((new CollisionConstant(1.0)));
+        //floorBody.setAcceleration(new Acceleration(0.0,-77.0));
+        floor.setPhysicsBody(floorBody);
+        myGameObjects.add(floor);
+        //create a ball
+        GameObject ball = new GameObject(null,"ball",150,50,30,30,0,"ball_object");
+        PhysicsBody ballBody = new PhysicsBody(30,30);
+        ballBody.setVelocity(new Velocity(12,20));
+        ball.setPhysicsBody(ballBody);
+        myGameObjects.add(ball);
+        
+        /******
+         * conditions
+         ******/
+        ConditionsCollection myConditions = new ConditionsCollection();
+        Action aAct = new TranslateX(floor,-2.0);
+        ArrayList<Action> actionList = new ArrayList<Action>();
+        actionList.add(aAct);
+        ButtonCondition aCon = new ButtonCondition(actionList,"a_button",KeyCode.A);
+        myConditions.add(aCon);
+        
+        /*******
+         * levels
+         *******/
+        LevelsCollection myLevels = new LevelsCollection();
+        Level level0 = new Level(myGameObjects);
+        myLevels.add(level0);
+        
+        /*******
+         * game
+         ******/
+        myGameManager = new GameManager(myConditions,myGameObjects,myLevels,group);
+        
         GameObjectRenderer myGameObjectRenderer = new GameObjectRenderer(group);
         myGameObjectRenderer.renderGameObjects(level0);
         myGameManager.initialize();

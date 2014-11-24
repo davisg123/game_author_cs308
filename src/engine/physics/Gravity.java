@@ -19,8 +19,16 @@ public class Gravity extends Force {
 	 */
 	@Override
 	protected void calculateForce() {
-		myForceValue = myValues.get("mass") * myValues.get("gravity constant")
+		myForceValue = myValues.get("Mass") * myValues.get("GravityConstant")
 				* GRAVITY_ACCELERATION;
 	}
 
+	protected void setDefaultValues() {
+		if (myValues.get("Mass") == null) {
+			myValues.put("Mass", 1.0);
+		}
+		if (myValues.get("GravityConstant") == null) {
+			myValues.put("GravityConstant", 1.0);
+		}
+	}
 }

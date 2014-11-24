@@ -1,6 +1,8 @@
 package engine.actions;
 
 import java.util.List;
+
+import engine.GameManager;
 import engine.gameObject.GameObject;
 import engine.physics.Vector;
 import engine.physics.Velocity;
@@ -23,6 +25,12 @@ public class YVelocityAction extends PhysicsAction{
 		Velocity a=mySprite.getPhysicsBody().getVelocity();
 		Velocity b=new Velocity(a.getX(), myValue);
 		mySprite.getPhysicsBody().setVelocity(b);
+	}
+
+	@Override
+	public void initialize(GameManager manager) {
+		// TODO Auto-generated method stub
+		
 	}
 
 

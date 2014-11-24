@@ -21,4 +21,9 @@ public class ButtonCondition extends Condition {
             }
         }
     }
+    
+    @Override
+    public void frameElapsed () {
+        executeActions();
+    }
 }
