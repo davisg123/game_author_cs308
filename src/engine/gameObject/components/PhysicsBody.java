@@ -269,25 +269,19 @@ public class PhysicsBody {
 		// create new condition to stop x or y
 		if (!cur.getCollisionConstant()) {
 			if (xOrY) {
-				//cur.getPhysicsBody().setVelocity(
-					//	new Velocity(other.getPhysicsBody().getVelocity().getX(), cur.getPhysicsBody().getVelocity()
-						//		.getY()));
 				//cancel out current velocity
-			        cur.setTranslateX(sprite.getTranslateX() - myVelocity.getX()
+			        cur.setTranslateX(cur.getTranslateX() - cur.getPhysicsBody().getVelocity().getX()
 			                                 / FRAMES_PER_SECOND);
 			        //apply rivaling velocity
-			        cur.setTranslateX(sprite.getTranslateX() + other.getPhysicsBody().getVelocity().getX()
+			        cur.setTranslateX(cur.getTranslateX() + other.getPhysicsBody().getVelocity().getX()
 			                                  / FRAMES_PER_SECOND);
 			} else {
-				//cur.getPhysicsBody().setVelocity(
-						//new Velocity(cur.getPhysicsBody().getVelocity().getX(),
-						           //  other.getPhysicsBody().getVelocity().getY()));
 				//cancel out current velocity
-                                cur.setTranslateY(sprite.getTranslateY() - myVelocity.getY()
+                                cur.setTranslateY(cur.getTranslateY() - myVelocity.getY()
                                                          / FRAMES_PER_SECOND);
                                 
                                 //apply rivaling velocity
-                                cur.setTranslateY(sprite.getTranslateY() + other.getPhysicsBody().getVelocity().getY()
+                                cur.setTranslateY(cur.getTranslateY() + other.getPhysicsBody().getVelocity().getY()
                                                           / FRAMES_PER_SECOND);
 			}
 		}
