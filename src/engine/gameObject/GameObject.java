@@ -84,7 +84,6 @@ public class GameObject implements IEnabled, Iterable<Component>{
     }
     
     private void setDefaultData() {
-		// TODO Auto-generated method stub
 		List<Component> defaultComponents= new ArrayList<Component>(); 
 		for (Component c: myComponents){
 			defaultComponents.add(c.getClone());
@@ -94,7 +93,7 @@ public class GameObject implements IEnabled, Iterable<Component>{
 	}
 
 	public GameObject (GameObject g){
-    	this(g.getComponents(), g.getCurrentImageName(), g.getX(), g.getY(), g.getCollisionHeight(), g.getCollisionWidth(), g.getRotation(), g.getID());
+    	this(g.getComponents(), g.getCurrentImageName(), g.getX(), g.getY(), g.getHeight(), g.getWidth(), g.getRotation(), g.getID());
 	}
 
 

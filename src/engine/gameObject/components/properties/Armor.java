@@ -11,7 +11,6 @@ public class Armor implements IProperty {
     
     @Override
     public void update() {
-            // TODO Auto-generated method stub
             
     }
 
@@ -28,8 +27,5 @@ public class Armor implements IProperty {
 		// TODO Auto-generated method stub
 		return new Armor(myArmor);
 	}
-
-   
-    
 
 }
