@@ -1,5 +1,6 @@
-package engine.actions;
+package engine.actions.translate;
 
+import engine.GameManager;
 import engine.gameObject.GameObject;
 
 /**
@@ -17,6 +18,11 @@ public class TranslateX extends TranslateAction {
     @Override
     public void applyTransform () {
         mySprite.setTranslateX(mySprite.getTranslateX() + myValue);
+    }
+
+    @Override
+    public void initialize (GameManager manager) {
+        
     }
     
 }

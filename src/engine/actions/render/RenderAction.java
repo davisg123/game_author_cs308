@@ -1,6 +1,7 @@
-package engine.actions;
+package engine.actions.render;
 
 import java.util.List;
+import engine.actions.Action;
 import engine.gameObject.GameObject;
 import engine.level.Level;
 import engine.render.GameObjectRenderer;
@@ -11,7 +12,7 @@ import engine.render.GameObjectRenderer;
  *
  */
 
-public abstract class RenderAction implements Action {
+public abstract class RenderAction implements Action, Initializable {
 
     protected List<GameObject> myGameObjects;
     protected GameObjectRenderer myRenderer;

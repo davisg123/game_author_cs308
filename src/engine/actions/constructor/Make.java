@@ -1,4 +1,4 @@
-package engine.actions;
+package engine.actions.constructor;
 
 import engine.gameObject.GameObject;
 import engine.level.Level;
@@ -9,15 +9,16 @@ import engine.level.Level;
  *
  */
 
-public class Make extends InitializationAction {
-
+public class Make extends ConstructorAction {
+    
     public Make (GameObject object, Level level) {
-        super(object,level);
+        super(object, level);
     }
     
     @Override
-    protected void initialize () {
-        //level.add(object.copy());
+    protected void construct () {
+        //level.add(object.clone());
+        
     }
 
 }

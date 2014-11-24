@@ -35,8 +35,6 @@ public class GameObject implements IEnabled, Iterable<Component>{
     private double myHeight;
     private double myWidth;
     
-    //refactor the Point2D
-    //private transient Point2D myDefaultPosition;
     private double myXCoord;
     private double myYCoord;
     private transient RenderedNode myRenderedNode;
@@ -80,7 +78,7 @@ public class GameObject implements IEnabled, Iterable<Component>{
     }
     
     public GameObject (GameObject g){
-    	this(g.getComponents(), g.getCurrentImageName(), g.getX(), g.getY(), g.getHeight(), g.getWidth(), g.getRotation(), g.getID());
+    	this(g.getComponents(), g.getCurrentImageName(), g.getX(), g.getY(), g.getCollisionHeight(), g.getCollisionWidth(), g.getRotation(), g.getID());
     }
 
     /**
@@ -119,6 +117,22 @@ public class GameObject implements IEnabled, Iterable<Component>{
         myYCoord = y;
     }
 
+    /*public void setImageWidth (double width) {
+        
+    }
+    
+    public void setImageHeight (double height) {
+        
+    }*/
+    
+    public double getImageWidth () {
+        return myRenderedNode.getImageView().getFitWidth();
+    }
+    
+    public double getImageHeight () {
+        return myRenderedNode.getImageView().getFitHeight();
+    }
+    
     /**
      * Sets Orientation of Sprite
      * @param orientation
@@ -189,10 +203,15 @@ public class GameObject implements IEnabled, Iterable<Component>{
      */
     
     public void update () {
-        for(Component component : myComponents) {
-            //component.update(this); Should include current Level???... 
-            //update methods should be specific to each component...
-            component.update(null);
+        if (myComponents != null){
+            for(Component component : myComponents) {
+                //component.update(this); Should include current Level???... 
+                //update methods should be specific to each component...
+                component.update(null);
+            }
+        }
+        if (myPhysicsBody != null){
+            myPhysicsBody.updatePhysicalCharacteristics(this);
         }
     }
 
@@ -244,15 +263,23 @@ public class GameObject implements IEnabled, Iterable<Component>{
     public PhysicsBody getPhysicsBody () {
         return myPhysicsBody;
     }
-
-    public double getHeight () {
+    
+    public double getCollisionHeight () {
         return myHeight;
     }
 
-    public double getWidth () {
+    public double getCollisionWidth () {
         return myWidth;
     }
 
+    public void setCollisionHeight (double height) {
+        myHeight = height;
+    }
+
+    public void setCollisionWidth (double width) {
+        myWidth = width;
+    }
+    
     public void enable() {
         enabled = true;
     }

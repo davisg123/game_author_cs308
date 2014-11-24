@@ -1,7 +1,6 @@
 package engine.level;
 
 import java.util.Iterator;
-import java.util.List;
 
 import authoring.model.collections.ConditionsCollection;
 import authoring.model.collections.GameObjectsCollection;
@@ -9,13 +8,13 @@ import authoring.model.collections.LevelsCollection;
 import engine.collisionDetection.CollisionDetector;
 import engine.conditions.Condition;
 import engine.render.GameObjectRenderer;
-import engine.gameObject.GameObject;
 
 /**
  * Manages the Levels, and progression of the Game
  * 
  * @author Will Chang
  * @author Abhishek Balakrishnan
+ * @author Eli Lichtenberg
  */
 
 public class LevelManager implements Iterable<Level> {
@@ -36,16 +35,16 @@ public class LevelManager implements Iterable<Level> {
 	 * @param renderer
 	 * @param detector
 	 */
-	public LevelManager(LevelsCollection levels, GameObjectsCollection gameObjects,
-			ConditionsCollection conditions, GameObjectRenderer renderer,
-			CollisionDetector detector) {
+	public LevelManager(LevelsCollection levels,
+			GameObjectsCollection gameObjects, ConditionsCollection conditions,
+			GameObjectRenderer renderer) {
 		myLevels = levels;
 		myGameObjects = gameObjects;
 		myConditions = conditions;
 		myCurrentIndex = 0;
 		myCurrentLevel = myLevels.get(myCurrentIndex);
 		myRenderer = renderer;
-		myDetector = detector;
+		myDetector = new CollisionDetector();
 	}
 
 	/**
@@ -59,12 +58,20 @@ public class LevelManager implements Iterable<Level> {
 	 * Primitive implementation of level loop...
 	 */
 	public void nextLevel() {
-		if (myCurrentIndex < myLevels.size() - 1) {
-			myCurrentIndex += 1;
-			myCurrentLevel = myLevels.get(myCurrentIndex);
-		} else {
+		if(myLevels.iterator().hasNext()) {
+			myCurrentIndex++;
+			myCurrentLevel = myLevels.iterator().next();
+		}
+		else {
 			myCurrentIndex = 0;
 		}
+		
+//		if (myCurrentIndex < myLevels.size() - 1) {
+//			myCurrentIndex += 1;
+//			myCurrentLevel = myLevels.get(myCurrentIndex);
+//		} else {
+//			myCurrentIndex = 0;
+//		}
 	}
 
 	/**
@@ -83,6 +90,7 @@ public class LevelManager implements Iterable<Level> {
 	public void update() {
 		myCurrentLevel.update();
 		updateFrameBasedConditions();
+		myDetector.checkCollisions(myGameObjects);
 	}
 
 	/**
@@ -98,28 +106,52 @@ public class LevelManager implements Iterable<Level> {
 	 * Initializes the Current Level
 	 */
 	public void initializeCurrentLevel() {
+		disableAllConditions();
 		setLevelEnabledConditions();
 		myRenderer.renderGameObjects(myCurrentLevel);
 	}
 
 	/**
-     * Set conditions in this level to 
-     */
+	 * Iterate through all level's condition IDs and turn on the corresponding
+	 * condition from master list
+	 */
 	private void setLevelEnabledConditions() {
-		for (Iterator<String> conditionIDIterator = myCurrentLevel.getConditionIDsIterator(); conditionIDIterator
-				.hasNext();) {
+		for (Iterator<String> conditionIDIterator = myCurrentLevel
+				.getConditionIDsIterator(); conditionIDIterator.hasNext();) {
 			String conditionID = conditionIDIterator.next();
-			
-//			for (Iterator<Condition> conditionIterator = myConditions.iterator() )
-			/*
-			 * find the condition in myConditions specified by this conditionID
-			 * and set it enabled
-			 */
+			enableCondition(conditionID);
 		}
 	}
-	
+
+	public void changeLevel(String id){
+//		for (Level l: LevelsCollection){
+//			if (l.getID().equals(id)){
+//				myCurrentLevel=l;
+//			}
+//		}
+	}
+
 	/**
-	 * 
+	 * Find condition in master list and enable it
+	 * @param conditionID
 	 */
+	private void enableCondition(String conditionID) {
+		for (Iterator<Condition> conditionIterator = myConditions.iterator(); conditionIterator
+				.hasNext();) {
+			Condition condition = conditionIterator.next();
+			if (condition.getID() == conditionID)
+				condition.setEnabled(true);
+		}
+	}
+
+	/**
+	 * Disable all conditions before enabling the correct ones
+	 */
+	private void disableAllConditions() {
+		for (Iterator<Condition> conditionIterator = myConditions.iterator(); conditionIterator
+				.hasNext();) {
+			conditionIterator.next().setEnabled(false);
+		}
+	}
 
 }
