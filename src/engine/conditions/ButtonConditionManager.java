@@ -1,14 +1,10 @@
 package engine.conditions;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import engine.actions.Action;
 
 /**
  * 
@@ -37,19 +33,7 @@ public class ButtonConditionManager {
     
     protected boolean keyIsActive(KeyCode key) {
         //get active keys from our buffer
-        Collection<KeyCode> activeKeys = myActiveKeyBuffer.keySet();
-        return false;
-        /*
-        for (KeyCode code : activeKeys){
-            //check if the active keycode exists in the key to action map
-            if (myKeyMap.containsKey(code)){
-                //execute the associated actions for that key
-                for (Action action : myKeyMap.get(code)){
-                    action.execute();
-                }
-            }
-        }
-        */
+        return myActiveKeyBuffer.containsKey(key);
     }
     
     /**

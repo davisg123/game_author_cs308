@@ -6,7 +6,7 @@ import java.util.List;
 
 import authoring.model.GameData;
 import engine.actions.Action;
-import engine.actions.RenderAction;
+import engine.actions.render.RenderAction;
 import engine.conditions.Condition;
 import engine.conditions.TimeCondition;
 import engine.gameObject.GameObject;

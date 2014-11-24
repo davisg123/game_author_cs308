@@ -1,6 +1,8 @@
-package engine.actions;
+package engine.actions.render;
 
 import java.util.List;
+
+import engine.GameManager;
 import engine.gameObject.GameObject;
 import engine.level.Level;
 import engine.render.GameObjectRenderer;
@@ -18,5 +20,11 @@ public class PaintCanvas extends RenderAction {
             //TODO myLevel.add(object);
         }
     }
+
+	@Override
+	public void initialize(GameManager manager) {
+		// TODO Auto-generated method stub
+		
+	}
 
 }

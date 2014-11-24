@@ -19,6 +19,24 @@ public abstract class GameObjectCondition extends Condition {
         this.myGameObjects = myGameObjects;
     }
     
+    public void setGameObjects(ArrayList<GameObject>gameObjects){
+        myGameObjects = gameObjects;
+    }
+    
+    public void addGameObject(GameObject object){
+        myGameObjects.add(object);
+    }
+    
+    public boolean removeGameObject(String objectId){
+        for (GameObject obj : myGameObjects){
+            if (obj.getID().equals(objectId)){
+                myGameObjects.remove(obj);
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public List<GameObject> getGameObjects(){
         return myGameObjects;
     }
