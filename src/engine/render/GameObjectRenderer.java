@@ -100,8 +100,8 @@ public class GameObjectRenderer {
             Image image = new Image(getClass().getResourceAsStream(SLASH+BASE_ASSET_PATH+SLASH+filepath));
             ImageView view = new ImageView();
             view.setImage(image);
-            view.setFitHeight(obj.getHeight());
-            view.setFitWidth(obj.getWidth());
+            view.setFitHeight(obj.getCollisionHeight());
+            view.setFitWidth(obj.getCollisionWidth());
             view.setPreserveRatio(true);
             view.setSmooth(true);
             view.setCache(true);

@@ -80,7 +80,7 @@ public class GameObject implements IEnabled, Iterable<Component>{
     }
     
     public GameObject (GameObject g){
-    	this(g.getComponents(), g.getCurrentImageName(), g.getX(), g.getY(), g.getHeight(), g.getWidth(), g.getRotation(), g.getID());
+    	this(g.getComponents(), g.getCurrentImageName(), g.getX(), g.getY(), g.getCollisionHeight(), g.getCollisionWidth(), g.getRotation(), g.getID());
     }
 
     /**
