@@ -1,6 +1,7 @@
 package engine.tests;
 
 import java.util.ArrayList;
+
 import data.DataManager;
 import authoring.model.GameData;
 import authoring.model.collections.ConditionsCollection;
@@ -11,6 +12,7 @@ import engine.actions.Action;
 import engine.actions.FrameRateAction;
 import engine.actions.translate.TranslateX;
 import engine.actions.translate.TranslateY;
+import engine.collision.objects.HeroCollisionObject;
 import engine.conditions.BoundaryConditionY;
 import engine.conditions.ButtonCondition;
 import engine.conditions.ButtonConditionManager;
@@ -19,6 +21,7 @@ import engine.gameObject.components.PhysicsBody;
 import engine.level.Level;
 import engine.physics.Acceleration;
 import engine.physics.CollisionConstant;
+import engine.physics.Vector;
 import engine.physics.Velocity;
 import engine.render.GameObjectRenderer;
 import gamePlayer.model.DataWrapper;
@@ -97,6 +100,8 @@ public class MainEngineTests extends Application {
         ballBody.setVelocity(new Velocity(0,15));
         ball.setPhysicsBody(ballBody);
         myGameObjects.add(ball);
+        HeroCollisionObject a=new HeroCollisionObject();
+        HeroCollisionObject b=new HeroCollisionObject();
         
         /******
          * conditions
