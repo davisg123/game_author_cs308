@@ -141,6 +141,10 @@ public class MainEngineTests extends Application {
         Level level0 = new Level(myGameObjects);
         myLevels.add(level0);
         
+        /*
+         * uncomment for saving game
+         */
+        /*
         GameData data = new GameData();
         data.addLevel(level0);
         data.addCondition(aCon);
@@ -157,7 +161,7 @@ public class MainEngineTests extends Application {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
+        */
         /*******
          * game
          ******/
