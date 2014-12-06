@@ -5,7 +5,6 @@ import java.util.Iterator;
 import authoring.model.collections.ConditionsCollection;
 import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.LevelsCollection;
-import engine.collisionDetection.CollisionDetector;
 import engine.conditions.Condition;
 import engine.render.GameObjectRenderer;
 
@@ -24,7 +23,6 @@ public class LevelManager implements Iterable<Level> {
 	private Level myCurrentLevel;
 	private int myCurrentIndex;
 	private GameObjectRenderer myRenderer;
-	private CollisionDetector myDetector;
 
 	/**
 	 * Constructor for a level
@@ -45,7 +43,6 @@ public class LevelManager implements Iterable<Level> {
 		myCurrentLevel = myLevels.get(myCurrentIndex);
 		myRenderer = renderer;
 		myRenderer.renderGameObjects(myCurrentLevel);
-		myDetector = new CollisionDetector();
 	}
 
 	/**
@@ -91,7 +88,6 @@ public class LevelManager implements Iterable<Level> {
 	public void update() {
 		myCurrentLevel.update();
 		updateFrameBasedConditions();
-		myDetector.checkCollisions(myGameObjects);
 	}
 
 	/**

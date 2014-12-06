@@ -1,19 +1,20 @@
 package engine.conditions;
 
 import java.util.List;
+import authoring.model.collections.GameObjectsCollection;
 import engine.actions.Action;
 import engine.gameObject.GameObject;
 
 public class TimeCondition extends GameObjectCondition {
     
     private int myFrameCount = 0;
-    private double mySecondsToExecute;
+    private double myTargetFrameCount;
     private boolean repeats;
     private boolean expired;
 
-    public TimeCondition (List<Action> myActions, List<GameObject> myGameObjects, String identifier, double secondsToExecute, boolean repeats) {
+    public TimeCondition (List<Action> myActions, GameObjectsCollection myGameObjects, String identifier, double frameElapseCount, boolean repeats) {
         super(myActions, myGameObjects, identifier);
-        mySecondsToExecute = secondsToExecute;
+        myTargetFrameCount = frameElapseCount;
         this.repeats = repeats;
     }
 
@@ -28,7 +29,7 @@ public class TimeCondition extends GameObjectCondition {
     public void frameElapsed () {
         if (!expired){
             myFrameCount++;
-            if(myFrameCount > mySecondsToExecute*60){
+            if(myFrameCount >= myTargetFrameCount){
                 executeActions();
                 myFrameCount = repeats ? 0 : myFrameCount;
                 expired = !repeats;

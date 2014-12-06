@@ -1,6 +1,7 @@
 package authoring.model.collections;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Observable;
@@ -35,6 +36,10 @@ public abstract class GeneralCollection<T> extends Observable implements Iterabl
 	
 	public void add(T a){
 		myObjects.add(a);
+	}
+	
+	public void addAll(GeneralCollection<T> collection){
+	    myObjects.addAll(collection.myObjects);
 	}
 	
 	public String toString(){
