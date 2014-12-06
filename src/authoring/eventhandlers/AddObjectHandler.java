@@ -42,7 +42,7 @@ public class AddObjectHandler implements GameHandler<Event>{
 	
 	public void createGameObject(GameObjectsProperties prop, Stage s){
 		myGameObject = prop.edit(new GameObject());
-		myGameObjectCollection.addGameObject(myGameObject);
+		myGameObjectCollection.add(myGameObject);
 		s.close();
 	}
 
