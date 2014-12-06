@@ -11,6 +11,7 @@ import authoring.eventhandlers.AddImageHandler;
 import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.AddObjectHandler;
 import authoring.eventhandlers.EditGameObjectHandler;
+import authoring.eventhandlers.GameObjGraphicDragHandler;
 import authoring.eventhandlers.GameObjectClickHandler;
 import authoring.eventhandlers.GameObjectDragHandler;
 import authoring.eventhandlers.GameObjectDragToLevelHandler;
@@ -24,7 +25,7 @@ import authoring.view.conditionsview.ConditionsAccordionView;
 import authoring.view.gameobjectsview.GameObjectsView;
 import authoring.view.graphicsview.GameObjectsTools;
 import authoring.view.graphicsview.GraphicsTools;
-import authoring.view.graphicsview.ImagesView;
+import authoring.view.graphicsview.ImageListView;
 import authoring.view.levelview.LevelOptions;
 import authoring.view.levelview.LevelsAccordionView;
 import authoring.view.levelview.LevelsView;
@@ -64,7 +65,7 @@ public class AuthoringController {
 
 	private GameObjectsView myGameObjects;
 
-	private ImagesView myGraphics;
+	private ImageListView myGraphics;
 	private GraphicsTools myGraphicsAdd;
 	private GameObjectsTools myObjectsAdd;
 
@@ -107,16 +108,15 @@ public class AuthoringController {
 		myModel.getGameObjectCollection().addObserver(myGameObjects);
 		
 		
-		/**
-		GameObject test = new GameObject(new ArrayList<Component>(), im, 0, 0,
-				0, 0, 0, "Mario");
-		test.setWidth(50);
-		test.setHeight(70);
-		
-		//myModel.getGameObjectCollection().addGameObject(test);
+//		GameObject test = new GameObject(new ArrayList<Component>(), im, 0, 0,
+//				0, 0, 0, "Mario");
+//		test.setWidth(50);
+//		test.setHeight(70);
+//		
+//		myModel.getGameObjectCollection().addGameObject(test);
 
-		myModel.getGameObjectCollection().addGameObject(test);
-		 **/
+		//myModel.getGameObjectCollection().addGameObject(test);
+		
 		myModel.getLevels().addObserver(myLevelsAccordionView);
 	}
 
@@ -132,7 +132,7 @@ public class AuthoringController {
 		myLevelOptions = new LevelOptions(myLanguage, myWidth, myHeight);
 		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
 
-		myGraphics = new ImagesView(myLanguage, myWidth, myHeight,
+		myGraphics = new ImageListView(myLanguage, myWidth, myHeight,
 				myGameLocation);
 		myGraphicsAdd = new GraphicsTools(myLanguage, myWidth, myHeight);
 		
@@ -163,12 +163,12 @@ public class AuthoringController {
 		
 		myLevels.setEventHandlers(new GameObjectClickHandler(myProperties),
 				new GameObjectDragHandler(myLevels, myModel.getLevels(),
-						myProperties));
+						myProperties), new GameObjGraphicDragHandler(myLevels));
 		myLevelsAccordionView.setEvents(new LevelToViewHandler(myLevels));
 		myLevelsAccordionView.setLevelEvents(new GameObjectClickHandler(
 				myProperties),
 				new GameObjectDragHandler(myLevels, myModel.getLevels(),
-						myProperties));
+						myProperties), new GameObjGraphicDragHandler(myLevels));
 		myProperties.setEditButtonBehavior(new EditGameObjectHandler(myLevels,
 				myModel.getLevels(), myProperties));
 
