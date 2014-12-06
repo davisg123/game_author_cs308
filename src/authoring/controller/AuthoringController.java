@@ -11,6 +11,7 @@ import authoring.eventhandlers.AddImageHandler;
 import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.AddObjectHandler;
 import authoring.eventhandlers.EditGameObjectHandler;
+import authoring.eventhandlers.GameObjGraphicDragHandler;
 import authoring.eventhandlers.GameObjectClickHandler;
 import authoring.eventhandlers.GameObjectDragHandler;
 import authoring.eventhandlers.GameObjectDragToLevelHandler;
@@ -162,12 +163,12 @@ public class AuthoringController {
 		
 		myLevels.setEventHandlers(new GameObjectClickHandler(myProperties),
 				new GameObjectDragHandler(myLevels, myModel.getLevels(),
-						myProperties));
+						myProperties), new GameObjGraphicDragHandler(myLevels));
 		myLevelsAccordionView.setEvents(new LevelToViewHandler(myLevels));
 		myLevelsAccordionView.setLevelEvents(new GameObjectClickHandler(
 				myProperties),
 				new GameObjectDragHandler(myLevels, myModel.getLevels(),
-						myProperties));
+						myProperties), new GameObjGraphicDragHandler(myLevels));
 		myProperties.setEditButtonBehavior(new EditGameObjectHandler(myLevels,
 				myModel.getLevels(), myProperties));
 

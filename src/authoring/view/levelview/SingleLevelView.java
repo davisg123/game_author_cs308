@@ -92,7 +92,7 @@ public class SingleLevelView extends Pane implements Observer {
 		System.out.println(gameObject.getWidth() + " " + gameObject.getHeight() + " " + gameObject.getRotation());
 		g.setDimensions(gameObject.getWidth(), gameObject.getHeight(), gameObject.getRotation());
 		
-		this.moveSpriteOnLevel(g, x, y);
+		this.moveGameObjectToLevel(g, x, y);
 		this.getChildren().add(g);
 
 	}
@@ -112,7 +112,7 @@ public class SingleLevelView extends Pane implements Observer {
 		return myID;
 	}
 
-	public void moveSpriteOnLevel(Graphic g, double x, double y) {
+	public void moveGameObjectToLevel(Graphic g, double x, double y) {
 		g.setLayoutX(x + OBJECT_X_OFFSET);
 		g.setLayoutY(y + OBJECT_Y_OFFSET);
 	}

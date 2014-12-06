@@ -14,6 +14,8 @@ public class AddObjectHandler implements GameHandler<Event>{
 
 	private GameObjectsCollection myGameObjectCollection;
 	private GameObject myGameObject;
+	private static final double NEW_GAMEOBJECT_WINDOW_HEIGHT = 400;
+	private static final double NEW_GAMEOBJECT_WINDOW_WIDTH = 400;
 	
 	public AddObjectHandler(GameObjectsCollection myGameObjectCollection){
 		this.myGameObjectCollection = myGameObjectCollection;
@@ -29,7 +31,7 @@ public class AddObjectHandler implements GameHandler<Event>{
 		GameObjectsProperties properties = new GameObjectsProperties(new GameObject(), null);
 		properties.setUpForNewObject().setOnMouseClicked(event -> createGameObject(properties, dialog));
 		root.getChildren().add(properties);
-		Scene scene = new Scene(root, 400, 400);
+		Scene scene = new Scene(root, NEW_GAMEOBJECT_WINDOW_WIDTH, NEW_GAMEOBJECT_WINDOW_HEIGHT);
 		dialog.setScene(scene);
 		dialog.show();
 		
@@ -42,7 +44,7 @@ public class AddObjectHandler implements GameHandler<Event>{
 	
 	public void createGameObject(GameObjectsProperties prop, Stage s){
 		myGameObject = prop.edit(new GameObject());
-		myGameObjectCollection.addGameObject(myGameObject);
+		myGameObjectCollection.add(myGameObject);
 		s.close();
 	}
 

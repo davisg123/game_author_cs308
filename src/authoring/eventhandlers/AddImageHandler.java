@@ -36,7 +36,7 @@ public class AddImageHandler implements GameHandler<Event> {
 						+ imageFile.getName());
 				ImageIO.write(bi, "png", newImageFile);
 				System.out.println(newImageFile.getPath());
-				myImagesCollection.addImage(newImageFile.getName());
+				myImagesCollection.add(newImageFile.getName());
 			} catch (IOException e) {
 				System.out.println("Bad File");
 			}
