@@ -24,9 +24,10 @@ import com.google.gson.GsonBuilder;
 public class DataManager {
 	
 	private GsonBuilder gson;
-	private static final String gameDatapath = "src/data/games/";
-	private static final String progressDatapath = "src/data/progress/";
-	private static final String sampleDatapath = "src/data/sample/";
+//	private static final String gameDatapath = "src/data/games/";
+//	private static final String progressDatapath = "src/data/progress/";
+//	private static final String sampleDatapath = "src/data/sample/";
+	private String myGameFileName = "gameData.json";
 	
 	public DataManager() {
 		gson = new GsonBuilder();
@@ -90,9 +91,12 @@ public class DataManager {
 	 * @return Returns true if successfully writes file.
 	 * @throws IOException 
 	 */
-	public boolean writeGameFile(GameData data, String fileName) throws IOException {
-		return writeFile(data, gameDatapath, fileName);
+	public boolean writeGameFile(GameData data, String gameDatapath) throws IOException {
+		return writeFile(data, gameDatapath, myGameFileName);
 	}
+//	public boolean writeGameFile(GameData data, String fileName) throws IOException {
+//		return writeFile(data, gameDatapath, fileName);
+//	}
 	
 	/**
 	 * Gets an object representing a game from a Json file.
@@ -147,6 +151,28 @@ public class DataManager {
 			return false;
 		}
 	}
+//	private boolean writeFile(Object obj, String datapath, String fileName) throws IOException {
+//		//if fileName ends in .json or nothing: otherwise, don't write file
+//		if(hasValidName(fileName)) {
+//			fileName = checkForExtension(fileName);
+//			String json = gson.create().toJson(obj);
+////			try {
+//				//File f = new File("myFileThough.json");
+//				File f = new File(datapath + fileName);
+//				System.out.println(datapath + fileName);
+//				//FileWriter writer = new FileWriter(datapath + fileName);
+//				FileWriter writer = new FileWriter(f);
+//				writer.write(json);
+//				writer.close();
+//				return true;
+////			} catch (IOException e) {
+////				return false;
+////			}
+//		}
+//		else {
+//			return false;
+//		}
+//	}
 	
 	//check 
 	private Object readFile(Class cl, String datapath, String fileName) {
