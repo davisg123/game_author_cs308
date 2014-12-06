@@ -19,7 +19,6 @@ public class SplashScreen {
 	private Group myGroup;
 	private Button myAuthorButton;
 	private Button myPlayButton;
-	private AuthoringModel myAuthoringModel;
 	private PlayerModel myPlayerModel;
 	protected Stage myStage;
 
@@ -61,11 +60,6 @@ public class SplashScreen {
 	}
 	
 	private void author() {
-		primaryStage.setResizable(false);
-		myScene = new AuthoringScene(primaryStage, myDefaultLocale, SCREEN_WIDTH,
-				SCREEN_HEIGHT);
-		primaryStage.setScene(myScene.getScene());
-		primaryStage.show();
 	}
 
 	private void play() throws IOException {

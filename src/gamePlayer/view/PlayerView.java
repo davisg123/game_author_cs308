@@ -2,7 +2,6 @@ package gamePlayer.view;
 
 import gamePlayer.model.PlayerModel;
 
-
 import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
@@ -18,7 +17,7 @@ public class PlayerView {
 	private Scene myScene;
 	private GameCanvas myCanvas;
 	private BorderPane myRoot;
-	
+
 	public PlayerView(PlayerModel playerModel) {
 		myPlayerModel = playerModel;
 		myStage = new Stage();
@@ -27,7 +26,7 @@ public class PlayerView {
 	public void initialize() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("RootLayout.fxml"));
 		myRoot = (BorderPane) loader.load();
-		MenuBarController myController = loader.<MenuBarController>getController();
+		MenuBarController myController = loader.<MenuBarController> getController();
 		myController.setModel(myPlayerModel);
 		myScene = new Scene(myRoot);
 		myStage.setTitle("MY PLAYER VIEW");
@@ -39,14 +38,13 @@ public class PlayerView {
 	private void initializeGUIComponents() {
 		myCanvas = new GameCanvas();
 	}
-	
-	public Node getGroup(){
+
+	public Node getGroup() {
 		return myCanvas.getNode();
 	}
-	
-	public void close(){
+
+	public void close() {
 		myStage.close();
 	}
-	
-	
+
 }

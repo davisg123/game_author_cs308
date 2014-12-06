@@ -34,7 +34,6 @@ public class MenuBarController implements Initializable{
 	
 	@FXML
 	private void loadGameFile(final ActionEvent event){
-		System.out.println("HI");
 		myPlayerModel.loadGameFile();
 		gameSelector.setDisable(true);
 		gameOptions.setDisable(false);
