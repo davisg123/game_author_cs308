@@ -3,7 +3,6 @@ package engine.conditions;
 import java.util.List;
 import authoring.model.collections.GameObjectsCollection;
 import engine.actions.Action;
-import engine.gameObject.GameObject;
 
 public class TimeCondition extends GameObjectCondition {
     
