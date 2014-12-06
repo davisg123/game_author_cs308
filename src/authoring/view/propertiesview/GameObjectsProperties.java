@@ -48,26 +48,13 @@ public class GameObjectsProperties extends Properties {
 		inherentTextProperties.put("collision", new PropertyTextField("Collision Constant", "0"));
 		inherentTextProperties.put("initXV", new PropertyTextField("Initial X Velocity", "0"));
 		inherentTextProperties.put("initYV", new PropertyTextField("Initial Y Velocity", "0"));
-		inherentTextProperties.put(
-				"width",
-				new PropertyTextField("Width: ", Double.toString(gameObject
-						.getWidth())));
-		inherentTextProperties.put(
-				"height",
-				new PropertyTextField("Height: ", Double.toString(gameObject
-						.getHeight())));
+		inherentTextProperties.put("width", new PropertyTextField("Width: ", Double.toString(gameObject.getWidth())));
+		inherentTextProperties.put("height",new PropertyTextField("Height: ", Double.toString(gameObject.getHeight())));
 		
 		
-		concreteTextProperties.put(
-				"x",
-				new PropertyTextField("X: ", Double.toString(gameObject.getX()
-						+ OBJECT_X_OFFSET)));
-		concreteTextProperties.put(
-				"y",
-				new PropertyTextField("Y: ", Double.toString(gameObject.getY()
-						+ OBJECT_Y_OFFSET)));
-		concreteTextProperties.put("rotation", new PropertyTextField("Rotation: ",
-				Double.toString(gameObject.getRotation())));
+		concreteTextProperties.put("x",new PropertyTextField("X: ", Double.toString(gameObject.getX()+ OBJECT_X_OFFSET)));
+		concreteTextProperties.put("y",new PropertyTextField("Y: ", Double.toString(gameObject.getY()+ OBJECT_Y_OFFSET)));
+		concreteTextProperties.put("rotation", new PropertyTextField("Rotation: ", Double.toString(gameObject.getRotation())));
 	
 		
 
@@ -143,7 +130,7 @@ public class GameObjectsProperties extends Properties {
 			cleared.setString("");
 			this.getChildren().add(cleared);
 		}
-
+ 
 		for(String s: booleanProperties.keySet()){
 			this.getChildren().add(booleanProperties.get(s));
 		}

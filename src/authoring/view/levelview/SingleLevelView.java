@@ -11,7 +11,7 @@ import authoring.eventhandlers.GameHandler;
 import authoring.eventhandlers.GameObjectClickHandler;
 import authoring.eventhandlers.GameObjectDragHandler;
 import authoring.main.Main;
-import authoring.view.gameobjectsview.GameObjectGraphic;
+import authoring.view.graphicsview.GameObjectGraphic;
 import authoring.view.graphicsview.Graphic;
 import javafx.geometry.Insets;
 import javafx.scene.layout.Background;
@@ -88,9 +88,9 @@ public class SingleLevelView extends Pane implements Observer {
 
 	private void addGameObjectToView(GameObject gameObject, double x, double y,
 			GameHandler... handler) {
-		GameObjectGraphic g = new GameObjectGraphic(gameObject, handler);
-		
-		g.makeGraphic(myGameLocation, gameObject.getWidth(), gameObject.getHeight(), gameObject.getRotation());
+		GameObjectGraphic g = new GameObjectGraphic(gameObject, myGameLocation, handler);
+		System.out.println(gameObject.getWidth() + " " + gameObject.getHeight() + " " + gameObject.getRotation());
+		g.setDimensions(gameObject.getWidth(), gameObject.getHeight(), gameObject.getRotation());
 		
 		this.moveSpriteOnLevel(g, x, y);
 		this.getChildren().add(g);

@@ -5,7 +5,7 @@ import static authoring.view.levelview.SingleLevelView.OBJECT_Y_OFFSET;
 import javafx.event.EventType;
 import javafx.scene.input.MouseEvent;
 import authoring.model.collections.LevelsCollection;
-import authoring.view.gameobjectsview.GameObjectGraphic;
+import authoring.view.graphicsview.GameObjectGraphic;
 import authoring.view.levelview.LevelsView;
 import authoring.view.levelview.SingleLevelView;
 import authoring.view.propertiesview.PropertiesView;

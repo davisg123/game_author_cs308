@@ -6,7 +6,7 @@ import javafx.event.EventType;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import authoring.model.collections.LevelsCollection;
-import authoring.view.gameobjectsview.GameObjectGraphic;
+import authoring.view.graphicsview.GameObjectGraphic;
 import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
 import engine.gameObject.GameObject;
