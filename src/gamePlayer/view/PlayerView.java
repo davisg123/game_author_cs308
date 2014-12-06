@@ -7,7 +7,6 @@ import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -31,7 +30,7 @@ public class PlayerView {
 		MenuBarController myController = loader.<MenuBarController>getController();
 		myController.setModel(myPlayerModel);
 		myScene = new Scene(myRoot);
-                ButtonConditionManager.getInstance().beginListeningToScene(myScene);
+        ButtonConditionManager.getInstance().beginListeningToScene(myScene);
 		myStage.setTitle("MY PLAYER VIEW");
 		myStage.setScene(myScene);
 		myStage.show();
