@@ -5,8 +5,9 @@ import engine.conditions.Condition;
 import engine.gameObject.GameObject;
 import engine.gameObject.components.Component;
 import engine.level.Level;
+import engine.physics.Force;
+import engine.physics.Scalar;
 import gamePlayer.model.DataWrapper;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,14 +15,20 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> f1166eb025a94c21fc58373b9e1140a86bb3e69d
 import authoring.model.GameData;
 import authoring.model.collections.GameObjectsCollection;
-
+import authoring.model.collections.GeneralCollection;
 import authoring.model.GameData;
+<<<<<<< HEAD
 import authoring.model.collections.GameObjectsCollection;
 
+=======
+>>>>>>> f1166eb025a94c21fc58373b9e1140a86bb3e69d
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -41,6 +48,9 @@ public class DataManager {
 			//gson.registerTypeAdapter(classes[i], new GenericTypeAdapter<classes[i]>(packages[i]));
 			gson.registerTypeAdapter(Condition.class, new GenericTypeAdapter<Condition>("engine.conditions"));
 			gson.registerTypeAdapter(Action.class, new GenericTypeAdapter<Action>("engine.actions"));
+			gson.registerTypeAdapter(GeneralCollection.class, new GenericTypeAdapter<GeneralCollection>("authoring.model.collections"));
+			gson.registerTypeAdapter(Force.class, new GenericTypeAdapter<Force>("engine.physics"));
+			gson.registerTypeAdapter(Scalar.class, new GenericTypeAdapter<Scalar>("engine.physics"));
 		//}
 	}
 	
