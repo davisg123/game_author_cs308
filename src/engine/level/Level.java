@@ -4,7 +4,11 @@ import java.util.Iterator;
 import java.util.Observable;
 import authoring.model.collections.ConditionIDsCollection;
 import authoring.model.collections.GameObjectsCollection;
+import engine.GameManager;
+import engine.actions.Initializable;
 import engine.gameObject.GameObject;
+import engine.gameObject.Identifiable;
+import engine.gameObject.Identifier;
 
 /**
  * A Level of the game. Contains all GameObjects and Actions and coordinates
@@ -14,9 +18,9 @@ import engine.gameObject.GameObject;
  * @author Abhishek Balakrishnan
  */
 
-public class Level extends Observable {
+public class Level extends Observable implements Identifiable, Initializable {
 
-	private String myLevelID;
+        private Identifier myId;
 	private GameObjectsCollection myDefaultGameObjects;
 	private GameObjectsCollection myWorkingGameObjects;
 	private ConditionIDsCollection myConditionIDs;
@@ -46,14 +50,6 @@ public class Level extends Observable {
 		for (GameObject sprite : myWorkingGameObjects) {
 			sprite.update();
 		}
-	}
-
-	public void setLevelID(String ID) {
-		myLevelID = ID;
-	}
-
-	public String getLevelID() {
-		return myLevelID;
 	}
 
 	/**
@@ -93,5 +89,20 @@ public class Level extends Observable {
 	public GameObjectsCollection getGameObjectsCollection() {
 		return myDefaultGameObjects;
 	}
+
+        @Override
+        public void setIdentifier (Identifier myId) {
+            this.myId = myId;
+        }
+        
+        @Override
+        public Identifier getIdentifier () {
+            return myId;
+        }
+
+        @Override
+        public void initialize (GameManager manager) {
+            //TODO: enable/disable conditions and render game objects
+        }
 
 }

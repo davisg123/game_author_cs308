@@ -21,9 +21,9 @@ public class CollisionCondition extends TimeCondition {
     private GameObjectsCollection mySecondCollisionSet;
     private Map<String,Integer> myCollisionMap;
 
-    public CollisionCondition (List<Action> myActions, GameObjectsCollection firstCollisionSet, GameObjectsCollection secondCollisionSet, String identifier) {
+    public CollisionCondition (List<Action> myActions, GameObjectsCollection firstCollisionSet, GameObjectsCollection secondCollisionSet) {
         //initialize as a time condition that executes every frame
-        super(myActions,firstCollisionSet,identifier,1,true);
+        super(myActions,firstCollisionSet,1,true);
         mySecondCollisionSet = secondCollisionSet;
         myCollisionMap = new HashMap<String,Integer>();
     }
