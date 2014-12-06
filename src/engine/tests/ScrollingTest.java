@@ -1,6 +1,7 @@
 package engine.tests;
 
 import java.util.ArrayList;
+
 import authoring.model.collections.ConditionsCollection;
 import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.LevelsCollection;
@@ -8,6 +9,7 @@ import engine.GameManager;
 import engine.actions.Action;
 import engine.actions.FrameRateAction;
 import engine.actions.TranslateX;
+import engine.actions.TranslateY;
 import engine.conditions.ButtonCondition;
 import engine.conditions.ButtonConditionManager;
 import engine.conditions.CollisionCondition;
@@ -64,28 +66,29 @@ public class ScrollingTest extends Application {
 		GameObjectsCollection myFloorObjects = new GameObjectsCollection();
 		GameObjectsCollection myBallObjects = new GameObjectsCollection();
 		// create the floor
-		GameObject floorRight = new GameObject(null, "floor", 0, 200, 20,
-				20000, 0, "floor_right");
-		// ugh, why do we have to set this explicitly?
-		PhysicsBody floorRightBody = new PhysicsBody(20000, 20);
-		floorRightBody.setVelocity(new Velocity(0, 0));
-		floorRightBody.addScalar((new CollisionConstant(1.0)));
-		floorRight.setPhysicsBody(floorRightBody);
+		GameObject floorLeft = new GameObject(null, "floor", 100, 200, 20,
+				100, 0, "floor_right");
+		PhysicsBody floorLeftBody = new PhysicsBody(20, 20);
+		floorLeftBody.setVelocity(new Velocity(0, 0));
+		floorLeftBody.addScalar((new CollisionConstant(1.0)));
+		floorLeft.setPhysicsBody(floorLeftBody);
+		myFloorObjects.add(floorLeft);
 		
-		GameObject floorAway = new GameObject(null, "floor", 1000, 200, 20,
-				20000, 0, "floor_away");
-		// ugh, why do we have to set this explicitly?
-		PhysicsBody floorAwayBody = new PhysicsBody(20000, 20);
-		floorAwayBody.setVelocity(new Velocity(0, 0));
-		floorAwayBody.addScalar((new CollisionConstant(1.0)));
-		floorAway.setPhysicsBody(floorAwayBody);
-		myFloorObjects.add(floorRight);
-		myFloorObjects.add(floorAway);
+		for(int i = 1; i < 100; i++){
+			GameObject floorAway = new GameObject(null, "floor", 400*i, 200, 20,
+					100, 0, "floor_away");
+			PhysicsBody floorAwayBody = new PhysicsBody(1000, 20);
+			floorAwayBody.setVelocity(new Velocity(0, 0));
+			floorAwayBody.addScalar((new CollisionConstant(1.0)));
+			floorAway.setPhysicsBody(floorAwayBody);
+			myFloorObjects.add(floorAway);
+		}
+
 		// create a ball
 		GameObject ball = new GameObject(null, "duvall", 150, 50, 40, 40, 0,
 				"ball_object");
 		PhysicsBody ballBody = new PhysicsBody(30, 30);
-		ballBody.setVelocity(new Velocity(0, 30));
+		ballBody.setVelocity(new Velocity(0, 50));
 		ball.setPhysicsBody(ballBody); 
 		myBallObjects.add(ball);
 
@@ -93,18 +96,27 @@ public class ScrollingTest extends Application {
 		 * conditions
 		 ******/
 		ConditionsCollection myConditions = new ConditionsCollection();
-		Action aAct = new TranslateX(myFloorObjects, -1.0);
+		Action floorAct = new TranslateX(myFloorObjects, -0.5);
+		Action aAct = new TranslateX(myBallObjects, -2.0);
 		Action dAct = new TranslateX(myBallObjects, 2.0);
+		Action wAct = new TranslateY(myBallObjects, -10);
 		ArrayList<Action> actionList = new ArrayList<Action>();
-		actionList.add(aAct);
+		actionList.add(floorAct);
 		TimeCondition timeCondition = new TimeCondition(actionList, myFloorObjects, null, 1, true);
 		myConditions.add(timeCondition);
-		ButtonCondition aCon = new ButtonCondition(actionList, "a_button",
+		ArrayList<Action> aActList = new ArrayList<Action>();
+		aActList.add(aAct);
+		ArrayList<Action> wActList = new ArrayList<Action>();
+		wActList.add(wAct);
+		ButtonCondition wCon = new ButtonCondition(wActList, "w_button",
+				KeyCode.W);
+		ButtonCondition aCon = new ButtonCondition(aActList, "a_button",
 				KeyCode.A);
 		ArrayList<Action> dActList = new ArrayList<Action>();
 		dActList.add(dAct);
 		ButtonCondition dCon = new ButtonCondition(dActList, "d_button",
 				KeyCode.D);
+		myConditions.add(wCon);
 		myConditions.add(aCon);
 		myConditions.add(dCon);
 
