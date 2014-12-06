@@ -15,20 +15,13 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-<<<<<<< HEAD
 
-
-=======
->>>>>>> f1166eb025a94c21fc58373b9e1140a86bb3e69d
 import authoring.model.GameData;
 import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.GeneralCollection;
 import authoring.model.GameData;
-<<<<<<< HEAD
 import authoring.model.collections.GameObjectsCollection;
 
-=======
->>>>>>> f1166eb025a94c21fc58373b9e1140a86bb3e69d
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

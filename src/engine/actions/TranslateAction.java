@@ -1,5 +1,8 @@
 package engine.actions;
 
+import java.util.List;
+
+import authoring.model.collections.GameObjectsCollection;
 import engine.gameObject.GameObject;
 
 /**
@@ -9,11 +12,11 @@ import engine.gameObject.GameObject;
  */
 
 public abstract class TranslateAction implements Action, Initializable {
-    protected GameObject mySprite;
+    protected GameObjectsCollection mySprites;
     protected double myValue;
     
-    public TranslateAction (GameObject sprite, double value) {
-        mySprite = sprite;
+    public TranslateAction (GameObjectsCollection sprites, double value) {
+        mySprites = sprites;
         myValue = value;
     }
     @Override

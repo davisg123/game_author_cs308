@@ -1,5 +1,8 @@
 package engine.actions;
 
+import java.util.List;
+
+import authoring.model.collections.GameObjectsCollection;
 import engine.GameManager;
 import engine.gameObject.GameObject;
 
@@ -11,15 +14,17 @@ import engine.gameObject.GameObject;
 
 public class TranslateY extends TranslateAction {
 
-    public TranslateY (GameObject sprite, double value) {
-        super(sprite, value);
+    public TranslateY (GameObjectsCollection sprites, double value) {
+        super(sprites, value);
     }
 
     @Override
     public void applyTransform () {
-        mySprite.setTranslateY(mySprite.getTranslateY() + myValue);
+        for (GameObject sprite: mySprites){
+        	sprite.setTranslateY(sprite.getTranslateY() + myValue);
+        }
     }
-
+    
     @Override
     public void initialize (GameManager manager) {
         
