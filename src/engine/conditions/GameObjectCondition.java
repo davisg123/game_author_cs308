@@ -15,8 +15,8 @@ import engine.gameObject.GameObject;
 public abstract class GameObjectCondition extends Condition {
     private GameObjectsCollection myGameObjects;
     
-    public GameObjectCondition (List<Action> myActions, GameObjectsCollection myGameObjects, String identifier) {
-        super(myActions,identifier);
+    public GameObjectCondition (List<Action> myActions, GameObjectsCollection myGameObjects) {
+        super(myActions);
         this.myGameObjects = myGameObjects;
     }
     

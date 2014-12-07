@@ -13,8 +13,8 @@ import engine.gameObject.GameObject;
 
 public abstract class MovementCondition extends GameObjectCondition {
 
-    public MovementCondition (List<Action> myActions, GameObjectsCollection myGameObjects, String identifier) {
-        super(myActions, myGameObjects, identifier);
+    public MovementCondition (List<Action> myActions, GameObjectsCollection myGameObjects) {
+        super(myActions, myGameObjects);
         assignListeners();
     }
 

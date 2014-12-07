@@ -15,7 +15,7 @@ import javafx.scene.image.Image;
  * @author Will Chang
  *
  */
-public class GameObject implements IEnabled, Iterable<Component>{
+public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
     private List<Component> myComponents; 
     //Maybe connect it with a properties file
     //Create an Image and Path manager that works with the Renderer
@@ -50,6 +50,9 @@ public class GameObject implements IEnabled, Iterable<Component>{
     
     //Holds onto the default data for reinitialization. 
     private DefaultData myDefaultData; 
+    
+    //identifier
+    private Identifier myId;
 
     /**
      * Constructors
@@ -316,6 +319,16 @@ public class GameObject implements IEnabled, Iterable<Component>{
     	for (Component c: myDefaultData.getComponents()){
     		myComponents.add(c.getClone());
     	}
+    }
+
+    @Override
+    public void setIdentifier (Identifier myId) {
+        this.myId = myId;
+    }
+
+    @Override
+    public Identifier getIdentifier () {
+        return myId;
     }
 
 }

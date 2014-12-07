@@ -14,6 +14,4 @@ public interface IEnabled {
     
     public boolean isEnabled ();
     
-    public String getID ();
-    
 }

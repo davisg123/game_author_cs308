@@ -2,7 +2,11 @@ package engine.conditions;
 
 import java.util.ArrayList;
 import java.util.List;
+import engine.GameManager;
 import engine.actions.Action;
+import engine.actions.Initializable;
+import engine.gameObject.Identifiable;
+import engine.gameObject.Identifier;
 
 /**
  * root class for conditions, or the event that triggers actions
@@ -11,23 +15,19 @@ import engine.actions.Action;
  *
  */
 
-public abstract class Condition {
+public abstract class Condition implements Identifiable, Initializable{
 
     private List<Action> myActions = new ArrayList<Action>();
-    private String myID;
     private boolean myEnabled;
+    private Identifier myId;
+    private GameManager myGameManager;
     
-    public Condition(List<Action> actions, String ID){
+    public Condition(List<Action> actions){
         myActions = actions;
-        myID = ID;
     }
     
     public List<Action> getActions(){
         return myActions;
-    }
-    
-    public String getID(){
-        return myID;
     }
     
     public void setEnabled(boolean enabled){
@@ -49,4 +49,25 @@ public abstract class Condition {
     public void frameElapsed(){
         //overridden by frame based conditions
     }
+    
+    @Override
+    public void setIdentifier (Identifier myId) {
+        this.myId = myId;
+    }
+
+    @Override
+    public Identifier getIdentifier () {
+        return myId;
+    }
+    
+    @Override
+    public void initialize (GameManager manager) {
+        myGameManager = manager;
+    }
+
+    protected GameManager getGameManager () {
+        return myGameManager;
+    }
+    
+    
 }
