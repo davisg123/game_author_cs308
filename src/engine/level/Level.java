@@ -71,13 +71,6 @@ public class Level extends Observable implements Identifiable {
     }
 
     /**
-     * SET INITIAL VALUES FOR THE MAIN CHARACTER
-     */
-    public void updateMainCharacter() {
-
-    }
-
-    /**
      * @return Iterator for GameObjectCollection
      */
     public Iterator<GameObject> getGameObjectIterator() {
@@ -105,7 +98,7 @@ public class Level extends Observable implements Identifiable {
     }
 
     public GameObjectsCollection getGameObjectsCollection() {
-        return myDefaultGameObjects;
+        return myWorkingGameObjects;
     }
 
     @Override

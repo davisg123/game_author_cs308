@@ -25,7 +25,7 @@ public class DeleteAction implements Action, Initializable{
 
 	@Override
 	public void execute() {
-		
+		//look for highlighted objects of myType to remove
 	}
 
 	

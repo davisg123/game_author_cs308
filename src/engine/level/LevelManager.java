@@ -162,4 +162,8 @@ public class LevelManager implements Iterable<Level> {
 		return myCurrentLevel; 
 	}
 	
+	public GameObjectsCollection getGameObjects(){
+		return myGameObjects; 
+	}
+	
 }
