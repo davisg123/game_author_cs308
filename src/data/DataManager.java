@@ -26,7 +26,7 @@ import com.google.gson.GsonBuilder;
 public class DataManager {
 	
 	private GsonBuilder gson;
-//	private static final String gameDatapath = "src/data/games/";
+	private static final String gameDatapath = "src/data/games/";
 //	private static final String progressDatapath = "src/data/progress/";
 //	private static final String sampleDatapath = "src/data/sample/";
 	private String myGameFileName = "gameData.json";
