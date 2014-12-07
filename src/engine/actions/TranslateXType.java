@@ -2,6 +2,10 @@ package engine.actions;
 
 import engine.gameObject.GameObject;
 
+/**
+ * @author Shreyas
+ */
+
 public class TranslateXType extends TranslateTypeAction {
 	
 	public TranslateXType(String type, double value){

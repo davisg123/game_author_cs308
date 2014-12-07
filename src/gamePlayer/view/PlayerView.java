@@ -11,6 +11,11 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+/**
+ * @author Shreyas
+ * @author Abhishek
+ */
+
 public class PlayerView {
 
 	private PlayerModel myPlayerModel;

@@ -7,6 +7,10 @@ import engine.GameManager;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 
+/**
+ * @author Shreyas
+ */
+
 public class DeleteIdAction implements Action, Initializable{
 
 	private List<Identifier> myIDs; 

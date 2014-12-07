@@ -9,6 +9,8 @@ import engine.gameObject.Identifier;
 import engine.physics.Impulse;
 import engine.physics.Vector;
 
+
+
 public class YImpulseAction extends ImpulseAction {
 
 	public YImpulseAction(ArrayList<Identifier> id, double value) {

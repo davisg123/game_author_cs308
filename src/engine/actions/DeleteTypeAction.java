@@ -6,6 +6,10 @@ import engine.gameObject.GameObject;
 import engine.gameObject.Identifiable;
 import engine.gameObject.Identifier;
 
+/**
+ * @author Shreyas
+ */
+
 public class DeleteTypeAction implements Action, Initializable{
 
 	private String myType;

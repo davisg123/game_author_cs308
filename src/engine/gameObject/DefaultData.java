@@ -5,6 +5,10 @@ import java.util.List;
 import engine.gameObject.components.Component;
 import engine.gameObject.components.PhysicsBody;
 
+/**
+ * @author Shreyas
+ */
+
 public class DefaultData {
 
 	private double myRotation;

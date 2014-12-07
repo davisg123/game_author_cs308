@@ -4,6 +4,10 @@ import engine.GameManager;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 
+/**
+ * @author Shreyas
+ */
+
 public class MakeNewObjectFromObjectAction extends MakeNewObjectAction {
 
 	private Identifier objectID; 

@@ -1,5 +1,9 @@
 package engine.actions;
 
+/**
+ * @author Shreyas
+ */
+
 public class MakeNewObjectFromLocationAction extends MakeNewObjectAction{
 
 	

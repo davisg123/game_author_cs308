@@ -2,6 +2,10 @@ package engine.actions;
 
 import engine.GameManager;
 
+/**
+ * @author Shreyas
+ */
+
 public class TypeAction implements Action, Initializable{
 
 	@Override

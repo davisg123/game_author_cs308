@@ -3,6 +3,10 @@ package engine.actions;
 import authoring.model.collections.GameObjectsCollection;
 import engine.GameManager;
 
+/**
+ * @author Shreyas
+ */
+
 public abstract class MakeNewObjectAction implements Action, Initializable {
 
 	private GameObjectsCollection myGameObjects; 

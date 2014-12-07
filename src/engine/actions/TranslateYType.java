@@ -2,6 +2,10 @@ package engine.actions;
 
 import engine.gameObject.GameObject;
 
+/**
+ * @author Shreyas
+ */
+
 public class TranslateYType extends TranslateTypeAction{
 
 	public TranslateYType(String type, double value) {

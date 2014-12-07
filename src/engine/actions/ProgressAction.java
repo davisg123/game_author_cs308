@@ -3,6 +3,10 @@ package engine.actions;
 import data.DataManager;
 import engine.GameManager;
 
+/**
+ * @author Shreyas
+ */
+
 public abstract class ProgressAction implements Action, Initializable{
 
 	protected GameManager myGameManager;
