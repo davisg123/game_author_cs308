@@ -4,8 +4,9 @@ import engine.GameManager;
 import engine.actions.PhysicsAction.TwoArgInterface;
 import engine.gameObject.GameObject;
 import engine.physics.Impulse;
+import engine.physics.Vector;
 
-public abstract class ImpulseAction extends PhysicsAction {
+public abstract class ImpulseAction extends VectorPhysicsAction {
 
 	public ImpulseAction(GameObject sprite, double value) {
 		super(sprite, value);
@@ -19,11 +20,10 @@ public abstract class ImpulseAction extends PhysicsAction {
 	}
 
 	@Override
-	public void applyPhysics(GameObject... myObjects) {
-		TwoArgInterface operation = (x, y) -> x.getPhysicsBody().addImpulse(
-				determineImpulse(myValue));
-		forHelper(myObjects, operation, myValue);
+	protected TwoArgInterface determineOperation(GameObject[] myObjects,
+			Object value) {
+		Vector vector = new Vector();
+		return (x, y) -> x.getPhysicsBody().addImpulse(
+				determineVector((Double) value, vector));
 	}
-
-	protected abstract Impulse determineImpulse(double value);
 }

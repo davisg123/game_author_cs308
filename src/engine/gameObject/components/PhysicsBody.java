@@ -213,8 +213,8 @@ public class PhysicsBody {
 		this.myActiveForces.put(f.toString(), f);
 	}
 
-	public void addImpulse(Impulse i) {
-		this.myImpulses.add(i);
+	public void addImpulse(Vector i) {
+		this.myImpulses.add((Impulse) i);
 	}
 
 	public void addScalar(Scalar a) {

@@ -4,6 +4,7 @@ import engine.GameManager;
 import engine.actions.PhysicsAction.TwoArgInterface;
 import engine.gameObject.GameObject;
 import engine.physics.Impulse;
+import engine.physics.Vector;
 
 public class YImpulseAction extends ImpulseAction {
 
@@ -19,8 +20,9 @@ public class YImpulseAction extends ImpulseAction {
 	}
 
 	@Override
-	protected Impulse determineImpulse(double value) {
-		return new Impulse(0, value);
+	protected Vector determineVector(double value, Vector vector) {
+		vector = new Impulse(0, value);
+		return vector;
 	}
 
 }

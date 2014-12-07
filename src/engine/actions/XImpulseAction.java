@@ -5,7 +5,7 @@ import engine.gameObject.GameObject;
 import engine.physics.Impulse;
 import engine.physics.Vector;
 
-public class XImpulseAction extends VectorPhysicsAction {
+public class XImpulseAction extends ImpulseAction {
 
 	public XImpulseAction(GameObject sprite, double value) {
 		super(sprite, value);
@@ -18,12 +18,11 @@ public class XImpulseAction extends VectorPhysicsAction {
 
 	}
 
-	// not using composition because it would then get too specific-vector based
-	// ones get this composition thing, others don't...
 	@Override
-	protected Vector determineVector(double value) {
-		Vector toReturn=new Impulse(value,0.0);
-		return toReturn;
+	protected Vector determineVector(double value, Vector vector) {
+		// doing this for a reason. Now it's vector and impulse
+		vector = new Impulse(value, 0.0);
+		return vector;
 	}
 
 }
