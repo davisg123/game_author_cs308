@@ -5,26 +5,16 @@ import javafx.scene.input.MouseEvent;
 import authoring.view.icons.GameObjectIcon;
 import authoring.view.propertiesview.PropertiesView;
 
-public class GameObjectClickHandler implements GameHandler<MouseEvent>{
+public class GameObjectClickHandler extends ClickHandler<GameObjectIcon>{
 
-	//VERY similar to image click handler, refactor
-	
-	private PropertiesView myProperties;
-	
-	public GameObjectClickHandler(PropertiesView props){
-		myProperties = props;
+	public GameObjectClickHandler(PropertiesView properties) {
+		super(properties);
 	}
 	
 	@Override
 	public void handle(MouseEvent event) {
 		GameObjectIcon g = (GameObjectIcon) event.getSource();
-		myProperties.makeProperties(g.getGameObject());
-		
+		myProperties.makeProperties(g);
 	}
-
-	@Override
-	public EventType<MouseEvent> getEventType() {
-		return MouseEvent.MOUSE_PRESSED;
-	}
-
+	
 }

@@ -2,12 +2,11 @@ package authoring.view.propertiesview;
 
 import java.util.ResourceBundle;
 
-import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.ScrollView;
-import authoring.view.icons.ImageIcon;
-import authoring.view.icons.LevelIcon;
+import authoring.view.icons.BaseIcon;
+import authoring.view.icons.GameObjectIcon;
 import engine.gameObject.GameObject;
 
 public class PropertiesView extends ScrollView {
@@ -19,7 +18,7 @@ public class PropertiesView extends ScrollView {
 	private GameHandler[] myButtonBehaviors;
 
 	private GameObjectProperties myGameObjectsProperties;
-	private GameObject myCurrentGameObject;
+	private BaseIcon myCurrentIcon;
 	
 	private double myWidth;
 	private double myHeight;
@@ -37,35 +36,50 @@ public class PropertiesView extends ScrollView {
 //	public void makeProperties(Graphic g){
 //		g.makeProperties();
 //	}
+//	public void makeProperties(ImageIcon g) {
+//		myContents.getChildren().clear();
+//		this.setContent(new ImageProperties(g));
+//	}
+//
+//	public void makeProperties(GameObjectIcon gameObj) {
+//		myContents.getChildren().clear();
+//		myCurrentGameObject = gameObj.getGameObject();
+//		myGameObjectsProperties = new GameObjectProperties(gameObj,this.myButtonBehaviors);
+//		this.setContent(myGameObjectsProperties);
+//	}
+//	
+//	public void makeProperties(LevelIcon g){
+//		myContents.getChildren().clear();
+//		this.setContent(new LevelProperties(g));
+//	}
 	
-	public void makeProperties(ImageIcon g) {
+	/**
+	public <T> void makeProperties(T g){
 		myContents.getChildren().clear();
-		this.setContent(new ImageProperties(g));
+		try{
+			String classString = g.getClass().toString();
+			String className = classString.split("\\.")[classString.split("\\.").length-1];
+			String type = className.replace("Icon", "");
+			Class cl = Class.forName("authoring.view.propertiesview." + type + "Properties");
+			Constructor ct = cl.getConstructor(g.getClass(), this.myButtonBehaviors.getClass());
+			this.setContent((Node) ct.newInstance(g, this.myButtonBehaviors));
+		}
+		catch (Exception e){
+			System.out.println("Broken");
+			//e.printStackTrace();
+		}
 	}
-
-	public void makeProperties(GameObject gameObj) {
-		myContents.getChildren().clear();
-		myCurrentGameObject = gameObj;
-		myGameObjectsProperties = new GameObjectProperties(gameObj, myWidth, myHeight,
-				this.myButtonBehaviors);
-		this.setContent(myGameObjectsProperties);
-	}
-	
-	public void makeProperties(LevelIcon g){
-		myContents.getChildren().clear();
-		this.setContent(new LevelProperties(g));
-	}
-
+	**/
 	public void displayProperties(Properties props){
 		this.setContent(props);
 	}
 	
-	public GameObject getCurrentGameObject() {
-		return this.myCurrentGameObject;
+	public GameObjectIcon getCurrentIcon() {
+		return (GameObjectIcon) this.myCurrentIcon;
 	}
 
 	public GameObject getEditedGameObject() {
-		return this.myGameObjectsProperties.edit(this.myCurrentGameObject);
+		return this.myGameObjectsProperties.edit(this.getCurrentIcon().getGameObject());
 	}
 
 	public void setButtonBehaviors(GameHandler ...gh) {

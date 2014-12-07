@@ -2,6 +2,8 @@ package authoring.view.propertiesview;
 
 import static authoring.view.levelview.SingleLevelView.OBJECT_X_OFFSET;
 import static authoring.view.levelview.SingleLevelView.OBJECT_Y_OFFSET;
+import static authoring.main.Main.SCREEN_WIDTH;
+import static authoring.main.Main.SCREEN_HEIGHT;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -13,9 +15,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.AccordionContainer;
+import authoring.view.icons.BaseIcon;
+import authoring.view.icons.GameObjectIcon;
 import engine.gameObject.GameObject;
 import engine.gameObject.components.PhysicsBody;
-import engine.physics.CollisionConstant;
 import engine.physics.Mass;
 import engine.physics.Vector;
 
@@ -35,9 +38,9 @@ public class GameObjectProperties extends Properties {
 	private GameHandler myDeleteHandler;
 	private GameHandler mySaveAsNewHandler;
 
-	public GameObjectProperties(GameObject gObj, double width, double height, GameHandler ...handler) {
+	public GameObjectProperties(GameObjectIcon gObj, GameHandler ...handler) {
 		
-		myAccordion = new AccordionContainer(width, height);
+		myAccordion = new AccordionContainer(SCREEN_WIDTH, SCREEN_HEIGHT);
 		
 		
 		
@@ -60,9 +63,9 @@ public class GameObjectProperties extends Properties {
 	}
 	
 	@Override
-	public void initializeProperties(Object g) {
+	public void initializeProperties(BaseIcon g) {
 
-		GameObject gameObject = (GameObject) g;
+		GameObject gameObject = ((GameObjectIcon) g).getGameObject();
 
 		this.getChildren().clear();
 		

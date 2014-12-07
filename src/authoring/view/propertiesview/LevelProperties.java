@@ -3,17 +3,19 @@ package authoring.view.propertiesview;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
+import authoring.eventhandlers.GameHandler;
+import authoring.view.icons.BaseIcon;
 import authoring.view.icons.LevelIcon;
 
 public class LevelProperties extends Properties{
 
-	public LevelProperties(Object o) {
-		initializeProperties(o);
+	public LevelProperties(LevelIcon i, GameHandler ...handler) {
+		initializeProperties(i);
 	}
 
 	@Override
-	public void initializeProperties(Object o) {
-		LevelIcon graphic = (LevelIcon) o;
+	public void initializeProperties(BaseIcon i) {
+		LevelIcon graphic = (LevelIcon) i;
 		
 		this.getChildren().clear();
 		
