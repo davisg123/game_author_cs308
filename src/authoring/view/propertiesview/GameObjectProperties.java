@@ -51,8 +51,7 @@ public class GameObjectProperties extends Properties {
 		//nullary constructor that creates empty map to generate new game objects
 		//consider refactoring this
 		wizardProperties = new HashMap<String, PropertyTextField>();
-		
-		wizardProperties.put("name", new PropertyTextField("Name: ", ""));
+
 		wizardProperties.put("image", new PropertyTextField("Image: ", ""));	
 		wizardProperties.put("initXV", new PropertyTextField("Initial X Velocity", "0"));
 		wizardProperties.put("initYV", new PropertyTextField("Initial Y Velocity", "0"));
@@ -80,7 +79,9 @@ public class GameObjectProperties extends Properties {
 		physicsProperties = new HashMap<String, PropertyTextField>();
 		
 
-		inherentTextProperties.put("name",new PropertyTextField("Name: ", gameObject.getID()));
+		PropertyTextField unmodifiableName = new PropertyTextField("Name: ", gameObject.getID());
+		unmodifiableName.setDisable(true);
+		inherentTextProperties.put("name",unmodifiableName);
 		inherentTextProperties.put("image",new PropertyTextField("Image: ", gameObject.getCurrentImageName()));
 //		inherentTextProperties.put("initXV", new PropertyTextField("Initial X Velocity", "0"));
 //		inherentTextProperties.put("initYV", new PropertyTextField("Initial Y Velocity", "0"));
@@ -152,8 +153,7 @@ public class GameObjectProperties extends Properties {
 						.getInformation()), Double.parseDouble(inherentTextProperties
 						.get("width").getInformation()),
 				Double.parseDouble(concreteTextProperties.get("rotation")
-						.getInformation()), inherentTextProperties.get("name")
-						.getInformation());
+						.getInformation()), g.getID());
 		
 		
 		if (booleanProperties.get("has physics").isSelected()) {

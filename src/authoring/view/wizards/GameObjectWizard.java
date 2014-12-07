@@ -19,7 +19,7 @@ public class GameObjectWizard extends Wizard{
 		
 		super.addMapToWindow();
 		
-		Button add = new Button("Add Game Object");
+		Button add = new Button("Continue");
 		add.setOnAction(event);
 		myWindow.getChildren().add(add);
 		

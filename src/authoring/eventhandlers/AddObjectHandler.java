@@ -7,6 +7,7 @@ import javafx.event.EventType;
 import authoring.model.collections.GameObjectCollection;
 import authoring.view.propertiesview.PropertyTextField;
 import authoring.view.wizards.GameObjectWizard;
+import authoring.view.wizards.NameWizard;
 import authoring.view.wizards.Wizard;
 import engine.gameObject.GameObject;
 import engine.gameObject.components.PhysicsBody;
@@ -18,6 +19,8 @@ public class AddObjectHandler implements GameHandler<Event> {
 	private static final double NEW_GAMEOBJECT_WINDOW_HEIGHT = 400;
 	private static final double NEW_GAMEOBJECT_WINDOW_WIDTH = 400;
 	private Wizard myWizard;
+	private NameWizard myNameWizard;
+	private GameObject myNewGameObject;
 
 	public AddObjectHandler(GameObjectCollection myGameObjectCollection) {
 		this.myGameObjectCollection = myGameObjectCollection;
@@ -55,18 +58,27 @@ public class AddObjectHandler implements GameHandler<Event> {
 	public void createGameObject() {
 		Map<String, PropertyTextField> map = myWizard.getMap();
 
-		GameObject newGameObject = new GameObject(null, map.get("image")
+		myNewGameObject = new GameObject(null, map.get("image")
 				.getInformation(), 0, 0, Double.parseDouble(map.get("height")
 				.getInformation()), Double.parseDouble(map.get("width")
-				.getInformation()), 0, map.get("name").getInformation());
+				.getInformation()), 0, "");
+		
+		
 		
 		PhysicsBody p = new PhysicsBody(Double.parseDouble(map.get("width")
 				.getInformation()),Double.parseDouble(map.get("height")
 				.getInformation()));
 		p.setVelocity(new Velocity(Double.parseDouble(map.get("initXV").getInformation()), Double.parseDouble(map.get("initYV").getInformation())));
 		
-		newGameObject.setPhysicsBody(p);
-		myGameObjectCollection.add(newGameObject);
+		myNewGameObject.setPhysicsBody(p);
 		myWizard.close();
+		
+		myNameWizard = new NameWizard("Choose Name", 230, 200, event -> updateName(), myGameObjectCollection);
+		
+	}
+	
+	public void updateName(){
+		myNewGameObject.setID(myNameWizard.getMap().get("name").getInformation());
+		myNameWizard.updateObjectName(myNewGameObject);
 	}
 }
