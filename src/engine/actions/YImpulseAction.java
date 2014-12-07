@@ -5,7 +5,7 @@ import engine.actions.PhysicsAction.TwoArgInterface;
 import engine.gameObject.GameObject;
 import engine.physics.Impulse;
 
-public class YImpulseAction extends PhysicsAction {
+public class YImpulseAction extends ImpulseAction {
 
 	public YImpulseAction(GameObject sprite, double value) {
 		super(sprite, value);
@@ -19,10 +19,8 @@ public class YImpulseAction extends PhysicsAction {
 	}
 
 	@Override
-	public void applyPhysics(GameObject... myObjects) {
-		TwoArgInterface operation = (x, y) -> x.getPhysicsBody().addImpulse(
-				new Impulse(0, (Double) y));
-		forHelper(myObjects, operation, myValue);
+	protected Impulse determineImpulse(double value) {
+		return new Impulse(0, value);
 	}
 
 }

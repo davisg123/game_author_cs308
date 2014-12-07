@@ -3,8 +3,9 @@ package engine.actions;
 import engine.GameManager;
 import engine.gameObject.GameObject;
 import engine.physics.Impulse;
+import engine.physics.Vector;
 
-public class XImpulseAction extends PhysicsAction {
+public class XImpulseAction extends VectorPhysicsAction {
 
 	public XImpulseAction(GameObject sprite, double value) {
 		super(sprite, value);
@@ -17,11 +18,12 @@ public class XImpulseAction extends PhysicsAction {
 
 	}
 
+	// not using composition because it would then get too specific-vector based
+	// ones get this composition thing, others don't...
 	@Override
-	public void applyPhysics(GameObject... myObjects) {
-		TwoArgInterface operation = (x, y) -> x.getPhysicsBody().addImpulse(
-				new Impulse((Double) y, 0));
-		forHelper(myObjects, operation, myValue);
+	protected Vector determineVector(double value) {
+		Vector toReturn=new Impulse(value,0.0);
+		return toReturn;
 	}
 
 }

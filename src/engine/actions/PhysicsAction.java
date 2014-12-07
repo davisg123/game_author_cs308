@@ -9,10 +9,10 @@ import engine.gameObject.GameObject;
 public abstract class PhysicsAction implements Action, Initializable {
 
 	protected GameObject mySprite;
-	protected Object myValue;
+	protected double myValue;
 	protected CollisionComposition myCollision;
 
-	public PhysicsAction(GameObject sprite, Object value) {
+	public PhysicsAction(GameObject sprite, double value) {
 		mySprite = sprite;
 		myValue = value;
 		myCollision = new CollisionComposition();

@@ -93,11 +93,11 @@ public class PhysicsBody {
 						myConstants.get("Mass")));
 	}
 
-	public void setVelocity(Velocity v) {
-		Velocity myVelocity = v;
+	public void setVelocity(Vector v) {
+		myVelocity = v;
 	}
 
-	public void setAcceleration(Acceleration v) {
+	public void setAcceleration(Vector v) {
 		myAcceleration = v;
 	}
 
