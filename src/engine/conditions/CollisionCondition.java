@@ -80,6 +80,7 @@ public class CollisionCondition extends TimeCondition {
     		if (firstObject.getIdentifier().getType().equals(firstCollisionType)){
     			for (GameObject secondObject: myGameObjects){
     				if (secondObject.getIdentifier().getType().equals(secondCollisionType)){
+    					//check collision
     					//need to highlight the objects involved in the collision
     					for (Action a: myActions){
     						a.execute(); 
