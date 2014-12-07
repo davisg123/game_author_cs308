@@ -26,7 +26,7 @@ public class Level extends Observable implements Identifiable {
     private GameObjectsCollection myWorkingGameObjects;
     private List<Identifier> myGameObjectIdList;
     private List<Identifier> myConditionIdList;
-    private ConditionIDsCollection myConditionIDs;
+    //private ConditionIDsCollection myConditionIDs;
     private boolean myStartLevelIndicator;
 
     /**
@@ -35,11 +35,22 @@ public class Level extends Observable implements Identifiable {
      * @param IdList
      * list representing game objects that apply to this level
      */
+    public Level (GameObjectsCollection gameObjects) {
+        this(gameObjects, false);
+    }
+    
     //TODO need to add ID list for the Conditions
-    public Level(List<Identifier> IdList, boolean isStart) {
+    public Level(List<Identifier> objectIdList, List<Identifier> conditionIdList, boolean isStart) {
+        myGameObjectIdList = objectIdList;
+        myConditionIdList = conditionIdList;
         myDefaultGameObjects = new GameObjectsCollection();
         myWorkingGameObjects = new GameObjectsCollection();
-        myGameObjectIdList = IdList;
+        myStartLevelIndicator = isStart;
+    }
+
+    public Level (GameObjectsCollection gameObjects, boolean isStart) {
+        myDefaultGameObjects = gameObjects;
+        myWorkingGameObjects = gameObjects;
         myStartLevelIndicator = isStart;
     }
 
@@ -76,12 +87,12 @@ public class Level extends Observable implements Identifiable {
     /**
      * @return Iterator for the ConditionIDsCollection
      */
-    public Iterator<String> getConditionIDsIterator() {
-        return myConditionIDs.iterator();
-    }
+   // public Iterator<String> getConditionIDsIterator() {
+     //  return myConditionIDs.iterator();
+    //}
 
     public void addGameObject(GameObject gameObject) {
-        //myDefaultGameObjects.add(gameObject);
+        myDefaultGameObjects.add(gameObject);
         setChanged();
         notifyObservers(this);
     }
@@ -115,6 +126,22 @@ public class Level extends Observable implements Identifiable {
                 myWorkingGameObjects.add(foundObject);
             }
         }
+    }
+    
+    public Iterator<Identifier> getGameObjectIds () {
+        return myGameObjectIdList.iterator();
+    }
+    
+    public Iterator<Identifier> getConditionIds () {
+        return myConditionIdList.iterator();
+    }
+    
+    public void setGameObjectIds (List<Identifier> iDList) {
+        myGameObjectIdList = iDList;
+    }
+    
+    public void setConditionIds (List<Identifier> iDList) {
+        myConditionIdList = iDList;
     }
     
     public void setStartIndicator(boolean indicator) {

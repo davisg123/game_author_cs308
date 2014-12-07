@@ -28,7 +28,7 @@ public abstract class PhysicsAction implements Action, Initializable {
 	
 	@Override
 	public void execute() {
-		// applyPhysics();
+		//applyPhysics();
 	}
 
 	public abstract void applyPhysics(GameObject... myObjects);
