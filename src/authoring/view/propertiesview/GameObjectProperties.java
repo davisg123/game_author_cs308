@@ -4,6 +4,7 @@ import static authoring.view.levelview.SingleLevelView.OBJECT_X_OFFSET;
 import static authoring.view.levelview.SingleLevelView.OBJECT_Y_OFFSET;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javafx.scene.control.Button;
@@ -53,13 +54,19 @@ public class GameObjectProperties extends Properties {
 	public GameObjectProperties(){
 		//nullary constructor that creates empty map to generate new game objects
 		//consider refactoring this
-		wizardProperties = new HashMap<String, PropertyTextField>();
+		wizardProperties = new LinkedHashMap<String, PropertyTextField>();
 
 		wizardProperties.put("image", new PropertyTextField("Image: ", ""));	
-		wizardProperties.put("initXV", new PropertyTextField("Initial X Velocity", "0"));
-		wizardProperties.put("initYV", new PropertyTextField("Initial Y Velocity", "0"));
 		wizardProperties.put("width", new PropertyTextField("Width: ", ""));
 		wizardProperties.put("height",new PropertyTextField("Height: ", ""));
+		wizardProperties.put("mass", new PropertyTextField("Mass", "1.0"));
+		wizardProperties.put("collision constant", new PropertyTextField("CollisionConstant", "0.0"));
+		wizardProperties.put("gravity constant", new PropertyTextField("GravityConstant", "1.0"));
+		wizardProperties.put("friction", new PropertyTextField("CoefficientOfFriction", "0.0"));
+		wizardProperties.put("density", new PropertyTextField("Density", "1.0"));
+		wizardProperties.put("volume", new PropertyTextField("Volume", "1.0"));
+		wizardProperties.put("initXV", new PropertyTextField("Initial X Velocity", "0"));
+		wizardProperties.put("initYV", new PropertyTextField("Initial Y Velocity", "0"));
 	}
 	
 	@Override
@@ -76,10 +83,10 @@ public class GameObjectProperties extends Properties {
 		physicsPane.setText("Physics Properties");
 		VBox physicsBox = new VBox();
 
-		inherentTextProperties = new HashMap<String, PropertyTextField>();
-		concreteTextProperties = new HashMap<String, PropertyTextField>();
-		booleanProperties = new HashMap<String, CheckBox>();
-		physicsProperties = new HashMap<String, PropertyTextField>();
+		inherentTextProperties = new LinkedHashMap<String, PropertyTextField>();
+		concreteTextProperties = new LinkedHashMap<String, PropertyTextField>();
+		booleanProperties = new LinkedHashMap<String, CheckBox>();
+		physicsProperties = new LinkedHashMap<String, PropertyTextField>();
 		
 
 		PropertyTextField unmodifiableName = new PropertyTextField("Name: ", gameObject.getID());
