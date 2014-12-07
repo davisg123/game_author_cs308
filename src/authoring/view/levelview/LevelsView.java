@@ -3,17 +3,13 @@ package authoring.view.levelview;
 import java.io.File;
 import java.util.ResourceBundle;
 
+import javafx.scene.control.Tab;
+import authoring.eventhandlers.GameHandler;
+import authoring.view.baseclasses.TabView;
+import authoring.view.graphicsview.Graphic;
 import data.Observable;
 import data.Observer;
 import engine.level.Level;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import authoring.eventhandlers.AddLevelHandler;
-import authoring.eventhandlers.GameHandler;
-import authoring.view.baseclasses.BPContainer;
-import authoring.view.baseclasses.TabView;
-import authoring.view.gameobjectsview.GameObjectGraphic;
-import authoring.view.graphicsview.Graphic;
 
 /**
  * View class that contains all the levels in the program. Corresponds with
@@ -112,6 +108,19 @@ public class LevelsView extends TabView implements Observer {
 		this.getSelectionModel().select(tab);
 		return newView;
 	}
+	
+	public boolean levelOpenInTabs(String id){
+		
+		for (Tab tab : this.getTabs()){
+			if (((SingleLevelView) tab.getContent()).getID().equals(id)){
+				this.getSelectionModel().select(tab);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
 
 	public void setEventHandlers(GameHandler... handlers) {
 		myEvents = handlers;

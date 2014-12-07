@@ -47,7 +47,7 @@ public class PropertiesView extends ScrollView {
 	
 	public void makeProperties(LevelGraphic g){
 		myContents.getChildren().clear();
-		//System.out.println("poop");
+		this.setContent(new LevelProperties(g));
 	}
 
 	public void displayProperties(Properties props){
