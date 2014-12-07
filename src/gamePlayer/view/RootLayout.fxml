@@ -26,22 +26,22 @@
     <top>
     	<Label text="Game Player GUI"/>
     	<GameSelector/>
-    	<MenuBar>
+    	<MenuBar> 
     		<menus>
     			<Menu fx:id="gameSelector" text="Game Selector">
     				<items>
-<!--     				<MenuItem text="Home" onAction="#goHome"/> -->
+    					<MenuItem text="Home" onAction="#goHome"/>
 						<MenuItem text="Load Game File" onAction="#loadGameFile"/>
 						<MenuItem text="Exit Game" onAction="#exitFromGame"/>
     				</items>
-    			</Menu> 
+    			</Menu>
     			<Menu fx:id="gameOptions" text="Game Options" disable="true">
     				<items>
-<!--   					<MenuItem text="New" onAction="#newGame"/>
+    					<MenuItem text="New" onAction="#newGame"/>
     					<MenuItem text="Load from Save File" onAction="#loadFromSave"/>
-    					<MenuItem text="Save" onAction="#saveGame"/> -->
+    					<MenuItem text="Save" onAction="#saveGame"/>
     					<MenuItem text="Pause" onAction="#pauseGame"/>
-<!--   					<MenuItem text="Quit" onAction="#quitGame"/>  -->
+    					<MenuItem text="Quit" onAction="#quitGame"/> 
     				</items>	
     			</Menu>
     			<Menu fx:id="gamePreferences" text="Preferences" disable="true">
@@ -53,4 +53,6 @@
     		</menus>
     	</MenuBar>
     </top>
+     
 </BorderPane>
+

@@ -48,14 +48,14 @@ public class PlayerModel {
 	}
 	
 	private void extractButtonConditions() {
-		myButtonConditions = new ConditionsCollection();
+/*		myButtonConditions = new ConditionsCollection();
 		ConditionsCollection conditions = myGameData.getConditions();
 		for (Iterator<Condition> conditionIterator = conditions.iterator(); conditionIterator.hasNext();) {
 			Condition condition = conditionIterator.next();
 			if(condition instanceof ButtonCondition) {
 				myButtonConditions.add(condition);
 			}
-		}
+		} */
 	}
 	
 	public ConditionsCollection getButtonConditions() {

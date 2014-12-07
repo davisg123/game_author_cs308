@@ -1,7 +1,6 @@
 package gamePlayer.view;
 
 import java.util.Iterator;
-import java.util.Map;
 
 import engine.conditions.ButtonCondition;
 import engine.conditions.Condition;
@@ -27,7 +26,6 @@ public class KeyboardView {
 	private GridPane myGrid;
 	private Stage myStage;
 	private ConditionsCollection myButtonConditions;
-	private Map<Condition, String> myButtonConditionsMap;
 	private ComboBox<String> myFunctionComboBox;
 	
 	public KeyboardView(ConditionsCollection buttonConditions) {
@@ -59,7 +57,7 @@ public class KeyboardView {
 		button.setPrefSize(70, 70);
 		button.setDisable(KEYS[num] == "");
 		button.setOnAction((event) -> {
-			KeyMapForm keyMapForm = new KeyMapForm(button.getText(), myFunctionComboBox);
+			new KeyMapForm(button.getText(), myFunctionComboBox);
 		});
 		sp.getChildren().add(button);
 		myGrid.add(sp, j, i);
@@ -67,7 +65,7 @@ public class KeyboardView {
 		return num;
 	}
 	
-	private ComboBox comboBoxForButton() {
+	private ComboBox<String> comboBoxForButton() {
 		ComboBox<String> functionCombos = new ComboBox<String>();
 		for (Iterator<Condition> conditionIterator = myButtonConditions.iterator(); conditionIterator.hasNext();) {
 			ButtonCondition condition = (ButtonCondition) conditionIterator.next();

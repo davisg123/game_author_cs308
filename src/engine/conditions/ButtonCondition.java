@@ -13,7 +13,13 @@ public class ButtonCondition extends Condition {
         myKey = key;
     }
     
+    public KeyCode getKeyCode() {
+    	return myKey;
+    }
     
+    public String getKeyIdentifier() {
+    	return myId.getUniqueId();
+    }
 
     @Override
     protected void executeActions () {

@@ -21,14 +21,13 @@ public class KeyMapForm {
 	private Group root;
 	private Stage form;
 	
-	public KeyMapForm(String key, ComboBox cb) {
+	public KeyMapForm(String key, ComboBox<String> cb) {
 		form = new Stage();
 		root = new Group();
 		Scene scene = new Scene(root, POP_UP_WIDTH, POP_UP_HEIGHT, Color.LIGHTGRAY);
 		form.setScene(scene);
 		VBox formVBox = new VBox();
 		Text t = new Text("This button (" + key + ") now maps to:");
-//		ComboBox cb = new ComboBox();
 		Button b = new Button();
 		b.setText(BUTTON_TEXT);
 		b.setLayoutX(BUTTON_X_COORD);
