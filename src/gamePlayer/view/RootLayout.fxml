@@ -47,7 +47,7 @@
     			<Menu fx:id="gamePreferences" text="Preferences" disable="true">
     				<items>
     					<MenuItem text="Sound"/>
-    					<MenuItem text="KeyCombos"/>    				
+    					<MenuItem text="KeyCombos" onAction="#keyCombos"/>    				
     				</items>
     			</Menu>
     		</menus>
