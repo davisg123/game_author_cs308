@@ -53,16 +53,6 @@
     		</menus>
     	</MenuBar>
     </top>
-    <center>
-    	<VBox fx:id="canvasVBox">
-    		<Label text="Game Canvas"/>
-    	</VBox>
-    </center>
-    <bottom>
-    	<VBox fx:id="statsVBox">
-    		<Label text="Game Stats"/>
-    	</VBox>
-    </bottom>
      
 </BorderPane>
 

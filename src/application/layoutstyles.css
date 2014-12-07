@@ -1,0 +1,12 @@
+.vbox {
+    -fx-background-color: #00008b;
+    -fx-padding: 15;
+    -fx-spacing: 10;
+    -fx-size: 500 500;
+}
+
+#text {
+	-fx-font: 20px Tahoma;
+	-fx-stroke: white;
+	-fx-stroke-width: 3;
+}

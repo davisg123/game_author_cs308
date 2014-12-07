@@ -15,6 +15,7 @@ import javafx.stage.Stage;
  * @author Chris Bernt
  * @author Eli Lichtenberg
  * @author Safkat Islam
+ * @author Abhishek Balakrishnan
  */
 public class ErrorPopUp {
 	
