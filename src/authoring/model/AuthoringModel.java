@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import authoring.model.collections.ConditionsCollection;
-import authoring.model.collections.GameObjectCollection;
+import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.ImagesCollection;
 import authoring.model.collections.LevelsCollection;
 import authoring.model.collections.SoundsCollection;
@@ -21,7 +21,6 @@ import engine.level.Level;
  */
 public class AuthoringModel {
 	private GameData myGame;
-	private GameData mySerializableGame;
 
 	public AuthoringModel() {
 		myGame = new GameData();
@@ -36,7 +35,7 @@ public class AuthoringModel {
 	 */
 	public void save() {
 		// TODO - Data
-		convertToSerializable();
+		GameData mySerializableGame = convertToSerializable();
 		DataManager manager = new DataManager();
 		try {
 			boolean success = manager.writeGameFile(mySerializableGame, "SavedGame1.json");
@@ -47,8 +46,8 @@ public class AuthoringModel {
 		}
 	}
 	
-	public void convertToSerializable(){
-		mySerializableGame = new GameData();
+	public GameData convertToSerializable(){
+		GameData mySerializableGame = new GameData();
 		int IDcounter = 0;
 		List<GameObject> allGameObjects = new ArrayList<GameObject>();
 		for(GameObject g: myGame.getGameObjects()){
@@ -70,8 +69,30 @@ public class AuthoringModel {
 		for(GameObject g: allGameObjects){
 			mySerializableGame.getGameObjects().add(g);
 		}
+		return mySerializableGame;
 	}
 	
+	public void convertFromSerializable(GameData input){
+		myGame = new GameData();
+		for (Level l: input.getLevels()){
+			for(Identifier i: l.getGameObjectIDs()){
+				for(GameObject g : input.getGameObjects()){
+					if(i.getUniqueId().equals(g.getIdentifier().getUniqueId())){
+						l.addGameObject(g);
+					}
+				}
+				for(GameObject g : l.getGameObjectsCollection()){
+					input.getGameObjects().remove(g);
+				}
+			}
+			l.getGameObjectIDs().clear();
+			myGame.getLevels().add(l);
+		}
+		for(GameObject g : input.getGameObjects()){
+			myGame.getGameObjects().add(g);
+		}
+	}
+
 	/**
 	 * Replaces the current GameData file with a new file that is loaded in
 	 */
@@ -92,7 +113,7 @@ public class AuthoringModel {
 		return myGame.getImages();
 	}
 	
-	public GameObjectCollection getGameObjectCollection(){
+	public GameObjectsCollection getGameObjectCollection(){
 		return myGame.getGameObjects();
 	}
 	

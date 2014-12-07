@@ -4,6 +4,7 @@ import java.util.List;
 
 import engine.GameManager;
 import engine.gameObject.GameObject;
+import engine.gameObject.Identifier;
 import engine.physics.Vector;
 import engine.physics.Velocity;
 
@@ -15,22 +16,16 @@ import engine.physics.Velocity;
 
 public class YVelocityAction extends PhysicsAction{
 
-	public YVelocityAction(GameObject sprite, double value) {
-		super(sprite, value);
+	public YVelocityAction(Identifier id, double value) {
+		super(id, value);
 	}
 
 	//TODO refactor after discussion about physics
 	@Override
 	public void applyPhysics() {
-		Velocity a=mySprite.getPhysicsBody().getVelocity();
+		Velocity a=myGameObject.getPhysicsBody().getVelocity();
 		Velocity b=new Velocity(a.getX(), myValue);
-		mySprite.getPhysicsBody().setVelocity(b);
-	}
-
-	@Override
-	public void initialize(GameManager manager) {
-		// TODO Auto-generated method stub
-		
+		myGameObject.getPhysicsBody().setVelocity(b);
 	}
 
 

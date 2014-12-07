@@ -5,6 +5,7 @@ import java.util.List;
 import engine.GameManager;
 import engine.actions.Action;
 import engine.actions.Initializable;
+import engine.actions.TranslateAction;
 import engine.gameObject.Identifiable;
 import engine.gameObject.Identifier;
 
@@ -17,10 +18,10 @@ import engine.gameObject.Identifier;
 
 public abstract class Condition implements Identifiable, Initializable{
 
-    private List<Action> myActions = new ArrayList<Action>();
+    protected List<Action> myActions = new ArrayList<Action>();
     private boolean myEnabled;
     private Identifier myId;
-    private GameManager myGameManager;
+    protected transient GameManager myGameManager;
     
     public Condition(List<Action> actions){
         myActions = actions;
@@ -63,6 +64,19 @@ public abstract class Condition implements Identifiable, Initializable{
     @Override
     public void initialize (GameManager manager) {
         myGameManager = manager;
+        initializeActions(manager);
+    }
+    
+    private void initializeActions(GameManager manager){
+        if (myActions != null){
+            for (Action a : myActions){
+                //TODO: expand to whatever action class needs initializing
+                //TODO: make this code look less like vomit
+                if (a instanceof TranslateAction){
+                    ((TranslateAction) a).initialize(manager);
+                }
+            }
+        }
     }
 
     protected GameManager getGameManager () {

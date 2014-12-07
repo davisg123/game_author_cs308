@@ -18,6 +18,7 @@ import engine.gameObject.components.PhysicsBody;
 import engine.physics.CollisionConstant;
 import engine.physics.Mass;
 import engine.physics.Vector;
+import engine.physics.Velocity;
 
 public class GameObjectProperties extends Properties {
 
@@ -163,7 +164,7 @@ public class GameObjectProperties extends Properties {
 					.get("height").getInformation()));
 
 			pb.addScalar(new Mass(Double.parseDouble(physicsProperties.get("mass").getInformation())));
-			pb.setVelocity(new Vector(Double.parseDouble(physicsProperties.get("initXV").getInformation()), Double.parseDouble(physicsProperties.get("initYV").getInformation())));
+			pb.setVelocity(new Velocity(Double.parseDouble(physicsProperties.get("initXV").getInformation()), Double.parseDouble(physicsProperties.get("initYV").getInformation())));
 			//may need to change
 			
 			edited.setPhysicsBody(pb);

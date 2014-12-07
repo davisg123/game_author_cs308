@@ -4,7 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
-import authoring.model.collections.GameObjectCollection;
+import authoring.model.collections.GameObjectsCollection;
 import authoring.view.propertiesview.PropertyTextField;
 import engine.gameObject.GameObject;
 import errorsAndExceptions.ErrorPopUp;
@@ -12,10 +12,10 @@ import errorsAndExceptions.ErrorPopUp;
 public class NameWizard extends Wizard{
 
 	
-	private GameObjectCollection myGameObjectCollection;
+	private GameObjectsCollection myGameObjectCollection;
 	
 	public NameWizard(String title, double width, double height,
-			EventHandler<ActionEvent> event, GameObjectCollection col) {
+			EventHandler<ActionEvent> event, GameObjectsCollection col) {
 		super(title, width, height, event);
 		myGameObjectCollection = col;
 	}

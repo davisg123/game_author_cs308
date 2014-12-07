@@ -1,9 +1,10 @@
 package engine.conditions;
 
 import java.util.List;
-import authoring.model.collections.GameObjectCollection;
+
 import engine.actions.Action;
 import engine.gameObject.GameObject;
+import engine.gameObject.Identifier;
 
 /**
  * abstract class based on the movement of game objects.
@@ -13,8 +14,8 @@ import engine.gameObject.GameObject;
 
 public abstract class MovementCondition extends GameObjectCondition {
 
-    public MovementCondition (List<Action> myActions, GameObjectCollection myGameObjects) {
-        super(myActions, myGameObjects);
+    public MovementCondition (List<Action> myActions, Identifier[] myIDs) {
+        super(myActions, myIDs);
         assignListeners();
     }
 

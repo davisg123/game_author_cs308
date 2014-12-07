@@ -23,10 +23,10 @@ public class FrameRateAction implements Action, Initializable {
         myGameManager = manager;
     }
 
-    @Override
-    public void execute () {
-        System.out.println(myGameManager);
-        myGameManager.setGameSpeed(myFrameRate, true);
-    }
+	@Override
+	public void execute() {
+		// TODO Auto-generated method stub
+		myGameManager.setGameSpeed(myFrameRate, true);
+	}
 
 }

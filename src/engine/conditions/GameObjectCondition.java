@@ -2,9 +2,12 @@ package engine.conditions;
 
 import java.util.ArrayList;
 import java.util.List;
-import authoring.model.collections.GameObjectCollection;
+
+import authoring.model.collections.GameObjectsCollection;
+import engine.GameManager;
 import engine.actions.Action;
 import engine.gameObject.GameObject;
+import engine.gameObject.Identifier;
 
 /**
  * abstract class for conditions based on the position of game objects
@@ -13,14 +16,24 @@ import engine.gameObject.GameObject;
  *
  */
 public abstract class GameObjectCondition extends Condition {
-    private GameObjectCollection myGameObjects;
+ 
     
-    public GameObjectCondition (List<Action> myActions, GameObjectCollection myGameObjects) {
+	protected GameObjectsCollection myGameObjects;
+    protected Identifier[] myGameObjectIDs;
+    
+    public GameObjectCondition (List<Action> myActions, Identifier[] myIDs) {
         super(myActions);
-        this.myGameObjects = myGameObjects;
+        this.myGameObjectIDs = myIDs;
     }
     
-    public void setGameObjects(GameObjectCollection gameObjects){
+    @Override
+    public void initialize(GameManager gameManager){
+    	for (Identifier id: myGameObjectIDs){
+    		myGameObjects.add(gameManager.objectForIdentifier(id));
+    	}
+    }
+    
+    public void setGameObjects(GameObjectsCollection gameObjects){
         myGameObjects = gameObjects;
     }
     
@@ -38,7 +51,10 @@ public abstract class GameObjectCondition extends Condition {
         return false;
     }
     
-    public GameObjectCollection getGameObjects(){
+    public GameObjectsCollection getGameObjects(){
         return myGameObjects;
     }
+    
+    
+    
 }

@@ -19,7 +19,7 @@ import gamePlayer.view.GameCanvas;
  * 
  * @author Will Chang
  * @author Davis
- *
+ * 	
  */
 
 public class GameObjectRenderer {

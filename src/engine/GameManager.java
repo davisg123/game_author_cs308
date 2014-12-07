@@ -1,7 +1,7 @@
 package engine;
 import authoring.model.GameData;
 import authoring.model.collections.ConditionsCollection;
-import authoring.model.collections.GameObjectCollection;
+import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.LevelsCollection;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import engine.render.GameObjectRenderer;
 import engine.conditions.ButtonConditionManager;
+import engine.conditions.Condition;
 import engine.gameObject.*;
 import engine.level.LevelManager;
 import gamePlayer.model.DataWrapper;
@@ -27,7 +28,7 @@ import gamePlayer.model.DataWrapper;
 
 public class GameManager {
     private ConditionsCollection myGameConditions;
-    private GameObjectCollection myGameObjects;
+    private GameObjectsCollection myGameObjects;
     private GameObjectRenderer myGameObjectRenderer;
     private Group myRootGroup;
     private Timeline myAnimation;
@@ -36,7 +37,7 @@ public class GameManager {
     private static final double DEFAULT_SPEED = 60.0;
     
     
-    public GameManager (ConditionsCollection myGameConditions, GameObjectCollection myGameObjects, LevelsCollection myLevels, Group myRootGroup) {
+    public GameManager (ConditionsCollection myGameConditions, GameObjectsCollection myGameObjects, LevelsCollection myLevels, Group myRootGroup) {
         super();
         this.myGameConditions = myGameConditions;
         this.myGameObjects = myGameObjects;
@@ -44,6 +45,7 @@ public class GameManager {
         this.myLevels = myLevels;
         this.myGameObjectRenderer = new GameObjectRenderer(myRootGroup);
         createLevelManager();
+        initializeConditions();
     }
     
     /**
@@ -131,8 +133,32 @@ public class GameManager {
     	myGameObjects=data.getGameObjects();
     }
     
+    private void initializeConditions(){
+        for (Condition c : myGameConditions){
+            c.initialize(this);
+        }
+    }
+    
+    public GameObject objectForIdentifier(Identifier Id){
+        //TODO: justify why this comes from the level manager
+        return myLevelManager.objectForIdentifier(Id);
+    }
+    
     public GameData getGameData(){
     	return new GameData(myLevels, myGameConditions, myGameObjects);
+    }
+    
+
+    public GameObjectsCollection getAllGameObjects () {
+        return myGameObjects;
+    }
+    
+    public ConditionsCollection getAllConditions () {
+        return myGameConditions;
+    }
+    
+    public GameObjectRenderer getRenderer () {
+        return myGameObjectRenderer;
     }
     
     public LevelManager getLevelManager(){

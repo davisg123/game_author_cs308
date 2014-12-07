@@ -20,10 +20,5 @@ public class TranslateX extends TranslateAction {
     public void applyTransform () {
         mySprite.setTranslateX(mySprite.getTranslateX() + myValue);
     }
-
-    @Override
-    public void initialize (GameManager manager) {
-        
-    }
     
 }

@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import authoring.model.collections.ConditionsCollection;
-import authoring.model.collections.GameObjectCollection;
+import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.GeneralCollection;
 import authoring.model.collections.ImagesCollection;
 import authoring.model.collections.LevelsCollection;
@@ -32,14 +32,14 @@ public class GameData {//implements Serializable {
 	private Map<String, GeneralCollection> myCollections;
 	private LevelsCollection myLevels;
 	private ConditionsCollection myConditions;
-	private GameObjectCollection myGameObjects;
+	private GameObjectsCollection myGameObjects;
 	private ImagesCollection myImages;
 	private SoundsCollection mySounds;
 
 	public GameData() {
 		myLevels = new LevelsCollection();
 		myConditions = new ConditionsCollection();
-		myGameObjects = new GameObjectCollection();
+		myGameObjects = new GameObjectsCollection();
 		myImages = new ImagesCollection();
 		mySounds = new SoundsCollection();
 		myCollections = new HashMap<String, GeneralCollection>();
@@ -49,7 +49,7 @@ public class GameData {//implements Serializable {
 	}
 	
 	//Will refactor this later. 
-	public GameData(LevelsCollection levels, ConditionsCollection conditions, GameObjectCollection gameObjects){
+	public GameData(LevelsCollection levels, ConditionsCollection conditions, GameObjectsCollection gameObjects){
 		myLevels=levels;
 		myConditions=conditions; 
 		myGameObjects=gameObjects; 
@@ -57,7 +57,7 @@ public class GameData {//implements Serializable {
 		mySounds = new SoundsCollection(); 
 		myCollections = new HashMap<String, GeneralCollection>();
 		addAllToMyCollections(new LevelsCollection(),
-				new GameObjectCollection(), new ConditionsCollection(),
+				new GameObjectsCollection(), new ConditionsCollection(),
 				new ImagesCollection(), new SoundsCollection());
 		
 	}
@@ -85,7 +85,7 @@ public class GameData {//implements Serializable {
 	 * GameObject Methods
 	 */
 
-	public GameObjectCollection getGameObjects() {
+	public GameObjectsCollection getGameObjects() {
 		return myGameObjects;
 	}
 

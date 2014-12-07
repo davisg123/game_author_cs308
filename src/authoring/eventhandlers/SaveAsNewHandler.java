@@ -2,19 +2,19 @@ package authoring.eventhandlers;
 
 import javafx.event.Event;
 import javafx.event.EventType;
-import authoring.model.collections.GameObjectCollection;
+import authoring.model.collections.GameObjectsCollection;
 import authoring.view.propertiesview.PropertiesView;
 import authoring.view.wizards.NameWizard;
 import engine.gameObject.GameObject;
 
 public class SaveAsNewHandler implements GameHandler<Event>{
 
-	private GameObjectCollection myGameObjectCollection;
+	private GameObjectsCollection myGameObjectCollection;
 	private PropertiesView myProps;
 	private NameWizard myWizard;
 	private GameObject myNewGameObject;
 	
-	public SaveAsNewHandler(GameObjectCollection coll, PropertiesView props){
+	public SaveAsNewHandler(GameObjectsCollection coll, PropertiesView props){
 		myGameObjectCollection = coll;
 		myProps = props;
 	}

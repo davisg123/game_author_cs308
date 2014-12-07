@@ -4,7 +4,7 @@ import java.util.Map;
 
 import javafx.event.Event;
 import javafx.event.EventType;
-import authoring.model.collections.GameObjectCollection;
+import authoring.model.collections.GameObjectsCollection;
 import authoring.view.propertiesview.PropertyTextField;
 import authoring.view.wizards.GameObjectWizard;
 import authoring.view.wizards.NameWizard;
@@ -15,14 +15,14 @@ import engine.physics.Velocity;
 
 public class AddObjectHandler implements GameHandler<Event> {
 
-	private GameObjectCollection myGameObjectCollection;
+	private GameObjectsCollection myGameObjectCollection;
 	private static final double NEW_GAMEOBJECT_WINDOW_HEIGHT = 400;
 	private static final double NEW_GAMEOBJECT_WINDOW_WIDTH = 400;
 	private Wizard myWizard;
 	private NameWizard myNameWizard;
 	private GameObject myNewGameObject;
 
-	public AddObjectHandler(GameObjectCollection myGameObjectCollection) {
+	public AddObjectHandler(GameObjectsCollection myGameObjectCollection) {
 		this.myGameObjectCollection = myGameObjectCollection;
 	}
 

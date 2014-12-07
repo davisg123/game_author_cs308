@@ -6,7 +6,7 @@ import java.util.List;
 import data.DataManager;
 import authoring.model.GameData;
 import authoring.model.collections.ConditionsCollection;
-import authoring.model.collections.GameObjectCollection;
+import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.LevelsCollection;
 import engine.GameManager;
 import engine.actions.Action;
@@ -75,8 +75,8 @@ public class MainEngineTests extends Application {
         /*****
          * create a sprite and put it in a collection
          *****/
-        GameObjectCollection myFloorObjects = new GameObjectCollection();
-        GameObjectCollection myBallObjects = new GameObjectCollection();
+        GameObjectsCollection myFloorObjects = new GameObjectsCollection();
+        GameObjectsCollection myBallObjects = new GameObjectsCollection();
         //create the floor
         GameObject floorRight = new GameObject(null,"floor",
                                    200, 200, 20, 200, 0, "floor_right");
@@ -106,13 +106,14 @@ public class MainEngineTests extends Application {
         ballBody.setVelocity(new Velocity(0,10));
         ball.setPhysicsBody(ballBody);
         myBallObjects.add(ball);
+        System.out.println(ballBody.getVelocity().getY());
         
         /******
          * conditions
          ******/
         ConditionsCollection myConditions = new ConditionsCollection();
-        Action aAct = new TranslateX(ball,-2.0);
-        Action dAct = new TranslateX(ball,2.0);
+        Action aAct = new TranslateX(ball.getIdentifier(),-2.0);
+        Action dAct = new TranslateX(ball.getIdentifier(),2.0);
         ArrayList<Action> actionList = new ArrayList<Action>();
         actionList.add(aAct);
         ButtonCondition aCon = new ButtonCondition(actionList,KeyCode.A);
@@ -129,8 +130,8 @@ public class MainEngineTests extends Application {
         ballAndPlatformCollision.setIdentifier(new Identifier("collision_cond","a"));
         myConditions.add(ballAndPlatformCollision);
         
-        Action boundaryRightAction = new TranslateY(floorRight,350);
-        Action boundaryLeftAction = new TranslateY(floorLeft,350);
+        Action boundaryRightAction = new TranslateY(floorRight.getIdentifier(),350);
+        Action boundaryLeftAction = new TranslateY(floorLeft.getIdentifier(),350);
         ArrayList<Action> boundaryActionList = new ArrayList<Action>();
         boundaryActionList.add(boundaryLeftAction);
         boundaryActionList.add(boundaryRightAction);
@@ -148,11 +149,11 @@ public class MainEngineTests extends Application {
         playListAct.add(playAct);
         ButtonCondition uCon = new ButtonCondition(playListAct,KeyCode.U);
         dCon.setIdentifier(new Identifier("button_cond","u"));
-        myConditions.add(pCon);
-        myConditions.add(uCon);
+        //myConditions.add(pCon);
+        //myConditions.add(uCon);
         
         
-        GameObjectCollection allGameObjects = new GameObjectCollection();
+        GameObjectsCollection allGameObjects = new GameObjectsCollection();
         allGameObjects.addAll(myBallObjects);
         allGameObjects.addAll(myFloorObjects);
 
@@ -160,21 +161,14 @@ public class MainEngineTests extends Application {
          * levels
          *******/
         LevelsCollection myLevels = new LevelsCollection();
-        Level level0 = new Level(allGameObjects.getIdentifierList());
+        Level level0 = new Level(allGameObjects.getIdentifierList(),myConditions.getIdentifierList(),true);
         myLevels.add(level0);
         
         /*
          * uncomment for saving game
          */
         /*
-        GameData data = new GameData();
-        data.addLevel(level0);
-        data.addCondition(aCon);
-        data.addCondition(dCon);
-        data.addCondition(boundaryCondition);
-        data.addGameObject(ball);
-        data.addGameObject(floorLeft);
-        data.addGameObject(floorRight);
+        GameData data = new GameData(myLevels,myConditions,allGameObjects);
         DataManager manager = new DataManager();
         try {
             manager.writeGameFile(data, "fd_final.json");

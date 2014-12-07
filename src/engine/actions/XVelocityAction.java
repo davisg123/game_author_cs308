@@ -2,6 +2,7 @@ package engine.actions;
 
 import engine.GameManager;
 import engine.gameObject.GameObject;
+import engine.gameObject.Identifier;
 import engine.physics.Velocity;
 
 /**
@@ -12,22 +13,16 @@ import engine.physics.Velocity;
 
 public class XVelocityAction extends PhysicsAction{
 
-	public XVelocityAction(GameObject sprite, double value) {
-		super(sprite, value);
+	public XVelocityAction(Identifier id, double value) {
+		super(id, value);
 	}
 
 	//TODO refactor after physics body discussion
 	@Override
 	public void applyPhysics() {
-		Velocity a=mySprite.getPhysicsBody().getVelocity();
+		Velocity a=myGameObject.getPhysicsBody().getVelocity();
 		Velocity b=new Velocity(myValue, a.getY());
-		mySprite.getPhysicsBody().setVelocity(b);
-	}
-
-	@Override
-	public void initialize(GameManager manager) {
-		// TODO Auto-generated method stub
-		
+		myGameObject.getPhysicsBody().setVelocity(b);
 	}
 
 	
