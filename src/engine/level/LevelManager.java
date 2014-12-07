@@ -1,12 +1,12 @@
 package engine.level;
 
 import java.util.Iterator;
-
 import authoring.model.collections.ConditionsCollection;
 import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.LevelsCollection;
-import engine.collisionDetection.CollisionDetector;
 import engine.conditions.Condition;
+import engine.gameObject.GameObject;
+import engine.gameObject.Identifier;
 import engine.render.GameObjectRenderer;
 
 /**
@@ -24,7 +24,6 @@ public class LevelManager implements Iterable<Level> {
 	private Level myCurrentLevel;
 	private int myCurrentIndex;
 	private GameObjectRenderer myRenderer;
-	private CollisionDetector myDetector;
 
 	/**
 	 * Constructor for a level
@@ -44,8 +43,8 @@ public class LevelManager implements Iterable<Level> {
 		myCurrentIndex = 0;
 		myCurrentLevel = myLevels.get(myCurrentIndex);
 		myRenderer = renderer;
-		myRenderer.renderGameObjects(myCurrentLevel);
-		myDetector = new CollisionDetector();
+                myCurrentLevel.initialize(this);
+                myRenderer.renderGameObjects(myCurrentLevel);
 	}
 
 	/**
@@ -91,7 +90,6 @@ public class LevelManager implements Iterable<Level> {
 	public void update() {
 		myCurrentLevel.update();
 		updateFrameBasedConditions();
-		myDetector.checkCollisions(myGameObjects);
 	}
 
 	/**
@@ -109,6 +107,7 @@ public class LevelManager implements Iterable<Level> {
 	public void initializeCurrentLevel() {
 		disableAllConditions();
 		setLevelEnabledConditions();
+		myCurrentLevel.initialize(this);
 		myRenderer.renderGameObjects(myCurrentLevel);
 	}
 
@@ -131,6 +130,15 @@ public class LevelManager implements Iterable<Level> {
 //			}
 //		}
 	}
+	
+	public GameObject objectForIdentifier(Identifier Id){
+	    for (GameObject g : myGameObjects){
+	        if (g.getIdentifier().getHash().equals(Id.getHash())){
+	            return g;
+	        }
+	    }
+	    return null;
+	}
 
 	/**
 	 * Find condition in master list and enable it
@@ -140,7 +148,7 @@ public class LevelManager implements Iterable<Level> {
 		for (Iterator<Condition> conditionIterator = myConditions.iterator(); conditionIterator
 				.hasNext();) {
 			Condition condition = conditionIterator.next();
-			if (condition.getID() == conditionID)
+			if (condition.getIdentifier().getUniqueId() == conditionID)
 				condition.setEnabled(true);
 		}
 	}

@@ -68,8 +68,8 @@ public class DataManager {
 				0, 0, 0, "Mario");
 		GameObjectsCollection goc = new GameObjectsCollection();
 		goc.addGameObject(mario);
-		Level level = new Level(goc);
-		writeData.addLevel(level);
+//		Level level = new Level(goc);
+//		writeData.addLevel(level);
 		
 		
 		String nameOfFile = "gameDataTwo.json";

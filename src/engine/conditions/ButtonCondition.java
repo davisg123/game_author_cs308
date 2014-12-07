@@ -8,10 +8,12 @@ public class ButtonCondition extends Condition {
     
     private KeyCode myKey;
 
-    public ButtonCondition (ArrayList<Action> actions, String identifier, KeyCode key) {
-        super(actions,identifier);
+    public ButtonCondition (ArrayList<Action> actions, KeyCode key) {
+        super(actions);
         myKey = key;
     }
+    
+    
 
     @Override
     protected void executeActions () {
