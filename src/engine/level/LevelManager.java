@@ -41,9 +41,8 @@ public class LevelManager implements Iterable<Level> {
 		myGameObjects = gameObjects;
 		myConditions = conditions;
 		//myCurrentIndex = 0;
-		findAndSetStartLevel(levels);
 		myRenderer = renderer;
-                myRenderer.renderGameObjects(myCurrentLevel);
+		findAndSetStartLevel(levels);
 	}
 
 	/**
@@ -54,7 +53,8 @@ public class LevelManager implements Iterable<Level> {
 	    //Authoring must have set a startLevel, and only 1 start level
 	    for(Level level : levels) {
 	        if(level.isStartLevel()) {
-	            setCurrentLevel(level);
+	            myCurrentLevel = level;
+	            initializeCurrentLevel();
 	            break;
 	        }
 	    }
@@ -119,16 +119,16 @@ public class LevelManager implements Iterable<Level> {
 	 * condition from master list
 	 */
 	private void setLevelEnabledConditions() {
-		for (Iterator<String> conditionIDIterator = myCurrentLevel
-				.getConditionIDsIterator(); conditionIDIterator.hasNext();) {
-			String conditionID = conditionIDIterator.next();
+		for (Iterator<Identifier> conditionIDIterator = myCurrentLevel.getConditionIds(); 
+		        conditionIDIterator.hasNext();) {
+			Identifier conditionID = conditionIDIterator.next();
 			enableCondition(conditionID);
 		}
 	}
 	
 	public GameObject objectForIdentifier(Identifier Id){
 	    for (GameObject g : myGameObjects){
-	        if (g.getIdentifier().getHash().equals(Id.getHash())){
+	        if (g.getIdentifier().equals(Id)){
 	            return g;
 	        }
 	    }
@@ -139,11 +139,11 @@ public class LevelManager implements Iterable<Level> {
 	 * Find condition in master list and enable it
 	 * @param conditionID
 	 */
-	private void enableCondition(String conditionID) {
-		for (Iterator<Condition> conditionIterator = myConditions.iterator(); conditionIterator
-				.hasNext();) {
+	private void enableCondition(Identifier conditionID) {
+		for (Iterator<Condition> conditionIterator = myConditions.iterator(); 
+		        conditionIterator.hasNext();) {
 			Condition condition = conditionIterator.next();
-			if (condition.getIdentifier().getUniqueId() == conditionID)
+			if (condition.getIdentifier().equals(conditionID))
 				condition.setEnabled(true);
 		}
 	}

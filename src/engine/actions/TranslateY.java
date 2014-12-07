@@ -21,9 +21,4 @@ public class TranslateY extends TranslateAction {
         mySprite.setTranslateY(mySprite.getTranslateY() + myValue);
     }
 
-    @Override
-    public void initialize (GameManager manager) {
-        
-    }
-
 }

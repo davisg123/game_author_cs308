@@ -1,5 +1,6 @@
 package engine.actions;
 
+import engine.GameManager;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 
@@ -22,6 +23,11 @@ public abstract class TranslateAction implements Action, Initializable {
     @Override
     public void execute () {
         applyTransform();
+    }
+    
+    @Override
+    public void initialize (GameManager manager) {
+        mySprite = manager.objectForIdentifier(myGameObjectID);
     }
     
     /**

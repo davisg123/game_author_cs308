@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import engine.render.GameObjectRenderer;
 import engine.conditions.ButtonConditionManager;
+import engine.conditions.Condition;
 import engine.gameObject.*;
 import engine.level.LevelManager;
 import gamePlayer.model.DataWrapper;
@@ -44,6 +45,7 @@ public class GameManager {
         this.myLevels = myLevels;
         this.myGameObjectRenderer = new GameObjectRenderer(myRootGroup);
         createLevelManager();
+        initializeConditions();
     }
     
     /**
@@ -129,6 +131,17 @@ public class GameManager {
     	myLevels=data.getLevels();
     	myGameConditions=data.getConditions();
     	myGameObjects=data.getGameObjects();
+    }
+    
+    private void initializeConditions(){
+        for (Condition c : myGameConditions){
+            c.initialize(this);
+        }
+    }
+    
+    public GameObject objectForIdentifier(Identifier Id){
+        //TODO: justify why this comes from the level manager
+        return myLevelManager.objectForIdentifier(Id);
     }
     
     public GameData getGameData(){
