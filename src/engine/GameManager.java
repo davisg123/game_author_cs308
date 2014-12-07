@@ -148,6 +148,19 @@ public class GameManager {
     	return new GameData(myLevels, myGameConditions, myGameObjects);
     }
     
+
+    public GameObjectsCollection getAllGameObjects () {
+        return myGameObjects;
+    }
+    
+    public ConditionsCollection getAllConditions () {
+        return myGameConditions;
+    }
+    
+    public GameObjectRenderer getRenderer () {
+        return myGameObjectRenderer;
+    }
+    
     public LevelManager getLevelManager(){
     	return myLevelManager; 
     }
