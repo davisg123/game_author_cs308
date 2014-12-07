@@ -2,7 +2,6 @@ package engine.tests;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import data.DataManager;
 import authoring.model.GameData;
 import authoring.model.collections.ConditionsCollection;
@@ -10,9 +9,8 @@ import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.LevelsCollection;
 import engine.GameManager;
 import engine.actions.Action;
-import engine.actions.FrameRateAction;
-import engine.actions.TranslateX;
-import engine.actions.TranslateY;
+import engine.actions.TranslateXType;
+import engine.actions.TranslateYType;
 import engine.conditions.BoundaryConditionY;
 import engine.conditions.ButtonCondition;
 import engine.conditions.ButtonConditionManager;
@@ -21,10 +19,8 @@ import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 import engine.gameObject.components.PhysicsBody;
 import engine.level.Level;
-import engine.physics.Acceleration;
 import engine.physics.CollisionConstant;
 import engine.physics.Velocity;
-import engine.render.GameObjectRenderer;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -106,21 +102,32 @@ public class MainEngineTests extends Application {
         ballBody.setVelocity(new Velocity(0,10));
         ball.setPhysicsBody(ballBody);
         myBallObjects.add(ball);
-        System.out.println(ballBody.getVelocity().getY());
+        
+        //create alt ball
+        GameObject ball2 = new GameObject(null,"ball",250,50,30,30,0,"ball_object");
+        ball2.setIdentifier(new Identifier("ball","b"));
+        PhysicsBody ballBody2 = new PhysicsBody(30,30);
+        ballBody2.setVelocity(new Velocity(0,10));
+        ball2.setPhysicsBody(ballBody2);
+        myBallObjects.add(ball2);
         
         /******
          * conditions
          ******/
         ConditionsCollection myConditions = new ConditionsCollection();
-        Action aAct = new TranslateX(ball.getIdentifier(),-2.0);
-        Action dAct = new TranslateX(ball.getIdentifier(),2.0);
+        Action aAct = new TranslateXType("ball",-2.0);
+        Action dAct = new TranslateXType("ball",2.0);
         ArrayList<Action> actionList = new ArrayList<Action>();
         actionList.add(aAct);
-        ButtonCondition aCon = new ButtonCondition(actionList,KeyCode.A);
+        ArrayList<KeyCode> kclA = new ArrayList<KeyCode>();
+        kclA.add(KeyCode.A);
+        ButtonCondition aCon = new ButtonCondition(actionList,kclA);
         aCon.setIdentifier(new Identifier("button_cond","a"));
         ArrayList<Action> dActList = new ArrayList<Action>();
         dActList.add(dAct);
-        ButtonCondition dCon = new ButtonCondition(dActList,KeyCode.D);
+        ArrayList<KeyCode> kclD = new ArrayList<KeyCode>();
+        kclD.add(KeyCode.D);
+        ButtonCondition dCon = new ButtonCondition(dActList,kclD);
         dCon.setIdentifier(new Identifier("button_cond","d"));
         myConditions.add(aCon);
         myConditions.add(dCon);
@@ -130,8 +137,8 @@ public class MainEngineTests extends Application {
         ballAndPlatformCollision.setIdentifier(new Identifier("collision_cond","a"));
         myConditions.add(ballAndPlatformCollision);
         
-        Action boundaryRightAction = new TranslateY(floorRight.getIdentifier(),350);
-        Action boundaryLeftAction = new TranslateY(floorLeft.getIdentifier(),350);
+        Action boundaryRightAction = new TranslateYType("floor",350);
+        Action boundaryLeftAction = new TranslateYType("foor",350);
         ArrayList<Action> boundaryActionList = new ArrayList<Action>();
         boundaryActionList.add(boundaryLeftAction);
         boundaryActionList.add(boundaryRightAction);
@@ -139,6 +146,8 @@ public class MainEngineTests extends Application {
         boundaryCondition.setIdentifier(new Identifier("bound_cond","a"));
         myConditions.add(boundaryCondition);
         
+        /*
+         //uncomment for play pause stuff
         Action pauseAct = new FrameRateAction(0.0);
         ArrayList<Action> pauseActList = new ArrayList<Action>();
         pauseActList.add(pauseAct);
@@ -149,9 +158,9 @@ public class MainEngineTests extends Application {
         playListAct.add(playAct);
         ButtonCondition uCon = new ButtonCondition(playListAct,KeyCode.U);
         dCon.setIdentifier(new Identifier("button_cond","u"));
-        //myConditions.add(pCon);
-        //myConditions.add(uCon);
-        
+        myConditions.add(pCon);
+        myConditions.add(uCon);
+        */
         
         GameObjectsCollection allGameObjects = new GameObjectsCollection();
         allGameObjects.addAll(myBallObjects);
@@ -167,7 +176,7 @@ public class MainEngineTests extends Application {
         /*
          * uncomment for saving game
          */
-        /*
+        
         GameData data = new GameData(myLevels,myConditions,allGameObjects);
         DataManager manager = new DataManager();
         try {
@@ -177,7 +186,7 @@ public class MainEngineTests extends Application {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        */
+        
         
         /*******
          * game
