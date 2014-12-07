@@ -41,8 +41,9 @@ public class LevelManager implements Iterable<Level> {
 		myGameObjects = gameObjects;
 		myConditions = conditions;
 		//myCurrentIndex = 0;
-		findAndSetStartLevel(levels);
 		myRenderer = renderer;
+		findAndSetStartLevel(levels);
+		
                 myRenderer.renderGameObjects(myCurrentLevel);
 	}
 
@@ -54,7 +55,8 @@ public class LevelManager implements Iterable<Level> {
 	    //Authoring must have set a startLevel, and only 1 start level
 	    for(Level level : levels) {
 	        if(level.isStartLevel()) {
-	            setCurrentLevel(level);
+	            myCurrentLevel = level;
+	            initializeCurrentLevel();
 	            break;
 	        }
 	    }
@@ -128,7 +130,7 @@ public class LevelManager implements Iterable<Level> {
 	
 	public GameObject objectForIdentifier(Identifier Id){
 	    for (GameObject g : myGameObjects){
-	        if (g.getIdentifier().getHash().equals(Id.getHash())){
+	        if (g.getIdentifier().equals(Id)){
 	            return g;
 	        }
 	    }
