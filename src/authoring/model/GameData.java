@@ -1,17 +1,13 @@
 package authoring.model;
 
-import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
 import authoring.model.collections.ConditionsCollection;
 import authoring.model.collections.GameObjectsCollection;
-import authoring.model.collections.GeneralCollection;
 import authoring.model.collections.ImagesCollection;
 import authoring.model.collections.LevelsCollection;
 import authoring.model.collections.SoundsCollection;
 import engine.conditions.Condition;
-import engine.level.*;
 import engine.gameObject.GameObject;
+import engine.level.Level;
 
 /**
  * Passive data object that holds onto all of the data that represents an
