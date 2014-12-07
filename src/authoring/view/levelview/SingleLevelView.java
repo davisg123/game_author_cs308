@@ -2,15 +2,16 @@ package authoring.view.levelview;
 
 import java.io.File;
 import java.util.Arrays;
-import java.util.Observable;
-import java.util.Observer;
 
+import data.Observable;
+import data.Observer;
 import engine.gameObject.GameObject;
 import engine.level.Level;
 import authoring.eventhandlers.GameHandler;
 import authoring.eventhandlers.GameObjectClickHandler;
 import authoring.eventhandlers.GameObjectDragHandler;
-import authoring.view.gameobjectsview.GameObjectGraphic;
+import authoring.main.Main;
+import authoring.view.graphicsview.GameObjectGraphic;
 import authoring.view.graphicsview.Graphic;
 import javafx.geometry.Insets;
 import javafx.scene.layout.Background;
@@ -28,11 +29,11 @@ import javafx.scene.paint.Color;
  */
 public class SingleLevelView extends Pane implements Observer {
 	private Background myDefaultBackground = new Background(new BackgroundFill(
-			Color.BLACK, CornerRadii.EMPTY, Insets.EMPTY));
+			Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY));
 	private static final double VIEW_HEIGHT_RATIO = .82;
 	private static final double VIEW_WIDTH_RATIO = 0.6;
-	public static final double OBJECT_X_OFFSET = -215;
-	public static final double OBJECT_Y_OFFSET = -165;
+	public static final double OBJECT_X_OFFSET = -Main.SCREEN_WIDTH*.2;
+	public static final double OBJECT_Y_OFFSET = -Main.SCREEN_HEIGHT*.23;
 	private File myGameLocation;
 
 	private GameHandler[] myEvents;
@@ -87,9 +88,11 @@ public class SingleLevelView extends Pane implements Observer {
 
 	private void addGameObjectToView(GameObject gameObject, double x, double y,
 			GameHandler... handler) {
-		GameObjectGraphic g = new GameObjectGraphic(gameObject, handler);
-		g.makeGraphic(myGameLocation);
-		this.moveSpriteOnLevel(g, x, y);
+		GameObjectGraphic g = new GameObjectGraphic(gameObject, myGameLocation, handler);
+		System.out.println(gameObject.getWidth() + " " + gameObject.getHeight() + " " + gameObject.getRotation());
+		g.setDimensions(gameObject.getWidth(), gameObject.getHeight(), gameObject.getRotation());
+		
+		this.moveGameObjectToLevel(g, x, y);
 		this.getChildren().add(g);
 
 	}
@@ -109,7 +112,7 @@ public class SingleLevelView extends Pane implements Observer {
 		return myID;
 	}
 
-	public void moveSpriteOnLevel(Graphic g, double x, double y) {
+	public void moveGameObjectToLevel(Graphic g, double x, double y) {
 		g.setLayoutX(x + OBJECT_X_OFFSET);
 		g.setLayoutY(y + OBJECT_Y_OFFSET);
 	}

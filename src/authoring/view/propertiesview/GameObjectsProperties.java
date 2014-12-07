@@ -17,12 +17,12 @@ import engine.physics.Vector;
 
 public class GameObjectsProperties extends Properties {
 
-	private Map<String, PropertyTextField> textProperties;
+	private Map<String, PropertyTextField> inherentTextProperties;
+	private Map<String, PropertyTextField> concreteTextProperties;
 	private Map<String, CheckBox> booleanProperties;
 	private GameHandler myHandler;
 
 	public GameObjectsProperties(GameObject gObj, GameHandler handler) {
-		super(gObj);
 		myHandler = handler;
 		initializeProperties(gObj);
 	}
@@ -34,56 +34,52 @@ public class GameObjectsProperties extends Properties {
 
 		this.getChildren().clear();
 
-		textProperties = new HashMap<String, PropertyTextField>();
+		inherentTextProperties = new HashMap<String, PropertyTextField>();
+		concreteTextProperties = new HashMap<String, PropertyTextField>();
 		booleanProperties = new HashMap<String, CheckBox>();
 
-		textProperties.put("name",
+		inherentTextProperties.put("name",
 				new PropertyTextField("Name: ", gameObject.getID()));
-		textProperties.put(
+		inherentTextProperties.put(
 				"image",
 				new PropertyTextField("Image: ", gameObject
 						.getCurrentImageName()));
-		textProperties.put(
-				"width",
-				new PropertyTextField("Width: ", Double.toString(gameObject
-						.getWidth())));
-		textProperties.put(
-				"height",
-				new PropertyTextField("Height: ", Double.toString(gameObject
-						.getHeight())));
-		textProperties.put(
-				"x",
-				new PropertyTextField("X: ", Double.toString(gameObject.getX()
-						+ OBJECT_X_OFFSET)));
-		textProperties.put(
-				"y",
-				new PropertyTextField("Y: ", Double.toString(gameObject.getY()
-						+ OBJECT_Y_OFFSET)));
-		textProperties.put("rotation", new PropertyTextField("Rotation: ",
-				Double.toString(gameObject.getRotation())));
 		
-		textProperties.put("collision", new PropertyTextField("Collision Constant", "0"));
-		textProperties.put("initXV", new PropertyTextField("Initial X Velocity", "0"));
-		textProperties.put("initYV", new PropertyTextField("Initial Y Velocity", "0"));
+		inherentTextProperties.put("collision", new PropertyTextField("Collision Constant", "0"));
+		inherentTextProperties.put("initXV", new PropertyTextField("Initial X Velocity", "0"));
+		inherentTextProperties.put("initYV", new PropertyTextField("Initial Y Velocity", "0"));
+		inherentTextProperties.put("width", new PropertyTextField("Width: ", Double.toString(gameObject.getWidth())));
+		inherentTextProperties.put("height",new PropertyTextField("Height: ", Double.toString(gameObject.getHeight())));
+		
+		
+		concreteTextProperties.put("x",new PropertyTextField("X: ", Double.toString(gameObject.getX()+ OBJECT_X_OFFSET)));
+		concreteTextProperties.put("y",new PropertyTextField("Y: ", Double.toString(gameObject.getY()+ OBJECT_Y_OFFSET)));
+		concreteTextProperties.put("rotation", new PropertyTextField("Rotation: ", Double.toString(gameObject.getRotation())));
+	
 		
 
-		for (String s : textProperties.keySet()) {
-			this.getChildren().add(textProperties.get(s));
+		for (String s : inherentTextProperties.keySet()) {
+			this.getChildren().add(inherentTextProperties.get(s));
+		}
+		for(String s: concreteTextProperties.keySet()){
+			this.getChildren().add(concreteTextProperties.get(s));
 		}
 
 		HBox visibilityField = new HBox();
 		CheckBox cbVisibility = new CheckBox("Enabled");
 		cbVisibility.setSelected(gameObject.isEnabled());
 		visibilityField.getChildren().add(cbVisibility);
-		this.getChildren().add(visibilityField);
 		booleanProperties.put("enabled", cbVisibility);
 
 		HBox physicsBody = new HBox();
 		CheckBox cbPhysics = new CheckBox("Physics Body");
 		cbPhysics.setSelected(gameObject.getPhysicsBody() != null);
 		physicsBody.getChildren().add(cbPhysics);
-		this.getChildren().add(physicsBody);
 		booleanProperties.put("has physics", cbPhysics);
+		
+		for(String s: booleanProperties.keySet()){
+			this.getChildren().add(booleanProperties.get(s));
+		}
 
 		Button editButton = new Button("Edit");
 		editButton.setOnAction(myHandler);
@@ -97,32 +93,28 @@ public class GameObjectsProperties extends Properties {
 
 	public GameObject edit(GameObject g) {
 
-		GameObject edited = new GameObject(g.getComponents(), textProperties
+		GameObject edited = new GameObject(g.getComponents(), inherentTextProperties
 				.get("image").getInformation(),
-				Double.parseDouble(textProperties.get("x").getInformation())
-						- OBJECT_X_OFFSET, Double.parseDouble(textProperties
+				Double.parseDouble(concreteTextProperties.get("x").getInformation())
+						- OBJECT_X_OFFSET, Double.parseDouble(concreteTextProperties
 						.get("y").getInformation()) - OBJECT_Y_OFFSET,
-				Double.parseDouble(textProperties.get("height")
-						.getInformation()), Double.parseDouble(textProperties
+				Double.parseDouble(inherentTextProperties.get("height")
+						.getInformation()), Double.parseDouble(inherentTextProperties
 						.get("width").getInformation()),
-				Double.parseDouble(textProperties.get("rotation")
-						.getInformation()), textProperties.get("name")
+				Double.parseDouble(concreteTextProperties.get("rotation")
+						.getInformation()), inherentTextProperties.get("name")
 						.getInformation());
-
-		System.out.println(booleanProperties.get("has physics"));
 		
 		
 		if (booleanProperties.get("has physics").isSelected()) {
 			
-			System.out.println("HAS PHYSICS");
-			
-			PhysicsBody pb = new PhysicsBody(Double.parseDouble(textProperties
+			PhysicsBody pb = new PhysicsBody(Double.parseDouble(inherentTextProperties
 					.get("height").getInformation()),
-					Double.parseDouble(textProperties.get("width")
+					Double.parseDouble(inherentTextProperties.get("width")
 							.getInformation()));
 
-			pb.addScalar(new CollisionConstant(Double.parseDouble(textProperties.get("collision").getInformation())));
-			pb.setVelocity(new Vector(Double.parseDouble(textProperties.get("initXV").getInformation()), Double.parseDouble(textProperties.get("initYV").getInformation())));
+			pb.addScalar(new CollisionConstant(Double.parseDouble(inherentTextProperties.get("collision").getInformation())));
+			pb.setVelocity(new Vector(Double.parseDouble(inherentTextProperties.get("initXV").getInformation()), Double.parseDouble(inherentTextProperties.get("initYV").getInformation())));
 			
 			System.out.println(pb);
 			edited.setPhysicsBody(pb);
@@ -132,15 +124,17 @@ public class GameObjectsProperties extends Properties {
 	}
 
 	public Button setUpForNewObject() {
-		for (String s : textProperties.keySet()) {
-			PropertyTextField cleared = textProperties.get(s);
-			cleared.setString("");
-			textProperties.put(s, cleared);
-		}
 		this.getChildren().clear();
-		for (String s : textProperties.keySet()) {
-			this.getChildren().add(textProperties.get(s));
+		for (String s : inherentTextProperties.keySet()) {
+			PropertyTextField cleared = inherentTextProperties.get(s);
+			cleared.setString("");
+			this.getChildren().add(cleared);
 		}
+ 
+		for(String s: booleanProperties.keySet()){
+			this.getChildren().add(booleanProperties.get(s));
+		}
+		
 		Button b = new Button("Create");
 		this.getChildren().add(b);
 		return b;

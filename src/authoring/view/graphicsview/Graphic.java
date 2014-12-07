@@ -23,16 +23,33 @@ import authoring.eventhandlers.GameHandler;
  * @author Wesley Valentine
  *
  */
-public class Graphic extends VBox {
+public abstract class Graphic extends VBox {
 
-	protected String myName;
+	protected String myImagePath;
 	protected GameHandler[] myOnClick;
 	private boolean myIsVisible = true;
+	protected ImageView myImageView;
+	
+	protected double myWidth;
+	protected double myHeight;
+	protected double myRotation;
 
-	public Graphic(String name, GameHandler... event) {
+	public Graphic(String name, File location, GameHandler... event) {
 		myOnClick = event;
-		myName = name;
+		myImagePath = name;
 
+		myWidth = 50;
+		myHeight = 50;
+		myRotation = 0;
+		
+		makeGraphic(location);
+		
+	}
+	
+	public Graphic(String name, GameHandler... event){
+		myOnClick = event;
+		myImagePath = name;
+		myImageView = new ImageView();
 	}
 
 	/**
@@ -42,39 +59,54 @@ public class Graphic extends VBox {
 	 * 
 	 * @param event
 	 */
-	public void makeGraphic() {
-		Image image = new Image(getClass().getResourceAsStream(myName));
-		ImageView imageView = new ImageView(image);
-		imageView.setPreserveRatio(true);
-		imageView.setFitWidth(50);
-		this.getChildren().add(imageView);
-		// this.getChildren().add(new Text(myName));
-		for (GameHandler g : myOnClick) {
-			this.addEventFilter(g.getEventType(), g);
-		}
-	}
-
-	public void makeGraphic(File gameLoc) {
-		File file = new File(gameLoc.getPath() + "/images/" + myName);
+	
+	private void makeGraphic(File gameLoc){
+		File file = new File(gameLoc.getPath() + "/images/" + myImagePath);
 		BufferedImage bufferedImage;
 		try {
 			bufferedImage = ImageIO.read(file);
 			Image image = SwingFXUtils.toFXImage(bufferedImage, null);
-			ImageView imageView = new ImageView(image);
-			imageView.setPreserveRatio(true);
-			imageView.setFitWidth(70);
-			this.getChildren().add(imageView);
-			this.getChildren().add(new Text(myName));
+			
+			myImageView = new ImageView(image);
+
+			
+			myImageView.setFitHeight(myHeight);
+			myImageView.setFitWidth(myWidth);
+			myImageView.setRotate(myRotation);
+			
+			
+			this.getChildren().add(myImageView);
+
+			
 			for (GameHandler g : myOnClick) {
 				this.addEventFilter(g.getEventType(), g);
 			}
+			
+			
+			
 		} catch (IOException e) {
-			makeGraphic();
+			System.out.println("Couldn't use path");
 		}
 	}
+	
+	public void setDimensions(double width, double height, double rotation){
+		myWidth = width;
+		myHeight = height;
+		myRotation = rotation;
+		myImageView.setFitHeight(myHeight);
+		myImageView.setFitWidth(myWidth);
+		myImageView.setRotate(myRotation);
+	}
 
+	public void addLabel(){
+		this.getChildren().add(new Text(myImagePath));
+	}
+	
+	public abstract void makeProperties();
+	
+	
 	public String getName() {
-		return myName;
+		return myImagePath;
 	}
 
 	public boolean getVisible() {

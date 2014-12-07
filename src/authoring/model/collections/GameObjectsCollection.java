@@ -1,7 +1,10 @@
 package authoring.model.collections;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import engine.gameObject.GameObject;
+import engine.gameObject.Identifier;
 
 public class GameObjectsCollection extends GeneralCollection<GameObject>{
 	
@@ -11,7 +14,11 @@ public class GameObjectsCollection extends GeneralCollection<GameObject>{
 		notifyObservers(g);
 	}
 	
-//	public void clear(){
-//		myObjects = new ArrayList<GameObject>();
-//	}
+	public List<Identifier> getIdentifierList(){
+	    ArrayList<Identifier> IdList = new ArrayList<Identifier>();
+	    for (GameObject g : this){
+	        IdList.add(g.getIdentifier());
+	    }
+	    return IdList;
+	}
 }

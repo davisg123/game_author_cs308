@@ -23,12 +23,12 @@ import engine.gameObject.GameObject;
  * @author Kevin Li
  *
  */
-public class GameData implements Serializable {
+public class GameData {//implements Serializable {
 
 	/**
 	 * Maybe put in properties file?
 	 */
-	private static final long serialVersionUID = 6633782568176674709L;
+//	private static final long serialVersionUID = 6633782568176674709L;
 	private Map<String, GeneralCollection> myCollections;
 	private LevelsCollection myLevels;
 	private ConditionsCollection myConditions;
@@ -43,9 +43,9 @@ public class GameData implements Serializable {
 		myImages = new ImagesCollection();
 		mySounds = new SoundsCollection();
 		myCollections = new HashMap<String, GeneralCollection>();
-		addAllToMyCollections(new LevelsCollection(),
-				new GameObjectsCollection(), new ConditionsCollection(),
-				new ImagesCollection(), new SoundsCollection());
+//		addAllToMyCollections(new LevelsCollection(),
+//				new GameObjectsCollection(), new ConditionsCollection(),
+//				new ImagesCollection(), new SoundsCollection());
 	}
 	
 	//Will refactor this later. 
@@ -80,13 +80,6 @@ public class GameData implements Serializable {
 		return myLevels;
 	}
 
-	public void addLevel(Level l) {
-		myLevels.add(l);
-	}
-
-	public void removeLevel(Level l) {
-		myLevels.remove(l);
-	}
 
 	/**
 	 * GameObject Methods
@@ -96,13 +89,6 @@ public class GameData implements Serializable {
 		return myGameObjects;
 	}
 
-	public void addGameObject(GameObject s) {
-		myGameObjects.add(s);
-	}
-
-	public void removeGameObject(GameObject s) {
-		myGameObjects.remove(s);
-	}
 
 	/**
 	 * Condition Methods
@@ -112,13 +98,6 @@ public class GameData implements Serializable {
 		return myConditions;
 	}
 
-	public void addCondition(Condition c) {
-		myConditions.add(c);
-	}
-
-	public void removeCondition(Condition c) {
-		myConditions.remove(c);
-	}
 
 	/**
 	 * Graphic Methods

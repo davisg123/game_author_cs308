@@ -1,10 +1,10 @@
 package authoring.view.levelview;
 
 import java.io.File;
-import java.util.Observable;
-import java.util.Observer;
 import java.util.ResourceBundle;
 
+import data.Observable;
+import data.Observer;
 import engine.level.Level;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -12,7 +12,7 @@ import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.BPContainer;
 import authoring.view.baseclasses.TabView;
-import authoring.view.gameobjectsview.GameObjectGraphic;
+import authoring.view.graphicsview.GameObjectGraphic;
 import authoring.view.graphicsview.Graphic;
 
 /**

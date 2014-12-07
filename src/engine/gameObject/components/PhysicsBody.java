@@ -52,8 +52,8 @@ public class PhysicsBody {
 
 	public PhysicsBody(double collisionBodyWidth, double collisionBodyHeight) {
 		myImpulses = new ArrayList<Impulse>();
-		myAcceleration = new Vector();
-		myVelocity = new Vector();
+		myAcceleration = new Acceleration();
+		myVelocity = new Velocity();
 		myActiveForces = new HashMap<String, Force>();
 		myConstants = new HashMap<String, Scalar>();
 		initializeMap();
@@ -93,11 +93,11 @@ public class PhysicsBody {
 						myConstants.get("Mass")));
 	}
 
-	public void setVelocity(Vector v) {
+	public void setVelocity(Velocity v) {
 		myVelocity = v;
 	}
 
-	public void setAcceleration(Vector v) {
+	public void setAcceleration(Acceleration v) {
 		myAcceleration = v;
 	}
 
@@ -162,10 +162,10 @@ public class PhysicsBody {
 		if (haveForcesChanged) {
 			balanceForces();
 		}
+		//System.out.println(myVelocity.getX()+" "+myVelocity.getY());
 		changeAcceleration();
 		changeVelocity();
 		// return changePosition
-
 		// sprite.setPosition(new Point2D.Double(myVelocity.getX()
 		// / FRAMES_PER_SECOND, myVelocity.getY() / FRAMES_PER_SECOND));
 		sprite.setTranslateX(sprite.getTranslateX() + myVelocity.getX()
@@ -226,6 +226,14 @@ public class PhysicsBody {
 		}
 	}
 
+	public void reverseVelocity(boolean xAxis) {
+		if (xAxis) {
+			setVelocity(new Velocity(-1.0 * myVelocity.getX(), myVelocity.getY()));
+		} else {
+			setVelocity(new Velocity(myVelocity.getX(), -1.0 * myVelocity.getY()));
+		}
+	}
+
 	/**
 	 * deals with collisions-axis, deals with velocities and will properly move
 	 * things that are intersecting
@@ -260,32 +268,37 @@ public class PhysicsBody {
 				.getMagnitude() == 0.0) ? sprite : thisSprite);
 		double curX = cur.getPhysicsBody().getVelocity().getX();
 		double curY = cur.getPhysicsBody().getVelocity().getY();
-		double otherX=other.getPhysicsBody().getVelocity().getX();
-		double otherY=other.getPhysicsBody().getVelocity().getY();
+		double otherX = other.getPhysicsBody().getVelocity().getX();
+		double otherY = other.getPhysicsBody().getVelocity().getY();
 		// collides in x is true, y is false;
-		boolean xOrY = false;//(xChange / (Math.abs(curX)+Math.abs(otherX)) > yChange / (Math.abs(curY)+Math.abs(otherY)));
-		System.out.println(xChange / (Math.abs(curX)+Math.abs(otherX)));
+		boolean xOrY = false;// (xChange / (Math.abs(curX)+Math.abs(otherX)) >
+								// yChange / (Math.abs(curY)+Math.abs(otherY)));
+		// System.out.println(xChange / (Math.abs(curX)+Math.abs(otherX)));
 		// create new condition to stop x or y
 		if (!cur.getCollisionConstant()) {
 
 			if (xOrY) {
-                            System.out.println("COLLISOIN");
+				System.out.println("COLLISOIN");
 
-				//cancel out current velocity
-			        cur.setTranslateX(cur.getTranslateX() - cur.getPhysicsBody().getVelocity().getX()
-			                                 / FRAMES_PER_SECOND);
-			        //apply rivaling velocity
-			        cur.setTranslateX(cur.getTranslateX() + other.getPhysicsBody().getVelocity().getX()
-			                                  / FRAMES_PER_SECOND);
+				// cancel out current velocity
+				cur.setTranslateX(cur.getTranslateX()
+						- cur.getPhysicsBody().getVelocity().getX()
+						/ FRAMES_PER_SECOND);
+				// apply rivaling velocity
+				cur.setTranslateX(cur.getTranslateX()
+						+ other.getPhysicsBody().getVelocity().getX()
+						/ FRAMES_PER_SECOND);
 			} else {
 
-				//cancel out current velocity
-                                cur.setTranslateY(cur.getTranslateY() - cur.getPhysicsBody().getVelocity().getY()
-                                                         / FRAMES_PER_SECOND);
-                                
-                                //apply rivaling velocity
-                                cur.setTranslateY(cur.getTranslateY() + other.getPhysicsBody().getVelocity().getY()
-                                                          / FRAMES_PER_SECOND);
+				// cancel out current velocity
+				cur.setTranslateY(cur.getTranslateY()
+						- cur.getPhysicsBody().getVelocity().getY()
+						/ FRAMES_PER_SECOND);
+
+				// apply rivaling velocity
+				cur.setTranslateY(cur.getTranslateY()
+						+ other.getPhysicsBody().getVelocity().getY()
+						/ FRAMES_PER_SECOND);
 			}
 		}
 	}

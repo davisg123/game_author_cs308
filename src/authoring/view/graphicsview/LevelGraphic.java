@@ -1,25 +1,28 @@
-package authoring.view.levelview;
+package authoring.view.graphicsview;
 
 import engine.level.Level;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import authoring.eventhandlers.GameHandler;
-import authoring.view.graphicsview.Graphic;
 
 public class LevelGraphic extends Graphic {
 
 	private Level myLevel;
 	private GameHandler[] levelEvents;
+	private String myLevelName;
 	
 	public LevelGraphic(String s, GameHandler[] event, Level l, GameHandler ... levelEvents) {
 		super(s, event);
+		myLevelName = s;
 		myLevel = l;
 		this.levelEvents = levelEvents;
-		//System.out.println(this.levelEvents.length);
+		setupGraphic();
 	}
 
-	@Override
-	public void makeGraphic() {
-		Text text = new Text(myName);
+	
+	public void setupGraphic() {
+		Text text = new Text(myLevelName);
+		text.setFont(new Font(20));
 		this.getChildren().add(text);
 		for (GameHandler g : myOnClick) {
 			this.addEventFilter(g.getEventType(), g);
@@ -33,6 +36,13 @@ public class LevelGraphic extends Graphic {
 	
 	public GameHandler[] getLevelEvents(){
 		return levelEvents;
+	}
+
+
+	@Override
+	public void makeProperties() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }

@@ -1,6 +1,10 @@
 package data;
 
 import engine.actions.Action;
+import engine.actions.ChangeLevelAction;
+import engine.actions.TestAction;
+import engine.actions.translate.TestTranslateAction;
+import engine.conditions.CollisionCondition;
 import engine.conditions.Condition;
 import engine.gameObject.GameObject;
 import engine.gameObject.components.Component;
@@ -15,10 +19,12 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 import authoring.model.GameData;
 import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.GeneralCollection;
 import authoring.model.GameData;
+import authoring.model.collections.GameObjectsCollection;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -26,8 +32,9 @@ public class DataManager {
 	
 	private GsonBuilder gson;
 	private static final String gameDatapath = "src/data/games/";
-	private static final String progressDatapath = "src/data/progress/";
-	private static final String sampleDatapath = "src/data/sample/";
+//	private static final String progressDatapath = "src/data/progress/";
+//	private static final String sampleDatapath = "src/data/sample/";
+	private String myGameFileName = "gameData.json";
 	
 	public DataManager() {
 		gson = new GsonBuilder();
@@ -37,7 +44,7 @@ public class DataManager {
 		//for(int i = 0; i < classes.length; i++) {
 			//gson.registerTypeAdapter(classes[i], new GenericTypeAdapter<classes[i]>(packages[i]));
 			gson.registerTypeAdapter(Condition.class, new GenericTypeAdapter<Condition>("engine.conditions"));
-			gson.registerTypeAdapter(Action.class, new GenericTypeAdapter<Action>("engine.actions"));
+			gson.registerTypeAdapter(Action.class, new GenericTypeAdapter<Action>("engine.actions", "engine.actions.translate"));
 			gson.registerTypeAdapter(GeneralCollection.class, new GenericTypeAdapter<GeneralCollection>("authoring.model.collections"));
 			gson.registerTypeAdapter(Force.class, new GenericTypeAdapter<Force>("engine.physics"));
 			gson.registerTypeAdapter(Scalar.class, new GenericTypeAdapter<Scalar>("engine.physics"));
@@ -49,34 +56,44 @@ public class DataManager {
 	 * @param args
 	 * @throws IOException 
 	 */
-	public static void main(String[]args) throws IOException {
-		DataManager manager = new DataManager();
-		
-//		SampleWrapper writeSW = new SampleWrapper();
-//		System.out.println(writeSW);
-//		boolean success = manager.writeSampleFile(writeSW, "sampleThree.json");
-//		System.out.println("wrapper written: " + success);
-//		SampleWrapper readSW = manager.readSampleFile("sampleThree.json");
-//		System.out.println(readSW);
-		
-		GameData writeData = new GameData();
-		
-		//adding levels to GameData
-		String im = "/assets/mario.png";
-		GameObject mario = new GameObject("Mario");
-		GameObjectsCollection goc = new GameObjectsCollection();
-		goc.addGameObject(mario);
-		Level level = new Level(goc);
-		writeData.addLevel(level);
-		
-		
-		String nameOfFile = "gameDataTwo.json";
-		System.out.println(writeData);
-		boolean success = manager.writeGameFile(writeData, nameOfFile);
-		System.out.println("data written: " + success);
-		GameData readData = manager.readGameFile(nameOfFile);
-		System.out.println(readData);
-	}
+//	public static void main(String[]args) throws IOException {
+//		DataManager manager = new DataManager();
+//		
+////		SampleWrapper writeSW = new SampleWrapper();
+////		System.out.println(writeSW);
+////		boolean success = manager.writeSampleFile(writeSW, "sampleThree.json");
+////		System.out.println("wrapper written: " + success);
+////		SampleWrapper readSW = manager.readSampleFile("sampleThree.json");
+////		System.out.println(readSW);
+//		
+//		GameData writeData = new GameData();
+//		
+//		//adding levels to GameData
+//		String im = "/assets/mario.png";
+//		GameObject mario = new GameObject(new ArrayList<Component>(), im, 0, 0,
+//				0, 0, 0, "Mario");
+//		GameObjectsCollection goc = new GameObjectsCollection();
+//		//goc.addGameObject(mario);
+//		//Level level = new Level(goc);
+//		//writeData.addLevel(level);
+//		
+//		List<Action> actionList = new ArrayList<Action>();
+//		Action ac1 = new TestAction("action1");
+//		Action ac2 = new TestTranslateAction("action2");
+//		actionList.add(ac1);
+//		actionList.add(ac2);
+//		List<GameObject> gameObjectList = new ArrayList<GameObject>();
+//		Condition cond = new CollisionCondition(actionList, gameObjectList, "condition1");
+//		writeData.addCondition(cond);
+//		
+//		
+//		String nameOfFile = "gameDataFour.json";
+//		System.out.println(writeData);
+//		boolean success = manager.writeGameFile(writeData, nameOfFile);
+//		System.out.println("data written: " + success);
+//		GameData readData = manager.readGameFile(nameOfFile);
+//		System.out.println(readData);
+//	}
 	
 //	public boolean writeSampleFile(SampleWrapper sw, String fileName) throws IOException {
 //		return writeFile(sw, sampleDatapath, fileName);
@@ -93,9 +110,12 @@ public class DataManager {
 	 * @return Returns true if successfully writes file.
 	 * @throws IOException 
 	 */
-	public boolean writeGameFile(GameData data, String fileName) throws IOException {
-		return writeFile(data, gameDatapath, fileName);
+	public boolean writeGameFile(GameData data, String nameOfFile) throws IOException {
+		return writeFile(data, gameDatapath, nameOfFile);
 	}
+//	public boolean writeGameFile(GameData data, String fileName) throws IOException {
+//		return writeFile(data, gameDatapath, fileName);
+//	}
 	
 	/**
 	 * Gets an object representing a game from a Json file.
@@ -150,6 +170,28 @@ public class DataManager {
 			return false;
 		}
 	}
+//	private boolean writeFile(Object obj, String datapath, String fileName) throws IOException {
+//		//if fileName ends in .json or nothing: otherwise, don't write file
+//		if(hasValidName(fileName)) {
+//			fileName = checkForExtension(fileName);
+//			String json = gson.create().toJson(obj);
+////			try {
+//				//File f = new File("myFileThough.json");
+//				File f = new File(datapath + fileName);
+//				System.out.println(datapath + fileName);
+//				//FileWriter writer = new FileWriter(datapath + fileName);
+//				FileWriter writer = new FileWriter(f);
+//				writer.write(json);
+//				writer.close();
+//				return true;
+////			} catch (IOException e) {
+////				return false;
+////			}
+//		}
+//		else {
+//			return false;
+//		}
+//	}
 	
 	//check 
 	private Object readFile(Class cl, String datapath, String fileName) {

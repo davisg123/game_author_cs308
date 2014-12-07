@@ -1,10 +1,10 @@
 package authoring.view.graphicsview;
 
 import java.io.File;
-import java.util.Observable;
-import java.util.Observer;
 import java.util.ResourceBundle;
 
+import data.Observable;
+import data.Observer;
 import javafx.scene.layout.VBox;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.ScrollView;
@@ -18,15 +18,14 @@ import authoring.view.baseclasses.ScrollView;
  * @author Chris Bernt
  *
  */
-public class ImagesView extends ScrollView implements Observer {
+public class ImageListView extends ScrollView implements Observer {
 	private static final double VIEW_HEIGHT_RATIO = .65;
 	private static final double VIEW_WIDTH_RATIO = 0.2;
 	private VBox myVbox = new VBox();
 	private GameHandler[] myEvents;
 	private File myGameLocation;
-	private String myName;
 
-	public ImagesView(ResourceBundle language, double width, double height,
+	public ImageListView(ResourceBundle language, double width, double height,
 			File gameLoc) {
 		super(language, width, height);
 		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
@@ -44,14 +43,8 @@ public class ImagesView extends ScrollView implements Observer {
 	}
 
 	public void addImage(String s) {
-		Graphic graphic = new Graphic(s, myEvents);
-		graphic.makeGraphic(myGameLocation);
-		myName = s;
+		Graphic graphic = new ImageGraphic(s, myGameLocation, myEvents);
 		myVbox.getChildren().add(graphic);
-	}
-
-	public String getMyName() {
-		return myName;
 	}
 
 }

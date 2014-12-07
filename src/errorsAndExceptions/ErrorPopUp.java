@@ -15,13 +15,14 @@ import javafx.stage.Stage;
  * @author Chris Bernt
  * @author Eli Lichtenberg
  * @author Safkat Islam
+ * @author Abhishek Balakrishnan
  */
 public class ErrorPopUp {
 	
-	private static final int POP_UP_HEIGHT = 200;
-	private static final int POP_UP_WIDTH = 500;
+	private static final int POP_UP_HEIGHT = 100;
+	private static final int POP_UP_WIDTH = 200;
 	private static final int TEXT_Y_COORD = POP_UP_HEIGHT/2;
-	private static final int TEXT_X_COORD = POP_UP_WIDTH/5;
+	private static final int TEXT_X_COORD = POP_UP_WIDTH/2;
 	private static final int BUTTON_Y_COORD = POP_UP_HEIGHT*5/8;
 	private static final int BUTTON_X_COORD = POP_UP_WIDTH/2;
 	private static final String ERROR_TITLE = "User Error";
@@ -70,10 +71,10 @@ public class ErrorPopUp {
 		b.setOnAction(closePopUp);
 		popUpStage.show();
 		
-//		if(throwException)
-//		{
-//			throw new SLogoException(errorMessage);
-//		}
+		if(throwException)
+		{
+			throw new VoogaException(errorMessage);
+		}
 	}
 
 }

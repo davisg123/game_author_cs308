@@ -2,7 +2,12 @@ package engine.conditions;
 
 import java.util.ArrayList;
 import java.util.List;
+import engine.GameManager;
 import engine.actions.Action;
+import engine.actions.Initializable;
+import engine.actions.TranslateAction;
+import engine.gameObject.Identifiable;
+import engine.gameObject.Identifier;
 
 /**
  * root class for conditions, or the event that triggers actions
@@ -11,23 +16,19 @@ import engine.actions.Action;
  *
  */
 
-public abstract class Condition {
+public abstract class Condition implements Identifiable, Initializable{
 
     private List<Action> myActions = new ArrayList<Action>();
-    private String myID;
     private boolean myEnabled;
+    private Identifier myId;
+    private transient GameManager myGameManager;
     
-    public Condition(List<Action> actions, String ID){
+    public Condition(List<Action> actions){
         myActions = actions;
-        myID = ID;
     }
     
     public List<Action> getActions(){
         return myActions;
-    }
-    
-    public String getID(){
-        return myID;
     }
     
     public void setEnabled(boolean enabled){
@@ -49,4 +50,38 @@ public abstract class Condition {
     public void frameElapsed(){
         //overridden by frame based conditions
     }
+    
+    @Override
+    public void setIdentifier (Identifier myId) {
+        this.myId = myId;
+    }
+
+    @Override
+    public Identifier getIdentifier () {
+        return myId;
+    }
+    
+    @Override
+    public void initialize (GameManager manager) {
+        myGameManager = manager;
+        initializeActions(manager);
+    }
+    
+    private void initializeActions(GameManager manager){
+        if (myActions != null){
+            for (Action a : myActions){
+                //TODO: expand to whatever action class needs initializing
+                //TODO: make this code look less like vomit
+                if (a instanceof TranslateAction){
+                    ((TranslateAction) a).initialize(manager);
+                }
+            }
+        }
+    }
+
+    protected GameManager getGameManager () {
+        return myGameManager;
+    }
+    
+    
 }
