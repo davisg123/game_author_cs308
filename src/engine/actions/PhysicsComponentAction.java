@@ -1,31 +1,27 @@
 package engine.actions;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import engine.GameManager;
 import engine.actions.PhysicsAction.TwoArgInterface;
 import engine.gameObject.GameObject;
+import engine.gameObject.Identifier;
 import engine.physics.PhysicsComponent;
 import engine.physics.Vector;
 
 public abstract class PhysicsComponentAction extends PhysicsAction {
 
-	public PhysicsComponentAction(GameObject sprite, double value) {
-		super(sprite, value);
-		// TODO Auto-generated constructor stub
+	public PhysicsComponentAction(ArrayList<Identifier> id, double value) {
+		super(id, value);
 	}
 
 	@Override
-	public void initialize(GameManager manager) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void applyPhysics(GameObject... myObjects) {
+	public void applyPhysics(Collection<GameObject> myObjects) {
 		forHelper(myObjects, determineOperation(myObjects, myValue), myValue);
 	}
 
-
 	protected abstract TwoArgInterface determineOperation(
-			GameObject[] myObjects, Object value);
+			Collection<GameObject> myObjects, Object value);
 
 }

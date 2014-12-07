@@ -1,14 +1,17 @@
 package engine.actions;
 
+import java.util.ArrayList;
+
 import engine.GameManager;
 import engine.gameObject.GameObject;
+import engine.gameObject.Identifier;
 import engine.physics.Impulse;
 import engine.physics.Vector;
 
 public class XImpulseAction extends ImpulseAction {
 
-	public XImpulseAction(GameObject sprite, double value) {
-		super(sprite, value);
+	public XImpulseAction(ArrayList<Identifier> id, double value) {
+		super(id, value);
 		// TODO Auto-generated constructor stub
 	}
 

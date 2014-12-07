@@ -2,6 +2,7 @@ package engine.physics;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Map;
  * @author Ben
  *
  */
-public abstract class Force extends Vector {
+public abstract class Force extends Vector implements Iterable<String>{
 	protected double myForceValue;
 	protected Map<String, Double> myValues;
 
@@ -61,6 +62,9 @@ public abstract class Force extends Vector {
 	 * 
 	 * @return value of force
 	 */
+	public Iterator<String> iterator() {
+		return myValues.keySet().iterator();
+	}
 	protected abstract void calculateForce();
 
 	protected abstract void setDefaultValues();

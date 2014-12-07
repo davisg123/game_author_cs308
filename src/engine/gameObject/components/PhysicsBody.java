@@ -78,7 +78,7 @@ public class PhysicsBody {
 		myConstants
 				.put("CoefficientOfFriction", new CoefficientOfFriction(0.0));
 		myConstants.put("CollisionConstant", new CollisionConstant(0.0));
-		myConstants.put("Density", new Density(0.0));
+		myConstants.put("Density", new Density(1.0));
 		myConstants.put("GravityConstant", new GravityConstant(1.0));
 		myConstants.put("Volume", new Volume(1.0));
 		myConstants.put("Mass", new Mass(1.0));
@@ -203,14 +203,15 @@ public class PhysicsBody {
 		haveForcesChanged = false;
 	}
 
-	public void addForce(Force f) {
-		/*
-		 * String temp = f.toString(); if
-		 * (this.myActiveForces.containsKey(temp)) {
-		 * this.myActiveForces.replace(temp, f); } else {
-		 * this.myActiveForces.put(temp, f); }
-		 */
-		this.myActiveForces.put(f.toString(), f);
+	public void addForce(Vector vector) {
+		Iterator<String> itr = ((Force) vector).iterator();
+		while(itr.hasNext())
+		{
+			String cur=itr.next();
+			((Force) vector).addOrChangeValue(myConstants.get(cur));
+		}
+		this.myActiveForces.put(vector.toString(), (Force) vector);
+		haveForcesChanged = true;
 	}
 
 	public void addImpulse(Vector i) {
@@ -228,9 +229,11 @@ public class PhysicsBody {
 
 	public void reverseVelocity(boolean xAxis) {
 		if (xAxis) {
-			setVelocity(new Velocity(-1.0 * myVelocity.getX(), myVelocity.getY()));
+			setVelocity(new Velocity(-1.0 * myVelocity.getX(),
+					myVelocity.getY()));
 		} else {
-			setVelocity(new Velocity(myVelocity.getX(), -1.0 * myVelocity.getY()));
+			setVelocity(new Velocity(myVelocity.getX(), -1.0
+					* myVelocity.getY()));
 		}
 	}
 

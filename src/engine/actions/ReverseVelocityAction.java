@@ -1,12 +1,17 @@
 package engine.actions;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import engine.GameManager;
 import engine.gameObject.GameObject;
+import engine.gameObject.Identifier;
 
 public class ReverseVelocityAction extends PhysicsAction {
 
-	public ReverseVelocityAction(GameObject sprite, double value) {
-		super(sprite, value);
+	public ReverseVelocityAction(ArrayList<Identifier> id, double value) {
+		super(id, value);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -17,11 +22,12 @@ public class ReverseVelocityAction extends PhysicsAction {
 	}
 
 	@Override
-	public void applyPhysics(GameObject... myObjects) {
+	public void applyPhysics(Collection<GameObject> myObjects) {
 		TwoArgInterface operation = (x, y) -> x.getPhysicsBody()
 				.reverseVelocity((Boolean) y);
+		List<GameObject> objects=new ArrayList<GameObject>(myObjects);
 		forHelper(myObjects, operation,
-				myCollision.isOnXAxis(myObjects[1], myObjects[2]));
+				myCollision.isOnXAxis(objects.get(0), objects.get(1)));
 	}
 
 }
