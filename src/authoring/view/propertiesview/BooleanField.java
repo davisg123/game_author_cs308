@@ -1,0 +1,25 @@
+package authoring.view.propertiesview;
+
+import javafx.scene.control.CheckBox;
+import javafx.scene.layout.HBox;
+import javafx.scene.text.Text;
+
+public class BooleanField extends HBox{
+	
+	private CheckBox myCheckBox;
+	
+	public BooleanField(String label, boolean value){
+		this.getChildren().add(new Text(label));
+		myCheckBox = new CheckBox();
+		myCheckBox.setSelected(value);
+		this.getChildren().add(myCheckBox);
+	}
+	
+	public boolean getValue(){
+		return myCheckBox.isSelected();
+	}
+	
+	public void setValue(boolean b){
+		myCheckBox.setSelected(b);
+	}
+}
