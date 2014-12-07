@@ -13,8 +13,6 @@ import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.LevelsCollection;
 import authoring.view.levelview.LevelsView;
 import authoring.view.levelview.SingleLevelView;
-import authoring.view.wizardview.LevelWizard;
-import authoring.view.wizardview.Wizard;
 import engine.level.Level;
 
 
@@ -23,7 +21,6 @@ public class AddLevelHandler implements GameHandler<Event> {
 	private LevelsView myLevels;
 	private LevelsCollection myLevelsCollection;
 	private String myLevelID;
-	private Wizard w;
 
 	/**
 	 * 
@@ -38,9 +35,15 @@ public class AddLevelHandler implements GameHandler<Event> {
 	@Override
 	public void handle(Event arg0) {
 		promptLevelID();
+	
+		
+		
+//		String im = "/assets/mario.png";
+//		GameObject test = new GameObject(new ArrayList<Component>(), im, new Point2D.Double(), 0, 0, 0, "Mario");
+//		levelData.addGameObject(test);
 	}
 	
-	private void createLevel(){
+	public void createLevel(){
 		SingleLevelView newLevelView = myLevels.addNewLevel(myLevelID);
 		Level levelData = new Level(new GameObjectsCollection());
 		levelData.addObserver(newLevelView);
@@ -56,13 +59,28 @@ public class AddLevelHandler implements GameHandler<Event> {
 	}
 	
 	private void promptLevelID(){
-		w = new LevelWizard("New Level", 200, 200, event -> getPrompt());
+		Stage dialog = new Stage();
+		dialog.initStyle(StageStyle.DECORATED);
+		Group root = new Group();
+		Text t = new Text(25, 25, "Level ID:");
+		TextField input = new TextField();
+		input.setLayoutX(25);
+		input.setLayoutY(55);
+		Button submit = new Button();
+		submit.setLayoutX(25);
+		submit.setLayoutY(90);
+		submit.setOnAction(event -> getPrompt(input, dialog));
+		submit.setText("Submit");
+		root.getChildren().addAll(t, input, submit);
+		Scene scene = new Scene(root, 300, 150);
+		dialog.setScene(scene);
+		dialog.show();
 	}
 	
-	private void getPrompt(){
-		myLevelID = w.getMap().get("name").getInformation();
+	private void getPrompt(TextField t, Stage s){
+		myLevelID = t.getText();
 		createLevel();
-		w.close();
+		s.close();
 	}
 	
 }

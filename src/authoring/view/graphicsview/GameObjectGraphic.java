@@ -3,8 +3,6 @@ package authoring.view.graphicsview;
 import java.io.File;
 
 import authoring.eventhandlers.GameHandler;
-import authoring.view.propertiesview.GameObjectProperties;
-import authoring.view.propertiesview.Properties;
 import engine.gameObject.GameObject;
 
 public class GameObjectGraphic extends Graphic{
@@ -21,8 +19,7 @@ public class GameObjectGraphic extends Graphic{
 	}
 
 	@Override
-	public Properties makeProperties() {
-		return new GameObjectProperties(this);
+	public void makeProperties() {
 		// TODO Auto-generated method stub
 		
 	}

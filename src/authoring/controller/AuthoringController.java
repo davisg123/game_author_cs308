@@ -1,6 +1,7 @@
 package authoring.controller;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.geometry.Pos;
@@ -11,9 +12,10 @@ import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.AddObjectHandler;
 import authoring.eventhandlers.EditGameObjectHandler;
 import authoring.eventhandlers.GameObjGraphicDragHandler;
+import authoring.eventhandlers.GameObjectClickHandler;
 import authoring.eventhandlers.GameObjectDragHandler;
 import authoring.eventhandlers.GameObjectDragToLevelHandler;
-import authoring.eventhandlers.GraphicClickHandler;
+import authoring.eventhandlers.ImagesClickHandler;
 import authoring.eventhandlers.LevelToViewHandler;
 import authoring.model.AuthoringModel;
 import authoring.view.AuthoringView;
@@ -29,6 +31,8 @@ import authoring.view.levelview.LevelsAccordionView;
 import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
 import authoring.view.soundsview.SoundsView;
+import engine.gameObject.GameObject;
+import engine.gameObject.components.Component;
 
 /**
  * Controller class that interacts between model and view. Holds and constructs
@@ -144,26 +148,24 @@ public class AuthoringController {
 
 	private void initializeGameHandlers() {
 
-		myGraphics.setEvents(new GraphicClickHandler(myProperties));
+		myGraphics.setEvents(new ImagesClickHandler(myProperties));
 		myGameObjects
 				.setEvents(
-						new GraphicClickHandler(myProperties),
+						new GameObjectClickHandler(myProperties),
 						new GameObjectDragToLevelHandler(myLevels, myModel
 								.getLevels(), myProperties));
-		
 		myLevelOptions.setButtonBehavior(new AddLevelHandler(myModel
 				.getLevels(), myLevels));
-		
 		myGraphicsAdd.setButtonBehavior(new AddImageHandler(myModel
 				.getImages(), myGameLocation));
 		
 		myObjectsAdd.setButtonBehavior(new AddObjectHandler(myModel.getGameObjectCollection()));
 		
-		myLevels.setEventHandlers(new GraphicClickHandler(myProperties),
+		myLevels.setEventHandlers(new GameObjectClickHandler(myProperties),
 				new GameObjectDragHandler(myLevels, myModel.getLevels(),
 						myProperties), new GameObjGraphicDragHandler(myLevels));
-		myLevelsAccordionView.setEvents(new LevelToViewHandler(myLevels, myProperties));
-		myLevelsAccordionView.setLevelEvents(new GraphicClickHandler(
+		myLevelsAccordionView.setEvents(new LevelToViewHandler(myLevels));
+		myLevelsAccordionView.setLevelEvents(new GameObjectClickHandler(
 				myProperties),
 				new GameObjectDragHandler(myLevels, myModel.getLevels(),
 						myProperties), new GameObjGraphicDragHandler(myLevels));

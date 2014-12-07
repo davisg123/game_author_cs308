@@ -1,21 +1,25 @@
 package authoring.view.levelview;
 
 import java.io.File;
+import java.util.Arrays;
 
+import data.Observable;
+import data.Observer;
+import engine.gameObject.GameObject;
+import engine.level.Level;
+import authoring.eventhandlers.GameHandler;
+import authoring.eventhandlers.GameObjectClickHandler;
+import authoring.eventhandlers.GameObjectDragHandler;
+import authoring.main.Main;
+import authoring.view.graphicsview.GameObjectGraphic;
+import authoring.view.graphicsview.Graphic;
 import javafx.geometry.Insets;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import authoring.eventhandlers.GameHandler;
-import authoring.main.Main;
-import authoring.view.graphicsview.GameObjectGraphic;
-import authoring.view.graphicsview.Graphic;
-import data.Observable;
-import data.Observer;
-import engine.gameObject.GameObject;
-import engine.level.Level;
 
 /**
  * Class that contains the visualization data of a single level.

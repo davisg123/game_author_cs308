@@ -6,10 +6,10 @@ import authoring.view.graphicsview.Graphic;
 import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
 
-public class GraphicClickHandler implements GameHandler<MouseEvent>{
+public class ImagesClickHandler implements GameHandler<MouseEvent>{
 	private PropertiesView myProperties;
 
-	public GraphicClickHandler(PropertiesView properties) {
+	public ImagesClickHandler(PropertiesView properties) {
 		myProperties = properties;
 	}
 

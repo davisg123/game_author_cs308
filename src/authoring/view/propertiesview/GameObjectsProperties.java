@@ -10,32 +10,27 @@ import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.HBox;
 import authoring.eventhandlers.GameHandler;
-import authoring.view.graphicsview.GameObjectGraphic;
-import authoring.view.graphicsview.Graphic;
 import engine.gameObject.GameObject;
 import engine.gameObject.components.PhysicsBody;
 import engine.physics.CollisionConstant;
 import engine.physics.Vector;
 
-public class GameObjectProperties extends Properties {
+public class GameObjectsProperties extends Properties {
 
 	private Map<String, PropertyTextField> inherentTextProperties;
 	private Map<String, PropertyTextField> concreteTextProperties;
 	private Map<String, CheckBox> booleanProperties;
 	private GameHandler myHandler;
 
-	public GameObjectProperties(Graphic g) {
-		initializeProperties(g);
-	}
-	
-	public void setHandlers(GameHandler gameHandlers){
-		myHandler = gameHandlers;
+	public GameObjectsProperties(GameObject gObj, GameHandler handler) {
+		myHandler = handler;
+		initializeProperties(gObj);
 	}
 
 	@Override
-	public void initializeProperties(Graphic g) {
+	public void initializeProperties(Object g) {
 
-		GameObject gameObject = ((GameObjectGraphic) g).getGameObject() ;
+		GameObject gameObject = (GameObject) g;
 
 		this.getChildren().clear();
 

@@ -7,8 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import authoring.model.collections.GameObjectsCollection;
-import authoring.view.graphicsview.GameObjectGraphic;
-import authoring.view.propertiesview.GameObjectProperties;
+import authoring.view.propertiesview.GameObjectsProperties;
 import engine.gameObject.GameObject;
 
 public class AddObjectHandler implements GameHandler<Event>{
@@ -29,8 +28,7 @@ public class AddObjectHandler implements GameHandler<Event>{
 		dialog.initStyle(StageStyle.DECORATED);
 		Group root = new Group();
 		
-		//Make this not a properties but like a new object wizard
-		GameObjectProperties properties = new GameObjectProperties(new GameObjectGraphic(new GameObject(), null, null));
+		GameObjectsProperties properties = new GameObjectsProperties(new GameObject(), null);
 		properties.setUpForNewObject().setOnMouseClicked(event -> createGameObject(properties, dialog));
 		root.getChildren().add(properties);
 		Scene scene = new Scene(root, NEW_GAMEOBJECT_WINDOW_WIDTH, NEW_GAMEOBJECT_WINDOW_HEIGHT);
@@ -44,7 +42,7 @@ public class AddObjectHandler implements GameHandler<Event>{
 		return Event.ANY;
 	}
 	
-	public void createGameObject(GameObjectProperties prop, Stage s){
+	public void createGameObject(GameObjectsProperties prop, Stage s){
 		myGameObject = prop.edit(new GameObject());
 		myGameObjectCollection.add(myGameObject);
 		s.close();

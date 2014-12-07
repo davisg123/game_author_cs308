@@ -1,7 +1,7 @@
 package authoring.eventhandlers;
 
 import authoring.model.collections.LevelsCollection;
-import authoring.view.graphicsview.GameObjectGraphic;
+import authoring.view.gameobjectsview.GameObjectGraphic;
 import authoring.view.levelview.LevelsView;
 import authoring.view.levelview.SingleLevelView;
 import authoring.view.propertiesview.PropertiesView;
