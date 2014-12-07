@@ -28,6 +28,7 @@ public abstract class Graphic extends VBox {
 
 	protected String myImagePath;
 	protected GameHandler[] myOnClick;
+	protected GameHandler myEditButtonBehavior;
 	private boolean myIsVisible = true;
 	protected ImageView myImageView;
 	
@@ -112,6 +113,11 @@ public abstract class Graphic extends VBox {
 
 	public boolean getVisible() {
 		return myIsVisible;
+	}
+	
+	public void setEditButtonBehavior(GameHandler edit){
+		myEditButtonBehavior = edit;
+		System.out.println("behave set in graphic");
 	}
 
 }

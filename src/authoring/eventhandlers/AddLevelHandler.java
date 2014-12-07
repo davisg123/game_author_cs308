@@ -23,7 +23,7 @@ public class AddLevelHandler implements GameHandler<Event> {
 	private LevelsView myLevels;
 	private LevelsCollection myLevelsCollection;
 	private String myLevelID;
-	private Wizard w;
+	private Wizard myWizard;
 
 	/**
 	 * 
@@ -56,13 +56,13 @@ public class AddLevelHandler implements GameHandler<Event> {
 	}
 	
 	private void promptLevelID(){
-		w = new LevelWizard("New Level", 200, 200, event -> getPrompt());
+		myWizard = new LevelWizard("New Level", 200, 200, event -> getPrompt());
 	}
 	
 	private void getPrompt(){
-		myLevelID = w.getMap().get("name").getInformation();
+		myLevelID = myWizard.getMap().get("name").getInformation();
 		createLevel();
-		w.close();
+		myWizard.close();
 	}
 	
 }

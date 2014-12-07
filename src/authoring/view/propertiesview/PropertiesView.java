@@ -1,11 +1,11 @@
 package authoring.view.propertiesview;
 
-import java.io.File;
 import java.util.ResourceBundle;
 
 import javafx.scene.layout.VBox;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.ScrollView;
+import authoring.view.graphicsview.GameObjectGraphic;
 import authoring.view.graphicsview.Graphic;
 import engine.gameObject.GameObject;
 
@@ -28,8 +28,11 @@ public class PropertiesView extends ScrollView {
 
 	}
 
-	public void makeProperties(Graphic g) {
+	public void displayProperties(Graphic g) {
 		myContents.getChildren().clear();
+		if(g instanceof GameObjectGraphic){
+			myCurrentGameObject = ((GameObjectGraphic) g).getGameObject();
+		}
 		this.setContent(g.makeProperties());
 	}
 
@@ -50,11 +53,14 @@ public class PropertiesView extends ScrollView {
 	}
 
 	public GameObject getEditedGameObject() {
-		return this.myGameObjectsProperties.edit(this.myCurrentGameObject);
+		return this.myGameObjectsProperties.edit();
 	}
 
 	public void setEditButtonBehavior(GameHandler gh) {
 		myEditBehavior = gh;
+		//System.out.println(gh);
+		myGameObjectsProperties = new GameObjectProperties();
+		myGameObjectsProperties.setHandlers(gh);
 	}
 
 	public void setSaveAsNewButtonBehavior(GameHandler gh) {

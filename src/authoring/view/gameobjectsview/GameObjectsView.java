@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import data.Observable;
 import data.Observer;
 import javafx.scene.layout.VBox;
+import authoring.eventhandlers.EditGameObjectHandler;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.ScrollView;
 import authoring.view.graphicsview.GameObjectGraphic;
@@ -25,6 +26,7 @@ public class GameObjectsView extends ScrollView implements Observer {
 	private static final double VIEW_WIDTH_RATIO = 0.2;
 	private VBox myVbox = new VBox();	
 	private File myGameLocation;
+	private GameHandler myEditButtonBehavior;
 
 	public GameObjectsView(ResourceBundle language, double width, double height, File gameLoc) {
 		super(language, width, height);
@@ -41,7 +43,15 @@ public class GameObjectsView extends ScrollView implements Observer {
 	@SuppressWarnings("unchecked")
 	private void addGameObject(GameObject gameObject, GameHandler ... handler) {
 		Graphic graphic = new GameObjectGraphic(gameObject, myGameLocation, handler);
+		graphic.setEditButtonBehavior(myEditButtonBehavior);
+		System.out.println("sent to graphic");
 		myVbox.getChildren().add(graphic);
+	}
+
+	public void setEditButtonBehavior(
+			EditGameObjectHandler behavior) {
+		myEditButtonBehavior = behavior;
+		System.out.println("behavior set in objview");
 	}
 	
 }

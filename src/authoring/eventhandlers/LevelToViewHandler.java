@@ -24,7 +24,7 @@ public class LevelToViewHandler implements GameHandler<MouseEvent>{
 		newLevelView.setID(l.getLevel().getLevelID());
 		l.getLevel().addObserver(newLevelView);
 		
-		myProperties.makeProperties(l);
+		myProperties.displayProperties(l);
 	}
 
 	@Override

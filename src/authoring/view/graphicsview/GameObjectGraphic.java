@@ -22,9 +22,10 @@ public class GameObjectGraphic extends Graphic{
 
 	@Override
 	public Properties makeProperties() {
-		return new GameObjectProperties(this);
-		// TODO Auto-generated method stub
-		
+		GameObjectProperties props = new GameObjectProperties(this);
+		props.setHandlers(myEditButtonBehavior);
+		System.out.println("sent to props");
+		return props;
 	}
 
 }

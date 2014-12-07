@@ -5,6 +5,7 @@ import static authoring.view.levelview.SingleLevelView.OBJECT_Y_OFFSET;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -23,13 +24,33 @@ public class GameObjectProperties extends Properties {
 	private Map<String, PropertyTextField> concreteTextProperties;
 	private Map<String, CheckBox> booleanProperties;
 	private GameHandler myHandler;
+	private Button myEditButton;
 
 	public GameObjectProperties(Graphic g) {
 		initializeProperties(g);
 	}
 	
+	public GameObjectProperties(){
+		//nullary constructor that creates empty map to generate new game objects
+		//consider refactoring this
+		inherentTextProperties = new TreeMap<String, PropertyTextField>();
+		
+		inherentTextProperties.put("name", new PropertyTextField("Name: ", ""));
+		inherentTextProperties.put("image", new PropertyTextField("Image: ", ""));		
+		inherentTextProperties.put("collision", new PropertyTextField("Collision Constant", ""));
+		inherentTextProperties.put("initXV", new PropertyTextField("Initial X Velocity", ""));
+		inherentTextProperties.put("initYV", new PropertyTextField("Initial Y Velocity", ""));
+		inherentTextProperties.put("width", new PropertyTextField("Width: ", ""));
+		inherentTextProperties.put("height",new PropertyTextField("Height: ", ""));
+	}
+	
 	public void setHandlers(GameHandler gameHandlers){
 		myHandler = gameHandlers;
+		myEditButton = new Button("Edit");		
+		myEditButton.setOnAction(myHandler);
+		System.out.println("handler set");
+		this.getChildren().add(myEditButton);
+		
 	}
 
 	@Override
@@ -43,13 +64,8 @@ public class GameObjectProperties extends Properties {
 		concreteTextProperties = new HashMap<String, PropertyTextField>();
 		booleanProperties = new HashMap<String, CheckBox>();
 
-		inherentTextProperties.put("name",
-				new PropertyTextField("Name: ", gameObject.getID()));
-		inherentTextProperties.put(
-				"image",
-				new PropertyTextField("Image: ", gameObject
-						.getCurrentImageName()));
-		
+		inherentTextProperties.put("name", new PropertyTextField("Name: ", gameObject.getID()));
+		inherentTextProperties.put("image", new PropertyTextField("Image: ", gameObject.getCurrentImageName()));		
 		inherentTextProperties.put("collision", new PropertyTextField("Collision Constant", "0"));
 		inherentTextProperties.put("initXV", new PropertyTextField("Initial X Velocity", "0"));
 		inherentTextProperties.put("initYV", new PropertyTextField("Initial Y Velocity", "0"));
@@ -86,9 +102,7 @@ public class GameObjectProperties extends Properties {
 			this.getChildren().add(booleanProperties.get(s));
 		}
 
-		Button editButton = new Button("Edit");
-		editButton.setOnAction(myHandler);
-		this.getChildren().add(editButton);
+		
 
 		Button saveAsNew = new Button("Save as New");
 		saveAsNew.setOnMouseClicked(event -> saveAsNew());
@@ -96,9 +110,9 @@ public class GameObjectProperties extends Properties {
 
 	}
 
-	public GameObject edit(GameObject g) {
+	public GameObject edit() {
 
-		GameObject edited = new GameObject(g.getComponents(), inherentTextProperties
+		GameObject edited = new GameObject(null, inherentTextProperties
 				.get("image").getInformation(),
 				Double.parseDouble(concreteTextProperties.get("x").getInformation())
 						- OBJECT_X_OFFSET, Double.parseDouble(concreteTextProperties
@@ -121,13 +135,16 @@ public class GameObjectProperties extends Properties {
 			pb.addScalar(new CollisionConstant(Double.parseDouble(inherentTextProperties.get("collision").getInformation())));
 			pb.setVelocity(new Vector(Double.parseDouble(inherentTextProperties.get("initXV").getInformation()), Double.parseDouble(inherentTextProperties.get("initYV").getInformation())));
 			
-			System.out.println(pb);
 			edited.setPhysicsBody(pb);
 		}
 	
 		return edited;
 	}
 
+	public Map<String, PropertyTextField> getClearedTextMap(){
+		return inherentTextProperties;
+	}
+	
 	public Button setUpForNewObject() {
 		this.getChildren().clear();
 		for (String s : inherentTextProperties.keySet()) {

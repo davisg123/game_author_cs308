@@ -150,6 +150,12 @@ public class AuthoringController {
 						new GraphicClickHandler(myProperties),
 						new GameObjectDragToLevelHandler(myLevels, myModel
 								.getLevels(), myProperties));
+
+		myGameObjects.setEditButtonBehavior(new EditGameObjectHandler(myLevels,
+				myModel.getLevels(), myProperties));
+		System.out.println("controller to gameobjview");
+		
+		
 		
 		myLevelOptions.setButtonBehavior(new AddLevelHandler(myModel
 				.getLevels(), myLevels));
@@ -167,8 +173,6 @@ public class AuthoringController {
 				myProperties),
 				new GameObjectDragHandler(myLevels, myModel.getLevels(),
 						myProperties), new GameObjGraphicDragHandler(myLevels));
-		myProperties.setEditButtonBehavior(new EditGameObjectHandler(myLevels,
-				myModel.getLevels(), myProperties));
 
 	}
 

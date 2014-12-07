@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -15,10 +14,13 @@ import authoring.view.propertiesview.PropertyTextField;
 
 public abstract class Wizard extends Stage{
 
-	protected Map<String, PropertyTextField> myMap = new HashMap<String, PropertyTextField>();
+	protected Map<String, PropertyTextField> myMap;
 	protected VBox myWindow;
 	
 	public Wizard(String title, double width, double height, EventHandler<ActionEvent> event){
+		myMap = new HashMap<String, PropertyTextField>();
+		myWindow = new VBox();
+		
 		this.setTitle(title);
 		this.initStyle(StageStyle.DECORATED);
 		Group root = new Group();

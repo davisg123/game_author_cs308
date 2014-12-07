@@ -17,10 +17,15 @@ public class LevelWizard extends Wizard{
 
 	@Override
 	public VBox initializeWizard(EventHandler<ActionEvent> event) {
-		myWindow = new VBox();
 		
 		PropertyTextField nameField = new PropertyTextField("Name: ", "");
+		PropertyTextField widthField = new PropertyTextField("Width: ", "");
+		PropertyTextField heightField = new PropertyTextField("Height: ", "");
+
+		
 		myMap.put("name", nameField);
+		myMap.put("width", widthField);
+		myMap.put("height", heightField);
 		
 		super.addMapToWindow();
 		

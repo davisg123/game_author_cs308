@@ -2,7 +2,9 @@ package authoring.view.wizardview;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import authoring.view.propertiesview.GameObjectProperties;
 
 public class GameObjectWizard extends Wizard{
 
@@ -13,8 +15,17 @@ public class GameObjectWizard extends Wizard{
 
 	@Override
 	public VBox initializeWizard(EventHandler<ActionEvent> event) {
+		myMap = (new GameObjectProperties()).getClearedTextMap(); //gets empty map
 		
-		return null;
+		super.addMapToWindow();
+		
+		Button add = new Button("Add Game Object");
+		add.setOnAction(event);
+		myWindow.getChildren().add(add);
+		
+		return myWindow;
+		
+		
 	}
 
 }
