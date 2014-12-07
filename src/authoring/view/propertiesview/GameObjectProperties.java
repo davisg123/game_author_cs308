@@ -15,18 +15,32 @@ import engine.gameObject.components.PhysicsBody;
 import engine.physics.CollisionConstant;
 import engine.physics.Vector;
 
-public class GameObjectsProperties extends Properties {
+public class GameObjectProperties extends Properties {
 
 	private Map<String, PropertyTextField> inherentTextProperties;
 	private Map<String, PropertyTextField> concreteTextProperties;
 	private Map<String, CheckBox> booleanProperties;
 	private GameHandler myHandler;
 
-	public GameObjectsProperties(GameObject gObj, GameHandler handler) {
+	public GameObjectProperties(GameObject gObj, GameHandler handler) {
 		myHandler = handler;
 		initializeProperties(gObj);
 	}
 
+	public GameObjectProperties(){
+		//nullary constructor that creates empty map to generate new game objects
+		//consider refactoring this
+		inherentTextProperties = new HashMap<String, PropertyTextField>();
+		
+		inherentTextProperties.put("name", new PropertyTextField("Name: ", ""));
+		inherentTextProperties.put("image", new PropertyTextField("Image: ", ""));		
+		inherentTextProperties.put("collision", new PropertyTextField("Collision Constant", ""));
+		inherentTextProperties.put("initXV", new PropertyTextField("Initial X Velocity", ""));
+		inherentTextProperties.put("initYV", new PropertyTextField("Initial Y Velocity", ""));
+		inherentTextProperties.put("width", new PropertyTextField("Width: ", ""));
+		inherentTextProperties.put("height",new PropertyTextField("Height: ", ""));
+	}
+	
 	@Override
 	public void initializeProperties(Object g) {
 
@@ -142,5 +156,9 @@ public class GameObjectsProperties extends Properties {
 
 	public void saveAsNew() {
 
+	}
+	
+	public Map<String, PropertyTextField> getMap(){
+		return inherentTextProperties;
 	}
 }
