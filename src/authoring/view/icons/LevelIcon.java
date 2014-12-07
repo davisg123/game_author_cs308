@@ -7,7 +7,7 @@ import authoring.eventhandlers.GameHandler;
 
 public class LevelIcon extends BaseIcon {
 
-	private static final int DEFAULT_FONT_SIZE = 20;
+	public static final int DEFAULT_FONT_SIZE = 20;
 	private Level myLevel;
 	private GameHandler[] myLevelEvents;
 

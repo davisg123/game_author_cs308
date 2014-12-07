@@ -5,10 +5,12 @@ import java.util.ResourceBundle;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.TitledPane;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import authoring.eventhandlers.AddImageHandler;
 import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.AddObjectHandler;
+import authoring.eventhandlers.ConditionClickHandler;
 import authoring.eventhandlers.DeleteGameObjectHandler;
 import authoring.eventhandlers.EditGameObjectHandler;
 import authoring.eventhandlers.GameObjGraphicDragHandler;
@@ -37,6 +39,9 @@ import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
 import authoring.view.soundsview.SoundOptions;
 import authoring.view.soundsview.SoundsView;
+import engine.conditions.ButtonCondition;
+import engine.conditions.Condition;
+import engine.gameObject.Identifier;
 
 /**
  * Controller class that interacts between model and view. Holds and constructs
@@ -109,6 +114,12 @@ public class AuthoringController {
 		myModel.getGameObjectCollection().addObserver(myGameObjects);
 
 		myModel.getLevels().addObserver(myLevelsAccordionView);
+		myModel.getConditions().addObserver(myConditionsAccordionView);
+		
+		Condition a = new ButtonCondition(null, KeyCode.A);
+		a.setIdentifier(new Identifier("HelloType", "UniqueHello1"));
+		myModel.getConditions().add(a);
+
 	}
 
 	/**
@@ -159,6 +170,11 @@ public class AuthoringController {
 				new GameObjectDragHandler(myLevels, myModel.getLevels(),
 						myProperties), new GameObjGraphicDragHandler(myLevels));
 		myLevelsAccordionView.setGraphicEvents(new LevelToViewHandler(myLevels), new LevelClickHandler(myProperties));
+		
+		
+		myConditionsAccordionView.setGraphicEvents(new ConditionClickHandler(myProperties));
+		
+		
 		myLevelsAccordionView.setLevelEvents(new GameObjectClickHandler(
 				myProperties),
 				new GameObjectDragHandler(myLevels, myModel.getLevels(),
@@ -167,7 +183,7 @@ public class AuthoringController {
 				new EditGameObjectHandler(myLevels, myModel.getLevels(), myProperties),
 				new SaveAsNewHandler(myModel.getGameObjectCollection(), myProperties),
 				new DeleteGameObjectHandler(myLevels, myModel.getLevels(), myProperties));
-
+	
 	}
 
 	/**
