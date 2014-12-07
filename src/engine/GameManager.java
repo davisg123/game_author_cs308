@@ -1,7 +1,7 @@
 package engine;
 import authoring.model.GameData;
 import authoring.model.collections.ConditionsCollection;
-import authoring.model.collections.GameObjectsCollection;
+import authoring.model.collections.GameObjectCollection;
 import authoring.model.collections.LevelsCollection;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
@@ -27,7 +27,7 @@ import gamePlayer.model.DataWrapper;
 
 public class GameManager {
     private ConditionsCollection myGameConditions;
-    private GameObjectsCollection myGameObjects;
+    private GameObjectCollection myGameObjects;
     private GameObjectRenderer myGameObjectRenderer;
     private Group myRootGroup;
     private Timeline myAnimation;
@@ -36,7 +36,7 @@ public class GameManager {
     private static final double DEFAULT_SPEED = 60.0;
     
     
-    public GameManager (ConditionsCollection myGameConditions, GameObjectsCollection myGameObjects, LevelsCollection myLevels, Group myRootGroup) {
+    public GameManager (ConditionsCollection myGameConditions, GameObjectCollection myGameObjects, LevelsCollection myLevels, Group myRootGroup) {
         super();
         this.myGameConditions = myGameConditions;
         this.myGameObjects = myGameObjects;

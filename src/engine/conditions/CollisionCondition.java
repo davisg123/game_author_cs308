@@ -3,7 +3,7 @@ package engine.conditions;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import authoring.model.collections.GameObjectsCollection;
+import authoring.model.collections.GameObjectCollection;
 import javafx.scene.Node;
 import engine.actions.Action;
 import engine.gameObject.GameObject;
@@ -18,10 +18,10 @@ import engine.gameObject.GameObject;
 
 public class CollisionCondition extends TimeCondition {
     
-    private GameObjectsCollection mySecondCollisionSet;
+    private GameObjectCollection mySecondCollisionSet;
     private Map<String,Integer> myCollisionMap;
 
-    public CollisionCondition (List<Action> myActions, GameObjectsCollection firstCollisionSet, GameObjectsCollection secondCollisionSet) {
+    public CollisionCondition (List<Action> myActions, GameObjectCollection firstCollisionSet, GameObjectCollection secondCollisionSet) {
         //initialize as a time condition that executes every frame
         super(myActions,firstCollisionSet,1,true);
         mySecondCollisionSet = secondCollisionSet;

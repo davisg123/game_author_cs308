@@ -21,10 +21,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import authoring.model.GameData;
-import authoring.model.collections.GameObjectsCollection;
+import authoring.model.collections.GameObjectCollection;
 import authoring.model.collections.GeneralCollection;
 import authoring.model.GameData;
-import authoring.model.collections.GameObjectsCollection;
+import authoring.model.collections.GameObjectCollection;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

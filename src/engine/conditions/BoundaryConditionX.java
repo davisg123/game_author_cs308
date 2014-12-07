@@ -1,7 +1,7 @@
 package engine.conditions;
 
 import java.util.List;
-import authoring.model.collections.GameObjectsCollection;
+import authoring.model.collections.GameObjectCollection;
 import engine.actions.Action;
 import engine.gameObject.GameObject;
 
@@ -11,7 +11,7 @@ public class BoundaryConditionX extends GameObjectCondition {
     private boolean myRightTrigger;
 
     public BoundaryConditionX (List<Action> myActions,
-                              GameObjectsCollection myGameObjects,
+                              GameObjectCollection myGameObjects,
                               double boundary, boolean rightTrigger) {
         super(myActions, myGameObjects);
         myBoundary = boundary;

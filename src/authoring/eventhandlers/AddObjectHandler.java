@@ -4,20 +4,21 @@ import java.util.Map;
 
 import javafx.event.Event;
 import javafx.event.EventType;
-import authoring.model.collections.GameObjectsCollection;
+import authoring.model.collections.GameObjectCollection;
 import authoring.view.propertiesview.PropertyTextField;
 import authoring.view.wizards.GameObjectWizard;
 import authoring.view.wizards.Wizard;
 import engine.gameObject.GameObject;
+import engine.gameObject.components.PhysicsBody;
 
 public class AddObjectHandler implements GameHandler<Event> {
 
-	private GameObjectsCollection myGameObjectCollection;
+	private GameObjectCollection myGameObjectCollection;
 	private static final double NEW_GAMEOBJECT_WINDOW_HEIGHT = 400;
 	private static final double NEW_GAMEOBJECT_WINDOW_WIDTH = 400;
 	private Wizard myWizard;
 
-	public AddObjectHandler(GameObjectsCollection myGameObjectCollection) {
+	public AddObjectHandler(GameObjectCollection myGameObjectCollection) {
 		this.myGameObjectCollection = myGameObjectCollection;
 	}
 
@@ -57,7 +58,10 @@ public class AddObjectHandler implements GameHandler<Event> {
 				.getInformation(), 0, 0, Double.parseDouble(map.get("height")
 				.getInformation()), Double.parseDouble(map.get("width")
 				.getInformation()), 0, map.get("name").getInformation());
-		
+		PhysicsBody p = new PhysicsBody(Double.parseDouble(map.get("width")
+				.getInformation()),Double.parseDouble(map.get("height")
+				.getInformation()));
+		newGameObject.setPhysicsBody(p);
 		myGameObjectCollection.add(newGameObject);
 		myWizard.close();
 	}
