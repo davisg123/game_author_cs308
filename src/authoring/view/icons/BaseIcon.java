@@ -16,4 +16,8 @@ public class BaseIcon extends VBox {
 	public void addLabel() {
 		this.getChildren().add(new Text(myLabel));
 	}
+	
+	public String getName() {
+		return myLabel;
+	}
 }

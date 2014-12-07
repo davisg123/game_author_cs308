@@ -36,5 +36,6 @@ public class LevelIcon extends BaseIcon {
 	public GameHandler[] getLevelEvents() {
 		return myLevelEvents;
 	}
+	
 
 }

@@ -3,7 +3,7 @@ package authoring.view.propertiesview;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
-import authoring.view.icons.ImageBasedIcon;
+import authoring.view.icons.LevelIcon;
 
 public class LevelProperties extends Properties{
 
@@ -13,7 +13,7 @@ public class LevelProperties extends Properties{
 
 	@Override
 	public void initializeProperties(Object o) {
-		ImageBasedIcon graphic = (ImageBasedIcon) o;
+		LevelIcon graphic = (LevelIcon) o;
 		
 		this.getChildren().clear();
 		
