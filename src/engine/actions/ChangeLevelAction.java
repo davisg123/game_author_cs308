@@ -1,25 +1,25 @@
 package engine.actions;
 
 import engine.GameManager;
+import engine.gameObject.Identifier;
 import engine.level.LevelManager;
 
 public class ChangeLevelAction implements Action, Initializable{
 
-	LevelManager myLevelManager; 
-	String myID; 
+	Identifier levelID; 
+	LevelManager myLevelManager;
 	
-	public ChangeLevelAction(String id){
-		myID=id; 
+	public ChangeLevelAction(Identifier id){
+		levelID=id; 
 	}
 	
 	@Override
-	public void initialize(GameManager gamemanager) {
-		myLevelManager=gamemanager.getLevelManager();
-		
+	public void initialize(GameManager gameManager) {
+		myLevelManager = gameManager.getLevelManager();
 	}
 
 	@Override
 	public void execute() {
-		myLevelManager.changeLevel(myID);
+		myLevelManager.changeToLevel(levelID);
 	}
 }

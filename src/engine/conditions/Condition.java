@@ -18,10 +18,10 @@ import engine.gameObject.Identifier;
 
 public abstract class Condition implements Identifiable, Initializable{
 
-    private List<Action> myActions = new ArrayList<Action>();
+    protected List<Action> myActions = new ArrayList<Action>();
     private boolean myEnabled;
     private Identifier myId;
-    private transient GameManager myGameManager;
+    protected transient GameManager myGameManager;
     
     public Condition(List<Action> actions){
         myActions = actions;

@@ -2,6 +2,7 @@ package engine.actions.render;
 
 import java.util.List;
 
+import engine.GameManager;
 import engine.actions.Action;
 import engine.actions.Initializable;
 import engine.gameObject.GameObject;
@@ -35,6 +36,11 @@ public abstract class RenderAction implements Action, Initializable {
     @Override
     public void execute () {
         applyRender();
+    }
+    
+    @Override
+    public void initialize(GameManager gameManager){
+    	
     }
     
     protected abstract void applyRender ();
