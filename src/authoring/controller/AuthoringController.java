@@ -1,7 +1,6 @@
 package authoring.controller;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.geometry.Pos;
@@ -31,8 +30,6 @@ import authoring.view.levelview.LevelsAccordionView;
 import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
 import authoring.view.soundsview.SoundsView;
-import engine.gameObject.GameObject;
-import engine.gameObject.components.Component;
 
 /**
  * Controller class that interacts between model and view. Holds and constructs
