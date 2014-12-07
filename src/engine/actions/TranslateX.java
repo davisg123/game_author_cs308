@@ -1,4 +1,4 @@
-package engine.actions.translate;
+package engine.actions;
 
 import engine.GameManager;
 import engine.gameObject.GameObject;
@@ -9,20 +9,20 @@ import engine.gameObject.GameObject;
  *
  */
 
-public class TranslateY extends TranslateAction {
+public class TranslateX extends TranslateAction {
 
-    public TranslateY (GameObject sprite, double value) {
+    public TranslateX (GameObject sprite, double value) {
         super(sprite, value);
     }
 
     @Override
     public void applyTransform () {
-        mySprite.setTranslateY(mySprite.getTranslateY() + myValue);
+        mySprite.setTranslateX(mySprite.getTranslateX() + myValue);
     }
 
     @Override
     public void initialize (GameManager manager) {
         
     }
-
+    
 }
