@@ -1,6 +1,6 @@
 package authoring.view.wizards;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javafx.event.ActionEvent;
@@ -18,7 +18,7 @@ public abstract class Wizard extends Stage{
 	protected VBox myWindow;
 	
 	public Wizard(String title, double width, double height, EventHandler<ActionEvent> event){
-		myMap = new HashMap<String, PropertyTextField>();
+		myMap = new LinkedHashMap<String, PropertyTextField>();
 		myWindow = new VBox();
 		
 		this.setTitle(title);
