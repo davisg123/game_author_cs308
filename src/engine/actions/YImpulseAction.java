@@ -1,5 +1,7 @@
 package engine.actions;
 
+import java.util.List;
+
 import engine.GameManager;
 import engine.actions.PhysicsAction.TwoArgInterface;
 import engine.gameObject.GameObject;
@@ -8,8 +10,8 @@ import engine.physics.Impulse;
 
 public class YImpulseAction extends PhysicsAction {
 
-	public YImpulseAction(Identifier id, double value) {
-		super(id, value);
+	public YImpulseAction(List<Identifier> ids, double value) {
+		super(ids, value);
 		// TODO Auto-generated constructor stub
 	}
 

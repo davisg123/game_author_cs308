@@ -1,5 +1,7 @@
 package engine.actions;
 
+import java.util.List;
+
 import engine.GameManager;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
@@ -13,8 +15,8 @@ import engine.physics.Velocity;
 
 public class XVelocityAction extends PhysicsAction{
 
-	public XVelocityAction(Identifier id, double value) {
-		super(id, value);
+	public XVelocityAction(List<Identifier> ids, double value) {
+		super(ids, value);
 	}
 
 	//TODO refactor after physics body discussion

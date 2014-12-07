@@ -1,14 +1,15 @@
 package engine.actions;
 
+import java.util.List;
+
 import engine.GameManager;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 
 public class ReverseVelocityAction extends PhysicsAction {
 
-	public ReverseVelocityAction(Identifier id, double value) {
-		super(id, value);
-		// TODO Auto-generated constructor stub
+	public ReverseVelocityAction(List<Identifier> ids, double value) {
+		super(ids, value);
 	}
 
 	@Override

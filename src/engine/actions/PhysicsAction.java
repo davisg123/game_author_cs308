@@ -3,6 +3,7 @@ package engine.actions;
 import java.util.Arrays;
 import java.util.List;
 
+import authoring.model.collections.GameObjectsCollection;
 import engine.GameManager;
 import engine.collision.objects.CollisionComposition;
 import engine.gameObject.GameObject;
@@ -10,20 +11,22 @@ import engine.gameObject.Identifier;
 
 public abstract class PhysicsAction implements Action, Initializable {
 
-	protected Identifier mySpriteID;
-	protected Object myValue;
+	protected List<Identifier> myGameObjectIDs;
+	protected double myValue;
 	protected CollisionComposition myCollision;
-	protected GameObject myGameObject; 
+	protected GameObjectsCollection myGameObjects; 
 
-	public PhysicsAction(Identifier id, Object value) {
-		mySpriteID = id;
+	public PhysicsAction(List<Identifier> ids, double value) {
+		myGameObjectIDs = ids;
 		myValue = value;
 		myCollision = new CollisionComposition();
 	}
 
 	@Override
 	public void initialize(GameManager myGameManager){
-        myGameObject = myGameManager.objectForIdentifier(mySpriteID);
+		for (Identifier id: myGameObjectIDs){
+			myGameObjects.add(myGameManager.objectForIdentifier(id));
+		}
 	}
 	
 	@Override

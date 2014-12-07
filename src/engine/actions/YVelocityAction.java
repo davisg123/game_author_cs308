@@ -16,8 +16,8 @@ import engine.physics.Velocity;
 
 public class YVelocityAction extends PhysicsAction{
 
-	public YVelocityAction(Identifier id, double value) {
-		super(id, value);
+	public YVelocityAction(List<Identifier> ids, double value) {
+		super(ids, value);
 	}
 
 	//TODO refactor after discussion about physics

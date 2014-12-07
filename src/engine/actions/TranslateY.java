@@ -1,5 +1,7 @@
 package engine.actions;
 
+import java.util.List;
+
 import engine.GameManager;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
@@ -12,13 +14,16 @@ import engine.gameObject.Identifier;
 
 public class TranslateY extends TranslateAction {
 
-    public TranslateY (Identifier iD, double value) {
-        super(iD, value);
+    public TranslateY (List<Identifier> iDs, double value) {
+        super(iDs, value);
     }
 
     @Override
     public void applyTransform () {
-        mySprite.setTranslateY(mySprite.getTranslateY() + myValue);
+    	for (GameObject object: myGameObjects){
+    		object.setTranslateY(object.getTranslateY() + myValue); 
+    	}
+
     }
 
 }

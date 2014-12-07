@@ -1,5 +1,7 @@
 package engine.actions;
 
+import java.util.List;
+
 import engine.GameManager;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
@@ -7,8 +9,8 @@ import engine.physics.Impulse;
 
 public class XImpulseAction extends PhysicsAction {
 
-	public XImpulseAction(Identifier id, double value) {
-		super(id, value);
+	public XImpulseAction(List<Identifier> ids, double value) {
+		super(ids, value);
 		// TODO Auto-generated constructor stub
 	}
 
