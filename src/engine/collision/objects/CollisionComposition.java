@@ -6,7 +6,7 @@ import engine.gameObject.components.PhysicsBody;
 public class CollisionComposition {
 	private static final double FRAMES_PER_SECOND = 60.0;
 
-	private boolean isOnXAxis(GameObject one, GameObject two) {
+	public boolean isOnXAxis(GameObject one, GameObject two) {
 		double xCenterOne = one.getPosition().getX();
 		double yCenterOne = one.getPosition().getY();
 		double xCenterTwo = two.getPosition().getX();
@@ -50,7 +50,6 @@ public class CollisionComposition {
 		if (!other.getCollisionConstant()) {
 
 			if (xAxis) {
-				System.out.println("COLLISOIN");
 
 				// cancel out current velocity
 				other.setTranslateX(other.getTranslateX()
