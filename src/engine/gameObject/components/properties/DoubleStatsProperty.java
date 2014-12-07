@@ -1,11 +1,7 @@
 package engine.gameObject.components.properties;
 
-public class DoubleStatsProperty implements IProperty{
-    private double myDoubleProp;
-    
-    public DoubleStatsProperty(double doubleProp){
-        myDoubleProp = doubleProp;
-    }
+public class IDoubleStatsProperty implements IProperty{
+   
     @Override
     public void update () {
         // TODO Auto-generated method stub
