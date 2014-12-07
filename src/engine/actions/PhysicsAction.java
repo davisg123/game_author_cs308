@@ -12,7 +12,7 @@ public abstract class PhysicsAction implements Action, Initializable {
 	protected Object myValue;
 	protected CollisionComposition myCollision;
 
-	public PhysicsAction(GameObject sprite, Object value) {
+	public PhysicsAction(GameObject sprite, double value) {
 		mySprite = sprite;
 		myValue = value;
 		myCollision = new CollisionComposition();
@@ -20,7 +20,7 @@ public abstract class PhysicsAction implements Action, Initializable {
 
 	@Override
 	public void execute() {
-		// applyPhysics();
+		//applyPhysics();
 	}
 
 	public abstract void applyPhysics(GameObject... myObjects);
