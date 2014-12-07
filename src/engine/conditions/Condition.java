@@ -67,7 +67,7 @@ public abstract class Condition implements Identifiable, Initializable{
         initializeActions(manager);
     }
     
-    private void initializeActions(GameManager manager){
+    protected void initializeActions(GameManager manager){
         if (myActions != null){
             for (Action a : myActions){
                 //TODO: expand to whatever action class needs initializing

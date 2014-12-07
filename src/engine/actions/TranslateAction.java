@@ -28,6 +28,7 @@ public abstract class TranslateAction implements Action, Initializable {
     @Override
     public void initialize (GameManager manager) {
         mySprite = manager.objectForIdentifier(myGameObjectID);
+        System.out.println(mySprite);
     }
     
     /**

@@ -3,17 +3,17 @@ package engine.conditions;
 import java.util.List;
 
 import engine.actions.Action;
-import engine.gameObject.Identifier;
 
-public class TimeCondition extends GameObjectCondition {
+public class TimeCondition extends Condition {
     
     private int myFrameCount = 0;
-    protected double myTargetFrameCount;
-    protected boolean repeats;
+    private double myTargetFrameCount;
+    private boolean repeats;
     private boolean expired;
 
-    public TimeCondition (List<Action> myActions, Identifier[] myIDs, double frameElapseCount, boolean repeats) {
-        super(myActions, myIDs);
+    public TimeCondition (List<Action> myActions, double frameElapseCount, boolean repeats) {
+        super(myActions);
+        
         myTargetFrameCount = frameElapseCount;
         this.repeats = repeats;
     }
