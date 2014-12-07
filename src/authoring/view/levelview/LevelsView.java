@@ -1,19 +1,16 @@
 package authoring.view.levelview;
 
 import java.io.File;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.ResourceBundle;
 
-import data.Observable;
-import data.Observer;
 import engine.level.Level;
 import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.GameHandler;
-import authoring.view.baseclasses.BPContainer;
 import authoring.view.baseclasses.TabView;
-import authoring.view.graphicsview.GameObjectGraphic;
-import authoring.view.graphicsview.Graphic;
+import authoring.view.icons.ImageBasedIcon;
+
 
 /**
  * View class that contains all the levels in the program. Corresponds with
@@ -80,7 +77,7 @@ public class LevelsView extends TabView implements Observer {
 	 * @param x
 	 * @param y
 	 */
-	public void moveSpriteOnLevel(Graphic g, double x, double y) {
+	public void moveSpriteOnLevel(ImageBasedIcon g, double x, double y) {
 		g.setLayoutX(x - 230);
 		g.setLayoutY(y - 100);
 	}
@@ -103,7 +100,7 @@ public class LevelsView extends TabView implements Observer {
 	 * @return
 	 */
 	public SingleLevelView addExistingLevel(Level l, GameHandler... events) {
-		Tab tab = new Tab(l.getLevelID());
+		Tab tab = new Tab(l.getIdentifier().getUniqueId());
 		SingleLevelView newView = new SingleLevelView(myGameLocation, myWidth,
 				myHeight, l, events);
 		// System.out.println(events.length);
@@ -112,6 +109,19 @@ public class LevelsView extends TabView implements Observer {
 		this.getSelectionModel().select(tab);
 		return newView;
 	}
+	
+	public boolean levelOpenInTabs(String id){
+		
+		for (Tab tab : this.getTabs()){
+			if (((SingleLevelView) tab.getContent()).getID().equals(id)){
+				this.getSelectionModel().select(tab);
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
 
 	public void setEventHandlers(GameHandler... handlers) {
 		myEvents = handlers;

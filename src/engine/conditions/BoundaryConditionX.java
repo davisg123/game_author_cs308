@@ -13,6 +13,7 @@ public class BoundaryConditionX extends GameObjectCondition {
     private boolean myRightTrigger;
     
     public BoundaryConditionX (List<Action> myActions,
+                              GameObjectsCollection myGameObjects,
                               Identifier[] myIDs,
                               double boundary, boolean rightTrigger) {
         super(myActions, myIDs);

@@ -13,6 +13,7 @@ public class BoundaryConditionY extends GameObjectCondition {
     private boolean myUpTrigger;
 
     public BoundaryConditionY (List<Action> myActions,
+                              GameObjectsCollection myGameObjects,
                               Identifier[] myIDs,
                               double boundary, boolean rightTrigger) {
         super(myActions, myIDs);

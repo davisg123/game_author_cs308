@@ -1,13 +1,18 @@
 package authoring.model;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
-import data.DataManager;
 import authoring.model.collections.ConditionsCollection;
 import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.ImagesCollection;
 import authoring.model.collections.LevelsCollection;
 import authoring.model.collections.SoundsCollection;
+import data.DataManager;
+import engine.gameObject.GameObject;
+import engine.gameObject.Identifier;
+import engine.level.Level;
 
 /**
  * The Model of the MVC, gets changes in information from the controller and
@@ -30,9 +35,10 @@ public class AuthoringModel {
 	 */
 	public void save() {
 		// TODO - Data
+		GameData mySerializableGame = convertToSerializable();
 		DataManager manager = new DataManager();
 		try {
-			boolean success = manager.writeGameFile(myGame, "SavedGame1.json");
+			boolean success = manager.writeGameFile(mySerializableGame, "SavedGame1.json");
 			System.out.println("game saved = " + success);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -40,6 +46,53 @@ public class AuthoringModel {
 		}
 	}
 	
+	public GameData convertToSerializable(){
+		GameData mySerializableGame = new GameData();
+		int IDcounter = 0;
+		List<GameObject> allGameObjects = new ArrayList<GameObject>();
+		for(GameObject g: myGame.getGameObjects()){
+			g.setIdentifier(new Identifier(g.getID(),Integer.toString(IDcounter)));
+			IDcounter++;
+			allGameObjects.add(g);
+		}
+		for(Level l: myGame.getLevels()){
+			List<Identifier> levelGameObjects = new ArrayList<Identifier>();
+			for(GameObject g : l.getGameObjectsCollection()){
+				Identifier i = new Identifier(g.getID(),Integer.toString(IDcounter));
+				g.setIdentifier(i);
+				IDcounter++;
+				allGameObjects.add(g);
+				levelGameObjects.add(i);
+			}
+			mySerializableGame.getLevels().add(new Level(levelGameObjects));
+		}
+		for(GameObject g: allGameObjects){
+			mySerializableGame.getGameObjects().add(g);
+		}
+		return mySerializableGame;
+	}
+	
+	public void convertFromSerializable(GameData input){
+		myGame = new GameData();
+		for (Level l: input.getLevels()){
+			for(Identifier i: l.getGameObjectIDs()){
+				for(GameObject g : input.getGameObjects()){
+					if(i.getUniqueId().equals(g.getIdentifier().getUniqueId())){
+						l.addGameObject(g);
+					}
+				}
+				for(GameObject g : l.getGameObjectsCollection()){
+					input.getGameObjects().remove(g);
+				}
+			}
+			l.getGameObjectIDs().clear();
+			myGame.getLevels().add(l);
+		}
+		for(GameObject g : input.getGameObjects()){
+			myGame.getGameObjects().add(g);
+		}
+	}
+
 	/**
 	 * Replaces the current GameData file with a new file that is loaded in
 	 */

@@ -27,7 +27,7 @@ public class ConditionsAccordionView extends ScrollView implements Observer {
 		
 	}
 	
-	public void setEvents(GameHandler ... gameHandlers){
+	public void setGraphicEvents(GameHandler ... gameHandlers){
 		myEvents = gameHandlers;
 	}
 	

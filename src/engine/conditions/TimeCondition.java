@@ -2,10 +2,7 @@ package engine.conditions;
 
 import java.util.List;
 
-import authoring.model.collections.GameObjectsCollection;
-import engine.GameManager;
 import engine.actions.Action;
-import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 
 public class TimeCondition extends GameObjectCondition {
@@ -17,7 +14,6 @@ public class TimeCondition extends GameObjectCondition {
 
     public TimeCondition (List<Action> myActions, Identifier[] myIDs, double frameElapseCount, boolean repeats) {
         super(myActions, myIDs);
-        
         myTargetFrameCount = frameElapseCount;
         this.repeats = repeats;
     }

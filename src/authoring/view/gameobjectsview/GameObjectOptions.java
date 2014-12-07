@@ -1,16 +1,16 @@
-package authoring.view.graphicsview;
+package authoring.view.gameobjectsview;
 
 import java.util.ResourceBundle;
 
 import javafx.scene.control.Button;
 import authoring.eventhandlers.GameHandler;
-import authoring.view.generalcollectionview.CollectionsTool;
+import authoring.view.generalcollectionview.CollectionOptions;
 
-public class GameObjectsTools extends CollectionsTool{
+public class GameObjectOptions extends CollectionOptions{
 
 	private Button addObjectButton;
 
-	public GameObjectsTools(ResourceBundle language, double width, double height) {
+	public GameObjectOptions(ResourceBundle language, double width, double height) {
 		super(language, width, height);
 		addNewTabButton();
 	}
