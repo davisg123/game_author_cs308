@@ -12,6 +12,8 @@ public class ButtonCondition extends Condition {
         super(actions);
         myKey = key;
     }
+    
+    
 
     @Override
     protected void executeActions () {
