@@ -22,6 +22,7 @@ import authoring.eventhandlers.SaveAsNewHandler;
 import authoring.eventhandlers.UploadDragDropHandler;
 import authoring.eventhandlers.UploadDragOverHandler;
 import authoring.model.AuthoringModel;
+import authoring.model.GameData;
 import authoring.view.AuthoringView;
 import authoring.view.baseclasses.AccordionContainer;
 import authoring.view.baseclasses.BPContainer;
@@ -231,7 +232,11 @@ public class AuthoringController {
 	}
 
 	public void saveData() {
-		myModel.save();
+		myModel.save(myGameLocation.getAbsolutePath());
+	}
+	
+	public void loadData(GameData input){
+		myModel.load(input);
 	}
 
 }
