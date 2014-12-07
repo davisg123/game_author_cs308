@@ -144,5 +144,9 @@ public class Level extends Observable implements Identifiable {
     public boolean isStartLevel() {
         return myStartLevelIndicator;
     }
+    
+    public List<Identifier> getGameObjectIDs(){
+    	return myGameObjectIdList; 
+    }
 
 }
