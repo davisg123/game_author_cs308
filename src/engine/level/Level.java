@@ -4,7 +4,7 @@ import java.util.Iterator;
 import data.Observable;
 import java.util.List;
 import authoring.model.collections.ConditionIDsCollection;
-import authoring.model.collections.GameObjectsCollection;
+import authoring.model.collections.GameObjectCollection;
 import engine.GameManager;
 import engine.actions.Initializable;
 import engine.gameObject.GameObject;
@@ -22,8 +22,8 @@ import engine.gameObject.Identifier;
 public class Level extends Observable implements Identifiable {
 
     private Identifier myId;
-    private GameObjectsCollection myDefaultGameObjects;
-    private GameObjectsCollection myWorkingGameObjects;
+    private GameObjectCollection myDefaultGameObjects;
+    private GameObjectCollection myWorkingGameObjects;
     private List<Identifier> myGameObjectIdList;
     private ConditionIDsCollection myConditionIDs;
 
@@ -34,12 +34,12 @@ public class Level extends Observable implements Identifiable {
      * list representing game objects that apply to this level
      */
     public Level(List<Identifier> IdList) {
-        this(new GameObjectsCollection());
+        this(new GameObjectCollection());
         myGameObjectIdList = IdList;
 
     }
 
-    public Level (GameObjectsCollection gameObjects) {
+    public Level (GameObjectCollection gameObjects) {
         myDefaultGameObjects = gameObjects;
         myWorkingGameObjects = gameObjects;
     }
@@ -94,7 +94,7 @@ public class Level extends Observable implements Identifiable {
         return ret;
     }
 
-    public GameObjectsCollection getGameObjectsCollection() {
+    public GameObjectCollection getGameObjectsCollection() {
         return myDefaultGameObjects;
     }
 

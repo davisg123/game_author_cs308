@@ -2,7 +2,7 @@ package authoring.eventhandlers;
 
 import javafx.event.Event;
 import javafx.event.EventType;
-import authoring.model.collections.GameObjectsCollection;
+import authoring.model.collections.GameObjectCollection;
 import authoring.model.collections.LevelsCollection;
 import authoring.view.levelview.LevelsView;
 import authoring.view.levelview.SingleLevelView;
@@ -36,7 +36,7 @@ public class AddLevelHandler implements GameHandler<Event> {
 	
 	private void createLevel(){
 		SingleLevelView newLevelView = myLevels.addNewLevel(myLevelID);
-		Level levelData = new Level(new GameObjectsCollection());
+		Level levelData = new Level(new GameObjectCollection());
 		levelData.addObserver(newLevelView);
 		newLevelView.setID(myLevelID);
 		levelData.setIdentifier(new Identifier("Level", myLevelID));

@@ -6,7 +6,7 @@ import java.util.List;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 
-public class GameObjectsCollection extends GeneralCollection<GameObject>{
+public class GameObjectCollection extends GeneralCollection<GameObject>{
 	
 	public void addGameObject(GameObject g){
 		myObjects.add(g);

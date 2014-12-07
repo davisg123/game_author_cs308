@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import authoring.model.collections.ConditionsCollection;
-import authoring.model.collections.GameObjectsCollection;
+import authoring.model.collections.GameObjectCollection;
 import authoring.model.collections.ImagesCollection;
 import authoring.model.collections.LevelsCollection;
 import authoring.model.collections.SoundsCollection;
@@ -92,7 +92,7 @@ public class AuthoringModel {
 		return myGame.getImages();
 	}
 	
-	public GameObjectsCollection getGameObjectCollection(){
+	public GameObjectCollection getGameObjectCollection(){
 		return myGame.getGameObjects();
 	}
 	

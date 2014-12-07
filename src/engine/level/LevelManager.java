@@ -2,7 +2,7 @@ package engine.level;
 
 import java.util.Iterator;
 import authoring.model.collections.ConditionsCollection;
-import authoring.model.collections.GameObjectsCollection;
+import authoring.model.collections.GameObjectCollection;
 import authoring.model.collections.LevelsCollection;
 import engine.conditions.Condition;
 import engine.gameObject.GameObject;
@@ -19,7 +19,7 @@ import engine.render.GameObjectRenderer;
 
 public class LevelManager implements Iterable<Level> {
 	private LevelsCollection myLevels;
-	private GameObjectsCollection myGameObjects;
+	private GameObjectCollection myGameObjects;
 	private ConditionsCollection myConditions;
 	private Level myCurrentLevel;
 	private int myCurrentIndex;
@@ -35,7 +35,7 @@ public class LevelManager implements Iterable<Level> {
 	 * @param detector
 	 */
 	public LevelManager(LevelsCollection levels,
-			GameObjectsCollection gameObjects, ConditionsCollection conditions,
+			GameObjectCollection gameObjects, ConditionsCollection conditions,
 			GameObjectRenderer renderer) {
 		myLevels = levels;
 		myGameObjects = gameObjects;

@@ -1,15 +1,15 @@
 package authoring.eventhandlers;
 
-import authoring.model.collections.GameObjectsCollection;
+import authoring.model.collections.GameObjectCollection;
 import javafx.event.Event;
 import javafx.event.EventType;
 
 public class NewGameObjectSubmitHandler implements GameHandler<Event>{
 
-	public GameObjectsCollection myGameObjectCollection;
+	public GameObjectCollection myGameObjectCollection;
 	
 	
-	public NewGameObjectSubmitHandler(GameObjectsCollection myGameObjectCollection){
+	public NewGameObjectSubmitHandler(GameObjectCollection myGameObjectCollection){
 		this.myGameObjectCollection = myGameObjectCollection;
 	}
 	

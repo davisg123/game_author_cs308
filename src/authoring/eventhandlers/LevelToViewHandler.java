@@ -1,13 +1,10 @@
 package authoring.eventhandlers;
 
-import engine.level.Level;
-import authoring.model.collections.GameObjectsCollection;
-import authoring.view.graphicsview.GameObjectGraphic;
-import authoring.view.graphicsview.LevelGraphic;
-import authoring.view.levelview.LevelsView;
-import authoring.view.levelview.SingleLevelView;
 import javafx.event.EventType;
 import javafx.scene.input.MouseEvent;
+import authoring.view.levelview.LevelGraphic;
+import authoring.view.levelview.LevelsView;
+import authoring.view.levelview.SingleLevelView;
 
 public class LevelToViewHandler implements GameHandler<MouseEvent>{
 

@@ -11,7 +11,7 @@ import authoring.eventhandlers.GameHandler;
 import authoring.eventhandlers.GameObjectClickHandler;
 import authoring.eventhandlers.GameObjectDragHandler;
 import authoring.main.Main;
-import authoring.view.graphicsview.GameObjectGraphic;
+import authoring.view.gameobjectsview.GameObjectGraphic;
 import authoring.view.graphicsview.Graphic;
 import javafx.geometry.Insets;
 import javafx.scene.layout.Background;
