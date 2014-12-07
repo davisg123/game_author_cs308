@@ -20,12 +20,18 @@ public class PropertiesView extends ScrollView {
 
 	private GameObjectProperties myGameObjectsProperties;
 	private GameObject myCurrentGameObject;
+	
+	private double myWidth;
+	private double myHeight;
 
 	public PropertiesView(ResourceBundle language, double width, double height) {
 		super(language, width, height);
 		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
 		this.setContent(myContents);
-
+		
+		myWidth = width;
+		myHeight = height;
+		
 	}
 
 //	public void makeProperties(Graphic g){
@@ -40,7 +46,7 @@ public class PropertiesView extends ScrollView {
 	public void makeProperties(GameObject gameObj) {
 		myContents.getChildren().clear();
 		myCurrentGameObject = gameObj;
-		myGameObjectsProperties = new GameObjectProperties(gameObj,
+		myGameObjectsProperties = new GameObjectProperties(gameObj, myWidth, myHeight,
 				this.myButtonBehaviors);
 		this.setContent(myGameObjectsProperties);
 	}
