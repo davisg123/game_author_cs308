@@ -26,12 +26,12 @@ public class MenuBarController implements Initializable{
 	public void setModel(PlayerModel model){
 		myPlayerModel=model;
 	}
-	
-	@FXML
-	private void goHome(final ActionEvent event){
-		myPlayerModel.goHome();
-	}
-	
+//	
+//	@FXML
+//	private void goHome(final ActionEvent event){
+//		myPlayerModel.goHome();
+//	}
+//	
 	@FXML
 	private void loadGameFile(final ActionEvent event){
 		myPlayerModel.loadGameFile();
@@ -45,7 +45,7 @@ public class MenuBarController implements Initializable{
 		gameOptions.setDisable(true);
 		gamePreferences.setDisable(true);
 	}
-	
+/*	
 	@FXML
 	private void loadFromSave(final ActionEvent event) throws CloneNotSupportedException{
 		myPlayerModel.loadProgressFile();
@@ -74,7 +74,7 @@ public class MenuBarController implements Initializable{
 		gameOptions.setDisable(true);
 		gamePreferences.setDisable(true);
 	}
-
+*/
 	@FXML
 	private void pauseGame(final ActionEvent event){
 		myPlayerModel.pauseGame();
