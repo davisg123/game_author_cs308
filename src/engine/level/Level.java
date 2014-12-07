@@ -1,6 +1,7 @@
 package engine.level;
 
 import java.util.Iterator;
+import java.util.List;
 import java.util.Observable;
 import authoring.model.collections.ConditionIDsCollection;
 import authoring.model.collections.GameObjectsCollection;
@@ -18,22 +19,24 @@ import engine.gameObject.Identifier;
  * @author Abhishek Balakrishnan
  */
 
-public class Level extends Observable implements Identifiable, Initializable {
+public class Level extends Observable implements Identifiable {
 
         private Identifier myId;
 	private GameObjectsCollection myDefaultGameObjects;
 	private GameObjectsCollection myWorkingGameObjects;
+	private List<Identifier> myGameObjectIdList;
 	private ConditionIDsCollection myConditionIDs;
 
 	/**
 	 * Constructor
 	 * 
-	 * @param Game
-	 *            Objects Collection
+	 * @param IdList
+	 * list representing game objects that apply to this level
 	 */
-	public Level(GameObjectsCollection gameObjects) {
-		myDefaultGameObjects = gameObjects;
-		myWorkingGameObjects = gameObjects;
+	public Level(List<Identifier> IdList) {
+		myGameObjectIdList = IdList;
+		myDefaultGameObjects = new GameObjectsCollection();
+		myWorkingGameObjects = new GameObjectsCollection();
 	}
 
 	/**
@@ -100,9 +103,14 @@ public class Level extends Observable implements Identifiable, Initializable {
             return myId;
         }
 
-        @Override
-        public void initialize (GameManager manager) {
-            //TODO: enable/disable conditions and render game objects
+        public void initialize (LevelManager manager) {
+            for (Identifier i : myGameObjectIdList){
+                GameObject foundObject = manager.objectForIdentifier(i);
+                if (foundObject != null){
+                    myDefaultGameObjects.add(foundObject);
+                    myWorkingGameObjects.add(foundObject);
+                }
+            }
         }
 
 }
