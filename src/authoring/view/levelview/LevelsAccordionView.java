@@ -9,7 +9,6 @@ import javafx.scene.text.Text;
 import authoring.eventhandlers.GameHandler;
 import authoring.model.collections.LevelsCollection;
 import authoring.view.baseclasses.ScrollView;
-import authoring.view.graphicsview.LevelGraphic;
 import engine.level.Level;
 
 public class LevelsAccordionView extends ScrollView implements Observer{

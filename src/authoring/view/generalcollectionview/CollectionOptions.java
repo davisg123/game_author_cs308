@@ -5,12 +5,12 @@ import java.util.ResourceBundle;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToolBar;
 
-public class CollectionsTool extends ToolBar {
+public class CollectionOptions extends ToolBar {
 	protected ResourceBundle myLanguage;
 	protected double myHeight;
 	protected double myWidth;
 
-	public CollectionsTool(ResourceBundle language, double width, double height) {
+	public CollectionOptions(ResourceBundle language, double width, double height) {
 		myLanguage = language;
 		myHeight = height;
 		myWidth = width;

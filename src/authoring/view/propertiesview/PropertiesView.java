@@ -7,7 +7,7 @@ import javafx.scene.layout.VBox;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.ScrollView;
 import authoring.view.graphicsview.ImageGraphic;
-import authoring.view.graphicsview.LevelGraphic;
+import authoring.view.levelview.LevelGraphic;
 import engine.gameObject.GameObject;
 
 public class PropertiesView extends ScrollView {

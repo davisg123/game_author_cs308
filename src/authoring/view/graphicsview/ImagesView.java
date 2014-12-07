@@ -18,14 +18,14 @@ import authoring.view.baseclasses.ScrollView;
  * @author Chris Bernt
  *
  */
-public class ImageListView extends ScrollView implements Observer {
+public class ImagesView extends ScrollView implements Observer {
 	private static final double VIEW_HEIGHT_RATIO = .65;
 	private static final double VIEW_WIDTH_RATIO = 0.2;
 	private VBox myVbox = new VBox();
 	private GameHandler[] myEvents;
 	private File myGameLocation;
 
-	public ImageListView(ResourceBundle language, double width, double height,
+	public ImagesView(ResourceBundle language, double width, double height,
 			File gameLoc) {
 		super(language, width, height);
 		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
