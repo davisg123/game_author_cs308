@@ -30,4 +30,22 @@ public class Identifier {
         return myType+myUniqueId;
     }
     
+    @Override
+    public boolean equals(Object o) {
+        if(!(o instanceof Identifier)) {
+            return false;
+        }
+        if(this == o) {
+            return true;
+        }
+        Identifier otherID = (Identifier) o;
+        return this.getType().equals(otherID.getType())
+                &&this.getUniqueId().equals(otherID.getUniqueId());
+    }
+
+    @Override
+    public int hashCode () {
+        return myType.hashCode()*myUniqueId.hashCode();
+    }
+    
 }
