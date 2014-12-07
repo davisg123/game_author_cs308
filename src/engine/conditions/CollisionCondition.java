@@ -20,8 +20,8 @@ import engine.gameObject.GameObject;
 
 public class CollisionCondition extends TimeCondition {
     
-    private GameObjectsCollection mySecondCollisionSet;
-    private Map<String,Integer> myCollisionMap;
+//    private GameObjectsCollection mySecondCollisionSet;
+//    private Map<String,Integer> myCollisionMap;
     private String firstCollisionType;
     private String secondCollisionType; 
     
@@ -37,12 +37,12 @@ public class CollisionCondition extends TimeCondition {
     	myTargetFrameCount=1;
     	repeats=true;
     	
-        myCollisionMap = new HashMap<String,Integer>();
+//        myCollisionMap = new HashMap<String,Integer>();
     }
     
     @Override
     public void initialize(GameManager gameManager){
-    	
+    	myGameObjects = gameManager.getLevelManager().getCurrentLevel().getGameObjectsCollection();
     }
     
     @Override
@@ -50,31 +50,49 @@ public class CollisionCondition extends TimeCondition {
         //see what collisions are active
         checkCollisions();
         //we need to highlight some objects in GameManager
-        for (Action a: myActions){
-        	a.execute();
-        }
+
         //need a method to not highlight the stuff now
     }
     
-    private void checkCollisions() {
-        myCollisionMap.clear();
-        for(GameObject innerGameObject : getGameObjects()) {
-            for(GameObject outerGameObject : mySecondCollisionSet) {
-                //Update the equals method, implement comparable
-                if(!outerGameObject.getID().equals(innerGameObject.getID())) {
-                    //Do intersect sequence
-                    //make sure the opposite collision hasn't already happened (a with b == b with a)
-                    String uniqueCollisionIdentifier = innerGameObject.getID()+outerGameObject.getID();
-                    String reverseCollisionIdentifier = outerGameObject.getID()+innerGameObject.getID();
-                    boolean isDuplicate = myCollisionMap.containsKey(uniqueCollisionIdentifier) || myCollisionMap.containsKey(reverseCollisionIdentifier);
-                    if(outerGameObject.getRenderedNode().getBoundsInParent().intersects(innerGameObject.getRenderedNode().getBoundsInParent()) 
-                            && !isDuplicate){
-                        outerGameObject.getPhysicsBody().handleCollision(outerGameObject, innerGameObject);
-                        myCollisionMap.put(uniqueCollisionIdentifier, 1);
-                    }
-                }
-            }
-        }
+//    private void checkCollisions() {
+//        myCollisionMap.clear();
+//        for(GameObject innerGameObject : getGameObjects()) {
+//            for(GameObject outerGameObject : mySecondCollisionSet) {
+//                //Update the equals method, implement comparable
+//                if(!outerGameObject.getID().equals(innerGameObject.getID())) {
+//                    //Do intersect sequence
+//                    //make sure the opposite collision hasn't already happened (a with b == b with a)
+//                    String uniqueCollisionIdentifier = innerGameObject.getID()+outerGameObject.getID();
+//                    String reverseCollisionIdentifier = outerGameObject.getID()+innerGameObject.getID();
+//                    boolean isDuplicate = myCollisionMap.containsKey(uniqueCollisionIdentifier) || myCollisionMap.containsKey(reverseCollisionIdentifier);
+//                    if(outerGameObject.getRenderedNode().getBoundsInParent().intersects(innerGameObject.getRenderedNode().getBoundsInParent()) 
+//                            && !isDuplicate){
+//                        outerGameObject.getPhysicsBody().handleCollision(outerGameObject, innerGameObject);
+//                        myCollisionMap.put(uniqueCollisionIdentifier, 1);
+//                    }
+//                }
+//            }
+//        }
+//    }
+    
+    private void checkCollisions(){
+    	for (GameObject firstObject: myGameObjects){
+    		if (firstObject.getIdentifier().getType().equals(firstCollisionType)){
+    			for (GameObject secondObject: myGameObjects){
+    				if (secondObject.getIdentifier().getType().equals(secondCollisionType)){
+    					//need to highlight the objects involved in the collision
+    					for (Action a: myActions){
+    						a.execute(); 
+    					}
+    					//need to unhighlight the objects in the collision
+    				}
+    				
+    			}
+    			
+    		}
+    		
+    	}
+    	
     }
 
    
