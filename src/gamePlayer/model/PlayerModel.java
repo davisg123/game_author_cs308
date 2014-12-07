@@ -13,6 +13,12 @@ import engine.conditions.Condition;
 import gamePlayer.view.FileSelectionWizard;
 import gamePlayer.view.PlayerView;
 
+/**
+ * 
+ * @author Abhishek B
+ * @author Shreyas B
+ * 
+ */
 public class PlayerModel {
 
 	private GameData myGameData;

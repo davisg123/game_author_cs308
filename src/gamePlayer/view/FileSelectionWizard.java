@@ -3,6 +3,11 @@ package gamePlayer.view;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+/**
+ * 
+ * @author Abhishek B
+ *
+ */
 public class FileSelectionWizard {
 
 	private Stage myFileStage;
