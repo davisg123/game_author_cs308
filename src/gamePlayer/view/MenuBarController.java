@@ -10,6 +10,13 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Menu;
 
+/**
+ * 
+ * @author Shreyas B
+ * @author Abhishek B
+ *
+ */
+
 public class MenuBarController implements Initializable{
 
 	private PlayerModel myPlayerModel;
