@@ -22,7 +22,7 @@ public class ImagesView extends ScrollView implements Observer {
 	private static final double VIEW_HEIGHT_RATIO = .65;
 	private static final double VIEW_WIDTH_RATIO = 0.2;
 	private VBox myVbox = new VBox();
-	private GameHandler[] myEvents;
+	private GameHandler[] myGraphicEvents;
 	private File myGameLocation;
 
 	public ImagesView(ResourceBundle language, double width, double height,
@@ -38,12 +38,20 @@ public class ImagesView extends ScrollView implements Observer {
 		addImage((String) arg);
 	}
 
-	public void setEvents(GameHandler... gameHandlers) {
-		myEvents = gameHandlers;
+	public void setGraphicEvents(GameHandler... gameHandlers) {
+		myGraphicEvents = gameHandlers;
+	}
+
+	public void setDragOver(GameHandler handler) {
+		this.setOnDragOver(handler);
+	}
+
+	public void setDragDrop(GameHandler handler) {
+		this.setOnDragDropped(handler);
 	}
 
 	public void addImage(String s) {
-		Graphic graphic = new ImageGraphic(s, myGameLocation, myEvents);
+		Graphic graphic = new ImageGraphic(s, myGameLocation, myGraphicEvents);
 		myVbox.getChildren().add(graphic);
 	}
 
