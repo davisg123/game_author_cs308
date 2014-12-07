@@ -39,7 +39,7 @@ public class SplashScreen {
 		myStage = new Stage();
 		myPane = new BorderPane();
 		initializeGUIElements();
-		myScene = new Scene(myPane, this.SCREEN_WIDTH, this.SCREEN_HEIGHT);
+		myScene = new Scene(myPane, SCREEN_WIDTH, SCREEN_HEIGHT);
 		myScene.getStylesheets().add(getClass().getResource("layoutstyles.css").toExternalForm());
 		myStage.setScene(myScene);
 	}
@@ -50,15 +50,17 @@ public class SplashScreen {
 	
 	private void initializeGUIElements() {
 		myTitleText = new Text("VOOGA SALAD\n" + "BITS PLEASE\n" + "PLATFORM SCROLLER");
-		myTitleText.setId("text");
+		this.myTitleText.setId("text");
 		
 		myAuthorButton = new Button("Author a Game!");
+		this.myAuthorButton.setId("button");
 		myAuthorButton.setOnAction((event) -> {
 			myStage.close();
 			author();
 		});
 
 		myPlayButton = new Button("Play a Game!");
+		this.myPlayButton.setId("button");
 		myPlayButton.setOnAction((event) -> {
 			try {
 				play();
