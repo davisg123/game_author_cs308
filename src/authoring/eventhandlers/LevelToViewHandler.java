@@ -1,20 +1,20 @@
 package authoring.eventhandlers;
 
-import engine.level.Level;
-import authoring.model.collections.GameObjectsCollection;
-import authoring.view.graphicsview.GameObjectGraphic;
+import javafx.event.EventType;
+import javafx.scene.input.MouseEvent;
 import authoring.view.graphicsview.LevelGraphic;
 import authoring.view.levelview.LevelsView;
 import authoring.view.levelview.SingleLevelView;
-import javafx.event.EventType;
-import javafx.scene.input.MouseEvent;
+import authoring.view.propertiesview.PropertiesView;
 
 public class LevelToViewHandler implements GameHandler<MouseEvent>{
 
 	private LevelsView myLevels;
+	private PropertiesView myProperties;
 	
-	public LevelToViewHandler(LevelsView levels){
+	public LevelToViewHandler(LevelsView levels, PropertiesView props){
 		myLevels = levels;
+		myProperties = props;
 	}
 	
 	@Override
@@ -23,6 +23,8 @@ public class LevelToViewHandler implements GameHandler<MouseEvent>{
 		SingleLevelView newLevelView = myLevels.addExistingLevel(l.getLevel(), l.getLevelEvents());
 		newLevelView.setID(l.getLevel().getLevelID());
 		l.getLevel().addObserver(newLevelView);
+		
+		myProperties.makeProperties(l);
 	}
 
 	@Override

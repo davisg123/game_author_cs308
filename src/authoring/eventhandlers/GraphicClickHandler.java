@@ -2,27 +2,25 @@ package authoring.eventhandlers;
 
 import javafx.event.EventType;
 import javafx.scene.input.MouseEvent;
-import authoring.view.graphicsview.GameObjectGraphic;
+import authoring.view.graphicsview.Graphic;
+import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
 
-public class GameObjectClickHandler implements GameHandler<MouseEvent>{
-
+public class GraphicClickHandler implements GameHandler<MouseEvent>{
 	private PropertiesView myProperties;
-	
-	public GameObjectClickHandler(PropertiesView props){
-		myProperties = props;
+
+	public GraphicClickHandler(PropertiesView properties) {
+		myProperties = properties;
 	}
-	
+
 	@Override
 	public void handle(MouseEvent event) {
-		GameObjectGraphic g = (GameObjectGraphic) event.getSource();
-		myProperties.makeProperties(g.getGameObject());
-		
+		Graphic g = (Graphic) event.getSource();
+		myProperties.makeProperties(g);
 	}
 
 	@Override
 	public EventType<MouseEvent> getEventType() {
 		return MouseEvent.MOUSE_PRESSED;
 	}
-
 }

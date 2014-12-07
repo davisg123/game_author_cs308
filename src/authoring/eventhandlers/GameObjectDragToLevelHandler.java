@@ -47,7 +47,7 @@ public class GameObjectDragToLevelHandler implements GameHandler<MouseEvent> {
 			if (level.getLevelID().equals(id) && myLevelView.contains(x + OBJECT_X_OFFSET, y + OBJECT_Y_OFFSET)) {
 				level.addGameObject(newGameObject);
 				
-				myProps.makeProperties(newGameObject);
+				myProps.makeProperties(g);
 			}
 		}
 

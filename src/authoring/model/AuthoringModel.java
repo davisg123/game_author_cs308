@@ -40,6 +40,14 @@ public class AuthoringModel {
 		}
 	}
 	
+	public GameData convertToSerialize(){
+		GameData serializableGameData = new GameData();
+		/**
+		 * PUT THIS METHOD HERE
+		 */
+		return null;
+	}
+	
 	/**
 	 * Replaces the current GameData file with a new file that is loaded in
 	 */

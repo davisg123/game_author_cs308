@@ -4,16 +4,17 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import authoring.view.graphicsview.Graphic;
+import authoring.view.graphicsview.ImageGraphic;
 
-public class GraphicsProperties extends Properties{
+public class ImageProperties extends Properties{
 
-	public GraphicsProperties(Object o) {
-		initializeProperties(o);
+	public ImageProperties(Graphic g) {
+		initializeProperties(g);
 	}
 
 	@Override
-	public void initializeProperties(Object o) {
-		Graphic graphic = (Graphic) o;
+	public void initializeProperties(Graphic g) {
+		Graphic graphic = (ImageGraphic) g;
 		
 		this.getChildren().clear();
 		

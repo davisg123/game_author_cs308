@@ -1,9 +1,11 @@
 package authoring.view.graphicsview;
 
-import engine.level.Level;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import authoring.eventhandlers.GameHandler;
+import authoring.view.propertiesview.LevelProperties;
+import authoring.view.propertiesview.Properties;
+import engine.level.Level;
 
 public class LevelGraphic extends Graphic {
 
@@ -40,7 +42,8 @@ public class LevelGraphic extends Graphic {
 
 
 	@Override
-	public void makeProperties() {
+	public Properties makeProperties() {
+		return new LevelProperties(this);
 		// TODO Auto-generated method stub
 		
 	}

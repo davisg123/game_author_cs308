@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import authoring.eventhandlers.GameHandler;
+import authoring.view.propertiesview.Properties;
 
 /**
  * Represents an image, but does not instantiate JavaFX object so that the
@@ -102,7 +103,7 @@ public abstract class Graphic extends VBox {
 		this.getChildren().add(new Text(myImagePath));
 	}
 	
-	public abstract void makeProperties();
+	public abstract Properties makeProperties();
 	
 	
 	public String getName() {

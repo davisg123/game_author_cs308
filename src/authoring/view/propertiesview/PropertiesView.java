@@ -18,7 +18,7 @@ public class PropertiesView extends ScrollView {
 	private GameHandler myEditBehavior;
 	private GameHandler mySaveAsNewBehavior;
 
-	private GameObjectsProperties myGameObjectsProperties;
+	private GameObjectProperties myGameObjectsProperties;
 	private GameObject myCurrentGameObject;
 
 	public PropertiesView(ResourceBundle language, double width, double height) {
@@ -30,16 +30,16 @@ public class PropertiesView extends ScrollView {
 
 	public void makeProperties(Graphic g) {
 		myContents.getChildren().clear();
-		this.setContent(new GraphicsProperties(g));
+		this.setContent(g.makeProperties());
 	}
 
-	public void makeProperties(GameObject gameObj) {
-		myContents.getChildren().clear();
-		myCurrentGameObject = gameObj;
-		myGameObjectsProperties = new GameObjectsProperties(gameObj,
-				this.myEditBehavior);
-		this.setContent(myGameObjectsProperties);
-	}
+//	public void makeProperties(GameObject gameObj) {
+//		myContents.getChildren().clear();
+//		myCurrentGameObject = gameObj;
+//		myGameObjectsProperties = new GameObjectsProperties(gameObj,
+//				this.myEditBehavior);
+//		this.setContent(myGameObjectsProperties);
+//	}
 
 	public void displayProperties(Properties props){
 		this.setContent(props);
