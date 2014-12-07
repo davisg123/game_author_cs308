@@ -9,10 +9,10 @@ import engine.gameObject.GameObject;
 public abstract class PhysicsAction implements Action, Initializable {
 
 	protected GameObject mySprite;
-	protected double myValue;
+	protected Object myValue;
 	protected CollisionComposition myCollision;
 
-	public PhysicsAction(GameObject sprite, double value) {
+	public PhysicsAction(GameObject sprite, Object value) {
 		mySprite = sprite;
 		myValue = value;
 		myCollision = new CollisionComposition();
@@ -23,7 +23,7 @@ public abstract class PhysicsAction implements Action, Initializable {
 		// applyPhysics();
 	}
 
-	public abstract void applyPhysics(GameObject[] myObjects);
+	public abstract void applyPhysics(GameObject... myObjects);
 
 	protected void forHelper(GameObject[] myObjects,
 			TwoArgInterface myOperation, Object value) {

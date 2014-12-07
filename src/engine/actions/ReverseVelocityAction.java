@@ -17,7 +17,7 @@ public class ReverseVelocityAction extends PhysicsAction {
 	}
 
 	@Override
-	public void applyPhysics(GameObject[] myObjects) {
+	public void applyPhysics(GameObject... myObjects) {
 		TwoArgInterface operation = (x, y) -> x.getPhysicsBody()
 				.reverseVelocity((Boolean) y);
 		forHelper(myObjects, operation,

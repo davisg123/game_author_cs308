@@ -18,7 +18,7 @@ public class XImpulseAction extends PhysicsAction {
 	}
 
 	@Override
-	public void applyPhysics(GameObject[] myObjects) {
+	public void applyPhysics(GameObject... myObjects) {
 		TwoArgInterface operation = (x, y) -> x.getPhysicsBody().addImpulse(
 				new Impulse((Double) y, 0));
 		forHelper(myObjects, operation, myValue);

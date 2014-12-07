@@ -18,7 +18,7 @@ public class FixedCollisionAction extends PhysicsAction{
 
 	//important that the fixed one goes in first
 	@Override
-	public void applyPhysics(GameObject[] myObjects) {
+	public void applyPhysics(GameObject... myObjects) {
 		myCollision.fixedCollision(myObjects[0], myObjects[1]);
 	}
 
