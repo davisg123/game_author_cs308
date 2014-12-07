@@ -10,6 +10,7 @@ import authoring.view.wizards.GameObjectWizard;
 import authoring.view.wizards.Wizard;
 import engine.gameObject.GameObject;
 import engine.gameObject.components.PhysicsBody;
+import engine.physics.Velocity;
 
 public class AddObjectHandler implements GameHandler<Event> {
 
