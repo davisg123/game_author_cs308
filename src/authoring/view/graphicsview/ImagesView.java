@@ -8,6 +8,8 @@ import data.Observer;
 import javafx.scene.layout.VBox;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.ScrollView;
+import authoring.view.icons.ImageBasedIcon;
+import authoring.view.icons.ImageIcon;
 
 /**
  * View component that corresponds with the backend model component -
@@ -51,7 +53,7 @@ public class ImagesView extends ScrollView implements Observer {
 	}
 
 	public void addImage(String s) {
-		Graphic graphic = new ImageGraphic(s, myGameLocation, myGraphicEvents);
+		ImageBasedIcon graphic = new ImageIcon(s, myGameLocation, myGraphicEvents);
 		myVbox.getChildren().add(graphic);
 	}
 

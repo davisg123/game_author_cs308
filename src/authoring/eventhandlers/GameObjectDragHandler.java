@@ -5,7 +5,7 @@ import static authoring.view.levelview.SingleLevelView.OBJECT_Y_OFFSET;
 import javafx.event.EventType;
 import javafx.scene.input.MouseEvent;
 import authoring.model.collections.LevelsCollection;
-import authoring.view.gameobjectsview.GameObjectGraphic;
+import authoring.view.icons.GameObjectIcon;
 import authoring.view.levelview.LevelsView;
 import authoring.view.levelview.SingleLevelView;
 import authoring.view.propertiesview.PropertiesView;
@@ -36,7 +36,7 @@ public class GameObjectDragHandler implements GameHandler<MouseEvent> {
 	@Override
 	public void handle(MouseEvent event) {
 		// System.out.println("reached");
-		GameObjectGraphic g = (GameObjectGraphic) event.getSource();
+		GameObjectIcon g = (GameObjectIcon) event.getSource();
 		double mouseX = event.getSceneX();
 		double mouseY = event.getSceneY();
 		SingleLevelView slv = myLevelView.getCurrentLevel();

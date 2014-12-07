@@ -12,8 +12,8 @@ import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.BPContainer;
 import authoring.view.baseclasses.TabView;
-import authoring.view.gameobjectsview.GameObjectGraphic;
-import authoring.view.graphicsview.Graphic;
+import authoring.view.icons.GameObjectIcon;
+import authoring.view.icons.ImageBasedIcon;
 
 /**
  * View class that contains all the levels in the program. Corresponds with
@@ -80,7 +80,7 @@ public class LevelsView extends TabView implements Observer {
 	 * @param x
 	 * @param y
 	 */
-	public void moveSpriteOnLevel(Graphic g, double x, double y) {
+	public void moveSpriteOnLevel(ImageBasedIcon g, double x, double y) {
 		g.setLayoutX(x - 230);
 		g.setLayoutY(y - 100);
 	}
