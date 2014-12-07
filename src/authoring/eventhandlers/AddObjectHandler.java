@@ -9,6 +9,7 @@ import authoring.view.propertiesview.PropertyTextField;
 import authoring.view.wizards.GameObjectWizard;
 import authoring.view.wizards.Wizard;
 import engine.gameObject.GameObject;
+import engine.gameObject.components.PhysicsBody;
 
 public class AddObjectHandler implements GameHandler<Event> {
 
@@ -57,7 +58,10 @@ public class AddObjectHandler implements GameHandler<Event> {
 				.getInformation(), 0, 0, Double.parseDouble(map.get("height")
 				.getInformation()), Double.parseDouble(map.get("width")
 				.getInformation()), 0, map.get("name").getInformation());
-		
+		PhysicsBody p = new PhysicsBody(Double.parseDouble(map.get("width")
+				.getInformation()),Double.parseDouble(map.get("height")
+				.getInformation()));
+		newGameObject.setPhysicsBody(p);
 		myGameObjectCollection.add(newGameObject);
 		myWizard.close();
 	}
