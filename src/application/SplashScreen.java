@@ -1,17 +1,19 @@
 package application;
 
+import gamePlayer.model.PlayerModel;
+
 import java.io.IOException;
 import java.util.Locale;
 
-import authoring.view.AuthoringScene;
-import gamePlayer.model.PlayerModel;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import authoring.view.AuthoringScene;
 
 public class SplashScreen {
 
@@ -32,7 +34,7 @@ public class SplashScreen {
 		myStage = new Stage();
 		myPane = new BorderPane();
 		initializeGUIElements();
-		myScene = new Scene(myPane);
+		myScene = new Scene(myPane, this.SCREEN_WIDTH, this.SCREEN_HEIGHT);
 		myScene.getStylesheets().add(getClass().getResource("layoutstyles.css").toExternalForm());
 		myStage.setScene(myScene);
 	}
@@ -40,7 +42,7 @@ public class SplashScreen {
 	public void show() {
 		myStage.show();
 	}
-
+	
 	private void initializeGUIElements() {
 		myTitleText = new Text("VOOGA SALAD\n" + "BITS PLEASE\n" + "PLATFORM SCROLLER");
 		myTitleText.setId("text");
