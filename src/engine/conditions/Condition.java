@@ -19,7 +19,7 @@ public abstract class Condition implements Identifiable, Initializable{
 
     private List<Action> myActions = new ArrayList<Action>();
     private boolean myEnabled;
-    private Identifier myId;
+    protected Identifier myId;
     private GameManager myGameManager;
     
     public Condition(List<Action> actions){

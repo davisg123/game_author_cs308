@@ -1,18 +1,21 @@
 package gamePlayer.view;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Map;
 
-import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import authoring.model.collections.ConditionsCollection;
+import engine.conditions.ButtonCondition;
 import engine.conditions.Condition;
 
-public class KeyboardView extends Application{
+public class KeyboardView {
 
 	private static final String[] KEYS = {"`", "1", "2", "3", "4", "5",
 		"6", "7", "8", "9", "0", "-", "=", "<----", "tab", "Q", "W",
@@ -26,18 +29,23 @@ public class KeyboardView extends Application{
 	private GridPane myGrid;
 	private Stage myStage;
 	private ConditionsCollection myButtonConditions;
-	private Map<Condition, String> myButtonConditionsMap;
-	private ComboBox<String> myFunctionComboBox;
+	private Map<KeyCode, String> myButtonConditionsMap;
+	private KeyMapForm myKeyMapForm;
 	
 	public KeyboardView(ConditionsCollection buttonConditions) {
+		myButtonConditions = buttonConditions;
+	}
+	
+	public void createKeyboardView() {
 		myStage = new Stage();
 		myStage.setTitle("Vooga Salad Bits Please Keyboard Mapping Utility");
 		myGrid = new GridPane();
 		Scene myScene = new Scene(myGrid, WIDTH, HEIGHT);
 //		myScene.getStylesheets().add(getClass().getResource("layoutstyles.css").toExternalForm());
 		myStage.setScene(myScene);
-		myButtonConditions = buttonConditions;
-		myFunctionComboBox = comboBoxForButton();
+		myKeyMapForm = new KeyMapForm(comboBoxForButton(), this);
+		
+		buildKeyboard();
 	}
 	
 	public void buildKeyboard() {
@@ -58,7 +66,7 @@ public class KeyboardView extends Application{
 		button.setPrefSize(70, 70);
 		button.setDisable(KEYS[num] == "");
 		button.setOnAction((event) -> {
-			KeyMapForm keyMapForm = new KeyMapForm(button.getText(), myFunctionComboBox);
+			myKeyMapForm.createKeyMapForm(button.getText());
 		});
 		sp.getChildren().add(button);
 		myGrid.add(sp, j, i);
@@ -66,17 +74,37 @@ public class KeyboardView extends Application{
 		return num;
 	}
 	
-	private ComboBox comboBoxForButton() {
+	private ComboBox<String> comboBoxForButton() {
 		ComboBox<String> functionCombos = new ComboBox<String>();
-//		for (Iterator<Condition> conditionIterator = myButtonConditions.iterator(); conditionIterator.hasNext();) {
-//			ButtonCondition condition = (ButtonCondition) conditionIterator.next();
-//			functionCombos.getItems().add(condition.getKeyIdentifier());
-//		}
-		functionCombos.getItems().addAll("hi", "bye", "fuck everyone");
+		for (Iterator<Condition> conditionIterator = myButtonConditions.iterator(); conditionIterator.hasNext();) {
+			ButtonCondition condition = (ButtonCondition) conditionIterator.next();
+			functionCombos.getItems().add(condition.getKeyIdentifier());
+		}
 		return functionCombos;
 	}
 
-	@Override
+	public void setNewKey(String button, String newKeyFunction)
+	{
+		KeyCode kc = KeyCode.valueOf(button);
+		myButtonConditionsMap.put(kc, newKeyFunction);
+		for(Condition c : myButtonConditions) {
+			ButtonCondition bc = (ButtonCondition) c;
+			ArrayList<KeyCode> kcl = bc.getKeyList();
+			for(KeyCode k : kcl)
+			{
+				if(k.equals(kc))
+				{
+					bc.removeKey(kc);
+				}
+			}
+			if(bc.getKeyIdentifier().equals(newKeyFunction))
+			{
+				bc.addKey(kc);
+			}
+		}
+	}
+	
+/*	@Override
 	public void start(Stage arg0) throws Exception {
 		myStage = new Stage();
 		myStage.setTitle("Vooga Salad Bits Please Keyboard Mapping Utility");
@@ -88,5 +116,5 @@ public class KeyboardView extends Application{
 		this.buildKeyboard();
 		myFunctionComboBox = comboBoxForButton();
 		myStage.show();
-	}
+	}*/
 }

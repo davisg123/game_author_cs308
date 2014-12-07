@@ -20,8 +20,17 @@ public class KeyMapForm {
 	private static final String BUTTON_TEXT = "Map Key!";
 	private Group root;
 	private Stage form;
+	private ComboBox<String> myComboBox;
+	private KeyboardView myKeyboardView;
+	private String myKey;
 	
-	public KeyMapForm(String key, ComboBox<String> cb) {
+	public KeyMapForm(ComboBox<String> comboBox, KeyboardView kv) {
+		myComboBox = comboBox;
+		myKeyboardView = kv;
+	}
+	
+	public void createKeyMapForm(String key) {
+		myKey = key;
 		form = new Stage();
 		root = new Group();
 		Scene scene = new Scene(root, POP_UP_WIDTH, POP_UP_HEIGHT, Color.LIGHTGRAY);
@@ -32,16 +41,21 @@ public class KeyMapForm {
 		b.setText(BUTTON_TEXT);
 		b.setLayoutX(BUTTON_X_COORD);
 		b.setLayoutY(BUTTON_Y_COORD);
-		formVBox.getChildren().addAll(t, cb, b);
+		formVBox.getChildren().addAll(t, myComboBox, b);
 		root.getChildren().add(formVBox);
 		b.setOnAction(mapKey);
 		form.show();
+		
+//		return myComboBox.getValue();
 	}
 	
 	private EventHandler<ActionEvent> mapKey = new EventHandler<ActionEvent>() {
 		@Override
 		public void handle(ActionEvent evt){
+			myKeyboardView.setNewKey(myKey, myComboBox.getValue());
 			form.close();
 		}
 	};
+	
+	
 }

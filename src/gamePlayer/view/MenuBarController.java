@@ -26,7 +26,10 @@ public class MenuBarController implements Initializable{
 
 	public void setModel(PlayerModel model){
 		myPlayerModel=model;
-		myKeyboard = new KeyboardView(null);
+	}
+	
+	public void setKeyboard() {
+		myKeyboard = new KeyboardView(myPlayerModel.getButtonConditions());
 	}
 	
 	@FXML
@@ -92,7 +95,7 @@ public class MenuBarController implements Initializable{
 	@FXML
 	private void keyCombos(final ActionEvent event) {
 		myPlayerModel.pauseGame();
-		myKeyboard.buildKeyboard();
+		myKeyboard.createKeyboardView();
 	}
 	
 }
