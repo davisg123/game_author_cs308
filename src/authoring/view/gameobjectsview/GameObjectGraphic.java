@@ -1,8 +1,9 @@
-package authoring.view.graphicsview;
+package authoring.view.gameobjectsview;
 
 import java.io.File;
 
 import authoring.eventhandlers.GameHandler;
+import authoring.view.graphicsview.Graphic;
 import engine.gameObject.GameObject;
 
 public class GameObjectGraphic extends Graphic{

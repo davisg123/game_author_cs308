@@ -1,9 +1,10 @@
-package authoring.view.graphicsview;
+package authoring.view.levelview;
 
 import engine.level.Level;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import authoring.eventhandlers.GameHandler;
+import authoring.view.graphicsview.Graphic;
 
 public class LevelGraphic extends Graphic {
 

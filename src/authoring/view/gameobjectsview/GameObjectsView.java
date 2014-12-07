@@ -8,7 +8,6 @@ import data.Observer;
 import javafx.scene.layout.VBox;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.ScrollView;
-import authoring.view.graphicsview.GameObjectGraphic;
 import authoring.view.graphicsview.Graphic;
 import engine.gameObject.GameObject;
 
