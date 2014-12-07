@@ -10,6 +10,7 @@ import authoring.view.wizards.GameObjectWizard;
 import authoring.view.wizards.Wizard;
 import engine.gameObject.GameObject;
 import engine.gameObject.components.PhysicsBody;
+import engine.physics.Velocity;
 
 public class AddObjectHandler implements GameHandler<Event> {
 
@@ -58,9 +59,12 @@ public class AddObjectHandler implements GameHandler<Event> {
 				.getInformation(), 0, 0, Double.parseDouble(map.get("height")
 				.getInformation()), Double.parseDouble(map.get("width")
 				.getInformation()), 0, map.get("name").getInformation());
+		
 		PhysicsBody p = new PhysicsBody(Double.parseDouble(map.get("width")
 				.getInformation()),Double.parseDouble(map.get("height")
 				.getInformation()));
+		p.setVelocity(new Velocity(Double.parseDouble(map.get("initXV").getInformation()), Double.parseDouble(map.get("initYV").getInformation())));
+		
 		newGameObject.setPhysicsBody(p);
 		myGameObjectCollection.add(newGameObject);
 		myWizard.close();

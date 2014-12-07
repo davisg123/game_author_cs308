@@ -15,7 +15,7 @@ public class GameObjectWizard extends Wizard{
 
 	@Override
 	public VBox initializeWizard(EventHandler<ActionEvent> event) {
-		myMap = (new GameObjectProperties()).getMap(); //gets empty map
+		myMap = (new GameObjectProperties()).getWizardMap(); //gets empty map
 		
 		super.addMapToWindow();
 		

@@ -28,6 +28,9 @@ public class GameObjectProperties extends Properties {
 	private Map<String, PropertyTextField> concreteTextProperties;
 	private Map<String, CheckBox> booleanProperties;
 	private Map<String, PropertyTextField> physicsProperties;
+	
+	private Map<String, PropertyTextField> wizardProperties;
+	
 	private GameHandler myEditHandler;
 	private GameHandler myDeleteHandler;
 	private GameHandler mySaveAsNewHandler;
@@ -47,15 +50,14 @@ public class GameObjectProperties extends Properties {
 	public GameObjectProperties(){
 		//nullary constructor that creates empty map to generate new game objects
 		//consider refactoring this
-		inherentTextProperties = new HashMap<String, PropertyTextField>();
+		wizardProperties = new HashMap<String, PropertyTextField>();
 		
-		inherentTextProperties.put("name", new PropertyTextField("Name: ", ""));
-		inherentTextProperties.put("image", new PropertyTextField("Image: ", ""));		
-		inherentTextProperties.put("collision", new PropertyTextField("Collision Constant", ""));
-		inherentTextProperties.put("initXV", new PropertyTextField("Initial X Velocity", ""));
-		inherentTextProperties.put("initYV", new PropertyTextField("Initial Y Velocity", ""));
-		inherentTextProperties.put("width", new PropertyTextField("Width: ", ""));
-		inherentTextProperties.put("height",new PropertyTextField("Height: ", ""));
+		wizardProperties.put("name", new PropertyTextField("Name: ", ""));
+		wizardProperties.put("image", new PropertyTextField("Image: ", ""));	
+		wizardProperties.put("initXV", new PropertyTextField("Initial X Velocity", "0"));
+		wizardProperties.put("initYV", new PropertyTextField("Initial Y Velocity", "0"));
+		wizardProperties.put("width", new PropertyTextField("Width: ", ""));
+		wizardProperties.put("height",new PropertyTextField("Height: ", ""));
 	}
 	
 	@Override
@@ -80,7 +82,6 @@ public class GameObjectProperties extends Properties {
 
 		inherentTextProperties.put("name",new PropertyTextField("Name: ", gameObject.getID()));
 		inherentTextProperties.put("image",new PropertyTextField("Image: ", gameObject.getCurrentImageName()));
-//		inherentTextProperties.put("collision", new PropertyTextField("Collision Constant", "0"));
 //		inherentTextProperties.put("initXV", new PropertyTextField("Initial X Velocity", "0"));
 //		inherentTextProperties.put("initYV", new PropertyTextField("Initial Y Velocity", "0"));
 		inherentTextProperties.put("width", new PropertyTextField("Width: ", Double.toString(gameObject.getWidth())));
@@ -192,7 +193,7 @@ public class GameObjectProperties extends Properties {
 
 	}
 	
-	public Map<String, PropertyTextField> getMap(){
-		return inherentTextProperties;
+	public Map<String, PropertyTextField> getWizardMap(){
+		return wizardProperties;
 	}
 }
