@@ -1,5 +1,7 @@
 package engine.actions;
 
+import engine.GameManager;
+
 /**
  * This interface will define the handlers for the action classes and 
  * execute the corresponding sequence of updates based on actions.

@@ -160,4 +160,8 @@ public class LevelManager implements Iterable<Level> {
 		}
 	}
 
+	public Level getCurrentLevel(){
+		return myCurrentLevel; 
+	}
+	
 }

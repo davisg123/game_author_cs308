@@ -2,18 +2,13 @@ package engine.actions;
 
 import engine.GameManager;
 import engine.gameObject.GameObject;
+import engine.gameObject.Identifier;
 
 public class ReverseVelocityAction extends PhysicsAction {
 
-	public ReverseVelocityAction(GameObject sprite, double value) {
-		super(sprite, value);
+	public ReverseVelocityAction(Identifier id, double value) {
+		super(id, value);
 		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public void initialize(GameManager manager) {
-		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -22,6 +17,12 @@ public class ReverseVelocityAction extends PhysicsAction {
 				.reverseVelocity((Boolean) y);
 		forHelper(myObjects, operation,
 				myCollision.isOnXAxis(myObjects[1], myObjects[2]));
+	}
+
+	@Override
+	public void execute() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

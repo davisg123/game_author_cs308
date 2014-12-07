@@ -3,21 +3,29 @@ package engine.actions;
 import java.util.Arrays;
 import java.util.List;
 
+import engine.GameManager;
 import engine.collision.objects.CollisionComposition;
 import engine.gameObject.GameObject;
+import engine.gameObject.Identifier;
 
 public abstract class PhysicsAction implements Action, Initializable {
 
-	protected GameObject mySprite;
+	protected Identifier mySpriteID;
 	protected Object myValue;
 	protected CollisionComposition myCollision;
+	protected GameObject myGameObject; 
 
-	public PhysicsAction(GameObject sprite, Object value) {
-		mySprite = sprite;
+	public PhysicsAction(Identifier id, Object value) {
+		mySpriteID = id;
 		myValue = value;
 		myCollision = new CollisionComposition();
 	}
 
+	@Override
+	public void initialize(GameManager myGameManager){
+        myGameObject = myGameManager.objectForIdentifier(mySpriteID);
+	}
+	
 	@Override
 	public void execute() {
 		// applyPhysics();
