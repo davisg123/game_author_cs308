@@ -13,6 +13,7 @@ import javafx.scene.control.Menu;
 public class MenuBarController implements Initializable{
 
 	private PlayerModel myPlayerModel;
+	private KeyboardView myKeyboard;
 
 	@FXML
 	private Menu gameSelector;
@@ -27,6 +28,10 @@ public class MenuBarController implements Initializable{
 		myPlayerModel=model;
 	}
 	
+	public void setKeyboard() {
+		myKeyboard = new KeyboardView(myPlayerModel.getButtonConditions());
+	}
+	
 	@FXML
 	private void goHome(final ActionEvent event){
 		myPlayerModel.goHome();
@@ -37,6 +42,7 @@ public class MenuBarController implements Initializable{
 		myPlayerModel.loadGameFile();
 		gameSelector.setDisable(true);
 		gameOptions.setDisable(false);
+		gamePreferences.setDisable(false);
 	}
 	
 	@FXML 
@@ -83,11 +89,13 @@ public class MenuBarController implements Initializable{
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 //		menuBar.setFocusTraversable(true);	
 	}
 	
-	
-	
+	@FXML
+	private void keyCombos(final ActionEvent event) {
+		myPlayerModel.pauseGame();
+		myKeyboard.createKeyboardView();
+	}
 	
 }
