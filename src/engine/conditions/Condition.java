@@ -5,7 +5,7 @@ import java.util.List;
 import engine.GameManager;
 import engine.actions.Action;
 import engine.actions.Initializable;
-import engine.actions.TranslateAction;
+import engine.actions.TranslateTypeAction;
 import engine.gameObject.Identifiable;
 import engine.gameObject.Identifier;
 
@@ -72,8 +72,8 @@ public abstract class Condition implements Identifiable, Initializable{
             for (Action a : myActions){
                 //TODO: expand to whatever action class needs initializing
                 //TODO: make this code look less like vomit
-                if (a instanceof TranslateAction){
-                    ((TranslateAction) a).initialize(manager);
+                if (a instanceof TranslateTypeAction){
+                    ((TranslateTypeAction) a).initialize(manager);
                 }
             }
         }
