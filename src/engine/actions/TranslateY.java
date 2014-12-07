@@ -2,6 +2,7 @@ package engine.actions;
 
 import engine.GameManager;
 import engine.gameObject.GameObject;
+import engine.gameObject.Identifier;
 
 /**
  * 
@@ -11,8 +12,8 @@ import engine.gameObject.GameObject;
 
 public class TranslateY extends TranslateAction {
 
-    public TranslateY (GameObject sprite, double value) {
-        super(sprite, value);
+    public TranslateY (Identifier iD, double value) {
+        super(iD, value);
     }
 
     @Override

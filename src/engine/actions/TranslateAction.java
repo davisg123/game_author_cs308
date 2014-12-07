@@ -1,6 +1,7 @@
 package engine.actions;
 
 import engine.gameObject.GameObject;
+import engine.gameObject.Identifier;
 
 /**
  * Action that performs GameObject Transforms/Movements
@@ -10,12 +11,14 @@ import engine.gameObject.GameObject;
 
 public abstract class TranslateAction implements Action, Initializable {
     protected GameObject mySprite;
+    protected Identifier myGameObjectID;
     protected double myValue;
     
-    public TranslateAction (GameObject sprite, double value) {
-        mySprite = sprite;
+    public TranslateAction (Identifier iD, double value) {
+        myGameObjectID = iD;
         myValue = value;
     }
+    
     @Override
     public void execute () {
         applyTransform();
