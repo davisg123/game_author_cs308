@@ -6,7 +6,7 @@ import javafx.event.EventType;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import authoring.model.collections.LevelsCollection;
-import authoring.view.gameobjectsview.GameObjectGraphic;
+import authoring.view.icons.GameObjectIcon;
 import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
 import engine.gameObject.GameObject;
@@ -35,7 +35,7 @@ public class GameObjectDragToLevelHandler implements GameHandler<MouseEvent> {
 
 	@Override
 	public void handle(MouseEvent event) {
-		GameObjectGraphic g = (GameObjectGraphic) event.getSource();
+		GameObjectIcon g = (GameObjectIcon) event.getSource();
 		double x = event.getSceneX();
 		double y = event.getSceneY();
 		GameObject gameObject = g.getGameObject();

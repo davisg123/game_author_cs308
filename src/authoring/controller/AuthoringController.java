@@ -16,8 +16,11 @@ import authoring.eventhandlers.GameObjectClickHandler;
 import authoring.eventhandlers.GameObjectDragHandler;
 import authoring.eventhandlers.GameObjectDragToLevelHandler;
 import authoring.eventhandlers.ImagesClickHandler;
+import authoring.eventhandlers.LevelClickHandler;
 import authoring.eventhandlers.LevelToViewHandler;
 import authoring.eventhandlers.SaveAsNewHandler;
+import authoring.eventhandlers.UploadDragDropHandler;
+import authoring.eventhandlers.UploadDragOverHandler;
 import authoring.model.AuthoringModel;
 import authoring.view.AuthoringView;
 import authoring.view.baseclasses.AccordionContainer;
@@ -137,8 +140,10 @@ public class AuthoringController {
 
 	private void initializeGameHandlers() {
 
-		myGraphics.setEvents(new ImagesClickHandler(myProperties));
-		myGameObjects.setEvents(new GameObjectClickHandler(myProperties),
+		myGraphics.setGraphicEvents(new ImagesClickHandler(myProperties));
+		myGraphics.setDragOver(new UploadDragOverHandler());
+		myGraphics.setDragDrop(new UploadDragDropHandler(myModel.getImages(), myGameLocation));
+		myGameObjects.setGraphicEvents(new GameObjectClickHandler(myProperties),
 				new GameObjectDragToLevelHandler(myLevels, myModel.getLevels(),
 						myProperties));
 		myLevelOptions.setButtonBehavior(new AddLevelHandler(myModel
@@ -152,7 +157,7 @@ public class AuthoringController {
 		myLevels.setEventHandlers(new GameObjectClickHandler(myProperties),
 				new GameObjectDragHandler(myLevels, myModel.getLevels(),
 						myProperties), new GameObjGraphicDragHandler(myLevels));
-		myLevelsAccordionView.setEvents(new LevelToViewHandler(myLevels));
+		myLevelsAccordionView.setGraphicEvents(new LevelToViewHandler(myLevels), new LevelClickHandler(myProperties));
 		myLevelsAccordionView.setLevelEvents(new GameObjectClickHandler(
 				myProperties),
 				new GameObjectDragHandler(myLevels, myModel.getLevels(),

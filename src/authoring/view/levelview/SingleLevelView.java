@@ -11,8 +11,8 @@ import authoring.eventhandlers.GameHandler;
 import authoring.eventhandlers.GameObjectClickHandler;
 import authoring.eventhandlers.GameObjectDragHandler;
 import authoring.main.Main;
-import authoring.view.gameobjectsview.GameObjectGraphic;
-import authoring.view.graphicsview.Graphic;
+import authoring.view.icons.GameObjectIcon;
+import authoring.view.icons.ImageBasedIcon;
 import javafx.geometry.Insets;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -88,7 +88,7 @@ public class SingleLevelView extends Pane implements Observer {
 
 	private void addGameObjectToView(GameObject gameObject, double x, double y,
 			GameHandler... handler) {
-		GameObjectGraphic g = new GameObjectGraphic(gameObject, myGameLocation, handler);
+		GameObjectIcon g = new GameObjectIcon(gameObject, myGameLocation, handler);
 		System.out.println(gameObject.getWidth() + " " + gameObject.getHeight() + " " + gameObject.getRotation());
 		g.setDimensions(gameObject.getWidth(), gameObject.getHeight(), gameObject.getRotation());
 		
@@ -112,7 +112,7 @@ public class SingleLevelView extends Pane implements Observer {
 		return myID;
 	}
 
-	public void moveGameObjectToLevel(Graphic g, double x, double y) {
+	public void moveGameObjectToLevel(ImageBasedIcon g, double x, double y) {
 		g.setLayoutX(x + OBJECT_X_OFFSET);
 		g.setLayoutY(y + OBJECT_Y_OFFSET);
 	}

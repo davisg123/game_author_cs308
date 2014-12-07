@@ -29,7 +29,7 @@ public class ScrollView extends ScrollPane {
 		setMaxSize(width, height);
 	}
 	
-	public void setEvents(GameHandler ... gameHandlers){
+	public void setGraphicEvents(GameHandler ... gameHandlers){
 		myEvents = gameHandlers;
 	}
 }

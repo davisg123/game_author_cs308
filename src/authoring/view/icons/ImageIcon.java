@@ -1,4 +1,4 @@
-package authoring.view.graphicsview;
+package authoring.view.icons;
 
 import java.io.File;
 
@@ -12,9 +12,9 @@ import authoring.eventhandlers.GameHandler;
  *
  */
 
-public class ImageGraphic extends Graphic {
+public class ImageIcon extends ImageBasedIcon {
 
-	public ImageGraphic(String name, File location, GameHandler[] event) {
+	public ImageIcon(String name, File location, GameHandler[] event) {
 		super(name, location, event);
 		scaleDimensions();
 		this.addLabel();
@@ -31,12 +31,6 @@ public class ImageGraphic extends Graphic {
 		myHeight = myImageView.getFitHeight();
 		System.out.println(myHeight);
 		myImageView.setRotate(0);
-	}
-
-	@Override
-	public void makeProperties() {
-		// TODO Auto-generated method stub
-
 	}
 
 }
