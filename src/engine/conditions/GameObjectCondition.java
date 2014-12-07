@@ -17,16 +17,18 @@ import engine.gameObject.Identifier;
  */
 public abstract class GameObjectCondition extends Condition {
     
-	protected GameObjectsCollection myGameObjects;
-    protected Identifier[] myGameObjectIDs;
+    protected GameObjectsCollection myGameObjects;
+    protected List<Identifier> myGameObjectIDs;
     
-    public GameObjectCondition (List<Action> myActions, Identifier[] myIDs) {
+    public GameObjectCondition (List<Action> myActions, List<Identifier> myIDs) {
         super(myActions);
+        myGameObjects = new GameObjectsCollection();
         this.myGameObjectIDs = myIDs;
     }
     
     @Override
     public void initialize(GameManager gameManager){
+        initializeActions(gameManager);
     	for (Identifier id: myGameObjectIDs){
     		myGameObjects.add(gameManager.objectForIdentifier(id));
     	}
