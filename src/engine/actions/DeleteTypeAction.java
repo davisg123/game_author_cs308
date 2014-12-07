@@ -6,26 +6,30 @@ import engine.gameObject.GameObject;
 import engine.gameObject.Identifiable;
 import engine.gameObject.Identifier;
 
-public class DeleteAction implements Action, Initializable{
+public class DeleteTypeAction implements Action, Initializable{
 
-	private Identifier myID; 
 	private String myType;
-	private Identifier[] objectIDs;
 	private GameObjectsCollection myGameObjects; 
 	
-	public DeleteAction(String type, Identifier... ids){
+	public DeleteTypeAction(String type, Identifier... ids){
 		myType=type;
-		objectIDs=ids; 
 	}
 	
 	@Override
 	public void initialize(GameManager manager) {
+		
 		myGameObjects = manager.getLevelManager().getCurrentLevel().getGameObjectsCollection();
 	}
 
 	@Override
 	public void execute() {
-		//look for highlighted objects of myType to remove
+ 
+		for (GameObject object: myGameObjects){
+			if (object.getIdentifier().getType().equals(myType)){
+				myGameObjects.remove(object);
+			}
+		}
+		
 	}
 
 	

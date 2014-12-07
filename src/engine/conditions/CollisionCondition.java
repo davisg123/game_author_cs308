@@ -75,26 +75,26 @@ public class CollisionCondition extends TimeCondition {
 //        }
 //    }
     
-    private void checkCollisions(){
-    	for (GameObject firstObject: myGameObjects){
-    		if (firstObject.getIdentifier().getType().equals(firstCollisionType)){
-    			for (GameObject secondObject: myGameObjects){
-    				if (secondObject.getIdentifier().getType().equals(secondCollisionType)){
-    					//check collision
-    					//need to highlight the objects involved in the collision
-    					for (Action a: myActions){
-    						a.execute(); 
-    					}
-    					//need to unhighlight the objects in the collision
-    				}
-    				
-    			}
-    			
-    		}
-    		
-    	}
-    	
-    }
+//    private void checkCollisions(){
+//    	for (GameObject firstObject: myGameObjects){
+//    		if (firstObject.getIdentifier().getType().equals(firstCollisionType)){
+//    			for (GameObject secondObject: myGameObjects){
+//    				if (secondObject.getIdentifier().getType().equals(secondCollisionType)){
+//    					//check collision
+//    					//need to highlight the objects involved in the collision
+//    					for (Action a: myActions){
+//    						a.execute(); 
+//    					}
+//    					//need to unhighlight the objects in the collision
+//    				}
+//    				
+//    			}
+//    			
+//    		}
+//    		
+//    	}
+//    	
+//    }
 
    
 }

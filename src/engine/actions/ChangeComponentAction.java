@@ -11,13 +11,13 @@ public class ChangeComponentAction implements Action, Initializable{
 	
 	private GameObjectsCollection myGameObjects;
 	private double myValue;
-	private String myComponentIDs; 
+	private String myComponentID; 
 	private Identifier[] myObjectIDs; 
 	
-	public ChangeComponentAction(Identifier[] ids, double value, String componentIDs){
+	public ChangeComponentAction(Identifier[] ids, double value, String componentID){
 		myObjectIDs = ids; 
 		myValue = value; 
-		myComponentIDs = componentIDs; 
+		myComponentID = componentID; 
 		
 	}
 	
