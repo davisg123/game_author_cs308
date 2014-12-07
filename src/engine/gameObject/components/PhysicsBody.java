@@ -152,6 +152,10 @@ public class PhysicsBody {
 		return myCollisionBodyWidth;
 	}
 
+	public Scalar getScalar(String s){
+		return myConstants.get(s);
+	}
+	
 	/**
 	 * updates all the physical vector characteristics for object
 	 * 

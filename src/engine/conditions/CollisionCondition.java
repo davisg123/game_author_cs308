@@ -1,14 +1,9 @@
 package engine.conditions;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
-import authoring.model.collections.GameObjectsCollection;
-import javafx.scene.Node;
 import engine.GameManager;
 import engine.actions.Action;
-import engine.gameObject.GameObject;
 
 /**
  * 
@@ -19,9 +14,6 @@ import engine.gameObject.GameObject;
  */
 
 public class CollisionCondition extends TimeCondition {
-    
-//    private GameObjectsCollection mySecondCollisionSet;
-//    private Map<String,Integer> myCollisionMap;
     private String firstCollisionType;
     private String secondCollisionType; 
     

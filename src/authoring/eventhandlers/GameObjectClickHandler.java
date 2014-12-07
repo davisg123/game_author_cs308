@@ -2,11 +2,13 @@ package authoring.eventhandlers;
 
 import javafx.event.EventType;
 import javafx.scene.input.MouseEvent;
-import authoring.view.graphicsview.GameObjectGraphic;
+import authoring.view.icons.GameObjectIcon;
 import authoring.view.propertiesview.PropertiesView;
 
 public class GameObjectClickHandler implements GameHandler<MouseEvent>{
 
+	//VERY similar to image click handler, refactor
+	
 	private PropertiesView myProperties;
 	
 	public GameObjectClickHandler(PropertiesView props){
@@ -15,7 +17,7 @@ public class GameObjectClickHandler implements GameHandler<MouseEvent>{
 	
 	@Override
 	public void handle(MouseEvent event) {
-		GameObjectGraphic g = (GameObjectGraphic) event.getSource();
+		GameObjectIcon g = (GameObjectIcon) event.getSource();
 		myProperties.makeProperties(g.getGameObject());
 		
 	}

@@ -16,6 +16,7 @@ import engine.gameObject.Identifier;
  *
  */
 public abstract class GameObjectCondition extends Condition {
+ 
     
 	protected GameObjectsCollection myGameObjects;
     protected Identifier[] myGameObjectIDs;

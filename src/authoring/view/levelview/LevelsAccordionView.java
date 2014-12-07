@@ -9,7 +9,7 @@ import javafx.scene.text.Text;
 import authoring.eventhandlers.GameHandler;
 import authoring.model.collections.LevelsCollection;
 import authoring.view.baseclasses.ScrollView;
-import authoring.view.graphicsview.LevelGraphic;
+import authoring.view.icons.LevelIcon;
 import engine.level.Level;
 
 public class LevelsAccordionView extends ScrollView implements Observer{
@@ -33,7 +33,7 @@ public class LevelsAccordionView extends ScrollView implements Observer{
 		
 	}
 	
-	public void setEvents(GameHandler ... gameHandlers){
+	public void setGraphicEvents(GameHandler ... gameHandlers){
 		myEvents = gameHandlers;
 	}
 	
@@ -42,8 +42,8 @@ public class LevelsAccordionView extends ScrollView implements Observer{
 	}
 	
 	public void addLevel(Level l){
-		myName = l.getLevelID();
-		LevelGraphic newLevel = new LevelGraphic(myName, myEvents, l,levelEvents);
+		myName = l.getIdentifier().getUniqueId();
+		LevelIcon newLevel = new LevelIcon(myName, myEvents, l,levelEvents);
 
 		myVbox.getChildren().add(newLevel);
 	}

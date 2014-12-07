@@ -16,7 +16,7 @@ import authoring.view.baseclasses.ScrollView;
  *
  */
 public class SoundsView extends ScrollView implements Observer {
-	private static final double VIEW_HEIGHT_RATIO = .74;
+	private static final double VIEW_HEIGHT_RATIO = .65;
 	private static final double VIEW_WIDTH_RATIO = 0.2;
 
 	
