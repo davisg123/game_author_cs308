@@ -160,13 +160,13 @@ public class MainEngineTests extends Application {
          * levels
          *******/
         LevelsCollection myLevels = new LevelsCollection();
-        Level level0 = new Level(allGameObjects.getIdentifierList(),true);
+        Level level0 = new Level(allGameObjects.getIdentifierList(),myConditions.getIdentifierList(),true);
         myLevels.add(level0);
         
         /*
          * uncomment for saving game
          */
-        
+        /*
         GameData data = new GameData(myLevels,myConditions,allGameObjects);
         DataManager manager = new DataManager();
         try {
@@ -176,7 +176,7 @@ public class MainEngineTests extends Application {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
+        */
         
         /*******
          * game
