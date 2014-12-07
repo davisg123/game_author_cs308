@@ -29,21 +29,16 @@ public class KeyboardView extends Application{
 	private Map<Condition, String> myButtonConditionsMap;
 	private ComboBox<String> myFunctionComboBox;
 	
-	public static void main(String[] args)
-	{
-		launch(args);
+	public KeyboardView(ConditionsCollection buttonConditions) {
+		myStage = new Stage();
+		myStage.setTitle("Vooga Salad Bits Please Keyboard Mapping Utility");
+		myGrid = new GridPane();
+		Scene myScene = new Scene(myGrid, WIDTH, HEIGHT);
+//		myScene.getStylesheets().add(getClass().getResource("layoutstyles.css").toExternalForm());
+		myStage.setScene(myScene);
+		myButtonConditions = buttonConditions;
+		myFunctionComboBox = comboBoxForButton();
 	}
-	
-//	public KeyboardView(ConditionsCollection buttonConditions) {
-//		myStage = new Stage();
-//		myStage.setTitle("Vooga Salad Bits Please Keyboard Mapping Utility");
-//		myGrid = new GridPane();
-//		Scene myScene = new Scene(myGrid, WIDTH, HEIGHT);
-////		myScene.getStylesheets().add(getClass().getResource("layoutstyles.css").toExternalForm());
-//		myStage.setScene(myScene);
-//		myButtonConditions = buttonConditions;
-//		myFunctionComboBox = comboBoxForButton();
-//	}
 	
 	public void buildKeyboard() {
 		int num = 0;
