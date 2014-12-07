@@ -8,6 +8,8 @@ import data.Observer;
 import javafx.scene.layout.VBox;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.ScrollView;
+import authoring.view.icons.ImageBasedIcon;
+import authoring.view.icons.ImageIcon;
 
 /**
  * View component that corresponds with the backend model component -
@@ -18,14 +20,14 @@ import authoring.view.baseclasses.ScrollView;
  * @author Chris Bernt
  *
  */
-public class ImageListView extends ScrollView implements Observer {
+public class ImagesView extends ScrollView implements Observer {
 	private static final double VIEW_HEIGHT_RATIO = .65;
 	private static final double VIEW_WIDTH_RATIO = 0.2;
 	private VBox myVbox = new VBox();
-	private GameHandler[] myEvents;
+	private GameHandler[] myGraphicEvents;
 	private File myGameLocation;
 
-	public ImageListView(ResourceBundle language, double width, double height,
+	public ImagesView(ResourceBundle language, double width, double height,
 			File gameLoc) {
 		super(language, width, height);
 		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
@@ -38,12 +40,20 @@ public class ImageListView extends ScrollView implements Observer {
 		addImage((String) arg);
 	}
 
-	public void setEvents(GameHandler... gameHandlers) {
-		myEvents = gameHandlers;
+	public void setGraphicEvents(GameHandler... gameHandlers) {
+		myGraphicEvents = gameHandlers;
+	}
+
+	public void setDragOver(GameHandler handler) {
+		this.setOnDragOver(handler);
+	}
+
+	public void setDragDrop(GameHandler handler) {
+		this.setOnDragDropped(handler);
 	}
 
 	public void addImage(String s) {
-		Graphic graphic = new ImageGraphic(s, myGameLocation, myEvents);
+		ImageBasedIcon graphic = new ImageIcon(s, myGameLocation, myGraphicEvents);
 		myVbox.getChildren().add(graphic);
 	}
 

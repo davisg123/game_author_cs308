@@ -3,7 +3,7 @@ package authoring.view.levelview;
 import java.util.ResourceBundle;
 
 import authoring.eventhandlers.GameHandler;
-import authoring.view.generalcollectionview.CollectionsTool;
+import authoring.view.generalcollectionview.CollectionOptions;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
@@ -11,7 +11,7 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.ToolBar;
 
-public class LevelOptions extends CollectionsTool {
+public class LevelOptions extends CollectionOptions {
 	private Button addLevelButton;
 
 	public LevelOptions(ResourceBundle language, double width, double height) {

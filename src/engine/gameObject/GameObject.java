@@ -102,6 +102,7 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
 
 	public GameObject (GameObject g){
     	this(g.getComponents(), g.getCurrentImageName(), g.getX(), g.getY(), g.getHeight(), g.getWidth(), g.getRotation(), g.getID());
+    	myPhysicsBody = g.getPhysicsBody();
 	}
 
 
@@ -216,6 +217,10 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
 
     public String getID () {
         return myID;
+    }
+    
+    public void setID(String s){
+    	myID = s;
     }
 
     /**

@@ -20,9 +20,9 @@ import javafx.stage.Stage;
 public class ErrorPopUp {
 	
 	private static final int POP_UP_HEIGHT = 100;
-	private static final int POP_UP_WIDTH = 200;
+	private static final int POP_UP_WIDTH = 300;
 	private static final int TEXT_Y_COORD = POP_UP_HEIGHT/2;
-	private static final int TEXT_X_COORD = POP_UP_WIDTH/2;
+	private static final int TEXT_X_COORD = POP_UP_WIDTH/4;
 	private static final int BUTTON_Y_COORD = POP_UP_HEIGHT*5/8;
 	private static final int BUTTON_X_COORD = POP_UP_WIDTH/2;
 	private static final String ERROR_TITLE = "User Error";

@@ -25,7 +25,7 @@ public class PlayerModel {
 	}
 	
 	public void loadGameFile(){		
-		myGameData = myManager.readGameFile("fd_final.json");
+		myGameData = myManager.readGameFile("SavedGame1.json");
 		myGameManager = new GameManager(myGameData.getConditions(), myGameData.getGameObjects(), myGameData.getLevels(), myPlayerView.getGroup());
 		myGameManager.initialize();
 	}

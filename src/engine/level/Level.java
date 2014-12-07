@@ -1,8 +1,11 @@
 package engine.level;
 
 import java.util.Iterator;
+
 import data.Observable;
+
 import java.util.List;
+
 import authoring.model.collections.ConditionIDsCollection;
 import authoring.model.collections.GameObjectsCollection;
 import engine.GameManager;
@@ -35,6 +38,12 @@ public class Level extends Observable implements Identifiable {
      * @param IdList
      * list representing game objects that apply to this level
      */
+    public Level(List<Identifier> IdList) {
+        this(new GameObjectsCollection());
+        myGameObjectIdList = IdList;
+
+    }
+
     public Level (GameObjectsCollection gameObjects) {
         this(gameObjects, false);
     }
