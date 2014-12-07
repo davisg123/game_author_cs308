@@ -5,7 +5,7 @@ import static authoring.view.levelview.SingleLevelView.OBJECT_Y_OFFSET;
 import javafx.event.EventType;
 import javafx.scene.input.MouseEvent;
 import authoring.model.collections.LevelsCollection;
-import authoring.view.gameobjectsview.GameObjectGraphic;
+import authoring.view.graphicsview.GameObjectGraphic;
 import authoring.view.levelview.LevelsView;
 import authoring.view.levelview.SingleLevelView;
 import authoring.view.propertiesview.PropertiesView;
@@ -37,8 +37,8 @@ public class GameObjectDragHandler implements GameHandler<MouseEvent> {
 	public void handle(MouseEvent event) {
 		// System.out.println("reached");
 		GameObjectGraphic g = (GameObjectGraphic) event.getSource();
-		double x = event.getSceneX();
-		double y = event.getSceneY();
+		double mouseX = event.getSceneX();
+		double mouseY = event.getSceneY();
 		SingleLevelView slv = myLevelView.getCurrentLevel();
 		String id = myLevelView.getCurrentLevel().getID();
 		for (Level level : myLevelsCollection) {
@@ -46,10 +46,10 @@ public class GameObjectDragHandler implements GameHandler<MouseEvent> {
 				GameObject go = g.getGameObject();
 				level.removeGameObject(go);
 
-				double dragX = x + OBJECT_X_OFFSET;
-				double dragY = y + OBJECT_Y_OFFSET;
-				double newX = x;
-				double newY = y;
+				double dragX = mouseX + OBJECT_X_OFFSET;
+				double dragY = mouseY + OBJECT_Y_OFFSET;
+				double newX = mouseX;
+				double newY = mouseY;
 
 				if (dragX < 0) {
 					System.out.println("off left");

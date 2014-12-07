@@ -21,8 +21,4 @@ public class GameObjectsCollection extends GeneralCollection<GameObject>{
 	    }
 	    return IdList;
 	}
-	
-//	public void clear(){
-//		myObjects = new ArrayList<GameObject>();
-//	}
 }
