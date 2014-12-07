@@ -25,7 +25,9 @@ public class Level extends Observable implements Identifiable {
     private GameObjectsCollection myDefaultGameObjects;
     private GameObjectsCollection myWorkingGameObjects;
     private List<Identifier> myGameObjectIdList;
+    private List<Identifier> myConditionIdList;
     private ConditionIDsCollection myConditionIDs;
+    private boolean myStartLevelIndicator;
 
     /**
      * Constructor
@@ -33,15 +35,21 @@ public class Level extends Observable implements Identifiable {
      * @param IdList
      * list representing game objects that apply to this level
      */
-    public Level(List<Identifier> IdList) {
-        this(new GameObjectsCollection());
+    public Level (GameObjectsCollection gameObjects) {
+        this(gameObjects, false);
+    }
+    
+    //TODO need to add ID list for the Conditions
+    public Level(List<Identifier> IdList, boolean isStart) {
+        this(new GameObjectsCollection(), isStart);
         myGameObjectIdList = IdList;
 
     }
 
-    public Level (GameObjectsCollection gameObjects) {
+    public Level (GameObjectsCollection gameObjects, boolean isStart) {
         myDefaultGameObjects = gameObjects;
         myWorkingGameObjects = gameObjects;
+        myStartLevelIndicator = isStart;
     }
 
     /**
@@ -116,6 +124,14 @@ public class Level extends Observable implements Identifiable {
                 myWorkingGameObjects.add(foundObject);
             }
         }
+    }
+    
+    public void setStartIndicator(boolean indicator) {
+        myStartLevelIndicator = indicator;
+    }
+    
+    public boolean isStartLevel() {
+        return myStartLevelIndicator;
     }
 
 }
