@@ -41,9 +41,11 @@ public class Level extends Observable implements Identifiable {
     
     //TODO need to add ID list for the Conditions
     public Level(List<Identifier> objectIdList, List<Identifier> conditionIdList, boolean isStart) {
-        this(new GameObjectsCollection(), isStart);
         myGameObjectIdList = objectIdList;
         myConditionIdList = conditionIdList;
+        myDefaultGameObjects = new GameObjectsCollection();
+        myWorkingGameObjects = new GameObjectsCollection();
+        myStartLevelIndicator = isStart;
     }
 
     public Level (GameObjectsCollection gameObjects, boolean isStart) {
