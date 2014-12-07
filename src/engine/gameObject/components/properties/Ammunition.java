@@ -23,5 +23,10 @@ public class Ammunition implements IProperty {
             
     }
 
+	@Override
+	public IProperty getClone() {
+		return new Ammunition(myAmmunition);
+	}
+
     
 }
