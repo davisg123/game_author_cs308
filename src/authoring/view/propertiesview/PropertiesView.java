@@ -41,6 +41,10 @@ public class PropertiesView extends ScrollView {
 		this.setContent(myGameObjectsProperties);
 	}
 
+	public void displayProperties(Properties props){
+		this.setContent(props);
+	}
+	
 	public GameObject getCurrentGameObject() {
 		return this.myCurrentGameObject;
 	}
