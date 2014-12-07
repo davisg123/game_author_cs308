@@ -5,9 +5,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import authoring.view.graphicsview.Graphic;
 
-public class GraphicsProperties extends Properties{
+public class ImageProperties extends Properties{
 
-	public GraphicsProperties(Object o) {
+	public ImageProperties(Object o) {
 		initializeProperties(o);
 	}
 

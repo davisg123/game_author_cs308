@@ -1,12 +1,13 @@
 package authoring.view.propertiesview;
 
-import java.io.File;
 import java.util.ResourceBundle;
 
 import javafx.scene.layout.VBox;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.ScrollView;
 import authoring.view.graphicsview.Graphic;
+import authoring.view.graphicsview.ImageGraphic;
+import authoring.view.graphicsview.LevelGraphic;
 import engine.gameObject.GameObject;
 
 public class PropertiesView extends ScrollView {
@@ -18,7 +19,7 @@ public class PropertiesView extends ScrollView {
 	private GameHandler myEditBehavior;
 	private GameHandler mySaveAsNewBehavior;
 
-	private GameObjectsProperties myGameObjectsProperties;
+	private GameObjectProperties myGameObjectsProperties;
 	private GameObject myCurrentGameObject;
 
 	public PropertiesView(ResourceBundle language, double width, double height) {
@@ -28,17 +29,26 @@ public class PropertiesView extends ScrollView {
 
 	}
 
-	public void makeProperties(Graphic g) {
+//	public void makeProperties(Graphic g){
+//		g.makeProperties();
+//	}
+	
+	public void makeProperties(ImageGraphic g) {
 		myContents.getChildren().clear();
-		this.setContent(new GraphicsProperties(g));
+		this.setContent(new ImageProperties(g));
 	}
 
 	public void makeProperties(GameObject gameObj) {
 		myContents.getChildren().clear();
 		myCurrentGameObject = gameObj;
-		myGameObjectsProperties = new GameObjectsProperties(gameObj,
+		myGameObjectsProperties = new GameObjectProperties(gameObj,
 				this.myEditBehavior);
 		this.setContent(myGameObjectsProperties);
+	}
+	
+	public void makeProperties(LevelGraphic g){
+		myContents.getChildren().clear();
+		//System.out.println("poop");
 	}
 
 	public void displayProperties(Properties props){
