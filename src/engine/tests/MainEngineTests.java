@@ -1,13 +1,17 @@
 package engine.tests;
 
 import java.util.ArrayList;
-
+import data.DataManager;
+import authoring.model.GameData;
 import authoring.model.collections.ConditionsCollection;
 import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.LevelsCollection;
 import engine.GameManager;
 import engine.actions.Action;
+import engine.actions.FrameRateAction;
 import engine.actions.translate.TranslateX;
+import engine.actions.translate.TranslateY;
+import engine.conditions.BoundaryConditionY;
 import engine.conditions.ButtonCondition;
 import engine.conditions.ButtonConditionManager;
 import engine.gameObject.GameObject;
@@ -17,6 +21,7 @@ import engine.physics.Acceleration;
 import engine.physics.CollisionConstant;
 import engine.physics.Velocity;
 import engine.render.GameObjectRenderer;
+import gamePlayer.model.DataWrapper;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -69,19 +74,27 @@ public class MainEngineTests extends Application {
          *****/
         GameObjectsCollection myGameObjects = new GameObjectsCollection();
         //create the floor
-        GameObject floor = new GameObject(null,"floor",
-                                   75, 200, 20, 200, 0, "floor_object");
+        GameObject floorRight = new GameObject(null,"floor",
+                                   200, 200, 20, 200, 0, "floor_right");
         //ugh, why do we have to set this explicitly?
-        PhysicsBody floorBody = new PhysicsBody(20,200);
-        floorBody.setVelocity(new Velocity(0,-23));
-        floorBody.addScalar((new CollisionConstant(1.0)));
+        PhysicsBody floorRightBody = new PhysicsBody(20,200);
+        floorRightBody.setVelocity(new Velocity(0,-80));
+        floorRightBody.addScalar((new CollisionConstant(1.0)));
+        floorRight.setPhysicsBody(floorRightBody);
+        GameObject floorLeft = new GameObject(null,"floor",
+                                               -50, 200, 20, 200, 0, "floor_left");
+        //ugh, why do we have to set this explicitly?
+        PhysicsBody floorLeftBody = new PhysicsBody(20,200);
+        floorLeftBody.setVelocity(new Velocity(0,-80));
+        floorLeftBody.addScalar((new CollisionConstant(1.0)));
+        floorLeft.setPhysicsBody(floorLeftBody);
         //floorBody.setAcceleration(new Acceleration(0.0,-77.0));
-        floor.setPhysicsBody(floorBody);
-        myGameObjects.add(floor);
+        myGameObjects.add(floorRight);
+        myGameObjects.add(floorLeft);
         //create a ball
-        GameObject ball = new GameObject(null,"ball",150,50,30,30,0,"ball_object");
+        GameObject ball = new GameObject(null,"duvall",150,50,40,40,0,"ball_object");
         PhysicsBody ballBody = new PhysicsBody(30,30);
-        ballBody.setVelocity(new Velocity(12,20));
+        ballBody.setVelocity(new Velocity(0,15));
         ball.setPhysicsBody(ballBody);
         myGameObjects.add(ball);
         
@@ -89,11 +102,37 @@ public class MainEngineTests extends Application {
          * conditions
          ******/
         ConditionsCollection myConditions = new ConditionsCollection();
-        Action aAct = new TranslateX(floor,-2.0);
+        Action aAct = new TranslateX(ball,-2.0);
+        Action dAct = new TranslateX(ball,2.0);
         ArrayList<Action> actionList = new ArrayList<Action>();
         actionList.add(aAct);
         ButtonCondition aCon = new ButtonCondition(actionList,"a_button",KeyCode.A);
+        ArrayList<Action> dActList = new ArrayList<Action>();
+        dActList.add(dAct);
+        ButtonCondition dCon = new ButtonCondition(dActList,"d_button",KeyCode.D);
         myConditions.add(aCon);
+        myConditions.add(dCon);
+        
+        Action boundaryRightAction = new TranslateY(floorRight,350);
+        Action boundaryLeftAction = new TranslateY(floorLeft,350);
+        ArrayList<Action> boundaryActionList = new ArrayList<Action>();
+        boundaryActionList.add(boundaryLeftAction);
+        boundaryActionList.add(boundaryRightAction);
+        ArrayList<GameObject> watchObjectList = new ArrayList<GameObject>();
+        watchObjectList.add(floorLeft);
+        BoundaryConditionY boundaryCondition = new BoundaryConditionY(boundaryActionList,watchObjectList,"bound_cond",-50,false);
+        myConditions.add(boundaryCondition);
+        
+        Action pauseAct = new FrameRateAction(0.0);
+        ArrayList<Action> pauseActList = new ArrayList<Action>();
+        pauseActList.add(pauseAct);
+        ButtonCondition pCon = new ButtonCondition(pauseActList,"pause_button",KeyCode.P);
+        Action playAct = new FrameRateAction(60.0);
+        ArrayList<Action> playListAct = new ArrayList<Action>();
+        playListAct.add(playAct);
+        ButtonCondition uCon = new ButtonCondition(playListAct,"play_button",KeyCode.U);
+        //myConditions.add(pCon);
+        //myConditions.add(uCon);
         
         /*******
          * levels

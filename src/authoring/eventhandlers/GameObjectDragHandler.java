@@ -1,11 +1,15 @@
 package authoring.eventhandlers;
 
+import static authoring.view.levelview.SingleLevelView.OBJECT_X_OFFSET;
+import static authoring.view.levelview.SingleLevelView.OBJECT_Y_OFFSET;
 import javafx.event.EventType;
 import javafx.scene.input.MouseEvent;
 import authoring.model.collections.LevelsCollection;
-import authoring.view.gameobjectsview.GameObjectGraphic;
+import authoring.view.graphicsview.GameObjectGraphic;
 import authoring.view.levelview.LevelsView;
+import authoring.view.levelview.SingleLevelView;
 import authoring.view.propertiesview.PropertiesView;
+import engine.gameObject.GameObject;
 import engine.level.Level;
 
 /**
@@ -22,8 +26,8 @@ public class GameObjectDragHandler implements GameHandler<MouseEvent> {
 	private LevelsCollection myLevelsCollection;
 	private PropertiesView myProperties;
 
-
-	public GameObjectDragHandler(LevelsView levelView, LevelsCollection data, PropertiesView props) {
+	public GameObjectDragHandler(LevelsView levelView, LevelsCollection data,
+			PropertiesView props) {
 		myLevelView = levelView;
 		myLevelsCollection = data;
 		myProperties = props;
@@ -31,18 +35,43 @@ public class GameObjectDragHandler implements GameHandler<MouseEvent> {
 
 	@Override
 	public void handle(MouseEvent event) {
-		//System.out.println("reached");
+		// System.out.println("reached");
 		GameObjectGraphic g = (GameObjectGraphic) event.getSource();
-		double x = event.getSceneX();
-		double y = event.getSceneY();
+		double mouseX = event.getSceneX();
+		double mouseY = event.getSceneY();
+		SingleLevelView slv = myLevelView.getCurrentLevel();
 		String id = myLevelView.getCurrentLevel().getID();
 		for (Level level : myLevelsCollection) {
 			if (level.getLevelID().equals(id)) {
-				level.removeGameObject(g.getGameObject());
-				g.getGameObject().setX(x);
-				g.getGameObject().setY(y);
-				level.addGameObject(g.getGameObject());
-				myProperties.makeProperties(g.getGameObject());
+				GameObject go = g.getGameObject();
+				level.removeGameObject(go);
+
+				double dragX = mouseX + OBJECT_X_OFFSET;
+				double dragY = mouseY + OBJECT_Y_OFFSET;
+				double newX = mouseX;
+				double newY = mouseY;
+
+				if (dragX < 0) {
+					System.out.println("off left");
+					newX = -1 * OBJECT_X_OFFSET;
+				}
+				if (dragX > slv.getViewWidth()) {
+					System.out.println("off right");
+					newX = slv.getViewWidth() - OBJECT_X_OFFSET - g.getWidth();
+				}
+				if (dragY < 0) {
+					System.out.println("off top");
+					newY = -1 * OBJECT_Y_OFFSET;
+				}
+				if (dragY > slv.getViewHeight()) {
+					System.out.println("off bottom");
+					newY = slv.getViewHeight() - OBJECT_Y_OFFSET - g.getHeight();
+				}
+				go.setX(newX);
+				go.setY(newY);
+
+				level.addGameObject(go);
+				myProperties.makeProperties(go);
 			}
 		}
 

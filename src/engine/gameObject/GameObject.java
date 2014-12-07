@@ -34,19 +34,22 @@ public class GameObject implements IEnabled, Iterable<Component>{
     //private Dimension2D myDimension; 
     private double myHeight;
     private double myWidth;
-    
+
     //refactor the Point2D
     //private transient Point2D myDefaultPosition;
     private double myXCoord;
     private double myYCoord;
     private transient RenderedNode myRenderedNode;
-    
+
     //refactor this into the PhysicsBody
     private boolean myCollision;
 
 
     //Should it be included in constructor?
     private boolean enabled;
+    
+    //Holds onto the default data for reinitialization. 
+    private DefaultData myDefaultData; 
 
     /**
      * Constructors
@@ -60,13 +63,13 @@ public class GameObject implements IEnabled, Iterable<Component>{
     }
 
     public GameObject (List<Component> components, String imagePath, double x, double y, 
-                   double height, double width, double rotation, String iD) {
+                       double height, double width, double rotation, String iD) {
         this(components, imagePath, new SoundReference(), x, y,
              height, width, rotation, iD);
     }
 
     public GameObject (List<Component> components, String imageName, SoundReference sounds, 
-                   double x, double y, double height, double width, double rotation, String iD) {
+                       double x, double y, double height, double width, double rotation, String iD) {
         myComponents  = components;
         //myImages   = images;
         //mySounds   = sounds;
@@ -77,11 +80,24 @@ public class GameObject implements IEnabled, Iterable<Component>{
         myWidth = width;
         myRotation = rotation;
         myID = iD;
+        setDefaultData(); 
     }
     
-    public GameObject (GameObject g){
+    private void setDefaultData() {
+		List<Component> defaultComponents= new ArrayList<Component>(); 
+		if (myComponents != null){
+		          for (Component c: myComponents){
+	                        defaultComponents.add(c.getClone());
+	                }
+		}
+		myDefaultData = new DefaultData(defaultComponents, myCurrentImageName, myXCoord, myYCoord,  
+				myHeight, myWidth, myRotation); 
+	}
+
+	public GameObject (GameObject g){
     	this(g.getComponents(), g.getCurrentImageName(), g.getX(), g.getY(), g.getHeight(), g.getWidth(), g.getRotation(), g.getID());
-    }
+	}
+
 
     /**
      * Sets X-Coordinate of Object
@@ -102,11 +118,11 @@ public class GameObject implements IEnabled, Iterable<Component>{
     public double getTranslateX () {
         return myRenderedNode.getTranslateX();
     }
-    
+
     public double getTranslateY () {
         return myRenderedNode.getTranslateY();
     }
-    
+
     /**
      * Sets Initial Location of GameObject
      * @param point - new Location Point
@@ -114,9 +130,22 @@ public class GameObject implements IEnabled, Iterable<Component>{
     public void setX (double x) {
         myXCoord = x;
     }
-    
+
     public void setY (double y) {
         myYCoord = y;
+    }
+
+    
+    /**
+     * Link this with the physics body in the future
+     * @param width
+     */
+    public void setWidth (double width) {
+        myWidth = width;   
+    }
+
+    public void setHeight (double height) {
+        myHeight = height;
     }
 
     /**
@@ -136,13 +165,13 @@ public class GameObject implements IEnabled, Iterable<Component>{
     }
 
     public double getRotation(){
-    	return this.myRotation;
+        return this.myRotation;
     }
-    
-   /* public GameObject copy() {
+
+    /* public GameObject copy() {
         return new GameObject(this);
     }*/
-    
+
     /**
      * Deprecated, all transforms are performed on the node
      * Gets the x position property of the sprite (for listeners)
@@ -168,17 +197,17 @@ public class GameObject implements IEnabled, Iterable<Component>{
                                   myRenderedNode.getTranslateY());
     }
 
-    
 
-    
+
+
     public double getX () {
         return myXCoord;
     }
-    
+
     public double getY () {
         return myYCoord;
     }
-    
+
     public String getID () {
         return myID;
     }
@@ -187,7 +216,7 @@ public class GameObject implements IEnabled, Iterable<Component>{
      * Updates all components of GameObject
      * TODO Check if necessary... 
      */
-    
+
     public void update () {
         if (myComponents != null){
             for(Component component : myComponents) {
@@ -204,7 +233,7 @@ public class GameObject implements IEnabled, Iterable<Component>{
     public void setRenderedNode(RenderedNode node) {
         myRenderedNode = node;
     }
-    
+
     public RenderedNode getRenderedNode() {
         return myRenderedNode;
     }
@@ -219,9 +248,9 @@ public class GameObject implements IEnabled, Iterable<Component>{
     }
 
     public List<Component> getComponents(){
-    	return this.myComponents;
+        return this.myComponents;
     }
-    
+
     public String getCurrentImageName () { 
         return myCurrentImageName;
     }
@@ -267,15 +296,26 @@ public class GameObject implements IEnabled, Iterable<Component>{
     }
 
     public boolean isEnabled() {
-    	return enabled;
+        return enabled;
     }
-    
+
     public boolean getCollisionConstant() {
-    	return myCollision;
+        return myCollision;
     }
-    
+
     public String toString(){
-    	return myID;
+        return myID;
     }
     
+    public void reset(){
+    	myRotation=myDefaultData.getRotation();
+    	myXCoord=myDefaultData.getXCoordinate();
+    	myYCoord=myDefaultData.getYCoordinate();
+    	myCurrentImageName=myDefaultData.getImageName();
+    	myComponents.clear();
+    	for (Component c: myDefaultData.getComponents()){
+    		myComponents.add(c.getClone());
+    	}
+    }
+
 }

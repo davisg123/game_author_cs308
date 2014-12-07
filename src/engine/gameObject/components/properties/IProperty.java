@@ -17,4 +17,5 @@ public interface IProperty {
  */
 	public void update();
 	
+	public IProperty getClone(); 
 }

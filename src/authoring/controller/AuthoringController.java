@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import javafx.geometry.Pos;
-import javafx.scene.Node;
-import javafx.scene.control.TabPane;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
 import authoring.eventhandlers.AddImageHandler;
 import authoring.eventhandlers.AddLevelHandler;
+import authoring.eventhandlers.AddObjectHandler;
 import authoring.eventhandlers.EditGameObjectHandler;
+import authoring.eventhandlers.GameObjGraphicDragHandler;
 import authoring.eventhandlers.GameObjectClickHandler;
 import authoring.eventhandlers.GameObjectDragHandler;
 import authoring.eventhandlers.GameObjectDragToLevelHandler;
@@ -21,16 +21,16 @@ import authoring.model.AuthoringModel;
 import authoring.view.AuthoringView;
 import authoring.view.baseclasses.AccordionContainer;
 import authoring.view.baseclasses.BPContainer;
+import authoring.view.conditionsview.ConditionsAccordionView;
 import authoring.view.gameobjectsview.GameObjectsView;
+import authoring.view.graphicsview.GameObjectsTools;
 import authoring.view.graphicsview.GraphicsTools;
-import authoring.view.graphicsview.ImagesView;
-import authoring.view.levelview.LevelsAccordionView;
+import authoring.view.graphicsview.ImageListView;
 import authoring.view.levelview.LevelOptions;
+import authoring.view.levelview.LevelsAccordionView;
 import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
 import authoring.view.soundsview.SoundsView;
-import engine.actions.Action;
-import engine.conditions.Condition;
 import engine.gameObject.GameObject;
 import engine.gameObject.components.Component;
 
@@ -46,7 +46,7 @@ import engine.gameObject.components.Component;
  *
  */
 public class AuthoringController {
-	private static final double LEFT_ACCORDION_HEIGHT_RATIO = .74;
+	private static final double LEFT_ACCORDION_HEIGHT_RATIO = .70;
 	private static final double LEFT_ACCORDION_WIDTH_RATIO = .2;
 	private static final double CENTER_HEIGHT_RATIO = .92;
 	private static final double CENTER_WIDTH_RATIO = .6;
@@ -65,12 +65,14 @@ public class AuthoringController {
 
 	private GameObjectsView myGameObjects;
 
-	private ImagesView myGraphics;
-	private GraphicsTools myGraphicsTools;
+	private ImageListView myGraphics;
+	private GraphicsTools myGraphicsAdd;
+	private GameObjectsTools myObjectsAdd;
 
 	private SoundsView mySounds;
 	private PropertiesView myProperties;
 	private LevelsAccordionView myLevelsAccordionView;
+	private ConditionsAccordionView myConditionsAccordionView;
 	private File myGameLocation;
 
 	public AuthoringController(AuthoringView view, AuthoringModel model,
@@ -104,10 +106,17 @@ public class AuthoringController {
 
 		myModel.getImages().addObserver(myGraphics);
 		myModel.getGameObjectCollection().addObserver(myGameObjects);
-		GameObject test = new GameObject(new ArrayList<Component>(), im, 0, 0,
-				0, 0, 0, "Mario");
-		myModel.getGameObjectCollection().addGameObject(test);
+		
+		
+//		GameObject test = new GameObject(new ArrayList<Component>(), im, 0, 0,
+//				0, 0, 0, "Mario");
+//		test.setWidth(50);
+//		test.setHeight(70);
+//		
+//		myModel.getGameObjectCollection().addGameObject(test);
 
+		//myModel.getGameObjectCollection().addGameObject(test);
+		
 		myModel.getLevels().addObserver(myLevelsAccordionView);
 	}
 
@@ -119,37 +128,49 @@ public class AuthoringController {
 
 	private void initializeViewComponents() {
 		myProperties = new PropertiesView(myLanguage, myWidth, myHeight);
-		myLevels = new LevelsView(myLanguage, myWidth, myHeight);
+		myLevels = new LevelsView(myLanguage, myWidth, myHeight, myGameLocation);
 		myLevelOptions = new LevelOptions(myLanguage, myWidth, myHeight);
 		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
 
-		myGraphics = new ImagesView(myLanguage, myWidth, myHeight,
+		myGraphics = new ImageListView(myLanguage, myWidth, myHeight,
 				myGameLocation);
-		myGraphicsTools = new GraphicsTools(myLanguage, myWidth, myHeight);
-
-		myGameObjects = new GameObjectsView(myLanguage, myWidth, myHeight);
+		myGraphicsAdd = new GraphicsTools(myLanguage, myWidth, myHeight);
+		
+		myGameObjects = new GameObjectsView(myLanguage, myWidth, myHeight, myGameLocation);
+		myObjectsAdd = new GameObjectsTools(myLanguage, myWidth, myHeight);
+		
 		myLevelsAccordionView = new LevelsAccordionView(myLanguage, myWidth,
 				myHeight);
+		myConditionsAccordionView = new ConditionsAccordionView(myLanguage,
+				myWidth, myHeight);
 
 	}
 
 	private void initializeGameHandlers() {
+
 		myGraphics.setEvents(new ImagesClickHandler(myProperties));
 		myGameObjects
 				.setEvents(
 						new GameObjectClickHandler(myProperties),
 						new GameObjectDragToLevelHandler(myLevels, myModel
-								.getLevels()));
+								.getLevels(), myProperties));
 		myLevelOptions.setButtonBehavior(new AddLevelHandler(myModel
 				.getLevels(), myLevels));
-		myGraphicsTools.setButtonBehavior(new AddImageHandler(myModel
+		myGraphicsAdd.setButtonBehavior(new AddImageHandler(myModel
 				.getImages(), myGameLocation));
+		
+		myObjectsAdd.setButtonBehavior(new AddObjectHandler(myModel.getGameObjectCollection()));
+		
 		myLevels.setEventHandlers(new GameObjectClickHandler(myProperties),
-				new GameObjectDragHandler(myLevels, myModel.getLevels(), myProperties));
+				new GameObjectDragHandler(myLevels, myModel.getLevels(),
+						myProperties), new GameObjGraphicDragHandler(myLevels));
 		myLevelsAccordionView.setEvents(new LevelToViewHandler(myLevels));
-		myLevelsAccordionView.setLevelEvents(new GameObjectClickHandler(myProperties),
-				new GameObjectDragHandler(myLevels, myModel.getLevels(), myProperties));
-		myProperties.setEditButtonBehavior(new EditGameObjectHandler(myLevels , myModel.getLevels(), myProperties));
+		myLevelsAccordionView.setLevelEvents(new GameObjectClickHandler(
+				myProperties),
+				new GameObjectDragHandler(myLevels, myModel.getLevels(),
+						myProperties), new GameObjGraphicDragHandler(myLevels));
+		myProperties.setEditButtonBehavior(new EditGameObjectHandler(myLevels,
+				myModel.getLevels(), myProperties));
 
 	}
 
@@ -173,19 +194,29 @@ public class AuthoringController {
 		BPContainer graphicsBP = new BPContainer(myWidth
 				* LEFT_ACCORDION_WIDTH_RATIO, myHeight
 				* LEFT_ACCORDION_HEIGHT_RATIO);
-		graphicsBP.setTop(myGraphicsTools);
+		graphicsBP.setTop(myGraphicsAdd);
 		graphicsBP.setCenter(myGraphics);
 
+		BPContainer objectsBP = new BPContainer(myWidth
+				* LEFT_ACCORDION_WIDTH_RATIO, myHeight
+				* LEFT_ACCORDION_HEIGHT_RATIO);
+		objectsBP.setTop(myObjectsAdd);
+		objectsBP.setCenter(myGameObjects);
+		
 		TitledPane graphics = new TitledPane(myLanguage.getString("Images"),
 				graphicsBP);
 		TitledPane sounds = new TitledPane(myLanguage.getString("Sounds"),
 				mySounds);
 		TitledPane gameObjects = new TitledPane(
-				myLanguage.getString("GameObjects"), myGameObjects);
+				myLanguage.getString("GameObjects"), objectsBP);
 		TitledPane levels = new TitledPane(myLanguage.getString("Levels"),
 				myLevelsAccordionView);
 
-		leftView.getPanes().addAll(graphics, sounds, gameObjects, levels);
+		TitledPane conditions = new TitledPane(
+				myLanguage.getString("Conditions"), myConditionsAccordionView);
+
+		leftView.getPanes().addAll(graphics, sounds, gameObjects, levels,
+				conditions);
 		BorderPane.setAlignment(leftView, Pos.TOP_RIGHT);
 
 		return leftView;
@@ -197,76 +228,9 @@ public class AuthoringController {
 		properties.setCollapsible(false);
 		return properties;
 	}
-
-	/**
-	 * Here lie the sad, sad public methods of this controller (To be filled in
-	 * when Game Engine classes are solidified and created)
-	 */
-
-	/**
-	 * Sprite Methods
-	 */
-	public void editSprite() {
-
-	}
-
-	public void addSprite() {
-
-	}
-
-	public void removeSprite() {
-
-	}
-
-	public void editSpriteOnLevel() {
-
-	}
-
-	/**
-	 * Level Methods
-	 */
-	public void addSpriteToLevel() {
-
-	}
-
-	public void removeSpriteFromLevel() {
-
-	}
-
-	public void addLevel() {
-
-	}
-
-	public void removeLevel() {
-
-	}
-
-	/**
-	 * Condition Methods
-	 */
-
-	public void addButtonCondition() {
-
-	}
-
-	public void removeButtonCondition() {
-
-	}
-
-	public void addSpriteCondition(Condition c) {
-
-	}
-
-	public void removeSpriteCondition(Condition c) {
-
-	}
-
-	public void addAction(Condition c, Action a) {
-
-	}
-
-	public void removeAction(Condition c, Action a) {
-
+	
+	public void saveData() {
+		myModel.save();
 	}
 
 }

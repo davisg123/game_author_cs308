@@ -1,12 +1,14 @@
 package authoring.view.gameobjectsview;
 
-import java.util.Observable;
-import java.util.Observer;
+import java.io.File;
 import java.util.ResourceBundle;
 
+import data.Observable;
+import data.Observer;
 import javafx.scene.layout.VBox;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.ScrollView;
+import authoring.view.graphicsview.GameObjectGraphic;
 import authoring.view.graphicsview.Graphic;
 import engine.gameObject.GameObject;
 
@@ -19,14 +21,16 @@ import engine.gameObject.GameObject;
  */
 public class GameObjectsView extends ScrollView implements Observer {
 
-	private static final double VIEW_HEIGHT_RATIO = .74;
+	private static final double VIEW_HEIGHT_RATIO = .65;
 	private static final double VIEW_WIDTH_RATIO = 0.2;
 	private VBox myVbox = new VBox();	
+	private File myGameLocation;
 
-	public GameObjectsView(ResourceBundle language, double width, double height) {
+	public GameObjectsView(ResourceBundle language, double width, double height, File gameLoc) {
 		super(language, width, height);
 		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
 		this.setContent(myVbox);
+		myGameLocation = gameLoc;
 	}
 
 	@Override
@@ -36,8 +40,7 @@ public class GameObjectsView extends ScrollView implements Observer {
 
 	@SuppressWarnings("unchecked")
 	private void addGameObject(GameObject gameObject, GameHandler ... handler) {
-		Graphic graphic = new GameObjectGraphic(gameObject, handler);
-		graphic.makeGraphic();
+		Graphic graphic = new GameObjectGraphic(gameObject, myGameLocation, handler);
 		myVbox.getChildren().add(graphic);
 	}
 	

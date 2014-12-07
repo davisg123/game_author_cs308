@@ -1,7 +1,8 @@
 package engine.level;
 
 import java.util.Iterator;
-import java.util.Observable;
+
+import data.Observable;
 import authoring.model.collections.ConditionIDsCollection;
 import authoring.model.collections.GameObjectsCollection;
 import engine.gameObject.GameObject;
@@ -78,24 +79,20 @@ public class Level extends Observable {
 	}
 
 	public void addGameObject(GameObject gameObject) {
-		myGameObjects.add(gameObject);
+		myDefaultGameObjects.add(gameObject);
 		setChanged();
 		notifyObservers(this);
 	}
+	
 	public boolean removeGameObject(GameObject g){
-		boolean ret = myGameObjects.remove(g);
+		boolean ret = myDefaultGameObjects.remove(g);
 		setChanged();
 		notifyObservers(this);
 		return ret;
 	}
 
 	public GameObjectsCollection getGameObjectsCollection() {
-		return myGameObjects;
+		return myDefaultGameObjects;
 	}
-
-	/*
-	 * public Iterator<Condition> getConditions() { return
-	 * myConditions.iterator(); }
-	 */
 
 }

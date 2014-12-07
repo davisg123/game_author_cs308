@@ -5,11 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-
 import engine.gameObject.GameObject;
-
 import java.util.Map;
-
 import engine.physics.Acceleration;
 import engine.physics.BEngine;
 import engine.physics.Buoyancy;
@@ -263,12 +260,17 @@ public class PhysicsBody {
 				.getMagnitude() == 0.0) ? sprite : thisSprite);
 		double curX = cur.getPhysicsBody().getVelocity().getX();
 		double curY = cur.getPhysicsBody().getVelocity().getY();
+		double otherX=other.getPhysicsBody().getVelocity().getX();
+		double otherY=other.getPhysicsBody().getVelocity().getY();
 		// collides in x is true, y is false;
-		boolean xOrY = (xChange / curX > yChange / curY);
-
+		boolean xOrY = false;//(xChange / (Math.abs(curX)+Math.abs(otherX)) > yChange / (Math.abs(curY)+Math.abs(otherY)));
+		//System.out.println(xChange / (Math.abs(curX)+Math.abs(otherX)));
 		// create new condition to stop x or y
 		if (!cur.getCollisionConstant()) {
+
 			if (xOrY) {
+                            System.out.println("COLLISOIN");
+
 				//cancel out current velocity
 			        cur.setTranslateX(cur.getTranslateX() - cur.getPhysicsBody().getVelocity().getX()
 			                                 / FRAMES_PER_SECOND);
@@ -276,8 +278,9 @@ public class PhysicsBody {
 			        cur.setTranslateX(cur.getTranslateX() + other.getPhysicsBody().getVelocity().getX()
 			                                  / FRAMES_PER_SECOND);
 			} else {
+
 				//cancel out current velocity
-                                cur.setTranslateY(cur.getTranslateY() - myVelocity.getY()
+                                cur.setTranslateY(cur.getTranslateY() - cur.getPhysicsBody().getVelocity().getY()
                                                          / FRAMES_PER_SECOND);
                                 
                                 //apply rivaling velocity

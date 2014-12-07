@@ -1,5 +1,8 @@
 package authoring.model;
 
+import java.io.IOException;
+
+import data.DataManager;
 import authoring.model.collections.ConditionsCollection;
 import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.ImagesCollection;
@@ -27,6 +30,14 @@ public class AuthoringModel {
 	 */
 	public void save() {
 		// TODO - Data
+		DataManager manager = new DataManager();
+		try {
+			boolean success = manager.writeGameFile(myGame, "SavedGame1.json");
+			System.out.println("game saved = " + success);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	/**

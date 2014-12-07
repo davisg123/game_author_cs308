@@ -1,4 +1,5 @@
 package engine;
+import authoring.model.GameData;
 import authoring.model.collections.ConditionsCollection;
 import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.LevelsCollection;
@@ -124,14 +125,14 @@ public class GameManager {
         myLevelManager = new LevelManager(myLevels,myGameObjects,myGameConditions,myGameObjectRenderer);
     }
     
-    public void load(DataWrapper wrapper){
-    	myLevels=wrapper.getLevels();
-    	myGameConditions=wrapper.getConditions();
-    	myGameObjects=wrapper.getGameObjects();
+    public void load(GameData data){
+    	myLevels=data.getLevels();
+    	myGameConditions=data.getConditions();
+    	myGameObjects=data.getGameObjects();
     }
     
-    public DataWrapper getDataWrapper(){
-    	return new DataWrapper(myLevels, myGameObjects, myGameConditions);
+    public GameData getGameData(){
+    	return new GameData(myLevels, myGameConditions, myGameObjects);
     }
     
     public LevelManager getLevelManager(){

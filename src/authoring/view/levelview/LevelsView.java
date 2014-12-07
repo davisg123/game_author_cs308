@@ -1,9 +1,10 @@
 package authoring.view.levelview;
 
-import java.util.Observable;
-import java.util.Observer;
+import java.io.File;
 import java.util.ResourceBundle;
 
+import data.Observable;
+import data.Observer;
 import engine.level.Level;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
@@ -11,7 +12,7 @@ import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.BPContainer;
 import authoring.view.baseclasses.TabView;
-import authoring.view.gameobjectsview.GameObjectGraphic;
+import authoring.view.graphicsview.GameObjectGraphic;
 import authoring.view.graphicsview.Graphic;
 
 /**
@@ -26,11 +27,14 @@ import authoring.view.graphicsview.Graphic;
 public class LevelsView extends TabView implements Observer {
 	private static final double VIEW_HEIGHT_RATIO = .87;
 	private static final double VIEW_WIDTH_RATIO = 0.6;
+	private File myGameLocation;
 	private GameHandler[] myEvents;
 
-	public LevelsView(ResourceBundle language, double width, double height) {
+	public LevelsView(ResourceBundle language, double width, double height,
+			File gameLoc) {
 		super(language, width, height);
 		super.setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
+		myGameLocation = gameLoc;
 	}
 
 	@Override
@@ -80,26 +84,29 @@ public class LevelsView extends TabView implements Observer {
 		g.setLayoutX(x - 230);
 		g.setLayoutY(y - 100);
 	}
-	
+
 	public SingleLevelView addNewLevel(String myLevelID) {
 		Tab tab = new Tab(myLevelID);
-		SingleLevelView newView = new SingleLevelView(myWidth, myHeight,
-				myEvents);
+		SingleLevelView newView = new SingleLevelView(myGameLocation, myWidth,
+				myHeight, myEvents);
 		tab.setContent(newView);
 		this.getTabs().add(tab);
 		this.getSelectionModel().select(tab);
 		return newView;
 
 	}
+
 	/**
 	 * THIS IS REPEATED CODE WE NEED TO FIX
+	 * 
 	 * @param l
 	 * @return
 	 */
-	public SingleLevelView addExistingLevel(Level l, GameHandler ... events){
+	public SingleLevelView addExistingLevel(Level l, GameHandler... events) {
 		Tab tab = new Tab(l.getLevelID());
-		SingleLevelView newView = new SingleLevelView(myWidth, myHeight,l,events);
-		//System.out.println(events.length);
+		SingleLevelView newView = new SingleLevelView(myGameLocation, myWidth,
+				myHeight, l, events);
+		// System.out.println(events.length);
 		tab.setContent(newView);
 		this.getTabs().add(tab);
 		this.getSelectionModel().select(tab);

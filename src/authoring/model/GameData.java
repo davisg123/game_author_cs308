@@ -23,13 +23,13 @@ import engine.gameObject.GameObject;
  * @author Kevin Li
  *
  */
-public class GameData implements Serializable {
+public class GameData {//implements Serializable {
 
 	/**
 	 * Maybe put in properties file?
 	 */
-	private static final long serialVersionUID = 6633782568176674709L;
-	private Map<String, GeneralCollection> myCollections;
+//	private static final long serialVersionUID = 6633782568176674709L;
+//	private Map<String, GeneralCollection> myCollections;
 	private LevelsCollection myLevels;
 	private ConditionsCollection myConditions;
 	private GameObjectsCollection myGameObjects;
@@ -40,15 +40,28 @@ public class GameData implements Serializable {
 		myLevels = new LevelsCollection();
 		myConditions = new ConditionsCollection();
 		myGameObjects = new GameObjectsCollection();
-		myLevels = new LevelsCollection();
 		myImages = new ImagesCollection();
 		mySounds = new SoundsCollection();
+//		myCollections = new HashMap<String, GeneralCollection>();
+//		addAllToMyCollections(new LevelsCollection(),
+//				new GameObjectsCollection(), new ConditionsCollection(),
+//				new ImagesCollection(), new SoundsCollection());
+	}
+	
+	//Will refactor this later. 
+	public GameData(LevelsCollection levels, ConditionsCollection conditions, GameObjectsCollection gameObjects){
+		myLevels=levels;
+		myConditions=conditions; 
+		myGameObjects=gameObjects; 
+		myImages = new ImagesCollection(); 
+		mySounds = new SoundsCollection(); 
 		myCollections = new HashMap<String, GeneralCollection>();
 		addAllToMyCollections(new LevelsCollection(),
 				new GameObjectsCollection(), new ConditionsCollection(),
 				new ImagesCollection(), new SoundsCollection());
+		
 	}
-
+	
 	/**
 	 * Changing collections to be a map, so that the get method duplication is
 	 * removed.
