@@ -21,7 +21,7 @@ public class LevelToViewHandler implements GameHandler<MouseEvent>{
 	public void handle(MouseEvent event) {
 		LevelGraphic l = (LevelGraphic) event.getSource();
 		SingleLevelView newLevelView = myLevels.addExistingLevel(l.getLevel(), l.getLevelEvents());
-		newLevelView.setID(l.getLevel().getLevelID());
+		newLevelView.setID(l.getLevel().getIdentifier().getUniqueId());
 		l.getLevel().addObserver(newLevelView);
 	}
 

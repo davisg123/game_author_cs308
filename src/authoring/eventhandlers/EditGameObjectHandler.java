@@ -25,7 +25,7 @@ public class EditGameObjectHandler implements GameHandler<Event>{
 		
 		String id = myLevelsView.getCurrentLevel().getID();
 		for (Level level : myLevelsCol) {
-			if (level.getLevelID().equals(id)) {
+			if (level.getIdentifier().getUniqueId().equals(id)) {
 				
 					if(level.removeGameObject(myPropertiesView.getCurrentGameObject())){
 						GameObject editedOne = myPropertiesView.getEditedGameObject(); 

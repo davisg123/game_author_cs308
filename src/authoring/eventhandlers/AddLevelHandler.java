@@ -13,6 +13,7 @@ import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.LevelsCollection;
 import authoring.view.levelview.LevelsView;
 import authoring.view.levelview.SingleLevelView;
+import engine.gameObject.Identifier;
 import engine.level.Level;
 
 
@@ -48,7 +49,7 @@ public class AddLevelHandler implements GameHandler<Event> {
 		Level levelData = new Level(new GameObjectsCollection());
 		levelData.addObserver(newLevelView);
 		newLevelView.setID(myLevelID);
-		levelData.setLevelID(myLevelID);
+		levelData.setIdentifier(new Identifier("Level", myLevelID));
 		myLevelsCollection.add(levelData);
 		//System.out.println(levelData);		
 	}
