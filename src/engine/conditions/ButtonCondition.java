@@ -1,5 +1,10 @@
 package engine.conditions;
 
+/**
+ * @author Abhishek B
+ * @author Davis Gossage
+ * @author Safkat Islam
+ */
 import java.util.ArrayList;
 import java.util.List;
 

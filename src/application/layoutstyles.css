@@ -1,5 +1,9 @@
 .vbox {
     -fx-background-color: #00008b;
+	-fx-background-image: url("voogaSplash.PNG");
+	-fx-background-position: center center;
+	-fx-background-size: 500 500;
+    -fx-background-repeat: no-repeat;
     -fx-padding: 15;
     -fx-spacing: 10;
     -fx-size: 500 500;
@@ -8,5 +12,15 @@
 #text {
 	-fx-font: 20px Tahoma;
 	-fx-stroke: white;
-	-fx-stroke-width: 3;
+	-fx-stroke-width: 2;
+}
+
+.imagehbox {
+	-fx-background-image: url("voogaSplash.PNG");
+	-fx-background-size: 96, 205;
+    -fx-background-repeat: no-repeat;
+    -fx-border-color: #2e8b57;
+    -fx-border-width: 2px;
+    -fx-padding: 10;
+    -fx-spacing: 8;
 }
