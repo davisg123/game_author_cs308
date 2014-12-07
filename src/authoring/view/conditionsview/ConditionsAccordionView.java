@@ -1,9 +1,9 @@
 package authoring.view.conditionsview;
 
-import java.util.Observable;
-import java.util.Observer;
 import java.util.ResourceBundle;
 
+import data.Observable;
+import data.Observer;
 import javafx.scene.layout.VBox;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.ScrollView;

@@ -19,6 +19,7 @@ import authoring.model.GameData;
 import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.GeneralCollection;
 import authoring.model.GameData;
+import authoring.model.collections.GameObjectsCollection;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -63,7 +64,8 @@ public class DataManager {
 		
 		//adding levels to GameData
 		String im = "/assets/mario.png";
-		GameObject mario = new GameObject("Mario");
+		GameObject mario = new GameObject(new ArrayList<Component>(), im, 0, 0,
+				0, 0, 0, "Mario");
 		GameObjectsCollection goc = new GameObjectsCollection();
 		goc.addGameObject(mario);
 		Level level = new Level(goc);

@@ -1,10 +1,10 @@
 package authoring.view.levelview;
 
 import java.io.File;
-import java.util.Observable;
-import java.util.Observer;
 import java.util.ResourceBundle;
 
+import data.Observable;
+import data.Observer;
 import engine.level.Level;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;

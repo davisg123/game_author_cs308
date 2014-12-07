@@ -264,7 +264,7 @@ public class PhysicsBody {
 		double otherY=other.getPhysicsBody().getVelocity().getY();
 		// collides in x is true, y is false;
 		boolean xOrY = false;//(xChange / (Math.abs(curX)+Math.abs(otherX)) > yChange / (Math.abs(curY)+Math.abs(otherY)));
-		System.out.println(xChange / (Math.abs(curX)+Math.abs(otherX)));
+		//System.out.println(xChange / (Math.abs(curX)+Math.abs(otherX)));
 		// create new condition to stop x or y
 		if (!cur.getCollisionConstant()) {
 

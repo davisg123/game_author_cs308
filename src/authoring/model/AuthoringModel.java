@@ -33,7 +33,7 @@ public class AuthoringModel {
 		DataManager manager = new DataManager();
 		try {
 			boolean success = manager.writeGameFile(myGame, "SavedGame1.json");
-			System.out.println("game saved = ");
+			System.out.println("game saved = " + success);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

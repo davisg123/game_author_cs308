@@ -1,6 +1,7 @@
 package authoring.view.levelview;
 
 import engine.level.Level;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.graphicsview.Graphic;
@@ -18,8 +19,9 @@ public class LevelGraphic extends Graphic {
 	}
 
 	@Override
-	public void makeGraphic() {
+	public void makeGraphic(double width, double height, double rotate) {
 		Text text = new Text(myName);
+		text.setFont(new Font(20));
 		this.getChildren().add(text);
 		for (GameHandler g : myOnClick) {
 			this.addEventFilter(g.getEventType(), g);

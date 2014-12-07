@@ -72,7 +72,7 @@ public class ErrorPopUp {
 		
 //		if(throwException)
 //		{
-//			throw new SLogoException(errorMessage);
+//			throw new VoogaException(errorMessage);
 //		}
 	}
 
