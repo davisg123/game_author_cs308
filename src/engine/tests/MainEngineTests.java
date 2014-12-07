@@ -106,6 +106,7 @@ public class MainEngineTests extends Application {
         ballBody.setVelocity(new Velocity(0,10));
         ball.setPhysicsBody(ballBody);
         myBallObjects.add(ball);
+        System.out.println(ballBody.getVelocity().getY());
         
         /******
          * conditions

@@ -94,7 +94,7 @@ public class PhysicsBody {
 	}
 
 	public void setVelocity(Velocity v) {
-		Velocity myVelocity = v;
+		myVelocity = v;
 	}
 
 	public void setAcceleration(Acceleration v) {
@@ -162,10 +162,10 @@ public class PhysicsBody {
 		if (haveForcesChanged) {
 			balanceForces();
 		}
+		//System.out.println(myVelocity.getX()+" "+myVelocity.getY());
 		changeAcceleration();
 		changeVelocity();
 		// return changePosition
-
 		// sprite.setPosition(new Point2D.Double(myVelocity.getX()
 		// / FRAMES_PER_SECOND, myVelocity.getY() / FRAMES_PER_SECOND));
 		sprite.setTranslateX(sprite.getTranslateX() + myVelocity.getX()
