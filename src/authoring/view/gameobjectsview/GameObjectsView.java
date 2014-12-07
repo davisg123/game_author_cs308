@@ -8,7 +8,8 @@ import data.Observer;
 import javafx.scene.layout.VBox;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.ScrollView;
-import authoring.view.graphicsview.Graphic;
+import authoring.view.icons.GameObjectIcon;
+import authoring.view.icons.ImageBasedIcon;
 import engine.gameObject.GameObject;
 
 /**
@@ -39,7 +40,7 @@ public class GameObjectsView extends ScrollView implements Observer {
 
 	@SuppressWarnings("unchecked")
 	private void addGameObject(GameObject gameObject, GameHandler ... handler) {
-		Graphic graphic = new GameObjectGraphic(gameObject, myGameLocation, handler);
+		ImageBasedIcon graphic = new GameObjectIcon(gameObject, myGameLocation, handler);
 		myVbox.getChildren().add(graphic);
 	}
 	

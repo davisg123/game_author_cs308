@@ -6,8 +6,8 @@ import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.ScrollView;
-import authoring.view.graphicsview.ImageGraphic;
-import authoring.view.levelview.LevelGraphic;
+import authoring.view.icons.ImageIcon;
+import authoring.view.icons.LevelIcon;
 import engine.gameObject.GameObject;
 
 public class PropertiesView extends ScrollView {
@@ -38,7 +38,7 @@ public class PropertiesView extends ScrollView {
 //		g.makeProperties();
 //	}
 	
-	public void makeProperties(ImageGraphic g) {
+	public void makeProperties(ImageIcon g) {
 		myContents.getChildren().clear();
 		this.setContent(new ImageProperties(g));
 	}
@@ -51,9 +51,9 @@ public class PropertiesView extends ScrollView {
 		this.setContent(myGameObjectsProperties);
 	}
 	
-	public void makeProperties(LevelGraphic g){
+	public void makeProperties(LevelIcon g){
 		myContents.getChildren().clear();
-		//System.out.println("poop");
+		this.setContent(new LevelProperties(g));
 	}
 
 	public void displayProperties(Properties props){
