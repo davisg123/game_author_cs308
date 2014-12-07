@@ -16,7 +16,7 @@ import engine.actions.TranslateY;
 import engine.conditions.BoundaryConditionY;
 import engine.conditions.ButtonCondition;
 import engine.conditions.ButtonConditionManager;
-import engine.conditions.CollisionCondition;
+import engine.conditions.TypeCollisionCondition;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 import engine.gameObject.components.PhysicsBody;
@@ -126,7 +126,7 @@ public class MainEngineTests extends Application {
         myConditions.add(dCon);
         
         //collision stuff
-        CollisionCondition ballAndPlatformCollision = new CollisionCondition(null,myFloorObjects,myBallObjects);
+        TypeCollisionCondition ballAndPlatformCollision = new TypeCollisionCondition(null,"ball","floor");
         ballAndPlatformCollision.setIdentifier(new Identifier("collision_cond","a"));
         myConditions.add(ballAndPlatformCollision);
         
@@ -135,7 +135,7 @@ public class MainEngineTests extends Application {
         ArrayList<Action> boundaryActionList = new ArrayList<Action>();
         boundaryActionList.add(boundaryLeftAction);
         boundaryActionList.add(boundaryRightAction);
-        BoundaryConditionY boundaryCondition = new BoundaryConditionY(boundaryActionList,myFloorObjects,-50,false);
+        BoundaryConditionY boundaryCondition = new BoundaryConditionY(boundaryActionList,myFloorObjects.getIdentifierList(),-50,false);
         boundaryCondition.setIdentifier(new Identifier("bound_cond","a"));
         myConditions.add(boundaryCondition);
         

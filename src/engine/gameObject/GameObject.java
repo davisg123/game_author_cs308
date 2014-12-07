@@ -48,6 +48,9 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
     //Should it be included in constructor?
     private boolean enabled;
     
+    //Is it colliding with something
+    private boolean collisionEnabled;
+    
     //Holds onto the default data for reinitialization. 
     private DefaultData myDefaultData; 
     
@@ -305,6 +308,18 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
 
     public boolean isEnabled() {
         return enabled;
+    }
+    
+    public void enableCollision() {
+        collisionEnabled = true;
+    }
+    
+    public void disableCollision() {
+        collisionEnabled = false;
+    }
+    
+    public boolean isCollisionEnabled() {
+        return collisionEnabled;
     }
 
     public boolean getCollisionConstant() {
