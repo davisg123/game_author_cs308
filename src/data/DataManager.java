@@ -9,8 +9,9 @@ import engine.conditions.Condition;
 import engine.gameObject.GameObject;
 import engine.gameObject.components.Component;
 import engine.level.Level;
+import engine.physics.Force;
+import engine.physics.Scalar;
 import gamePlayer.model.DataWrapper;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -19,14 +20,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-
 import authoring.model.GameData;
 import authoring.model.collections.GameObjectsCollection;
-
+import authoring.model.collections.GeneralCollection;
 import authoring.model.GameData;
 import authoring.model.collections.GameObjectsCollection;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -47,7 +45,9 @@ public class DataManager {
 			//gson.registerTypeAdapter(classes[i], new GenericTypeAdapter<classes[i]>(packages[i]));
 			gson.registerTypeAdapter(Condition.class, new GenericTypeAdapter<Condition>("engine.conditions"));
 			gson.registerTypeAdapter(Action.class, new GenericTypeAdapter<Action>("engine.actions", "engine.actions.translate"));
-			//gson.registerTypeAdapter(Action.class, new GenericTypeAdapter<Action>("engine.actions.translate"));
+			gson.registerTypeAdapter(GeneralCollection.class, new GenericTypeAdapter<GeneralCollection>("authoring.model.collections"));
+			gson.registerTypeAdapter(Force.class, new GenericTypeAdapter<Force>("engine.physics"));
+			gson.registerTypeAdapter(Scalar.class, new GenericTypeAdapter<Scalar>("engine.physics"));
 		//}
 	}
 	
@@ -56,44 +56,44 @@ public class DataManager {
 	 * @param args
 	 * @throws IOException 
 	 */
-	public static void main(String[]args) throws IOException {
-		DataManager manager = new DataManager();
-		
-//		SampleWrapper writeSW = new SampleWrapper();
-//		System.out.println(writeSW);
-//		boolean success = manager.writeSampleFile(writeSW, "sampleThree.json");
-//		System.out.println("wrapper written: " + success);
-//		SampleWrapper readSW = manager.readSampleFile("sampleThree.json");
-//		System.out.println(readSW);
-		
-		GameData writeData = new GameData();
-		
-		//adding levels to GameData
-		String im = "/assets/mario.png";
-		GameObject mario = new GameObject(new ArrayList<Component>(), im, 0, 0,
-				0, 0, 0, "Mario");
-		GameObjectsCollection goc = new GameObjectsCollection();
-		//goc.addGameObject(mario);
-		Level level = new Level(goc);
-		writeData.addLevel(level);
-		
-		List<Action> actionList = new ArrayList<Action>();
-		Action ac1 = new TestAction("action1");
-		Action ac2 = new TestTranslateAction("action2");
-		actionList.add(ac1);
-		actionList.add(ac2);
-		List<GameObject> gameObjectList = new ArrayList<GameObject>();
-		Condition cond = new CollisionCondition(actionList, gameObjectList, "condition1");
-		writeData.addCondition(cond);
-		
-		
-		String nameOfFile = "gameDataFour.json";
-		System.out.println(writeData);
-		boolean success = manager.writeGameFile(writeData, nameOfFile);
-		System.out.println("data written: " + success);
-		GameData readData = manager.readGameFile(nameOfFile);
-		System.out.println(readData);
-	}
+//	public static void main(String[]args) throws IOException {
+//		DataManager manager = new DataManager();
+//		
+////		SampleWrapper writeSW = new SampleWrapper();
+////		System.out.println(writeSW);
+////		boolean success = manager.writeSampleFile(writeSW, "sampleThree.json");
+////		System.out.println("wrapper written: " + success);
+////		SampleWrapper readSW = manager.readSampleFile("sampleThree.json");
+////		System.out.println(readSW);
+//		
+//		GameData writeData = new GameData();
+//		
+//		//adding levels to GameData
+//		String im = "/assets/mario.png";
+//		GameObject mario = new GameObject(new ArrayList<Component>(), im, 0, 0,
+//				0, 0, 0, "Mario");
+//		GameObjectsCollection goc = new GameObjectsCollection();
+//		//goc.addGameObject(mario);
+//		//Level level = new Level(goc);
+//		//writeData.addLevel(level);
+//		
+//		List<Action> actionList = new ArrayList<Action>();
+//		Action ac1 = new TestAction("action1");
+//		Action ac2 = new TestTranslateAction("action2");
+//		actionList.add(ac1);
+//		actionList.add(ac2);
+//		List<GameObject> gameObjectList = new ArrayList<GameObject>();
+//		Condition cond = new CollisionCondition(actionList, gameObjectList, "condition1");
+//		writeData.addCondition(cond);
+//		
+//		
+//		String nameOfFile = "gameDataFour.json";
+//		System.out.println(writeData);
+//		boolean success = manager.writeGameFile(writeData, nameOfFile);
+//		System.out.println("data written: " + success);
+//		GameData readData = manager.readGameFile(nameOfFile);
+//		System.out.println(readData);
+//	}
 	
 //	public boolean writeSampleFile(SampleWrapper sw, String fileName) throws IOException {
 //		return writeFile(sw, sampleDatapath, fileName);

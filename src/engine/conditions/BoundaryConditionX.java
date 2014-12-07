@@ -1,20 +1,21 @@
 package engine.conditions;
 
 import java.util.List;
+import authoring.model.collections.GameObjectsCollection;
 import engine.actions.Action;
 import engine.gameObject.GameObject;
 
 public class BoundaryConditionX extends GameObjectCondition {
     
     private double myBoundary;
-    private boolean myUpTrigger;
+    private boolean myRightTrigger;
 
     public BoundaryConditionX (List<Action> myActions,
-                              List<GameObject> myGameObjects,
-                              String identifier, double boundary, boolean upTrigger) {
-        super(myActions, myGameObjects, identifier);
+                              GameObjectsCollection myGameObjects,
+                              double boundary, boolean rightTrigger) {
+        super(myActions, myGameObjects);
         myBoundary = boundary;
-        myUpTrigger = upTrigger;
+        myRightTrigger = rightTrigger;
     }
 
     @Override
@@ -27,7 +28,7 @@ public class BoundaryConditionX extends GameObjectCondition {
     @Override
     public void frameElapsed () {
         for (GameObject obj : getGameObjects()){
-            if (myUpTrigger && obj.getTranslateX() > myBoundary || !myUpTrigger && obj.getTranslateX() < myBoundary){
+            if (myRightTrigger && obj.getTranslateX() > myBoundary || !myRightTrigger && obj.getTranslateX() < myBoundary){
                 executeActions();
             }
         }

@@ -1,7 +1,5 @@
-package engine.actions.translate;
+package engine.actions;
 
-import engine.actions.Action;
-import engine.actions.Initializable;
 import engine.gameObject.GameObject;
 
 /**
