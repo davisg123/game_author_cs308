@@ -83,10 +83,10 @@ public class KeyboardView {
 		return functionCombos;
 	}
 
-	public void setNewKey(String button, String newKeyFunction)
+	public void setNewKey(String button, String keyFunction)
 	{
 		KeyCode kc = KeyCode.valueOf(button);
-		myButtonConditionsMap.put(kc, newKeyFunction);
+		myButtonConditionsMap.put(kc, keyFunction);
 		for(Condition c : myButtonConditions) {
 			ButtonCondition bc = (ButtonCondition) c;
 			ArrayList<KeyCode> kcl = bc.getKeyList();
@@ -97,24 +97,10 @@ public class KeyboardView {
 					bc.removeKey(kc);
 				}
 			}
-			if(bc.getKeyIdentifier().equals(newKeyFunction))
+			if(bc.getKeyIdentifier().equals(keyFunction))
 			{
 				bc.addKey(kc);
 			}
 		}
 	}
-	
-/*	@Override
-	public void start(Stage arg0) throws Exception {
-		myStage = new Stage();
-		myStage.setTitle("Vooga Salad Bits Please Keyboard Mapping Utility");
-		myGrid = new GridPane();
-		Scene myScene = new Scene(myGrid, WIDTH, HEIGHT);
-//		myScene.getStylesheets().add(getClass().getResource("layoutstyles.css").toExternalForm());
-		myStage.setScene(myScene);
-//		myButtonConditions = buttonConditions;
-		this.buildKeyboard();
-		myFunctionComboBox = comboBoxForButton();
-		myStage.show();
-	}*/
 }
