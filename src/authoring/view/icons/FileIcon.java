@@ -11,8 +11,4 @@ public class FileIcon extends BaseIcon {
 		super(label, handler);
 		myGameLocation = gameLoc;
 	}
-
-	public String getName() {
-		return myLabel;
-	}
 }
