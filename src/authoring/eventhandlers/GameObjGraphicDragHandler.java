@@ -1,12 +1,10 @@
 package authoring.eventhandlers;
 
-import authoring.model.collections.LevelsCollection;
-import authoring.view.gameobjectsview.GameObjectGraphic;
-import authoring.view.levelview.LevelsView;
-import authoring.view.levelview.SingleLevelView;
-import authoring.view.propertiesview.PropertiesView;
 import javafx.event.EventType;
 import javafx.scene.input.MouseEvent;
+import authoring.view.graphicsview.GameObjectGraphic;
+import authoring.view.levelview.LevelsView;
+import authoring.view.levelview.SingleLevelView;
 
 /**
  * Event handler for animation of dragging graphics on the level view.
