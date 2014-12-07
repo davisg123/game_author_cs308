@@ -100,7 +100,7 @@ public class Level extends Observable implements Identifiable {
     }
     
     public void addInitialGameObjects(GameObject gameObject){
-        myDefaultGameObjects.add(gameObject);
+        myWorkingGameObjects.add(gameObject);
     }
 
     public boolean removeGameObject(GameObject g){

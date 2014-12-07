@@ -51,7 +51,6 @@ public abstract class ImageBasedIcon extends FileIcon {
 	 */
 
 	private void makeGraphic() {
-		System.out.println(myGameLocation.getPath());
 		File file = new File(myGameLocation.getPath() + "/images/"
 				+ myLabel);
 		BufferedImage bufferedImage;

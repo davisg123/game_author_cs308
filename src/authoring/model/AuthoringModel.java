@@ -38,7 +38,6 @@ public class AuthoringModel {
 		GameData mySerializableGame = convertToSerializable();
 		DataManager manager = new DataManager();
 		try {
-			System.out.println(dataPath);
 			boolean success = manager.writeGameFile(mySerializableGame, "/Game.json", dataPath);
 			System.out.println("game saved = " + success);
 		} catch (IOException e) {
@@ -83,19 +82,21 @@ public class AuthoringModel {
 			myGame.getImages().add(s);
 		}
 		for (Level l: input.getLevels()){
+			GameObjectsCollection newObjects = new GameObjectsCollection();
 			for(Identifier i: l.getGameObjectIDs()){
 				for(GameObject g : input.getGameObjects()){
 					if(i.getUniqueId().equals(g.getIdentifier().getUniqueId())){
-						l.addInitialGameObjects(g);
+						newObjects.add(g);
 					}
 				}
-				for(GameObject g : l.getGameObjectsCollection()){
+				for(GameObject g : newObjects){
 					input.getGameObjects().remove(g);
 				}
 			}
-			l.getGameObjectIDs().clear();
-			System.out.println(l.getGameObjectsCollection());
-			myGame.getLevels().add(l);
+			//l.getGameObjectIDs().clear();
+			Level newLevel = new Level(newObjects);
+			newLevel.setIdentifier(l.getIdentifier());
+			myGame.getLevels().add(newLevel);
 		}
 		for(GameObject g : input.getGameObjects()){
 			myGame.getGameObjects().add(g);
