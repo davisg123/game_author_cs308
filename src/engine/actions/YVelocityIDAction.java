@@ -5,6 +5,7 @@ import java.util.List;
 import engine.GameManager;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
+import engine.physics.Vector;
 import engine.physics.Velocity;
 
 /**
@@ -13,19 +14,25 @@ import engine.physics.Velocity;
  *
  */
 
-public class XVelocityAction extends PhysicsAction{
+public class YVelocityIDAction extends PhysicsIDAction{
 
-	public XVelocityAction(List<Identifier> ids, double value) {
+	public YVelocityIDAction(List<Identifier> ids, double value) {
 		super(ids, value);
 	}
 
-	//TODO refactor after physics body discussion
+	//TODO refactor after discussion about physics
 	@Override
 	public void applyPhysics() {
 		Velocity a=myGameObject.getPhysicsBody().getVelocity();
-		Velocity b=new Velocity(myValue, a.getY());
+		Velocity b=new Velocity(a.getX(), myValue);
 		myGameObject.getPhysicsBody().setVelocity(b);
 	}
 
-	
+	@Override
+	public void applyPhysics(GameObject... myObjects) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 }

@@ -7,9 +7,9 @@ import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 import engine.physics.Impulse;
 
-public class XImpulseAction extends PhysicsAction {
+public class XImpulseIDAction extends PhysicsIDAction {
 
-	public XImpulseAction(List<Identifier> ids, double value) {
+	public XImpulseIDAction(List<Identifier> ids, double value) {
 		super(ids, value);
 		// TODO Auto-generated constructor stub
 	}

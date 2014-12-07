@@ -12,9 +12,9 @@ import engine.gameObject.Identifier;
  *
  */
 
-public class TranslateX extends TranslateAction {
+public class TranslateXID extends TranslateIDAction {
 
-    public TranslateX (List<Identifier> iDs, double value) {
+    public TranslateXID (List<Identifier> iDs, double value) {
         super(iDs, value);
     }
 

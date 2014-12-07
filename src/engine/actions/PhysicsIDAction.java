@@ -9,14 +9,14 @@ import engine.collision.objects.CollisionComposition;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 
-public abstract class PhysicsAction implements Action, Initializable {
+public abstract class PhysicsIDAction implements Action, Initializable {
 
 	protected List<Identifier> myGameObjectIDs;
 	protected double myValue;
 	protected CollisionComposition myCollision;
 	protected GameObjectsCollection myGameObjects; 
 
-	public PhysicsAction(List<Identifier> ids, double value) {
+	public PhysicsIDAction(List<Identifier> ids, double value) {
 		myGameObjectIDs = ids;
 		myValue = value;
 		myCollision = new CollisionComposition();

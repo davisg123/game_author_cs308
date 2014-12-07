@@ -8,9 +8,9 @@ import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 import engine.physics.Impulse;
 
-public class YImpulseAction extends PhysicsAction {
+public class YImpulseIDAction extends PhysicsIDAction {
 
-	public YImpulseAction(List<Identifier> ids, double value) {
+	public YImpulseIDAction(List<Identifier> ids, double value) {
 		super(ids, value);
 		// TODO Auto-generated constructor stub
 	}

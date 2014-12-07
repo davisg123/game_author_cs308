@@ -13,12 +13,12 @@ import engine.gameObject.Identifier;
  *
  */
 
-public abstract class TranslateAction implements Action, Initializable {
+public abstract class TranslateIDAction implements Action, Initializable {
     protected GameObjectsCollection myGameObjects;
     protected List<Identifier> myGameObjectIDs;
     protected double myValue;
     
-    public TranslateAction (List<Identifier> iDs, double value) {
+    public TranslateIDAction (List<Identifier> iDs, double value) {
         myGameObjectIDs = iDs;
         myValue = value;
     }

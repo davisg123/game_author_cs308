@@ -6,9 +6,9 @@ import engine.GameManager;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 
-public class ReverseVelocityAction extends PhysicsAction {
+public class ReverseVelocityIDAction extends PhysicsIDAction {
 
-	public ReverseVelocityAction(List<Identifier> ids, double value) {
+	public ReverseVelocityIDAction(List<Identifier> ids, double value) {
 		super(ids, value);
 	}
 
