@@ -31,4 +31,10 @@ public class NullComponent extends Component {
         return null;
     }
 
+	@Override
+	public Component getClone() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

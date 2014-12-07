@@ -23,8 +23,8 @@ public class GameCanvas implements ViewController{
 	}
 	
 	@Override
-	public Node getNode() {
-		return myCanvas;
+	public Group getNode() {
+		return (Group)myCanvas;
 	}
 	
 	public void incrementX() {

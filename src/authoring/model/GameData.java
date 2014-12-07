@@ -25,7 +25,7 @@ public class GameData {//implements Serializable {
 	 * Maybe put in properties file?
 	 */
 //	private static final long serialVersionUID = 6633782568176674709L;
-//	private Map<String, GeneralCollection> myCollections;
+	private Map<String, GeneralCollection> myCollections;
 	private LevelsCollection myLevels;
 	private ConditionsCollection myConditions;
 	private GameObjectsCollection myGameObjects;
@@ -36,40 +36,46 @@ public class GameData {//implements Serializable {
 		myLevels = new LevelsCollection();
 		myConditions = new ConditionsCollection();
 		myGameObjects = new GameObjectsCollection();
-		myLevels = new LevelsCollection();
 		myImages = new ImagesCollection();
 		mySounds = new SoundsCollection();
-//		myCollections = new HashMap<String, GeneralCollection>();
+		myCollections = new HashMap<String, GeneralCollection>();
 //		addAllToMyCollections(new LevelsCollection(),
 //				new GameObjectsCollection(), new ConditionsCollection(),
 //				new ImagesCollection(), new SoundsCollection());
 	}
-
-//	/**
-//	 * Changing collections to be a map, so that the get method duplication is
-//	 * removed.
-//	 * 
-//	 * @param collection
-//	 */
-//	private void addAllToMyCollections(GeneralCollection... collection) {
-//		for (GeneralCollection c : collection) {
-//			String classKey = c.getClass().getSimpleName();
-//			classKey = classKey.toLowerCase();
-//			myCollections.put(classKey, c);
-//		}
-//	}
+	
+	//Will refactor this later. 
+	public GameData(LevelsCollection levels, ConditionsCollection conditions, GameObjectsCollection gameObjects){
+		myLevels=levels;
+		myConditions=conditions; 
+		myGameObjects=gameObjects; 
+		myImages = new ImagesCollection(); 
+		mySounds = new SoundsCollection(); 
+		myCollections = new HashMap<String, GeneralCollection>();
+		addAllToMyCollections(new LevelsCollection(),
+				new GameObjectsCollection(), new ConditionsCollection(),
+				new ImagesCollection(), new SoundsCollection());
+		
+	}
+	
+	/**
+	 * Changing collections to be a map, so that the get method duplication is
+	 * removed.
+	 * 
+	 * @param collection
+	 */
+	private void addAllToMyCollections(GeneralCollection... collection) {
+		for (GeneralCollection c : collection) {
+			String classKey = c.getClass().getSimpleName();
+			classKey = classKey.toLowerCase();
+			myCollections.put(classKey, c);
+		}
+	}
 
 	public LevelsCollection getLevels() {
 		return myLevels;
 	}
 
-	public void addLevel(Level l) {
-		myLevels.add(l);
-	}
-
-	public void removeLevel(Level l) {
-		myLevels.remove(l);
-	}
 
 	/**
 	 * GameObject Methods
@@ -79,13 +85,6 @@ public class GameData {//implements Serializable {
 		return myGameObjects;
 	}
 
-	public void addGameObject(GameObject s) {
-		myGameObjects.add(s);
-	}
-
-	public void removeGameObject(GameObject s) {
-		myGameObjects.remove(s);
-	}
 
 	/**
 	 * Condition Methods
@@ -95,13 +94,6 @@ public class GameData {//implements Serializable {
 		return myConditions;
 	}
 
-	public void addCondition(Condition c) {
-		myConditions.add(c);
-	}
-
-	public void removeCondition(Condition c) {
-		myConditions.remove(c);
-	}
 
 	/**
 	 * Graphic Methods
