@@ -1,44 +1,45 @@
 package engine.actions;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
-import authoring.model.collections.GameObjectsCollection;
 import engine.GameManager;
 import engine.collision.objects.CollisionComposition;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 
-public abstract class PhysicsIDAction implements Action, Initializable {
+public abstract class PhysicsAction implements Action, Initializable {
 
-	protected List<Identifier> myGameObjectIDs;
 	protected double myValue;
 	protected CollisionComposition myCollision;
-	protected GameObjectsCollection myGameObjects; 
+	protected Collection<GameObject> myObjects;
+	protected List<Identifier> myID;
 
-	public PhysicsIDAction(List<Identifier> ids, double value) {
-		myGameObjectIDs = ids;
+	public PhysicsAction(ArrayList<Identifier> id, double value) {
+		myID = id;
 		myValue = value;
 		myCollision = new CollisionComposition();
+		myObjects = new ArrayList<GameObject>();
 	}
 
-	@Override
-	public void initialize(GameManager myGameManager){
-		for (Identifier id: myGameObjectIDs){
-			myGameObjects.add(myGameManager.objectForIdentifier(id));
-		}
-	}
-	
 	@Override
 	public void execute() {
-		//applyPhysics();
+		applyPhysics(myObjects);
 	}
 
-	public abstract void applyPhysics(GameObject... myObjects);
+	public void initialize(GameManager manager) {
+		for (Identifier id : myID) {
+			myObjects.add(manager.objectForIdentifier(id));
+		}
+	}
 
-	protected void forHelper(GameObject[] myObjects,
+	public abstract void applyPhysics(Collection<GameObject> myObjects);
+
+	protected void forHelper(Collection<GameObject> myObjects,
 			TwoArgInterface myOperation, Object value) {
-		Arrays.asList(myObjects).forEach(x -> myOperation.operation(x, value));
+		myObjects.forEach(x -> myOperation.operation(x, value));
 	}
 
 	protected interface TwoArgInterface {
