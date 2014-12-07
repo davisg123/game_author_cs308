@@ -9,6 +9,7 @@ import javafx.scene.layout.BorderPane;
 import authoring.eventhandlers.AddImageHandler;
 import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.AddObjectHandler;
+import authoring.eventhandlers.DeleteGameObjectHandler;
 import authoring.eventhandlers.EditGameObjectHandler;
 import authoring.eventhandlers.GameObjGraphicDragHandler;
 import authoring.eventhandlers.GameObjectClickHandler;
@@ -16,6 +17,7 @@ import authoring.eventhandlers.GameObjectDragHandler;
 import authoring.eventhandlers.GameObjectDragToLevelHandler;
 import authoring.eventhandlers.ImagesClickHandler;
 import authoring.eventhandlers.LevelToViewHandler;
+import authoring.eventhandlers.SaveAsNewHandler;
 import authoring.model.AuthoringModel;
 import authoring.view.AuthoringView;
 import authoring.view.baseclasses.AccordionContainer;
@@ -166,8 +168,10 @@ public class AuthoringController {
 				myProperties),
 				new GameObjectDragHandler(myLevels, myModel.getLevels(),
 						myProperties), new GameObjGraphicDragHandler(myLevels));
-		myProperties.setEditButtonBehavior(new EditGameObjectHandler(myLevels,
-				myModel.getLevels(), myProperties));
+		myProperties.setButtonBehaviors(
+				new EditGameObjectHandler(myLevels, myModel.getLevels(), myProperties),
+				new SaveAsNewHandler(myModel.getGameObjectCollection(), myProperties),
+				new DeleteGameObjectHandler(myLevels, myModel.getLevels(), myProperties));
 
 	}
 

@@ -6,7 +6,7 @@ import java.util.List;
 import data.DataManager;
 import authoring.model.GameData;
 import authoring.model.collections.ConditionsCollection;
-import authoring.model.collections.GameObjectsCollection;
+import authoring.model.collections.GameObjectCollection;
 import authoring.model.collections.LevelsCollection;
 import engine.GameManager;
 import engine.actions.Action;
@@ -75,8 +75,8 @@ public class MainEngineTests extends Application {
         /*****
          * create a sprite and put it in a collection
          *****/
-        GameObjectsCollection myFloorObjects = new GameObjectsCollection();
-        GameObjectsCollection myBallObjects = new GameObjectsCollection();
+        GameObjectCollection myFloorObjects = new GameObjectCollection();
+        GameObjectCollection myBallObjects = new GameObjectCollection();
         //create the floor
         GameObject floorRight = new GameObject(null,"floor",
                                    200, 200, 20, 200, 0, "floor_right");
@@ -152,7 +152,7 @@ public class MainEngineTests extends Application {
         myConditions.add(uCon);
         
         
-        GameObjectsCollection allGameObjects = new GameObjectsCollection();
+        GameObjectCollection allGameObjects = new GameObjectCollection();
         allGameObjects.addAll(myBallObjects);
         allGameObjects.addAll(myFloorObjects);
 

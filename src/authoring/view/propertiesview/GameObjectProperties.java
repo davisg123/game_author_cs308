@@ -20,10 +20,14 @@ public class GameObjectProperties extends Properties {
 	private Map<String, PropertyTextField> inherentTextProperties;
 	private Map<String, PropertyTextField> concreteTextProperties;
 	private Map<String, CheckBox> booleanProperties;
-	private GameHandler myHandler;
+	private GameHandler myEditHandler;
+	private GameHandler myDeleteHandler;
+	private GameHandler mySaveAsNewHandler;
 
-	public GameObjectProperties(GameObject gObj, GameHandler handler) {
-		myHandler = handler;
+	public GameObjectProperties(GameObject gObj, GameHandler ...handler) {
+		myEditHandler = handler[0];
+		mySaveAsNewHandler = handler[1];
+		myDeleteHandler = handler[2];
 		initializeProperties(gObj);
 	}
 
@@ -96,12 +100,16 @@ public class GameObjectProperties extends Properties {
 		}
 
 		Button editButton = new Button("Edit");
-		editButton.setOnAction(myHandler);
+		editButton.setOnAction(myEditHandler);
 		this.getChildren().add(editButton);
 
 		Button saveAsNew = new Button("Save as New");
-		saveAsNew.setOnMouseClicked(event -> saveAsNew());
+		saveAsNew.setOnMouseClicked(mySaveAsNewHandler);
 		this.getChildren().add(saveAsNew);
+		
+		Button delete = new Button("Delete");
+		delete.setOnAction(myDeleteHandler);
+		this.getChildren().add(delete);
 
 	}
 

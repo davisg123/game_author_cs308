@@ -2,7 +2,7 @@ package engine.conditions;
 
 import java.util.ArrayList;
 import java.util.List;
-import authoring.model.collections.GameObjectsCollection;
+import authoring.model.collections.GameObjectCollection;
 import engine.actions.Action;
 import engine.gameObject.GameObject;
 
@@ -13,14 +13,14 @@ import engine.gameObject.GameObject;
  *
  */
 public abstract class GameObjectCondition extends Condition {
-    private GameObjectsCollection myGameObjects;
+    private GameObjectCollection myGameObjects;
     
-    public GameObjectCondition (List<Action> myActions, GameObjectsCollection myGameObjects) {
+    public GameObjectCondition (List<Action> myActions, GameObjectCollection myGameObjects) {
         super(myActions);
         this.myGameObjects = myGameObjects;
     }
     
-    public void setGameObjects(GameObjectsCollection gameObjects){
+    public void setGameObjects(GameObjectCollection gameObjects){
         myGameObjects = gameObjects;
     }
     
@@ -38,7 +38,7 @@ public abstract class GameObjectCondition extends Condition {
         return false;
     }
     
-    public GameObjectsCollection getGameObjects(){
+    public GameObjectCollection getGameObjects(){
         return myGameObjects;
     }
 }

@@ -1,7 +1,7 @@
 package engine.conditions;
 
 import java.util.List;
-import authoring.model.collections.GameObjectsCollection;
+import authoring.model.collections.GameObjectCollection;
 import engine.actions.Action;
 import engine.gameObject.GameObject;
 
@@ -13,7 +13,7 @@ import engine.gameObject.GameObject;
 
 public abstract class MovementCondition extends GameObjectCondition {
 
-    public MovementCondition (List<Action> myActions, GameObjectsCollection myGameObjects) {
+    public MovementCondition (List<Action> myActions, GameObjectCollection myGameObjects) {
         super(myActions, myGameObjects);
         assignListeners();
     }
