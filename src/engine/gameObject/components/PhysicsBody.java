@@ -186,6 +186,24 @@ public class PhysicsBody {
 		myImpulses.clear();
 	}
 
+	
+	public Scalar getScalar(String s){
+		return myConstants.get(s);
+	}
+	
+	public Vector getVector(String s){
+		try{
+			return myActiveForces.get(s);
+		}
+		catch(NullPointerException e){
+			System.out.println("Not an active force");
+			return null;
+		}
+	}
+	
+	
+	
+	
 	/**
 	 * balances forces-gives a vector of what the forces in each direction are,
 	 * sets haveForcesChanged to false because this is called only when in the
@@ -203,14 +221,14 @@ public class PhysicsBody {
 		haveForcesChanged = false;
 	}
 
-	public void addForce(Vector vector) {
-		Iterator<String> itr = ((Force) vector).iterator();
+	public void addForce(Force vector) {
+		Iterator<String> itr = vector.iterator();
 		while(itr.hasNext())
 		{
 			String cur=itr.next();
-			((Force) vector).addOrChangeValue(myConstants.get(cur));
+			vector.addOrChangeValue(myConstants.get(cur));
 		}
-		this.myActiveForces.put(vector.toString(), (Force) vector);
+		this.myActiveForces.put(vector.toString(), vector);
 		haveForcesChanged = true;
 	}
 

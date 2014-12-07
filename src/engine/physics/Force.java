@@ -34,6 +34,8 @@ public abstract class Force extends Vector implements Iterable<String>{
 		myValues.put(cur.toString(), cur.getValue());
 		calculateForce();
 		calculateMagnitude();
+		setX(myXComponent);
+		setY(myYComponent);
 	}
 
 	protected void initializeMap(Scalar[] scalar) {
