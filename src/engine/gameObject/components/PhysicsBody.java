@@ -191,10 +191,10 @@ public class PhysicsBody {
 		return myConstants.get(s);
 	}
 	
-	public Vector getVector(String s){
+	public Force getForce(String s){
 		try{
 			return myActiveForces.get(s);
-		}
+		} 
 		catch(NullPointerException e){
 			System.out.println("Not an active force");
 			return null;
