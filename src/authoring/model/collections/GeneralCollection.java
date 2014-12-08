@@ -33,7 +33,10 @@ public abstract class GeneralCollection<T> extends Observable implements Iterabl
 	}
 	
 	public boolean remove(T a){
-		return myObjects.remove(a);
+		boolean ret = myObjects.remove(a);
+		setChanged();
+		notifyObservers(a);
+		return ret;
 	}
 	
 	public void add(T a){
