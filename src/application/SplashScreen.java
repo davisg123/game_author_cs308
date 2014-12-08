@@ -81,6 +81,10 @@ public class SplashScreen {
 				SCREEN_HEIGHT);
 		myStage.setScene(myAuthoringScene.getScene());
 		myStage.show();
+		myAuthoringScene.getScene()
+		.getStylesheets()
+		.add(getClass().getResource("authoringlayout.css")
+				.toExternalForm());
 	}
 
 	private void play() throws IOException {
