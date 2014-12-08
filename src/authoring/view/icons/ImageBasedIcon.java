@@ -53,6 +53,7 @@ public abstract class ImageBasedIcon extends FileIcon {
 	@Override
 	protected void makeIcon() {
 		File file = new File(myGameLocation.getPath() + "/images/" + myLabel);
+		System.out.println(file.getAbsolutePath());
 		BufferedImage bufferedImage;
 		try {
 			bufferedImage = ImageIO.read(file);

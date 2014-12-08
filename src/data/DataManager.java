@@ -202,8 +202,9 @@ public class DataManager {
 	private Object readFile(Class cl, File dataPath, String fileName) {
 //		if(hasValidName(fileName)) {
 //			fileName = checkForExtension(fileName);
+		File f = new File(dataPath, fileName);
 			try {
-				BufferedReader br = new BufferedReader( new FileReader(fileName) );
+				BufferedReader br = new BufferedReader( new FileReader(f) );
 				Object obj = gson.create().fromJson(br, cl);
 				return obj;
 			} catch (FileNotFoundException e) {

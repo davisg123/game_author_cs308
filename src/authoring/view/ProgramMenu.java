@@ -11,6 +11,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import authoring.controller.AuthoringController;
@@ -35,6 +36,7 @@ public class ProgramMenu extends MenuBar {
 	private double myWidth;
 	private double myHeight;
 	FileChooser myFileChooser;
+	DirectoryChooser myDirectoryChooser;
 	Map ControllerMap;
 
 	public ProgramMenu(TabPane tab, Locale locale, double width, double height) {
@@ -45,6 +47,7 @@ public class ProgramMenu extends MenuBar {
 		myLanguage = ResourceBundle.getBundle(DEFAULT_RESOURCE, myLocale);
 		// ControllerMap = new HashMap<>
 		myFileChooser = new FileChooser();
+		myDirectoryChooser = new DirectoryChooser();
 		this.getMenus().add(FileMenu());
 
 	}
@@ -97,14 +100,14 @@ public class ProgramMenu extends MenuBar {
 	}
 
 	private void loadData(){
-		File gameFile = myFileChooser.showOpenDialog(new Stage());
+		File gameFile = myDirectoryChooser.showDialog(new Stage());
 		if (gameFile != null) {
 			makeFolders(gameFile);
 			Tab tab = new Tab(gameFile.getName());
 			AuthoringView newView = new AuthoringView(myWidth, myHeight);
 			AuthoringModel newModel = new AuthoringModel();
 			AuthoringController newController = new AuthoringController(
-					newView, newModel, myWidth, myHeight, myLanguage, gameFile.getParentFile());
+					newView, newModel, myWidth, myHeight, myLanguage, gameFile);
 			newView.setController(newController);
 			tab.setContent(newView);
 			myTabs.getTabs().add(tab);
@@ -112,7 +115,9 @@ public class ProgramMenu extends MenuBar {
 		}
 		DataManager manager = new DataManager();
 		try {
+			System.out.println(gameFile.getAbsolutePath());
 			GameData gameData = manager.readGameFile(gameFile);
+			if(gameData == null) System.out.println("null");
 			System.out.println("game loaded");
 			int currentTab = myTabs.getSelectionModel().getSelectedIndex();
 			((AuthoringView) myTabs.getTabs().get(currentTab).getContent())
