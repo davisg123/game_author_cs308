@@ -11,6 +11,11 @@ public class NullComponent extends Component {
 
 
 
+    public NullComponent (double doubVal) {
+        super(doubVal);
+        // TODO Auto-generated constructor stub
+    }
+
     @Override
     public void update (GameObject object) {
         return;

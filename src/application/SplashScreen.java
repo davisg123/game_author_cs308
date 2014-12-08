@@ -80,6 +80,10 @@ public class SplashScreen {
 		myAuthoringScene = new AuthoringScene(myStage, myDefaultLocale, SCREEN_WIDTH, SCREEN_HEIGHT);
 		myStage.setScene(myAuthoringScene.getScene());
 		myStage.show();
+		myAuthoringScene.getScene()
+		.getStylesheets()
+		.add(getClass().getResource("authoringlayout.css")
+				.toExternalForm());
 	}
 
 	private void play() throws IOException {
