@@ -1,9 +1,7 @@
 package gamePlayer.view;
 
-import javafx.scene.Camera;
 import javafx.scene.Group;
 import javafx.scene.Node;
-import javafx.scene.PerspectiveCamera;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 

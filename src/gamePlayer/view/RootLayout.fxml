@@ -45,6 +45,18 @@
 								<Tooltip id="tooltip" text="Exit from the program." />
 							</tooltip>
 						</Button>
+						<Button prefHeight="50" prefWidth="50" id="loadWebButton"
+							onAction="#fetchGameFromWeb">
+							<tooltip>
+								<Tooltip id="tooltip" text="Load game from web." />
+							</tooltip>
+						</Button>
+						<Button prefHeight="50" prefWidth="50" id="shareWebButton"
+							onAction="#saveGameToWeb">
+							<tooltip>
+								<Tooltip id="tooltip" text="Share game with friends on the web!" />
+							</tooltip>
+						</Button>
 					</HBox>
 				</Tab>
 				<Tab fx:id="gameOptions" text="Options" closable="false"

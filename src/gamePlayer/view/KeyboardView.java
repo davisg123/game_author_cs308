@@ -16,6 +16,13 @@ import authoring.model.collections.ConditionsCollection;
 import engine.conditions.ButtonCondition;
 import engine.conditions.Condition;
 
+/**
+ * 
+ * @author Abhishek B
+ * @author Safkat Islam
+ *
+ */
+
 public class KeyboardView {
 
 	private static final int NUM_KEYS_IN_ROW = 14;
