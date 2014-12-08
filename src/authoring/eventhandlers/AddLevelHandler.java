@@ -38,6 +38,10 @@ public class AddLevelHandler implements GameHandler<Event> {
 	private void createLevel(){
 		SingleLevelView newLevelView = myLevels.addNewLevel(myLevelID);
 		Level levelData = new Level(new GameObjectsCollection(), isFirstLevel);
+		levelData.setBackgroundImage(myWizard.getMap().get("BGMusic").getInformation());
+		levelData.setBackgroundMusic(myWizard.getMap().get("BGSound").getInformation());
+		
+		
 		levelData.addObserver(newLevelView);
 		newLevelView.setID(myLevelID);
 		levelData.setIdentifier(new Identifier("Level", myLevelID));

@@ -6,6 +6,9 @@ import authoring.view.icons.LevelIcon;
 
 public class LevelProperties extends Properties{
 
+	
+	private GameHandler myAddConditionHandler;
+	
 	public LevelProperties(Object o) {
 		initializeProperties(o);
 	}
@@ -24,18 +27,14 @@ public class LevelProperties extends Properties{
 		
 		super.addMapToView();
 		
-		Button edit = new Button("Edit");
-		edit.setOnAction(event -> editLevel());
-		this.getChildren().add(edit);
+		Button addCond = new Button("Add Condition");
+		addCond.setOnAction(myAddConditionHandler);
+		this.getChildren().add(addCond);
 		
 	}
-	
-	private void editLevel(){
-		
-	}
-	
+
 	public void setEditBehavior(GameHandler event){
-		
+		myAddConditionHandler = event;
 	}
 	
 	

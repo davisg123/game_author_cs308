@@ -1,25 +1,23 @@
 package authoring.view.levelview;
 
 import java.io.File;
-import java.util.Arrays;
 
+import javafx.geometry.Insets;
+import javafx.scene.image.Image;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.CornerRadii;
+import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
+import authoring.eventhandlers.GameHandler;
+import authoring.main.Main;
+import authoring.view.icons.GameObjectIcon;
+import authoring.view.icons.ImageBasedIcon;
 import data.Observable;
 import data.Observer;
 import engine.gameObject.GameObject;
 import engine.level.Level;
-import authoring.eventhandlers.GameHandler;
-import authoring.eventhandlers.GameObjectClickHandler;
-import authoring.eventhandlers.GameObjectDragHandler;
-import authoring.main.Main;
-import authoring.view.icons.GameObjectIcon;
-import authoring.view.icons.ImageBasedIcon;
-import javafx.geometry.Insets;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 
 /**
  * Class that contains the visualization data of a single level.
@@ -41,8 +39,11 @@ public class SingleLevelView extends Pane implements Observer {
 	private double myViewWidth;
 	private double myViewHeight;
 
+	private String myBackgroundImage;
+	
 	public SingleLevelView(File gameLoc, double width, double height,
 			GameHandler... handlers) {
+		
 		this.setBackground(myDefaultBackground);
 		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
 		myEvents = handlers;
@@ -59,6 +60,9 @@ public class SingleLevelView extends Pane implements Observer {
 		this(gameLoc, width,height, handlers);
 
 		recreateLevel(l);
+		
+		
+		
 	}
 
 	private void setView(double width, double height) {
