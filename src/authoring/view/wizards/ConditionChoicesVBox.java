@@ -18,7 +18,8 @@ public class ConditionChoicesVBox extends VBox{
 		
 		RadioButton[] radioButtons = {
 				new RadioButton("ButtonCondition"),
-				new RadioButton("BoundaryConditionX")
+				new RadioButton("BoundaryConditionX"),
+				new RadioButton("TimeCondition")
 		};
 		
 		

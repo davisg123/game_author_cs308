@@ -5,6 +5,7 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javafx.event.Event;
@@ -149,6 +150,9 @@ public class AddConditionHandler implements GameHandler<Event> {
 	private void finishCondition(){
 		Object[] inputs = convertInputParameters();
 		try {
+			for(Object o : inputs){
+				System.out.println(o.getClass().toString());
+			}
 			Condition c = (Condition) myConstructor.newInstance(inputs);
 			c.setIdentifier(new Identifier("Condition", mySelectionWizard.getMap().get("name").getInformation()));
 			myConditionsCollection.add(c);
