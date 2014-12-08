@@ -26,6 +26,7 @@ import javafx.stage.Stage;
  */
 public class ErrorPopUp {
 	
+	private static final int MAX_BUTTON_WIDTH = 250;
 	private static final int POP_UP_HEIGHT = 200;
 	private static final int POP_UP_WIDTH = 300;
 	private static final int TEXT_Y_COORD = POP_UP_HEIGHT/2;
@@ -98,12 +99,18 @@ public class ErrorPopUp {
 		errorText.setId("text");
 		
 		root.getChildren().add(errorText);
-		createButton(root, "OK", BUTTON_X_COORD, BUTTON_Y_COORD, closePopUp);
-		createButton(root, "View Error Trace", BUTTON_X_COORD-40, BUTTON_Y_COORD+40, viewErrorTrace);
+		Button okButton = createButton(root, "OK", BUTTON_X_COORD, BUTTON_Y_COORD, closePopUp);
+		Button viewButton = createButton(root, "View Error Trace", BUTTON_X_COORD-40, BUTTON_Y_COORD+40, viewErrorTrace);
+		root.getChildren().add(okButton);
+		root.getChildren().add(viewButton);
+		double buttonWidth = viewButton.getWidth();
+		//get width of button so can send to chooseStageWidth method
 		root.autosize();
 //		root.getChildren().add(box);
 		popUpStage.centerOnScreen();
-		popUpStage.setWidth(myScene.getWidth());
+		double newStageWidth = chooseStageWidth(buttonWidth);
+		popUpStage.setWidth(newStageWidth);
+		//popUpStage.setWidth(2*textWidth);
 		popUpStage.show();
 		
 		if(throwException)
@@ -112,7 +119,12 @@ public class ErrorPopUp {
 		}
 	}
 
-	private void createButton(VBox vbox, String message, double x, double y, EventHandler<ActionEvent> event) {
+	private double chooseStageWidth(double buttonWidth) {
+		// TODO Auto-generated method stub
+		return Math.max(2*root.getWidth(), MAX_BUTTON_WIDTH);
+	}
+
+	private Button createButton(VBox vbox, String message, double x, double y, EventHandler<ActionEvent> event) {
 		// TODO Auto-generated method stub
 		Button b = new Button();
 		b.setText(message);
@@ -120,7 +132,7 @@ public class ErrorPopUp {
 		b.setLayoutY(y);
 		b.setOnAction(event);
 		b.setId("buttons");
-		vbox.getChildren().add(b);
+		return b;
 	}
 	
 //	private void viewErrorTrace() {

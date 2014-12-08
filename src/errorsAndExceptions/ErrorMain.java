@@ -10,7 +10,7 @@ public class ErrorMain extends Application {
 		// TODO Auto-generated method stub
 		Exception e = new Exception("Error: NullPointerException, etc.");
 		ErrorPopUp epu = new ErrorPopUp(e);
-		epu.display("You have an errorai;fjakfhjakhfa;lkfh;alfjh;aljfdafd.", false);
+		epu.display("You have an error", false);
 	}
 	
 	public static void main(String args[]) {
