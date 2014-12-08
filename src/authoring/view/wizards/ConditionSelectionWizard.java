@@ -9,6 +9,8 @@ import authoring.view.propertiesview.PropertyTextField;
 public class ConditionSelectionWizard extends Wizard {
 
 	private ConditionChoicesVBox myChoices;
+	private Button selectParametersButton;
+	private Button addActionButton;
 	
 	public ConditionSelectionWizard(String title, double width, double height,
 			EventHandler<ActionEvent> event) {
@@ -26,15 +28,31 @@ public class ConditionSelectionWizard extends Wizard {
 		
 		myWindow.getChildren().add(myChoices);
 		
-		Button addButton = new Button("Continue");
-		addButton.setOnAction(event);
-		myWindow.getChildren().add(addButton);
+		selectParametersButton = new Button("Select Parameters");
+		selectParametersButton.setOnAction(event);
+		myWindow.getChildren().add(selectParametersButton);
+		
+		
+		addActionButton = new Button("Add Actions");
+		myWindow.getChildren().add(addActionButton);
+		addActionButton.setDisable(true);
 		
 		return myWindow;
 	}
 	
 	public String getSelectedCondition(){
 		return myChoices.getSelected();
+	}
+	
+	public void disableSelection(){
+		selectParametersButton.setText("Edit Parameter Values");
+		myChoices.setDisable(true);
+		addActionButton.setDisable(false);
+	}
+	
+	public void enableActionCreation(EventHandler<ActionEvent> event){
+		addActionButton.setOnAction(event);
+		addActionButton.setDisable(false);
 	}
 
 }
