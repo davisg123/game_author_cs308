@@ -270,7 +270,7 @@ public class AuthoringController {
 	}
 
 	public void saveData() {
-		myModel.save(myGameLocation.getAbsolutePath());
+		myModel.save(myGameLocation);
 	}
 
 	public void loadData(GameData input) {

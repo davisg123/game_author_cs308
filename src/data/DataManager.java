@@ -112,8 +112,9 @@ public class DataManager {
 	 */
 	public boolean writeGameFile(GameData data, File dataPath) throws IOException {
 		String fileName = dataPath.getName() + ".json";
-		System.out.println(dataPath.getAbsolutePath());
-		System.out.println(fileName);
+		File f = new File(dataPath,fileName);
+//		System.out.println(dataPath.getAbsolutePath());
+//		System.out.println(fileName);
 		return writeFile(data, dataPath, fileName);
 	}
 //	public boolean writeGameFile(GameData data, String fileName) throws IOException {

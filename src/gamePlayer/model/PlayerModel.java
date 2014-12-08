@@ -1,17 +1,18 @@
 package gamePlayer.model;
 
+import gamePlayer.view.FileSelectionWizard;
+import gamePlayer.view.PlayerView;
+
+import java.io.File;
 import java.io.IOException;
 
-import javafx.stage.FileChooser;
-import data.DataManager;
 import application.SplashScreen;
 import authoring.model.GameData;
 import authoring.model.collections.ConditionsCollection;
+import data.DataManager;
 import engine.GameManager;
 import engine.conditions.ButtonCondition;
 import engine.conditions.Condition;
-import gamePlayer.view.FileSelectionWizard;
-import gamePlayer.view.PlayerView;
 
 /**
  * 
@@ -40,7 +41,8 @@ public class PlayerModel {
 	}
 	
 	public void loadGameFile() {
-		myGameData = myManager.readGameFile(myFileSelector.selectFile());
+		File f = new File(myFileSelector.selectFile());
+		myGameData = myManager.readGameFile(f);
 		myGameManager = new GameManager(myGameData.getConditions(), myGameData.getGameObjects(), myGameData.getLevels(), myPlayerView.getGroup());
 		myGameManager.initialize();
 		

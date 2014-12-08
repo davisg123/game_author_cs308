@@ -112,7 +112,7 @@ public class ProgramMenu extends MenuBar {
 		}
 		DataManager manager = new DataManager();
 		try {
-			GameData gameData = manager.readGameFile(gameFile.getAbsolutePath());
+			GameData gameData = manager.readGameFile(gameFile);
 			System.out.println("game loaded");
 			int currentTab = myTabs.getSelectionModel().getSelectedIndex();
 			((AuthoringView) myTabs.getTabs().get(currentTab).getContent())
