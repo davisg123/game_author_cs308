@@ -114,9 +114,16 @@ public class AddConditionHandler implements GameHandler<Event> {
 				List<Object> innerList = new ArrayList<Object>();
 				try {
 					Class<?> c = Class.forName(type);
-					Method parseMethod = c.getMethod("valueOf", new Class[]{String.class});
-					for(String s : myInputParameters.get(i).split("\\;")){
-						innerList.add(parseMethod.invoke(c, s));
+					if (t.toString().contains("String")) {
+						for (String s : myInputParameters.get(i).split("\\;")) {
+							innerList.add(s);
+						}
+					} else {
+						Method parseMethod = c.getMethod("valueOf",
+								new Class[] { String.class });
+						for (String s : myInputParameters.get(i).split("\\;")) {
+							innerList.add(parseMethod.invoke(c, s));
+						}
 					}
 				} catch (Exception e) {
 					System.out.println("Bad Class");
@@ -127,10 +134,14 @@ public class AddConditionHandler implements GameHandler<Event> {
 				String type = splitType[1];
 				try {
 					Class<?> c = Class.forName(type);	
-					Method parseMethod = c.getMethod("valueOf", new Class[]{String.class});
 					String s = myInputParameters.get(i);
-					Object innerObject = parseMethod.invoke(c, s);
-					inputs.add(innerObject);
+					if(t.toString().contains("String")){
+						inputs.add(s);
+					}else{
+						Method parseMethod = c.getMethod("valueOf",new Class[] { String.class });
+						Object innerObject = parseMethod.invoke(c, s);
+						inputs.add(innerObject);
+					}
 				} catch (Exception e) {
 					System.out.println("Bad Class");
 				}
