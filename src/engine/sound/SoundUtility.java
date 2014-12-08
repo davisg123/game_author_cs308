@@ -3,13 +3,16 @@ package engine.sound;
 import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
+import engine.FilePathUtility;
+import authoring.model.collections.LevelsCollection;
+import authoring.model.collections.SoundsCollection;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 /**
  * Plays sounds using composition JavaFX elements in Game
- * @author Will
+ * @author Will Chang
  *
  */
 
@@ -17,22 +20,28 @@ public class SoundUtility {
     
     private Map<String,MediaPlayer> myMediaPlayerMap;
     private Map<String,AudioClip> myAudioClipMap;
+    private LevelsCollection myLevels;
+    private FilePathUtility myFilePathUtility;
+    private final String SOUNDS = "sounds";
     
-    public SoundUtility () {
+    public SoundUtility (LevelsCollection levels, String relativePath) {
+        myLevels = levels;
         myMediaPlayerMap = new HashMap<>();
         myAudioClipMap = new HashMap<>();
+        myFilePathUtility = new FilePathUtility(SOUNDS,relativePath);
     }
     
-    public void initializeAllMusic () {
+    public void initializeMusic () {
+        //something with myLevels
         
     }
     
-    public void playBackGroundMusic (String title) {
-        myMediaPlayerMap.get(title).play();
+    public void playBackGroundMusic (String musicPath) {
+        myMediaPlayerMap.get(musicPath).play();
     }
     
-    public void addBackGroundMusic (String title, String musicPath) {
-        myMediaPlayerMap.put(title,makeMediaPlayer(musicPath));
+    public void addBackGroundMusic (String musicPath) {
+        myMediaPlayerMap.put(musicPath,makeMediaPlayer(musicPath));
     }
     
     private MediaPlayer makeMediaPlayer (String musicPath) {
@@ -41,12 +50,12 @@ public class SoundUtility {
         return new MediaPlayer(media);
     }
     
-    public void playAudioClip(String title) {
-        myAudioClipMap.get(title).play();
+    public void playAudioClip(String audioClipPath) {
+        myAudioClipMap.get(audioClipPath).play();
     }
     
-    public void addAudioClip (String title, String audioClipPath) {
-        myAudioClipMap.put(title, makeAudioClip(audioClipPath));
+    public void addAudioClip (String audioClipPath) {
+        myAudioClipMap.put(audioClipPath, makeAudioClip(audioClipPath));
     }
     
     private AudioClip makeAudioClip (String audioClipPath) {
@@ -54,12 +63,12 @@ public class SoundUtility {
         return new AudioClip(audioClip.toURI().toString());
     }
     
-    public void stopBackGroundMusic (String title) {
-        myMediaPlayerMap.get(title).stop();
+    public void stopBackGroundMusic (String musicPath) {
+        myMediaPlayerMap.get(musicPath).stop();
     }
     
-    public void pauseBackGroundMusic (String title) {
-        myMediaPlayerMap.get(title).pause();
+    public void pauseBackGroundMusic (String musicPath) {
+        myMediaPlayerMap.get(musicPath).pause();
     }
     
     public void removeBackGroundMusic (String title) {

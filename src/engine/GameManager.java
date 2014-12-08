@@ -3,20 +3,19 @@ import authoring.model.GameData;
 import authoring.model.collections.ConditionsCollection;
 import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.LevelsCollection;
+import authoring.model.collections.SoundsCollection;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 import engine.render.GameObjectRenderer;
-import engine.conditions.ButtonConditionManager;
+import engine.sound.SoundUtility;
 import engine.conditions.Condition;
 import engine.gameObject.*;
 import engine.level.LevelManager;
-import gamePlayer.model.DataWrapper;
 
 /**
  * central game manager responsible for holding game data, setting the timeline speed
@@ -30,6 +29,7 @@ public class GameManager {
     private ConditionsCollection myGameConditions;
     private GameObjectsCollection myGameObjects;
     private GameObjectRenderer myGameObjectRenderer;
+    private SoundUtility mySoundUtility;
     private Group myRootGroup;
     private Timeline myAnimation;
     private LevelManager myLevelManager;
@@ -45,6 +45,7 @@ public class GameManager {
         this.myRootGroup = myRootGroup;
         this.myLevels = myLevels;
         this.myGameObjectRenderer = new GameObjectRenderer(myRootGroup,relativePath);
+        this.mySoundUtility = new SoundUtility(myLevels, relativePath);
         this.myRelativePath = relativePath;
         createLevelManager();
         initializeConditions();
@@ -168,5 +169,9 @@ public class GameManager {
     
     public LevelManager getLevelManager(){
     	return myLevelManager; 
+    }
+    
+    public SoundUtility getSoundUtility () {
+        return mySoundUtility;
     }
 }

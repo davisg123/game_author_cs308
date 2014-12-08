@@ -80,5 +80,9 @@ public abstract class Condition implements Identifiable, Initializable{
         return myGameManager;
     }
     
+    public void addAction(Action a){
+    	myActions.add(a); 
+    }
+    
     
 }

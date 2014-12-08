@@ -11,7 +11,6 @@ public class MassPhysicsAction extends ScalarPhysicsAction {
 
 	public MassPhysicsAction(ArrayList<Identifier> id, double value) {
 		super(id, value);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

@@ -16,7 +16,7 @@ public class Mass extends Scalar {
 	@Override
 	protected void initializeForceList() {
 		myAssociatedForces.add("Gravity");
-		myAssociatedForces.add("Friction");
+		// myAssociatedForces.add("Friction");
 	}
 
 }

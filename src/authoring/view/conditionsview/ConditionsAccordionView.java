@@ -4,13 +4,13 @@ import java.util.ResourceBundle;
 
 import javafx.scene.layout.VBox;
 import authoring.eventhandlers.GameHandler;
-import authoring.view.baseclasses.ScrollView;
+import authoring.view.baseclasses.CollectionView;
 import authoring.view.icons.ConditionIcon;
 import data.Observable;
 import data.Observer;
 import engine.conditions.Condition;
 
-public class ConditionsAccordionView extends ScrollView implements Observer {
+public class ConditionsAccordionView extends CollectionView implements Observer {
 	private static final double VIEW_HEIGHT_RATIO = .65;
 	private static final double VIEW_WIDTH_RATIO = 0.2;
 	private VBox myVbox = new VBox();
@@ -30,7 +30,7 @@ public class ConditionsAccordionView extends ScrollView implements Observer {
 		addCondition((Condition) arg, myEvents);
 	}
 
-	public void setGraphicEvents(GameHandler... gameHandlers) {
+	public void setIconEvents(GameHandler... gameHandlers) {
 		myEvents = gameHandlers;
 	}
 

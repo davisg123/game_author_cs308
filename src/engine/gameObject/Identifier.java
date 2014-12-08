@@ -10,6 +10,11 @@ public class Identifier {
         this.myUniqueId = myUniqueId;
     }
     
+    public static Identifier valueOf (String descriptor) {
+        String[] parts = descriptor.split(",");
+        return new Identifier(parts[0],parts[1]);
+    }
+    
     public String getType () {
         return myType;
     }

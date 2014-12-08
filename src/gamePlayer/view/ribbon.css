@@ -12,6 +12,20 @@
 	-fx-background-size: 30 30;
 }
 
+#loadWebButton {
+	-fx-background-image: url("loadWebButton.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center;
+	-fx-background-size: 30 30;
+}
+
+#shareWebButton {
+	-fx-background-image: url("shareWebButton.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center;
+	-fx-background-size: 30 30;
+}
+
 #pausePlayButton {
 	-fx-background-image: url("pausePlayButton.png");
 	-fx-background-repeat: no-repeat;

@@ -16,16 +16,10 @@ public class ReverseVelocityIDAction extends PhysicsIDAction {
 	}
 
 	@Override
-	public void initialize(GameManager manager) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void applyPhysics(Collection<GameObject> myObjects) {
 		TwoArgInterface operation = (x, y) -> x.getPhysicsBody()
 				.reverseVelocity((Boolean) y);
-		List<GameObject> objects=new ArrayList<GameObject>(myObjects);
+		List<GameObject> objects = new ArrayList<GameObject>(myObjects);
 		forHelper(myObjects, operation,
 				myCollision.isOnXAxis(objects.get(0), objects.get(1)));
 	}
