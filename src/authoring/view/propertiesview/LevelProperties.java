@@ -1,9 +1,7 @@
 package authoring.view.propertiesview;
 
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 import javafx.scene.control.Button;
+import authoring.eventhandlers.GameHandler;
 import authoring.view.icons.LevelIcon;
 
 public class LevelProperties extends Properties{
@@ -27,8 +25,16 @@ public class LevelProperties extends Properties{
 		super.addMapToView();
 		
 		Button edit = new Button("Edit");
-		//edit.setOnAction(event);
+		edit.setOnAction(event -> editLevel());
 		this.getChildren().add(edit);
+		
+	}
+	
+	private void editLevel(){
+		
+	}
+	
+	public void setEditBehavior(GameHandler event){
 		
 	}
 	
