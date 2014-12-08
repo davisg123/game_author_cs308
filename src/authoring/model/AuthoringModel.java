@@ -1,5 +1,6 @@
 package authoring.model;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -34,12 +35,12 @@ public class AuthoringModel {
 	/**
 	 * Save the current GameData using serialization
 	 */
-	public void save(String dataPath) {
+	public void save(File dataPath) {
 		// TODO - Data
 		GameData mySerializableGame = convertToSerializable();
 		DataManager manager = new DataManager();
 		try {
-			boolean success = manager.writeGameFile(mySerializableGame, "/Game.json", dataPath);
+			boolean success = manager.writeGameFile(mySerializableGame,dataPath);
 			System.out.println("game saved = " + success);
 		} catch (IOException e) {
 			System.out.println("Won't Save");

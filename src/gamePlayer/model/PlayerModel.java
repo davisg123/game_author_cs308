@@ -1,16 +1,18 @@
 package gamePlayer.model;
 
+import gamePlayer.view.FileSelectionWizard;
+import gamePlayer.view.PlayerView;
+
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
-import data.DataManager;
+
 import application.SplashScreen;
 import authoring.model.GameData;
 import authoring.model.collections.ConditionsCollection;
+import data.DataManager;
 import engine.GameManager;
 import engine.conditions.ButtonCondition;
 import engine.conditions.Condition;
-import gamePlayer.view.FileSelectionWizard;
-import gamePlayer.view.PlayerView;
 
 /**
  * 
@@ -39,11 +41,11 @@ public class PlayerModel {
 	}
 
 	public void loadGameFile() {
-		Path filePath = myFileSelector.selectFile();
-		myGameData = myDataManager.readGameFile(filePath.toString());
-		myGameManager = new GameManager(myGameData.getConditions(),
-				myGameData.getGameObjects(), myGameData.getLevels(),
-				myPlayerView.getGroup(), filePath.getParent().toString());
+		File f = myFileSelector.selectFile();
+		System.out.println(f.getAbsolutePath());
+		myGameData = myDataManager.readGameFile(f);
+		if(myGameData == null) System.out.println("Null!!!!");
+		myGameManager = new GameManager(myGameData.getConditions(), myGameData.getGameObjects(), myGameData.getLevels(), myPlayerView.getGroup(), f.getAbsolutePath());
 		myGameManager.initialize();
 		extractButtonConditions();
 	}
