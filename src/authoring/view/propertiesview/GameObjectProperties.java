@@ -100,7 +100,6 @@ public class GameObjectProperties extends Properties {
 		concreteTextProperties.put("y",new PropertyTextField("Y: ", Double.toString(gameObject.getY()+ OBJECT_Y_OFFSET)));
 		concreteTextProperties.put("rotation", new PropertyTextField("Rotation: ", Double.toString(gameObject.getRotation())));
 	
-		
 		physicsProperties.put("initXV", new PropertyTextField("Initial X Velocity", Double.toString(gameObject.getPhysicsBody().getVelocity().getX())));
 		physicsProperties.put("initYV", new PropertyTextField("Initial Y Velocity", Double.toString(gameObject.getPhysicsBody().getVelocity().getY())));
 		physicsProperties.put("mass", new PropertyTextField("Mass", Double.toString(gameObject.getPhysicsBody().getScalar("Mass").getValue())));
@@ -126,13 +125,6 @@ public class GameObjectProperties extends Properties {
 			physicsBox.getChildren().add(physicsProperties.get(s));
 		}
 		physicsPane.setContent(physicsBox);
-		
-		
-		HBox physicsBody = new HBox();
-		CheckBox cbPhysics = new CheckBox("Physics Body");
-		cbPhysics.setSelected(gameObject.getPhysicsBody() != null);
-		physicsBody.getChildren().add(cbPhysics);
-		booleanProperties.put("has physics", cbPhysics);
 		
 		for(String s: booleanProperties.keySet()){
 			this.getChildren().add(booleanProperties.get(s));
@@ -168,24 +160,20 @@ public class GameObjectProperties extends Properties {
 						.get("width").getInformation()),
 				Double.parseDouble(concreteTextProperties.get("rotation")
 						.getInformation()), g.getID());
-		
-		
-		if (booleanProperties.get("has physics").isSelected()) {
 			
-			PhysicsBody pb = new PhysicsBody(Double.parseDouble(inherentTextProperties.get("width")
-					.getInformation()), Double.parseDouble(inherentTextProperties
-					.get("height").getInformation()));
+		PhysicsBody pb = new PhysicsBody(Double.parseDouble(inherentTextProperties.get("width")
+				.getInformation()), Double.parseDouble(inherentTextProperties
+				.get("height").getInformation()));
 
-			pb.addScalar(new Mass(Double.parseDouble(physicsProperties.get("mass").getInformation())));
-			pb.addScalar(new GravityConstant(Double.parseDouble(physicsProperties.get("gravity constant").getInformation())));
-			pb.addScalar(new Density(Double.parseDouble(physicsProperties.get("density").getInformation())));
-			pb.addScalar(new Volume(Double.parseDouble(physicsProperties.get("volume").getInformation())));
-			pb.setVelocity(new Velocity(Double.parseDouble(physicsProperties.get("initXV").getInformation()), Double.parseDouble(physicsProperties.get("initYV").getInformation())));
-			//may need to change
+		pb.addScalar(new Mass(Double.parseDouble(physicsProperties.get("mass").getInformation())));
+		pb.addScalar(new GravityConstant(Double.parseDouble(physicsProperties.get("gravity constant").getInformation())));
+		pb.addScalar(new Density(Double.parseDouble(physicsProperties.get("density").getInformation())));
+		pb.addScalar(new Volume(Double.parseDouble(physicsProperties.get("volume").getInformation())));
+		pb.setVelocity(new Velocity(Double.parseDouble(physicsProperties.get("initXV").getInformation()), Double.parseDouble(physicsProperties.get("initYV").getInformation())));
+		//may need to change
 			
 			
-			edited.setPhysicsBody(pb);
-		}
+		edited.setPhysicsBody(pb);
 	
 		return edited;
 	}
