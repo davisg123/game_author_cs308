@@ -22,6 +22,7 @@ public abstract class GeneralCollection<T> extends Observable implements Iterabl
 		myObjects = new ArrayList<T>();
 	}
 	
+	
 	@Override
 	public Iterator<T> iterator() {
 		return myObjects.iterator();

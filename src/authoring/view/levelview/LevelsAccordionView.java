@@ -8,11 +8,11 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import authoring.eventhandlers.GameHandler;
 import authoring.model.collections.LevelsCollection;
-import authoring.view.baseclasses.ScrollView;
+import authoring.view.baseclasses.CollectionView;
 import authoring.view.icons.LevelIcon;
 import engine.level.Level;
 
-public class LevelsAccordionView extends ScrollView implements Observer{
+public class LevelsAccordionView extends CollectionView implements Observer{
 	private static final double VIEW_HEIGHT_RATIO = .70;
 	private static final double VIEW_WIDTH_RATIO = 0.2;
 	private VBox myVbox = new VBox();	
@@ -33,7 +33,7 @@ public class LevelsAccordionView extends ScrollView implements Observer{
 		
 	}
 	
-	public void setGraphicEvents(GameHandler ... gameHandlers){
+	public void setIconEvents(GameHandler ... gameHandlers){
 		myEvents = gameHandlers;
 	}
 	

@@ -19,10 +19,14 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) throws Exception {
 		primaryStage.setResizable(false);
-		myScene = new AuthoringScene(primaryStage, myDefaultLocale, SCREEN_WIDTH,
-				SCREEN_HEIGHT);
+		myScene = new AuthoringScene(primaryStage, myDefaultLocale,
+				SCREEN_WIDTH, SCREEN_HEIGHT);
 		primaryStage.setScene(myScene.getScene());
 		primaryStage.show();
+		myScene.getScene()
+				.getStylesheets()
+				.add(getClass().getResource("layoutstyles.css")
+						.toExternalForm());
 
 	}
 

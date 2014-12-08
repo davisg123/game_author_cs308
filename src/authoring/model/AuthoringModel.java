@@ -41,8 +41,7 @@ public class AuthoringModel {
 			boolean success = manager.writeGameFile(mySerializableGame, "/Game.json", dataPath);
 			System.out.println("game saved = " + success);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Won't Save");
 		}
 	}
 	
@@ -54,20 +53,19 @@ public class AuthoringModel {
 			mySerializableGame.getImages().add(s);
 		}
 		for(GameObject g: myGame.getGameObjects()){
-			g.setIdentifier(new Identifier(g.getID(),Integer.toString(IDcounter)));
-			IDcounter++;
+			g.setIdentifier(new Identifier(g.getID(),"Template"));
 			allGameObjects.add(g);
 		}
 		for(Level l: myGame.getLevels()){
-			List<Identifier> levelGameObjects = new ArrayList<Identifier>();
+			List<Identifier> levelGameObjectsIDs = new ArrayList<Identifier>();
 			for(GameObject g : l.getGameObjectsCollection()){
 				Identifier i = new Identifier(g.getID(),Integer.toString(IDcounter));
 				g.setIdentifier(i);
 				IDcounter++;
 				allGameObjects.add(g);
-				levelGameObjects.add(i);
+				levelGameObjectsIDs.add(i);
 			}
-			Level levelToAdd = new Level(levelGameObjects);
+			Level levelToAdd = new Level(levelGameObjectsIDs);
 			levelToAdd.setStartIndicator(l.isStartLevel());
 			levelToAdd.setIdentifier(new Identifier(l.getIdentifier().getType(),l.getIdentifier().getUniqueId()));
 			mySerializableGame.getLevels().add(levelToAdd);
