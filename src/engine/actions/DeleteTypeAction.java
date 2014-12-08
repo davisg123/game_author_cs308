@@ -3,30 +3,24 @@ package engine.actions;
 import authoring.model.collections.GameObjectsCollection;
 import engine.GameManager;
 import engine.gameObject.GameObject;
-import engine.gameObject.Identifiable;
-import engine.gameObject.Identifier;
 
-public class DeleteTypeAction implements Action, Initializable{
+
+public class DeleteTypeAction extends TypeAction{
 
 	private String myType;
-	private GameObjectsCollection myGameObjects; 
 	
-	public DeleteTypeAction(String type, Identifier... ids){
-		myType=type;
-	}
-	
-	@Override
-	public void initialize(GameManager manager) {
+	public DeleteTypeAction(String type){
+		super(type);
 		
-		myGameObjects = manager.getLevelManager().getCurrentLevel().getGameObjectsCollection();
 	}
+	
 
+	
 	@Override
 	public void execute() {
- 
-		for (GameObject object: myGameObjects){
+		for (GameObject object: myCurrentLevel.getGameObjectsCollection()){
 			if (object.getIdentifier().getType().equals(myType)){
-				myGameObjects.remove(object);
+				myCurrentLevel.getGameObjectsCollection().remove(object);
 			}
 		}
 		
