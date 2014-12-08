@@ -1,5 +1,6 @@
 package engine.actions;
 
+import authoring.model.collections.GameObjectsCollection;
 import engine.gameObject.GameObject;
 
 public class MakeNewObjectFromLocationAction extends MakeNewObjectAction{
@@ -17,6 +18,7 @@ public class MakeNewObjectFromLocationAction extends MakeNewObjectAction{
 	@Override
 	public void execute() {
 		for (GameObject object: myMasterList){
+		    System.out.println(object.getIdentifier().getHash());
 			//TODO: will be template list
 			if (object.getIdentifier().getType().equals(myType)){
 				GameObject newObject = new GameObject(object, myX, myY, myType); 
@@ -27,5 +29,7 @@ public class MakeNewObjectFromLocationAction extends MakeNewObjectAction{
 			}
 		}
 	}
+	
+
 
 }
