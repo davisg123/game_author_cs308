@@ -7,13 +7,13 @@ import engine.actions.Action;
 public class TimeCondition extends Condition {
     
     private int myFrameCount = 0;
-    private double myTargetFrameCount;
-    private boolean repeats;
-    private boolean expired;
+    private Double myTargetFrameCount;
+    private Boolean repeats;
+    private Boolean expired;
 
-    public TimeCondition (List<Action> myActions, double frameElapseCount, boolean repeats) {
+    public TimeCondition (List<Action> myActions, Double frameElapseCount, Boolean repeats) {
         super(myActions);
-        
+        expired = Boolean.FALSE;
         myTargetFrameCount = frameElapseCount;
         this.repeats = repeats;
     }
