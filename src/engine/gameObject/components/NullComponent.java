@@ -1,7 +1,6 @@
 package engine.gameObject.components;
 
 import engine.gameObject.GameObject;
-import engine.gameObject.components.properties.IProperty;
 
 /**
  * Takes the place of a Null Object.

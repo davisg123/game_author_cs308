@@ -1,11 +1,11 @@
 package engine.gameObject.components.properties;
 
-public class Damage extends DoubleStatsProperty implements IProperty {
+public class Damage implements IProperty {
 
     private double myDamage;
 
     public Damage () {
-        super.myDouble
+
     }
 
     public double getDamage () {
@@ -24,7 +24,7 @@ public class Damage extends DoubleStatsProperty implements IProperty {
 
     @Override
     public IProperty getClone() {
-        return new Damage(myDamage);
+        return new Damage();
     }
 
     public void decreaseDamage(double val){
