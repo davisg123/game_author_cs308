@@ -26,7 +26,7 @@ import javafx.stage.Stage;
  */
 public class ErrorPopUp {
 	
-	private static final int POP_UP_HEIGHT = 150;
+	private static final int POP_UP_HEIGHT = 200;
 	private static final int POP_UP_WIDTH = 300;
 	private static final int TEXT_Y_COORD = POP_UP_HEIGHT/2;
 	private static final int TEXT_X_COORD = POP_UP_WIDTH/4;
@@ -34,8 +34,9 @@ public class ErrorPopUp {
 	private static final int BUTTON_X_COORD = POP_UP_WIDTH/2;
 	private static final String ERROR_TITLE = "User Error";
 	private static final String BUTTON_TEXT = "OK";
-	private Group root;
+	private VBox root;
 	private Stage popUpStage;
+	private Scene myScene;
 	
 	private Exception myException;
 	
@@ -45,9 +46,10 @@ public class ErrorPopUp {
 	public ErrorPopUp(Exception e) {
 		popUpStage = new Stage();
 		popUpStage.setTitle(ERROR_TITLE);
-		root = new Group();
-		Scene scene = new Scene(root, POP_UP_WIDTH, POP_UP_HEIGHT, Color.LIGHTGRAY);
-		popUpStage.setScene(scene);
+		root = new VBox();
+		myScene = new Scene(root, POP_UP_WIDTH, POP_UP_HEIGHT, Color.valueOf("#00008b"));
+		myScene.getStylesheets().add(getClass().getResource("ErrorStyle.css").toExternalForm());
+		popUpStage.setScene(myScene);
 		myException = e;
 	}
 	
@@ -62,6 +64,25 @@ public class ErrorPopUp {
 		}
 	};
 	
+	private EventHandler<ActionEvent> viewErrorTrace = new EventHandler<ActionEvent>() {
+		@Override
+		public void handle(ActionEvent evt) {
+			Stage errorTraceStage = new Stage();
+			VBox errorBox = new VBox();
+			ScrollPane sp = new ScrollPane();
+			Label errorTrace = new Label(getStackTrace());
+			errorTrace.setId("error");
+			sp.setContent(errorTrace);
+			errorBox.getChildren().add(sp);
+			errorBox.setVgrow(sp, Priority.ALWAYS);
+			Scene scene = new Scene(errorBox, POP_UP_WIDTH*2, POP_UP_HEIGHT*3, Color.LIGHTGRAY);
+			scene.getStylesheets().add(getClass().getResource("ErrorStyle.css").toExternalForm());
+			errorTraceStage.setScene(scene);
+			errorTraceStage.centerOnScreen();
+			errorTraceStage.show();
+		}
+	};
+	
 	/**
 	 * Displays the actual PopUp and throws an exception if needed.
 	 * 
@@ -71,20 +92,18 @@ public class ErrorPopUp {
 	 */
 	public void display(String errorMessage, boolean throwException) throws VoogaException{
 		root.getChildren().clear();
-		VBox box = new VBox();
-		root.getChildren().add(box);
-		Text errorText = new Text(TEXT_X_COORD, TEXT_Y_COORD, errorMessage);
-		box.getChildren().add(errorText);
+//		VBox box = new VBox();
+		root.getStyleClass().add("vbox");
+		Text errorText = new Text(errorMessage);
+		errorText.setId("text");
 		
-		Button b = new Button();
-		b.setText(BUTTON_TEXT);
-		b.setLayoutX(BUTTON_X_COORD);
-		b.setLayoutY(BUTTON_Y_COORD);
-		root.getChildren().add(b);
-		b.setOnAction(closePopUp);
-		
-		createErrorButton();
-				
+		root.getChildren().add(errorText);
+		createButton(root, "OK", BUTTON_X_COORD, BUTTON_Y_COORD, closePopUp);
+		createButton(root, "View Error Trace", BUTTON_X_COORD-40, BUTTON_Y_COORD+40, viewErrorTrace);
+		root.autosize();
+//		root.getChildren().add(box);
+		popUpStage.centerOnScreen();
+		popUpStage.setWidth(myScene.getWidth());
 		popUpStage.show();
 		
 		if(throwException)
@@ -93,30 +112,33 @@ public class ErrorPopUp {
 		}
 	}
 
-	private void createErrorButton() {
+	private void createButton(VBox vbox, String message, double x, double y, EventHandler<ActionEvent> event) {
 		// TODO Auto-generated method stub
 		Button b = new Button();
-		b.setText("View Error Trace");
-		b.setLayoutX(BUTTON_X_COORD-40);
-		b.setLayoutY(BUTTON_Y_COORD+40);
-		b.setOnAction(handle -> viewErrorTrace());
-		root.getChildren().add(b);
+		b.setText(message);
+		b.setLayoutX(x);
+		b.setLayoutY(y);
+		b.setOnAction(event);
+		b.setId("buttons");
+		vbox.getChildren().add(b);
 	}
 	
-	private void viewErrorTrace() {
-		Stage errorTraceStage = new Stage();
-		errorTraceStage.setX(popUpStage.getX()*1.75);
-		errorTraceStage.setY(popUpStage.getY()*.75);
-		VBox errorBox = new VBox();
-		ScrollPane sp = new ScrollPane();
-		Label errorTrace = new Label(getStackTrace());
-		sp.setContent(errorTrace);
-		errorBox.getChildren().add(sp);
-		errorBox.setVgrow(sp, Priority.ALWAYS);
-		Scene scene = new Scene(errorBox, POP_UP_WIDTH, POP_UP_HEIGHT*3, Color.LIGHTGRAY);
-		errorTraceStage.setScene(scene);
-		errorTraceStage.show();
-	}
+//	private void viewErrorTrace() {
+//		Stage errorTraceStage = new Stage();
+//		errorTraceStage.setX(popUpStage.getX()*1.75);
+//		errorTraceStage.setY(popUpStage.getY()*.75);
+//		VBox errorBox = new VBox();
+//		ScrollPane sp = new ScrollPane();
+//		Label errorTrace = new Label(getStackTrace());
+//		errorTrace.setId("error");
+//		sp.setContent(errorTrace);
+//		errorBox.getChildren().add(sp);
+//		errorBox.setVgrow(sp, Priority.ALWAYS);
+//		Scene scene = new Scene(errorBox, POP_UP_WIDTH, POP_UP_HEIGHT*3, Color.LIGHTGRAY);
+//		scene.getStylesheets().add(getClass().getResource("ErrorStyle.css").toExternalForm());
+//		errorTraceStage.setScene(scene);
+//		errorTraceStage.show();
+//	}
 
 	private String getStackTrace() {
 		// TODO Auto-generated method stub
