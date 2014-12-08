@@ -195,6 +195,7 @@ public class DataManager {
 	
 	//check 
 	private Object readFile(Class cl, String fileName) {
+	    System.out.println(fileName);
 		if(hasValidName(fileName)) {
 			fileName = checkForExtension(fileName);
 			try {
