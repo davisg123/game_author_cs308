@@ -8,9 +8,9 @@ import engine.gameObject.Identifier;
 import engine.physics.Impulse;
 import engine.physics.Vector;
 
-public class XImpulseAction extends ImpulseAction {
+public class XImpulseIDAction extends ImpulseAction {
 
-	public XImpulseAction(ArrayList<Identifier> id, double value) {
+	public XImpulseIDAction(ArrayList<Identifier> id, double value) {
 		super(id, value);
 		// TODO Auto-generated constructor stub
 	}
