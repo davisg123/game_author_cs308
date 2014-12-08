@@ -209,7 +209,7 @@ public class MainEngineTests extends Application {
         /*******
          * game
          ******/
-        myGameManager = new GameManager(myConditions,allGameObjects,myLevels,group,Paths.get(".").toString()+"/src/data/games/fd_final");
+        myGameManager = new GameManager(myConditions,allGameObjects,myLevels,group,Paths.get(".").toString()+"/src/data/games/fd_final", null);
         myGameManager.initialize();
     }
 
