@@ -119,9 +119,9 @@ public class AuthoringController {
 		myModel.getLevels().addObserver(myLevelsAccordionView);
 		myModel.getConditions().addObserver(myConditionsAccordionView);
 		
-		Condition a = new ButtonCondition(null, KeyCode.A);
-		a.setIdentifier(new Identifier("HelloType", "UniqueHello1"));
-		myModel.getConditions().add(a);
+//		Condition a = new ButtonCondition(null, KeyCode.A);
+//		a.setIdentifier(new Identifier("HelloType", "UniqueHello1"));
+//		myModel.getConditions().add(a);
 
 	}
 
