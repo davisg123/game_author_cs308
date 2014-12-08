@@ -8,9 +8,9 @@ import engine.GameManager;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 
-public class ReverseVelocityAction extends PhysicsAction {
+public class ReverseVelocityIDAction extends PhysicsIDAction {
 
-	public ReverseVelocityAction(ArrayList<Identifier> id, double value) {
+	public ReverseVelocityIDAction(ArrayList<Identifier> id, double value) {
 		super(id, value);
 		// TODO Auto-generated constructor stub
 	}

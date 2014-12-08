@@ -41,36 +41,37 @@ public class CollisionComposition {
 		// (Math.abs(curY)+Math.abs(otherY)));
 	}
 
-	public void fixedCollision(GameObject fixed, GameObject other) {
+	public void fixedCollision(GameObject one, GameObject two) {
 
 		// System.out.println(xChange / (Math.abs(curX)+Math.abs(otherX)));
 		// create new condition to stop x or y
-		boolean xAxis = isOnXAxis(fixed, other);
+		boolean xAxis = isOnXAxis(one, two);
+		GameObject fixed = (one.getPhysicsBody().getScalar("CollisionConstant")
+				.getValue() == 1) ? one : two;
+		GameObject other = (one.getPhysicsBody().getScalar("CollisionConstant")
+				.getValue() == 1) ? two : one;
 
-		if (!other.getCollisionConstant()) {
+		if (xAxis) {
 
-			if (xAxis) {
+			// cancel out current velocity
+			other.setTranslateX(other.getTranslateX()
+					- other.getPhysicsBody().getVelocity().getX()
+					/ FRAMES_PER_SECOND);
+			// apply rivaling velocity
+			other.setTranslateX(other.getTranslateX()
+					+ other.getPhysicsBody().getVelocity().getX()
+					/ FRAMES_PER_SECOND);
+		} else {
 
-				// cancel out current velocity
-				other.setTranslateX(other.getTranslateX()
-						- other.getPhysicsBody().getVelocity().getX()
-						/ FRAMES_PER_SECOND);
-				// apply rivaling velocity
-				other.setTranslateX(other.getTranslateX()
-						+ other.getPhysicsBody().getVelocity().getX()
-						/ FRAMES_PER_SECOND);
-			} else {
+			// cancel out current velocity
+			other.setTranslateY(other.getTranslateY()
+					- other.getPhysicsBody().getVelocity().getY()
+					/ FRAMES_PER_SECOND);
 
-				// cancel out current velocity
-				other.setTranslateY(other.getTranslateY()
-						- other.getPhysicsBody().getVelocity().getY()
-						/ FRAMES_PER_SECOND);
-
-				// apply rivaling velocity
-				other.setTranslateY(other.getTranslateY()
-						+ other.getPhysicsBody().getVelocity().getY()
-						/ FRAMES_PER_SECOND);
-			}
+			// apply rivaling velocity
+			other.setTranslateY(other.getTranslateY()
+					+ other.getPhysicsBody().getVelocity().getY()
+					/ FRAMES_PER_SECOND);
 		}
 	}
 
