@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-
 import data.DataManager;
 import authoring.model.GameData;
 import authoring.model.collections.ConditionsCollection;
@@ -13,6 +12,7 @@ import authoring.model.collections.LevelsCollection;
 import engine.GameManager;
 import engine.actions.Action;
 import engine.actions.FixedCollisionTypeAction;
+import engine.actions.MakeNewObjectFromLocationAction;
 import engine.actions.TranslateXType;
 import engine.actions.TranslateYType;
 import engine.actions.YVelocityIDAction;
@@ -26,12 +26,6 @@ import engine.gameObject.Identifier;
 import engine.gameObject.components.PhysicsBody;
 import engine.level.Level;
 import engine.physics.CollisionConstant;
-import engine.physics.Force;
-import engine.physics.Gravity;
-import engine.physics.GravityConstant;
-import engine.physics.Impulse;
-import engine.physics.Mass;
-import engine.physics.Vector;
 import engine.physics.Velocity;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -100,7 +94,7 @@ public class MainEngineTests extends Application {
                                                -50, 200, 20, 200, 0, "floor_left");
         floorLeft.setIdentifier(new Identifier("floor","b"));
         PhysicsBody floorLeftBody = new PhysicsBody(20,200);
-        //floorLeftBody.setVelocity(new Velocity(0,-40));
+        floorLeftBody.setVelocity(new Velocity(0,-40));
         floorLeftBody.addScalar((new CollisionConstant(1.0)));
         floorLeft.setPhysicsBody(floorLeftBody);
         //floorBody.setAcceleration(new Acceleration(0.0,-77.0));
@@ -111,12 +105,6 @@ public class MainEngineTests extends Application {
         GameObject ball = new GameObject(null,"ball.png",150,50,30,30,0,"ball_object");
         ball.setIdentifier(new Identifier("ball","a"));
         PhysicsBody ballBody = new PhysicsBody(30,30);
-        Force gravity=new Gravity(0.0, 1.0);
-        ballBody.addForce(gravity);
-        ballBody.addForce(new Gravity(0.0, 1.0));
-        ballBody.addScalar(new Mass(4.0));
-        ballBody.addScalar(new GravityConstant(5.0));
-        ballBody.addImpulse(new Impulse(0, -200.0));
         ball.setPhysicsBody(ballBody);
         myBallObjects.add(ball);
         
@@ -134,16 +122,17 @@ public class MainEngineTests extends Application {
          ******/
 
         ConditionsCollection myConditions = new ConditionsCollection();
-        /*
+        
         ArrayList<Identifier> ballIdList = new ArrayList<Identifier>();
         ballIdList.add(ball.getIdentifier());
-        YVelocityIDAction yVelAction = new YVelocityIDAction(ballIdList,50.0);
+        TranslateYType yVelAction = new TranslateYType("ball",1);
         ArrayList<Action> yVelActionList = new ArrayList<Action>();
         yVelActionList.add(yVelAction);
         TimeCondition myConstantVelocity = new TimeCondition(yVelActionList,1,true);
-        myConditions.add(myConstantVelocity);*/
+        myConditions.add(myConstantVelocity);
         
-        Action aAct = new TranslateXType("ball",-2.0);
+//        Action aAct = new TranslateXType("ball",-2.0);
+        Action aAct = new MakeNewObjectFromLocationAction("ball",200,200);
         Action dAct = new TranslateXType("ball",2.0);
         ArrayList<Action> actionList = new ArrayList<Action>();
         actionList.add(aAct);
@@ -159,6 +148,7 @@ public class MainEngineTests extends Application {
         dCon.setIdentifier(new Identifier("button_cond","d"));
         myConditions.add(aCon);
         myConditions.add(dCon);
+        System.out.println(1);
         
         //collision stuff
         ArrayList<Action> ConditionActionList = new ArrayList<Action>();
@@ -173,9 +163,11 @@ public class MainEngineTests extends Application {
         ArrayList<Action> boundaryActionList = new ArrayList<Action>();
         boundaryActionList.add(boundaryLeftAction);
         boundaryActionList.add(boundaryRightAction);
-        BoundaryConditionY boundaryCondition = new BoundaryConditionY(boundaryActionList,myFloorObjects.getIdentifierList(),-50.0,false);
+        BoundaryConditionY boundaryCondition = new BoundaryConditionY(boundaryActionList,myFloorObjects.getIdentifierList(),-50,false);
         boundaryCondition.setIdentifier(new Identifier("bound_cond","a"));
         myConditions.add(boundaryCondition);
+        System.out.println(1);
+
         
         /*
          //uncomment for play pause stuff
@@ -196,6 +188,8 @@ public class MainEngineTests extends Application {
         GameObjectsCollection allGameObjects = new GameObjectsCollection();
         allGameObjects.addAll(myBallObjects);
         allGameObjects.addAll(myFloorObjects);
+        System.out.println(1);
+
 
         /*******
          * levels

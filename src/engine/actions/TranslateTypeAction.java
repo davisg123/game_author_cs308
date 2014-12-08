@@ -3,10 +3,12 @@ package engine.actions;
 import authoring.model.collections.GameObjectsCollection;
 import engine.GameManager;
 import engine.gameObject.GameObject;
+import engine.level.Level;
 
 public abstract class TranslateTypeAction implements Action, Initializable{
 
 	protected GameObjectsCollection myGameObjects; 
+	protected Level myCurrentLevel;
 	protected String myType; 
 	protected Double myValue;
 	
@@ -18,8 +20,7 @@ public abstract class TranslateTypeAction implements Action, Initializable{
 	
 	@Override
 	public void initialize(GameManager manager) {
-		myGameObjects = manager.getLevelManager().getCurrentLevel().getGameObjectsCollection(); 
-		
+	    myCurrentLevel = manager.getLevelManager().getCurrentLevel(); 
 	}
 
 

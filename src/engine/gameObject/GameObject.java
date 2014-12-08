@@ -106,6 +106,10 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
     	this.setPhysicsBody(g.getPhysicsBody());
 	}
 
+	public GameObject (GameObject g, double x, double y, String type){
+		this(g.getComponents(), g.getCurrentImageName(), x, y, g.getHeight(), g.getWidth(), g.getRotation(), type);
+	}
+	
 
     /**
      * Sets X-Coordinate of Object
@@ -256,7 +260,6 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
      * @return
      */
     public Component getComponent (Identifier iD) {
-        //TODO - make this work.
         Component result = null;
         for(Component comp : myComponents){
             if(comp.getIdentifier() == iD){

@@ -96,7 +96,7 @@ public class Level extends Observable implements Identifiable {
     //}
 
     public void addGameObject(GameObject gameObject) {
-        myDefaultGameObjects.add(gameObject);
+        myWorkingGameObjects.add(gameObject);
         setChanged();
         notifyObservers(this);
     }
