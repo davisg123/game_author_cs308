@@ -68,6 +68,7 @@ public class AuthoringModel {
 				levelGameObjects.add(i);
 			}
 			Level levelToAdd = new Level(levelGameObjects);
+			levelToAdd.setStartIndicator(l.isStartLevel());
 			levelToAdd.setIdentifier(new Identifier(l.getIdentifier().getType(),l.getIdentifier().getUniqueId()));
 			mySerializableGame.getLevels().add(levelToAdd);
 		}
@@ -95,6 +96,7 @@ public class AuthoringModel {
 			}
 			//l.getGameObjectIDs().clear();
 			Level newLevel = new Level(newObjects);
+			newLevel.setStartIndicator(l.isStartLevel());
 			newLevel.setIdentifier(l.getIdentifier());
 			myGame.getLevels().add(newLevel);
 		}

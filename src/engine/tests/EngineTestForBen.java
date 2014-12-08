@@ -14,7 +14,7 @@ import engine.actions.TranslateY;
 import engine.actions.YImpulseAction;
 import engine.conditions.ButtonCondition;
 import engine.conditions.ButtonConditionManager;
-import engine.conditions.CollisionCondition;
+import engine.conditions.TypeCollisionCondition;
 import engine.conditions.TimeCondition;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
@@ -127,7 +127,7 @@ public class EngineTestForBen extends Application {
 		myConditions.add(dCon);
 
 		// collision stuff
-		CollisionCondition ballAndPlatformCollision = new CollisionCondition(
+		TypeCollisionCondition ballAndPlatformCollision = new TypeCollisionCondition(
 				null, myFloorObjects, myBallObjects);
 		myConditions.add(ballAndPlatformCollision);
 

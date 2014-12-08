@@ -7,6 +7,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.TitledPane;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
+import authoring.eventhandlers.AddConditionHandler;
 import authoring.eventhandlers.AddImageHandler;
 import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.AddObjectHandler;
@@ -113,18 +114,17 @@ public class AuthoringController {
 		myView.setRight(initializeRight());
 		initializeGameHandlers();
 
-		
 		myModel.getImages().addObserver(myGraphics);
 		myModel.getGameObjectCollection().addObserver(myGameObjects);
-		
+
 		myModel.getSounds().addObserver(mySounds);
 
 		myModel.getLevels().addObserver(myLevelsAccordionView);
 		myModel.getConditions().addObserver(myConditionsAccordionView);
 
-		Condition a = new ButtonCondition(null, KeyCode.A);
+		/*Condition a = new ButtonCondition(null, KeyCode.A);
 		a.setIdentifier(new Identifier("HelloType", "UniqueHello1"));
-		myModel.getConditions().add(a);
+		myModel.getConditions().add(a);*/
 
 	}
 
@@ -181,11 +181,14 @@ public class AuthoringController {
 		myLevels.setEventHandlers(new GameObjectClickHandler(myProperties),
 				new GameObjectDragHandler(myLevels, myModel.getLevels(),
 						myProperties), new GameObjGraphicDragHandler(myLevels));
+
 		myLevelsAccordionView.setIconEvents(new LevelToViewHandler(myLevels),
 				new LevelClickHandler(myProperties));
 
 		myConditionsAccordionView.setIconEvents(new ConditionClickHandler(
 				myProperties));
+
+		myConditionOptions.setButtonBehavior(new AddConditionHandler());
 
 		myLevelsAccordionView.setLevelEvents(new GameObjectClickHandler(
 				myProperties),
