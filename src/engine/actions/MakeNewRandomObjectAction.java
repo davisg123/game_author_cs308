@@ -28,6 +28,8 @@ public class MakeNewRandomObjectAction extends MakeNewObjectAction{
 				double x = r.nextInt((int) (myUpperXBound-myLowerXBound)) + myLowerXBound; 
 				double y = r.nextInt((int) (myUpperYBound-myLowerYBound)) + myLowerYBound; 
 				GameObject newObject = new GameObject(object, x, y, myType); 
+				newObject.setIdentifier(object.getIdentifier());
+				newObject.setPhysicsBody(object.getPhysicsBody());
 				myRenderer.createAndAssignRenderedNode(newObject);
 				myCurrentLevel.addGameObject(newObject);
 				
