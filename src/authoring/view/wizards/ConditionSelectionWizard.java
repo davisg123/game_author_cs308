@@ -10,7 +10,8 @@ public class ConditionSelectionWizard extends Wizard {
 
 	private ConditionChoicesVBox myChoices;
 	private Button selectParametersButton;
-	private Button addActionButton;
+	//private Button addActionButton;
+	private Button finalizeButton;
 	
 	public ConditionSelectionWizard(String title, double width, double height,
 			EventHandler<ActionEvent> event) {
@@ -33,9 +34,13 @@ public class ConditionSelectionWizard extends Wizard {
 		myWindow.getChildren().add(selectParametersButton);
 		
 		
-		addActionButton = new Button("Add Actions");
-		myWindow.getChildren().add(addActionButton);
-		addActionButton.setDisable(true);
+//		addActionButton = new Button("Add Actions");
+//		myWindow.getChildren().add(addActionButton);
+//		addActionButton.setDisable(true);
+		
+		finalizeButton = new Button("Finalize Condition");
+		myWindow.getChildren().add(finalizeButton);
+		finalizeButton.setDisable(true);
 		
 		return myWindow;
 	}
@@ -45,14 +50,17 @@ public class ConditionSelectionWizard extends Wizard {
 	}
 	
 	public void disableSelection(){
-		selectParametersButton.setText("Edit Parameter Values");
 		myChoices.setDisable(true);
-		addActionButton.setDisable(false);
 	}
 	
-	public void enableActionCreation(EventHandler<ActionEvent> event){
-		addActionButton.setOnAction(event);
-		addActionButton.setDisable(false);
+//	public void enableActionCreation(EventHandler<ActionEvent> event){
+//		addActionButton.setOnAction(event);
+//		addActionButton.setDisable(false);
+//	}
+
+	public void enableFinalize(EventHandler<ActionEvent> event) {
+		finalizeButton.setOnAction(event);
+		finalizeButton.setDisable(false);
 	}
 
 }

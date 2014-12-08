@@ -14,8 +14,8 @@ public class TimeCondition extends Condition {
     public TimeCondition (List<Action> myActions, Double frameElapseCount, Boolean repeats) {
         super(myActions);
         expired = Boolean.FALSE;
-        myTargetFrameCount = frameElapseCount;
-        this.repeats = repeats;
+        myTargetFrameCount = (Double) frameElapseCount;
+        this.repeats = (Boolean) repeats;
     }
 
     @Override
