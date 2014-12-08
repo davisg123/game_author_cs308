@@ -11,6 +11,7 @@ import authoring.eventhandlers.AddConditionHandler;
 import authoring.eventhandlers.AddImageHandler;
 import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.AddObjectHandler;
+import authoring.eventhandlers.AddSoundHandler;
 import authoring.eventhandlers.ConditionClickHandler;
 import authoring.eventhandlers.DeleteGameObjectHandler;
 import authoring.eventhandlers.EditGameObjectHandler;
@@ -25,6 +26,7 @@ import authoring.eventhandlers.SaveAsNewHandler;
 import authoring.eventhandlers.ImageDropHandler;
 import authoring.eventhandlers.FileDragOverHandler;
 import authoring.eventhandlers.SoundDropHandler;
+import authoring.eventhandlers.SoundsClickHandler;
 import authoring.model.AuthoringModel;
 import authoring.model.GameData;
 import authoring.view.AuthoringView;
@@ -122,9 +124,11 @@ public class AuthoringController {
 		myModel.getLevels().addObserver(myLevelsAccordionView);
 		myModel.getConditions().addObserver(myConditionsAccordionView);
 
-		/*Condition a = new ButtonCondition(null, KeyCode.A);
-		a.setIdentifier(new Identifier("HelloType", "UniqueHello1"));
-		myModel.getConditions().add(a);*/
+		/*
+		 * Condition a = new ButtonCondition(null, KeyCode.A);
+		 * a.setIdentifier(new Identifier("HelloType", "UniqueHello1"));
+		 * myModel.getConditions().add(a);
+		 */
 
 	}
 
@@ -163,7 +167,7 @@ public class AuthoringController {
 		myGraphics.setDragOver(new FileDragOverHandler());
 		myGraphics.setDragDrop(new ImageDropHandler(myModel.getImages(),
 				myGameLocation));
-
+		mySounds.setIconEvents(new SoundsClickHandler(myProperties, myGameLocation));
 		mySounds.setDragOver(new FileDragOverHandler());
 		mySounds.setDragDrop(new SoundDropHandler(myModel.getSounds(),
 				myGameLocation));
@@ -174,7 +178,8 @@ public class AuthoringController {
 				.getLevels(), myLevels));
 		myGraphicOptions.setButtonBehavior(new AddImageHandler(myModel
 				.getImages(), myGameLocation));
-
+		mySoundOptions.setButtonBehavior(new AddSoundHandler(myModel
+				.getSounds(), myGameLocation));
 		myObjectOptions.setButtonBehavior(new AddObjectHandler(myModel
 				.getGameObjectCollection()));
 
