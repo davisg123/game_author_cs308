@@ -110,9 +110,9 @@ public class GameObjectRenderer {
     private Node createCollisionBody (GameObject obj) {
         //Temporary
         PhysicsBody body = obj.getPhysicsBody();
-        Rectangle asdf = new Rectangle(body.getCollisionBodyHeight(),body.getCollisionBodyWidth());
-        asdf.setVisible(false);
-        return asdf;
+        Rectangle hitBox = new Rectangle(body.getCollisionBodyHeight(),body.getCollisionBodyWidth());
+        hitBox.setVisible(false);
+        return hitBox;
     }
 
     /**
