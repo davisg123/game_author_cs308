@@ -36,6 +36,10 @@ public class SoundUtility {
         
     }
     
+    public void setVolume(String musicPath, double value) {
+        myMediaPlayerMap.get(musicPath).setVolume(value);
+    }
+    
     public void playBackGroundMusic (String musicPath) {
         myMediaPlayerMap.get(musicPath).play();
     }
