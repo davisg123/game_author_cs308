@@ -47,7 +47,7 @@ public class Component implements IEnabled,Identifiable {
 
 
     public void update(GameObject object){
-        
+       //TODO 
     }
 
     public void enable() {
