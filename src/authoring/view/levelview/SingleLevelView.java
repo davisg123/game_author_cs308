@@ -1,7 +1,12 @@
 package authoring.view.levelview;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+
+import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Insets;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
@@ -30,24 +35,38 @@ public class SingleLevelView extends Pane implements Observer {
 			Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY));
 	private static final double VIEW_HEIGHT_RATIO = .82;
 	private static final double VIEW_WIDTH_RATIO = 0.6;
-	public static final double OBJECT_X_OFFSET = -Main.SCREEN_WIDTH*.2;
-	public static final double OBJECT_Y_OFFSET = -Main.SCREEN_HEIGHT*.23;
+	public static final double OBJECT_X_OFFSET = -Main.SCREEN_WIDTH * .2;
+	public static final double OBJECT_Y_OFFSET = -Main.SCREEN_HEIGHT * .23;
 	private File myGameLocation;
 
 	private GameHandler[] myEvents;
 	private String myID;
 	private double myViewWidth;
 	private double myViewHeight;
-
 	private String myBackgroundImage;
-	
+
 	public SingleLevelView(File gameLoc, double width, double height,
-			GameHandler... handlers) {
-		
-		this.setBackground(myDefaultBackground);
+			String bgImage, GameHandler... handlers) {
 		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
 		myEvents = handlers;
 		myGameLocation = gameLoc;
+		this.setBackground(myDefaultBackground);
+		
+		File file = new File(myGameLocation.getPath() + "/images/" + bgImage);
+		BufferedImage bufferedImage;
+		try {
+			bufferedImage = ImageIO.read(file);
+			Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+			BackgroundImage backgroundImage = new BackgroundImage(image, null,
+					null, null, null);
+			Background background = new Background(backgroundImage);
+			this.setBackground(background);
+			System.out.println("hit");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("Not an image selected for background");
+		}
+
 	}
 
 	/**
@@ -56,13 +75,12 @@ public class SingleLevelView extends Pane implements Observer {
 	 * @param l
 	 * @param handlers
 	 */
-	public SingleLevelView(File gameLoc, double width, double height, Level l, GameHandler... handlers){
-		this(gameLoc, width,height, handlers);
+	public SingleLevelView(File gameLoc, double width, double height, Level l,
+			GameHandler... handlers) {
+		this(gameLoc, width, height, l.getBackgroundImage(), handlers);
 
 		recreateLevel(l);
-		
-		
-		
+
 	}
 
 	private void setView(double width, double height) {
@@ -74,7 +92,7 @@ public class SingleLevelView extends Pane implements Observer {
 	}
 
 	public void recreateLevel(Level l) {
-		//System.out.println(myEvents.length);
+		// System.out.println(myEvents.length);
 		for (GameObject g : l.getGameObjectsCollection()) {
 			addGameObjectToView(g, g.getX(), g.getY(), myEvents);
 		}
@@ -92,10 +110,13 @@ public class SingleLevelView extends Pane implements Observer {
 
 	private void addGameObjectToView(GameObject gameObject, double x, double y,
 			GameHandler... handler) {
-		GameObjectIcon g = new GameObjectIcon(gameObject, myGameLocation, handler);
-		//System.out.println(gameObject.getWidth() + " " + gameObject.getHeight() + " " + gameObject.getRotation());
-		g.setDimensions(gameObject.getWidth(), gameObject.getHeight(), gameObject.getRotation());
-		
+		GameObjectIcon g = new GameObjectIcon(gameObject, myGameLocation,
+				handler);
+		// System.out.println(gameObject.getWidth() + " " +
+		// gameObject.getHeight() + " " + gameObject.getRotation());
+		g.setDimensions(gameObject.getWidth(), gameObject.getHeight(),
+				gameObject.getRotation());
+
 		this.moveGameObjectToLevel(g, x, y);
 		this.getChildren().add(g);
 
@@ -121,13 +142,11 @@ public class SingleLevelView extends Pane implements Observer {
 		g.setLayoutY(y + OBJECT_Y_OFFSET);
 	}
 
-	public double getViewWidth()
-	{
+	public double getViewWidth() {
 		return this.myViewWidth;
 	}
-	
-	public double getViewHeight()
-	{
+
+	public double getViewHeight() {
 		return this.myViewHeight;
 	}
 }
