@@ -180,6 +180,7 @@ public class PhysicsBody {
 				/ FRAMES_PER_SECOND);
 		sprite.setTranslateY(sprite.getTranslateY() + myVelocity.getY()
 				/ FRAMES_PER_SECOND);
+		System.out.println(myBalancedForcesMag.getY()+"   "+myVelocity.getY());
 	}
 
 	/**
