@@ -71,8 +71,8 @@ public class ButtonCondition extends Condition {
     
     @Override
     public void frameElapsed () {
-        myFramesElapsed+= 1.0;
-        if (!myExpired && myFramesElapsed > myTargetFrameCount){
+        myFramesElapsed++;
+        if (!myExpired && myFramesElapsed >= myTargetFrameCount){
             myExpired = !myKeyRepeats;
             myFramesElapsed = 0.0;
             executeActions();
