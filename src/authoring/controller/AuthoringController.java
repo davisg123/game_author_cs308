@@ -5,10 +5,13 @@ import java.util.ResourceBundle;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.TitledPane;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
+import authoring.eventhandlers.AddConditionHandler;
 import authoring.eventhandlers.AddImageHandler;
 import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.AddObjectHandler;
+import authoring.eventhandlers.ConditionClickHandler;
 import authoring.eventhandlers.DeleteGameObjectHandler;
 import authoring.eventhandlers.EditGameObjectHandler;
 import authoring.eventhandlers.GameObjGraphicDragHandler;
@@ -19,12 +22,14 @@ import authoring.eventhandlers.ImagesClickHandler;
 import authoring.eventhandlers.LevelClickHandler;
 import authoring.eventhandlers.LevelToViewHandler;
 import authoring.eventhandlers.SaveAsNewHandler;
-import authoring.eventhandlers.UploadDragDropHandler;
-import authoring.eventhandlers.UploadDragOverHandler;
+import authoring.eventhandlers.ImageDropHandler;
+import authoring.eventhandlers.FileDragOverHandler;
 import authoring.model.AuthoringModel;
+import authoring.model.GameData;
 import authoring.view.AuthoringView;
 import authoring.view.baseclasses.AccordionContainer;
 import authoring.view.baseclasses.BPContainer;
+import authoring.view.conditionsview.ConditionOptions;
 import authoring.view.conditionsview.ConditionsAccordionView;
 import authoring.view.gameobjectsview.GameObjectOptions;
 import authoring.view.gameobjectsview.GameObjectsView;
@@ -36,6 +41,9 @@ import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
 import authoring.view.soundsview.SoundOptions;
 import authoring.view.soundsview.SoundsView;
+import engine.conditions.ButtonCondition;
+import engine.conditions.Condition;
+import engine.gameObject.Identifier;
 
 /**
  * Controller class that interacts between model and view. Holds and constructs
@@ -78,6 +86,7 @@ public class AuthoringController {
 	private PropertiesView myProperties;
 	private LevelsAccordionView myLevelsAccordionView;
 	private ConditionsAccordionView myConditionsAccordionView;
+	private ConditionOptions myConditionOptions;
 	private File myGameLocation;
 
 	public AuthoringController(AuthoringView view, AuthoringModel model,
@@ -108,6 +117,12 @@ public class AuthoringController {
 		myModel.getGameObjectCollection().addObserver(myGameObjects);
 
 		myModel.getLevels().addObserver(myLevelsAccordionView);
+		myModel.getConditions().addObserver(myConditionsAccordionView);
+		
+		Condition a = new ButtonCondition(null, KeyCode.A);
+		a.setIdentifier(new Identifier("HelloType", "UniqueHello1"));
+		myModel.getConditions().add(a);
+
 	}
 
 	/**
@@ -135,14 +150,16 @@ public class AuthoringController {
 				myHeight);
 		myConditionsAccordionView = new ConditionsAccordionView(myLanguage,
 				myWidth, myHeight);
+		myConditionOptions = new ConditionOptions(myLanguage, myWidth, myHeight);
+
 
 	}
 
 	private void initializeGameHandlers() {
 
 		myGraphics.setGraphicEvents(new ImagesClickHandler(myProperties));
-		myGraphics.setDragOver(new UploadDragOverHandler());
-		myGraphics.setDragDrop(new UploadDragDropHandler(myModel.getImages(), myGameLocation));
+		myGraphics.setDragOver(new FileDragOverHandler());
+		myGraphics.setDragDrop(new ImageDropHandler(myModel.getImages(), myGameLocation));
 		myGameObjects.setGraphicEvents(new GameObjectClickHandler(myProperties),
 				new GameObjectDragToLevelHandler(myLevels, myModel.getLevels(),
 						myProperties));
@@ -158,6 +175,12 @@ public class AuthoringController {
 				new GameObjectDragHandler(myLevels, myModel.getLevels(),
 						myProperties), new GameObjGraphicDragHandler(myLevels));
 		myLevelsAccordionView.setGraphicEvents(new LevelToViewHandler(myLevels), new LevelClickHandler(myProperties));
+		
+		
+		myConditionsAccordionView.setGraphicEvents(new ConditionClickHandler(myProperties));
+		
+		myConditionOptions.setButtonBehavior(new AddConditionHandler());
+		
 		myLevelsAccordionView.setLevelEvents(new GameObjectClickHandler(
 				myProperties),
 				new GameObjectDragHandler(myLevels, myModel.getLevels(),
@@ -166,7 +189,7 @@ public class AuthoringController {
 				new EditGameObjectHandler(myLevels, myModel.getLevels(), myProperties),
 				new SaveAsNewHandler(myModel.getGameObjectCollection(), myProperties),
 				new DeleteGameObjectHandler(myLevels, myModel.getLevels(), myProperties));
-
+	
 	}
 
 	/**
@@ -203,6 +226,12 @@ public class AuthoringController {
 				* LEFT_ACCORDION_HEIGHT_RATIO);
 		soundsBP.setTop(mySoundOptions);
 		soundsBP.setCenter(mySounds);
+		
+		BPContainer conditionBP = new BPContainer(myWidth
+				* LEFT_ACCORDION_WIDTH_RATIO, myHeight
+				* LEFT_ACCORDION_HEIGHT_RATIO);
+		conditionBP.setTop(myConditionOptions);
+		conditionBP.setCenter(myConditionsAccordionView);
 
 		TitledPane graphics = new TitledPane(myLanguage.getString("Images"),
 				graphicsBP);
@@ -214,7 +243,7 @@ public class AuthoringController {
 				myLevelsAccordionView);
 
 		TitledPane conditions = new TitledPane(
-				myLanguage.getString("Conditions"), myConditionsAccordionView);
+				myLanguage.getString("Conditions"), conditionBP);
 
 		leftView.getPanes().addAll(graphics, sounds, gameObjects, levels,
 				conditions);
@@ -231,7 +260,11 @@ public class AuthoringController {
 	}
 
 	public void saveData() {
-		myModel.save();
+		myModel.save(myGameLocation.getAbsolutePath());
+	}
+	
+	public void loadData(GameData input){
+		myModel.load(input);
 	}
 
 }

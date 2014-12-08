@@ -6,6 +6,7 @@ import engine.conditions.Condition;
 import engine.gameObject.Identifier;
 
 public class ConditionsCollection extends GeneralCollection<Condition> {
+	
     public List<Identifier> getIdentifierList(){
         ArrayList<Identifier> IdList = new ArrayList<Identifier>();
         for (Condition c : this){

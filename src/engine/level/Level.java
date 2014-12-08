@@ -98,6 +98,10 @@ public class Level extends Observable implements Identifiable {
         setChanged();
         notifyObservers(this);
     }
+    
+    public void addInitialGameObjects(GameObject gameObject){
+        myWorkingGameObjects.add(gameObject);
+    }
 
     public boolean removeGameObject(GameObject g){
         boolean ret = myDefaultGameObjects.remove(g);

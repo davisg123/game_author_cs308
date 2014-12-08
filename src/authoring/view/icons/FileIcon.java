@@ -4,11 +4,13 @@ import java.io.File;
 
 import authoring.eventhandlers.GameHandler;
 
-public class FileIcon extends BaseIcon {
+public abstract class FileIcon extends BaseIcon {
 	protected File myGameLocation;
 
 	public FileIcon(File gameLoc, String label, GameHandler... handler) {
 		super(label, handler);
 		myGameLocation = gameLoc;
 	}
+
+	protected abstract void makeIcon();
 }

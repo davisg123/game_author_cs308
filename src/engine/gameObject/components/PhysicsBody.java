@@ -78,7 +78,7 @@ public class PhysicsBody {
 		myConstants
 				.put("CoefficientOfFriction", new CoefficientOfFriction(0.0));
 		myConstants.put("CollisionConstant", new CollisionConstant(0.0));
-		myConstants.put("Density", new Density(0.0));
+		myConstants.put("Density", new Density(1.0));
 		myConstants.put("GravityConstant", new GravityConstant(1.0));
 		myConstants.put("Volume", new Volume(1.0));
 		myConstants.put("Mass", new Mass(1.0));
