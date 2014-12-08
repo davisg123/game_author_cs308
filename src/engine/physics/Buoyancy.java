@@ -10,8 +10,8 @@ public class Buoyancy extends Force {
 	private static final double GRAVITY_ACCELERATION = 9.8;
 
 	public Buoyancy(double x, double y, Scalar... scalar) {
-		super(scalar);
-		constructionHelper(x * myForceValue, y * myForceValue);
+		super(x, y, scalar);
+
 	}
 
 	/**
@@ -22,6 +22,7 @@ public class Buoyancy extends Force {
 	protected void calculateForce() {
 		myForceValue = myValues.get("Density") * GRAVITY_ACCELERATION
 				* myValues.get("Volume");
+		calculateMagnitude();
 	}
 
 	protected void setDefaultValues() {
