@@ -14,7 +14,7 @@ import engine.physics.Scalar;
  */
 public class MassPhysicsAction extends ScalarPhysicsAction {
 
-	public MassPhysicsAction(ArrayList<Identifier> id, double value) {
+	public MassPhysicsAction(ArrayList<Identifier> id, Double value) {
 		super(id, value);
 	}
 

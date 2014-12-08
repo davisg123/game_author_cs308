@@ -1,8 +1,6 @@
-package engine.actions.sound;
+package engine.actions;
 
 import engine.GameManager;
-import engine.actions.Action;
-import engine.actions.Initializable;
 import engine.sound.SoundUtility;
 
 /**

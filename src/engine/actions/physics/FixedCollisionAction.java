@@ -17,7 +17,7 @@ public class FixedCollisionAction extends PhysicsIDAction {
 	 *            is the value to change potentiall
 	 * @author Ben
 	 */
-	public FixedCollisionAction(ArrayList<Identifier> id, double value) {
+	public FixedCollisionAction(ArrayList<Identifier> id, Double value) {
 		super(id, value);
 	}
 

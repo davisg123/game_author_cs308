@@ -14,7 +14,7 @@ import engine.physics.Vector;
  */
 public class XFrictionPhysicsAction extends ForcePhysicsAction {
 
-	public XFrictionPhysicsAction(ArrayList<Identifier> id, double value) {
+	public XFrictionPhysicsAction(ArrayList<Identifier> id, Double value) {
 		super(id, value);
 	}
 

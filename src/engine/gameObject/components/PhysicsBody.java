@@ -1,6 +1,7 @@
 package engine.gameObject.components;
 
 import java.awt.geom.Point2D;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -8,7 +9,6 @@ import java.util.List;
 import engine.gameObject.GameObject;
 import java.util.Map;
 import engine.physics.Acceleration;
-import engine.physics.BEngine;
 import engine.physics.Buoyancy;
 import engine.physics.CoefficientOfFriction;
 import engine.physics.CollisionConstant;
@@ -19,7 +19,6 @@ import engine.physics.Gravity;
 import engine.physics.GravityConstant;
 import engine.physics.Impulse;
 import engine.physics.Mass;
-import engine.physics.NormalUpdate;
 import engine.physics.Scalar;
 import engine.physics.Vector;
 import engine.physics.Velocity;
@@ -267,6 +266,8 @@ public class PhysicsBody {
 	 * @param sprite
 	 *            -the sprite that collides with this one
 	 */
+
+	// doesn't need to be here, not removing it just to be safe
 	public void handleCollision(GameObject thisSprite, GameObject sprite) {
 		double xCenterOne = thisSprite.getPosition().getX();
 		double yCenterOne = thisSprite.getPosition().getY();

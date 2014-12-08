@@ -15,7 +15,7 @@ import engine.physics.Vector;
  */
 public class XImpulseIDAction extends ImpulseAction {
 
-	public XImpulseIDAction(ArrayList<Identifier> id, double value) {
+	public XImpulseIDAction(ArrayList<Identifier> id, Double value) {
 		super(id, value);
 		// TODO Auto-generated constructor stub
 	}

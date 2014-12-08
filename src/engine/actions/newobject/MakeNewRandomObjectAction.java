@@ -7,12 +7,12 @@ import engine.gameObject.GameObject;
 public class MakeNewRandomObjectAction extends MakeNewObjectAction{
 
 	protected Random r; 
-	protected double myLowerXBound;
-	protected double myUpperXBound;
-	protected double myLowerYBound;
-	protected double myUpperYBound; 
+	protected Double myLowerXBound;
+	protected Double myUpperXBound;
+	protected Double myLowerYBound;
+	protected Double myUpperYBound; 
 	
-	public MakeNewRandomObjectAction(String type, double lowerXBound, double upperXBound, double lowerYBound, double upperYBound){
+	public MakeNewRandomObjectAction(String type, Double lowerXBound, Double upperXBound, Double lowerYBound, Double upperYBound){
 		super(type); 
 		r = new Random(); 
 		

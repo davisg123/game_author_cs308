@@ -20,7 +20,7 @@ public class ButtonCondition extends Condition {
     
     
 
-    public ButtonCondition (List<Action> actions, List<KeyCode> keyList, double frameCount, Boolean keyRepeats) {
+    public ButtonCondition (List<Action> actions, List<KeyCode> keyList, Double frameCount, Boolean keyRepeats) {
         super(actions);
         myTargetFrameCount = frameCount;
         myKeyRepeats = keyRepeats;
@@ -71,8 +71,10 @@ public class ButtonCondition extends Condition {
     
     @Override
     public void frameElapsed () {
-        myFramesElapsed++;
-        if (!myExpired && myFramesElapsed >= myTargetFrameCount){
+
+        myFramesElapsed+= 1.0;
+        if (!myExpired && myFramesElapsed > myTargetFrameCount){
+
             myExpired = !myKeyRepeats;
             myFramesElapsed = 0.0;
             executeActions();

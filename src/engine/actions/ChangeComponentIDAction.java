@@ -1,10 +1,8 @@
-package engine.actions.componentsactions;
+package engine.actions;
 
 import java.util.List;
 import authoring.model.collections.GameObjectsCollection;
 import engine.GameManager;
-import engine.actions.Action;
-import engine.actions.Initializable;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 

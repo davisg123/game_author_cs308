@@ -16,7 +16,7 @@ import engine.physics.Vector;
  */
 public class YImpulseIDAction extends ImpulseAction {
 
-	public YImpulseIDAction(ArrayList<Identifier> id, double value) {
+	public YImpulseIDAction(ArrayList<Identifier> id, Double value) {
 		super(id, value);
 		// TODO Auto-generated constructor stub
 	}
