@@ -16,7 +16,5 @@ public class TranslateXType extends TranslateTypeAction {
 			}
 		}
 	}
-	
-	
 
 }

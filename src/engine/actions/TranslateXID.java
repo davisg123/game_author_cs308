@@ -2,7 +2,6 @@ package engine.actions;
 
 import java.util.List;
 
-import engine.GameManager;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 
