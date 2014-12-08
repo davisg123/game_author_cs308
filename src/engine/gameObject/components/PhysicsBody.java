@@ -132,7 +132,6 @@ public class PhysicsBody {
 	private void changeVelocity() {
 		myVelocity.delta(myAcceleration.getX() / FRAMES_PER_SECOND,
 				myAcceleration.getY() / FRAMES_PER_SECOND);
-		System.out.println(myVelocity.getY());
 	}
 
 	/**
