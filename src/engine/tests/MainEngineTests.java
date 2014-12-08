@@ -1,6 +1,8 @@
 package engine.tests;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import data.DataManager;
 import authoring.model.GameData;
@@ -74,7 +76,7 @@ public class MainEngineTests extends Application {
         GameObjectsCollection myFloorObjects = new GameObjectsCollection();
         GameObjectsCollection myBallObjects = new GameObjectsCollection();
         //create the floor
-        GameObject floorRight = new GameObject(null,"floor",
+        GameObject floorRight = new GameObject(null,"floor.png",
                                    200, 200, 20, 200, 0, "floor_right");
         floorRight.setIdentifier(new Identifier("floor","a"));
         //ugh, why do we have to set this explicitly?
@@ -84,7 +86,7 @@ public class MainEngineTests extends Application {
         floorRight.setPhysicsBody(floorRightBody);
         
         
-        GameObject floorLeft = new GameObject(null,"floor",
+        GameObject floorLeft = new GameObject(null,"floor.png",
                                                -50, 200, 20, 200, 0, "floor_left");
         floorLeft.setIdentifier(new Identifier("floor","b"));
         PhysicsBody floorLeftBody = new PhysicsBody(20,200);
@@ -96,7 +98,7 @@ public class MainEngineTests extends Application {
         myFloorObjects.add(floorLeft);
         
         //create a ball
-        GameObject ball = new GameObject(null,"ball",150,50,30,30,0,"ball_object");
+        GameObject ball = new GameObject(null,"ball.png",150,50,30,30,0,"ball_object");
         ball.setIdentifier(new Identifier("ball","a"));
         PhysicsBody ballBody = new PhysicsBody(30,30);
         ballBody.setVelocity(new Velocity(0,10));
@@ -104,7 +106,7 @@ public class MainEngineTests extends Application {
         myBallObjects.add(ball);
         
         //create alt ball
-        GameObject ball2 = new GameObject(null,"ball",250,50,30,30,0,"ball_object");
+        GameObject ball2 = new GameObject(null,"ball.png",250,50,30,30,0,"ball_object");
         ball2.setIdentifier(new Identifier("ball","b"));
         PhysicsBody ballBody2 = new PhysicsBody(30,30);
         ballBody2.setVelocity(new Velocity(0,10));
@@ -176,7 +178,7 @@ public class MainEngineTests extends Application {
         /*
          * uncomment for saving game
          */
-        
+        /*
         GameData data = new GameData(myLevels,myConditions,allGameObjects);
         DataManager manager = new DataManager();
         try {
@@ -186,12 +188,12 @@ public class MainEngineTests extends Application {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
+        */
         
         /*******
          * game
          ******/
-        myGameManager = new GameManager(myConditions,allGameObjects,myLevels,group);
+        myGameManager = new GameManager(myConditions,allGameObjects,myLevels,group,Paths.get(".").toString()+"/src/data/games/fd_final");
         myGameManager.initialize();
     }
 
