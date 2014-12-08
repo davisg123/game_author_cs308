@@ -31,11 +31,11 @@ public class Attributes extends Component{
         return null;
     }
     
-    @Override
-    public Attributes getClone(){
-    	List<IProperty> clonesOfProperties = copyProperties(); 
-    	return new Attributes(clonesOfProperties);
-    }
+//    @Override
+//    public Attributes getClone(){
+//    	List<IProperty> clonesOfProperties = copyProperties(); 
+//    	return new Attributes(clonesOfProperties);
+//    }
 
   
 }

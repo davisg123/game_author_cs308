@@ -21,39 +21,56 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.Menu?>
 <?import gamePlayer.view.GameSelector?>
+<?import javafx.scene.control.Tab?>
 
-<BorderPane prefWidth="1000.0" prefHeight="1000.0" xmlns:fx="http://javafx.com/fxml" fx:controller="gamePlayer.view.MenuBarController">
-    <top>
-    	<Label text="Game Player GUI"/>
-    	<GameSelector/>
-    	<MenuBar> 
-    		<menus>
-    			<Menu fx:id="gameSelector" text="Game Selector">
-    				<items>
-    					<MenuItem text="Home" onAction="#goHome"/>
-						<MenuItem text="Load Game File" onAction="#loadGameFile"/>
-						<MenuItem text="Exit Game" onAction="#exitFromGame"/>
-    				</items>
-    			</Menu> 
-    			<Menu fx:id="gameOptions" text="Game Options" disable="true">
-    				<items>
-    					<MenuItem text="New" onAction="#newGame"/>
-    					<MenuItem text="Load from Save File" onAction="#loadFromSave"/>
-    					<MenuItem text="Save" onAction="#saveGame"/>
-    					<MenuItem text="Pause" onAction="#pauseGame"/>
-    					<MenuItem text="Quit" onAction="#quitGame"/> 
-    				</items>	
-    			</Menu>
-    			<Menu fx:id="gamePreferences" text="Preferences" disable="true">
-    				<items>
-    					<MenuItem text="Sound"/>
-    					<MenuItem text="KeyCombos"/>    				
-    				</items>
-    			</Menu>
-    		</menus>
-    	</MenuBar>
-    </top>
-     
+<BorderPane prefWidth="1000.0" prefHeight="1000.0"
+	xmlns:fx="http://javafx.com/fxml" fx:controller="gamePlayer.view.MenuBarController">
+	<stylesheets>
+		<URL value="@ribbon.css" />
+	</stylesheets>
+	<top>
+		<TabPane>
+			<tabs>
+				<Tab fx:id="gameSelector" text="Menu" closable="false">
+					<HBox id="container" spacing="10">
+						<Button prefHeight="50" prefWidth="50" id="loadButton"
+							onAction="#loadGameFile">
+							<tooltip>
+								<Tooltip id="tooltip" text="Load a game file." />
+							</tooltip>
+						</Button>
+						<Button prefHeight="50" prefWidth="50" id="exitButton"
+							onAction="#exitFromGame">
+							<tooltip>
+								<Tooltip id="tooltip" text="Exit from the program." />
+							</tooltip>
+						</Button>
+					</HBox>
+				</Tab>
+				<Tab fx:id="gameOptions" text="Options" closable="false"
+					disable="true">
+					<HBox id="container" spacing="10">
+						<Button prefHeight="50" prefWidth="50" id="pausePlayButton"
+							onAction="#pauseGame">
+							<tooltip>
+								<Tooltip id="tooltip" text="Pause/Play Game." />
+							</tooltip>
+						</Button>
+					</HBox>
+				</Tab>
+				<Tab fx:id="gamePreferences" text="Preferences" closable="false"
+					disable="true">
+					<HBox id="container" spacing="10">
+						<Button prefHeight="50" prefWidth="50" id="keyboardButton"
+							onAction="#keyCombos">
+							<tooltip>
+								<Tooltip id="tooltip" text="Set Key Combinations." />
+							</tooltip>
+						</Button>
+					</HBox>
+				</Tab>
+			</tabs>
+		</TabPane>
+	</top>
+
 </BorderPane>
-
-

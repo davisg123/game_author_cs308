@@ -16,7 +16,7 @@ import javafx.scene.image.Image;
  *
  */
 public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
-    private List<Component> myComponents; 
+    private List<Component> myComponents;
     //Maybe connect it with a properties file
     //Create an Image and Path manager that works with the Renderer
     //Will cause an error if path does not exist... 
@@ -53,6 +53,10 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
     
     //identifier
     private Identifier myId;
+    
+    //Is it colliding with something
+    private boolean collisionEnabled;
+    
 
     /**
      * Constructors
@@ -99,7 +103,6 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
 
 	public GameObject (GameObject g){
     	this(g.getComponents(), g.getCurrentImageName(), g.getX(), g.getY(), g.getHeight(), g.getWidth(), g.getRotation(), g.getID());
-    	myPhysicsBody = g.getPhysicsBody();
 	}
 
 
@@ -215,10 +218,6 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
     public String getID () {
         return myID;
     }
-    
-    public void setID(String s){
-    	myID = s;
-    }
 
     /**
      * Updates all components of GameObject
@@ -251,14 +250,29 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
      * @param iD
      * @return
      */
-    public Component getComponent (String iD) {
-        return null;
+    public Component getComponent (Identifier iD) {
+        //TODO - make this work.
+        Component result = null;
+        for(Component comp : myComponents){
+            if(comp.getIdentifier() == iD){
+                result = comp;
+            }
+        }
+        return result;
     }
 
     public List<Component> getComponents(){
         return this.myComponents;
     }
 
+    public void addComponent(Component comp){
+        this.myComponents.add(comp);   
+    }
+    
+    public void removeComponent(Component comp){
+        this.myComponents.remove(comp);   
+    }
+    
     public String getCurrentImageName () { 
         return myCurrentImageName;
     }
@@ -293,6 +307,18 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
 
     public double getWidth () {
         return myWidth;
+    }
+    
+    public void enableCollision() {
+        collisionEnabled = true;
+    }
+    
+    public void disableCollision() {
+        collisionEnabled = false;
+    }
+    
+    public boolean isCollisionEnabled() {
+        return collisionEnabled;
     }
 
     public void enable() {

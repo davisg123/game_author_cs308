@@ -39,8 +39,7 @@ public class Identifier {
             return true;
         }
         Identifier otherID = (Identifier) o;
-        return this.getType().equals(otherID.getType())
-                &&this.getUniqueId().equals(otherID.getUniqueId());
+        return this.getHash().equals(otherID.getHash());
     }
 
     @Override

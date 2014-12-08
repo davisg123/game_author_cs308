@@ -2,6 +2,7 @@ package engine.physics;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -10,7 +11,7 @@ import java.util.Map;
  * @author Ben
  *
  */
-public abstract class Force extends Vector {
+public abstract class Force extends Vector implements Iterable<String> {
 	protected double myForceValue;
 	protected Map<String, Double> myValues;
 
@@ -29,6 +30,11 @@ public abstract class Force extends Vector {
 		this(0, 0, scalar);
 	}
 
+	@Override
+	protected void calculateMagnitude() {
+		myMagnitude = myForceValue;
+	}
+
 	public void addOrChangeValue(Scalar cur) {
 		myValues.put(cur.toString(), cur.getValue());
 		calculateForce();
@@ -36,7 +42,6 @@ public abstract class Force extends Vector {
 	}
 
 	protected void initializeMap(Scalar[] scalar) {
-		System.out.println(Arrays.asList(scalar).toString());
 		for (Scalar cur : scalar) {
 			myValues.put(cur.toString(), cur.getValue());
 		}
@@ -45,15 +50,6 @@ public abstract class Force extends Vector {
 	// following two methods are to add a direction to the force. for example,
 	// if you want to make gravity in both x and y when it's only in y, just
 	// pass through 1 to x
-	public void setX(double x) {
-		myXComponent = x * myForceValue;
-		calculateMagnitude();
-	}
-
-	public void setY(double y) {
-		myYComponent = y * myForceValue;
-		calculateMagnitude();
-	}
 
 	/**
 	 * abstract method that is used in force subclasses to calculate force based
@@ -61,6 +57,20 @@ public abstract class Force extends Vector {
 	 * 
 	 * @return value of force
 	 */
+	public Iterator<String> iterator() {
+		return myValues.keySet().iterator();
+	}
+
+	@Override
+	public double getX() {
+		return myXComponent * myForceValue;
+	}
+
+	@Override
+	public double getY() {
+		return myYComponent * myForceValue;
+	}
+
 	protected abstract void calculateForce();
 
 	protected abstract void setDefaultValues();

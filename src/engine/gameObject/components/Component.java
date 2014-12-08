@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.List;
 import engine.gameObject.GameObject;
 import engine.gameObject.IEnabled;
+import engine.gameObject.Identifiable;
+import engine.gameObject.Identifier;
 import engine.gameObject.components.properties.IProperty;
 
 /**
@@ -19,9 +21,11 @@ import engine.gameObject.components.properties.IProperty;
 //Just make everything an individual component... would solve search issues?...
 
 
-public abstract class Component implements Iterable<IProperty>, IEnabled {
-    protected List<IProperty> myProperties;
-    
+public class Component implements IEnabled,Identifiable {
+    protected Identifier myID;
+    private double myDoubleValue;
+    private String myStringValue;
+  
     //Not sure if it should be included in constructor but we might need to know if this component is enabled or not.
     protected Boolean enabled;
     // Probably will create a Properties files with types of Components
@@ -29,41 +33,20 @@ public abstract class Component implements Iterable<IProperty>, IEnabled {
     /**
      * Constructors
      */
-    public Component () {
-        this(new ArrayList<IProperty>());
+    public Component(){
+        this("");
+    }
+    public Component (String stringVal){
+       this.myStringValue = stringVal;
+    }
+    public Component(double doubVal){
+        this.myDoubleValue = doubVal;
     }
 
-    public Component (List<IProperty> properties){
-        myProperties = properties;
-    }
 
-    /**
-     * Returns an iterator for properties
-     * @return Iterator
-     */
-    public Iterator <IProperty> iterator () {
-        return myProperties.iterator();
+    public void update(GameObject object){
+        
     }
-
-    
-    /**
-     * Adds property to Component
-     * @param property
-     */
-    public void addProperty(IProperty property){
-        myProperties.add(property);
-    }
-    
-    
-    /**
-     * Removes property from Properties List
-     * @param property
-     */
-    public void removeProperty(IProperty property){
-        myProperties.remove(property);
-    }
-
-    public abstract void update(GameObject object);
 
     public void enable() {
         enabled = true;
@@ -77,13 +60,45 @@ public abstract class Component implements Iterable<IProperty>, IEnabled {
         return enabled;
     }
     
-    protected List<IProperty> copyProperties(){
-    	List<IProperty> clonesOfProperties = new ArrayList<IProperty>();
-    	for (IProperty prop: myProperties){
-    		clonesOfProperties.add(prop.getClone());
-    	}
-    	return clonesOfProperties; 
+//    protected List<IProperty> copyProperties(){
+//    	List<IProperty> clonesOfProperties = new ArrayList<IProperty>();
+//    	for (IProperty prop: myProperties){
+//    		clonesOfProperties.add(prop.getClone());
+//    	}
+//    	return clonesOfProperties; 
+//    }
+    
+    public Component getClone(){
+        return null;
+        
+    }
+
+    public String getID () {
+        // TODO Auto-generated method stub
+        return myID.getHash();
+    } 
+    
+    public String getStringValue(){
+        return myStringValue;
     }
     
-    public abstract Component getClone(); 
+    public  void setStringValue(String val){
+        myStringValue = val;
+    }
+    
+    public double getDoubleValue(){
+       return myDoubleValue;
+    }
+    
+    public void setDoubleValue(double val){
+        myDoubleValue = val;
+    }
+
+    public void setIdentifier (Identifier myId){
+        myID = myId;   
+    }
+    public Identifier getIdentifier (){
+        return myID;
+    }
+    
 }

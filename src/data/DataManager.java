@@ -4,7 +4,7 @@ import engine.actions.Action;
 import engine.actions.ChangeLevelAction;
 import engine.actions.TestAction;
 import engine.actions.translate.TestTranslateAction;
-import engine.conditions.CollisionCondition;
+import engine.conditions.TypeCollisionCondition;
 import engine.conditions.Condition;
 import engine.gameObject.GameObject;
 import engine.gameObject.components.Component;
@@ -110,8 +110,8 @@ public class DataManager {
 	 * @return Returns true if successfully writes file.
 	 * @throws IOException 
 	 */
-	public boolean writeGameFile(GameData data, String nameOfFile) throws IOException {
-		return writeFile(data, gameDatapath, nameOfFile);
+	public boolean writeGameFile(GameData data, String nameOfFile, String dataPath) throws IOException {
+		return writeFile(data, dataPath, nameOfFile);
 	}
 //	public boolean writeGameFile(GameData data, String fileName) throws IOException {
 //		return writeFile(data, gameDatapath, fileName);
@@ -123,7 +123,7 @@ public class DataManager {
 	 * @return Object representing game.
 	 */
 	public GameData readGameFile(String fileName) {
-		return (GameData)readFile(GameData.class, gameDatapath, fileName);
+		return (GameData)readFile(GameData.class,fileName);
 	}
 	
 //	/**
@@ -194,11 +194,12 @@ public class DataManager {
 //	}
 	
 	//check 
-	private Object readFile(Class cl, String datapath, String fileName) {
+	private Object readFile(Class cl, String fileName) {
+	    System.out.println(fileName);
 		if(hasValidName(fileName)) {
 			fileName = checkForExtension(fileName);
 			try {
-				BufferedReader br = new BufferedReader( new FileReader(datapath + fileName) );
+				BufferedReader br = new BufferedReader( new FileReader(fileName) );
 				Object obj = gson.create().fromJson(br, cl);
 				return obj;
 			} catch (FileNotFoundException e) {
