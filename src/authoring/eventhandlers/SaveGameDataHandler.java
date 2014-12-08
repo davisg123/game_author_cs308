@@ -15,7 +15,6 @@ public class SaveGameDataHandler implements GameHandler {
 	
 	@Override
 	public void handle(Event arg0) {
-		myData.save();
 	}
 
 	@Override

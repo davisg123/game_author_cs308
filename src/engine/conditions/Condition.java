@@ -5,6 +5,7 @@ import java.util.List;
 import engine.GameManager;
 import engine.actions.Action;
 import engine.actions.Initializable;
+import engine.actions.PhysicsTypeAction;
 import engine.actions.TranslateTypeAction;
 import engine.gameObject.Identifiable;
 import engine.gameObject.Identifier;
@@ -70,11 +71,7 @@ public abstract class Condition implements Identifiable, Initializable{
     protected void initializeActions(GameManager manager){
         if (myActions != null){
             for (Action a : myActions){
-                //TODO: expand to whatever action class needs initializing
-                //TODO: make this code look less like vomit
-                if (a instanceof TranslateTypeAction){
-                    ((TranslateTypeAction) a).initialize(manager);
-                }
+                a.initialize(manager);
             }
         }
     }

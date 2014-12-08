@@ -29,7 +29,6 @@ public class ImageIcon extends ImageBasedIcon {
 		myImageView.setPreserveRatio(true);
 		myImageView.setFitWidth(myWidth);
 		myHeight = myImageView.getFitHeight();
-		System.out.println(myHeight);
 		myImageView.setRotate(0);
 	}
 

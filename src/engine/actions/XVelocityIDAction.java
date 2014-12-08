@@ -1,10 +1,12 @@
 package engine.actions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import engine.GameManager;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
+import engine.physics.Vector;
 import engine.physics.Velocity;
 
 /**
@@ -13,25 +15,16 @@ import engine.physics.Velocity;
  *
  */
 
-public class XVelocityIDAction extends PhysicsIDAction{
+public class XVelocityIDAction extends VelocityIDAction {
 
-	public XVelocityIDAction(List<Identifier> ids, double value) {
-		super(ids, value);
-	}
-
-	//TODO refactor after physics body discussion
-	@Override
-	public void applyPhysics() {
-		Velocity a=myGameObject.getPhysicsBody().getVelocity();
-		Velocity b=new Velocity(myValue, a.getY());
-		myGameObject.getPhysicsBody().setVelocity(b);
+	public XVelocityIDAction(ArrayList<Identifier> id, double value) {
+		super(id, value);
 	}
 
 	@Override
-	public void applyPhysics(GameObject... myObjects) {
-		// TODO Auto-generated method stub
-		
+	protected Vector determineVector(double value, Vector vector) {
+		vector = new Velocity(value, 0.0);
+		return vector;
 	}
 
-	
 }

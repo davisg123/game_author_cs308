@@ -39,6 +39,7 @@ public class TypeCollisionCondition extends TimeCondition {
     @Override
     public void initialize(GameManager gameManager){
     	myGameObjects = gameManager.getLevelManager().getCurrentLevel().getGameObjectsCollection();
+    	initializeActions(gameManager);
     }
     
     @Override

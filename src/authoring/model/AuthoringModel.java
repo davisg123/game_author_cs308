@@ -33,12 +33,12 @@ public class AuthoringModel {
 	/**
 	 * Save the current GameData using serialization
 	 */
-	public void save() {
+	public void save(String dataPath) {
 		// TODO - Data
 		GameData mySerializableGame = convertToSerializable();
 		DataManager manager = new DataManager();
 		try {
-			boolean success = manager.writeGameFile(mySerializableGame, "SavedGame1.json");
+			boolean success = manager.writeGameFile(mySerializableGame, "/Game.json", dataPath);
 			System.out.println("game saved = " + success);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -46,10 +46,13 @@ public class AuthoringModel {
 		}
 	}
 	
-	public GameData convertToSerializable(){
+	private GameData convertToSerializable(){
 		GameData mySerializableGame = new GameData();
 		int IDcounter = 0;
 		List<GameObject> allGameObjects = new ArrayList<GameObject>();
+		for(String s : myGame.getImages()){
+			mySerializableGame.getImages().add(s);
+		}
 		for(GameObject g: myGame.getGameObjects()){
 			g.setIdentifier(new Identifier(g.getID(),Integer.toString(IDcounter)));
 			IDcounter++;
@@ -64,7 +67,10 @@ public class AuthoringModel {
 				allGameObjects.add(g);
 				levelGameObjects.add(i);
 			}
-			mySerializableGame.getLevels().add(new Level(levelGameObjects));
+			Level levelToAdd = new Level(levelGameObjects);
+			levelToAdd.setStartIndicator(l.isStartLevel());
+			levelToAdd.setIdentifier(new Identifier(l.getIdentifier().getType(),l.getIdentifier().getUniqueId()));
+			mySerializableGame.getLevels().add(levelToAdd);
 		}
 		for(GameObject g: allGameObjects){
 			mySerializableGame.getGameObjects().add(g);
@@ -72,21 +78,27 @@ public class AuthoringModel {
 		return mySerializableGame;
 	}
 	
-	public void convertFromSerializable(GameData input){
-		myGame = new GameData();
+	private void convertFromSerializable(GameData input){
+		for(String s : input.getImages()){
+			myGame.getImages().add(s);
+		}
 		for (Level l: input.getLevels()){
+			GameObjectsCollection newObjects = new GameObjectsCollection();
 			for(Identifier i: l.getGameObjectIDs()){
 				for(GameObject g : input.getGameObjects()){
 					if(i.getUniqueId().equals(g.getIdentifier().getUniqueId())){
-						l.addGameObject(g);
+						newObjects.add(g);
 					}
 				}
-				for(GameObject g : l.getGameObjectsCollection()){
+				for(GameObject g : newObjects){
 					input.getGameObjects().remove(g);
 				}
 			}
-			l.getGameObjectIDs().clear();
-			myGame.getLevels().add(l);
+			//l.getGameObjectIDs().clear();
+			Level newLevel = new Level(newObjects);
+			newLevel.setStartIndicator(l.isStartLevel());
+			newLevel.setIdentifier(l.getIdentifier());
+			myGame.getLevels().add(newLevel);
 		}
 		for(GameObject g : input.getGameObjects()){
 			myGame.getGameObjects().add(g);
@@ -96,8 +108,8 @@ public class AuthoringModel {
 	/**
 	 * Replaces the current GameData file with a new file that is loaded in
 	 */
-	public void load() {
-		// TODO - Data
+	public void load(GameData input) {
+		convertFromSerializable(input);
 	}
 
 	/**
