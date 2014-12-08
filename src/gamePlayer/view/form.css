@@ -1,18 +1,8 @@
 .vbox {
     -fx-background-color: #00008b;
-	-fx-background-image: url("voogaSplash.PNG");
-	-fx-background-position: center center;
-	-fx-background-size: 500 500;
-    -fx-background-repeat: no-repeat;
-    -fx-padding: 30;
-    -fx-spacing: 25;
-    -fx-size: 500 500;
-}
-
-#text {
-	-fx-font-size: 22px;
-	-fx-stroke: white;
-	-fx-stroke-width: 2;
+    -fx-padding: 15;
+    -fx-spacing: 10;
+    -fx-alignment: center
 }
 
 #button {
@@ -25,4 +15,10 @@
     -fx-padding: 3 30 3 30;
     -fx-text-fill: black;
     -fx-font-size: 14px;
+}
+
+#text {
+	-fx-font-size: 20px;
+    -fx-stroke: white;
+    -fx-stroke-width: 2;
 }

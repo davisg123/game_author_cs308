@@ -29,6 +29,7 @@ public class PlayerView {
 		myRoot = (BorderPane) loader.load();
 		MenuBarController myController = loader.<MenuBarController>getController();
 		myController.setModel(myPlayerModel);
+		myController.setKeyboard();
 		myScene = new Scene(myRoot);
         ButtonConditionManager.getInstance().beginListeningToScene(myScene);
 		myStage.setTitle("MY PLAYER VIEW");
