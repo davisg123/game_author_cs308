@@ -19,6 +19,6 @@ public abstract class VectorPhysicsAction extends PhysicsComponentAction {
 	 * component, since code-wise it doesn't help but geometrically i like it.
 	 * in the future, it might help as well
 	 */
-	protected abstract Vector determineVector(double value, Vector vector);
+	protected abstract Vector determineVector(GameObject object, double value, Vector vector);
 
 }

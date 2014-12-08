@@ -15,7 +15,7 @@ public class YFrictionPhysicsAction extends ForcePhysicsAction {
 	}
 
 	@Override
-	protected Vector determineVector(double value, Vector vector) {
+	protected Vector determineVector(GameObject object, double value, Vector vector) {
 		vector = new Friction(0, value);
 		return vector;
 	}
