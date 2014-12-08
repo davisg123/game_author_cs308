@@ -1,24 +1,33 @@
 package engine.actions;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import engine.GameManager;
+import engine.actions.PhysicsIDAction.TwoArgInterface;
 import engine.gameObject.GameObject;
+import engine.gameObject.Identifier;
+import engine.physics.Vector;
 
-public abstract class VelocityAction extends PhysicsAction{
+public abstract class VelocityIDAction extends VectorPhysicsAction {
 
-	public VelocityAction(GameObject sprite, double value) {
-		super(sprite, value);
+	public VelocityIDAction(ArrayList<Identifier> id, double value) {
+		super(id, value);
 	}
 
 	@Override
 	public void initialize(GameManager manager) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
-	public void applyPhysics(GameObject... myObjects) {
-		
+	protected TwoArgInterface determineOperation(
+			Collection<GameObject> myObjects, Object value) {
+		Vector vector = new Vector();
+		return (x, y) -> x.getPhysicsBody().setVelocity(
+				determineVector((Double) value, vector));
 	}
-	
-	protected Velocity 
+
 }
