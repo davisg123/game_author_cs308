@@ -10,6 +10,7 @@ import authoring.model.collections.ImagesCollection;
 import authoring.model.collections.LevelsCollection;
 import authoring.model.collections.SoundsCollection;
 import data.DataManager;
+import engine.conditions.Condition;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 import engine.level.Level;
@@ -70,6 +71,9 @@ public class AuthoringModel {
 			levelToAdd.setIdentifier(new Identifier(l.getIdentifier().getType(),l.getIdentifier().getUniqueId()));
 			mySerializableGame.getLevels().add(levelToAdd);
 		}
+		for(Condition c : myGame.getConditions()){
+			mySerializableGame.getConditions().add(c);
+		}
 		for(GameObject g: allGameObjects){
 			mySerializableGame.getGameObjects().add(g);
 		}
@@ -97,6 +101,9 @@ public class AuthoringModel {
 			newLevel.setStartIndicator(l.isStartLevel());
 			newLevel.setIdentifier(l.getIdentifier());
 			myGame.getLevels().add(newLevel);
+		}
+		for(Condition c: input.getConditions()){
+			myGame.getConditions().add(c);
 		}
 		for(GameObject g : input.getGameObjects()){
 			myGame.getGameObjects().add(g);

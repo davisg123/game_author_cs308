@@ -1,6 +1,11 @@
 package engine.physics;
 
-public class Volume extends Scalar{
+/**
+ * 
+ * @author Ben
+ *
+ */
+public class Volume extends Scalar {
 	public Volume(double value) {
 		super(value);
 	}
@@ -9,5 +14,5 @@ public class Volume extends Scalar{
 	protected void initializeForceList() {
 		myAssociatedForces.add("Buoyancy");
 	}
-	
+
 }

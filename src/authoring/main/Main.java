@@ -25,7 +25,7 @@ public class Main extends Application {
 		primaryStage.show();
 		myScene.getScene()
 				.getStylesheets()
-				.add(getClass().getResource("layoutstyles.css")
+				.add(getClass().getResource("authoringlayout.css")
 						.toExternalForm());
 
 	}

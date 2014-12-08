@@ -6,6 +6,11 @@ import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 import engine.physics.Vector;
 
+/**
+ * 
+ * @author Ben
+ *
+ */
 public abstract class VectorPhysicsAction extends PhysicsComponentAction {
 
 	public VectorPhysicsAction(ArrayList<Identifier> id, double value) {
@@ -19,6 +24,7 @@ public abstract class VectorPhysicsAction extends PhysicsComponentAction {
 	 * component, since code-wise it doesn't help but geometrically i like it.
 	 * in the future, it might help as well
 	 */
-	protected abstract Vector determineVector(GameObject object, double value, Vector vector);
+	protected abstract Vector determineVector(GameObject object, double value,
+			Vector vector);
 
 }

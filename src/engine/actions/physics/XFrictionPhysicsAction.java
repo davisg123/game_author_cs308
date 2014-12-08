@@ -7,6 +7,11 @@ import engine.gameObject.Identifier;
 import engine.physics.Friction;
 import engine.physics.Vector;
 
+/**
+ * 
+ * @author Ben
+ *
+ */
 public class XFrictionPhysicsAction extends ForcePhysicsAction {
 
 	public XFrictionPhysicsAction(ArrayList<Identifier> id, double value) {
@@ -14,7 +19,8 @@ public class XFrictionPhysicsAction extends ForcePhysicsAction {
 	}
 
 	@Override
-	protected Vector determineVector(GameObject object, double value, Vector vector) {
+	protected Vector determineVector(GameObject object, double value,
+			Vector vector) {
 		vector = new Friction(value, 0);
 		return vector;
 	}

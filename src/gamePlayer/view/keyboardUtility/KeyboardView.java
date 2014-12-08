@@ -1,4 +1,4 @@
-package gamePlayer.view;
+package gamePlayer.view.keyboardUtility;
 
 import java.util.HashMap;
 import java.util.Iterator;

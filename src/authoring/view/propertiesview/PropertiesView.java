@@ -3,12 +3,14 @@ package authoring.view.propertiesview;
 import java.util.ResourceBundle;
 
 import javafx.scene.layout.VBox;
+import authoring.eventhandlers.AddConditionIDHandler;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.CollectionView;
 import authoring.view.icons.ConditionIcon;
 import authoring.view.icons.ImageIcon;
 import authoring.view.icons.LevelIcon;
 import authoring.view.icons.SoundIcon;
+import engine.conditions.Condition;
 import engine.gameObject.GameObject;
 
 public class PropertiesView extends CollectionView {
@@ -18,9 +20,11 @@ public class PropertiesView extends CollectionView {
 	private VBox myContents = new VBox();
 
 	private GameHandler[] myButtonBehaviors;
+	private GameHandler myAddActionButtonBehavior;
 
 	private GameObjectProperties myGameObjectsProperties;
 	private GameObject myCurrentGameObject;
+	private Condition myCurrentCondition;
 
 	private double myWidth;
 	private double myHeight;
@@ -58,13 +62,14 @@ public class PropertiesView extends CollectionView {
 	}
 
 	public void makeProperties(LevelIcon g) {
+		LevelProperties props = new LevelProperties(g, new AddConditionIDHandler(g.getLevel()));
 		myContents.getChildren().clear();
-		this.setContent(new LevelProperties(g));
+		this.setContent(props);
 	}
 
 	public void makeProperties(ConditionIcon g) {
 		myContents.getChildren().clear();
-		this.setContent(new ConditionProperties(g));
+		this.setContent(new ConditionProperties(g, myAddActionButtonBehavior));
 	}
 
 	public void displayProperties(Properties props) {
@@ -81,6 +86,9 @@ public class PropertiesView extends CollectionView {
 
 	public void setButtonBehaviors(GameHandler... gh) {
 		myButtonBehaviors = gh;
+	}
+	public void setAddActionButtonBehaviors(GameHandler gh) {
+		myAddActionButtonBehavior = gh;
 	}
 
 }

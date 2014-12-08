@@ -5,63 +5,52 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javafx.event.Event;
 import javafx.event.EventType;
-import authoring.model.collections.ConditionsCollection;
 import authoring.view.wizards.ActionChoiceWizard;
 import authoring.view.wizards.ConditionParameterWizard;
-import authoring.view.wizards.ConditionSelectionWizard;
 import engine.actions.Action;
 import engine.conditions.Condition;
-import engine.gameObject.Identifier;
 
-public class AddConditionHandler implements GameHandler<Event> {
+public class AddActionHandler implements GameHandler<Event> {
 
-	private static final String CONDITION_PATH_START = "engine.conditions.";
+	private static final String CONDITION_PATH_START = "engine.actions.";
 	private static final int WIZARD_WIDTH = 300;
 	private static final int WIZARD_HEIGHT = 600;
-
-	private ConditionSelectionWizard mySelectionWizard;
+	
+	private ActionChoiceWizard myActionSelectionWizard;
 	private ConditionParameterWizard myCPW;
-	private ActionChoiceWizard myActionChoiceWizard;
-
+	
 	private List<String> myInputParameters;
 	private Parameter[] myParameterTypes;
 	private Class<?> classType;
 	private Constructor myConstructor;
 	
-	private ConditionsCollection myConditionsCollection;
-	
-	public AddConditionHandler(ConditionsCollection conditions){
-		myConditionsCollection = conditions;
+	private Condition myCondition;
+
+	public AddActionHandler() {
+
 	}
-	
+
 	@Override
 	public void handle(Event arg0) {
-		mySelectionWizard = new ConditionSelectionWizard("New Condition", WIZARD_WIDTH,
-				WIZARD_HEIGHT, event -> createCondition());
+		myActionSelectionWizard = new ActionChoiceWizard("New ", WIZARD_WIDTH,
+				WIZARD_HEIGHT, event -> createAction());
 	}
-
-	@Override
-	public EventType<Event> getEventType() {
-		return Event.ANY;
-	}
-
-	private void createCondition() {
-		String selected = mySelectionWizard.getSelectedCondition();
-
+	
+	private void createAction(){
+		String selected = myActionSelectionWizard.getSelectedAction();
+		
 		try {
 			classType = Class.forName(CONDITION_PATH_START + selected);
-			//System.out.println(classType.toString());
+			System.out.println(classType.toString());
 
-		
-			
 			Constructor[] constructors = classType.getDeclaredConstructors();
 			myConstructor = constructors[0];
 			myParameterTypes = constructors[0].getParameters();
+			System.out.println(myConstructor);
 
 			
 			
@@ -73,41 +62,38 @@ public class AddConditionHandler implements GameHandler<Event> {
 
 			myCPW = new ConditionParameterWizard("Choose Parameters",
 					WIZARD_WIDTH, WIZARD_HEIGHT, myParameterTypes, classType,
-					event -> fillConditionParameters());
+					event -> finishAction());
+			myActionSelectionWizard.close();
 
 		} catch (ClassNotFoundException e) {
 			System.out.println("Bad Class");
 		}
 
 	}
-
-	private void fillConditionParameters() {
-		System.out.println("filling conditions");
+	
+	private void finishAction(){
 		myInputParameters = new ArrayList<String>();
 		for (String s : myCPW.getMap().keySet()) {
 			myInputParameters.add(myCPW.getMap().get(s).getInformation());
 		}
-		mySelectionWizard.disableSelection();
-		//myWizard.enableActionCreation(event -> addAction());
-		mySelectionWizard.enableFinalize(event -> finishCondition());
-		myCPW.close();
+		List<Object> inputs = convertInputParameters();
+		System.out.println(inputs);
+		try {
+			Action a = (Action) myConstructor.newInstance(inputs.toArray());
+			//a.setIdentifier(new Identifier("Condition", mySelectionWizard.getMap().get("name").getInformation()));
+			System.out.println(a.getClass());
+			myCondition.addAction(a);
+			myCPW.close();
+		} catch (Exception e) {
+			System.out.println("Could not construct");
+			e.printStackTrace();
+		}
 	}
-
-//	private void addAction() {
-//		myActionChoiceWizard = new ActionChoiceWizard("Choose Action",
-//				WIZARD_WIDTH, WIZARD_HEIGHT, event -> createAction());
-//
-//	}
-//
-//	private void createAction() {
-//		System.out.println("heyah");
-//	}
-
+		
 	private List<Object> convertInputParameters() {
 		List<Object> inputs = new ArrayList<Object>();
-		inputs.add(new ArrayList<Action>());
 		for(int i = 0; i < myInputParameters.size(); i++){
-			Type t = myParameterTypes[i+1].getParameterizedType();
+			Type t = myParameterTypes[i].getParameterizedType();
 			if(t.toString().contains("List")){
 				String[] splitType = t.toString().split("\\<");
 				String type = splitType[splitType.length-1].replace(">", "");
@@ -150,20 +136,14 @@ public class AddConditionHandler implements GameHandler<Event> {
 		return inputs;
 		
 	}
-	
-	private void finishCondition(){
-		List<Object> inputs = convertInputParameters();
 
-		try {
-			Condition c = (Condition) myConstructor.newInstance(inputs.toArray());
-			c.setIdentifier(new Identifier("Condition", mySelectionWizard.getMap().get("name").getInformation()));
-			myConditionsCollection.add(c);
-			mySelectionWizard.close();
-			System.out.println(c.getClass());
-		} catch (Exception e) {
-			System.out.println("Could not construct");
-			e.printStackTrace();
-		}
+	@Override
+	public EventType<Event> getEventType() {
+		// TODO Auto-generated method stub
+		return Event.ANY;
 	}
-
+	
+	public void setCondition(Condition c){
+		myCondition = c;
+	}
 }

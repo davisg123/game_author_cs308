@@ -9,7 +9,14 @@ import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 
 public class FixedCollisionAction extends PhysicsIDAction {
-
+	/**
+	 * 
+	 * @param id
+	 *            is the list of ids
+	 * @param value
+	 *            is the value to change potentiall
+	 * @author Ben
+	 */
 	public FixedCollisionAction(ArrayList<Identifier> id, double value) {
 		super(id, value);
 	}

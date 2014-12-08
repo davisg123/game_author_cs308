@@ -77,15 +77,16 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
     }
 
     private void setDefaultData() {
-        List<Component> defaultComponents= new ArrayList<Component>(); 
-        if (myComponents != null){
-            for (Component c: myComponents){
-                defaultComponents.add(c.getClone());
-            }
-        }
-        myDefaultData = new DefaultData(defaultComponents, myCurrentImageName, myXCoord, myYCoord,  
-                                        myHeight, myWidth, myRotation); 
-    }
+
+		List<Component> defaultComponents= new ArrayList<Component>(); 
+		if (myComponents != null){
+		          for (Component c: myComponents){
+	                        defaultComponents.add(c.getClone());
+	                }
+		}
+		myDefaultData = new DefaultData(defaultComponents, myCurrentImageName, myXCoord, myYCoord,  
+				myHeight, myWidth, myRotation); 
+	}
 
 
 

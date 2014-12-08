@@ -1,4 +1,4 @@
-package gamePlayer.view;
+package gamePlayer.view.keyboardUtility;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
