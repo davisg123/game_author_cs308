@@ -4,7 +4,7 @@ import engine.GameManager;
 import engine.level.Level;
 import engine.level.LevelManager;
 
-public class ResetAction implements Action, Initializable{
+public class ResetLevelAction implements Action, Initializable{
 
 	private Level myCurrentLevel; 
 	
