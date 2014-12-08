@@ -1,10 +1,11 @@
 package engine.actions;
 
 import java.util.ArrayList;
+
 import java.util.Collection;
 
 import engine.GameManager;
-import engine.actions.PhysicsAction.TwoArgInterface;
+import engine.actions.PhysicsIDAction.TwoArgInterface;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 import engine.physics.Impulse;

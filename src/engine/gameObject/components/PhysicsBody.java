@@ -152,10 +152,14 @@ public class PhysicsBody {
 		return myCollisionBodyWidth;
 	}
 
-	public Scalar getScalar(String s){
-		return myConstants.get(s);
+	public Scalar getScalar(String s) {
+		try {
+			return myConstants.get(s);
+		} catch (NullPointerException e) {
+			return null;
+		}
 	}
-	
+
 	/**
 	 * updates all the physical vector characteristics for object
 	 * 
@@ -190,24 +194,15 @@ public class PhysicsBody {
 		myImpulses.clear();
 	}
 
-	
-	public Scalar getScalar(String s){
-		return myConstants.get(s);
-	}
-	
-	public Force getForce(String s){
-		try{
+	public Force getForce(String s) {
+		try {
 			return myActiveForces.get(s);
-		} 
-		catch(NullPointerException e){
+		} catch (NullPointerException e) {
 			System.out.println("Not an active force");
 			return null;
 		}
 	}
-	
-	
-	
-	
+
 	/**
 	 * balances forces-gives a vector of what the forces in each direction are,
 	 * sets haveForcesChanged to false because this is called only when in the
@@ -227,9 +222,8 @@ public class PhysicsBody {
 
 	public void addForce(Force vector) {
 		Iterator<String> itr = vector.iterator();
-		while(itr.hasNext())
-		{
-			String cur=itr.next();
+		while (itr.hasNext()) {
+			String cur = itr.next();
 			vector.addOrChangeValue(myConstants.get(cur));
 		}
 		this.myActiveForces.put(vector.toString(), vector);
