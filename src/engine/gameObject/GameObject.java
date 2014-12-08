@@ -67,30 +67,27 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
         setDefaultData(); 
     }
 
-    private void setDefaultData() {
-        List<Component> defaultComponents= new ArrayList<Component>(); 
-        if (myComponents != null){
-            for (Component c: myComponents){
-                defaultComponents.add(c.getClone());
-            }
-        }
-        myDefaultData = new DefaultData(defaultComponents, myCurrentImageName, myXCoord, myYCoord,  
-                                        myHeight, myWidth, myRotation); 
-    }
 
-    /**
-     * Constructors Clone a given game Object
-     * @param g
-     */
     public GameObject (GameObject g){
-        this(g.getComponents(), g.getCurrentImageName(), 
-             g.getX(), g.getY(), g.getHeight(), g.getWidth(), g.getRotation(), g.getID());
+        this(g.getComponents(), g.getCurrentImageName(), g.getX(), g.getY(), g.getHeight(), g.getWidth(), g.getRotation(), g.getID());
     }
 
     public GameObject (GameObject g, double x, double y, String type){
-        this(g.getComponents(), g.getCurrentImageName(), 
-             x, y, g.getHeight(), g.getWidth(), g.getRotation(), type);
+        this(g.getComponents(), g.getCurrentImageName(), x, y, g.getHeight(), g.getWidth(), g.getRotation(), type);
     }
+
+    private void setDefaultData() {
+
+		List<Component> defaultComponents= new ArrayList<Component>(); 
+		if (myComponents != null){
+		          for (Component c: myComponents){
+	                        defaultComponents.add(c.getClone());
+	                }
+		}
+		myDefaultData = new DefaultData(defaultComponents, myCurrentImageName, myXCoord, myYCoord,  
+				myHeight, myWidth, myRotation); 
+	}
+
 
 
     /**

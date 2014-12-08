@@ -84,4 +84,16 @@ public abstract class ImageBasedIcon extends FileIcon {
 		myImageView.setRotate(myRotation);
 	}
 
+	/**
+	 * Method that scales the dimensions of the image uploaded so that it
+	 * preserves its dimensions.
+	 */
+	public void scaleDimensions() {
+		// automatically calculates height
+		myImageView.setPreserveRatio(true);
+		myImageView.setFitWidth(myWidth);
+		myHeight = myImageView.getFitHeight();
+		myImageView.setRotate(0);
+	}
+
 }

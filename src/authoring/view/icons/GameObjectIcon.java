@@ -18,4 +18,5 @@ public class GameObjectIcon extends ImageBasedIcon {
 	public GameObject getGameObject() {
 		return myGameObject;
 	}
+	
 }

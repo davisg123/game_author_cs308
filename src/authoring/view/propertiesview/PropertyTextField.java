@@ -4,7 +4,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
-public class PropertyTextField extends HBox{
+public class PropertyTextField extends PropertyField{
 	
 	private TextField myField;
 	
@@ -14,6 +14,7 @@ public class PropertyTextField extends HBox{
 		myField = field;
 		this.getChildren().add(field);
 	}
+	
 	
 	public String getInformation(){
 		return myField.getText();
