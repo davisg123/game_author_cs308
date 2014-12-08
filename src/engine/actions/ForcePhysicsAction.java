@@ -8,6 +8,11 @@ import engine.gameObject.Identifier;
 import engine.physics.Force;
 import engine.physics.Vector;
 
+/**
+ * 
+ * @author Ben
+ *
+ */
 public abstract class ForcePhysicsAction extends VectorPhysicsAction {
 
 	public ForcePhysicsAction(ArrayList<Identifier> id, double value) {

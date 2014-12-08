@@ -10,6 +10,11 @@ import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 import engine.physics.Vector;
 
+/**
+ * 
+ * @author Ben
+ *
+ */
 public abstract class VelocityIDAction extends VectorPhysicsAction {
 
 	public VelocityIDAction(ArrayList<Identifier> id, double value) {

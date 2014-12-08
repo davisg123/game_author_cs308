@@ -11,6 +11,11 @@ import engine.gameObject.Identifier;
 import engine.physics.Impulse;
 import engine.physics.Vector;
 
+/**
+ * 
+ * @author Ben
+ *
+ */
 public abstract class ImpulseAction extends VectorPhysicsAction {
 
 	public ImpulseAction(ArrayList<Identifier> id, double value) {

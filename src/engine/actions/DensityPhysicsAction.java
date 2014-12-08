@@ -8,6 +8,11 @@ import engine.gameObject.Identifier;
 import engine.physics.Density;
 import engine.physics.Scalar;
 
+/**
+ * 
+ * @author Ben
+ *
+ */
 public class DensityPhysicsAction extends ScalarPhysicsAction {
 
 	public DensityPhysicsAction(ArrayList<Identifier> id, double value) {

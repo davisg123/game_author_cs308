@@ -10,6 +10,11 @@ import engine.collision.objects.CollisionComposition;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 
+/**
+ * 
+ * @author Ben
+ *
+ */
 public abstract class PhysicsIDAction implements Action, Initializable {
 
 	protected double myValue;

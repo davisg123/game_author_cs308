@@ -2,6 +2,11 @@ package engine.collision.objects;
 
 import engine.gameObject.GameObject;
 
+/**
+ * 
+ * @author Ben
+ *
+ */
 public class HeroCollisionObject extends CollisionObject {
 
 	@Override

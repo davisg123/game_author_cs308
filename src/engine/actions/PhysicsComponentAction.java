@@ -11,6 +11,11 @@ import engine.gameObject.Identifier;
 import engine.physics.PhysicsComponent;
 import engine.physics.Vector;
 
+/**
+ * 
+ * @author Ben
+ *
+ */
 public abstract class PhysicsComponentAction extends PhysicsIDAction {
 
 	public PhysicsComponentAction(ArrayList<Identifier> id, double value) {
