@@ -16,7 +16,7 @@ import javafx.scene.image.Image;
  *
  */
 public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
-    private List<Component> myComponents; 
+    private List<Component> myComponents;
     //Maybe connect it with a properties file
     //Create an Image and Path manager that works with the Renderer
     //Will cause an error if path does not exist... 
@@ -47,13 +47,10 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
 
     //Should it be included in constructor?
     private boolean enabled;
-
-    //Is it colliding with something
-    private boolean collisionEnabled;
-
+    
     //Holds onto the default data for reinitialization. 
     private DefaultData myDefaultData; 
-
+    
     //identifier
     private Identifier myId;
 
@@ -88,22 +85,21 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
         myID = iD;
         setDefaultData(); 
     }
-
+    
     private void setDefaultData() {
-        List<Component> defaultComponents= new ArrayList<Component>(); 
-        if (myComponents != null){
-            for (Component c: myComponents){
-                defaultComponents.add(c.getClone());
-            }
-        }
-        myDefaultData = new DefaultData(defaultComponents, myCurrentImageName, myXCoord, myYCoord,  
-                                        myHeight, myWidth, myRotation); 
-    }
+		List<Component> defaultComponents= new ArrayList<Component>(); 
+		if (myComponents != null){
+		          for (Component c: myComponents){
+	                        defaultComponents.add(c.getClone());
+	                }
+		}
+		myDefaultData = new DefaultData(defaultComponents, myCurrentImageName, myXCoord, myYCoord,  
+				myHeight, myWidth, myRotation); 
+	}
 
-    public GameObject (GameObject g){
-        this(g.getComponents(), g.getCurrentImageName(), g.getX(), g.getY(), g.getHeight(), g.getWidth(), g.getRotation(), g.getID());
-        myPhysicsBody = g.getPhysicsBody();
-    }
+	public GameObject (GameObject g){
+    	this(g.getComponents(), g.getCurrentImageName(), g.getX(), g.getY(), g.getHeight(), g.getWidth(), g.getRotation(), g.getID());
+	}
 
 
     /**
@@ -142,7 +138,7 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
         myYCoord = y;
     }
 
-
+    
     /**
      * Link this with the physics body in the future
      * @param width
@@ -217,10 +213,6 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
 
     public String getID () {
         return myID;
-    }
-
-    public void setID(String s){
-        myID = s;
     }
 
     /**
@@ -310,18 +302,6 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
         return enabled;
     }
 
-    public void enableCollision() {
-        collisionEnabled = true;
-    }
-
-    public void disableCollision() {
-        collisionEnabled = false;
-    }
-
-    public boolean isCollisionEnabled() {
-        return collisionEnabled;
-    }
-
     public boolean getCollisionConstant() {
         return myCollision;
     }
@@ -329,16 +309,16 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
     public String toString(){
         return myID;
     }
-
+    
     public void reset(){
-        myRotation=myDefaultData.getRotation();
-        myXCoord=myDefaultData.getXCoordinate();
-        myYCoord=myDefaultData.getYCoordinate();
-        myCurrentImageName=myDefaultData.getImageName();
-        myComponents.clear();
-        for (Component c: myDefaultData.getComponents()){
-            myComponents.add(c.getClone());
-        }
+    	myRotation=myDefaultData.getRotation();
+    	myXCoord=myDefaultData.getXCoordinate();
+    	myYCoord=myDefaultData.getYCoordinate();
+    	myCurrentImageName=myDefaultData.getImageName();
+    	myComponents.clear();
+    	for (Component c: myDefaultData.getComponents()){
+    		myComponents.add(c.getClone());
+    	}
     }
 
     @Override
