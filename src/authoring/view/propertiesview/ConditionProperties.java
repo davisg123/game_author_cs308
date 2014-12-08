@@ -7,6 +7,7 @@ import javafx.scene.text.Text;
 import authoring.eventhandlers.AddActionHandler;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.icons.ConditionIcon;
+import engine.actions.Action;
 import engine.conditions.Condition;
 
 public class ConditionProperties extends Properties {
@@ -37,7 +38,11 @@ public class ConditionProperties extends Properties {
 		((AddActionHandler)myHandler).setCondition(myCondition);
 		addAction.setOnAction(myHandler);
 		this.getChildren().add(addAction);
-
+		
+		for (Action a : myCondition.getActions()){
+			Text t = new Text(a.getClass().toString());
+			this.getChildren().add(t);
+		}
 	}
 
 }
