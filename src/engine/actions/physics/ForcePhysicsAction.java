@@ -15,7 +15,7 @@ import engine.physics.Vector;
  */
 public abstract class ForcePhysicsAction extends VectorPhysicsAction {
 
-	public ForcePhysicsAction(ArrayList<Identifier> id, double value) {
+	public ForcePhysicsAction(ArrayList<Identifier> id, Double value) {
 		super(id, value);
 	}
 

@@ -5,8 +5,8 @@ import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 
 public class SetComponentDoubleIDAction extends ChangeComponentIDAction{
-    private double myValue;
-    public SetComponentDoubleIDAction (List<Identifier> ids, double value, Identifier componentID) {
+    private Double myValue;
+    public SetComponentDoubleIDAction (List<Identifier> ids, Double value, Identifier componentID) {
         super(ids, componentID);
         myValue = value;
         // TODO Auto-generated constructor stub

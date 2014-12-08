@@ -4,7 +4,7 @@ import engine.gameObject.GameObject;
 
 public class XImpulseTypeAction extends PhysicsTypeAction{
 
-	public XImpulseTypeAction(String type, double value) {
+	public XImpulseTypeAction(String type, Double value) {
 		
 		super(type, value);
 	}

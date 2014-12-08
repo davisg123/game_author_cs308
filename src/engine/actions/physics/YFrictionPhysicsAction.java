@@ -14,7 +14,7 @@ import engine.physics.Vector;
  */
 public class YFrictionPhysicsAction extends ForcePhysicsAction {
 
-	public YFrictionPhysicsAction(ArrayList<Identifier> id, double value) {
+	public YFrictionPhysicsAction(ArrayList<Identifier> id, Double value) {
 		super(id, value);
 		// TODO Auto-generated constructor stub
 	}

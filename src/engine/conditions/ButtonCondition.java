@@ -20,7 +20,7 @@ public class ButtonCondition extends Condition {
     
     
 
-    public ButtonCondition (List<Action> actions, List<KeyCode> keyList, double frameCount, Boolean keyRepeats) {
+    public ButtonCondition (List<Action> actions, List<KeyCode> keyList, Double frameCount, Boolean keyRepeats) {
         super(actions);
         myTargetFrameCount = frameCount;
         myKeyRepeats = keyRepeats;

@@ -6,7 +6,7 @@ import engine.gameObject.Identifier;
 
 public class SetComponentBooleanIDAction extends ChangeComponentIDAction {
        Boolean myBooleanValue;
-    public SetComponentBooleanIDAction (List<Identifier>ids, Identifier componentID,boolean value) {
+    public SetComponentBooleanIDAction (List<Identifier>ids, Identifier componentID, Boolean value) {
         super(ids, componentID);
         myBooleanValue = value;
         // TODO Auto-generated constructor stub

@@ -15,7 +15,7 @@ import engine.physics.Scalar;
  */
 public class DensityPhysicsAction extends ScalarPhysicsAction {
 
-	public DensityPhysicsAction(ArrayList<Identifier> id, double value) {
+	public DensityPhysicsAction(ArrayList<Identifier> id, Double value) {
 		super(id, value);
 	}
 

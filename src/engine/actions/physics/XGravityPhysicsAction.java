@@ -14,7 +14,7 @@ import engine.physics.Vector;
  */
 public class XGravityPhysicsAction extends ForcePhysicsAction {
 
-	public XGravityPhysicsAction(ArrayList<Identifier> id, double value) {
+	public XGravityPhysicsAction(ArrayList<Identifier> id, Double value) {
 		super(id, value);
 	}
 

@@ -9,8 +9,8 @@ public class MakeNewObjectFromList extends MakeNewRandomObjectAction{
 
 	private GameObjectsCollection myTemplateObjects;
 	
-	public MakeNewObjectFromList(String type, double lowerXBound, double upperXBound, 
-			double lowerYBound, double upperYBound, GameObjectsCollection objects) {
+	public MakeNewObjectFromList(String type, Double lowerXBound, Double upperXBound, 
+			Double lowerYBound, Double upperYBound, GameObjectsCollection objects) {
 		super(type, lowerXBound, upperXBound, lowerYBound, upperYBound);
 		myTemplateObjects = objects; 
 		

@@ -7,14 +7,14 @@ package engine.actions.sound;
  */
 
 public class SetMusicVolume extends SoundAction {
-    private double myVolume;
+    private Double myVolume;
     
     public SetMusicVolume (String soundPath) {
-        this(soundPath, 0);
+        this(soundPath, (double) 0);
         
     }
     
-    public SetMusicVolume (String soundPath, double volume) {
+    public SetMusicVolume (String soundPath, Double volume) {
         super(soundPath);
         myVolume = volume;
     }

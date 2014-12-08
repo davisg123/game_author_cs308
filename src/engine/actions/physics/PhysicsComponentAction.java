@@ -17,7 +17,7 @@ import engine.physics.Vector;
  */
 public abstract class PhysicsComponentAction extends PhysicsIDAction {
 
-	public PhysicsComponentAction(ArrayList<Identifier> id, double value) {
+	public PhysicsComponentAction(ArrayList<Identifier> id, Double value) {
 		super(id, value);
 	}
 

@@ -14,7 +14,7 @@ import engine.physics.Volume;
  */
 public class VolumePhysicsAction extends ScalarPhysicsAction {
 
-	public VolumePhysicsAction(ArrayList<Identifier> id, double value) {
+	public VolumePhysicsAction(ArrayList<Identifier> id, Double value) {
 		super(id, value);
 	}
 
