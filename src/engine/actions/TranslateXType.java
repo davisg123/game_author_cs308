@@ -4,7 +4,7 @@ import engine.gameObject.GameObject;
 
 public class TranslateXType extends TranslateTypeAction {
 	
-	public TranslateXType(String type, double value){
+	public TranslateXType(String type, Double value){
 		super(type, value);
 	}
 
