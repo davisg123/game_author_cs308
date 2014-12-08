@@ -126,7 +126,7 @@ public class MainEngineTests extends Application {
         
         ArrayList<Identifier> ballIdList = new ArrayList<Identifier>();
         ballIdList.add(ball.getIdentifier());
-        TranslateYType yVelAction = new TranslateYType("ball",1);
+        TranslateYType yVelAction = new TranslateYType("ball",1.0);
         ArrayList<Action> yVelActionList = new ArrayList<Action>();
         yVelActionList.add(yVelAction);
         TimeCondition myConstantVelocity = new TimeCondition(yVelActionList,1.0,true);
@@ -159,8 +159,8 @@ public class MainEngineTests extends Application {
         ballAndPlatformCollision.setIdentifier(new Identifier("collision_cond","a"));
         myConditions.add(ballAndPlatformCollision);
         
-        Action boundaryRightAction = new TranslateYType("floor",350);
-        Action boundaryLeftAction = new TranslateYType("foor",350);
+        Action boundaryRightAction = new TranslateYType("floor",350.0);
+        Action boundaryLeftAction = new TranslateYType("foor",350.0);
         ArrayList<Action> boundaryActionList = new ArrayList<Action>();
         boundaryActionList.add(boundaryLeftAction);
         boundaryActionList.add(boundaryRightAction);
