@@ -8,6 +8,8 @@ import engine.gameObject.Identifier;
 
 public class GameObjectsCollection extends GeneralCollection<GameObject>{
 	
+
+	
 	public void addGameObject(GameObject g){
 		myObjects.add(g);
 		setChanged();
@@ -21,4 +23,6 @@ public class GameObjectsCollection extends GeneralCollection<GameObject>{
 	    }
 	    return IdList;
 	}
+	
+	
 }
