@@ -8,8 +8,8 @@ import engine.gameObject.Identifier;
 
 public class BoundaryConditionX extends GameObjectCondition {
     
-    private double myBoundary;
-    private boolean myRightTrigger;
+    private Double myBoundary;
+    private Boolean myRightTrigger;
     
     public BoundaryConditionX (List<Action> myActions,
                               List<Identifier> myIDs,

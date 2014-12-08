@@ -10,6 +10,11 @@ public class Identifier {
         this.myUniqueId = myUniqueId;
     }
     
+    public static Identifier valueOf (String descriptor) {
+        String[] parts = descriptor.split(",");
+        return new Identifier(parts[0],parts[1]);
+    }
+    
     public String getType () {
         return myType;
     }
@@ -39,8 +44,7 @@ public class Identifier {
             return true;
         }
         Identifier otherID = (Identifier) o;
-        return this.getType().equals(otherID.getType())
-                &&this.getUniqueId().equals(otherID.getUniqueId());
+        return this.getHash().equals(otherID.getHash());
     }
 
     @Override

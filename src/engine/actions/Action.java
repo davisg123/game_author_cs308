@@ -31,7 +31,7 @@ import engine.GameManager;
  *      - Camera changes...
  */
 
-public interface Action {
+public interface Action extends Initializable {
     
     /**
      * Will execute the consequences resulting from applying an Action.

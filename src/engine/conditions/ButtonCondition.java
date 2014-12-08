@@ -14,6 +14,7 @@ import javafx.scene.input.KeyCode;
 public class ButtonCondition extends Condition {
     private List<KeyCode> myKeyList;
     
+
     public ButtonCondition (List<Action> actions, List<KeyCode> keyList) {
         super(actions);
         myKeyList = keyList;

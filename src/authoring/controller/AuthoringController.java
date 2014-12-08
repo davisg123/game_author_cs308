@@ -183,7 +183,7 @@ public class AuthoringController {
 		myConditionsAccordionView.setIconEvents(new ConditionClickHandler(
 				myProperties));
 
-		myConditionOptions.setButtonBehavior(new AddConditionHandler());
+		myConditionOptions.setButtonBehavior(new AddConditionHandler(myModel.getConditions()));
 
 		myLevelsAccordionView.setLevelEvents(new GameObjectClickHandler(
 				myProperties),

@@ -2,15 +2,17 @@ package engine.actions;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
+import engine.GameManager;
+import engine.actions.PhysicsIDAction.TwoArgInterface;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
-import engine.physics.Force;
 import engine.physics.Vector;
 
-public abstract class ForcePhysicsAction extends VectorPhysicsAction {
+public abstract class VelocityIDAction extends VectorPhysicsAction {
 
-	public ForcePhysicsAction(ArrayList<Identifier> id, double value) {
+	public VelocityIDAction(ArrayList<Identifier> id, double value) {
 		super(id, value);
 	}
 
@@ -18,8 +20,8 @@ public abstract class ForcePhysicsAction extends VectorPhysicsAction {
 	protected TwoArgInterface determineOperation(
 			Collection<GameObject> myObjects, Object value) {
 		Vector vector = new Vector();
-		return (x, y) -> x.getPhysicsBody().addForce(
-				(Force) determineVector((Double) value, vector));
+		return (x, y) -> x.getPhysicsBody().setVelocity(
+				determineVector((Double) value, vector));
 	}
 
 }
