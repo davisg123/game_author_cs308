@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-
 import data.DataManager;
 import authoring.model.GameData;
 import authoring.model.collections.ConditionsCollection;
@@ -15,6 +14,7 @@ import engine.actions.Action;
 import engine.actions.FixedCollisionTypeAction;
 import engine.actions.TranslateXType;
 import engine.actions.TranslateYType;
+import engine.actions.XVelocityIDAction;
 import engine.actions.YVelocityIDAction;
 import engine.conditions.BoundaryConditionY;
 import engine.conditions.ButtonCondition;
@@ -142,26 +142,27 @@ public class MainEngineTests extends Application {
 		50.0);
 		ArrayList<Action> yVelActionList = new ArrayList<Action>();
 		yVelActionList.add(yVelAction);
-		TimeCondition myConstantVelocity = new TimeCondition(yVelActionList, 1,
+		TimeCondition myConstantVelocity = new TimeCondition(yVelActionList, 1.0,
 				true);
 		myConditions.add(myConstantVelocity);
 
-		Action aAct = new TranslateXType("ball", -2.0);
-		Action dAct = new TranslateXType("ball", 2.0);
+		ArrayList<Identifier> a = new ArrayList<Identifier>();
+		a.add(ball.getIdentifier());
+		Action aAct = new XVelocityIDAction(a, -80.0);
+		Action dAct = new XVelocityIDAction(a, 80.0);
 		ArrayList<Action> actionList = new ArrayList<Action>();
 		actionList.add(aAct);
 		ArrayList<KeyCode> kclA = new ArrayList<KeyCode>();
 		kclA.add(KeyCode.A);
-		ButtonCondition aCon = new ButtonCondition(actionList, kclA);
+		ButtonCondition aCon = new ButtonCondition(actionList, kclA,1,true);
 		aCon.setIdentifier(new Identifier("button_cond", "a"));
 		ArrayList<Action> dActList = new ArrayList<Action>();
 		dActList.add(dAct);
 		ArrayList<KeyCode> kclD = new ArrayList<KeyCode>();
 		kclD.add(KeyCode.D);
-		ButtonCondition dCon = new ButtonCondition(dActList, kclD);
+		ButtonCondition dCon = new ButtonCondition(dActList, kclD,1,true);
 		dCon.setIdentifier(new Identifier("button_cond", "d"));
-		myConditions.add(aCon);
-		myConditions.add(dCon);
+
 
 		// collision stuff
 		ArrayList<Action> ConditionActionList = new ArrayList<Action>();
@@ -175,16 +176,18 @@ public class MainEngineTests extends Application {
 		myConditions.add(ballAndPlatformCollision);
 
 		Action boundaryRightAction = new TranslateYType("floor", 350);
-		Action boundaryLeftAction = new TranslateYType("foor", 350);
+		Action boundaryLeftAction = new TranslateYType("floor", 350);
 		ArrayList<Action> boundaryActionList = new ArrayList<Action>();
 		boundaryActionList.add(boundaryLeftAction);
 		boundaryActionList.add(boundaryRightAction);
 		BoundaryConditionY boundaryCondition = new BoundaryConditionY(
-				boundaryActionList, myFloorObjects.getIdentifierList(), -50,
+				boundaryActionList, myFloorObjects.getIdentifierList(), -50.0,
 				false);
 		boundaryCondition.setIdentifier(new Identifier("bound_cond", "a"));
 		myConditions.add(boundaryCondition);
-
+		
+                myConditions.add(aCon);
+                myConditions.add(dCon);
 		/*
 		 * //uncomment for play pause stuff Action pauseAct = new
 		 * FrameRateAction(0.0); ArrayList<Action> pauseActList = new
