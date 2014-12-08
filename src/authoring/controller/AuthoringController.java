@@ -28,6 +28,7 @@ import authoring.model.GameData;
 import authoring.view.AuthoringView;
 import authoring.view.baseclasses.AccordionContainer;
 import authoring.view.baseclasses.BPContainer;
+import authoring.view.conditionsview.ConditionOptions;
 import authoring.view.conditionsview.ConditionsAccordionView;
 import authoring.view.gameobjectsview.GameObjectOptions;
 import authoring.view.gameobjectsview.GameObjectsView;
@@ -84,6 +85,7 @@ public class AuthoringController {
 	private PropertiesView myProperties;
 	private LevelsAccordionView myLevelsAccordionView;
 	private ConditionsAccordionView myConditionsAccordionView;
+	private ConditionOptions myConditionOptions;
 	private File myGameLocation;
 
 	public AuthoringController(AuthoringView view, AuthoringModel model,
@@ -147,6 +149,8 @@ public class AuthoringController {
 				myHeight);
 		myConditionsAccordionView = new ConditionsAccordionView(myLanguage,
 				myWidth, myHeight);
+		myConditionOptions = new ConditionOptions(myLanguage, myWidth, myHeight);
+
 
 	}
 
@@ -220,6 +224,12 @@ public class AuthoringController {
 				* LEFT_ACCORDION_HEIGHT_RATIO);
 		soundsBP.setTop(mySoundOptions);
 		soundsBP.setCenter(mySounds);
+		
+		BPContainer conditionBP = new BPContainer(myWidth
+				* LEFT_ACCORDION_WIDTH_RATIO, myHeight
+				* LEFT_ACCORDION_HEIGHT_RATIO);
+		conditionBP.setTop(myConditionOptions);
+		conditionBP.setCenter(myConditionsAccordionView);
 
 		TitledPane graphics = new TitledPane(myLanguage.getString("Images"),
 				graphicsBP);
@@ -231,7 +241,7 @@ public class AuthoringController {
 				myLevelsAccordionView);
 
 		TitledPane conditions = new TitledPane(
-				myLanguage.getString("Conditions"), myConditionsAccordionView);
+				myLanguage.getString("Conditions"), conditionBP);
 
 		leftView.getPanes().addAll(graphics, sounds, gameObjects, levels,
 				conditions);
