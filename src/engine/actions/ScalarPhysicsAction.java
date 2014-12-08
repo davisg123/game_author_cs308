@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import authoring.model.collections.GameObjectsCollection;
 import engine.actions.PhysicsIDAction.TwoArgInterface;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
@@ -17,7 +18,7 @@ public abstract class ScalarPhysicsAction extends PhysicsComponentAction {
 		// TODO Auto-generated constructor stub
 	}
 
-	protected TwoArgInterface determineOperation(Collection<GameObject> myObjects,
+	protected TwoArgInterface determineOperation(GameObjectsCollection myObjects,
 			Object value) {
 		// Scalar is abstract and will be overwritten anyway, so for now it's a
 		// mass

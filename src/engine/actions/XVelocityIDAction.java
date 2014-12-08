@@ -21,18 +21,14 @@ public class XVelocityIDAction extends PhysicsIDAction{
 	}
 
 	//TODO refactor after physics body discussion
-	@Override
-	public void applyPhysics() {
-		Velocity a=myGameObject.getPhysicsBody().getVelocity();
+//	@Override
+	public void applyPhysics(GameObjectsCollection myGameObjects) {
+		Velocity a=(Velocity) myGameObjects.get(0).getPhysicsBody().getVelocity();
 		Velocity b=new Velocity(myValue, a.getY());
-		myGameObject.getPhysicsBody().setVelocity(b);
+		myGameObjects.get(0).getPhysicsBody().setVelocity(b);
 	}
 
-	@Override
-	public void applyPhysics(GameObjectsCollection myObjects) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 	
 }

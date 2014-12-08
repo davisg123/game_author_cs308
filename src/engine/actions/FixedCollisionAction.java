@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import authoring.model.collections.GameObjectsCollection;
 import engine.GameManager;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
@@ -23,9 +24,9 @@ public class FixedCollisionAction extends PhysicsIDAction{
 
 	//important that the fixed one goes in first
 	@Override
-	public void applyPhysics(Collection<GameObject> myObjects) {
-		List<GameObject> objects=new ArrayList<GameObject>(myObjects);
-		myCollision.fixedCollision(objects.get(0), objects.get(1));
+	public void applyPhysics(GameObjectsCollection myObjects) {
+//		List<GameObject> objects=new ArrayList<GameObject>(myObjects);
+		myCollision.fixedCollision(myObjects.get(0), myObjects.get(1));
 	}
 
 	@Override

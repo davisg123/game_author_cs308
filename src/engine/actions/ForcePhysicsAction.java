@@ -3,6 +3,7 @@ package engine.actions;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import authoring.model.collections.GameObjectsCollection;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 import engine.physics.Force;
@@ -18,7 +19,7 @@ public abstract class ForcePhysicsAction extends VectorPhysicsAction{
 	
 
 	@Override
-	protected TwoArgInterface determineOperation(Collection<GameObject> myObjects,
+	protected TwoArgInterface determineOperation(GameObjectsCollection myObjects,
 			Object value) {
 		Vector vector = new Vector();
 		return (x,y)->x.getPhysicsBody().addForce((Force) determineVector((Double) value, vector));

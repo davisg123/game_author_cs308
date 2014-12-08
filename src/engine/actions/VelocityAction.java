@@ -1,12 +1,16 @@
 package engine.actions;
 
+import java.util.List;
+
+import authoring.model.collections.GameObjectsCollection;
 import engine.GameManager;
 import engine.gameObject.GameObject;
+import engine.gameObject.Identifier;
 
-public abstract class VelocityAction extends PhysicsAction{
+public abstract class VelocityAction extends PhysicsIDAction{
 
-	public VelocityAction(GameObject sprite, double value) {
-		super(sprite, value);
+	public VelocityAction(List<Identifier> ids, double value) {
+		super(ids, value);
 	}
 
 	@Override
@@ -16,9 +20,8 @@ public abstract class VelocityAction extends PhysicsAction{
 	}
 
 	@Override
-	public void applyPhysics(GameObject... myObjects) {
+	public void applyPhysics(GameObjectsCollection myGameObjects) {
 		
 	}
 	
-	protected Velocity 
 }

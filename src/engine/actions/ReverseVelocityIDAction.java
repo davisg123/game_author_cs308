@@ -25,9 +25,9 @@ public class ReverseVelocityIDAction extends PhysicsIDAction {
 	public void applyPhysics(GameObjectsCollection myGameObjects) {
 		TwoArgInterface operation = (x, y) -> x.getPhysicsBody()
 				.reverseVelocity((Boolean) y);
-		List<GameObject> objects=new ArrayList<GameObject>(myGameObjects);
+//		GameObjectsCollection objects=new ArrayList<GameObject>(myGameObjects);
 		forHelper(myGameObjects, operation,
-				myCollision.isOnXAxis(objects.get(0), objects.get(1)));
+				myCollision.isOnXAxis(myGameObjects.get(0), myGameObjects.get(1)));
 	}
 
 }

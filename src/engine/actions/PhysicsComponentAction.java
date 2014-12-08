@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import authoring.model.collections.GameObjectsCollection;
 import engine.GameManager;
 import engine.actions.PhysicsIDAction.TwoArgInterface;
 import engine.gameObject.GameObject;
@@ -18,11 +19,11 @@ public abstract class PhysicsComponentAction extends PhysicsIDAction {
 	}
 
 	@Override
-	public void applyPhysics(Collection<GameObject> myObjects) {
+	public void applyPhysics(GameObjectsCollection myObjects) {
 		forHelper(myObjects, determineOperation(myObjects, myValue), myValue);
 	}
 
 	protected abstract TwoArgInterface determineOperation(
-			Collection<GameObject> myObjects, Object value);
+			GameObjectsCollection myObjects, Object value);
 
 }

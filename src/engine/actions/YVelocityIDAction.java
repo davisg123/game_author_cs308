@@ -2,6 +2,7 @@ package engine.actions;
 
 import java.util.List;
 
+import authoring.model.collections.GameObjectsCollection;
 import engine.GameManager;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
@@ -22,17 +23,13 @@ public class YVelocityIDAction extends PhysicsIDAction{
 
 	//TODO refactor after discussion about physics
 	@Override
-	public void applyPhysics() {
-		Velocity a=myGameObject.getPhysicsBody().getVelocity();
+	public void applyPhysics(GameObjectsCollection myGameObjects) {
+		Velocity a=(Velocity) myGameObjects.get(0).getPhysicsBody().getVelocity();
 		Velocity b=new Velocity(a.getX(), myValue);
-		myGameObject.getPhysicsBody().setVelocity(b);
+		myGameObjects.get(0).getPhysicsBody().setVelocity(b);
 	}
 
-	@Override
-	public void applyPhysics(GameObject... myObjects) {
-		// TODO Auto-generated method stub
-		
-	}
+
 
 
 }

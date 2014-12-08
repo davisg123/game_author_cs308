@@ -1,9 +1,9 @@
 package engine.actions;
 
 import java.util.ArrayList;
-
 import java.util.Collection;
 
+import authoring.model.collections.GameObjectsCollection;
 import engine.GameManager;
 import engine.actions.PhysicsIDAction.TwoArgInterface;
 import engine.gameObject.GameObject;
@@ -25,7 +25,7 @@ public abstract class ImpulseAction extends VectorPhysicsAction {
 	}
 
 	@Override
-	protected TwoArgInterface determineOperation(Collection<GameObject> myObjects,
+	protected TwoArgInterface determineOperation(GameObjectsCollection myObjects,
 			Object value) {
 		Vector vector = new Vector();
 		return (x, y) -> x.getPhysicsBody().addImpulse(
