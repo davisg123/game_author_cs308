@@ -115,7 +115,7 @@ public class MainEngineTests extends Application {
 		// Force gravity = new Gravity(0.0, 1.0);
 		// ballBody.addForce(gravity);
 		// ballBody.addForce(new Gravity(0.0, 1.0));
-		ballBody.setVelocity(new Velocity(100.0, 100.0));
+		ballBody.setVelocity(new Velocity(0, 100.0));
 		ballBody.addScalar(new Mass(4.0));
 		ballBody.addScalar(new GravityConstant(10.0));
 		// ballBody.addImpulse(new Impulse(0, -200.0));
@@ -140,16 +140,18 @@ public class MainEngineTests extends Application {
 		ballIdList.add(ball.getIdentifier());
 		YVelocityIDAction yVelAction = new YVelocityIDAction(ballIdList,
 		50.0);
+		XVelocityIDAction xVelZeroAction = new XVelocityIDAction(ballIdList,0.0);
 		ArrayList<Action> yVelActionList = new ArrayList<Action>();
 		yVelActionList.add(yVelAction);
+		yVelActionList.add(xVelZeroAction);
 		TimeCondition myConstantVelocity = new TimeCondition(yVelActionList, 1.0,
 				true);
 		myConditions.add(myConstantVelocity);
 
 		ArrayList<Identifier> a = new ArrayList<Identifier>();
 		a.add(ball.getIdentifier());
-		Action aAct = new XVelocityIDAction(a, -80.0);
-		Action dAct = new XVelocityIDAction(a, 80.0);
+		Action aAct = new XVelocityIDAction(a, -200.0);
+		Action dAct = new XVelocityIDAction(a, 200.0);
 		ArrayList<Action> actionList = new ArrayList<Action>();
 		actionList.add(aAct);
 		ArrayList<KeyCode> kclA = new ArrayList<KeyCode>();
