@@ -8,9 +8,9 @@ public abstract class TranslateTypeAction implements Action, Initializable{
 
 	protected GameObjectsCollection myGameObjects; 
 	protected String myType; 
-	protected double myValue;
+	protected Double myValue;
 	
-	public TranslateTypeAction(String type, double value){
+	public TranslateTypeAction(String type, Double value){
 		myType = type; 
 		myValue = value; 
 	}

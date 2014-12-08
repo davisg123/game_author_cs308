@@ -9,6 +9,7 @@ import authoring.view.icons.ConditionIcon;
 import authoring.view.icons.ImageIcon;
 import authoring.view.icons.LevelIcon;
 import authoring.view.icons.SoundIcon;
+import engine.conditions.Condition;
 import engine.gameObject.GameObject;
 
 public class PropertiesView extends CollectionView {
@@ -22,6 +23,7 @@ public class PropertiesView extends CollectionView {
 
 	private GameObjectProperties myGameObjectsProperties;
 	private GameObject myCurrentGameObject;
+	private Condition myCurrentCondition;
 
 	private double myWidth;
 	private double myHeight;

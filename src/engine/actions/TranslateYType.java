@@ -4,7 +4,7 @@ import engine.gameObject.GameObject;
 
 public class TranslateYType extends TranslateTypeAction{
 
-	public TranslateYType(String type, double value) {
+	public TranslateYType(String type, Double value) {
 		super(type, value);
 	}
 
