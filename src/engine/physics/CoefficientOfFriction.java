@@ -15,6 +15,6 @@ public class CoefficientOfFriction extends Scalar {
 
 	@Override
 	protected void initializeForceList() {
-		myAssociatedForces.add("Friction");
+		// myAssociatedForces.add("Friction");
 	}
 }

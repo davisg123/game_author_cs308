@@ -1,7 +1,8 @@
 package gamePlayer.view;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 
 import javafx.scene.Scene;
@@ -15,27 +16,34 @@ import authoring.model.collections.ConditionsCollection;
 import engine.conditions.ButtonCondition;
 import engine.conditions.Condition;
 
+/**
+ * 
+ * @author Abhishek B
+ * @author Safkat Islam
+ *
+ */
+
 public class KeyboardView {
 
-	private static final String[] KEYS = {"`", "1", "2", "3", "4", "5",
-		"6", "7", "8", "9", "0", "-", "=", "backspace", "tab", "Q", "W",
-		"E", "R", "T", "Y", "U", "I", "O", "P", "[", "]", "\\", "caps lock",
-		"A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'", "enter", "", "shift", 
-		"Z", "X", "C", "V", "B", "N", "M", ",", ".", "/", "shift", "up", "",
-		"", "", "", "", "", "", "spacebar", "", "", "", "", "down", "left", "right"};
-
-	private static final double WIDTH = 1120;
-	private static final double HEIGHT = 400;
+	private static final int NUM_KEYS_IN_ROW = 14;
+	private static final int NUM_KEYS_IN_COLUMN = 5;
+	private static final double KEY_WIDTH = 100;
+	private static final double KEY_HEIGHT = 100;
+	private static final double WIDTH = KEY_WIDTH * NUM_KEYS_IN_ROW;
+	private static final double HEIGHT = KEY_HEIGHT * NUM_KEYS_IN_COLUMN;
 	private GridPane myGrid;
 	private Stage myStage;
 	private ConditionsCollection myButtonConditions;
 	private Map<KeyCode, String> myButtonConditionsMap;
 	private KeyMapForm myKeyMapForm;
-	
+	private MappedKeys myMappedKeys;
+
 	public KeyboardView(ConditionsCollection buttonConditions) {
 		myButtonConditions = buttonConditions;
+		myMappedKeys = new MappedKeys();
+		myButtonConditionsMap = new HashMap<KeyCode, String>();
 	}
-	
+
 	public void createKeyboardView() {
 		myStage = new Stage();
 		myStage.setTitle("Vooga Salad Bits Please Keyboard Mapping Utility");
@@ -44,15 +52,15 @@ public class KeyboardView {
 		myScene.getStylesheets().add(getClass().getResource("keyboard.css").toExternalForm());
 		myStage.setScene(myScene);
 		myKeyMapForm = new KeyMapForm(comboBoxForButton(), this);
-		
+
 		buildKeyboard();
 	}
-	
+
 	public void buildKeyboard() {
 		int num = 0;
-		for(int i = 0; i < 5; i++)
+		for(int i = 0; i < NUM_KEYS_IN_COLUMN; i++)
 		{
-			for(int j = 0; j < 14; j++)
+			for(int j = 0; j < NUM_KEYS_IN_ROW; j++)
 			{
 				num = buildButton(num, i, j);
 			}
@@ -62,19 +70,20 @@ public class KeyboardView {
 
 	private int buildButton(int num, int i, int j) {
 		StackPane sp = new StackPane();
-		Button button = new Button(KEYS[num]);
+		String key = this.myMappedKeys.getKey(num);
+		Button button = new Button(key);
 		button.setId("keyButton");
-		button.setPrefSize(80, 80);
-		button.setDisable(KEYS[num] == "");
+		button.setPrefSize(KEY_WIDTH, KEY_HEIGHT);
+		button.setDisable(key == "");
 		button.setOnAction((event) -> {
-			myKeyMapForm.createKeyMapForm(button.getText());
+			myKeyMapForm.createKeyMapForm(key);
 		});
 		sp.getChildren().add(button);
 		myGrid.add(sp, j, i);
 		num++;
 		return num;
 	}
-	
+
 	private ComboBox<String> comboBoxForButton() {
 		ComboBox<String> functionCombos = new ComboBox<String>();
 		for (Iterator<Condition> conditionIterator = myButtonConditions.iterator(); conditionIterator.hasNext();) {
@@ -86,11 +95,11 @@ public class KeyboardView {
 
 	public void setNewKey(String button, String keyFunction)
 	{
-		KeyCode kc = KeyCode.valueOf(button);
+		KeyCode kc = this.myMappedKeys.getKeyCode(button);
 		myButtonConditionsMap.put(kc, keyFunction);
 		for(Condition c : myButtonConditions) {
 			ButtonCondition bc = (ButtonCondition) c;
-			ArrayList<KeyCode> kcl = bc.getKeyList();
+			List<KeyCode> kcl = bc.getKeyList();
 			for(KeyCode k : kcl)
 			{
 				if(k.equals(kc))

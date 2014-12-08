@@ -11,7 +11,6 @@ public class XFrictionPhysicsAction extends ForcePhysicsAction {
 
 	public XFrictionPhysicsAction(ArrayList<Identifier> id, double value) {
 		super(id, value);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

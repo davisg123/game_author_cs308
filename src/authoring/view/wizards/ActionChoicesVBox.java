@@ -4,11 +4,11 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.VBox;
 
-public class ConditionChoicesVBox extends VBox{
+public class ActionChoicesVBox extends VBox{
 	
 	private ToggleGroup myToggleGroup;
 	
-	public ConditionChoicesVBox(){
+	public ActionChoicesVBox(){
 		initializeGroup();
 	}
 	
@@ -17,9 +17,8 @@ public class ConditionChoicesVBox extends VBox{
 		myToggleGroup = new ToggleGroup();
 		
 		RadioButton[] radioButtons = {
-				new RadioButton("ButtonCondition"),
-				new RadioButton("BoundaryConditionX"),
-				new RadioButton("TimeCondition")
+				new RadioButton("ChangeLevelAction"),
+				new RadioButton("TranslateTypeAction"),
 		};
 		
 		
@@ -36,4 +35,5 @@ public class ConditionChoicesVBox extends VBox{
 	public String getSelected(){
 		return ((RadioButton) myToggleGroup.getSelectedToggle()).getText();
 	}
+
 }

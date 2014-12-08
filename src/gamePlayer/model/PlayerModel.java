@@ -2,7 +2,6 @@ package gamePlayer.model;
 
 import java.io.IOException;
 import java.nio.file.Path;
-import javafx.stage.FileChooser;
 import data.DataManager;
 import application.SplashScreen;
 import authoring.model.GameData;
@@ -22,12 +21,12 @@ import gamePlayer.view.PlayerView;
 public class PlayerModel {
 
 	private GameData myGameData;
-	private DataManager myManager; 
+	private DataManager myManager;
 	private PlayerView myPlayerView;
 	private GameManager myGameManager;
 	private ConditionsCollection myButtonConditions;
 	private FileSelectionWizard myFileSelector;
-	
+
 	public PlayerModel() {
 		myPlayerView = new PlayerView(this);
 		myManager = new DataManager();
@@ -38,37 +37,46 @@ public class PlayerModel {
 	public void initializeView() throws IOException {
 		myPlayerView.initialize();
 	}
-	
+
 	public void loadGameFile() {
-	        Path filePath = myFileSelector.selectFile();
+		Path filePath = myFileSelector.selectFile();
 		myGameData = myManager.readGameFile(filePath.toString());
-		myGameManager = new GameManager(myGameData.getConditions(), myGameData.getGameObjects(), myGameData.getLevels(), myPlayerView.getGroup(),filePath.getParent().toString(), null);
+		myGameManager = new GameManager(myGameData.getConditions(),
+				myGameData.getGameObjects(), myGameData.getLevels(),
+				myPlayerView.getGroup(), filePath.getParent().toString());
 		myGameManager.initialize();
-		
 		extractButtonConditions();
 	}
+
+	public void saveGameToWeb() {
+		
+	}
 	
-	public ConditionsCollection getButtonConditions(){
+	public void fetchGameFromWeb() {
+		
+	}
+	
+	public ConditionsCollection getButtonConditions() {
 		return myButtonConditions;
 	}
-	
-	public void exitFromGame(){
-		//myGameManager.clear()
+
+	public void exitFromGame() {
+		// myGameManager.clear()
 		myPlayerView.close();
 		SplashScreen screen = new SplashScreen();
-		screen.show();	
-		}
-
-	public void pauseGame(){
-		myGameManager.togglePause(); 
+		screen.show();
 	}
-	
+
+	public void pauseGame() {
+		myGameManager.togglePause();
+	}
+
 	private void extractButtonConditions() {
 		ConditionsCollection conditions = myGameData.getConditions();
-		for(Condition c : conditions) {
+		for (Condition c : conditions) {
 			if (c instanceof ButtonCondition)
 				myButtonConditions.add(c);
 		}
 	}
-	
+
 }
