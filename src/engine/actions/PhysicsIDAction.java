@@ -1,6 +1,8 @@
 package engine.actions;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import engine.GameManager;
@@ -10,32 +12,34 @@ import engine.gameObject.Identifier;
 
 public abstract class PhysicsAction implements Action, Initializable {
 
-	protected Identifier mySpriteID;
-	protected Object myValue;
+	protected double myValue;
 	protected CollisionComposition myCollision;
-	protected GameObject myGameObject; 
+	protected Collection<GameObject> myObjects;
+	protected List<Identifier> myID;
 
-	public PhysicsAction(Identifier id, Object value) {
-		mySpriteID = id;
+	public PhysicsAction(ArrayList<Identifier> id, double value) {
+		myID = id;
 		myValue = value;
 		myCollision = new CollisionComposition();
+		myObjects = new ArrayList<GameObject>();
 	}
 
-	@Override
-	public void initialize(GameManager myGameManager){
-        myGameObject = myGameManager.objectForIdentifier(mySpriteID);
-	}
-	
 	@Override
 	public void execute() {
-		//applyPhysics();
+		applyPhysics(myObjects);
 	}
 
-	public abstract void applyPhysics(GameObject... myObjects);
+	public void initialize(GameManager manager) {
+		for (Identifier id : myID) {
+			myObjects.add(manager.objectForIdentifier(id));
+		}
+	}
 
-	protected void forHelper(GameObject[] myObjects,
+	public abstract void applyPhysics(Collection<GameObject> myObjects);
+
+	protected void forHelper(Collection<GameObject> myObjects,
 			TwoArgInterface myOperation, Object value) {
-		Arrays.asList(myObjects).forEach(x -> myOperation.operation(x, value));
+		myObjects.forEach(x -> myOperation.operation(x, value));
 	}
 
 	protected interface TwoArgInterface {

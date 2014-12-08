@@ -1,5 +1,8 @@
 package engine.actions;
 
+import java.util.List;
+
+import authoring.model.collections.GameObjectsCollection;
 import engine.GameManager;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
@@ -10,13 +13,13 @@ import engine.gameObject.Identifier;
  *
  */
 
-public abstract class TranslateAction implements Action, Initializable {
-    protected GameObject mySprite;
-    protected Identifier myGameObjectID;
+public abstract class TranslateIDAction implements Action, Initializable {
+    protected GameObjectsCollection myGameObjects;
+    protected List<Identifier> myGameObjectIDs;
     protected double myValue;
     
-    public TranslateAction (Identifier iD, double value) {
-        myGameObjectID = iD;
+    public TranslateIDAction (List<Identifier> iDs, double value) {
+        myGameObjectIDs = iDs;
         myValue = value;
     }
     
@@ -27,8 +30,10 @@ public abstract class TranslateAction implements Action, Initializable {
     
     @Override
     public void initialize (GameManager manager) {
-        mySprite = manager.objectForIdentifier(myGameObjectID);
-        System.out.println(mySprite);
+    	for (Identifier id: myGameObjectIDs){
+    		myGameObjects.add(manager.objectForIdentifier(id));
+    	}
+
     }
     
     /**
