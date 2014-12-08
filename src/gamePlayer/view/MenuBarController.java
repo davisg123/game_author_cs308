@@ -1,6 +1,7 @@
 package gamePlayer.view;
 
 import gamePlayer.model.PlayerModel;
+import gamePlayer.view.keyboardUtility.KeyboardView;
 
 import java.net.URL;
 import java.util.ResourceBundle;

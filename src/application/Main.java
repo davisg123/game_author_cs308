@@ -1,6 +1,5 @@
 package application;
 
-import java.awt.Dimension;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
