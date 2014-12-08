@@ -41,8 +41,10 @@ public class PlayerModel {
 	}
 	
 	public void loadGameFile() {
-		File f = new File(myFileSelector.selectFile());
+		File f = myFileSelector.selectFile();
+		System.out.println(f.getAbsolutePath());
 		myGameData = myManager.readGameFile(f);
+		if(myGameData == null) System.out.println("Null!!!!");
 		myGameManager = new GameManager(myGameData.getConditions(), myGameData.getGameObjects(), myGameData.getLevels(), myPlayerView.getGroup());
 		myGameManager.initialize();
 		

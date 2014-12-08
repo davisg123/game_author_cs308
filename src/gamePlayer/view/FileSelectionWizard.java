@@ -1,5 +1,8 @@
 package gamePlayer.view;
 
+import java.io.File;
+
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -10,15 +13,17 @@ import javafx.stage.Stage;
  */
 public class FileSelectionWizard {
 
-	private Stage myFileStage;
+	private Stage myDirectoryStage;
 
-	public String selectFile() {
-		myFileStage = new Stage();
-		FileChooser fileChooser = new FileChooser();
-		fileChooser.setTitle("Open Resource File");
-		fileChooser.getExtensionFilters().addAll(
-				new FileChooser.ExtensionFilter("JSON", "*.json"));
-		return fileChooser.showOpenDialog(myFileStage).getName();
+	public File selectFile() {
+		myDirectoryStage = new Stage();
+		DirectoryChooser directoryChooser = new DirectoryChooser();
+		directoryChooser.setTitle("Open Resource File");
+		//directoryChooser.getExtensionFilters().addAll(
+		//		new FileChooser.ExtensionFilter("JSON", "*.json"));
+		//return directoryChooser.showDialog(myDirectoryStage).getName();
+		File f = directoryChooser.showDialog(myDirectoryStage);
+		return f;
 	}
 
 }
