@@ -22,7 +22,7 @@ public class LevelManager implements Iterable<Level> {
 	private GameObjectsCollection myGameObjects;
 	private ConditionsCollection myConditions;
 	private Level myCurrentLevel;
-	//private int myCurrentIndex;
+	// private int myCurrentIndex;
 	private GameObjectRenderer myRenderer;
 
 	/**
@@ -40,31 +40,32 @@ public class LevelManager implements Iterable<Level> {
 		myLevels = levels;
 		myGameObjects = gameObjects;
 		myConditions = conditions;
-		//myCurrentIndex = 0;
+		// myCurrentIndex = 0;
 		myRenderer = renderer;
 		findAndSetStartLevel(levels);
 	}
 
 	/**
 	 * TODO undo duplicated code...
+	 * 
 	 * @param levels
 	 */
 	private void findAndSetStartLevel(LevelsCollection levels) {
-	    //Authoring must have set a startLevel, and only 1 start level
-	    for(Level level : levels) {
-	        if(level.isStartLevel()) {
-	            myCurrentLevel = level;
-	            initializeCurrentLevel();
-	            break;
-	        }
-	    }
+		// Authoring must have set a startLevel, and only 1 start level
+		for (Level level : levels) {
+			if (level.isStartLevel()) {
+				myCurrentLevel = level;
+				initializeCurrentLevel();
+				break;
+			}
+		}
 	}
-	
+
 	private void setCurrentLevel(Level level) {
-	    myCurrentLevel = level;
-            myCurrentLevel.initialize(this);
+		myCurrentLevel = level;
+		myCurrentLevel.initialize(this);
 	}
-	
+
 	/**
 	 * Iterates through the list of Levels in the managers
 	 */
@@ -78,12 +79,12 @@ public class LevelManager implements Iterable<Level> {
 	 * @param levelIndex
 	 */
 	public void changeToLevel(Identifier iD) {
-		for(Level level : myLevels) {
-		   if(level.getIdentifier().equals(iD)) {
-		       setCurrentLevel(level);
-	               initializeCurrentLevel();
-		       break;
-		   }
+		for (Level level : myLevels) {
+			if (level.getIdentifier().equals(iD)) {
+				setCurrentLevel(level);
+				initializeCurrentLevel();
+				break;
+			}
 		}
 	}
 
@@ -119,32 +120,28 @@ public class LevelManager implements Iterable<Level> {
 	 * condition from master list
 	 */
 	private void setLevelEnabledConditions() {
-		for (Iterator<Identifier> conditionIDIterator = myCurrentLevel.getConditionIds(); 
-		        conditionIDIterator.hasNext();) {
-			Identifier conditionID = conditionIDIterator.next();
+		for (Identifier conditionID : myCurrentLevel.getConditionIdentifiers()) {
 			enableCondition(conditionID);
 		}
 	}
-	
-	public GameObject objectForIdentifier(Identifier Id){
-	    for (GameObject g : myGameObjects){
-	        if (g.getIdentifier().equals(Id)){
-	            return g;
-	        }
-	    }
-	    return null;
+
+	public GameObject objectForIdentifier(Identifier Id) {
+		for (GameObject g : myGameObjects) {
+			if (g.getIdentifier().equals(Id)) {
+				return g;
+			}
+		}
+		return null;
 	}
 
 	/**
 	 * Find condition in master list and enable it
+	 * 
 	 * @param conditionID
 	 */
 	private void enableCondition(Identifier conditionID) {
-		for (Iterator<Condition> conditionIterator = myConditions.iterator(); 
-		        conditionIterator.hasNext();) {
-			Condition condition = conditionIterator.next();
-			if (condition.getIdentifier().equals(conditionID))
-				condition.setEnabled(true);
+		for (Condition condition : myConditions) {
+			condition.setEnabled(condition.getIdentifier().equals(conditionID));
 		}
 	}
 
@@ -152,18 +149,17 @@ public class LevelManager implements Iterable<Level> {
 	 * Disable all conditions before enabling the correct ones
 	 */
 	private void disableAllConditions() {
-		for (Iterator<Condition> conditionIterator = myConditions.iterator(); conditionIterator
-				.hasNext();) {
-			conditionIterator.next().setEnabled(false);
+		for (Condition c : myConditions) {
+			c.setEnabled(false);
 		}
 	}
 
-	public Level getCurrentLevel(){
-		return myCurrentLevel; 
+	public Level getCurrentLevel() {
+		return myCurrentLevel;
 	}
-	
-	public GameObjectsCollection getGameObjects(){
-		return myGameObjects; 
+
+	public GameObjectsCollection getGameObjects() {
+		return myGameObjects;
 	}
-	
+
 }
