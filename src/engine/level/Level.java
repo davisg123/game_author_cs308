@@ -141,9 +141,11 @@ public class Level extends Observable implements Identifiable {
     }
     
     public Iterator<Identifier> getConditionIds () {
-        //remove me
-        myConditionIdList = new ArrayList<Identifier>();
-        return myConditionIdList.iterator();
+        return (new ArrayList<Identifier>()).iterator();
+    }
+    
+    public List<Identifier> getConditionCollection(){
+    	return myConditionIdList;
     }
     
     public void setGameObjectIds (List<Identifier> iDList) {

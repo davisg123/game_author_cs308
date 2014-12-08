@@ -1,15 +1,20 @@
 package authoring.view.propertiesview;
 
+import static authoring.view.icons.LevelIcon.DEFAULT_FONT_SIZE;
 import javafx.scene.control.Button;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.icons.LevelIcon;
+import engine.gameObject.Identifier;
 
 public class LevelProperties extends Properties{
 
 	
 	private GameHandler myAddConditionHandler;
 	
-	public LevelProperties(Object o) {
+	public LevelProperties(Object o, GameHandler handler) {
+		myAddConditionHandler = handler;
 		initializeProperties(o);
 	}
 
@@ -31,12 +36,14 @@ public class LevelProperties extends Properties{
 		addCond.setOnAction(myAddConditionHandler);
 		this.getChildren().add(addCond);
 		
-	}
-
-	public void setEditBehavior(GameHandler event){
-		myAddConditionHandler = event;
-	}
-	
-	
+		//not working yet
+		
+		for(Identifier i : graphic.getLevel().getConditionCollection()){
+			Text textID = new Text(i.getUniqueId());
+			textID.setFont(new Font(DEFAULT_FONT_SIZE));
+			this.getChildren().add(textID);
+		}
+		
+	}	
 
 }

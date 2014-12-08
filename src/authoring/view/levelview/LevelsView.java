@@ -90,7 +90,6 @@ public class LevelsView extends TabView implements Observer {
 		this.getTabs().add(tab);
 		this.getSelectionModel().select(tab);
 		return newView;
-
 	}
 
 	/**

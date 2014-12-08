@@ -3,6 +3,7 @@ package authoring.view.propertiesview;
 import java.util.ResourceBundle;
 
 import javafx.scene.layout.VBox;
+import authoring.eventhandlers.AddConditionIDHandler;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.CollectionView;
 import authoring.view.icons.ConditionIcon;
@@ -61,8 +62,9 @@ public class PropertiesView extends CollectionView {
 	}
 
 	public void makeProperties(LevelIcon g) {
+		LevelProperties props = new LevelProperties(g, new AddConditionIDHandler(g.getLevel()));
 		myContents.getChildren().clear();
-		this.setContent(new LevelProperties(g));
+		this.setContent(props);
 	}
 
 	public void makeProperties(ConditionIcon g) {
