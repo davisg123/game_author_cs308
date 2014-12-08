@@ -12,6 +12,7 @@ import authoring.model.collections.LevelsCollection;
 import engine.GameManager;
 import engine.actions.Action;
 import engine.actions.FixedCollisionTypeAction;
+import engine.actions.MakeNewObjectFromLocationAction;
 import engine.actions.TranslateXType;
 import engine.actions.TranslateYType;
 import engine.actions.YVelocityIDAction;
@@ -124,13 +125,14 @@ public class MainEngineTests extends Application {
         
         ArrayList<Identifier> ballIdList = new ArrayList<Identifier>();
         ballIdList.add(ball.getIdentifier());
-        YVelocityIDAction yVelAction = new YVelocityIDAction(ballIdList,10.0);
+        TranslateYType yVelAction = new TranslateYType("ball",1);
         ArrayList<Action> yVelActionList = new ArrayList<Action>();
         yVelActionList.add(yVelAction);
         TimeCondition myConstantVelocity = new TimeCondition(yVelActionList,1,true);
         myConditions.add(myConstantVelocity);
         
-        Action aAct = new TranslateXType("ball",-2.0);
+//        Action aAct = new TranslateXType("ball",-2.0);
+        Action aAct = new MakeNewObjectFromLocationAction("ball",200,200);
         Action dAct = new TranslateXType("ball",2.0);
         ArrayList<Action> actionList = new ArrayList<Action>();
         actionList.add(aAct);
@@ -146,6 +148,7 @@ public class MainEngineTests extends Application {
         dCon.setIdentifier(new Identifier("button_cond","d"));
         myConditions.add(aCon);
         myConditions.add(dCon);
+        System.out.println(1);
         
         //collision stuff
         ArrayList<Action> ConditionActionList = new ArrayList<Action>();
@@ -163,6 +166,8 @@ public class MainEngineTests extends Application {
         BoundaryConditionY boundaryCondition = new BoundaryConditionY(boundaryActionList,myFloorObjects.getIdentifierList(),-50,false);
         boundaryCondition.setIdentifier(new Identifier("bound_cond","a"));
         myConditions.add(boundaryCondition);
+        System.out.println(1);
+
         
         /*
          //uncomment for play pause stuff
@@ -183,6 +188,8 @@ public class MainEngineTests extends Application {
         GameObjectsCollection allGameObjects = new GameObjectsCollection();
         allGameObjects.addAll(myBallObjects);
         allGameObjects.addAll(myFloorObjects);
+        System.out.println(1);
+
 
         /*******
          * levels

@@ -9,7 +9,7 @@ public abstract class MakeNewObjectAction implements Action, Initializable {
 
 	protected Level myCurrentLevel; 
 	protected GameObjectsCollection myMasterList;
-	protected GameObjectRenderer myRenderer; 
+	protected transient GameObjectRenderer myRenderer; 
 	protected String myType; 
 	
 	public MakeNewObjectAction(String type){
