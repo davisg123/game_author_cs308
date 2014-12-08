@@ -97,9 +97,7 @@ public class GameObjectRenderer {
     private ImageView createImageAndView(GameObject obj) {
         String imageName = obj.getCurrentImageName();
         
-        if(imageName != null) {  
-            //convert image name to a filepath using the asset_map
-            System.out.println(BASE_ASSET_PATH+SLASH+IMAGES+SLASH+imageName);
+        if(imageName != null) {
             FileInputStream in;
             try {
                 in = new FileInputStream(BASE_ASSET_PATH+SLASH+IMAGES+SLASH+imageName);

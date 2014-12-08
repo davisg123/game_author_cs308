@@ -15,18 +15,11 @@ public abstract class ImpulseAction extends VectorPhysicsAction {
 
 	public ImpulseAction(ArrayList<Identifier> id, double value) {
 		super(id, value);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
-	public void initialize(GameManager manager) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	protected TwoArgInterface determineOperation(Collection<GameObject> myObjects,
-			Object value) {
+	protected TwoArgInterface determineOperation(
+			Collection<GameObject> myObjects, Object value) {
 		Vector vector = new Vector();
 		return (x, y) -> x.getPhysicsBody().addImpulse(
 				determineVector((Double) value, vector));

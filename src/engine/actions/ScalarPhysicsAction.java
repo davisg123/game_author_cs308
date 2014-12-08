@@ -16,8 +16,8 @@ public abstract class ScalarPhysicsAction extends PhysicsComponentAction {
 		// TODO Auto-generated constructor stub
 	}
 
-	protected TwoArgInterface determineOperation(Collection<GameObject> myObjects,
-			Object value) {
+	protected TwoArgInterface determineOperation(
+			Collection<GameObject> myObjects, Object value) {
 		// Scalar is abstract and will be overwritten anyway, so for now it's a
 		// mass
 		Scalar a = new Mass(0);

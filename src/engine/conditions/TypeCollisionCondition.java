@@ -28,7 +28,7 @@ public class TypeCollisionCondition extends TimeCondition {
 
     public TypeCollisionCondition (List<Action> actions, String firstType, String secondType) {
         //initialize as a time condition that executes every frame
-        super(actions,1,true);
+        super(actions,1.0,Boolean.TRUE);
 
     	firstCollisionType=firstType;
     	secondCollisionType=secondType;
@@ -39,6 +39,7 @@ public class TypeCollisionCondition extends TimeCondition {
     @Override
     public void initialize(GameManager gameManager){
     	myGameObjects = gameManager.getLevelManager().getCurrentLevel().getGameObjectsCollection();
+    	initializeActions(gameManager);
     }
     
     @Override
