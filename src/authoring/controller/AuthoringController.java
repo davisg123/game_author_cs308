@@ -7,6 +7,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.TitledPane;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
+import authoring.eventhandlers.AddConditionHandler;
 import authoring.eventhandlers.AddImageHandler;
 import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.AddObjectHandler;
@@ -21,8 +22,8 @@ import authoring.eventhandlers.ImagesClickHandler;
 import authoring.eventhandlers.LevelClickHandler;
 import authoring.eventhandlers.LevelToViewHandler;
 import authoring.eventhandlers.SaveAsNewHandler;
-import authoring.eventhandlers.UploadDragDropHandler;
-import authoring.eventhandlers.UploadDragOverHandler;
+import authoring.eventhandlers.ImageDropHandler;
+import authoring.eventhandlers.FileDragOverHandler;
 import authoring.model.AuthoringModel;
 import authoring.model.GameData;
 import authoring.view.AuthoringView;
@@ -157,8 +158,8 @@ public class AuthoringController {
 	private void initializeGameHandlers() {
 
 		myGraphics.setGraphicEvents(new ImagesClickHandler(myProperties));
-		myGraphics.setDragOver(new UploadDragOverHandler());
-		myGraphics.setDragDrop(new UploadDragDropHandler(myModel.getImages(), myGameLocation));
+		myGraphics.setDragOver(new FileDragOverHandler());
+		myGraphics.setDragDrop(new ImageDropHandler(myModel.getImages(), myGameLocation));
 		myGameObjects.setGraphicEvents(new GameObjectClickHandler(myProperties),
 				new GameObjectDragToLevelHandler(myLevels, myModel.getLevels(),
 						myProperties));
@@ -178,6 +179,7 @@ public class AuthoringController {
 		
 		myConditionsAccordionView.setGraphicEvents(new ConditionClickHandler(myProperties));
 		
+		myConditionOptions.setButtonBehavior(new AddConditionHandler());
 		
 		myLevelsAccordionView.setLevelEvents(new GameObjectClickHandler(
 				myProperties),

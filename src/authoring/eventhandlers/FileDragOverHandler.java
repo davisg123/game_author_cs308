@@ -1,16 +1,12 @@
 package authoring.eventhandlers;
 
-import java.io.File;
-
-import authoring.model.collections.ImagesCollection;
 import javafx.event.Event;
 import javafx.event.EventType;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import javafx.scene.input.TransferMode;
-import javafx.stage.FileChooser;
 
-public class UploadDragOverHandler implements GameHandler {
+public class FileDragOverHandler implements GameHandler<Event> {
 
 	@Override
 	public void handle(Event arg0) {

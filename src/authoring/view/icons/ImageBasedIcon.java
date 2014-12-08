@@ -38,7 +38,7 @@ public abstract class ImageBasedIcon extends FileIcon {
 		myWidth = DEFAULT_IMAGE_WIDTH;
 		myHeight = DEFAULT_IMAGE_HEIGHT;
 		myRotation = DEFAULT_ROTATION;
-		makeGraphic();
+		makeIcon();
 
 	}
 
@@ -50,9 +50,9 @@ public abstract class ImageBasedIcon extends FileIcon {
 	 * @param event
 	 */
 
-	private void makeGraphic() {
-		File file = new File(myGameLocation.getPath() + "/images/"
-				+ myLabel);
+	@Override
+	protected void makeIcon() {
+		File file = new File(myGameLocation.getPath() + "/images/" + myLabel);
 		BufferedImage bufferedImage;
 		try {
 			bufferedImage = ImageIO.read(file);
