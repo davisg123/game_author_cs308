@@ -22,6 +22,6 @@ public abstract class ImpulseAction extends VectorPhysicsAction {
 			Collection<GameObject> myObjects, Object value) {
 		Vector vector = new Vector();
 		return (x, y) -> x.getPhysicsBody().addImpulse(
-				determineVector((Double) value, vector));
+				determineVector(x, (Double) value, vector));
 	}
 }

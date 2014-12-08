@@ -23,7 +23,7 @@ public class YImpulseIDAction extends ImpulseAction {
 	}
 
 	@Override
-	protected Vector determineVector(double value, Vector vector) {
+	protected Vector determineVector(GameObject object, double value, Vector vector) {
 		vector = new Impulse(0, value);
 		return vector;
 	}

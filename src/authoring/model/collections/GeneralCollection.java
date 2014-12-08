@@ -22,11 +22,6 @@ public abstract class GeneralCollection<T> extends Observable implements Iterabl
 		myObjects = new ArrayList<T>();
 	}
 	
-	public GeneralCollection(GeneralCollection<T> collection){
-		for(T t :collection){
-			myObjects.add(t);
-		}
-	}
 	
 	@Override
 	public Iterator<T> iterator() {

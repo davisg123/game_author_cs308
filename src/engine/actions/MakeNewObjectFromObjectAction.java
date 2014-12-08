@@ -24,7 +24,20 @@ public class MakeNewObjectFromObjectAction extends MakeNewObjectAction {
 	
 	@Override
 	public void execute() {
-		
+		for (GameObject object: myMasterList){
+			//TODO: To TEMPLATELIST
+			if (object.getIdentifier().getType().equals(myType)){
+				GameObject newObject = new GameObject(object, myObject.getX(), myObject.getY(), myType);
+				newObject.setOrientation(myObject.getOrientation());
+				newObject.setIdentifier(object.getIdentifier());
+				newObject.setPhysicsBody(object.getPhysicsBody());
+				myRenderer.createAndAssignRenderedNode(newObject);
+				myCurrentLevel.addGameObject(newObject);
+				
+				
+			}
+			
+		}
 		
 		
 	}

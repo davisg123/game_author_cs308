@@ -22,7 +22,7 @@ public class XImpulseIDAction extends ImpulseAction {
 	}
 
 	@Override
-	protected Vector determineVector(double value, Vector vector) {
+	protected Vector determineVector(GameObject object, double value, Vector vector) {
 		// doing this for a reason. Now it's vector and impulse
 		vector = new Impulse(value, 0.0);
 		return vector;

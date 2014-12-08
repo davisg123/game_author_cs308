@@ -97,7 +97,6 @@ public class AuthoringController {
 		myLanguage = language;
 		myGameLocation = gameLoc;
 		initializeView();
-
 	}
 
 	/**
@@ -157,7 +156,8 @@ public class AuthoringController {
 		myGraphics.setDragOver(new FileDragOverHandler());
 		myGraphics.setDragDrop(new ImageDropHandler(myModel.getImages(),
 				myGameLocation));
-		mySounds.setIconEvents(new SoundsClickHandler(myProperties, myGameLocation));
+		mySounds.setIconEvents(new SoundsClickHandler(myProperties,
+				myGameLocation));
 		mySounds.setDragOver(new FileDragOverHandler());
 		mySounds.setDragDrop(new SoundDropHandler(myModel.getSounds(),
 				myGameLocation));
@@ -183,7 +183,7 @@ public class AuthoringController {
 		myConditionsAccordionView.setIconEvents(new ConditionClickHandler(
 				myProperties));
 
-		myConditionOptions.setButtonBehavior(new AddConditionHandler());
+		myConditionOptions.setButtonBehavior(new AddConditionHandler(myModel.getConditions()));
 
 		myLevelsAccordionView.setLevelEvents(new GameObjectClickHandler(
 				myProperties),
