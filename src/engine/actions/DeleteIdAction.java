@@ -7,14 +7,13 @@ import engine.GameManager;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 
-public class DeleteIdAction implements Action, Initializable{
+public class DeleteIdAction extends IDAction{
 
-	private List<Identifier> myIDs; 
 	private GameObjectsCollection myGameObjects; 
 	
 	
 	public DeleteIdAction(List<Identifier> ids){
-		myIDs = ids; 
+		super(ids);
 	}
 	
 	

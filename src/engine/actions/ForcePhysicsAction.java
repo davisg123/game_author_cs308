@@ -19,7 +19,7 @@ public abstract class ForcePhysicsAction extends VectorPhysicsAction {
 			Collection<GameObject> myObjects, Object value) {
 		Vector vector = new Vector();
 		return (x, y) -> x.getPhysicsBody().addForce(
-				(Force) determineVector((Double) value, vector));
+				(Force) determineVector(x, (Double) value, vector));
 	}
 
 }

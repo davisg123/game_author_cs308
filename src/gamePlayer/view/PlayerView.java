@@ -11,6 +11,11 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+/**
+ * @author Shreyas B
+ * @author Abhishek B
+ *
+ */
 public class PlayerView {
 
 	private PlayerModel myPlayerModel;
@@ -24,6 +29,10 @@ public class PlayerView {
 		myStage = new Stage();
 	}
 
+	/**
+	 * Initialize
+	 * @throws IOException
+	 */
 	public void initialize() throws IOException {
 		FXMLLoader loader = new FXMLLoader(getClass().getResource("RootLayout.fxml"));
 		myRoot = (BorderPane) loader.load();
