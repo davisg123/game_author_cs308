@@ -95,7 +95,6 @@ public class GameObjectRenderer {
                 return view;
             }
             catch (FileNotFoundException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
@@ -108,7 +107,6 @@ public class GameObjectRenderer {
      * @return
      */
     private Node createCollisionBody (GameObject obj) {
-        //Temporary
         PhysicsBody body = obj.getPhysicsBody();
         Rectangle hitBox = new Rectangle(body.getCollisionBodyHeight(),body.getCollisionBodyWidth());
         hitBox.setVisible(false);
