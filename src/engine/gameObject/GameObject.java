@@ -247,13 +247,22 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
      * @return
      */
     public Component getComponent (String iD) {
-        return null;
+        //TODO - make this work.
+        return this.myComponents.get(id);
     }
 
     public List<Component> getComponents(){
         return this.myComponents;
     }
 
+    public void addComponent(Component comp){
+        this.myComponents.add(comp);   
+    }
+    
+    public void removeComponent(Component comp){
+        this.myComponents.remove(comp);   
+    }
+    
     public String getCurrentImageName () { 
         return myCurrentImageName;
     }

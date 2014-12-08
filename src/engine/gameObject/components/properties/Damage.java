@@ -1,12 +1,11 @@
 package engine.gameObject.components.properties;
 
-public class Damage implements IProperty {
+public class Damage extends DoubleStatsProperty implements IProperty {
 
     private double myDamage;
 
-    public Damage (double damage) {
-        myDamage = damage;
-
+    public Damage () {
+        super.myDouble
     }
 
     public double getDamage () {

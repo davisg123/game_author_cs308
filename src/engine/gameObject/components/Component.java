@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import engine.gameObject.GameObject;
 import engine.gameObject.IEnabled;
+import engine.gameObject.Identifier;
 import engine.gameObject.components.properties.IProperty;
 
 /**
@@ -19,8 +20,8 @@ import engine.gameObject.components.properties.IProperty;
 //Just make everything an individual component... would solve search issues?...
 
 
-public abstract class Component implements Iterable<IProperty>, IEnabled {
-    protected List<IProperty> myProperties;
+public abstract class Component implements IEnabled {
+    protected String myID;
     
     //Not sure if it should be included in constructor but we might need to know if this component is enabled or not.
     protected Boolean enabled;
@@ -30,38 +31,12 @@ public abstract class Component implements Iterable<IProperty>, IEnabled {
      * Constructors
      */
     public Component () {
-        this(new ArrayList<IProperty>());
+        this("");
+    }
+    public Component (String id){
+        myID = id;
     }
 
-    public Component (List<IProperty> properties){
-        myProperties = properties;
-    }
-
-    /**
-     * Returns an iterator for properties
-     * @return Iterator
-     */
-    public Iterator <IProperty> iterator () {
-        return myProperties.iterator();
-    }
-
-    
-    /**
-     * Adds property to Component
-     * @param property
-     */
-    public void addProperty(IProperty property){
-        myProperties.add(property);
-    }
-    
-    
-    /**
-     * Removes property from Properties List
-     * @param property
-     */
-    public void removeProperty(IProperty property){
-        myProperties.remove(property);
-    }
 
     public abstract void update(GameObject object);
 
@@ -77,13 +52,26 @@ public abstract class Component implements Iterable<IProperty>, IEnabled {
         return enabled;
     }
     
-    protected List<IProperty> copyProperties(){
-    	List<IProperty> clonesOfProperties = new ArrayList<IProperty>();
-    	for (IProperty prop: myProperties){
-    		clonesOfProperties.add(prop.getClone());
-    	}
-    	return clonesOfProperties; 
-    }
+//    protected List<IProperty> copyProperties(){
+//    	List<IProperty> clonesOfProperties = new ArrayList<IProperty>();
+//    	for (IProperty prop: myProperties){
+//    		clonesOfProperties.add(prop.getClone());
+//    	}
+//    	return clonesOfProperties; 
+//    }
     
-    public abstract Component getClone(); 
+    public abstract Component getClone();
+
+    public String getID () {
+        // TODO Auto-generated method stub
+        return myID;
+    } 
+    
+    public abstract String getStringValue();
+    
+    public abstract void setStringValue(String val);
+    
+    public abstract double getDoubleValue();
+    
+    public abstract void setDoubleValue(double val);
 }
