@@ -1,8 +1,8 @@
-package engine.gameObject.components.properties;
+package engine.gameObject.components;
 
 import java.util.ArrayList;
 
-public class Health implements IProperty {
+public class Health extends Component {
 	
 	private double myHealth;
 	
@@ -11,11 +11,7 @@ public class Health implements IProperty {
 		
 	}
 	
-	@Override
-	public void update() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 	public double getHealth() {
 		return myHealth;
@@ -33,11 +29,7 @@ public class Health implements IProperty {
 		myHealth+=healthGain; 
 	}
 
-	@Override
-	public IProperty getClone() {
-		// TODO Auto-generated method stub
-		return new Health(myHealth);
-	}
+	
 	
 	
 	

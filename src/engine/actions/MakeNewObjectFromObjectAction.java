@@ -29,6 +29,8 @@ public class MakeNewObjectFromObjectAction extends MakeNewObjectAction {
 			if (object.getIdentifier().getType().equals(myType)){
 				GameObject newObject = new GameObject(object, myObject.getX(), myObject.getY(), myType);
 				newObject.setOrientation(myObject.getOrientation());
+				newObject.setIdentifier(object.getIdentifier());
+				newObject.setPhysicsBody(object.getPhysicsBody());
 				myRenderer.createAndAssignRenderedNode(newObject);
 				myCurrentLevel.addGameObject(newObject);
 				
