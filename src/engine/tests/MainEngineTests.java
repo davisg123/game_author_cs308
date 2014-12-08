@@ -115,7 +115,7 @@ public class MainEngineTests extends Application {
         ballBody.addForce(gravity);
         ballBody.addForce(new Gravity(0.0, 1.0));
         ballBody.addScalar(new Mass(4.0));
-        ballBody.addScalar(new GravityConstant(2.0));
+        ballBody.addScalar(new GravityConstant(5.0));
         ballBody.addImpulse(new Impulse(0, -200.0));
         ball.setPhysicsBody(ballBody);
         myBallObjects.add(ball);
@@ -173,7 +173,7 @@ public class MainEngineTests extends Application {
         ArrayList<Action> boundaryActionList = new ArrayList<Action>();
         boundaryActionList.add(boundaryLeftAction);
         boundaryActionList.add(boundaryRightAction);
-        BoundaryConditionY boundaryCondition = new BoundaryConditionY(boundaryActionList,myFloorObjects.getIdentifierList(),-50,false);
+        BoundaryConditionY boundaryCondition = new BoundaryConditionY(boundaryActionList,myFloorObjects.getIdentifierList(),-50.0,false);
         boundaryCondition.setIdentifier(new Identifier("bound_cond","a"));
         myConditions.add(boundaryCondition);
         

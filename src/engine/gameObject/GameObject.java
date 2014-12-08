@@ -218,6 +218,10 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
     public String getID () {
         return myID;
     }
+    
+    public void setID(String s){
+    	myID = s;
+    }
 
     /**
      * Updates all components of GameObject

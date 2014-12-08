@@ -62,9 +62,13 @@ public class CollisionComposition {
 			other.setTranslateX(other.getTranslateX()
 					+ other.getPhysicsBody().getVelocity().getX()
 					/ FRAMES_PER_SECOND);
+
 		} else {
 			// stop x, set y
-			other.getPhysicsBody().setVelocity(new Velocity(fixed.getPhysicsBody().getVelocity().getX(), fixed.getPhysicsBody().getVelocity().getY()));
+			other.getPhysicsBody().setVelocity(
+					new Velocity(fixed.getPhysicsBody().getVelocity().getX(),
+							fixed.getPhysicsBody().getVelocity().getY()));
+
 		}
 	}
 

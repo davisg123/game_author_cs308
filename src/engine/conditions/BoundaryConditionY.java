@@ -9,12 +9,12 @@ import engine.gameObject.Identifier;
 
 public class BoundaryConditionY extends GameObjectCondition {
     
-    private double myBoundary;
-    private boolean myUpTrigger;
+    private Double myBoundary;
+    private Boolean myUpTrigger;
 
     public BoundaryConditionY (List<Action> myActions,
                               List<Identifier> myIDs,
-                              double boundary, boolean rightTrigger) {
+                              Double boundary, Boolean rightTrigger) {
         super(myActions, myIDs);
         myBoundary = boundary;
         myUpTrigger = rightTrigger;
