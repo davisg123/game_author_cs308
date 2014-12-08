@@ -4,25 +4,23 @@
 	-fx-background-position: center center;
 	-fx-background-size: 500 500;
     -fx-background-repeat: no-repeat;
-    -fx-padding: 30;
-    -fx-spacing: 25;
+    -fx-padding: 15;
+    -fx-spacing: 10;
     -fx-size: 500 500;
 }
 
 #text {
-	-fx-font-size: 22px;
+	-fx-font: 20px Tahoma;
 	-fx-stroke: white;
 	-fx-stroke-width: 2;
 }
 
-#button {
-	-fx-background-color: 
-        #3c7fb1,
-        linear-gradient(#fafdfe, #e8f5fc),
-        linear-gradient(#eaf6fd 0%, #d9f0fc 49%, #bee6fd 50%, #a7d9f5 100%);
-    -fx-background-insets: 0,1,2;
-    -fx-background-radius: 3,2,1;
-    -fx-padding: 3 30 3 30;
-    -fx-text-fill: black;
-    -fx-font-size: 14px;
+.imagehbox {
+	-fx-background-image: url("voogaSplash.PNG");
+	-fx-background-size: 96, 205;
+    -fx-background-repeat: no-repeat;
+    -fx-border-color: #2e8b57;
+    -fx-border-width: 2px;
+    -fx-padding: 10;
+    -fx-spacing: 8;
 }
