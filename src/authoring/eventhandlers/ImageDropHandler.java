@@ -4,11 +4,12 @@ import java.io.File;
 
 import authoring.model.collections.ImagesCollection;
 
-public class AddImageHandler extends AddFileHandler {
+public class ImageDropHandler extends FileDropHandler {
 
-	public AddImageHandler(ImagesCollection imagesCollection, File file) {
+	public ImageDropHandler(ImagesCollection imagesCollection, File file) {
 		super(file);
 		myCollection = imagesCollection;
-		myFileLocation = "/image/";
+		myFileLocation = "/images/";
 	}
+
 }
