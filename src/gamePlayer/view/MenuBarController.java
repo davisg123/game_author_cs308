@@ -9,6 +9,14 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Menu;
+import javafx.scene.control.Tab;
+
+/**
+ * 
+ * @author Shreyas B
+ * @author Abhishek B
+ *
+ */
 
 public class MenuBarController implements Initializable{
 
@@ -16,13 +24,13 @@ public class MenuBarController implements Initializable{
 	private KeyboardView myKeyboard;
 
 	@FXML
-	private Menu gameSelector;
+	private Tab gameSelector;
 	
 	@FXML
-	private Menu gameOptions;
+	private Tab gameOptions;
 	
 	@FXML
-	private Menu gamePreferences;
+	private Tab gamePreferences;
 
 	public void setModel(PlayerModel model){
 		myPlayerModel=model;

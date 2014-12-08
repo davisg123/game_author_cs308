@@ -12,10 +12,9 @@ import engine.actions.Action;
 import javafx.scene.input.KeyCode;
 
 public class ButtonCondition extends Condition {
+    private List<KeyCode> myKeyList;
     
-    private ArrayList<KeyCode> myKeyList;
-    
-    public ButtonCondition (ArrayList<Action> actions, ArrayList<KeyCode> keyList) {
+    public ButtonCondition (List<Action> actions, List<KeyCode> keyList) {
         super(actions);
         myKeyList = keyList;
     }
@@ -24,7 +23,7 @@ public class ButtonCondition extends Condition {
     	return myId.getUniqueId();
     }
     
-    public ArrayList<KeyCode> getKeyList()
+    public List<KeyCode> getKeyList()
     {
     	return myKeyList;
     }

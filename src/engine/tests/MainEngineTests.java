@@ -1,8 +1,9 @@
 package engine.tests;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.List;
 import data.DataManager;
 import authoring.model.GameData;
 import authoring.model.collections.ConditionsCollection;
@@ -10,21 +11,21 @@ import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.LevelsCollection;
 import engine.GameManager;
 import engine.actions.Action;
-import engine.actions.FrameRateAction;
-import engine.actions.TranslateX;
-import engine.actions.TranslateY;
+import engine.actions.FixedCollisionTypeAction;
+import engine.actions.TranslateXType;
+import engine.actions.TranslateYType;
+import engine.actions.YVelocityIDAction;
 import engine.conditions.BoundaryConditionY;
 import engine.conditions.ButtonCondition;
 import engine.conditions.ButtonConditionManager;
+import engine.conditions.TimeCondition;
 import engine.conditions.TypeCollisionCondition;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 import engine.gameObject.components.PhysicsBody;
 import engine.level.Level;
-import engine.physics.Acceleration;
 import engine.physics.CollisionConstant;
 import engine.physics.Velocity;
-import engine.render.GameObjectRenderer;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -78,7 +79,7 @@ public class MainEngineTests extends Application {
         GameObjectsCollection myFloorObjects = new GameObjectsCollection();
         GameObjectsCollection myBallObjects = new GameObjectsCollection();
         //create the floor
-        GameObject floorRight = new GameObject(null,"floor",
+        GameObject floorRight = new GameObject(null,"floor.png",
                                    200, 200, 20, 200, 0, "floor_right");
         floorRight.setIdentifier(new Identifier("floor","a"));
         //ugh, why do we have to set this explicitly?
@@ -88,7 +89,7 @@ public class MainEngineTests extends Application {
         floorRight.setPhysicsBody(floorRightBody);
         
         
-        GameObject floorLeft = new GameObject(null,"floor",
+        GameObject floorLeft = new GameObject(null,"floor.png",
                                                -50, 200, 20, 200, 0, "floor_left");
         floorLeft.setIdentifier(new Identifier("floor","b"));
         PhysicsBody floorLeftBody = new PhysicsBody(20,200);
@@ -100,38 +101,62 @@ public class MainEngineTests extends Application {
         myFloorObjects.add(floorLeft);
         
         //create a ball
-        GameObject ball = new GameObject(null,"ball",150,50,30,30,0,"ball_object");
+        GameObject ball = new GameObject(null,"ball.png",150,50,30,30,0,"ball_object");
         ball.setIdentifier(new Identifier("ball","a"));
         PhysicsBody ballBody = new PhysicsBody(30,30);
-        ballBody.setVelocity(new Velocity(0,10));
         ball.setPhysicsBody(ballBody);
         myBallObjects.add(ball);
-        System.out.println(ballBody.getVelocity().getY());
         
+        //create alt ball
+        /*
+        GameObject ball2 = new GameObject(null,"ball.png",250,50,30,30,0,"ball_object");
+        ball2.setIdentifier(new Identifier("ball","b"));
+        PhysicsBody ballBody2 = new PhysicsBody(30,30);
+        ballBody2.setVelocity(new Velocity(0,10));
+        ball2.setPhysicsBody(ballBody2);
+        myBallObjects.add(ball2);
+        */
         /******
          * conditions
          ******/
+
         ConditionsCollection myConditions = new ConditionsCollection();
-        Action aAct = new TranslateX(ball.getIdentifier(),-2.0);
-        Action dAct = new TranslateX(ball.getIdentifier(),2.0);
+        
+        ArrayList<Identifier> ballIdList = new ArrayList<Identifier>();
+        ballIdList.add(ball.getIdentifier());
+        YVelocityIDAction yVelAction = new YVelocityIDAction(ballIdList,10.0);
+        ArrayList<Action> yVelActionList = new ArrayList<Action>();
+        yVelActionList.add(yVelAction);
+        TimeCondition myConstantVelocity = new TimeCondition(yVelActionList,1,true);
+        myConditions.add(myConstantVelocity);
+        
+        Action aAct = new TranslateXType("ball",-2.0);
+        Action dAct = new TranslateXType("ball",2.0);
         ArrayList<Action> actionList = new ArrayList<Action>();
         actionList.add(aAct);
-        ButtonCondition aCon = new ButtonCondition(actionList,KeyCode.A);
+        ArrayList<KeyCode> kclA = new ArrayList<KeyCode>();
+        kclA.add(KeyCode.A);
+        ButtonCondition aCon = new ButtonCondition(actionList,kclA);
         aCon.setIdentifier(new Identifier("button_cond","a"));
         ArrayList<Action> dActList = new ArrayList<Action>();
         dActList.add(dAct);
-        ButtonCondition dCon = new ButtonCondition(dActList,KeyCode.D);
+        ArrayList<KeyCode> kclD = new ArrayList<KeyCode>();
+        kclD.add(KeyCode.D);
+        ButtonCondition dCon = new ButtonCondition(dActList,kclD);
         dCon.setIdentifier(new Identifier("button_cond","d"));
         myConditions.add(aCon);
         myConditions.add(dCon);
         
         //collision stuff
-        TypeCollisionCondition ballAndPlatformCollision = new TypeCollisionCondition(null,"ball","floor");
+        ArrayList<Action> ConditionActionList = new ArrayList<Action>();
+        FixedCollisionTypeAction collisionAction = new FixedCollisionTypeAction("ball","floor",0);
+        ConditionActionList.add(collisionAction);
+        TypeCollisionCondition ballAndPlatformCollision = new TypeCollisionCondition(ConditionActionList,"ball","floor");
         ballAndPlatformCollision.setIdentifier(new Identifier("collision_cond","a"));
         myConditions.add(ballAndPlatformCollision);
         
-        Action boundaryRightAction = new TranslateY(floorRight.getIdentifier(),350);
-        Action boundaryLeftAction = new TranslateY(floorLeft.getIdentifier(),350);
+        Action boundaryRightAction = new TranslateYType("floor",350);
+        Action boundaryLeftAction = new TranslateYType("foor",350);
         ArrayList<Action> boundaryActionList = new ArrayList<Action>();
         boundaryActionList.add(boundaryLeftAction);
         boundaryActionList.add(boundaryRightAction);
@@ -139,6 +164,8 @@ public class MainEngineTests extends Application {
         boundaryCondition.setIdentifier(new Identifier("bound_cond","a"));
         myConditions.add(boundaryCondition);
         
+        /*
+         //uncomment for play pause stuff
         Action pauseAct = new FrameRateAction(0.0);
         ArrayList<Action> pauseActList = new ArrayList<Action>();
         pauseActList.add(pauseAct);
@@ -149,9 +176,9 @@ public class MainEngineTests extends Application {
         playListAct.add(playAct);
         ButtonCondition uCon = new ButtonCondition(playListAct,KeyCode.U);
         dCon.setIdentifier(new Identifier("button_cond","u"));
-        //myConditions.add(pCon);
-        //myConditions.add(uCon);
-        
+        myConditions.add(pCon);
+        myConditions.add(uCon);
+        */
         
         GameObjectsCollection allGameObjects = new GameObjectsCollection();
         allGameObjects.addAll(myBallObjects);
@@ -167,22 +194,22 @@ public class MainEngineTests extends Application {
         /*
          * uncomment for saving game
          */
-        /*
+        
         GameData data = new GameData(myLevels,myConditions,allGameObjects);
         DataManager manager = new DataManager();
         try {
-            manager.writeGameFile(data, "fd_final.json");
+            manager.writeGameFile(data, "fd_final.json", Paths.get(".").toString()+"/src/data/games/fd_final/");
         }
         catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        */
+        
         
         /*******
          * game
          ******/
-        myGameManager = new GameManager(myConditions,allGameObjects,myLevels,group);
+        myGameManager = new GameManager(myConditions,allGameObjects,myLevels,group,Paths.get(".").toString()+"/src/data/games/fd_final");
         myGameManager.initialize();
     }
 

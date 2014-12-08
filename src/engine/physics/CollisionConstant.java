@@ -14,7 +14,7 @@ public class CollisionConstant extends Scalar {
 
 	@Override
 	protected void initializeForceList() {
-		//doesn't do anything, no forces associated with it
+		// doesn't do anything with forces, no forces associated with it
 	}
-	
+
 }

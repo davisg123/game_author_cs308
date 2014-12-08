@@ -1,6 +1,8 @@
 package gamePlayer.model;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import javafx.stage.FileChooser;
 import data.DataManager;
 import application.SplashScreen;
 import authoring.model.GameData;
@@ -8,8 +10,15 @@ import authoring.model.collections.ConditionsCollection;
 import engine.GameManager;
 import engine.conditions.ButtonCondition;
 import engine.conditions.Condition;
+import gamePlayer.view.FileSelectionWizard;
 import gamePlayer.view.PlayerView;
 
+/**
+ * 
+ * @author Abhishek B
+ * @author Shreyas B
+ * 
+ */
 public class PlayerModel {
 
 	private GameData myGameData;
@@ -17,20 +26,23 @@ public class PlayerModel {
 	private PlayerView myPlayerView;
 	private GameManager myGameManager;
 	private ConditionsCollection myButtonConditions;
+	private FileSelectionWizard myFileSelector;
 	
 	public PlayerModel() {
 		myPlayerView = new PlayerView(this);
 		myManager = new DataManager();
 		myButtonConditions = new ConditionsCollection();
+		myFileSelector = new FileSelectionWizard();
 	}
 	
 	public void initializeView() throws IOException {
 		myPlayerView.initialize();
 	}
 	
-	public void loadGameFile(){		
-		myGameData = myManager.readGameFile("SavedGame1.json");
-		myGameManager = new GameManager(myGameData.getConditions(), myGameData.getGameObjects(), myGameData.getLevels(), myPlayerView.getGroup());
+	public void loadGameFile() {
+	        Path filePath = myFileSelector.selectFile();
+		myGameData = myManager.readGameFile(filePath.toString());
+		myGameManager = new GameManager(myGameData.getConditions(), myGameData.getGameObjects(), myGameData.getLevels(), myPlayerView.getGroup(),filePath.getParent().toString());
 		myGameManager.initialize();
 		
 		extractButtonConditions();

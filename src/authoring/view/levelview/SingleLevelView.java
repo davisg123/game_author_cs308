@@ -70,7 +70,7 @@ public class SingleLevelView extends Pane implements Observer {
 	}
 
 	public void recreateLevel(Level l) {
-		// System.out.println(myEvents.length);
+		//System.out.println(myEvents.length);
 		for (GameObject g : l.getGameObjectsCollection()) {
 			addGameObjectToView(g, g.getX(), g.getY(), myEvents);
 		}
@@ -89,7 +89,7 @@ public class SingleLevelView extends Pane implements Observer {
 	private void addGameObjectToView(GameObject gameObject, double x, double y,
 			GameHandler... handler) {
 		GameObjectIcon g = new GameObjectIcon(gameObject, myGameLocation, handler);
-		System.out.println(gameObject.getWidth() + " " + gameObject.getHeight() + " " + gameObject.getRotation());
+		//System.out.println(gameObject.getWidth() + " " + gameObject.getHeight() + " " + gameObject.getRotation());
 		g.setDimensions(gameObject.getWidth(), gameObject.getHeight(), gameObject.getRotation());
 		
 		this.moveGameObjectToLevel(g, x, y);

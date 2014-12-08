@@ -4,6 +4,7 @@ import static authoring.view.levelview.SingleLevelView.OBJECT_X_OFFSET;
 import static authoring.view.levelview.SingleLevelView.OBJECT_Y_OFFSET;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javafx.scene.control.Button;
@@ -15,10 +16,12 @@ import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.AccordionContainer;
 import engine.gameObject.GameObject;
 import engine.gameObject.components.PhysicsBody;
-import engine.physics.CollisionConstant;
+import engine.physics.CoefficientOfFriction;
+import engine.physics.Density;
+import engine.physics.GravityConstant;
 import engine.physics.Mass;
-import engine.physics.Vector;
 import engine.physics.Velocity;
+import engine.physics.Volume;
 
 public class GameObjectProperties extends Properties {
 
@@ -51,13 +54,19 @@ public class GameObjectProperties extends Properties {
 	public GameObjectProperties(){
 		//nullary constructor that creates empty map to generate new game objects
 		//consider refactoring this
-		wizardProperties = new HashMap<String, PropertyTextField>();
+		wizardProperties = new LinkedHashMap<String, PropertyTextField>();
 
 		wizardProperties.put("image", new PropertyTextField("Image: ", ""));	
-		wizardProperties.put("initXV", new PropertyTextField("Initial X Velocity", "0"));
-		wizardProperties.put("initYV", new PropertyTextField("Initial Y Velocity", "0"));
 		wizardProperties.put("width", new PropertyTextField("Width: ", ""));
 		wizardProperties.put("height",new PropertyTextField("Height: ", ""));
+		wizardProperties.put("mass", new PropertyTextField("Mass", "1.0"));
+		wizardProperties.put("collision constant", new PropertyTextField("CollisionConstant", "0.0"));
+		wizardProperties.put("gravity constant", new PropertyTextField("GravityConstant", "1.0"));
+		wizardProperties.put("friction", new PropertyTextField("CoefficientOfFriction", "0.0"));
+		wizardProperties.put("density", new PropertyTextField("Density", "1.0"));
+		wizardProperties.put("volume", new PropertyTextField("Volume", "1.0"));
+		wizardProperties.put("initXV", new PropertyTextField("Initial X Velocity", "0"));
+		wizardProperties.put("initYV", new PropertyTextField("Initial Y Velocity", "0"));
 	}
 	
 	@Override
@@ -74,18 +83,16 @@ public class GameObjectProperties extends Properties {
 		physicsPane.setText("Physics Properties");
 		VBox physicsBox = new VBox();
 
-		inherentTextProperties = new HashMap<String, PropertyTextField>();
-		concreteTextProperties = new HashMap<String, PropertyTextField>();
-		booleanProperties = new HashMap<String, CheckBox>();
-		physicsProperties = new HashMap<String, PropertyTextField>();
+		inherentTextProperties = new LinkedHashMap<String, PropertyTextField>();
+		concreteTextProperties = new LinkedHashMap<String, PropertyTextField>();
+		booleanProperties = new LinkedHashMap<String, CheckBox>();
+		physicsProperties = new LinkedHashMap<String, PropertyTextField>();
 		
 
 		PropertyTextField unmodifiableName = new PropertyTextField("Name: ", gameObject.getID());
 		unmodifiableName.setDisable(true);
 		inherentTextProperties.put("name",unmodifiableName);
 		inherentTextProperties.put("image",new PropertyTextField("Image: ", gameObject.getCurrentImageName()));
-//		inherentTextProperties.put("initXV", new PropertyTextField("Initial X Velocity", "0"));
-//		inherentTextProperties.put("initYV", new PropertyTextField("Initial Y Velocity", "0"));
 		inherentTextProperties.put("width", new PropertyTextField("Width: ", Double.toString(gameObject.getWidth())));
 		inherentTextProperties.put("height",new PropertyTextField("Height: ", Double.toString(gameObject.getHeight())));
 		
@@ -98,6 +105,14 @@ public class GameObjectProperties extends Properties {
 		physicsProperties.put("initXV", new PropertyTextField("Initial X Velocity", Double.toString(gameObject.getPhysicsBody().getVelocity().getX())));
 		physicsProperties.put("initYV", new PropertyTextField("Initial Y Velocity", Double.toString(gameObject.getPhysicsBody().getVelocity().getY())));
 		physicsProperties.put("mass", new PropertyTextField("Mass", Double.toString(gameObject.getPhysicsBody().getScalar("Mass").getValue())));
+		physicsProperties.put("collision constant", new PropertyTextField("CollisionConstant", Double.toString(gameObject.getPhysicsBody().getScalar("CollisionConstant").getValue())));
+		physicsProperties.put("gravity constant", new PropertyTextField("GravityConstant", Double.toString(gameObject.getPhysicsBody().getScalar("GravityConstant").getValue())));
+		physicsProperties.put("friction", new PropertyTextField("CoefficientOfFriction", Double.toString(gameObject.getPhysicsBody().getScalar("CoefficientOfFriction").getValue())));
+		physicsProperties.put("density", new PropertyTextField("Density", Double.toString(gameObject.getPhysicsBody().getScalar("Density").getValue())));
+		physicsProperties.put("volume", new PropertyTextField("Volume", Double.toString(gameObject.getPhysicsBody().getScalar("Volume").getValue())));
+
+		
+		
 		
 		
 		for (String s : inherentTextProperties.keySet()) {
@@ -164,8 +179,13 @@ public class GameObjectProperties extends Properties {
 					.get("height").getInformation()));
 
 			pb.addScalar(new Mass(Double.parseDouble(physicsProperties.get("mass").getInformation())));
+			pb.addScalar(new GravityConstant(Double.parseDouble(physicsProperties.get("gravity constant").getInformation())));
+			pb.addScalar(new CoefficientOfFriction(Double.parseDouble(physicsProperties.get("friction").getInformation())));
+			pb.addScalar(new Density(Double.parseDouble(physicsProperties.get("density").getInformation())));
+			pb.addScalar(new Volume(Double.parseDouble(physicsProperties.get("volume").getInformation())));
 			pb.setVelocity(new Velocity(Double.parseDouble(physicsProperties.get("initXV").getInformation()), Double.parseDouble(physicsProperties.get("initYV").getInformation())));
 			//may need to change
+			
 			
 			edited.setPhysicsBody(pb);
 		}
