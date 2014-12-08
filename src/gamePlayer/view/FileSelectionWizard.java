@@ -18,7 +18,7 @@ public class FileSelectionWizard {
 		fileChooser.setTitle("Open Resource File");
 		fileChooser.getExtensionFilters().addAll(
 				new FileChooser.ExtensionFilter("JSON", "*.json"));
-		return fileChooser.showOpenDialog(myFileStage).getName();
+		return fileChooser.showOpenDialog(myFileStage).getAbsolutePath();
 	}
 
 }
