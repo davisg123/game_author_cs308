@@ -8,13 +8,13 @@ import engine.actions.Initializable;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 
-public class ChangeComponentAction implements Action, Initializable{
+public class ChangeComponentIDAction implements Action, Initializable{
 	
 	protected GameObjectsCollection myGameObjects;
 	protected Identifier myComponentID; 
 	protected List<Identifier> myObjectIDs; 
 	
-	public ChangeComponentAction(List<Identifier> ids, Identifier componentID){
+	public ChangeComponentIDAction(List<Identifier> ids, Identifier componentID){
 		myObjectIDs = ids; 
 		myComponentID = componentID; 
 		

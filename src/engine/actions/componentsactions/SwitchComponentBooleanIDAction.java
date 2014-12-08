@@ -4,11 +4,11 @@ import java.util.List;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 
-public class SwitchComponentBooleanAction extends ChangeComponentAction {
+public class SwitchComponentBooleanIDAction extends ChangeComponentIDAction {
 
 
 
-    public SwitchComponentBooleanAction (List<Identifier> ids, Identifier componentID) {
+    public SwitchComponentBooleanIDAction (List<Identifier> ids, Identifier componentID) {
         super(ids, componentID);
         // TODO Auto-generated constructor stub
     }
