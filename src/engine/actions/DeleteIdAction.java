@@ -15,7 +15,7 @@ public class DeleteIdAction implements Action, Initializable{
 
 	private List<Identifier> myIDs; 
 	private GameObjectsCollection myGameObjects; 
-	
+	private DeleteAction myDeleteAction; 
 	
 	public DeleteIdAction(List<Identifier> ids){
 		myIDs = ids; 
@@ -25,13 +25,17 @@ public class DeleteIdAction implements Action, Initializable{
 	@Override
 	public void initialize(GameManager manager) {
 		myGameObjects = manager.getAllGameObjects();
+		
 	}
 
 	@Override
 	public void execute() {
 		for (GameObject object: myGameObjects){
-			if (myIDs.contains(object.getIdentifier())){
-				myGameObjects.remove(object);
+			for (Identifier id: myIDs){
+				if (id.getHash().equals(object.getIdentifier().getHash())){
+					myGameObjects.remove(object);
+					continue; 
+				}
 			}
 		}
 		
