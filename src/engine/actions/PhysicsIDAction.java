@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
+import authoring.model.collections.GameObjectsCollection;
 import engine.GameManager;
 import engine.collision.objects.CollisionComposition;
 import engine.gameObject.GameObject;
@@ -14,30 +15,30 @@ public abstract class PhysicsIDAction implements Action, Initializable {
 
 	protected double myValue;
 	protected CollisionComposition myCollision;
-	protected Collection<GameObject> myObjects;
+	protected GameObjectsCollection myGameObjects;
 	protected List<Identifier> myID;
 
-	public PhysicsIDAction(ArrayList<Identifier> id, double value) {
+	public PhysicsIDAction(List<Identifier> id, double value) {
 		myID = id;
 		myValue = value;
 		myCollision = new CollisionComposition();
-		myObjects = new ArrayList<GameObject>();
 	}
 
 	@Override
 	public void execute() {
-		applyPhysics(myObjects);
+		applyPhysics(myGameObjects);
 	}
 
+	@Override
 	public void initialize(GameManager manager) {
 		for (Identifier id : myID) {
-			myObjects.add(manager.objectForIdentifier(id));
+			myGameObjects.add(manager.objectForIdentifier(id));
 		}
 	}
 
-	public abstract void applyPhysics(Collection<GameObject> myObjects);
+	public abstract void applyPhysics(GameObjectsCollection myObjects);
 
-	protected void forHelper(Collection<GameObject> myObjects,
+	protected void forHelper(GameObjectsCollection myObjects,
 			TwoArgInterface myOperation, Object value) {
 		myObjects.forEach(x -> myOperation.operation(x, value));
 	}

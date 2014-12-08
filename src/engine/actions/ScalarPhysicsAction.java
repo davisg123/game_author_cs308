@@ -2,6 +2,7 @@ package engine.actions;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import engine.actions.PhysicsIDAction.TwoArgInterface;
 import engine.gameObject.GameObject;
@@ -11,8 +12,8 @@ import engine.physics.Scalar;
 
 public abstract class ScalarPhysicsAction extends PhysicsComponentAction {
 
-	public ScalarPhysicsAction(ArrayList<Identifier> id, double value) {
-		super(id, value);
+	public ScalarPhysicsAction(List<Identifier> ids, double value) {
+		super(ids, value);
 		// TODO Auto-generated constructor stub
 	}
 

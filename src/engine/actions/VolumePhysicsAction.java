@@ -1,6 +1,7 @@
 package engine.actions;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import engine.gameObject.Identifier;
 import engine.physics.Density;
@@ -9,8 +10,8 @@ import engine.physics.Volume;
 
 public class VolumePhysicsAction extends ScalarPhysicsAction {
 
-	public VolumePhysicsAction(ArrayList<Identifier> id, double value) {
-		super(id, value);
+	public VolumePhysicsAction(List<Identifier> ids, double value) {
+		super(ids, value);
 	}
 
 	@Override
