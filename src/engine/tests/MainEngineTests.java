@@ -14,9 +14,11 @@ import engine.actions.Action;
 import engine.actions.FixedCollisionTypeAction;
 import engine.actions.TranslateXType;
 import engine.actions.TranslateYType;
+import engine.actions.YVelocityIDAction;
 import engine.conditions.BoundaryConditionY;
 import engine.conditions.ButtonCondition;
 import engine.conditions.ButtonConditionManager;
+import engine.conditions.TimeCondition;
 import engine.conditions.TypeCollisionCondition;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
@@ -102,7 +104,6 @@ public class MainEngineTests extends Application {
         GameObject ball = new GameObject(null,"ball.png",150,50,30,30,0,"ball_object");
         ball.setIdentifier(new Identifier("ball","a"));
         PhysicsBody ballBody = new PhysicsBody(30,30);
-        ballBody.setVelocity(new Velocity(0,10));
         ball.setPhysicsBody(ballBody);
         myBallObjects.add(ball);
         
@@ -118,7 +119,17 @@ public class MainEngineTests extends Application {
         /******
          * conditions
          ******/
+
         ConditionsCollection myConditions = new ConditionsCollection();
+        
+        ArrayList<Identifier> ballIdList = new ArrayList<Identifier>();
+        ballIdList.add(ball.getIdentifier());
+        YVelocityIDAction yVelAction = new YVelocityIDAction(ballIdList,10.0);
+        ArrayList<Action> yVelActionList = new ArrayList<Action>();
+        yVelActionList.add(yVelAction);
+        TimeCondition myConstantVelocity = new TimeCondition(yVelActionList,1,true);
+        myConditions.add(myConstantVelocity);
+        
         Action aAct = new TranslateXType("ball",-2.0);
         Action dAct = new TranslateXType("ball",2.0);
         ArrayList<Action> actionList = new ArrayList<Action>();

@@ -17,12 +17,6 @@ public abstract class VelocityIDAction extends VectorPhysicsAction {
 	}
 
 	@Override
-	public void initialize(GameManager manager) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	protected TwoArgInterface determineOperation(
 			Collection<GameObject> myObjects, Object value) {
 		Vector vector = new Vector();
