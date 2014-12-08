@@ -5,26 +5,27 @@ import java.util.ResourceBundle;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.TitledPane;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import authoring.eventhandlers.AddConditionHandler;
 import authoring.eventhandlers.AddImageHandler;
 import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.AddObjectHandler;
+import authoring.eventhandlers.AddSoundHandler;
 import authoring.eventhandlers.ConditionClickHandler;
 import authoring.eventhandlers.DeleteGameObjectHandler;
 import authoring.eventhandlers.EditGameObjectHandler;
+import authoring.eventhandlers.FileDragOverHandler;
 import authoring.eventhandlers.GameObjGraphicDragHandler;
 import authoring.eventhandlers.GameObjectClickHandler;
 import authoring.eventhandlers.GameObjectDragHandler;
 import authoring.eventhandlers.GameObjectDragToLevelHandler;
+import authoring.eventhandlers.ImageDropHandler;
 import authoring.eventhandlers.ImagesClickHandler;
 import authoring.eventhandlers.LevelClickHandler;
 import authoring.eventhandlers.LevelToViewHandler;
 import authoring.eventhandlers.SaveAsNewHandler;
-import authoring.eventhandlers.ImageDropHandler;
-import authoring.eventhandlers.FileDragOverHandler;
 import authoring.eventhandlers.SoundDropHandler;
+import authoring.eventhandlers.SoundsClickHandler;
 import authoring.model.AuthoringModel;
 import authoring.model.GameData;
 import authoring.view.AuthoringView;
@@ -42,9 +43,6 @@ import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
 import authoring.view.soundsview.SoundOptions;
 import authoring.view.soundsview.SoundsView;
-import engine.conditions.ButtonCondition;
-import engine.conditions.Condition;
-import engine.gameObject.Identifier;
 
 /**
  * Controller class that interacts between model and view. Holds and constructs
@@ -159,7 +157,7 @@ public class AuthoringController {
 		myGraphics.setDragOver(new FileDragOverHandler());
 		myGraphics.setDragDrop(new ImageDropHandler(myModel.getImages(),
 				myGameLocation));
-
+		mySounds.setIconEvents(new SoundsClickHandler(myProperties, myGameLocation));
 		mySounds.setDragOver(new FileDragOverHandler());
 		mySounds.setDragDrop(new SoundDropHandler(myModel.getSounds(),
 				myGameLocation));
@@ -170,7 +168,8 @@ public class AuthoringController {
 				.getLevels(), myLevels));
 		myGraphicOptions.setButtonBehavior(new AddImageHandler(myModel
 				.getImages(), myGameLocation));
-
+		mySoundOptions.setButtonBehavior(new AddSoundHandler(myModel
+				.getSounds(), myGameLocation));
 		myObjectOptions.setButtonBehavior(new AddObjectHandler(myModel
 				.getGameObjectCollection()));
 

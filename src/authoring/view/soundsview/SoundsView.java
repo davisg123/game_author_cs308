@@ -35,7 +35,7 @@ public class SoundsView extends CollectionView implements Observer {
 
 	private void addSound(String arg) {
 		SoundIcon soundIcon = new SoundIcon(myGameLocation, arg, myIconEvents);
-		this.getChildren().add(soundIcon);
+		myContents.getChildren().add(soundIcon);
 	}
 
 	public void setDragOver(GameHandler<Event> handler) {
