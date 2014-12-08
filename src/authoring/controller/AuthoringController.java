@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 import javafx.geometry.Pos;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
+import authoring.eventhandlers.AddActionHandler;
 import authoring.eventhandlers.AddConditionHandler;
 import authoring.eventhandlers.AddImageHandler;
 import authoring.eventhandlers.AddLevelHandler;
@@ -194,7 +195,7 @@ public class AuthoringController {
 				myModel.getGameObjectCollection(), myProperties),
 				new DeleteGameObjectHandler(myLevels, myModel.getLevels(),
 						myProperties));
-
+		myProperties.setAddActionButtonBehaviors(new AddActionHandler());
 	}
 
 	/**
