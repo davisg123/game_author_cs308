@@ -22,8 +22,8 @@ public class XVelocityIDAction extends VelocityIDAction {
 	}
 
 	@Override
-	protected Vector determineVector(double value, Vector vector) {
-		vector = new Velocity(value, 0.0);
+	protected Vector determineVector(GameObject object, double value, Vector vector) {
+		vector = new Velocity(value, object.getPhysicsBody().getVelocity().getY());
 		return vector;
 	}
 
