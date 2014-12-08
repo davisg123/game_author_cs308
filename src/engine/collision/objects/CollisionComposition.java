@@ -51,7 +51,7 @@ public class CollisionComposition {
 				.getValue() == 1) ? one : two;
 		GameObject other = (one.getPhysicsBody().getScalar("CollisionConstant")
 				.getValue() == 1) ? two : one;
-
+		double toMove = 0;
 		if (xAxis) {
 
 			// cancel out current velocity
@@ -64,10 +64,25 @@ public class CollisionComposition {
 					/ FRAMES_PER_SECOND);
 
 		} else {
-			// stop x, set y
+			if (other.getTranslateY() < fixed.getTranslateY()) {
+				toMove = collisionHelper(fixed.getTranslateY(),
+						other.getTranslateY(), fixed.getPhysicsBody()
+								.getCollisionBodyWidth() / 2.0, other
+								.getPhysicsBody().getCollisionBodyWidth() / 2.0);
+
+			} else {
+				toMove = -1
+						* collisionHelper(fixed.getTranslateY(),
+								other.getTranslateY(), fixed.getPhysicsBody()
+										.getCollisionBodyWidth() / 2.0, other
+										.getPhysicsBody()
+										.getCollisionBodyWidth() / 2.0);
+			}
 			other.getPhysicsBody().setVelocity(
 					new Velocity(fixed.getPhysicsBody().getVelocity().getX(),
 							fixed.getPhysicsBody().getVelocity().getY()));
+			other.setTranslateY(other.getTranslateY() - toMove);
+			// System.out.println(other.getTranslateY()+15.0);
 
 		}
 	}
