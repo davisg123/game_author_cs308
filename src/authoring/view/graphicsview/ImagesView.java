@@ -7,7 +7,7 @@ import data.Observable;
 import data.Observer;
 import javafx.scene.layout.VBox;
 import authoring.eventhandlers.GameHandler;
-import authoring.view.baseclasses.ScrollView;
+import authoring.view.baseclasses.CollectionView;
 import authoring.view.icons.ImageBasedIcon;
 import authoring.view.icons.ImageIcon;
 
@@ -20,11 +20,10 @@ import authoring.view.icons.ImageIcon;
  * @author Chris Bernt
  *
  */
-public class ImagesView extends ScrollView implements Observer {
+public class ImagesView extends CollectionView implements Observer {
 	private static final double VIEW_HEIGHT_RATIO = .65;
 	private static final double VIEW_WIDTH_RATIO = 0.2;
 	private VBox myVbox = new VBox();
-	private GameHandler[] myGraphicEvents;
 	private File myGameLocation;
 
 	public ImagesView(ResourceBundle language, double width, double height,
@@ -40,10 +39,6 @@ public class ImagesView extends ScrollView implements Observer {
 		addImage((String) arg);
 	}
 
-	public void setGraphicEvents(GameHandler... gameHandlers) {
-		myGraphicEvents = gameHandlers;
-	}
-
 	public void setDragOver(GameHandler handler) {
 		this.setOnDragOver(handler);
 	}
@@ -53,7 +48,7 @@ public class ImagesView extends ScrollView implements Observer {
 	}
 
 	public void addImage(String s) {
-		ImageBasedIcon graphic = new ImageIcon(s, myGameLocation, myGraphicEvents);
+		ImageBasedIcon graphic = new ImageIcon(s, myGameLocation, myIconEvents);
 		myVbox.getChildren().add(graphic);
 	}
 
