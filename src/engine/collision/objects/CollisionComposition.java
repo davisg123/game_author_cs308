@@ -2,6 +2,7 @@ package engine.collision.objects;
 
 import engine.gameObject.GameObject;
 import engine.gameObject.components.PhysicsBody;
+import engine.physics.Velocity;
 
 public class CollisionComposition {
 	private static final double FRAMES_PER_SECOND = 60.0;
@@ -61,17 +62,13 @@ public class CollisionComposition {
 			other.setTranslateX(other.getTranslateX()
 					+ other.getPhysicsBody().getVelocity().getX()
 					/ FRAMES_PER_SECOND);
+
 		} else {
+			// stop x, set y
+			other.getPhysicsBody().setVelocity(
+					new Velocity(fixed.getPhysicsBody().getVelocity().getX(),
+							fixed.getPhysicsBody().getVelocity().getY()));
 
-			// cancel out current velocity
-			other.setTranslateY(other.getTranslateY()
-					- other.getPhysicsBody().getVelocity().getY()
-					/ FRAMES_PER_SECOND);
-
-			// apply rivaling velocity
-			other.setTranslateY(other.getTranslateY()
-					+ other.getPhysicsBody().getVelocity().getY()
-					/ FRAMES_PER_SECOND);
 		}
 	}
 

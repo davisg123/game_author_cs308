@@ -42,7 +42,6 @@ public abstract class Force extends Vector implements Iterable<String> {
 	}
 
 	protected void initializeMap(Scalar[] scalar) {
-		System.out.println(Arrays.asList(scalar).toString());
 		for (Scalar cur : scalar) {
 			myValues.put(cur.toString(), cur.getValue());
 		}

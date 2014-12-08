@@ -41,6 +41,7 @@ public class PlayerView {
 	private void initializeGUIComponents() {
 		myCanvas = new GameCanvas();
 		myRoot.getChildren().add(myCanvas.getNode());
+		myCanvas.getNode().toBack();
 	}
 	
 	public Group getGroup(){
