@@ -5,23 +5,17 @@ import engine.GameManager;
 import engine.gameObject.GameObject;
 import engine.level.Level;
 
-public abstract class TranslateTypeAction implements Action, Initializable{
+public abstract class TranslateTypeAction extends TypeAction{
 
 	protected GameObjectsCollection myGameObjects; 
 	protected Level myCurrentLevel;
-	protected String myType; 
 	protected double myValue;
 	
 	public TranslateTypeAction(String type, double value){
-		myType = type; 
+		super(type); 
 		myValue = value; 
 	}
 	
 	
-	@Override
-	public void initialize(GameManager manager) {
-	    myCurrentLevel = manager.getLevelManager().getCurrentLevel(); 
-	}
-
 
 }
