@@ -1,32 +1,21 @@
 package data;
 
-import engine.actions.Action;
-import engine.actions.ChangeLevelAction;
-import engine.actions.TestAction;
-import engine.actions.TestTranslateAction;
-import engine.conditions.TypeCollisionCondition;
-import engine.conditions.Condition;
-import engine.gameObject.GameObject;
-import engine.gameObject.components.Component;
-import engine.level.Level;
-import engine.physics.Force;
-import engine.physics.Scalar;
-import gamePlayer.model.DataWrapper;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
 import authoring.model.GameData;
-import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.GeneralCollection;
-import authoring.model.GameData;
-import authoring.model.collections.GameObjectsCollection;
-import com.google.gson.Gson;
+
 import com.google.gson.GsonBuilder;
+
+import engine.actions.Action;
+import engine.conditions.Condition;
+import engine.physics.Force;
+import engine.physics.Scalar;
 
 public class DataManager {
 	

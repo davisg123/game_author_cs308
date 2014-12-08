@@ -6,8 +6,8 @@ import java.util.List;
 import engine.GameManager;
 import engine.actions.Action;
 import engine.actions.Initializable;
-import engine.actions.movement.TranslateTypeAction;
-import engine.actions.physics.PhysicsTypeAction;
+import engine.actions.PhysicsTypeAction;
+import engine.actions.TranslateTypeAction;
 import engine.gameObject.Identifiable;
 import engine.gameObject.Identifier;
 
