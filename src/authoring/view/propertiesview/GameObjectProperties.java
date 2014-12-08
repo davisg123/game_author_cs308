@@ -62,7 +62,6 @@ public class GameObjectProperties extends Properties {
 		wizardProperties.put("mass", new PropertyTextField("Mass", "1.0"));
 		wizardProperties.put("collision constant", new PropertyTextField("CollisionConstant", "0.0"));
 		wizardProperties.put("gravity constant", new PropertyTextField("GravityConstant", "1.0"));
-		wizardProperties.put("friction", new PropertyTextField("CoefficientOfFriction", "0.0"));
 		wizardProperties.put("density", new PropertyTextField("Density", "1.0"));
 		wizardProperties.put("volume", new PropertyTextField("Volume", "1.0"));
 		wizardProperties.put("initXV", new PropertyTextField("Initial X Velocity", "0"));
@@ -107,7 +106,6 @@ public class GameObjectProperties extends Properties {
 		physicsProperties.put("mass", new PropertyTextField("Mass", Double.toString(gameObject.getPhysicsBody().getScalar("Mass").getValue())));
 		physicsProperties.put("collision constant", new PropertyTextField("CollisionConstant", Double.toString(gameObject.getPhysicsBody().getScalar("CollisionConstant").getValue())));
 		physicsProperties.put("gravity constant", new PropertyTextField("GravityConstant", Double.toString(gameObject.getPhysicsBody().getScalar("GravityConstant").getValue())));
-		physicsProperties.put("friction", new PropertyTextField("CoefficientOfFriction", Double.toString(gameObject.getPhysicsBody().getScalar("CoefficientOfFriction").getValue())));
 		physicsProperties.put("density", new PropertyTextField("Density", Double.toString(gameObject.getPhysicsBody().getScalar("Density").getValue())));
 		physicsProperties.put("volume", new PropertyTextField("Volume", Double.toString(gameObject.getPhysicsBody().getScalar("Volume").getValue())));
 
@@ -180,7 +178,6 @@ public class GameObjectProperties extends Properties {
 
 			pb.addScalar(new Mass(Double.parseDouble(physicsProperties.get("mass").getInformation())));
 			pb.addScalar(new GravityConstant(Double.parseDouble(physicsProperties.get("gravity constant").getInformation())));
-			pb.addScalar(new CoefficientOfFriction(Double.parseDouble(physicsProperties.get("friction").getInformation())));
 			pb.addScalar(new Density(Double.parseDouble(physicsProperties.get("density").getInformation())));
 			pb.addScalar(new Volume(Double.parseDouble(physicsProperties.get("volume").getInformation())));
 			pb.setVelocity(new Velocity(Double.parseDouble(physicsProperties.get("initXV").getInformation()), Double.parseDouble(physicsProperties.get("initYV").getInformation())));

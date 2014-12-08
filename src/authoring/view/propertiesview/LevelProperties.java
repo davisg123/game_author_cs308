@@ -1,8 +1,9 @@
 package authoring.view.propertiesview;
 
-import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
-import javafx.scene.text.Text;
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+import javafx.scene.control.Button;
 import authoring.view.icons.LevelIcon;
 
 public class LevelProperties extends Properties{
@@ -17,12 +18,20 @@ public class LevelProperties extends Properties{
 		
 		this.getChildren().clear();
 		
-		HBox imageField = new HBox();
-		imageField.getChildren().add(new Text("Level: "));
-		imageField.getChildren().add(new TextField(graphic.getName()));
-		this.getChildren().add(imageField);
+		myMap.put("name", new PropertyTextField("Level: ", graphic.getName()));
+		myMap.put("background image", new PropertyTextField("Background Image: ", graphic.getLevel().getBackgroundImage()));
+		myMap.put("background music", new PropertyTextField("Background Music: ", graphic.getLevel().getBackgroundMusic()));
 		
+		myMap.put("is first level", new BooleanField("First level: ", graphic.getLevel().isStartLevel()));
+		
+		super.addMapToView();
+		
+		Button edit = new Button("Edit");
+		//edit.setOnAction(event);
+		this.getChildren().add(edit);
 		
 	}
+	
+	
 
 }

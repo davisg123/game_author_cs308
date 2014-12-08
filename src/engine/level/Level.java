@@ -23,6 +23,8 @@ import engine.gameObject.Identifier;
 public class Level extends Observable implements Identifiable {
 
     private Identifier myId;
+    private String myBackgroundImage;
+    private String myBackgroundMusic;
     private GameObjectsCollection myDefaultGameObjects;
     private GameObjectsCollection myWorkingGameObjects;
     private List<Identifier> myGameObjectIdList;
@@ -163,5 +165,20 @@ public class Level extends Observable implements Identifiable {
     public List<Identifier> getGameObjectIDs(){
     	return myGameObjectIdList; 
     }
+    
+    public void setBackgroundImage(String s){
+    	myBackgroundImage = s;
+    }
+    
+    public void setBackgroundMusic(String s){
+    	myBackgroundMusic = s;
+    }
+    
+    public String getBackgroundImage(){
+    	return myBackgroundImage;
+    }
 
+    public String getBackgroundMusic(){
+    	return myBackgroundMusic;
+    }
 }

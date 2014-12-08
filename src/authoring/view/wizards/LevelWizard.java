@@ -41,7 +41,7 @@ public class LevelWizard extends Wizard{
 	}
 
 	public boolean getIsFirst(){
-		return isFirst.getValue();
+		return isFirst.getInformation();
 	}
 
 }
