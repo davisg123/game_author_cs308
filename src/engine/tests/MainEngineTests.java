@@ -99,7 +99,7 @@ public class MainEngineTests extends Application {
 		GameObject floorLeft = new GameObject(null, "floor.png", -50, 200, 20,
 				200, 0, "floor_left");
 		floorLeft.setIdentifier(new Identifier("floor", "b"));
-		PhysicsBody floorLeftBody = new PhysicsBody(30, 200);
+		PhysicsBody floorLeftBody = new PhysicsBody(30, 210);
 		floorLeftBody.setVelocity(new Velocity(0, -40));
 		floorLeftBody.addScalar((new CollisionConstant(1.0)));
 		floorLeft.setPhysicsBody(floorLeftBody);
@@ -113,8 +113,9 @@ public class MainEngineTests extends Application {
 		ball.setIdentifier(new Identifier("ball", "a"));
 		PhysicsBody ballBody = new PhysicsBody(30, 30);
 		// Force gravity = new Gravity(0.0, 1.0);
-		//ballBody.addForce(gravity);
+		// ballBody.addForce(gravity);
 		// ballBody.addForce(new Gravity(0.0, 1.0));
+		ballBody.setVelocity(new Velocity(100.0, 100.0));
 		ballBody.addScalar(new Mass(4.0));
 		ballBody.addScalar(new GravityConstant(10.0));
 		// ballBody.addImpulse(new Impulse(0, -200.0));
@@ -135,10 +136,10 @@ public class MainEngineTests extends Application {
 		 ******/
 
 		ConditionsCollection myConditions = new ConditionsCollection();
-
 		ArrayList<Identifier> ballIdList = new ArrayList<Identifier>();
 		ballIdList.add(ball.getIdentifier());
-		YVelocityIDAction yVelAction = new YVelocityIDAction(ballIdList, 50.0);
+		YVelocityIDAction yVelAction = new YVelocityIDAction(ballIdList,
+		50.0);
 		ArrayList<Action> yVelActionList = new ArrayList<Action>();
 		yVelActionList.add(yVelAction);
 		TimeCondition myConstantVelocity = new TimeCondition(yVelActionList, 1,
