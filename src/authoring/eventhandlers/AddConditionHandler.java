@@ -103,7 +103,7 @@ public class AddConditionHandler implements GameHandler<Event> {
 //		System.out.println("heyah");
 //	}
 
-	private Object[] convertInputParameters() {
+	private List<Object> convertInputParameters() {
 		List<Object> inputs = new ArrayList<Object>();
 		inputs.add(new ArrayList<Action>());
 		for(int i = 0; i < myInputParameters.size(); i++){
@@ -113,13 +113,11 @@ public class AddConditionHandler implements GameHandler<Event> {
 				String type = splitType[splitType.length-1].replace(">", "");
 				List<Object> innerList = new ArrayList<Object>();
 				try {
-					Class c = Class.forName(type);
+					Class<?> c = Class.forName(type);
 					Method parseMethod = c.getMethod("valueOf", new Class[]{String.class});
 					for(String s : myInputParameters.get(i).split("\\;")){
 						innerList.add(parseMethod.invoke(c, s));
-						//System.out.println(parseMethod.invoke(c, s));
 					}
-					//System.out.println(parseMethod.invoke(c, myInputParameters.get(i)).getClass());
 				} catch (Exception e) {
 					System.out.println("Bad Class");
 				}
@@ -127,33 +125,26 @@ public class AddConditionHandler implements GameHandler<Event> {
 			}else{
 				String[] splitType = t.toString().split(" ");
 				String type = splitType[1];
-				//System.out.println(type);
-				Object innerObject = new Object();
 				try {
-					Class c = Class.forName(type);
-					//System.out.println(c.getFields()[0].getType().toString());
+					Class<?> c = Class.forName(type);	
 					Method parseMethod = c.getMethod("valueOf", new Class[]{String.class});
 					String s = myInputParameters.get(i);
-					parseMethod.invoke(c, s);
-					//System.out.println(parseMethod.invoke(c, s));
-					//System.out.println(parseMethod.invoke(c, myInputParameters.get(i)).getClass());
+					Object innerObject = parseMethod.invoke(c, s);
+					inputs.add(innerObject);
 				} catch (Exception e) {
 					System.out.println("Bad Class");
 				}
-				inputs.add(innerObject);
 			}
 		}
-		return inputs.toArray();
+		return inputs;
 		
 	}
 	
 	private void finishCondition(){
-		Object[] inputs = convertInputParameters();
+		List<Object> inputs = convertInputParameters();
+
 		try {
-			for(Object o : inputs){
-				System.out.println(o.getClass().toString());
-			}
-			Condition c = (Condition) myConstructor.newInstance(inputs);
+			Condition c = (Condition) myConstructor.newInstance(inputs.toArray());
 			c.setIdentifier(new Identifier("Condition", mySelectionWizard.getMap().get("name").getInformation()));
 			myConditionsCollection.add(c);
 			mySelectionWizard.close();
