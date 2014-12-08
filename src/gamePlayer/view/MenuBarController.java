@@ -8,7 +8,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Menu;
 import javafx.scene.control.Tab;
 
 /**
@@ -53,6 +52,16 @@ public class MenuBarController implements Initializable{
 		myPlayerModel.exitFromGame();
 		gameOptions.setDisable(true);
 		gamePreferences.setDisable(true);
+	}
+	
+	@FXML
+	private void fetchGameFromWeb(final ActionEvent event) {
+		myPlayerModel.fetchGameFromWeb();
+	}
+	
+	@FXML
+	private void saveGameToWeb(final ActionEvent event) {
+		myPlayerModel.saveGameToWeb();
 	}
 	
 	@FXML
