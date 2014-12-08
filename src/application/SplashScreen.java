@@ -53,14 +53,14 @@ public class SplashScreen {
 		this.myTitleText.setId("text");
 		
 		myAuthorButton = new Button("Author a Game!");
-		this.myAuthorButton.setId("button");
+		this.myAuthorButton.setId("buttons");
 		myAuthorButton.setOnAction((event) -> {
 			myStage.close();
 			author();
 		});
 
 		myPlayButton = new Button("Play a Game!");
-		this.myPlayButton.setId("button");
+		this.myPlayButton.setId("buttons");
 		myPlayButton.setOnAction((event) -> {
 			try {
 				play();
@@ -77,8 +77,7 @@ public class SplashScreen {
 
 	private void author() {
 		Locale myDefaultLocale = new Locale("en", "US");
-		myAuthoringScene = new AuthoringScene(myStage, myDefaultLocale, SCREEN_WIDTH,
-				SCREEN_HEIGHT);
+		myAuthoringScene = new AuthoringScene(myStage, myDefaultLocale, SCREEN_WIDTH, SCREEN_HEIGHT);
 		myStage.setScene(myAuthoringScene.getScene());
 		myStage.show();
 		myAuthoringScene.getScene()

@@ -4,10 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import data.Observable;
 import java.util.List;
-import authoring.model.collections.ConditionIDsCollection;
 import authoring.model.collections.GameObjectsCollection;
-import engine.GameManager;
-import engine.actions.Initializable;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifiable;
 import engine.gameObject.Identifier;
@@ -29,7 +26,6 @@ public class Level extends Observable implements Identifiable {
     private GameObjectsCollection myWorkingGameObjects;
     private List<Identifier> myGameObjectIdList;
     private List<Identifier> myConditionIdList;
-    //private ConditionIDsCollection myConditionIDs;
     private boolean myStartLevelIndicator;
 
     /**
@@ -69,7 +65,7 @@ public class Level extends Observable implements Identifiable {
      * Reset method for the GameObjects
      */
     public void resetLevel() {
-        myWorkingGameObjects = myDefaultGameObjects;
+        myWorkingGameObjects = new GameObjectsCollection(myDefaultGameObjects);
     }
 
     /**
@@ -87,13 +83,6 @@ public class Level extends Observable implements Identifiable {
     public Iterator<GameObject> getGameObjectIterator() {
         return myWorkingGameObjects.iterator();
     }
-
-    /**
-     * @return Iterator for the ConditionIDsCollection
-     */
-   // public Iterator<String> getConditionIDsIterator() {
-     //  return myConditionIDs.iterator();
-    //}
 
     public void addGameObject(GameObject gameObject) {
         myWorkingGameObjects.add(gameObject);
@@ -136,8 +125,8 @@ public class Level extends Observable implements Identifiable {
         }
     }
     
-    public Iterator<Identifier> getGameObjectIds () {
-        return myGameObjectIdList.iterator();
+    public List<Identifier> getConditionIdentifiers() {
+    	return myConditionIdList;
     }
     
     public Iterator<Identifier> getConditionIds () {

@@ -1,19 +1,23 @@
 package engine.actions;
 
 import engine.GameManager;
+import engine.level.Level;
 
-public class TypeAction implements Action, Initializable{
+public abstract class TypeAction implements Action, Initializable{
 
+	protected Level myCurrentLevel; 
+	protected String myType; 
+	
+	public TypeAction(String type){
+		myType = type; 
+	}
+	
 	@Override
 	public void initialize(GameManager manager) {
-		// TODO Auto-generated method stub
+		myCurrentLevel = manager.getLevelManager().getCurrentLevel();
 		
 	}
 
-	@Override
-	public void execute() {
-		// TODO Auto-generated method stub
-		
-	} 
+
 
 }

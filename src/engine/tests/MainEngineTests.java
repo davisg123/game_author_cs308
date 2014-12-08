@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+
 import data.DataManager;
 import authoring.model.GameData;
 import authoring.model.collections.ConditionsCollection;
@@ -11,11 +12,11 @@ import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.LevelsCollection;
 import engine.GameManager;
 import engine.actions.Action;
-import engine.actions.FixedCollisionTypeAction;
-import engine.actions.MakeNewObjectFromLocationAction;
-import engine.actions.TranslateXType;
-import engine.actions.TranslateYType;
-import engine.actions.YVelocityIDAction;
+import engine.actions.movement.TranslateXType;
+import engine.actions.movement.TranslateYType;
+import engine.actions.newobject.MakeNewObjectFromLocationAction;
+import engine.actions.physics.FixedCollisionTypeAction;
+import engine.actions.physics.YVelocityIDAction;
 import engine.conditions.BoundaryConditionY;
 import engine.conditions.ButtonCondition;
 import engine.conditions.ButtonConditionManager;
@@ -34,7 +35,7 @@ import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
 public class MainEngineTests extends Application {
-    
+  
     /**
      * @author Davis
      * 
@@ -128,7 +129,7 @@ public class MainEngineTests extends Application {
         TranslateYType yVelAction = new TranslateYType("ball",1);
         ArrayList<Action> yVelActionList = new ArrayList<Action>();
         yVelActionList.add(yVelAction);
-        TimeCondition myConstantVelocity = new TimeCondition(yVelActionList,1,true);
+        TimeCondition myConstantVelocity = new TimeCondition(yVelActionList,1.0,true);
         myConditions.add(myConstantVelocity);
         
 //        Action aAct = new TranslateXType("ball",-2.0);
@@ -138,13 +139,13 @@ public class MainEngineTests extends Application {
         actionList.add(aAct);
         ArrayList<KeyCode> kclA = new ArrayList<KeyCode>();
         kclA.add(KeyCode.A);
-        ButtonCondition aCon = new ButtonCondition(actionList,kclA);
+        ButtonCondition aCon = new ButtonCondition(actionList,kclA, 3.0, true);
         aCon.setIdentifier(new Identifier("button_cond","a"));
         ArrayList<Action> dActList = new ArrayList<Action>();
         dActList.add(dAct);
         ArrayList<KeyCode> kclD = new ArrayList<KeyCode>();
         kclD.add(KeyCode.D);
-        ButtonCondition dCon = new ButtonCondition(dActList,kclD);
+        ButtonCondition dCon = new ButtonCondition(dActList,kclD,3.0, true);
         dCon.setIdentifier(new Identifier("button_cond","d"));
         myConditions.add(aCon);
         myConditions.add(dCon);
@@ -163,7 +164,7 @@ public class MainEngineTests extends Application {
         ArrayList<Action> boundaryActionList = new ArrayList<Action>();
         boundaryActionList.add(boundaryLeftAction);
         boundaryActionList.add(boundaryRightAction);
-        BoundaryConditionY boundaryCondition = new BoundaryConditionY(boundaryActionList,myFloorObjects.getIdentifierList(),-50,false);
+        BoundaryConditionY boundaryCondition = new BoundaryConditionY(boundaryActionList,myFloorObjects.getIdentifierList(),-50.0,false);
         boundaryCondition.setIdentifier(new Identifier("bound_cond","a"));
         myConditions.add(boundaryCondition);
         System.out.println(1);
@@ -220,5 +221,4 @@ public class MainEngineTests extends Application {
         myGameManager.initialize();
     }
 
-    
 }
