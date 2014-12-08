@@ -5,7 +5,6 @@ import java.util.ResourceBundle;
 
 import javafx.geometry.Pos;
 import javafx.scene.control.TitledPane;
-import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
 import authoring.eventhandlers.AddConditionHandler;
 import authoring.eventhandlers.AddImageHandler;
@@ -15,16 +14,16 @@ import authoring.eventhandlers.AddSoundHandler;
 import authoring.eventhandlers.ConditionClickHandler;
 import authoring.eventhandlers.DeleteGameObjectHandler;
 import authoring.eventhandlers.EditGameObjectHandler;
+import authoring.eventhandlers.FileDragOverHandler;
 import authoring.eventhandlers.GameObjGraphicDragHandler;
 import authoring.eventhandlers.GameObjectClickHandler;
 import authoring.eventhandlers.GameObjectDragHandler;
 import authoring.eventhandlers.GameObjectDragToLevelHandler;
+import authoring.eventhandlers.ImageDropHandler;
 import authoring.eventhandlers.ImagesClickHandler;
 import authoring.eventhandlers.LevelClickHandler;
 import authoring.eventhandlers.LevelToViewHandler;
 import authoring.eventhandlers.SaveAsNewHandler;
-import authoring.eventhandlers.ImageDropHandler;
-import authoring.eventhandlers.FileDragOverHandler;
 import authoring.eventhandlers.SoundDropHandler;
 import authoring.eventhandlers.SoundsClickHandler;
 import authoring.model.AuthoringModel;
@@ -44,9 +43,6 @@ import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
 import authoring.view.soundsview.SoundOptions;
 import authoring.view.soundsview.SoundsView;
-import engine.conditions.ButtonCondition;
-import engine.conditions.Condition;
-import engine.gameObject.Identifier;
 
 /**
  * Controller class that interacts between model and view. Holds and constructs
@@ -123,12 +119,6 @@ public class AuthoringController {
 
 		myModel.getLevels().addObserver(myLevelsAccordionView);
 		myModel.getConditions().addObserver(myConditionsAccordionView);
-
-		/*
-		 * Condition a = new ButtonCondition(null, KeyCode.A);
-		 * a.setIdentifier(new Identifier("HelloType", "UniqueHello1"));
-		 * myModel.getConditions().add(a);
-		 */
 
 	}
 

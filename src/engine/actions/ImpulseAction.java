@@ -2,6 +2,8 @@ package engine.actions;
 
 import java.util.ArrayList;
 
+import java.util.Collection;
+
 import engine.GameManager;
 import engine.actions.PhysicsIDAction.TwoArgInterface;
 import engine.gameObject.GameObject;
@@ -9,9 +11,9 @@ import engine.gameObject.Identifier;
 import engine.physics.Impulse;
 import engine.physics.Vector;
 
-public class YImpulseIDAction extends ImpulseAction {
+public abstract class ImpulseAction extends VectorPhysicsAction {
 
-	public YImpulseIDAction(ArrayList<Identifier> id, double value) {
+	public ImpulseAction(ArrayList<Identifier> id, double value) {
 		super(id, value);
 		// TODO Auto-generated constructor stub
 	}
@@ -23,9 +25,10 @@ public class YImpulseIDAction extends ImpulseAction {
 	}
 
 	@Override
-	protected Vector determineVector(double value, Vector vector) {
-		vector = new Impulse(0, value);
-		return vector;
+	protected TwoArgInterface determineOperation(Collection<GameObject> myObjects,
+			Object value) {
+		Vector vector = new Vector();
+		return (x, y) -> x.getPhysicsBody().addImpulse(
+				determineVector((Double) value, vector));
 	}
-
 }

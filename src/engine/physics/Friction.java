@@ -10,8 +10,7 @@ public class Friction extends Force {
 	private static final double GRAVITY_ACCELERATION = 9.8;
 
 	public Friction(double x, double y, Scalar... scalar) {
-		super(scalar);
-		constructionHelper(x * myForceValue, y * myForceValue);
+		super(x, y, scalar);
 	}
 
 	/**
