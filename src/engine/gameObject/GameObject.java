@@ -47,16 +47,16 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
 
     //Should it be included in constructor?
     private boolean enabled;
-    
+
     //Holds onto the default data for reinitialization. 
     private DefaultData myDefaultData; 
-    
+
     //identifier
     private Identifier myId;
-    
+
     //Is it colliding with something
     private boolean collisionEnabled;
-    
+
 
     /**
      * Constructors
@@ -89,26 +89,27 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
         myID = iD;
         setDefaultData(); 
     }
-    
+
+    public GameObject (GameObject g){
+        this(g.getComponents(), g.getCurrentImageName(), g.getX(), g.getY(), g.getHeight(), g.getWidth(), g.getRotation(), g.getID());
+    }
+
+    public GameObject (GameObject g, double x, double y, String type){
+        this(g.getComponents(), g.getCurrentImageName(), x, y, g.getHeight(), g.getWidth(), g.getRotation(), type);
+    }
+
     private void setDefaultData() {
-		List<Component> defaultComponents= new ArrayList<Component>(); 
-		if (myComponents != null){
-		          for (Component c: myComponents){
-	                        defaultComponents.add(c.getClone());
-	                }
-		}
-		myDefaultData = new DefaultData(defaultComponents, myCurrentImageName, myXCoord, myYCoord,  
-				myHeight, myWidth, myRotation); 
-	}
+        List<Component> defaultComponents= new ArrayList<Component>(); 
+        if (myComponents != null){
+            for (Component c: myComponents){
+                defaultComponents.add(c.getClone());
+            }
+        }
+        myDefaultData = new DefaultData(defaultComponents, myCurrentImageName, myXCoord, myYCoord,  
+                                        myHeight, myWidth, myRotation); 
+    }
 
-	public GameObject (GameObject g){
-    	this(g.getComponents(), g.getCurrentImageName(), g.getX(), g.getY(), g.getHeight(), g.getWidth(), g.getRotation(), g.getID());
-	}
-
-	public GameObject (GameObject g, double x, double y, String type){
-		this(g.getComponents(), g.getCurrentImageName(), x, y, g.getHeight(), g.getWidth(), g.getRotation(), type);
-	}
-	
+  
 
     /**
      * Sets X-Coordinate of Object
@@ -146,7 +147,7 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
         myYCoord = y;
     }
 
-    
+
     /**
      * Link this with the physics body in the future
      * @param width
@@ -222,9 +223,9 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
     public String getID () {
         return myID;
     }
-    
+
     public void setID(String s){
-    	myID = s;
+        myID = s;
     }
 
     /**
@@ -275,11 +276,11 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
     public void addComponent(Component comp){
         this.myComponents.add(comp);   
     }
-    
+
     public void removeComponent(Component comp){
         this.myComponents.remove(comp);   
     }
-    
+
     public String getCurrentImageName () { 
         return myCurrentImageName;
     }
@@ -315,15 +316,15 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
     public double getWidth () {
         return myWidth;
     }
-    
+
     public void enableCollision() {
         collisionEnabled = true;
     }
-    
+
     public void disableCollision() {
         collisionEnabled = false;
     }
-    
+
     public boolean isCollisionEnabled() {
         return collisionEnabled;
     }
@@ -347,16 +348,16 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
     public String toString(){
         return myID;
     }
-    
+
     public void reset(){
-    	myRotation=myDefaultData.getRotation();
-    	myXCoord=myDefaultData.getXCoordinate();
-    	myYCoord=myDefaultData.getYCoordinate();
-    	myCurrentImageName=myDefaultData.getImageName();
-    	myComponents.clear();
-    	for (Component c: myDefaultData.getComponents()){
-    		myComponents.add(c.getClone());
-    	}
+        myRotation=myDefaultData.getRotation();
+        myXCoord=myDefaultData.getXCoordinate();
+        myYCoord=myDefaultData.getYCoordinate();
+        myCurrentImageName=myDefaultData.getImageName();
+        myComponents.clear();
+        for (Component c: myDefaultData.getComponents()){
+            myComponents.add(c.getClone());
+        }
     }
 
     @Override

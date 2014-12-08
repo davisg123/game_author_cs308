@@ -13,19 +13,19 @@ import javafx.scene.input.KeyCode;
 
 public class ButtonCondition extends Condition {
     private List<KeyCode> myKeyList;
-    private Integer myFramesElapsed;
-    private Integer myTargetFrameCount;
+    private Double myFramesElapsed;
+    private Double myTargetFrameCount;
     private Boolean myKeyRepeats;
     private Boolean myExpired = false;
     
     
 
-    public ButtonCondition (List<Action> actions, List<KeyCode> keyList, Integer keyPressRepeatDuration, Boolean keyRepeats) {
+    public ButtonCondition (List<Action> actions, List<KeyCode> keyList, double frameCount, Boolean keyRepeats) {
         super(actions);
-        myTargetFrameCount = keyPressRepeatDuration;
+        myTargetFrameCount = frameCount;
         myKeyRepeats = keyRepeats;
         myKeyList = keyList;
-        myFramesElapsed = 0;
+        myFramesElapsed = 0.0;
     }
     
     public String getKeyIdentifier() {
@@ -71,10 +71,10 @@ public class ButtonCondition extends Condition {
     
     @Override
     public void frameElapsed () {
-        myFramesElapsed++;
+        myFramesElapsed+= 1.0;
         if (!myExpired && myFramesElapsed > myTargetFrameCount){
             myExpired = !myKeyRepeats;
-            myFramesElapsed = 0;
+            myFramesElapsed = 0.0;
             executeActions();
         }
     }
