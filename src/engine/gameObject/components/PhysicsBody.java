@@ -57,8 +57,8 @@ public class PhysicsBody {
 		myActiveForces = new HashMap<String, Force>();
 		myConstants = new HashMap<String, Scalar>();
 		initializeMap();
-		haveForcesChanged = false;
 		myBalancedForcesMag = new Vector();
+		balanceForces();
 		myCollisionBodyWidth = collisionBodyWidth;
 		myCollisionBodyHeight = collisionBodyHeight;
 	}
@@ -75,8 +75,10 @@ public class PhysicsBody {
 	 * initialize those to 0 too
 	 */
 	private void initializeMap() {
-		/*myConstants
-				.put("CoefficientOfFriction", new CoefficientOfFriction(0.0));*/
+		/*
+		 * myConstants .put("CoefficientOfFriction", new
+		 * CoefficientOfFriction(0.0));
+		 */
 		myConstants.put("CollisionConstant", new CollisionConstant(0.0));
 		myConstants.put("Density", new Density(1.0));
 		myConstants.put("GravityConstant", new GravityConstant(1.0));
@@ -88,9 +90,10 @@ public class PhysicsBody {
 				"Buoyancy",
 				new Buoyancy(0, 0, myConstants.get("Volume"), myConstants
 						.get("Density")));
-		/*myActiveForces.put("Friction",
-				new Friction(0, 0, myConstants.get("CoefficientOfFriction"),
-						myConstants.get("Mass")));*/
+		/*
+		 * myActiveForces.put("Friction", new Friction(0, 0,
+		 * myConstants.get("CoefficientOfFriction"), myConstants.get("Mass")));
+		 */
 	}
 
 	public void setVelocity(Vector v) {
@@ -118,20 +121,18 @@ public class PhysicsBody {
 	 * the mass
 	 */
 	private void changeAcceleration() {
-		myAcceleration.delta(
-				myBalancedForcesMag.getX() / myConstants.get("Mass").getValue()
-						/ FRAMES_PER_SECOND, myBalancedForcesMag.getY()
-						/ myConstants.get("Mass").getValue()
-						/ FRAMES_PER_SECOND);
+		myAcceleration = new Acceleration(myBalancedForcesMag.getX()
+				/ myConstants.get("Mass").getValue(),
+				myBalancedForcesMag.getY() / myConstants.get("Mass").getValue());
 	}
 
 	/**
 	 * changes velocity based on acceleration
 	 */
 	private void changeVelocity() {
-		// System.out.println(myAcceleration.getX()/ FRAMES_PER_SECOND);
 		myVelocity.delta(myAcceleration.getX() / FRAMES_PER_SECOND,
 				myAcceleration.getY() / FRAMES_PER_SECOND);
+		System.out.println(myVelocity.getY());
 	}
 
 	/**
@@ -165,6 +166,9 @@ public class PhysicsBody {
 	 * 
 	 * @Param - Game object to change things for
 	 */
+	// doesn't change the sprites physics body because this is the sprites
+	// physics body, gameobject is passed through because I was told to do that
+	// to solve the x/y coordinates being elsewhere problem
 	public void updatePhysicalCharacteristics(GameObject sprite) {
 		doImpulses();
 		if (haveForcesChanged) {
@@ -180,7 +184,7 @@ public class PhysicsBody {
 				/ FRAMES_PER_SECOND);
 		sprite.setTranslateY(sprite.getTranslateY() + myVelocity.getY()
 				/ FRAMES_PER_SECOND);
-		System.out.println(myBalancedForcesMag.getY()+"   "+myVelocity.getY());
+
 	}
 
 	/**
@@ -218,7 +222,6 @@ public class PhysicsBody {
 		}
 		myBalancedForcesMag.setX(x);
 		myBalancedForcesMag.setY(y);
-		haveForcesChanged = false;
 	}
 
 	public void addForce(Force vector) {
@@ -228,7 +231,7 @@ public class PhysicsBody {
 			vector.addOrChangeValue(myConstants.get(cur));
 		}
 		this.myActiveForces.put(vector.toString(), vector);
-		haveForcesChanged = true;
+		balanceForces();
 	}
 
 	public void addImpulse(Vector i) {
@@ -242,6 +245,7 @@ public class PhysicsBody {
 			String cur = itr.next();
 			myActiveForces.get(cur).addOrChangeValue(a);
 		}
+		balanceForces();
 	}
 
 	public void reverseVelocity(boolean xAxis) {
