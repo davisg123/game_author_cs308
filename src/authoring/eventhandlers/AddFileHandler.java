@@ -24,8 +24,8 @@ public abstract class AddFileHandler implements GameHandler<Event> {
 
 	@Override
 	public void handle(Event arg0) {
-		File imageFile = myFileChooser.showOpenDialog(new Stage());
-		if (imageFile != null) {
+		File sourceFile = myFileChooser.showOpenDialog(new Stage());
+		if (sourceFile != null) {
 			/*
 			 * try { BufferedImage bi = ImageIO.read(imageFile); File
 			 * newImageFile = new File(myGameFile.getPath() + "/images/" +
@@ -35,9 +35,9 @@ public abstract class AddFileHandler implements GameHandler<Event> {
 			 * (IOException e) { System.out.println("Bad File"); } }
 			 */
 			try {
-				File destFile = new File(myGameFile.getPath() + "/images/"
-						+ imageFile.getName());
-				Files.copy(imageFile.toPath(), destFile.toPath());
+				File destFile = new File(myGameFile.getPath() + myFileLocation
+						+ sourceFile.getName());
+				Files.copy(sourceFile.toPath(), destFile.toPath());
 				myCollection.add(destFile.getName());
 			} catch (IOException e) {
 				System.out.println("Bad File");
