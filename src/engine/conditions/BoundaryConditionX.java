@@ -11,7 +11,7 @@ public class BoundaryConditionX extends GameObjectCondition {
     private Double myBoundary;
     private Boolean myRightTrigger;
     
-    public BoundaryConditionX (ArrayList<Action> myActions,
+    public BoundaryConditionX (List<Action> myActions,
                               List<Identifier> myIDs,
                               Double boundary, Boolean rightTrigger) {
         super(myActions, myIDs);

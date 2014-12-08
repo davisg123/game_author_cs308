@@ -7,7 +7,7 @@ import data.Observable;
 import data.Observer;
 import javafx.scene.layout.VBox;
 import authoring.eventhandlers.GameHandler;
-import authoring.view.baseclasses.ScrollView;
+import authoring.view.baseclasses.CollectionView;
 import authoring.view.icons.GameObjectIcon;
 import authoring.view.icons.ImageBasedIcon;
 import engine.gameObject.GameObject;
@@ -19,7 +19,7 @@ import engine.gameObject.GameObject;
  * @author Kevin Li
  *
  */
-public class GameObjectsView extends ScrollView implements Observer {
+public class GameObjectsView extends CollectionView implements Observer {
 
 	private static final double VIEW_HEIGHT_RATIO = .65;
 	private static final double VIEW_WIDTH_RATIO = 0.2;
@@ -35,7 +35,7 @@ public class GameObjectsView extends ScrollView implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		addGameObject((GameObject) arg, myEvents);
+		addGameObject((GameObject) arg, myIconEvents);
 	}
 
 	@SuppressWarnings("unchecked")
