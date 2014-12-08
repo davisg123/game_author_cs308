@@ -75,8 +75,8 @@ public class PhysicsBody {
 	 * initialize those to 0 too
 	 */
 	private void initializeMap() {
-		myConstants
-				.put("CoefficientOfFriction", new CoefficientOfFriction(0.0));
+		/*myConstants
+				.put("CoefficientOfFriction", new CoefficientOfFriction(0.0));*/
 		myConstants.put("CollisionConstant", new CollisionConstant(0.0));
 		myConstants.put("Density", new Density(1.0));
 		myConstants.put("GravityConstant", new GravityConstant(1.0));
@@ -88,9 +88,9 @@ public class PhysicsBody {
 				"Buoyancy",
 				new Buoyancy(0, 0, myConstants.get("Volume"), myConstants
 						.get("Density")));
-		myActiveForces.put("Friction",
+		/*myActiveForces.put("Friction",
 				new Friction(0, 0, myConstants.get("CoefficientOfFriction"),
-						myConstants.get("Mass")));
+						myConstants.get("Mass")));*/
 	}
 
 	public void setVelocity(Vector v) {
@@ -180,6 +180,7 @@ public class PhysicsBody {
 				/ FRAMES_PER_SECOND);
 		sprite.setTranslateY(sprite.getTranslateY() + myVelocity.getY()
 				/ FRAMES_PER_SECOND);
+		System.out.println(myBalancedForcesMag.getY()+"   "+myVelocity.getY());
 	}
 
 	/**

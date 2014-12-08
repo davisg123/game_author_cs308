@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+
 import data.DataManager;
 import authoring.model.GameData;
 import authoring.model.collections.ConditionsCollection;
@@ -25,6 +26,12 @@ import engine.gameObject.Identifier;
 import engine.gameObject.components.PhysicsBody;
 import engine.level.Level;
 import engine.physics.CollisionConstant;
+import engine.physics.Force;
+import engine.physics.Gravity;
+import engine.physics.GravityConstant;
+import engine.physics.Impulse;
+import engine.physics.Mass;
+import engine.physics.Vector;
 import engine.physics.Velocity;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -93,7 +100,7 @@ public class MainEngineTests extends Application {
                                                -50, 200, 20, 200, 0, "floor_left");
         floorLeft.setIdentifier(new Identifier("floor","b"));
         PhysicsBody floorLeftBody = new PhysicsBody(20,200);
-        floorLeftBody.setVelocity(new Velocity(0,-40));
+        //floorLeftBody.setVelocity(new Velocity(0,-40));
         floorLeftBody.addScalar((new CollisionConstant(1.0)));
         floorLeft.setPhysicsBody(floorLeftBody);
         //floorBody.setAcceleration(new Acceleration(0.0,-77.0));
@@ -104,6 +111,12 @@ public class MainEngineTests extends Application {
         GameObject ball = new GameObject(null,"ball.png",150,50,30,30,0,"ball_object");
         ball.setIdentifier(new Identifier("ball","a"));
         PhysicsBody ballBody = new PhysicsBody(30,30);
+        Force gravity=new Gravity(0.0, 1.0);
+        ballBody.addForce(gravity);
+        ballBody.addForce(new Gravity(0.0, 1.0));
+        ballBody.addScalar(new Mass(4.0));
+        ballBody.addScalar(new GravityConstant(2.0));
+        ballBody.addImpulse(new Impulse(0, -200.0));
         ball.setPhysicsBody(ballBody);
         myBallObjects.add(ball);
         
@@ -121,14 +134,14 @@ public class MainEngineTests extends Application {
          ******/
 
         ConditionsCollection myConditions = new ConditionsCollection();
-        
+        /*
         ArrayList<Identifier> ballIdList = new ArrayList<Identifier>();
         ballIdList.add(ball.getIdentifier());
-        YVelocityIDAction yVelAction = new YVelocityIDAction(ballIdList,10.0);
+        YVelocityIDAction yVelAction = new YVelocityIDAction(ballIdList,50.0);
         ArrayList<Action> yVelActionList = new ArrayList<Action>();
         yVelActionList.add(yVelAction);
         TimeCondition myConstantVelocity = new TimeCondition(yVelActionList,1,true);
-        myConditions.add(myConstantVelocity);
+        myConditions.add(myConstantVelocity);*/
         
         Action aAct = new TranslateXType("ball",-2.0);
         Action dAct = new TranslateXType("ball",2.0);
