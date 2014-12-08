@@ -149,13 +149,13 @@ public class MainEngineTests extends Application {
         actionList.add(aAct);
         ArrayList<KeyCode> kclA = new ArrayList<KeyCode>();
         kclA.add(KeyCode.A);
-        ButtonCondition aCon = new ButtonCondition(actionList,kclA);
+        ButtonCondition aCon = new ButtonCondition(actionList,kclA,1,true);
         aCon.setIdentifier(new Identifier("button_cond","a"));
         ArrayList<Action> dActList = new ArrayList<Action>();
         dActList.add(dAct);
         ArrayList<KeyCode> kclD = new ArrayList<KeyCode>();
         kclD.add(KeyCode.D);
-        ButtonCondition dCon = new ButtonCondition(dActList,kclD);
+        ButtonCondition dCon = new ButtonCondition(dActList,kclD,1,true);
         dCon.setIdentifier(new Identifier("button_cond","d"));
         myConditions.add(aCon);
         myConditions.add(dCon);
