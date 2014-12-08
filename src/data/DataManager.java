@@ -12,19 +12,25 @@ import engine.level.Level;
 import engine.physics.Force;
 import engine.physics.Scalar;
 import gamePlayer.model.DataWrapper;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
+
 import authoring.model.GameData;
 import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.GeneralCollection;
 import authoring.model.GameData;
 import authoring.model.collections.GameObjectsCollection;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 

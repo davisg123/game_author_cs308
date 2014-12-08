@@ -1,10 +1,13 @@
 package authoring.view;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
@@ -154,6 +157,10 @@ public class ProgramMenu extends MenuBar {
 		imageFolder.mkdir();
 		File soundFolder = new File(gameFile.getPath() + "/sounds");
 		soundFolder.mkdir();
-
+		//can't make ZipEntry from file (or folder), only a String
+		ZipOutputStream out = new ZipOutputStream(new FileOutputStream(gameFile));
+		ZipEntry entry = new ZipEntry(gameFile);
+		out.putNextEntry(entry);
+		out.close();
 	}
 }
