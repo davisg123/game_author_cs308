@@ -41,8 +41,7 @@ public class AuthoringModel {
 			boolean success = manager.writeGameFile(mySerializableGame, "/Game.json", dataPath);
 			System.out.println("game saved = " + success);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Won't Save");
 		}
 	}
 	
@@ -54,8 +53,7 @@ public class AuthoringModel {
 			mySerializableGame.getImages().add(s);
 		}
 		for(GameObject g: myGame.getGameObjects()){
-			g.setIdentifier(new Identifier(g.getID(),Integer.toString(IDcounter)));
-			IDcounter++;
+			g.setIdentifier(new Identifier(g.getID(),"Template"));
 			allGameObjects.add(g);
 		}
 		for(Level l: myGame.getLevels()){
