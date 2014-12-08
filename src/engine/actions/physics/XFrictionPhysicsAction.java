@@ -1,4 +1,4 @@
-package engine.actions;
+package engine.actions.physics;
 
 import java.util.ArrayList;
 
@@ -7,16 +7,16 @@ import engine.gameObject.Identifier;
 import engine.physics.Friction;
 import engine.physics.Vector;
 
-public class YFrictionPhysicsAction extends ForcePhysicsAction {
+public class XFrictionPhysicsAction extends ForcePhysicsAction {
 
-	public YFrictionPhysicsAction(ArrayList<Identifier> id, double value) {
+	public XFrictionPhysicsAction(ArrayList<Identifier> id, double value) {
 		super(id, value);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	protected Vector determineVector(double value, Vector vector) {
-		vector = new Friction(0, value);
+		vector = new Friction(value, 0);
 		return vector;
 	}
 

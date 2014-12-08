@@ -1,4 +1,4 @@
-package engine.actions;
+package engine.actions.physics;
 
 import engine.gameObject.GameObject;
 

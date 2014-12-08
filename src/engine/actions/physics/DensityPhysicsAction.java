@@ -1,22 +1,23 @@
-package engine.actions;
+package engine.actions.physics;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
-import engine.physics.Mass;
+import engine.physics.Density;
 import engine.physics.Scalar;
 
-public class MassPhysicsAction extends ScalarPhysicsAction {
+public class DensityPhysicsAction extends ScalarPhysicsAction {
 
-	public MassPhysicsAction(ArrayList<Identifier> id, double value) {
+	public DensityPhysicsAction(ArrayList<Identifier> id, double value) {
 		super(id, value);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	protected Scalar determineScalar(double value, Scalar scalar) {
-		scalar = new Mass(value);
+		scalar = new Density(value);
 		return scalar;
 	}
 

@@ -1,4 +1,4 @@
-package engine.actions;
+package engine.actions.physics;
 
 import java.util.ArrayList;
 

@@ -1,17 +1,16 @@
-package engine.actions;
+package engine.actions.physics;
 
 import java.util.ArrayList;
 
 import engine.GameManager;
-import engine.actions.PhysicsIDAction.TwoArgInterface;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 import engine.physics.Impulse;
 import engine.physics.Vector;
 
-public class YImpulseIDAction extends ImpulseAction {
+public class XImpulseIDAction extends ImpulseAction {
 
-	public YImpulseIDAction(ArrayList<Identifier> id, double value) {
+	public XImpulseIDAction(ArrayList<Identifier> id, double value) {
 		super(id, value);
 		// TODO Auto-generated constructor stub
 	}
@@ -24,7 +23,8 @@ public class YImpulseIDAction extends ImpulseAction {
 
 	@Override
 	protected Vector determineVector(double value, Vector vector) {
-		vector = new Impulse(0, value);
+		// doing this for a reason. Now it's vector and impulse
+		vector = new Impulse(value, 0.0);
 		return vector;
 	}
 

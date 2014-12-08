@@ -1,4 +1,4 @@
-package engine.actions;
+package engine.actions.physics;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -6,6 +6,7 @@ import java.util.List;
 
 import authoring.model.collections.GameObjectsCollection;
 import engine.GameManager;
+import engine.actions.physics.PhysicsIDAction.TwoArgInterface;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 

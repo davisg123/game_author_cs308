@@ -1,7 +1,9 @@
-package engine.actions;
+package engine.actions.physics;
 
 import authoring.model.collections.GameObjectsCollection;
 import engine.GameManager;
+import engine.actions.Action;
+import engine.actions.Initializable;
 import engine.gameObject.GameObject;
 
 public abstract class PhysicsTypeAction implements Action, Initializable{
