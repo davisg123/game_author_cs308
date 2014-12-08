@@ -1,4 +1,6 @@
 package engine.render;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -27,21 +29,22 @@ public class GameObjectRenderer {
     private Group myCanvas;
     private Map<String, RenderedNode> myRenderedNodes;
     private Level myCurrentLevel;
-    private static ResourceBundle ourAssetMapBundle;
     private static final String SLASH = "/";
     private static final String DOT = ".";
-    private static final String BASE_ASSET_PATH = "assets";
+    private static final String IMAGES = "images";
+    private static String BASE_ASSET_PATH;
     private static final String ASSET_MAP_NAME = "asset_map";
 
     //Group Change to GameCanvas
     /**
      * Constructor takes in a group as the Canvas of the game 
      * @param canvas
+     * @param relativePath 
      */
-    public GameObjectRenderer (Group canvas) {
+    public GameObjectRenderer (Group canvas, String relativePath) {
         myCanvas = canvas;
         myRenderedNodes = new HashMap<>();
-        ourAssetMapBundle = ResourceBundle.getBundle(BASE_ASSET_PATH+DOT+ASSET_MAP_NAME);
+        BASE_ASSET_PATH = relativePath;
     }
 
     //Called once at the start of every level
@@ -96,16 +99,24 @@ public class GameObjectRenderer {
         
         if(imageName != null) {  
             //convert image name to a filepath using the asset_map
-            String filepath = ourAssetMapBundle.getString(imageName);
-            Image image = new Image(getClass().getResourceAsStream(SLASH+BASE_ASSET_PATH+SLASH+filepath));
-            ImageView view = new ImageView();
-            view.setImage(image);
-            view.setFitHeight(obj.getHeight());
-            view.setFitWidth(obj.getWidth());
-            view.setPreserveRatio(true);
-            view.setSmooth(true);
-            view.setCache(true);
-            return view;
+            System.out.println(BASE_ASSET_PATH+SLASH+IMAGES+SLASH+imageName);
+            FileInputStream in;
+            try {
+                in = new FileInputStream(BASE_ASSET_PATH+SLASH+IMAGES+SLASH+imageName);
+                Image image = new Image(in);
+                ImageView view = new ImageView();
+                view.setImage(image);
+                view.setFitHeight(obj.getHeight());
+                view.setFitWidth(obj.getWidth());
+                view.setPreserveRatio(true);
+                view.setSmooth(true);
+                view.setCache(true);
+                return view;
+            }
+            catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
         return null;
     }

@@ -93,11 +93,11 @@ public class PhysicsBody {
 						myConstants.get("Mass")));
 	}
 
-	public void setVelocity(Velocity v) {
+	public void setVelocity(Vector v) {
 		myVelocity = v;
 	}
 
-	public void setAcceleration(Acceleration v) {
+	public void setAcceleration(Vector v) {
 		myAcceleration = v;
 	}
 
@@ -152,10 +152,14 @@ public class PhysicsBody {
 		return myCollisionBodyWidth;
 	}
 
-	public Scalar getScalar(String s){
-		return myConstants.get(s);
+	public Scalar getScalar(String s) {
+		try {
+			return myConstants.get(s);
+		} catch (NullPointerException e) {
+			return null;
+		}
 	}
-	
+
 	/**
 	 * updates all the physical vector characteristics for object
 	 * 
@@ -166,10 +170,10 @@ public class PhysicsBody {
 		if (haveForcesChanged) {
 			balanceForces();
 		}
-		//System.out.println(myVelocity.getX()+" "+myVelocity.getY());
 		changeAcceleration();
 		changeVelocity();
 		// return changePosition
+
 		// sprite.setPosition(new Point2D.Double(myVelocity.getX()
 		// / FRAMES_PER_SECOND, myVelocity.getY() / FRAMES_PER_SECOND));
 		sprite.setTranslateX(sprite.getTranslateX() + myVelocity.getX()
@@ -190,6 +194,15 @@ public class PhysicsBody {
 		myImpulses.clear();
 	}
 
+	public Force getForce(String s) {
+		try {
+			return myActiveForces.get(s);
+		} catch (NullPointerException e) {
+			System.out.println("Not an active force");
+			return null;
+		}
+	}
+
 	/**
 	 * balances forces-gives a vector of what the forces in each direction are,
 	 * sets haveForcesChanged to false because this is called only when in the
@@ -207,18 +220,18 @@ public class PhysicsBody {
 		haveForcesChanged = false;
 	}
 
-	public void addForce(Force f) {
-		/*
-		 * String temp = f.toString(); if
-		 * (this.myActiveForces.containsKey(temp)) {
-		 * this.myActiveForces.replace(temp, f); } else {
-		 * this.myActiveForces.put(temp, f); }
-		 */
-		this.myActiveForces.put(f.toString(), f);
+	public void addForce(Force vector) {
+		Iterator<String> itr = vector.iterator();
+		while (itr.hasNext()) {
+			String cur = itr.next();
+			vector.addOrChangeValue(myConstants.get(cur));
+		}
+		this.myActiveForces.put(vector.toString(), vector);
+		haveForcesChanged = true;
 	}
 
-	public void addImpulse(Impulse i) {
-		this.myImpulses.add(i);
+	public void addImpulse(Vector i) {
+		this.myImpulses.add((Impulse) i);
 	}
 
 	public void addScalar(Scalar a) {
@@ -232,9 +245,11 @@ public class PhysicsBody {
 
 	public void reverseVelocity(boolean xAxis) {
 		if (xAxis) {
-			setVelocity(new Velocity(-1.0 * myVelocity.getX(), myVelocity.getY()));
+			setVelocity(new Velocity(-1.0 * myVelocity.getX(),
+					myVelocity.getY()));
 		} else {
-			setVelocity(new Velocity(myVelocity.getX(), -1.0 * myVelocity.getY()));
+			setVelocity(new Velocity(myVelocity.getX(), -1.0
+					* myVelocity.getY()));
 		}
 	}
 

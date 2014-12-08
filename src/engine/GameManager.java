@@ -34,16 +34,18 @@ public class GameManager {
     private Timeline myAnimation;
     private LevelManager myLevelManager;
     private LevelsCollection myLevels;
+    private String myRelativePath;
     private static final double DEFAULT_SPEED = 60.0;
     
     
-    public GameManager (ConditionsCollection myGameConditions, GameObjectsCollection myGameObjects, LevelsCollection myLevels, Group myRootGroup) {
+    public GameManager (ConditionsCollection myGameConditions, GameObjectsCollection myGameObjects, LevelsCollection myLevels, Group myRootGroup, String relativePath) {
         super();
         this.myGameConditions = myGameConditions;
         this.myGameObjects = myGameObjects;
         this.myRootGroup = myRootGroup;
         this.myLevels = myLevels;
-        this.myGameObjectRenderer = new GameObjectRenderer(myRootGroup);
+        this.myGameObjectRenderer = new GameObjectRenderer(myRootGroup,relativePath);
+        this.myRelativePath = relativePath;
         createLevelManager();
         initializeConditions();
     }
@@ -148,6 +150,9 @@ public class GameManager {
     	return new GameData(myLevels, myGameConditions, myGameObjects);
     }
     
+    public String getRelativePath(){
+        return myRelativePath;
+    }
 
     public GameObjectsCollection getAllGameObjects () {
         return myGameObjects;
