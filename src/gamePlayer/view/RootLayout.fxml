@@ -71,6 +71,18 @@
 								<Tooltip id="tooltip" text="Pause/Play Game." />
 							</tooltip>
 						</Button>
+						<Button prefHeight="50" prefWidth="50" id="saveGameProgressButton"
+							onAction="#saveGameProgress">
+							<tooltip>
+								<Tooltip id="tooltip" text="Save Game State to File." />
+							</tooltip>
+						</Button>
+						<Button prefHeight="50" prefWidth="50" id="loadGameProgressButton"
+							onAction="#loadGameProgress">
+							<tooltip>
+								<Tooltip id="tooltip" text="Load Game State from File." />
+							</tooltip>
+						</Button>
 					</HBox>
 				</Tab>
 				<Tab fx:id="gamePreferences" text="Preferences" closable="false"

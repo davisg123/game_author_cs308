@@ -21,7 +21,7 @@ import gamePlayer.view.PlayerView;
 public class PlayerModel {
 
 	private GameData myGameData;
-	private DataManager myManager;
+	private DataManager myDataManager;
 	private PlayerView myPlayerView;
 	private GameManager myGameManager;
 	private ConditionsCollection myButtonConditions;
@@ -29,7 +29,7 @@ public class PlayerModel {
 
 	public PlayerModel() {
 		myPlayerView = new PlayerView(this);
-		myManager = new DataManager();
+		myDataManager = new DataManager();
 		myButtonConditions = new ConditionsCollection();
 		myFileSelector = new FileSelectionWizard();
 	}
@@ -40,7 +40,7 @@ public class PlayerModel {
 
 	public void loadGameFile() {
 		Path filePath = myFileSelector.selectFile();
-		myGameData = myManager.readGameFile(filePath.toString());
+		myGameData = myDataManager.readGameFile(filePath.toString());
 		myGameManager = new GameManager(myGameData.getConditions(),
 				myGameData.getGameObjects(), myGameData.getLevels(),
 				myPlayerView.getGroup(), filePath.getParent().toString());
@@ -60,8 +60,12 @@ public class PlayerModel {
 		return myButtonConditions;
 	}
 
+	/**
+	 * Clear the game and close this stage
+	 * Return to the splash screen
+	 */
 	public void exitFromGame() {
-		// myGameManager.clear()
+		myGameManager.clear();
 		myPlayerView.close();
 		SplashScreen screen = new SplashScreen();
 		screen.show();
@@ -77,6 +81,20 @@ public class PlayerModel {
 			if (c instanceof ButtonCondition)
 				myButtonConditions.add(c);
 		}
+	}
+
+	/**
+	 * This will save a file wtih file selector
+	 */
+	public void saveGameProgress() {
+//		myDataManager.writeGameFile(myGameManager.getGameData(), );
+	}
+	
+	/**
+	 * This will load a file with file selector
+	 */
+	public void loadGameProgress() {
+	
 	}
 
 }

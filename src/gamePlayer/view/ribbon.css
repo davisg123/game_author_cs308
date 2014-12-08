@@ -40,6 +40,20 @@
 	-fx-background-size: 30 30;
 }
 
+#saveGameProgressButton {
+	-fx-background-image: url("saveButton.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center;
+	-fx-background-size: 30 30;
+}
+
+#loadGameProgressButton {
+	-fx-background-image: url("loadButton.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center;
+	-fx-background-size: 30 30;
+}
+
 #container {
 	-fx-background-size: 1000 100;
     -fx-padding: 3px;

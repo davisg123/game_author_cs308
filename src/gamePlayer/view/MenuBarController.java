@@ -66,6 +66,16 @@ public class MenuBarController implements Initializable{
 	}
 	
 	@FXML
+	private void saveGameProgress(final ActionEvent event) {
+		myPlayerModel.saveGameProgress();
+	}
+	
+	@FXML
+	private void loadGameProgress(final ActionEvent event) {
+		myPlayerModel.loadGameProgress();
+	}
+	
+	@FXML
 	private void pauseGame(final ActionEvent event){
 		myPlayerModel.pauseGame();
 	}

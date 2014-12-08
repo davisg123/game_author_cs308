@@ -30,7 +30,8 @@ public class PlayerView {
 	}
 
 	/**
-	 * Initialize
+	 * Initialize player view from the FXML file
+	 * 
 	 * @throws IOException
 	 */
 	public void initialize() throws IOException {
@@ -39,15 +40,18 @@ public class PlayerView {
 		MenuBarController myController = loader.<MenuBarController>getController();
 		myController.setModel(myPlayerModel);
 		myController.setKeyboard();
+		initializeGUIComponents();
+	}
+
+	/**
+	 * Set content for the stage and scene
+	 */
+	private void initializeGUIComponents() {
 		myScene = new Scene(myRoot);
         ButtonConditionManager.getInstance().beginListeningToScene(myScene);
 		myStage.setTitle("MY PLAYER VIEW");
 		myStage.setScene(myScene);
 		myStage.show();
-		initializeGUIComponents();
-	}
-
-	private void initializeGUIComponents() {
 		myCanvas = new GameCanvas();
 		myRoot.getChildren().add(myCanvas.getNode());
 		myCanvas.getNode().toBack();
