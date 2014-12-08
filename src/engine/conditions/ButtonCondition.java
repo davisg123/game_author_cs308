@@ -1,6 +1,8 @@
 package engine.conditions;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import engine.actions.Action;
 import javafx.scene.input.KeyCode;
 
@@ -8,7 +10,7 @@ public class ButtonCondition extends Condition {
     
     private KeyCode myKey;
 
-    public ButtonCondition (ArrayList<Action> actions, KeyCode key) {
+    public ButtonCondition (List<Action> actions, KeyCode key) {
         super(actions);
         myKey = key;
     }
