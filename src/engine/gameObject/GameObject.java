@@ -53,6 +53,10 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
     
     //identifier
     private Identifier myId;
+    
+    //Is it colliding with something
+    private boolean collisionEnabled;
+    
 
     /**
      * Constructors
@@ -303,6 +307,18 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
 
     public double getWidth () {
         return myWidth;
+    }
+    
+    public void enableCollision() {
+        collisionEnabled = true;
+    }
+    
+    public void disableCollision() {
+        collisionEnabled = false;
+    }
+    
+    public boolean isCollisionEnabled() {
+        return collisionEnabled;
     }
 
     public void enable() {
