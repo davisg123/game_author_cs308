@@ -1,4 +1,4 @@
-package engine.actions.componentsactions;
+package engine.actions;
 
 import java.util.List;
 import engine.gameObject.GameObject;

@@ -1,4 +1,4 @@
-package engine.actions.sound;
+package engine.actions;
 
 /**
  * Plays the given sound

@@ -1,16 +1,17 @@
-package engine.actions.componentsactions;
+package engine.actions;
 
 import java.util.List;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 
-public class SetComponentDoubleIDAction extends ChangeComponentIDAction{
-    private double myValue;
-    public SetComponentDoubleIDAction (List<Identifier> ids, double value, Identifier componentID) {
+public class SetComponentBooleanIDAction extends ChangeComponentIDAction {
+       Boolean myBooleanValue;
+    public SetComponentBooleanIDAction (List<Identifier>ids, Identifier componentID,boolean value) {
         super(ids, componentID);
-        myValue = value;
+        myBooleanValue = value;
         // TODO Auto-generated constructor stub
     }
+
     @Override
     public void execute() {
             // TODO Auto-generated method stub
@@ -19,7 +20,7 @@ public class SetComponentDoubleIDAction extends ChangeComponentIDAction{
                     //use value to update object's component
                
                    if (super.myObjectIDs.contains(object.getIdentifier())){
-                        object.getComponent(super.myComponentID).setDoubleValue(myValue);
+                        object.getComponent(super.myComponentID).setBooleanValue(myBooleanValue);
                     }
             
                     
@@ -27,5 +28,5 @@ public class SetComponentDoubleIDAction extends ChangeComponentIDAction{
             
     }
     
-
+    
 }

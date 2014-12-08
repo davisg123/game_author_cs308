@@ -1,6 +1,5 @@
-package engine.actions.translate;
+package engine.actions;
 
-import engine.actions.Action;
 
 public class TestTranslateAction implements Action {
 	

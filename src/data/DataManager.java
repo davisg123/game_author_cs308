@@ -3,7 +3,7 @@ package data;
 import engine.actions.Action;
 import engine.actions.ChangeLevelAction;
 import engine.actions.TestAction;
-import engine.actions.translate.TestTranslateAction;
+import engine.actions.TestTranslateAction;
 import engine.conditions.TypeCollisionCondition;
 import engine.conditions.Condition;
 import engine.gameObject.GameObject;
