@@ -1,5 +1,11 @@
 package engine;
 
+/**
+ * Sets up the filepath
+ * @author Will
+ *
+ */
+
 public class FilePathUtility {
     private final String SLASH = "/";
     private String myPath;
