@@ -70,10 +70,12 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
 
     public GameObject (GameObject g){
         this(g.getComponents(), g.getCurrentImageName(), g.getX(), g.getY(), g.getHeight(), g.getWidth(), g.getRotation(), g.getID());
+        this.setPhysicsBody(g.getPhysicsBody());
     }
 
     public GameObject (GameObject g, double x, double y, String type){
         this(g.getComponents(), g.getCurrentImageName(), x, y, g.getHeight(), g.getWidth(), g.getRotation(), type);
+        this.setPhysicsBody(g.getPhysicsBody());
     }
 
     private void setDefaultData() {

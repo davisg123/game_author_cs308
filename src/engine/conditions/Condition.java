@@ -21,7 +21,7 @@ import engine.gameObject.Identifier;
 public abstract class Condition implements Identifiable, Initializable{
 
     protected List<Action> myActions = new ArrayList<Action>();
-    private boolean myEnabled;
+    private Boolean myEnabled;
     protected transient GameManager myGameManager;
     protected Identifier myId;
     
@@ -33,7 +33,7 @@ public abstract class Condition implements Identifiable, Initializable{
         return myActions;
     }
     
-    public void setEnabled(boolean enabled){
+    public void setEnabled(Boolean enabled){
         myEnabled = enabled;
     }
     

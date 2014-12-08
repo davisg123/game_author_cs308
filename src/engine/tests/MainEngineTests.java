@@ -133,7 +133,7 @@ public class MainEngineTests extends Application {
         myConditions.add(myConstantVelocity);
         
 //        Action aAct = new TranslateXType("ball",-2.0);
-        Action aAct = new MakeNewObjectFromLocationAction("ball",200,200);
+        Action aAct = new MakeNewObjectFromLocationAction("ball",200.0,200.0);
         Action dAct = new TranslateXType("ball",2.0);
         ArrayList<Action> actionList = new ArrayList<Action>();
         actionList.add(aAct);
@@ -153,7 +153,7 @@ public class MainEngineTests extends Application {
         
         //collision stuff
         ArrayList<Action> ConditionActionList = new ArrayList<Action>();
-        FixedCollisionTypeAction collisionAction = new FixedCollisionTypeAction("ball","floor",0);
+        FixedCollisionTypeAction collisionAction = new FixedCollisionTypeAction("ball","floor",0.0);
         ConditionActionList.add(collisionAction);
         TypeCollisionCondition ballAndPlatformCollision = new TypeCollisionCondition(ConditionActionList,"ball","floor");
         ballAndPlatformCollision.setIdentifier(new Identifier("collision_cond","a"));
