@@ -31,7 +31,7 @@ import engine.physics.Volume;
  * 
  * @author ArihantJain
  *
- *         This class holds Physical Information for a Sprite.
+ *         This class holds Physical Information for a GameObject.
  *
  */
 public class PhysicsBody {
@@ -169,6 +169,7 @@ public class PhysicsBody {
 	// physics body, gameobject is passed through because I was told to do that
 	// to solve the x/y coordinates being elsewhere problem
 	public void updatePhysicalCharacteristics(GameObject sprite) {
+		System.out.println(myVelocity.getX());
 		doImpulses();
 		if (haveForcesChanged) {
 			balanceForces();

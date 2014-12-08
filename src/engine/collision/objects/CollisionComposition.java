@@ -3,7 +3,11 @@ package engine.collision.objects;
 import engine.gameObject.GameObject;
 import engine.gameObject.components.PhysicsBody;
 import engine.physics.Velocity;
-
+/**
+ * 
+ * @author Ben
+ *
+ */
 public class CollisionComposition {
 	private static final double FRAMES_PER_SECOND = 60.0;
 

@@ -1,13 +1,8 @@
 package gamePlayer.model;
 
-import java.util.List;
-
 import authoring.model.collections.ConditionsCollection;
 import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.LevelsCollection;
-import engine.conditions.Condition;
-import engine.gameObject.GameObject;
-import engine.level.Level;
 
 /**
  * 
