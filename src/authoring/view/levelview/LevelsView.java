@@ -11,7 +11,6 @@ import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.TabView;
 import authoring.view.icons.ImageBasedIcon;
 
-
 /**
  * View class that contains all the levels in the program. Corresponds with
  * backend model data - LevelsCollection. Updates if any changes occur via
@@ -82,10 +81,10 @@ public class LevelsView extends TabView implements Observer {
 		g.setLayoutY(y - 100);
 	}
 
-	public SingleLevelView addNewLevel(String myLevelID) {
+	public SingleLevelView addNewLevel(String myLevelID, String bgImage) {
 		Tab tab = new Tab(myLevelID);
 		SingleLevelView newView = new SingleLevelView(myGameLocation, myWidth,
-				myHeight, myEvents);
+				myHeight, bgImage, myEvents);
 		tab.setContent(newView);
 		this.getTabs().add(tab);
 		this.getSelectionModel().select(tab);
@@ -109,19 +108,17 @@ public class LevelsView extends TabView implements Observer {
 		this.getSelectionModel().select(tab);
 		return newView;
 	}
-	
-	public boolean levelOpenInTabs(String id){
-		
-		for (Tab tab : this.getTabs()){
-			if (((SingleLevelView) tab.getContent()).getID().equals(id)){
+
+	public boolean levelOpenInTabs(String id) {
+
+		for (Tab tab : this.getTabs()) {
+			if (((SingleLevelView) tab.getContent()).getID().equals(id)) {
 				this.getSelectionModel().select(tab);
 				return true;
 			}
 		}
 		return false;
 	}
-	
-	
 
 	public void setEventHandlers(GameHandler... handlers) {
 		myEvents = handlers;

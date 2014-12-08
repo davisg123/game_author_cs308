@@ -20,13 +20,13 @@ public class LevelWizard extends Wizard{
 	public VBox initializeWizard(EventHandler<ActionEvent> event) {
 		
 		PropertyTextField nameField = new PropertyTextField("Name: ", "");
-		PropertyTextField BGMusicField = new PropertyTextField("Background Image: ", "");
-		PropertyTextField BGSoundField = new PropertyTextField("Background Music: ", "");
+		PropertyTextField BGImageField = new PropertyTextField("Background Image: ", "");
+		PropertyTextField BGMusicField = new PropertyTextField("Background Music: ", "");
 
 		
 		myMap.put("name", nameField);
+		myMap.put("BGImage", BGImageField);
 		myMap.put("BGMusic", BGMusicField);
-		myMap.put("BGSound", BGSoundField);
 		
 		isFirst = new BooleanField("First Level", false);
 		
