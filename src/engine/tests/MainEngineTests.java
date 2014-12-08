@@ -34,7 +34,7 @@ import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
 
 public class MainEngineTests extends Application {
-    
+  
     /**
      * @author Davis
      * 
@@ -220,5 +220,4 @@ public class MainEngineTests extends Application {
         myGameManager.initialize();
     }
 
-    
 }
