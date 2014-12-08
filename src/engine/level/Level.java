@@ -63,7 +63,7 @@ public class Level extends Observable implements Identifiable {
      * Reset method for the GameObjects
      */
     public void resetLevel() {
-        myWorkingGameObjects = myDefaultGameObjects;
+        myWorkingGameObjects = new GameObjectsCollection(myDefaultGameObjects);
     }
 
     /**
