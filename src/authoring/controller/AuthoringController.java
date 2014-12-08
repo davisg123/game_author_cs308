@@ -24,6 +24,7 @@ import authoring.eventhandlers.LevelToViewHandler;
 import authoring.eventhandlers.SaveAsNewHandler;
 import authoring.eventhandlers.ImageDropHandler;
 import authoring.eventhandlers.FileDragOverHandler;
+import authoring.eventhandlers.SoundDropHandler;
 import authoring.model.AuthoringModel;
 import authoring.model.GameData;
 import authoring.view.AuthoringView;
@@ -116,12 +117,10 @@ public class AuthoringController {
 		myModel.getImages().addObserver(myGraphics);
 		myModel.getGameObjectCollection().addObserver(myGameObjects);
 
+		myModel.getSounds().addObserver(mySounds);
+
 		myModel.getLevels().addObserver(myLevelsAccordionView);
 		myModel.getConditions().addObserver(myConditionsAccordionView);
-		
-//		Condition a = new ButtonCondition(null, KeyCode.A);
-//		a.setIdentifier(new Identifier("HelloType", "UniqueHello1"));
-//		myModel.getConditions().add(a);
 
 	}
 
@@ -135,7 +134,7 @@ public class AuthoringController {
 		myProperties = new PropertiesView(myLanguage, myWidth, myHeight);
 		myLevels = new LevelsView(myLanguage, myWidth, myHeight, myGameLocation);
 		myLevelOptions = new LevelOptions(myLanguage, myWidth, myHeight);
-		mySounds = new SoundsView(myLanguage, myWidth, myHeight);
+		mySounds = new SoundsView(myLanguage, myWidth, myHeight, myGameLocation);
 		mySoundOptions = new SoundOptions(myLanguage, myWidth, myHeight);
 
 		myGraphics = new ImagesView(myLanguage, myWidth, myHeight,
@@ -152,15 +151,19 @@ public class AuthoringController {
 				myWidth, myHeight);
 		myConditionOptions = new ConditionOptions(myLanguage, myWidth, myHeight);
 
-
 	}
 
 	private void initializeGameHandlers() {
 
-		myGraphics.setGraphicEvents(new ImagesClickHandler(myProperties));
+		myGraphics.setIconEvents(new ImagesClickHandler(myProperties));
 		myGraphics.setDragOver(new FileDragOverHandler());
-		myGraphics.setDragDrop(new ImageDropHandler(myModel.getImages(), myGameLocation));
-		myGameObjects.setGraphicEvents(new GameObjectClickHandler(myProperties),
+		myGraphics.setDragDrop(new ImageDropHandler(myModel.getImages(),
+				myGameLocation));
+
+		mySounds.setDragOver(new FileDragOverHandler());
+		mySounds.setDragDrop(new SoundDropHandler(myModel.getSounds(),
+				myGameLocation));
+		myGameObjects.setIconEvents(new GameObjectClickHandler(myProperties),
 				new GameObjectDragToLevelHandler(myLevels, myModel.getLevels(),
 						myProperties));
 		myLevelOptions.setButtonBehavior(new AddLevelHandler(myModel
@@ -174,22 +177,25 @@ public class AuthoringController {
 		myLevels.setEventHandlers(new GameObjectClickHandler(myProperties),
 				new GameObjectDragHandler(myLevels, myModel.getLevels(),
 						myProperties), new GameObjGraphicDragHandler(myLevels));
-		myLevelsAccordionView.setGraphicEvents(new LevelToViewHandler(myLevels), new LevelClickHandler(myProperties));
-		
-		
-		myConditionsAccordionView.setGraphicEvents(new ConditionClickHandler(myProperties));
-		
+
+		myLevelsAccordionView.setIconEvents(new LevelToViewHandler(myLevels),
+				new LevelClickHandler(myProperties));
+
+		myConditionsAccordionView.setIconEvents(new ConditionClickHandler(
+				myProperties));
+
 		myConditionOptions.setButtonBehavior(new AddConditionHandler());
-		
+
 		myLevelsAccordionView.setLevelEvents(new GameObjectClickHandler(
 				myProperties),
 				new GameObjectDragHandler(myLevels, myModel.getLevels(),
 						myProperties), new GameObjGraphicDragHandler(myLevels));
-		myProperties.setButtonBehaviors(
-				new EditGameObjectHandler(myLevels, myModel.getLevels(), myProperties),
-				new SaveAsNewHandler(myModel.getGameObjectCollection(), myProperties),
-				new DeleteGameObjectHandler(myLevels, myModel.getLevels(), myProperties));
-	
+		myProperties.setButtonBehaviors(new EditGameObjectHandler(myLevels,
+				myModel.getLevels(), myProperties), new SaveAsNewHandler(
+				myModel.getGameObjectCollection(), myProperties),
+				new DeleteGameObjectHandler(myLevels, myModel.getLevels(),
+						myProperties));
+
 	}
 
 	/**
@@ -226,7 +232,7 @@ public class AuthoringController {
 				* LEFT_ACCORDION_HEIGHT_RATIO);
 		soundsBP.setTop(mySoundOptions);
 		soundsBP.setCenter(mySounds);
-		
+
 		BPContainer conditionBP = new BPContainer(myWidth
 				* LEFT_ACCORDION_WIDTH_RATIO, myHeight
 				* LEFT_ACCORDION_HEIGHT_RATIO);
@@ -262,8 +268,8 @@ public class AuthoringController {
 	public void saveData() {
 		myModel.save(myGameLocation.getAbsolutePath());
 	}
-	
-	public void loadData(GameData input){
+
+	public void loadData(GameData input) {
 		myModel.load(input);
 	}
 

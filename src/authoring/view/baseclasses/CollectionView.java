@@ -2,8 +2,9 @@ package authoring.view.baseclasses;
 
 import java.util.ResourceBundle;
 
-import authoring.eventhandlers.GameHandler;
+import javafx.event.Event;
 import javafx.scene.control.ScrollPane;
+import authoring.eventhandlers.GameHandler;
 
 /**
  * Base class other classes can extend to make ScrollPanes.
@@ -11,13 +12,13 @@ import javafx.scene.control.ScrollPane;
  * @author Kevin Li
  *
  */
-public class ScrollView extends ScrollPane {
+public class CollectionView extends ScrollPane {
 	protected ResourceBundle myLanguage;
 	protected double myHeight;
 	protected double myWidth;
-	protected GameHandler[] myEvents;
+	protected GameHandler[] myIconEvents;
 
-	public ScrollView(ResourceBundle language, double width, double height) {
+	public CollectionView(ResourceBundle language, double width, double height) {
 		myLanguage = language;
 		myHeight = height;
 		myWidth = width;
@@ -29,7 +30,7 @@ public class ScrollView extends ScrollPane {
 		setMaxSize(width, height);
 	}
 	
-	public void setGraphicEvents(GameHandler ... gameHandlers){
-		myEvents = gameHandlers;
+	public void setIconEvents(GameHandler ... gameHandlers){
+		myIconEvents = gameHandlers;
 	}
 }

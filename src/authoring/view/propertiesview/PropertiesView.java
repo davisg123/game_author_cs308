@@ -4,13 +4,13 @@ import java.util.ResourceBundle;
 
 import javafx.scene.layout.VBox;
 import authoring.eventhandlers.GameHandler;
-import authoring.view.baseclasses.ScrollView;
+import authoring.view.baseclasses.CollectionView;
 import authoring.view.icons.ConditionIcon;
 import authoring.view.icons.ImageIcon;
 import authoring.view.icons.LevelIcon;
 import engine.gameObject.GameObject;
 
-public class PropertiesView extends ScrollView {
+public class PropertiesView extends CollectionView {
 
 	private static final double VIEW_HEIGHT_RATIO = .95;
 	private static final double VIEW_WIDTH_RATIO = 0.2;
