@@ -1,17 +1,15 @@
 package engine.gameObject.components;
 
 import engine.gameObject.GameObject;
+import engine.gameObject.Identifier;
 
 public class StringComponent extends Component {
     private String myStringVal;
     public StringComponent(){
         super("");
     }
-    public StringComponent(String id){
-        this(id,"");
-    }
-    public StringComponent(String id, String val){
-       super.myID = id;
+    public StringComponent (String val){
+  
        myStringVal = val;
     }
     @Override
@@ -45,5 +43,15 @@ public class StringComponent extends Component {
     public void setDoubleValue (double val) {
         // TODO Auto-generated method stub
         
+    }
+    @Override
+    public void setIdentifier (Identifier myId) {
+        // TODO Auto-generated method stub
+        
+    }
+    @Override
+    public Identifier getIdentifier () {
+        // TODO Auto-generated method stub
+        return null;
     }
 }

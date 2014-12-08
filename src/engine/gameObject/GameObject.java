@@ -246,9 +246,15 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
      * @param iD
      * @return
      */
-    public Component getComponent (String iD) {
+    public Component getComponent (Identifier iD) {
         //TODO - make this work.
-        return this.myComponents.get(id);
+        Component result = null;
+        for(Component comp : myComponents){
+            if(comp.getIdentifier() == iD){
+                result = comp;
+            }
+        }
+        return result;
     }
 
     public List<Component> getComponents(){

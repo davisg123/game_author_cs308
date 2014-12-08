@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import engine.gameObject.GameObject;
 import engine.gameObject.IEnabled;
+import engine.gameObject.Identifiable;
 import engine.gameObject.Identifier;
 import engine.gameObject.components.properties.IProperty;
 
@@ -20,9 +21,11 @@ import engine.gameObject.components.properties.IProperty;
 //Just make everything an individual component... would solve search issues?...
 
 
-public abstract class Component implements IEnabled {
-    protected String myID;
-    
+public class Component implements IEnabled,Identifiable {
+    protected Identifier myID;
+    private double myDoubleValue;
+    private String myStringValue;
+  
     //Not sure if it should be included in constructor but we might need to know if this component is enabled or not.
     protected Boolean enabled;
     // Probably will create a Properties files with types of Components
@@ -30,15 +33,20 @@ public abstract class Component implements IEnabled {
     /**
      * Constructors
      */
-    public Component () {
+    public Component(){
         this("");
     }
-    public Component (String id){
-        myID = id;
+    public Component (String stringVal){
+       this.myStringValue = stringVal;
+    }
+    public Component(double doubVal){
+        this.myDoubleValue = doubVal;
     }
 
 
-    public abstract void update(GameObject object);
+    public void update(GameObject object){
+        
+    }
 
     public void enable() {
         enabled = true;
@@ -60,18 +68,37 @@ public abstract class Component implements IEnabled {
 //    	return clonesOfProperties; 
 //    }
     
-    public abstract Component getClone();
+    public Component getClone(){
+        return null;
+        
+    }
 
     public String getID () {
         // TODO Auto-generated method stub
-        return myID;
+        return myID.getHash();
     } 
     
-    public abstract String getStringValue();
+    public String getStringValue(){
+        return myStringValue;
+    }
     
-    public abstract void setStringValue(String val);
+    public  void setStringValue(String val){
+        myStringValue = val;
+    }
     
-    public abstract double getDoubleValue();
+    public double getDoubleValue(){
+       return myDoubleValue;
+    }
     
-    public abstract void setDoubleValue(double val);
+    public void setDoubleValue(double val){
+        myDoubleValue = val;
+    }
+
+    public void setIdentifier (Identifier myId){
+        myID = myId;   
+    }
+    public Identifier getIdentifier (){
+        return myID;
+    }
+    
 }
