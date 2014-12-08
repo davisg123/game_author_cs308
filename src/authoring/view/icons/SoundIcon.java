@@ -7,8 +7,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import javafx.util.Duration;
 import authoring.eventhandlers.GameHandler;
 
 public class SoundIcon extends FileIcon {
