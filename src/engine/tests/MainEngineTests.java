@@ -11,6 +11,7 @@ import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.LevelsCollection;
 import engine.GameManager;
 import engine.actions.Action;
+import engine.actions.FixedCollisionTypeAction;
 import engine.actions.TranslateXType;
 import engine.actions.TranslateYType;
 import engine.conditions.BoundaryConditionY;
@@ -106,13 +107,14 @@ public class MainEngineTests extends Application {
         myBallObjects.add(ball);
         
         //create alt ball
+        /*
         GameObject ball2 = new GameObject(null,"ball.png",250,50,30,30,0,"ball_object");
         ball2.setIdentifier(new Identifier("ball","b"));
         PhysicsBody ballBody2 = new PhysicsBody(30,30);
         ballBody2.setVelocity(new Velocity(0,10));
         ball2.setPhysicsBody(ballBody2);
         myBallObjects.add(ball2);
-        
+        */
         /******
          * conditions
          ******/
@@ -135,7 +137,10 @@ public class MainEngineTests extends Application {
         myConditions.add(dCon);
         
         //collision stuff
-        TypeCollisionCondition ballAndPlatformCollision = new TypeCollisionCondition(null,"ball","floor");
+        ArrayList<Action> ConditionActionList = new ArrayList<Action>();
+        FixedCollisionTypeAction collisionAction = new FixedCollisionTypeAction("ball","floor",0);
+        ConditionActionList.add(collisionAction);
+        TypeCollisionCondition ballAndPlatformCollision = new TypeCollisionCondition(ConditionActionList,"ball","floor");
         ballAndPlatformCollision.setIdentifier(new Identifier("collision_cond","a"));
         myConditions.add(ballAndPlatformCollision);
         
@@ -178,17 +183,17 @@ public class MainEngineTests extends Application {
         /*
          * uncomment for saving game
          */
-        /*
+        
         GameData data = new GameData(myLevels,myConditions,allGameObjects);
         DataManager manager = new DataManager();
         try {
-            manager.writeGameFile(data, "fd_final.json");
+            manager.writeGameFile(data, "fd_final.json", Paths.get(".").toString()+"/src/data/games/fd_final/");
         }
         catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        */
+        
         
         /*******
          * game

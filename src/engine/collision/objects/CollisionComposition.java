@@ -50,7 +50,9 @@ public class CollisionComposition {
 				.getValue() == 1) ? one : two;
 		GameObject other = (one.getPhysicsBody().getScalar("CollisionConstant")
 				.getValue() == 1) ? two : one;
-
+		
+		System.out.println(other.getTranslateX());
+		
 		if (xAxis) {
 
 			// cancel out current velocity
@@ -59,7 +61,7 @@ public class CollisionComposition {
 					/ FRAMES_PER_SECOND);
 			// apply rivaling velocity
 			other.setTranslateX(other.getTranslateX()
-					+ other.getPhysicsBody().getVelocity().getX()
+					+ fixed.getPhysicsBody().getVelocity().getX()
 					/ FRAMES_PER_SECOND);
 		} else {
 
@@ -70,7 +72,7 @@ public class CollisionComposition {
 
 			// apply rivaling velocity
 			other.setTranslateY(other.getTranslateY()
-					+ other.getPhysicsBody().getVelocity().getY()
+					+ fixed.getPhysicsBody().getVelocity().getY()
 					/ FRAMES_PER_SECOND);
 		}
 	}
