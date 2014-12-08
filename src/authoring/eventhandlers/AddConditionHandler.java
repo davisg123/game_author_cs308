@@ -1,9 +1,10 @@
 package authoring.eventhandlers;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javafx.event.Event;
@@ -11,6 +12,8 @@ import javafx.event.EventType;
 import authoring.view.wizards.ActionChoiceWizard;
 import authoring.view.wizards.ConditionParameterWizard;
 import authoring.view.wizards.ConditionSelectionWizard;
+import engine.actions.Action;
+import engine.conditions.Condition;
 
 public class AddConditionHandler implements GameHandler<Event> {
 
@@ -23,8 +26,9 @@ public class AddConditionHandler implements GameHandler<Event> {
 	private ActionChoiceWizard myActionChoiceWizard;
 
 	private List<String> myInputParameters;
-	private Class<?>[] myParameterTypes;
-
+	private Parameter[] myParameterTypes;
+	private Class<?> classType;
+	private Constructor myConstructor;
 	@Override
 	public void handle(Event arg0) {
 		myWizard = new ConditionSelectionWizard("New Condition", WIZARD_WIDTH,
@@ -40,19 +44,22 @@ public class AddConditionHandler implements GameHandler<Event> {
 		String selected = myWizard.getSelectedCondition();
 
 		try {
-			Class<?> classType = Class.forName(CONDITION_PATH_START + selected);
-			System.out.println(classType.toString());
+			classType = Class.forName(CONDITION_PATH_START + selected);
+			//System.out.println(classType.toString());
 
+		
+			
 			Constructor[] constructors = classType.getDeclaredConstructors();
-			myParameterTypes = constructors[0].getParameterTypes();
-			for (Class c : myParameterTypes){
-				System.out.println(c.getDeclaredFields());
-				for (Field f : c.getDeclaredFields()){
-					System.out.println("fgjhfghfgh" + f.getGenericType());
-				}
+			myConstructor = constructors[0];
+			myParameterTypes = constructors[0].getParameters();
+
+			
+			
+			for (Parameter p : myParameterTypes){
+				System.out.println(p.getParameterizedType());
 			}
 
-			System.out.println(Arrays.deepToString(myParameterTypes));
+			//System.out.println(Arrays.deepToString(myParameterTypes));
 
 			myCPW = new ConditionParameterWizard("Choose Parameters",
 					WIZARD_WIDTH, WIZARD_HEIGHT, myParameterTypes, classType,
@@ -65,13 +72,20 @@ public class AddConditionHandler implements GameHandler<Event> {
 	}
 
 	private void fillConditionParameters() {
+		System.out.println("filling conditions");
 		myInputParameters = new ArrayList<String>();
 		for (String s : myCPW.getMap().keySet()) {
 			myInputParameters.add(myCPW.getMap().get(s).getInformation());
 		}
 		myWizard.disableSelection();
 		myWizard.enableActionCreation(event -> addAction());
-
+		Object[] inputs = convertInputParameters();
+		try {
+			Condition c = (Condition) myConstructor.newInstance(inputs);
+			System.out.println(c.getClass());
+		} catch (Exception e) {
+			System.out.println("Could not construct");
+		}
 		myCPW.close();
 	}
 
@@ -85,8 +99,47 @@ public class AddConditionHandler implements GameHandler<Event> {
 		System.out.println("heyah");
 	}
 
-	private void convertInputParameters() {
-		// myInputParameters
+	private Object[] convertInputParameters() {
+		List<Object> inputs = new ArrayList<Object>();
+		inputs.add(new ArrayList<Action>());
+		for(int i = 0; i < myInputParameters.size(); i++){
+			Type t = myParameterTypes[i+1].getParameterizedType();
+			if(t.toString().contains("List")){
+				String[] splitType = t.toString().split("\\<");
+				String type = splitType[splitType.length-1].replace(">", "");
+				List<Object> innerList = new ArrayList<Object>();
+				try {
+					Class c = Class.forName(type);
+					Method parseMethod = c.getMethod("valueOf", new Class[]{String.class});
+					for(String s : myInputParameters.get(i).split("\\;")){
+						innerList.add(parseMethod.invoke(c, s));
+						//System.out.println(parseMethod.invoke(c, s));
+					}
+					//System.out.println(parseMethod.invoke(c, myInputParameters.get(i)).getClass());
+				} catch (Exception e) {
+					System.out.println("Bad Class");
+				}
+				inputs.add(innerList);
+			}else{
+				String[] splitType = t.toString().split(" ");
+				String type = splitType[1];
+				//System.out.println(type);
+				Object innerObject = new Object();
+				try {
+					Class c = Class.forName(type);
+					//System.out.println(c.getFields()[0].getType().toString());
+					Method parseMethod = c.getMethod("valueOf", new Class[]{String.class});
+					String s = myInputParameters.get(i);
+					parseMethod.invoke(c, s);
+					//System.out.println(parseMethod.invoke(c, s));
+					//System.out.println(parseMethod.invoke(c, myInputParameters.get(i)).getClass());
+				} catch (Exception e) {
+					System.out.println("Bad Class");
+				}
+				inputs.add(innerObject);
+			}
+		}
+		return inputs.toArray();
 		
 	}
 
