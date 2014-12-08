@@ -2,12 +2,15 @@ package engine.actions;
 
 import authoring.model.collections.GameObjectsCollection;
 import engine.GameManager;
+import engine.level.Level;
+import engine.render.GameObjectRenderer;
 
 public abstract class MakeNewObjectAction implements Action, Initializable {
 
-	private GameObjectsCollection myGameObjects; 
-	private GameObjectsCollection myMasterList;
-	private String myType; 
+	protected Level myCurrentLevel; 
+	protected GameObjectsCollection myMasterList;
+	protected GameObjectRenderer myRenderer; 
+	protected String myType; 
 	
 	public MakeNewObjectAction(String type){
 		myType = type; 
@@ -17,9 +20,10 @@ public abstract class MakeNewObjectAction implements Action, Initializable {
 	
 	@Override
 	public void initialize(GameManager manager) {
-		
+		myRenderer = manager.getRenderer();
+		//will be template list
 		myMasterList = manager.getLevelManager().getGameObjects(); 
-		myGameObjects = manager.getLevelManager().getCurrentLevel().getGameObjectsCollection();
+		myCurrentLevel = manager.getLevelManager().getCurrentLevel();
 		
 	}
 

@@ -105,6 +105,10 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
     	this(g.getComponents(), g.getCurrentImageName(), g.getX(), g.getY(), g.getHeight(), g.getWidth(), g.getRotation(), g.getID());
 	}
 
+	public GameObject (GameObject g, double x, double y, String type){
+		this(g.getComponents(), g.getCurrentImageName(), x, y, g.getHeight(), g.getWidth(), g.getRotation(), type);
+	}
+	
 
     /**
      * Sets X-Coordinate of Object
