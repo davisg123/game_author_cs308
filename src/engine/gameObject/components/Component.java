@@ -32,19 +32,16 @@ public class Component implements IEnabled,Identifiable {
     /**
      * Constructors
      */
-    public Component(){
-        this("");
-    }
     public Component (String stringVal){
        this.myStringValue = stringVal;
     }
     public Component(double doubVal){
-        this.myDoubleValue = doubVal;
+       this.myDoubleValue = doubVal;
     }
-    public Component(boolean boolVal){
-        this.myBooleanValue =boolVal;
+    public Component (boolean boolVal){
+        this.myBooleanValue = boolVal;
     }
-
+    
 
     public void update(GameObject object){
        //TODO 
@@ -105,7 +102,7 @@ public class Component implements IEnabled,Identifiable {
         myBooleanValue = val;
     }
     
-    public void changeBooleanValue(){
+    public void switchBooleanValue(){
         myBooleanValue = !myBooleanValue;
     }
 

@@ -31,7 +31,7 @@ public class ActionChoiceWizard extends Wizard {
 		return myWindow;
 	}
 	
-	public String getSelectedCondition(){
+	public String getSelectedAction(){
 		return myChoices.getSelected();
 	}
 

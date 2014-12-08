@@ -6,7 +6,9 @@ import java.util.ResourceBundle;
 import javafx.geometry.Pos;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
+import authoring.eventhandlers.AddActionHandler;
 import authoring.eventhandlers.AddConditionHandler;
+import authoring.eventhandlers.AddConditionIDHandler;
 import authoring.eventhandlers.AddImageHandler;
 import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.AddObjectHandler;
@@ -189,12 +191,13 @@ public class AuthoringController {
 				myProperties),
 				new GameObjectDragHandler(myLevels, myModel.getLevels(),
 						myProperties), new GameObjGraphicDragHandler(myLevels));
-		myProperties.setButtonBehaviors(new EditGameObjectHandler(myLevels,
-				myModel.getLevels(), myProperties), new SaveAsNewHandler(
-				myModel.getGameObjectCollection(), myProperties),
-				new DeleteGameObjectHandler(myLevels, myModel.getLevels(),
-						myProperties));
-
+		myProperties.setButtonBehaviors(
+				new EditGameObjectHandler(myLevels,myModel.getLevels(), myProperties),
+				new SaveAsNewHandler(myModel.getGameObjectCollection(), myProperties),
+				new DeleteGameObjectHandler(myLevels, myModel.getLevels(),myProperties));
+		
+		
+		myProperties.setAddActionButtonBehaviors(new AddActionHandler());
 	}
 
 	/**
