@@ -1,8 +1,10 @@
 package gamePlayer.view;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -16,14 +18,6 @@ import engine.conditions.Condition;
 
 public class KeyboardView {
 
-	private static final String[] KEYS = { "", "SOFTKEY_1", "SOFTKEY_2", "SOFTKEY_3", "SOFTKEY_4", "SOFTKEY_5", "SOFTKEY_6",
-		"SOFTKEY_7", "SOFTKEY_8", "SOFTKEY_9", "SOFTKEY_0", "MINUS", "EQUALS", "BACK_SPACE", "TAB", "Q",
-		"W", "E", "R", "T", "Y", "U", "I", "O", "P", "", "", "", "CAPS",
-		"A", "S", "D", "F", "G", "H", "J", "K", "L", "", "", "ENTER", "",
-		"SHIFT", "Z", "X", "C", "V", "B", "N", "M", "COMMA", "PERIOD",
-		"SLASH", "SHIFT", "UP", "", "", "", "", "", "", "", "SPACE", "",
-		"", "", "", "DOWN", "LEFT", "RIGHT" };
-
 	private static final int NUM_KEYS_IN_ROW = 14;
 	private static final int NUM_KEYS_IN_COLUMN = 5;
 	private static final double KEY_WIDTH = 100;
@@ -35,9 +29,12 @@ public class KeyboardView {
 	private ConditionsCollection myButtonConditions;
 	private Map<KeyCode, String> myButtonConditionsMap;
 	private KeyMapForm myKeyMapForm;
+	private MappedKeys myMappedKeys;
 
 	public KeyboardView(ConditionsCollection buttonConditions) {
 		myButtonConditions = buttonConditions;
+		myMappedKeys = new MappedKeys();
+		myButtonConditionsMap = new HashMap<KeyCode, String>();
 	}
 
 	public void createKeyboardView() {
@@ -66,12 +63,13 @@ public class KeyboardView {
 
 	private int buildButton(int num, int i, int j) {
 		StackPane sp = new StackPane();
-		Button button = new Button(KEYS[num]);
+		String key = this.myMappedKeys.getKey(num);
+		Button button = new Button(key);
 		button.setId("keyButton");
 		button.setPrefSize(KEY_WIDTH, KEY_HEIGHT);
-		button.setDisable(KEYS[num] == "");
+		button.setDisable(key == "");
 		button.setOnAction((event) -> {
-			myKeyMapForm.createKeyMapForm(button.getText());
+			myKeyMapForm.createKeyMapForm(key);
 		});
 		sp.getChildren().add(button);
 		myGrid.add(sp, j, i);
@@ -90,7 +88,7 @@ public class KeyboardView {
 
 	public void setNewKey(String button, String keyFunction)
 	{
-		KeyCode kc = KeyCode.valueOf(button);
+		KeyCode kc = this.myMappedKeys.getKeyCode(button);
 		myButtonConditionsMap.put(kc, keyFunction);
 		for(Condition c : myButtonConditions) {
 			ButtonCondition bc = (ButtonCondition) c;
