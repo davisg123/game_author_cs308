@@ -7,6 +7,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.TitledPane;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.BorderPane;
+import authoring.eventhandlers.AddConditionHandler;
 import authoring.eventhandlers.AddImageHandler;
 import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.AddObjectHandler;
@@ -178,6 +179,7 @@ public class AuthoringController {
 		
 		myConditionsAccordionView.setGraphicEvents(new ConditionClickHandler(myProperties));
 		
+		myConditionOptions.setButtonBehavior(new AddConditionHandler());
 		
 		myLevelsAccordionView.setLevelEvents(new GameObjectClickHandler(
 				myProperties),
