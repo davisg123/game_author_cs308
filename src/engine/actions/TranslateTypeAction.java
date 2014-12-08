@@ -21,6 +21,7 @@ public abstract class TranslateTypeAction implements Action, Initializable{
 	@Override
 	public void initialize(GameManager manager) {
 	    myCurrentLevel = manager.getLevelManager().getCurrentLevel(); 
+	    myGameObjects = manager.getLevelManager().getCurrentLevel().getGameObjectsCollection();
 	}
 
 

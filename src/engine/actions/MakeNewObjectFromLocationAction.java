@@ -22,7 +22,6 @@ public class MakeNewObjectFromLocationAction extends MakeNewObjectAction{
 			//TODO: will be template list
 			if (object.getIdentifier().getType().equals(myType)){
 				GameObject newObject = new GameObject(object, myX, myY, myType); 
-				System.out.println(1);
 				newObject.setIdentifier(object.getIdentifier());
 				newObject.setPhysicsBody(object.getPhysicsBody());
 				myRenderer.createAndAssignRenderedNode(newObject);

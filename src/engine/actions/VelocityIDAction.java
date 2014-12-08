@@ -21,7 +21,7 @@ public abstract class VelocityIDAction extends VectorPhysicsAction {
 			Collection<GameObject> myObjects, Object value) {
 		Vector vector = new Vector();
 		return (x, y) -> x.getPhysicsBody().setVelocity(
-				determineVector((Double) value, vector));
+				determineVector(x, (Double) value, vector));
 	}
 
 }
