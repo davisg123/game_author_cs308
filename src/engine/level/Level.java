@@ -1,11 +1,9 @@
 package engine.level;
 
+import java.util.ArrayList;
 import java.util.Iterator;
-
 import data.Observable;
-
 import java.util.List;
-
 import authoring.model.collections.ConditionIDsCollection;
 import authoring.model.collections.GameObjectsCollection;
 import engine.GameManager;
@@ -58,6 +56,8 @@ public class Level extends Observable implements Identifiable {
     }
 
     public Level (GameObjectsCollection gameObjects, boolean isStart) {
+        myGameObjectIdList = new ArrayList<Identifier>();
+        myConditionIdList = new ArrayList<Identifier>();
         myDefaultGameObjects = gameObjects;
         myWorkingGameObjects = gameObjects;
         myStartLevelIndicator = isStart;
@@ -98,6 +98,10 @@ public class Level extends Observable implements Identifiable {
         setChanged();
         notifyObservers(this);
     }
+    
+    public void addInitialGameObjects(GameObject gameObject){
+        myWorkingGameObjects.add(gameObject);
+    }
 
     public boolean removeGameObject(GameObject g){
         boolean ret = myDefaultGameObjects.remove(g);
@@ -135,6 +139,8 @@ public class Level extends Observable implements Identifiable {
     }
     
     public Iterator<Identifier> getConditionIds () {
+        //remove me
+        myConditionIdList = new ArrayList<Identifier>();
         return myConditionIdList.iterator();
     }
     

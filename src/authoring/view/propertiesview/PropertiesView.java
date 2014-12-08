@@ -2,10 +2,10 @@ package authoring.view.propertiesview;
 
 import java.util.ResourceBundle;
 
-import javafx.scene.Node;
 import javafx.scene.layout.VBox;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.ScrollView;
+import authoring.view.icons.ConditionIcon;
 import authoring.view.icons.ImageIcon;
 import authoring.view.icons.LevelIcon;
 import engine.gameObject.GameObject;
@@ -54,6 +54,11 @@ public class PropertiesView extends ScrollView {
 	public void makeProperties(LevelIcon g){
 		myContents.getChildren().clear();
 		this.setContent(new LevelProperties(g));
+	}
+	
+	public void makeProperties(ConditionIcon g){
+		myContents.getChildren().clear();
+		this.setContent(new ConditionProperties(g));
 	}
 
 	public void displayProperties(Properties props){

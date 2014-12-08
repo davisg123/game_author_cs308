@@ -1,6 +1,7 @@
 package authoring.view;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -14,6 +15,8 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import authoring.controller.AuthoringController;
 import authoring.model.AuthoringModel;
+import authoring.model.GameData;
+import data.DataManager;
 
 /**
  * Class that contains the MenuBar for the authoring environments. Users can
@@ -55,7 +58,7 @@ public class ProgramMenu extends MenuBar {
 	 */
 	private Menu FileMenu() {
 		Menu FileMenu = new Menu(myLanguage.getString("File"));
-		FileMenu.getItems().addAll(newFile(), saveFile());
+		FileMenu.getItems().addAll(newFile(), saveFile(), loadFile());
 		return FileMenu;
 	}
 
@@ -86,7 +89,39 @@ public class ProgramMenu extends MenuBar {
 				.getController().saveData();
 
 	}
+	
+	private MenuItem loadFile(){
+		MenuItem loadFile = new MenuItem(myLanguage.getString("Load"));
+		loadFile.setOnAction(handle -> loadData());
+		return loadFile;
+	}
 
+	private void loadData(){
+		File gameFile = myFileChooser.showOpenDialog(new Stage());
+		if (gameFile != null) {
+			makeFolders(gameFile);
+			Tab tab = new Tab(gameFile.getName());
+			AuthoringView newView = new AuthoringView(myWidth, myHeight);
+			AuthoringModel newModel = new AuthoringModel();
+			AuthoringController newController = new AuthoringController(
+					newView, newModel, myWidth, myHeight, myLanguage, gameFile.getParentFile());
+			newView.setController(newController);
+			tab.setContent(newView);
+			myTabs.getTabs().add(tab);
+			myTabs.getSelectionModel().select(tab);
+		}
+		DataManager manager = new DataManager();
+		try {
+			GameData gameData = manager.readGameFile(gameFile.getAbsolutePath());
+			System.out.println("game loaded");
+			int currentTab = myTabs.getSelectionModel().getSelectedIndex();
+			((AuthoringView) myTabs.getTabs().get(currentTab).getContent())
+					.getController().loadData(gameData);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	/**
 	 * Method for adding a new tab.
 	 */

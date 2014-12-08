@@ -1,7 +1,7 @@
 package gamePlayer.model;
 
 import java.io.IOException;
-
+import java.nio.file.Path;
 import javafx.stage.FileChooser;
 import data.DataManager;
 import application.SplashScreen;
@@ -40,8 +40,9 @@ public class PlayerModel {
 	}
 	
 	public void loadGameFile() {
-		myGameData = myManager.readGameFile(myFileSelector.selectFile());
-		myGameManager = new GameManager(myGameData.getConditions(), myGameData.getGameObjects(), myGameData.getLevels(), myPlayerView.getGroup());
+	        Path filePath = myFileSelector.selectFile();
+		myGameData = myManager.readGameFile(filePath.toString());
+		myGameManager = new GameManager(myGameData.getConditions(), myGameData.getGameObjects(), myGameData.getLevels(), myPlayerView.getGroup(),filePath.getParent().toString());
 		myGameManager.initialize();
 		
 		extractButtonConditions();

@@ -52,8 +52,8 @@ public class NameWizard extends Wizard{
 		}
 		else{
 			close();
-			System.out.println(g.getID());
-			System.out.println();
+			//System.out.println(g.getID());
+			//System.out.println();
 			ErrorPopUp epu = new ErrorPopUp();
 			epu.display("Need to enter unique ID", false);
 		}

@@ -17,7 +17,8 @@ public class AddLevelHandler implements GameHandler<Event> {
 	private LevelsView myLevels;
 	private LevelsCollection myLevelsCollection;
 	private String myLevelID;
-	private Wizard myWizard;
+	private boolean isFirstLevel;
+	private LevelWizard myWizard;
 
 	/**
 	 * 
@@ -36,7 +37,7 @@ public class AddLevelHandler implements GameHandler<Event> {
 	
 	private void createLevel(){
 		SingleLevelView newLevelView = myLevels.addNewLevel(myLevelID);
-		Level levelData = new Level(new GameObjectsCollection());
+		Level levelData = new Level(new GameObjectsCollection(), isFirstLevel);
 		levelData.addObserver(newLevelView);
 		newLevelView.setID(myLevelID);
 		levelData.setIdentifier(new Identifier("Level", myLevelID));
@@ -55,6 +56,7 @@ public class AddLevelHandler implements GameHandler<Event> {
 	
 	private void getPrompt(){
 		myLevelID = myWizard.getMap().get("name").getInformation();
+		isFirstLevel = myWizard.getIsFirst();
 		createLevel();
 		myWizard.close();
 	}
