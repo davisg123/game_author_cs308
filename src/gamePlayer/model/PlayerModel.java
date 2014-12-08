@@ -45,7 +45,8 @@ public class PlayerModel {
 		System.out.println(f.getAbsolutePath());
 		myGameData = myManager.readGameFile(f);
 		if(myGameData == null) System.out.println("Null!!!!");
-		myGameManager = new GameManager(myGameData.getConditions(), myGameData.getGameObjects(), myGameData.getLevels(), myPlayerView.getGroup());
+		myGameManager = new GameManager(myGameData.getConditions(), myGameData.getGameObjects(), myGameData.getLevels(), myPlayerView.getGroup(), f.getAbsolutePath());
+		//possible problems line above with relativePath in gameManager
 		myGameManager.initialize();
 		
 		extractButtonConditions();

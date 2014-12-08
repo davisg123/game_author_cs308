@@ -10,15 +10,7 @@ import engine.gameObject.components.properties.IProperty;
 
 public class NullComponent extends Component {
 
-    @Override
-    public void addProperty (IProperty property) {
-        return;
-    }
 
-    @Override
-    public void removeProperty (IProperty property) {
-        return;
-    }
 
     @Override
     public void update (GameObject object) {
@@ -31,10 +23,10 @@ public class NullComponent extends Component {
         return null;
     }
 
-	@Override
-	public Component getClone() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public Component getClone() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 }

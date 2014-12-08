@@ -1,5 +1,7 @@
 package engine.actions;
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import engine.GameManager;
@@ -14,25 +16,16 @@ import engine.physics.Velocity;
  *
  */
 
-public class YVelocityIDAction extends PhysicsIDAction{
+public class YVelocityIDAction extends VelocityIDAction {
 
-	public YVelocityIDAction(List<Identifier> ids, double value) {
-		super(ids, value);
-	}
-
-	//TODO refactor after discussion about physics
-	@Override
-	public void applyPhysics() {
-		Velocity a=myGameObject.getPhysicsBody().getVelocity();
-		Velocity b=new Velocity(a.getX(), myValue);
-		myGameObject.getPhysicsBody().setVelocity(b);
+	public YVelocityIDAction(ArrayList<Identifier> id, double value) {
+		super(id, value);
 	}
 
 	@Override
-	public void applyPhysics(GameObject... myObjects) {
-		// TODO Auto-generated method stub
-		
+	protected Vector determineVector(double value, Vector vector) {
+		vector=new Velocity(0, value);
+		return vector;
 	}
-
 
 }

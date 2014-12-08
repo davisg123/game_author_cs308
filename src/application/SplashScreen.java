@@ -86,6 +86,7 @@ public class SplashScreen {
 	private void play() throws IOException {
 		myPlayerModel = new PlayerModel();
 		myPlayerModel.initializeView();
+		myStage.close();
 	}
 
 }
