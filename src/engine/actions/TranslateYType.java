@@ -16,7 +16,7 @@ public class TranslateYType extends TranslateTypeAction{
 //			}
 //		}
 
-	    System.out.println(myCurrentLevel.getGameObjectsCollection());
+	    //System.out.println(myCurrentLevel.getGameObjectsCollection());
 	    for (GameObject object: myCurrentLevel.getGameObjectsCollection()){
 	        if (object.getIdentifier().getType().equals(myType)){
 	            object.setTranslateY(object.getTranslateY() + myValue); 
