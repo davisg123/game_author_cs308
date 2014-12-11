@@ -2,6 +2,7 @@ package engine.gameObject;
 
 import engine.gameObject.components.*;
 import engine.render.RenderedNode;
+import engine.scrolling.ScrollingUtility;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -29,6 +30,7 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
     private double myXCoord;
     private double myYCoord;
     private transient RenderedNode myRenderedNode;
+    private transient ScrollingUtility myScrollingUtility;
 
     private boolean myCollision;
 
