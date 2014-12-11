@@ -1,6 +1,7 @@
-package engine.actions.translate;
+package engine.actions;
 
-import engine.actions.Action;
+import engine.GameManager;
+
 
 public class TestTranslateAction implements Action {
 	
@@ -14,6 +15,12 @@ public class TestTranslateAction implements Action {
 	public void execute() {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void initialize(GameManager manager) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

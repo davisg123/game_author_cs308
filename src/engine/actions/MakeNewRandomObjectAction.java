@@ -6,13 +6,13 @@ import engine.gameObject.GameObject;
 
 public class MakeNewRandomObjectAction extends MakeNewObjectAction{
 
-	private Random r; 
-	private double myLowerXBound;
-	private double myUpperXBound;
-	private double myLowerYBound;
-	private double myUpperYBound; 
+	protected Random r; 
+	protected Double myLowerXBound;
+	protected Double myUpperXBound;
+	protected Double myLowerYBound;
+	protected Double myUpperYBound; 
 	
-	public MakeNewRandomObjectAction(String type, double lowerXBound, double upperXBound, double lowerYBound, double upperYBound){
+	public MakeNewRandomObjectAction(String type, Double lowerXBound, Double upperXBound, Double lowerYBound, Double upperYBound){
 		super(type); 
 		r = new Random(); 
 		
@@ -25,16 +25,20 @@ public class MakeNewRandomObjectAction extends MakeNewObjectAction{
 		for (GameObject object: myMasterList){
 			//TODO: make this a template list
 			if (object.getIdentifier().getType().equals(myType)){
-				double x = r.nextInt((int) (myUpperXBound-myLowerXBound)) + myLowerXBound; 
-				double y = r.nextInt((int) (myUpperYBound-myLowerYBound)) + myLowerYBound; 
-				GameObject newObject = new GameObject(object, x, y, myType); 
-				myRenderer.createAndAssignRenderedNode(newObject);
-				myCurrentLevel.addGameObject(newObject);
-				
+				makeRandomObject(object);
 				
 			}
 		}
 		
 	}
 	
+	public void makeRandomObject(GameObject object){
+		double x = r.nextInt((int) (myUpperXBound-myLowerXBound)) + myLowerXBound; 
+		double y = r.nextInt((int) (myUpperYBound-myLowerYBound)) + myLowerYBound; 
+		GameObject newObject = new GameObject(object, x, y, myType); 
+		newObject.setIdentifier(object.getIdentifier());
+		newObject.setPhysicsBody(object.getPhysicsBody());
+		myRenderer.createAndAssignRenderedNode(newObject);
+		myCurrentLevel.addGameObject(newObject);
+	}
 }

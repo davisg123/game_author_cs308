@@ -7,9 +7,14 @@ import engine.gameObject.Identifier;
 import engine.physics.Mass;
 import engine.physics.Scalar;
 
+/**
+ * 
+ * @author Ben
+ *
+ */
 public class MassPhysicsAction extends ScalarPhysicsAction {
 
-	public MassPhysicsAction(ArrayList<Identifier> id, double value) {
+	public MassPhysicsAction(ArrayList<Identifier> id, Double value) {
 		super(id, value);
 	}
 

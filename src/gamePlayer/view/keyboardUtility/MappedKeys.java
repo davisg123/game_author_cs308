@@ -1,8 +1,6 @@
-package gamePlayer.view;
+package gamePlayer.view.keyboardUtility;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 import javafx.scene.input.KeyCode;
 

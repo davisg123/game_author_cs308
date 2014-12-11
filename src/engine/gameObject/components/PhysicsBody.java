@@ -1,6 +1,7 @@
 package engine.gameObject.components;
 
 import java.awt.geom.Point2D;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -8,7 +9,6 @@ import java.util.List;
 import engine.gameObject.GameObject;
 import java.util.Map;
 import engine.physics.Acceleration;
-import engine.physics.BEngine;
 import engine.physics.Buoyancy;
 import engine.physics.CoefficientOfFriction;
 import engine.physics.CollisionConstant;
@@ -19,7 +19,6 @@ import engine.physics.Gravity;
 import engine.physics.GravityConstant;
 import engine.physics.Impulse;
 import engine.physics.Mass;
-import engine.physics.NormalUpdate;
 import engine.physics.Scalar;
 import engine.physics.Vector;
 import engine.physics.Velocity;
@@ -31,7 +30,7 @@ import engine.physics.Volume;
  * 
  * @author ArihantJain
  *
- *         This class holds Physical Information for a Sprite.
+ *         This class holds Physical Information for a GameObject.
  *
  */
 public class PhysicsBody {
@@ -132,7 +131,6 @@ public class PhysicsBody {
 	private void changeVelocity() {
 		myVelocity.delta(myAcceleration.getX() / FRAMES_PER_SECOND,
 				myAcceleration.getY() / FRAMES_PER_SECOND);
-		System.out.println(myVelocity.getY());
 	}
 
 	/**
@@ -170,6 +168,7 @@ public class PhysicsBody {
 	// physics body, gameobject is passed through because I was told to do that
 	// to solve the x/y coordinates being elsewhere problem
 	public void updatePhysicalCharacteristics(GameObject sprite) {
+		//System.out.println(myVelocity.getX());
 		doImpulses();
 		if (haveForcesChanged) {
 			balanceForces();
@@ -267,6 +266,8 @@ public class PhysicsBody {
 	 * @param sprite
 	 *            -the sprite that collides with this one
 	 */
+
+	// doesn't need to be here, not removing it just to be safe
 	public void handleCollision(GameObject thisSprite, GameObject sprite) {
 		double xCenterOne = thisSprite.getPosition().getX();
 		double yCenterOne = thisSprite.getPosition().getY();
@@ -302,7 +303,7 @@ public class PhysicsBody {
 		if (!cur.getCollisionConstant()) {
 
 			if (xOrY) {
-				System.out.println("COLLISOIN");
+				//System.out.println("COLLISOIN");
 
 				// cancel out current velocity
 				cur.setTranslateX(cur.getTranslateX()

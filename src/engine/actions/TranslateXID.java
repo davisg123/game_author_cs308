@@ -2,7 +2,6 @@ package engine.actions;
 
 import java.util.List;
 
-import engine.GameManager;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 
@@ -14,7 +13,7 @@ import engine.gameObject.Identifier;
 
 public class TranslateXID extends TranslateIDAction {
 
-    public TranslateXID (List<Identifier> iDs, double value) {
+    public TranslateXID (List<Identifier> iDs, Double value) {
         super(iDs, value);
     }
 

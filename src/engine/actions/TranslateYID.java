@@ -14,7 +14,7 @@ import engine.gameObject.Identifier;
 
 public class TranslateYID extends TranslateIDAction {
 
-    public TranslateYID (List<Identifier> iDs, double value) {
+    public TranslateYID (List<Identifier> iDs, Double value) {
         super(iDs, value);
     }
 

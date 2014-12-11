@@ -1,7 +1,6 @@
 package engine.gameObject.components;
 
 import engine.gameObject.GameObject;
-import engine.gameObject.components.properties.IProperty;
 
 /**
  * Takes the place of a Null Object.
@@ -11,6 +10,11 @@ import engine.gameObject.components.properties.IProperty;
 public class NullComponent extends Component {
 
 
+
+    public NullComponent (double doubVal) {
+        super(doubVal);
+        // TODO Auto-generated constructor stub
+    }
 
     @Override
     public void update (GameObject object) {

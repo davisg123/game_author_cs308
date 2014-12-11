@@ -1,6 +1,8 @@
-package engine.actions;
+package engine.actions.render;
 
 import engine.GameManager;
+import engine.actions.Action;
+import engine.actions.Initializable;
 
 /**
  * action for modifying frame rate
@@ -11,9 +13,9 @@ import engine.GameManager;
 public class FrameRateAction implements Action, Initializable {
     
     private GameManager myGameManager;
-    private double myFrameRate;
+    private Double myFrameRate;
     
-    public FrameRateAction (double frameRate) {
+    public FrameRateAction (Double frameRate) {
         super();
         myFrameRate = frameRate;
     }

@@ -8,9 +8,14 @@ import engine.GameManager;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 
+/**
+ * 
+ * @author Ben
+ *
+ */
 public class ReverseVelocityIDAction extends PhysicsIDAction {
 
-	public ReverseVelocityIDAction(ArrayList<Identifier> id, double value) {
+	public ReverseVelocityIDAction(ArrayList<Identifier> id, Double value) {
 		super(id, value);
 		// TODO Auto-generated constructor stub
 	}

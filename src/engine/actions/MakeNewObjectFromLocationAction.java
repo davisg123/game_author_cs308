@@ -1,13 +1,14 @@
 package engine.actions;
 
+import authoring.model.collections.GameObjectsCollection;
 import engine.gameObject.GameObject;
 
 public class MakeNewObjectFromLocationAction extends MakeNewObjectAction{
 
-	private double myX; 
-	private double myY; 
+	private Double myX; 
+	private Double myY; 
 	
-	public MakeNewObjectFromLocationAction(String type, double x, double y) {
+	public MakeNewObjectFromLocationAction(String type, Double x, Double y) {
 		super(type);
 		myX = x; 
 		myX = y; 
@@ -17,13 +18,18 @@ public class MakeNewObjectFromLocationAction extends MakeNewObjectAction{
 	@Override
 	public void execute() {
 		for (GameObject object: myMasterList){
+		    //System.out.println(object.getIdentifier().getHash());
 			//TODO: will be template list
 			if (object.getIdentifier().getType().equals(myType)){
 				GameObject newObject = new GameObject(object, myX, myY, myType); 
+				newObject.setIdentifier(object.getIdentifier());
+				newObject.setPhysicsBody(object.getPhysicsBody());
 				myRenderer.createAndAssignRenderedNode(newObject);
 				myCurrentLevel.addGameObject(newObject);
 			}
 		}
 	}
+	
+
 
 }

@@ -6,6 +6,7 @@ import java.util.Iterator;
 import java.util.Map;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
@@ -62,6 +63,7 @@ public class GameObjectRenderer {
         RenderedNode node = new RenderedNode();
         node.setImageView(createImageAndView(obj));
         node.setCollisionBody(createCollisionBody(obj));
+        node.setLabel(createLabel(obj));
         node.setLayoutX(0);
         node.setLayoutY(0);
         node.setTranslateX(obj.getX());
@@ -95,11 +97,27 @@ public class GameObjectRenderer {
                 return view;
             }
             catch (FileNotFoundException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
+                return null;
             }
         }
         return null;
+    }
+    
+    /**
+     * Creates the Label for a given RenderedNode
+     * @param obj
+     * @return
+     */
+    private Label createLabel (GameObject obj) {
+        String l = obj.getLabel();
+        Label label = null; 
+        if(l != null) {
+            label = new Label(l);
+            label.setPrefHeight(obj.getHeight());
+            label.setPrefWidth(obj.getWidth());
+            label.setText(l);
+        }
+        return label;
     }
 
     /**
@@ -108,11 +126,10 @@ public class GameObjectRenderer {
      * @return
      */
     private Node createCollisionBody (GameObject obj) {
-        //Temporary
         PhysicsBody body = obj.getPhysicsBody();
-        Rectangle asdf = new Rectangle(body.getCollisionBodyHeight(),body.getCollisionBodyWidth());
-        asdf.setVisible(false);
-        return asdf;
+        Rectangle hitBox = new Rectangle(body.getCollisionBodyHeight(),body.getCollisionBodyWidth());
+        hitBox.setVisible(false);
+        return hitBox;
     }
 
     /**

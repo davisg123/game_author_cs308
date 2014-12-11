@@ -18,13 +18,15 @@ import engine.physics.Velocity;
 
 public class YVelocityIDAction extends VelocityIDAction {
 
-	public YVelocityIDAction(ArrayList<Identifier> id, double value) {
+	public YVelocityIDAction(ArrayList<Identifier> id, Double value) {
 		super(id, value);
 	}
 
 	@Override
-	protected Vector determineVector(double value, Vector vector) {
-		vector=new Velocity(0, value);
+	protected Vector determineVector(GameObject object, double value,
+			Vector vector) {
+		vector = new Velocity(object.getPhysicsBody().getVelocity().getX(),
+				value);
 		return vector;
 	}
 

@@ -4,7 +4,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 
-public class BooleanField extends HBox{
+public class BooleanField extends PropertyField{
 	
 	private CheckBox myCheckBox;
 	
@@ -15,7 +15,7 @@ public class BooleanField extends HBox{
 		this.getChildren().add(myCheckBox);
 	}
 	
-	public boolean getValue(){
+	public boolean getInformation(){
 		return myCheckBox.isSelected();
 	}
 	

@@ -2,6 +2,7 @@ package engine.conditions;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import engine.GameManager;
 import engine.actions.Action;
 import engine.actions.Initializable;
@@ -20,7 +21,7 @@ import engine.gameObject.Identifier;
 public abstract class Condition implements Identifiable, Initializable{
 
     protected List<Action> myActions = new ArrayList<Action>();
-    private boolean myEnabled;
+    private Boolean myEnabled;
     protected transient GameManager myGameManager;
     protected Identifier myId;
     
@@ -32,7 +33,7 @@ public abstract class Condition implements Identifiable, Initializable{
         return myActions;
     }
     
-    public void setEnabled(boolean enabled){
+    public void setEnabled(Boolean enabled){
         myEnabled = enabled;
     }
     

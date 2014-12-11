@@ -7,7 +7,6 @@ import engine.gameObject.GameObject;
 import engine.gameObject.IEnabled;
 import engine.gameObject.Identifiable;
 import engine.gameObject.Identifier;
-import engine.gameObject.components.properties.IProperty;
 
 /**
  * Components of the GameObject Class
@@ -25,7 +24,7 @@ public class Component implements IEnabled,Identifiable {
     protected Identifier myID;
     private double myDoubleValue;
     private String myStringValue;
-  
+    private Boolean myBooleanValue;
     //Not sure if it should be included in constructor but we might need to know if this component is enabled or not.
     protected Boolean enabled;
     // Probably will create a Properties files with types of Components
@@ -33,19 +32,19 @@ public class Component implements IEnabled,Identifiable {
     /**
      * Constructors
      */
-    public Component(){
-        this("");
-    }
     public Component (String stringVal){
        this.myStringValue = stringVal;
     }
     public Component(double doubVal){
-        this.myDoubleValue = doubVal;
+       this.myDoubleValue = doubVal;
     }
-
+    public Component (boolean boolVal){
+        this.myBooleanValue = boolVal;
+    }
+    
 
     public void update(GameObject object){
-        
+       //TODO 
     }
 
     public void enable() {
@@ -92,6 +91,19 @@ public class Component implements IEnabled,Identifiable {
     
     public void setDoubleValue(double val){
         myDoubleValue = val;
+    }
+    
+
+    public boolean getBooleanValue(){
+       return myBooleanValue;
+    }
+    
+    public void setBooleanValue(boolean val){
+        myBooleanValue = val;
+    }
+    
+    public void switchBooleanValue(){
+        myBooleanValue = !myBooleanValue;
     }
 
     public void setIdentifier (Identifier myId){

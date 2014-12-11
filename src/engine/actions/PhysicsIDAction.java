@@ -10,14 +10,19 @@ import engine.collision.objects.CollisionComposition;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 
+/**
+ * 
+ * @author Ben
+ *
+ */
 public abstract class PhysicsIDAction implements Action, Initializable {
 
-	protected double myValue;
+	protected Double myValue;
 	protected CollisionComposition myCollision;
 	protected Collection<GameObject> myObjects;
 	protected List<Identifier> myID;
 
-	public PhysicsIDAction(ArrayList<Identifier> id, double value) {
+	public PhysicsIDAction(ArrayList<Identifier> id, Double value) {
 		myID = id;
 		myValue = value;
 		myCollision = new CollisionComposition();

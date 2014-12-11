@@ -33,6 +33,8 @@ public abstract class GameObjectCondition extends Condition {
     	for (Identifier id: myGameObjectIDs){
     		myGameObjects.add(gameManager.objectForIdentifier(id));
     	}
+        
+        
     }
     
     public void setGameObjects(GameObjectsCollection gameObjects){

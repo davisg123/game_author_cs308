@@ -40,7 +40,22 @@
 	-fx-background-size: 30 30;
 }
 
+#saveGameProgressButton {
+	-fx-background-image: url("saveButton.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center;
+	-fx-background-size: 30 30;
+}
+
+#loadGameProgressButton {
+	-fx-background-image: url("loadButton.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center;
+	-fx-background-size: 30 30;
+}
+
 #container {
+	-fx-background-size: 1000 100;
     -fx-padding: 3px;
     -fx-background-color: 
         linear-gradient(#ffffff 0%, #ced3da 4%, #c1c6cf 17%, 
@@ -49,4 +64,11 @@
 
 #tooltip {
 	-fx-background-radius: 2 2 2 2;
+}
+
+#featuredGame1 {
+	-fx-background-image: url("sampleGame1.png");
+	-fx-background-repeat: no-repeat;
+	-fx-background-position: center;
+	-fx-background-size: 100 50;
 }

@@ -4,10 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import data.Observable;
 import java.util.List;
-import authoring.model.collections.ConditionIDsCollection;
 import authoring.model.collections.GameObjectsCollection;
-import engine.GameManager;
-import engine.actions.Initializable;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifiable;
 import engine.gameObject.Identifier;
@@ -23,11 +20,12 @@ import engine.gameObject.Identifier;
 public class Level extends Observable implements Identifiable {
 
     private Identifier myId;
+    private String myBackgroundImage;
+    private String myBackgroundMusic;
     private GameObjectsCollection myDefaultGameObjects;
     private GameObjectsCollection myWorkingGameObjects;
     private List<Identifier> myGameObjectIdList;
     private List<Identifier> myConditionIdList;
-    //private ConditionIDsCollection myConditionIDs;
     private boolean myStartLevelIndicator;
 
     /**
@@ -67,7 +65,7 @@ public class Level extends Observable implements Identifiable {
      * Reset method for the GameObjects
      */
     public void resetLevel() {
-        myWorkingGameObjects = myDefaultGameObjects;
+        myWorkingGameObjects = new GameObjectsCollection(myDefaultGameObjects);
     }
 
     /**
@@ -86,15 +84,8 @@ public class Level extends Observable implements Identifiable {
         return myWorkingGameObjects.iterator();
     }
 
-    /**
-     * @return Iterator for the ConditionIDsCollection
-     */
-   // public Iterator<String> getConditionIDsIterator() {
-     //  return myConditionIDs.iterator();
-    //}
-
     public void addGameObject(GameObject gameObject) {
-        myDefaultGameObjects.add(gameObject);
+        myWorkingGameObjects.add(gameObject);
         setChanged();
         notifyObservers(this);
     }
@@ -134,14 +125,16 @@ public class Level extends Observable implements Identifiable {
         }
     }
     
-    public Iterator<Identifier> getGameObjectIds () {
-        return myGameObjectIdList.iterator();
+    public List<Identifier> getConditionIdentifiers() {
+    	return myConditionIdList;
     }
     
     public Iterator<Identifier> getConditionIds () {
-        //remove me
-        myConditionIdList = new ArrayList<Identifier>();
-        return myConditionIdList.iterator();
+        return (new ArrayList<Identifier>()).iterator();
+    }
+    
+    public List<Identifier> getConditionCollection(){
+    	return myConditionIdList;
     }
     
     public void setGameObjectIds (List<Identifier> iDList) {
@@ -163,5 +156,20 @@ public class Level extends Observable implements Identifiable {
     public List<Identifier> getGameObjectIDs(){
     	return myGameObjectIdList; 
     }
+    
+    public void setBackgroundImage(String s){
+    	myBackgroundImage = s;
+    }
+    
+    public void setBackgroundMusic(String s){
+    	myBackgroundMusic = s;
+    }
+    
+    public String getBackgroundImage(){
+    	return myBackgroundImage;
+    }
 
+    public String getBackgroundMusic(){
+    	return myBackgroundMusic;
+    }
 }

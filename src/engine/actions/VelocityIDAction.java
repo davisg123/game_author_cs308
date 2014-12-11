@@ -10,9 +10,14 @@ import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 import engine.physics.Vector;
 
+/**
+ * 
+ * @author Ben
+ *
+ */
 public abstract class VelocityIDAction extends VectorPhysicsAction {
 
-	public VelocityIDAction(ArrayList<Identifier> id, double value) {
+	public VelocityIDAction(ArrayList<Identifier> id, Double value) {
 		super(id, value);
 	}
 
@@ -21,7 +26,7 @@ public abstract class VelocityIDAction extends VectorPhysicsAction {
 			Collection<GameObject> myObjects, Object value) {
 		Vector vector = new Vector();
 		return (x, y) -> x.getPhysicsBody().setVelocity(
-				determineVector((Double) value, vector));
+				determineVector(x, (Double) value, vector));
 	}
 
 }

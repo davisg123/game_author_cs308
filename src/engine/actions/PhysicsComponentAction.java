@@ -1,7 +1,6 @@
 package engine.actions;
 
 import java.util.ArrayList;
-
 import java.util.Collection;
 
 import engine.GameManager;
@@ -11,9 +10,14 @@ import engine.gameObject.Identifier;
 import engine.physics.PhysicsComponent;
 import engine.physics.Vector;
 
+/**
+ * 
+ * @author Ben
+ *
+ */
 public abstract class PhysicsComponentAction extends PhysicsIDAction {
 
-	public PhysicsComponentAction(ArrayList<Identifier> id, double value) {
+	public PhysicsComponentAction(ArrayList<Identifier> id, Double value) {
 		super(id, value);
 	}
 

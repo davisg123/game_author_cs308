@@ -1,6 +1,7 @@
 package gamePlayer.view;
 
 import gamePlayer.model.PlayerModel;
+import gamePlayer.view.keyboardUtility.KeyboardView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -62,6 +63,16 @@ public class MenuBarController implements Initializable{
 	@FXML
 	private void saveGameToWeb(final ActionEvent event) {
 		myPlayerModel.saveGameToWeb();
+	}
+	
+	@FXML
+	private void saveGameProgress(final ActionEvent event) {
+		myPlayerModel.saveGameProgress();
+	}
+	
+	@FXML
+	private void loadGameProgress(final ActionEvent event) {
+		myPlayerModel.loadGameProgress();
 	}
 	
 	@FXML

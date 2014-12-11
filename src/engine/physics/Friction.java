@@ -1,7 +1,9 @@
 package engine.physics;
 
 /**
- * friction force, subclass of force, is a vector
+ * friction force, subclass of force, is a vector. not used. in fact, i botched
+ * friction and realized it's incredibly difficult to properly do because of the
+ * graph of the coefficient in real life based on velocity
  * 
  * @author Ben
  *

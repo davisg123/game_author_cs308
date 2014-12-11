@@ -9,9 +9,14 @@ import engine.gameObject.Identifier;
 import engine.physics.Mass;
 import engine.physics.Scalar;
 
+/**
+ * 
+ * @author Ben
+ *
+ */
 public abstract class ScalarPhysicsAction extends PhysicsComponentAction {
 
-	public ScalarPhysicsAction(ArrayList<Identifier> id, double value) {
+	public ScalarPhysicsAction(ArrayList<Identifier> id, Double value) {
 		super(id, value);
 		// TODO Auto-generated constructor stub
 	}

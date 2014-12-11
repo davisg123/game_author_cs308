@@ -5,7 +5,7 @@ import authoring.model.collections.GameObjectsCollection;
 
 public class FixedCollisionTypeAction extends PhysicsTypeAction {
 
-    public FixedCollisionTypeAction (String type, String secondType, double value) {
+    public FixedCollisionTypeAction (String type, String secondType, Double value) {
         super(type, secondType, value);
         // TODO Auto-generated constructor stub
     }
