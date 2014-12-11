@@ -2,7 +2,7 @@ package engine.actions;
 
 import java.util.ArrayList;
 import java.util.Collection;
-
+import java.util.List;
 import engine.GameManager;
 import engine.actions.PhysicsIDAction.TwoArgInterface;
 import engine.gameObject.GameObject;
@@ -17,7 +17,7 @@ import engine.physics.Vector;
  */
 public abstract class ImpulseAction extends VectorPhysicsAction {
 
-	public ImpulseAction(ArrayList<Identifier> id, double value) {
+	public ImpulseAction(List<Identifier> id, double value) {
 		super(id, value);
 	}
 
