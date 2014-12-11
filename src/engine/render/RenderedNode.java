@@ -3,6 +3,7 @@ package engine.render;
 import javafx.geometry.Bounds;
 import javafx.scene.Group;
 import javafx.scene.Node;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 
 /**
@@ -15,6 +16,7 @@ import javafx.scene.image.ImageView;
 public class RenderedNode extends Group {
     private ImageView myImageView;
     private Node myCollisionBody;
+    private Label myLabel;
     private String myImagePath;
     //visibility....
 
@@ -22,13 +24,25 @@ public class RenderedNode extends Group {
      * Sets the CollisionBody
      * @param body
      */
-    public void setCollisionBody(Node body) {
+    public void setCollisionBody (Node body) {
         //Handle null case
         if(body != null) {
             myCollisionBody = body;
             this.getChildren().add(myCollisionBody);
         }
     }
+    
+    /**
+     * Sets the Label
+     */
+    
+    public void setLabel (Label label) {
+        if(label != null) {
+            myLabel = label;
+            this.getChildren().add(myCollisionBody);
+        }
+    }
+    
     
     /**
      * Sets the ImageView
@@ -48,6 +62,13 @@ public class RenderedNode extends Group {
      */
     public ImageView getImageView() {
         return myImageView;
+    }
+    
+    /**
+     * Gets the Label
+     */
+    public Label getLabel () {
+        return myLabel;
     }
 
     /**

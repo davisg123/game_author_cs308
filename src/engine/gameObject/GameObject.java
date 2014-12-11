@@ -21,6 +21,7 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
     private String myCurrentImageName;
     private String myID;
     private PhysicsBody myPhysicsBody;
+    private String myLabel;
 
     private double myHeight;
     private double myWidth;
@@ -332,6 +333,14 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
         }
     }
 
+    public void setLabel (String label) {
+        myLabel = label;
+    }
+    
+    public String getLabel () {
+        return myLabel;
+    }
+    
     @Override
     public void setIdentifier (Identifier myId) {
         this.myId = myId;
