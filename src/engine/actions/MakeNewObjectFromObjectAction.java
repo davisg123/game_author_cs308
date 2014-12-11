@@ -27,11 +27,11 @@ public class MakeNewObjectFromObjectAction extends MakeNewObjectAction {
 		for (GameObject object: myMasterList){
 			//TODO: To TEMPLATELIST
 			if (object.getIdentifier().getType().equals(myType)){
-				GameObject newObject = new GameObject(object, myObject.getX(), myObject.getY(), myType);
-				newObject.setOrientation(myObject.getOrientation());
+				GameObject newObject = new GameObject(object, myObject.getTranslateX(), myObject.getTranslateY(), myType);
 				newObject.setIdentifier(object.getIdentifier());
 				newObject.setPhysicsBody(object.getPhysicsBody());
 				myRenderer.createAndAssignRenderedNode(newObject);
+				newObject.setOrientation(myObject.getOrientation());
 				myCurrentLevel.addGameObject(newObject);
 				
 				

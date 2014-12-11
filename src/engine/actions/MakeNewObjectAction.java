@@ -22,7 +22,7 @@ public abstract class MakeNewObjectAction implements Action, Initializable {
 	public void initialize(GameManager manager) {
 		myRenderer = manager.getRenderer();
 		//will be template list
-		myMasterList = manager.getLevelManager().getGameObjects(); 
+		myMasterList = manager.getLevelManager().getTemplates(); 
 		myCurrentLevel = manager.getLevelManager().getCurrentLevel();
 		
 	}
