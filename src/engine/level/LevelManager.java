@@ -8,6 +8,7 @@ import engine.conditions.Condition;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 import engine.render.GameObjectRenderer;
+import engine.sound.SoundUtility;
 
 /**
  * Manages the Levels, and progression of the Game
@@ -24,6 +25,7 @@ public class LevelManager implements Iterable<Level> {
 	private Level myCurrentLevel;
 	// private int myCurrentIndex;
 	private GameObjectRenderer myRenderer;
+	private SoundUtility mySoundPlayer;
 
 	/**
 	 * Constructor for a level
@@ -36,12 +38,12 @@ public class LevelManager implements Iterable<Level> {
 	 */
 	public LevelManager(LevelsCollection levels,
 			GameObjectsCollection gameObjects, ConditionsCollection conditions,
-			GameObjectRenderer renderer) {
+			GameObjectRenderer renderer, SoundUtility soundPlayer) {
 		myLevels = levels;
 		myGameObjects = gameObjects;
 		myConditions = conditions;
-		// myCurrentIndex = 0;
 		myRenderer = renderer;
+		mySoundPlayer = soundPlayer;
 		findAndSetStartLevel(levels);
 	}
 
@@ -111,6 +113,10 @@ public class LevelManager implements Iterable<Level> {
 	public void initializeCurrentLevel() {
 		disableAllConditions();
 		setLevelEnabledConditions();
+		for(Level level : myLevels) {
+		    mySoundPlayer.stopBackGroundMusic(level.getBackgroundMusic());
+		}
+		mySoundPlayer.playBackGroundMusic(myCurrentLevel.getBackgroundMusic());
 		myCurrentLevel.initialize(this);
 		myRenderer.renderGameObjects(myCurrentLevel);
 	}

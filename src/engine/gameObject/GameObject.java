@@ -2,6 +2,7 @@ package engine.gameObject;
 
 import engine.gameObject.components.*;
 import engine.render.RenderedNode;
+import engine.scrolling.ScrollingUtility;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -21,6 +22,7 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
     private String myCurrentImageName;
     private String myID;
     private PhysicsBody myPhysicsBody;
+    private String myLabel;
 
     private double myHeight;
     private double myWidth;
@@ -28,6 +30,7 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
     private double myXCoord;
     private double myYCoord;
     private transient RenderedNode myRenderedNode;
+    private transient ScrollingUtility myScrollingUtility;
 
     private boolean myCollision;
 
@@ -332,6 +335,14 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
         }
     }
 
+    public void setLabel (String label) {
+        myLabel = label;
+    }
+    
+    public String getLabel () {
+        return myLabel;
+    }
+    
     @Override
     public void setIdentifier (Identifier myId) {
         this.myId = myId;
