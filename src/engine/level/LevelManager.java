@@ -21,12 +21,13 @@ import engine.sound.SoundUtility;
 public class LevelManager implements Iterable<Level> {
 	private LevelsCollection myLevels;
 	private GameObjectsCollection myGameObjects;
+	private GameObjectsCollection myTemplateObjects;
 	private ConditionsCollection myConditions;
 	private Level myCurrentLevel;
 	// private int myCurrentIndex;
 	private GameObjectRenderer myRenderer;
 	private SoundUtility mySoundPlayer;
-
+	
 	/**
 	 * Constructor for a level
 	 * 
@@ -44,6 +45,8 @@ public class LevelManager implements Iterable<Level> {
 		myConditions = conditions;
 		myRenderer = renderer;
 		mySoundPlayer = soundPlayer;
+		myTemplateObjects = new GameObjectsCollection(); 
+		makeTemplates(); 
 		findAndSetStartLevel(levels);
 	}
 
@@ -151,6 +154,14 @@ public class LevelManager implements Iterable<Level> {
 		}
 	}
 
+	private void makeTemplates(){
+		for (GameObject object: myGameObjects){
+			if (object.getIdentifier().getUniqueId().equals("template")){
+				myTemplateObjects.add(object);
+			}
+		}
+	}
+	
 	/**
 	 * Disable all conditions before enabling the correct ones
 	 */
@@ -166,6 +177,10 @@ public class LevelManager implements Iterable<Level> {
 
 	public GameObjectsCollection getGameObjects() {
 		return myGameObjects;
+	}
+	
+	public GameObjectsCollection getTemplates(){
+		return myTemplateObjects; 
 	}
 
 }

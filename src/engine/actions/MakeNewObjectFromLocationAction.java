@@ -11,7 +11,7 @@ public class MakeNewObjectFromLocationAction extends MakeNewObjectAction{
 	public MakeNewObjectFromLocationAction(String type, Double x, Double y) {
 		super(type);
 		myX = x; 
-		myX = y; 
+		myY = y; 
 		
 	}
 

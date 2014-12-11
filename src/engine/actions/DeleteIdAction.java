@@ -19,7 +19,7 @@ public class DeleteIdAction extends IDAction{
 	
 	@Override
 	public void initialize(GameManager manager) {
-		myGameObjects = manager.getAllGameObjects();
+		myGameObjects = manager.getLevelManager().getGameObjects();
 	}
 
 	@Override

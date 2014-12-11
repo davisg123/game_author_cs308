@@ -118,7 +118,7 @@ public class Level extends Observable implements Identifiable {
     public void initialize (LevelManager manager) {
         for (Identifier i : myGameObjectIdList){
             GameObject foundObject = manager.objectForIdentifier(i);
-            if (foundObject != null){
+            if (foundObject != null && !foundObject.getIdentifier().getUniqueId().equals("template")){
                 myDefaultGameObjects.add(foundObject);
                 myWorkingGameObjects.add(foundObject);
             }
