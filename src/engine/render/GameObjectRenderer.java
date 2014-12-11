@@ -40,7 +40,7 @@ public class GameObjectRenderer {
         myRenderedNodes = new HashMap<>();
         myFilePathUtility = new FilePathUtility(IMAGES,relativePath);
     }
-    
+
     /**
      * Renders all GameObjects within a Level
      * @param level
@@ -48,9 +48,27 @@ public class GameObjectRenderer {
     public void renderGameObjects (Level level) {
         myCanvas.getChildren().clear();
         myCurrentLevel = level;
+        setBackGroundImage(level);
         for(Iterator<GameObject> iter = myCurrentLevel.getGameObjectIterator(); iter.hasNext();) {
             GameObject obj = iter.next();
             createAndAssignRenderedNode(obj);
+        }
+    }
+
+    //TODO fix shitty code
+    private void setBackGroundImage(Level level) {   
+        FileInputStream in;
+        try {
+            in = new FileInputStream(myFilePathUtility.getFilePath()+level.getBackgroundImage());
+            Image image = new Image(in);
+            ImageView view = new ImageView();
+            view.setImage(image);
+            view.setPreserveRatio(true);
+            view.setSmooth(true);
+            view.setCache(true);
+            myCanvas.getChildren().add(view);
+        }
+        catch (FileNotFoundException e) {
         }
     }
 
@@ -81,7 +99,7 @@ public class GameObjectRenderer {
      */
     private ImageView createImageAndView (GameObject obj) {
         String imageName = obj.getCurrentImageName();
-        
+
         if(imageName != null) {
             FileInputStream in;
             try {
@@ -102,7 +120,7 @@ public class GameObjectRenderer {
         }
         return null;
     }
-    
+
     /**
      * Creates the Label for a given RenderedNode
      * @param obj
@@ -139,4 +157,6 @@ public class GameObjectRenderer {
     public void removeRenderedNode (String nodeID) {
         myRenderedNodes.remove(nodeID);
     }
+
+
 }

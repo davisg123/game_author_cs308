@@ -6,7 +6,6 @@ import java.util.Map;
 import engine.FilePathUtility;
 import engine.level.Level;
 import authoring.model.collections.LevelsCollection;
-import authoring.model.collections.SoundsCollection;
 import javafx.scene.media.AudioClip;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -57,7 +56,7 @@ public class SoundUtility {
     }
 
     private MediaPlayer makeMediaPlayer (String musicPath) {
-        File music = new File(myFilePathUtility.getFilePath()+SOUNDS+musicPath);
+        File music = new File(myFilePathUtility.getFilePath()+musicPath);
         Media media = new Media(music.toURI().toString());
         return new MediaPlayer(media);
     }
@@ -71,7 +70,7 @@ public class SoundUtility {
     }
 
     private AudioClip makeAudioClip (String audioClipPath) {
-        File audioClip = new File(myFilePathUtility.getFilePath()+SOUNDS+audioClipPath);
+        File audioClip = new File(myFilePathUtility.getFilePath()+audioClipPath);
         return new AudioClip(audioClip.toURI().toString());
     }
 

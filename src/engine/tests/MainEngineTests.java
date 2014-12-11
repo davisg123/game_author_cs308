@@ -184,6 +184,8 @@ public class MainEngineTests extends Application {
          *******/
         LevelsCollection myLevels = new LevelsCollection();
         Level level0 = new Level(allGameObjects.getIdentifierList(),myConditions.getIdentifierList(),true);
+        level0.setBackgroundMusic("Flappy_Bird_Theme_Song.mp3");
+        level0.setBackgroundImage("Personnages-celebres-Troll-face-Troll-face-me-gusta-29215.jpg");
         myLevels.add(level0);
         
         /*
