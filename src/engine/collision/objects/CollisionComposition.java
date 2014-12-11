@@ -3,6 +3,7 @@ package engine.collision.objects;
 import engine.gameObject.GameObject;
 import engine.gameObject.components.PhysicsBody;
 import engine.physics.Velocity;
+
 /**
  * 
  * @author Ben
@@ -12,54 +13,48 @@ public class CollisionComposition {
 	private static final double FRAMES_PER_SECOND = 60.0;
 
 	public boolean isOnXAxis(GameObject one, GameObject two) {
-		return false;
-		/*
 		GameObject fixed = (one.getPhysicsBody().getScalar("CollisionConstant")
 				.getValue() == 1.0) ? one : two;
 		GameObject other = (one.getPhysicsBody().getScalar("CollisionConstant")
 				.getValue() == 1.0) ? two : one;
-		double xFixed = fixed.getTranslateX();
-		double yFixed = fixed.getTranslateY();
-		double xOther = other.getTranslateX();
-		double yOther = other.getTranslateY();
-		double fixedHeight = fixed.getPhysicsBody().getCollisionBodyWidth() / 2.0;
-		double fixedWidth = fixed.getPhysicsBody().getCollisionBodyHeight() / 2.0;
-		double otherHeight = other.getPhysicsBody().getCollisionBodyWidth() / 2.0;
-		double otherWidth = other.getPhysicsBody().getCollisionBodyHeight() / 2.0;
-		double xChange = 0.0;
-		double yChange = 0.0;
-		// maybe math.abs
-		double xVelocity = Math
-				.abs(other.getPhysicsBody().getVelocity().getX());
-		double yVelocity = Math
-				.abs(other.getPhysicsBody().getVelocity().getY());
-		if (xFixed > xOther && yFixed > yOther) {
-			System.out.println("1");
-			xChange = (xOther + otherWidth) - (xFixed - fixedWidth);
-			yChange = (yOther + otherHeight) - (yFixed - fixedHeight);
-			return (xChange / xVelocity) < (yChange / yVelocity);
-		}
-		if (xFixed > xOther && yFixed <= yOther) {
-			System.out.println("2");
-			xChange = (xOther + otherWidth) - (xFixed - fixedWidth);
-			yChange = (yFixed + fixedHeight) - (yOther - otherHeight);
-			return (xChange / xVelocity) < (yChange / yVelocity);
-		}
-		if (xFixed < xOther && yFixed > yOther) {
-			System.out.println("3");
-			xChange = (xFixed + fixedWidth) - (xOther - otherWidth);
-			yChange = (yOther + otherHeight) - (yFixed - fixedHeight);
-			return (xChange / xVelocity) < (yChange / yVelocity);
-		}
-		if (xFixed < xOther && yFixed <= yOther) {
-			System.out.println("4");
-			xChange = (xFixed + fixedWidth) - (xOther - otherWidth);
-			yChange = (yFixed + fixedHeight) - (yOther - otherHeight);
-			return (xChange / xVelocity) < (yChange / yVelocity);
+		double xVel = other.getPhysicsBody().getVelocity().getX();
+		double yVel = other.getPhysicsBody().getVelocity().getY();
+		double curX;
+		double curY;
+		GameObject test = new GameObject(other);
+		boolean x;
+		boolean y;
+		for (double i = 2.0; i < 150; i++) {
+			x = false;
+			y = false;
+			curX = xVel / (i - .5);
+			curY = yVel / (i - .5);
+			test.setTranslateX(-1.0 * curX);
+			if (test.getRenderedNode().getBoundsInParent()
+					.intersects(fixed.getRenderedNode().getBoundsInParent())) {
+				x = true;
+			}
+			test.setTranslateX(curX);
+			test.setTranslateY(curY * -1.0);
+			if (test.getRenderedNode().getBoundsInParent()
+					.intersects(fixed.getRenderedNode().getBoundsInParent())) {
+				y = true;
+			}
+			test.setTranslateY(curY);
+			if (x && y) {
+				// means we passed the point where one was true, one false, in
+				// this case it's too small to notice the difference
+				return false;
+			}
+			if (x && !y) {
+				return false;
+			}
+			if (y && !x) {
+				return true;
+			}
 
 		}
-
-*/
+		return false;
 	}
 
 	public void fixedCollision(GameObject one, GameObject two) {
