@@ -16,6 +16,7 @@ import engine.actions.FixedCollisionTypeAction;
 import engine.actions.MakeNewObjectFromLocationAction;
 import engine.actions.TranslateXType;
 import engine.actions.TranslateYType;
+import engine.actions.XVelocityIDAction;
 import engine.actions.YVelocityIDAction;
 import engine.conditions.BoundaryConditionY;
 import engine.conditions.ButtonCondition;
@@ -86,7 +87,7 @@ public class MainEngineTests extends Application {
         GameObject floorLeft = new GameObject(null,"floor.png",
                                                -50, 200, 20, 200, 0, "floor_left");
         floorLeft.setIdentifier(new Identifier("floor","b"));
-        PhysicsBody floorLeftBody = new PhysicsBody(20,200);
+        PhysicsBody floorLeftBody = new PhysicsBody(20,210);
         floorLeftBody.setVelocity(new Velocity(0,-40));
         floorLeftBody.addScalar((new CollisionConstant(1.0)));
         floorLeft.setPhysicsBody(floorLeftBody);
@@ -97,7 +98,7 @@ public class MainEngineTests extends Application {
         //create a ball
         GameObject ball = new GameObject(null,"ball.png",150,50,30,30,0,"ball_object");
         ball.setIdentifier(new Identifier("ball","a"));
-        PhysicsBody ballBody = new PhysicsBody(30,30);
+        PhysicsBody ballBody = new PhysicsBody(37,37);
         ball.setPhysicsBody(ballBody);
         myBallObjects.add(ball);
 
@@ -106,19 +107,23 @@ public class MainEngineTests extends Application {
          ******/
 
         ConditionsCollection myConditions = new ConditionsCollection();
-        
+        ArrayList <Identifier> temp=new ArrayList();
+        temp.add(ball.getIdentifier());
         ArrayList<Identifier> ballIdList = new ArrayList<Identifier>();
         ballIdList.add(ball.getIdentifier());
-        TranslateYType yVelAction = new TranslateYType("ball",1.0);
+        Action yVelAction = new YVelocityIDAction(temp,80.0);
+        Action xVelAction=new XVelocityIDAction(temp, 0.0);
         ArrayList<Action> yVelActionList = new ArrayList<Action>();
         yVelActionList.add(yVelAction);
+        yVelActionList.add(xVelAction);
         TimeCondition myConstantVelocity = new TimeCondition(yVelActionList,1.0,true);
         myConstantVelocity.setIdentifier(new Identifier("time_cond","a"));
         myConditions.add(myConstantVelocity);
         
-        Action aAct = new TranslateXType("ball",-2.0);
+       
+        Action aAct = new XVelocityIDAction(temp, -100.0);
         //Action aAct = new MakeNewObjectFromLocationAction("ball",200.0,200.0);
-        Action dAct = new TranslateXType("ball",2.0);
+        Action dAct = new XVelocityIDAction(temp ,100.0);
         ArrayList<Action> actionList = new ArrayList<Action>();
         actionList.add(aAct);
         ArrayList<KeyCode> kclA = new ArrayList<KeyCode>();

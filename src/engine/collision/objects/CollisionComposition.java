@@ -18,29 +18,34 @@ public class CollisionComposition {
 		GameObject other = (one.getPhysicsBody().getScalar("CollisionConstant")
 				.getValue() == 1.0) ? two : one;
 		double xVel = other.getPhysicsBody().getVelocity().getX();
+		System.out.println(xVel);
 		double yVel = other.getPhysicsBody().getVelocity().getY();
 		double curX;
 		double curY;
 		GameObject test = new GameObject(other);
 		boolean x;
 		boolean y;
+		double xPoint;
+		double yPoint;
 		for (double i = 2.0; i < 150; i++) {
+			xPoint = other.getTranslateX();
+			yPoint = other.getTranslateY();
 			x = false;
 			y = false;
-			curX = xVel / (i - .5);
-			curY = yVel / (i - .5);
-			test.setTranslateX(-1.0 * curX);
-			if (test.getRenderedNode().getBoundsInParent()
+			curX = xVel / (i - .9);
+			curY = yVel / (i - .9);
+			other.setTranslateX(xPoint - curX);
+			if (other.getRenderedNode().getBoundsInParent()
 					.intersects(fixed.getRenderedNode().getBoundsInParent())) {
 				x = true;
 			}
-			test.setTranslateX(curX);
-			test.setTranslateY(curY * -1.0);
-			if (test.getRenderedNode().getBoundsInParent()
+			other.setTranslateX(other.getTranslateX() + curX);
+			other.setTranslateY(yPoint - curY);
+			if (other.getRenderedNode().getBoundsInParent()
 					.intersects(fixed.getRenderedNode().getBoundsInParent())) {
 				y = true;
 			}
-			test.setTranslateY(curY);
+			other.setTranslateY(other.getTranslateY() + curY);
 			if (x && y) {
 				// means we passed the point where one was true, one false, in
 				// this case it's too small to notice the difference
@@ -58,10 +63,10 @@ public class CollisionComposition {
 	}
 
 	public void fixedCollision(GameObject one, GameObject two) {
-
 		// System.out.println(xChange / (Math.abs(curX)+Math.abs(otherX)));
 		// create new condition to stop x or y
 		boolean xAxis = isOnXAxis(one, two);
+		System.out.println(xAxis);
 		GameObject fixed = (one.getPhysicsBody().getScalar("CollisionConstant")
 				.getValue() == 1) ? one : two;
 		GameObject other = (one.getPhysicsBody().getScalar("CollisionConstant")
@@ -71,6 +76,19 @@ public class CollisionComposition {
 			other.getPhysicsBody().setVelocity(
 					new Velocity(0.0, other.getPhysicsBody().getVelocity()
 							.getY()));
+			if (other.getTranslateX() < fixed.getTranslateX()) {
+				toMove = collisionHelper(fixed.getTranslateX(),
+						other.getTranslateX(), fixed.getPhysicsBody()
+								.getCollisionBodyHeight() / 2.0,
+						other.getPhysicsBody().getCollisionBodyHeight() / 2.0);
+			} else {
+				toMove = -1.0
+						* collisionHelper(fixed.getTranslateX(),
+								other.getTranslateX(), fixed.getPhysicsBody()
+										.getCollisionBodyHeight() / 2.0, other
+										.getPhysicsBody()
+										.getCollisionBodyHeight() / 2.0);
+			}
 		} else {
 			if (other.getTranslateY() < fixed.getTranslateY()) {
 				toMove = collisionHelper(fixed.getTranslateY(),
@@ -87,7 +105,7 @@ public class CollisionComposition {
 										.getCollisionBodyWidth() / 2.0);
 			}
 			other.getPhysicsBody().setVelocity(
-					new Velocity(fixed.getPhysicsBody().getVelocity().getX(),
+					new Velocity(other.getPhysicsBody().getVelocity().getX(),
 							fixed.getPhysicsBody().getVelocity().getY()));
 			other.setTranslateY(other.getTranslateY() - toMove);
 
