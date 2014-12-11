@@ -61,13 +61,6 @@ public class MainEngineTests extends Application {
 
         myScene = new Scene(myRootGroup,300,300);
         ButtonConditionManager.getInstance().beginListeningToScene(myScene);
-       /* ImageView view = new ImageView();
-       
-        Image image = new Image(getClass().getResourceAsStream("resources/images/slowpoke.jpg"));
-        view.setImage(image);
-        Group asdf = new Group();
-        asdf.getChildren().add(view);
-        myRootGroup.getChildren().add(asdf);*/
         myStage.setScene(myScene);
         myStage.show();
         createGameObject(myRootGroup);
@@ -151,14 +144,13 @@ public class MainEngineTests extends Application {
         myConditions.add(ballAndPlatformCollision);
         
         Action boundaryRightAction = new TranslateYType("floor",350.0);
-        Action boundaryLeftAction = new TranslateYType("foor",350.0);
+        Action boundaryLeftAction = new TranslateYType("floor",350.0);
         ArrayList<Action> boundaryActionList = new ArrayList<Action>();
         boundaryActionList.add(boundaryLeftAction);
         boundaryActionList.add(boundaryRightAction);
         BoundaryConditionY boundaryCondition = new BoundaryConditionY(boundaryActionList,myFloorObjects.getIdentifierList(),-50.0,false);
         boundaryCondition.setIdentifier(new Identifier("bound_cond","a"));
         myConditions.add(boundaryCondition);
-        System.out.println(1);
 
         
         /*
@@ -180,7 +172,6 @@ public class MainEngineTests extends Application {
         GameObjectsCollection allGameObjects = new GameObjectsCollection();
         allGameObjects.addAll(myBallObjects);
         allGameObjects.addAll(myFloorObjects);
-        System.out.println(1);
 
 
         /*******
