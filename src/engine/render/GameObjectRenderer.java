@@ -142,4 +142,27 @@ public class GameObjectRenderer {
 		myCanvas.getChildren().remove(myRenderedNodes.get(nodeID));
 		myRenderedNodes.remove(nodeID);
 	}
+    
+
+    //TODO fix shitty code
+    private void setBackGroundImage(Level level) {   
+        FileInputStream in;
+        try {
+            in = new FileInputStream(myFilePathUtility.getFilePath()+level.getBackgroundImage());
+            Image image = new Image(in);
+            ImageView view = new ImageView();
+            view.setImage(image);
+            view.setPreserveRatio(true);
+            view.setSmooth(true);
+            view.setCache(true);
+            myCanvas.getChildren().add(view);
+        }
+        catch (FileNotFoundException e) {
+        }
+    }
+    
+    public void setCameraFocus (GameObject obj) {
+        
+    }
+
 }
