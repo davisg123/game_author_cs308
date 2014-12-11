@@ -19,7 +19,12 @@ public class ActionChoicesVBox extends VBox{
 		RadioButton[] radioButtons = {
 				new RadioButton("ChangeLevelAction"),
 				new RadioButton("TranslateXType"),
-				new RadioButton("TranslateYType")
+				new RadioButton("TranslateYType"),
+				new RadioButton("YImpulseIDAction"),
+				new RadioButton("XVelocityIDAction"),
+				new RadioButton("YVelocityIDAction"),
+				new RadioButton("FixedCollisionTypeAction"),
+				new RadioButton("YGravityPhysicsAction")
 		};
 		
 		

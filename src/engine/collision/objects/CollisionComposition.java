@@ -71,6 +71,7 @@ public class CollisionComposition {
 				.getValue() == 1) ? one : two;
 		GameObject other = (one.getPhysicsBody().getScalar("CollisionConstant")
 				.getValue() == 1) ? two : one;
+		//System.out.println(fixed.getPhysicsBody().getCollisionBodyWidth());
 		double toMove = 0;
 		if (xAxis) {
 			other.getPhysicsBody().setVelocity(

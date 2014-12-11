@@ -90,7 +90,10 @@ public class GameObjectProperties extends Properties {
 
 		PropertyTextField unmodifiableName = new PropertyTextField("Name: ", gameObject.getID());
 		unmodifiableName.setDisable(true);
+		PropertyTextField unmodifiableID = new PropertyTextField("ID: ",gameObject.getIdentifier().getUniqueId());
+		unmodifiableID.setDisable(true);
 		inherentTextProperties.put("name",unmodifiableName);
+		inherentTextProperties.put("id", unmodifiableID);
 		inherentTextProperties.put("image",new PropertyTextField("Image: ", gameObject.getCurrentImageName()));
 		inherentTextProperties.put("width", new PropertyTextField("Width: ", Double.toString(gameObject.getWidth())));
 		inherentTextProperties.put("height",new PropertyTextField("Height: ", Double.toString(gameObject.getHeight())));
