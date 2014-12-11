@@ -73,6 +73,14 @@ public class MainEngineTests extends Application {
          *****/
         GameObjectsCollection myFloorObjects = new GameObjectsCollection();
         GameObjectsCollection myBallObjects = new GameObjectsCollection();
+        GameObjectsCollection myLabels = new GameObjectsCollection();
+        
+        //create Labels for High scores, names, text etc
+        GameObject labelText = new GameObject(null, "", 0,0,300,300,0,"label_Text");
+        labelText.setIdentifier(new Identifier("LabelText","asdf"));
+        labelText.setLabel("THIS IS A LABEL, DO WHAT YOU WANT");
+        myLabels.add(labelText);
+        
         //create the floor
         GameObject floorRight = new GameObject(null,"floor.png",
                                    200, 200, 20, 200, 0, "floor_right");
@@ -172,6 +180,7 @@ public class MainEngineTests extends Application {
         GameObjectsCollection allGameObjects = new GameObjectsCollection();
         allGameObjects.addAll(myBallObjects);
         allGameObjects.addAll(myFloorObjects);
+        allGameObjects.addAll(myLabels);
 
 
         /*******

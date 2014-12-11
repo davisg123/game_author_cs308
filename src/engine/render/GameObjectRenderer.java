@@ -145,8 +145,12 @@ public class GameObjectRenderer {
      */
     private Node createCollisionBody (GameObject obj) {
         PhysicsBody body = obj.getPhysicsBody();
-        Rectangle hitBox = new Rectangle(body.getCollisionBodyHeight(),body.getCollisionBodyWidth());
-        hitBox.setVisible(false);
+        
+        Rectangle hitBox = null;
+        if(body!= null) {
+            hitBox= new Rectangle(body.getCollisionBodyHeight(),body.getCollisionBodyWidth());
+            hitBox.setVisible(false);
+        }
         return hitBox;
     }
 
@@ -156,6 +160,10 @@ public class GameObjectRenderer {
      */
     public void removeRenderedNode (String nodeID) {
         myRenderedNodes.remove(nodeID);
+    }
+    
+    public void setCameraFocus (GameObject obj) {
+        
     }
 
 

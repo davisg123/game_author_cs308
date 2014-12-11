@@ -39,7 +39,7 @@ public class RenderedNode extends Group {
     public void setLabel (Label label) {
         if(label != null) {
             myLabel = label;
-            this.getChildren().add(myCollisionBody);
+            this.getChildren().add(myLabel);
         }
     }
     
