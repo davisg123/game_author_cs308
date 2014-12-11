@@ -127,7 +127,7 @@ public class GameManager {
     }
     
     private void createLevelManager(){
-        myLevelManager = new LevelManager(myLevels,myGameObjects,myGameConditions,myGameObjectRenderer);
+        myLevelManager = new LevelManager(myLevels,myGameObjects,myGameConditions,myGameObjectRenderer,mySoundUtility);
     }
     
     public void load(GameData data){
