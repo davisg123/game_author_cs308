@@ -18,7 +18,7 @@ public class MakeNewObjectFromLocationAction extends MakeNewObjectAction{
 	@Override
 	public void execute() {
 		for (GameObject object: myMasterList){
-		    System.out.println(object.getIdentifier().getHash());
+		    //System.out.println(object.getIdentifier().getHash());
 			//TODO: will be template list
 			if (object.getIdentifier().getType().equals(myType)){
 				GameObject newObject = new GameObject(object, myX, myY, myType); 

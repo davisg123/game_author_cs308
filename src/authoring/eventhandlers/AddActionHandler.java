@@ -45,7 +45,7 @@ public class AddActionHandler implements GameHandler<Event> {
 		
 		try {
 			classType = Class.forName(CONDITION_PATH_START + selected);
-			System.out.println(classType.toString());
+			//System.out.println(classType.toString());
 
 			Constructor[] constructors = classType.getDeclaredConstructors();
 			myConstructor = constructors[0];

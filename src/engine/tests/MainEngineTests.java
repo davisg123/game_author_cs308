@@ -61,13 +61,6 @@ public class MainEngineTests extends Application {
 
         myScene = new Scene(myRootGroup,300,300);
         ButtonConditionManager.getInstance().beginListeningToScene(myScene);
-       /* ImageView view = new ImageView();
-       
-        Image image = new Image(getClass().getResourceAsStream("resources/images/slowpoke.jpg"));
-        view.setImage(image);
-        Group asdf = new Group();
-        asdf.getChildren().add(view);
-        myRootGroup.getChildren().add(asdf);*/
         myStage.setScene(myScene);
         myStage.show();
         createGameObject(myRootGroup);
@@ -90,7 +83,6 @@ public class MainEngineTests extends Application {
         floorRightBody.addScalar((new CollisionConstant(1.0)));
         floorRight.setPhysicsBody(floorRightBody);
         
-        
         GameObject floorLeft = new GameObject(null,"floor.png",
                                                -50, 200, 20, 200, 0, "floor_left");
         floorLeft.setIdentifier(new Identifier("floor","b"));
@@ -108,16 +100,7 @@ public class MainEngineTests extends Application {
         PhysicsBody ballBody = new PhysicsBody(30,30);
         ball.setPhysicsBody(ballBody);
         myBallObjects.add(ball);
-        
-        //create alt ball
-        /*
-        GameObject ball2 = new GameObject(null,"ball.png",250,50,30,30,0,"ball_object");
-        ball2.setIdentifier(new Identifier("ball","b"));
-        PhysicsBody ballBody2 = new PhysicsBody(30,30);
-        ballBody2.setVelocity(new Velocity(0,10));
-        ball2.setPhysicsBody(ballBody2);
-        myBallObjects.add(ball2);
-        */
+
         /******
          * conditions
          ******/
@@ -130,22 +113,23 @@ public class MainEngineTests extends Application {
         ArrayList<Action> yVelActionList = new ArrayList<Action>();
         yVelActionList.add(yVelAction);
         TimeCondition myConstantVelocity = new TimeCondition(yVelActionList,1.0,true);
+        myConstantVelocity.setIdentifier(new Identifier("time_cond","a"));
         myConditions.add(myConstantVelocity);
         
-//        Action aAct = new TranslateXType("ball",-2.0);
-        Action aAct = new MakeNewObjectFromLocationAction("ball",200.0,200.0);
+        Action aAct = new TranslateXType("ball",-2.0);
+        //Action aAct = new MakeNewObjectFromLocationAction("ball",200.0,200.0);
         Action dAct = new TranslateXType("ball",2.0);
         ArrayList<Action> actionList = new ArrayList<Action>();
         actionList.add(aAct);
         ArrayList<KeyCode> kclA = new ArrayList<KeyCode>();
         kclA.add(KeyCode.A);
-        ButtonCondition aCon = new ButtonCondition(actionList,kclA, 3.0, true);
+        ButtonCondition aCon = new ButtonCondition(actionList,kclA, 1.0, true);
         aCon.setIdentifier(new Identifier("button_cond","a"));
         ArrayList<Action> dActList = new ArrayList<Action>();
         dActList.add(dAct);
         ArrayList<KeyCode> kclD = new ArrayList<KeyCode>();
         kclD.add(KeyCode.D);
-        ButtonCondition dCon = new ButtonCondition(dActList,kclD,3.0, true);
+        ButtonCondition dCon = new ButtonCondition(dActList,kclD,1.0, true);
         dCon.setIdentifier(new Identifier("button_cond","d"));
         myConditions.add(aCon);
         myConditions.add(dCon);
@@ -160,14 +144,13 @@ public class MainEngineTests extends Application {
         myConditions.add(ballAndPlatformCollision);
         
         Action boundaryRightAction = new TranslateYType("floor",350.0);
-        Action boundaryLeftAction = new TranslateYType("foor",350.0);
+        Action boundaryLeftAction = new TranslateYType("floor",350.0);
         ArrayList<Action> boundaryActionList = new ArrayList<Action>();
         boundaryActionList.add(boundaryLeftAction);
         boundaryActionList.add(boundaryRightAction);
         BoundaryConditionY boundaryCondition = new BoundaryConditionY(boundaryActionList,myFloorObjects.getIdentifierList(),-50.0,false);
         boundaryCondition.setIdentifier(new Identifier("bound_cond","a"));
         myConditions.add(boundaryCondition);
-        System.out.println(1);
 
         
         /*
@@ -189,7 +172,6 @@ public class MainEngineTests extends Application {
         GameObjectsCollection allGameObjects = new GameObjectsCollection();
         allGameObjects.addAll(myBallObjects);
         allGameObjects.addAll(myFloorObjects);
-        System.out.println(1);
 
 
         /*******
