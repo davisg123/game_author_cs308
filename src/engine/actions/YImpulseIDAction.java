@@ -1,7 +1,7 @@
 package engine.actions;
 
 import java.util.ArrayList;
-
+import java.util.List;
 import engine.GameManager;
 import engine.actions.PhysicsIDAction.TwoArgInterface;
 import engine.gameObject.GameObject;
@@ -16,7 +16,7 @@ import engine.physics.Vector;
  */
 public class YImpulseIDAction extends ImpulseAction {
 
-	public YImpulseIDAction(ArrayList<Identifier> id, Double value) {
+	public YImpulseIDAction(List<Identifier> id, Double value) {
 		super(id, value);
 		// TODO Auto-generated constructor stub
 	}

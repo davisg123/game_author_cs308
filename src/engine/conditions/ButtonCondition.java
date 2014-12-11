@@ -13,19 +13,26 @@ import javafx.scene.input.KeyCode;
 
 public class ButtonCondition extends Condition {
     private List<KeyCode> myKeyList;
+    private List<Action> myReleaseActions;
     private Double myFramesElapsed;
     private Double myTargetFrameCount;
     private Boolean myKeyRepeats;
     private Boolean myExpired = false;
+    private Boolean myButtonActive = false;
     
     
 
-    public ButtonCondition (List<Action> actions, List<KeyCode> keyList, Double frameCount, Boolean keyRepeats) {
-        super(actions);
+    public ButtonCondition (List<Action> onPressActions, List<KeyCode> keyList, Double frameCount, Boolean keyRepeats) {
+        super(onPressActions);
         myTargetFrameCount = frameCount;
         myKeyRepeats = keyRepeats;
         myKeyList = keyList;
-        myFramesElapsed = 0.0;
+        //we want the button to execute the first frame, then frames elapsed will be set to 0
+        myFramesElapsed = 1000.0;
+    }
+    
+    public void setOnReleaseActions(List<Action> onReleaseActions){
+        myReleaseActions = onReleaseActions;
     }
     
     public String getKeyIdentifier() {
@@ -62,21 +69,34 @@ public class ButtonCondition extends Condition {
                 shouldExecute = true;
             }
     	}
+        myFramesElapsed += 1;
     	if (shouldExecute){
-    		for (Action a : getActions()){
-                a.execute();
-            }
+    	    myButtonActive = true;
+    	    if (!myExpired && myFramesElapsed >= myTargetFrameCount){
+    	        myExpired = !myKeyRepeats;
+    	        myFramesElapsed = 0.0;
+                for (Action a : getActions()){
+                    a.execute();
+                }
+    	    }
+    	}
+    	else{
+    	    if (myButtonActive){
+    	        myButtonActive = false;
+    	        myFramesElapsed = 0.0;
+    	        if (myReleaseActions != null){
+    	            for (Action a: myReleaseActions){
+    	                a.execute();
+    	            }
+    	        }
+
+    	    }
+    	    myButtonActive = false;
     	}
     }
     
     @Override
     public void frameElapsed () {
-        myFramesElapsed+= 1.0;
-        if (!myExpired && myFramesElapsed >= myTargetFrameCount){
-
-            myExpired = !myKeyRepeats;
-            myFramesElapsed = 0.0;
-            executeActions();
-        }
+        executeActions();
     }
 }
