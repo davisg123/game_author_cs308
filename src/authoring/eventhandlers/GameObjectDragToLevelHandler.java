@@ -46,7 +46,7 @@ public class GameObjectDragToLevelHandler implements GameHandler<MouseEvent> {
 		for (Level level : myLevelsCollection) {
 			if (level.getIdentifier().getUniqueId().equals(id) && myLevelView.contains(x + OBJECT_X_OFFSET, y + OBJECT_Y_OFFSET)) {
 				//FIX THIS TO BE UNIQUE, THIS IS REALLY REALLY BAD
-				newGameObject.setIdentifier(new Identifier(gameObject.getIdentifier().getType(),id +""+level.getGameObjectsCollection().getSize()));
+				newGameObject.setIdentifier(new Identifier(gameObject.getIdentifier().getType(),id +"-"+level.getGameObjectsCollection().getSize()));
 				level.addGameObject(newGameObject);
 				
 				myProps.makeProperties(newGameObject);

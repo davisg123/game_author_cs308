@@ -163,10 +163,10 @@ public class GameObjectProperties extends Properties {
 						.get("width").getInformation()),
 				Double.parseDouble(concreteTextProperties.get("rotation")
 						.getInformation()), g.getID());
-			
-		PhysicsBody pb = new PhysicsBody(Double.parseDouble(inherentTextProperties.get("width")
-				.getInformation()), Double.parseDouble(inherentTextProperties
-				.get("height").getInformation()));
+		edited.setIdentifier(g.getIdentifier());
+		PhysicsBody pb = new PhysicsBody( Double.parseDouble(inherentTextProperties
+				.get("height").getInformation()),Double.parseDouble(inherentTextProperties.get("width")
+						.getInformation()));
 
 		pb.addScalar(new Mass(Double.parseDouble(physicsProperties.get("mass").getInformation())));
 		pb.addScalar(new GravityConstant(Double.parseDouble(physicsProperties.get("gravity constant").getInformation())));
