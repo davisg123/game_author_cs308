@@ -168,7 +168,7 @@ public class PhysicsBody {
 	// physics body, gameobject is passed through because I was told to do that
 	// to solve the x/y coordinates being elsewhere problem
 	public void updatePhysicalCharacteristics(GameObject sprite) {
-		System.out.println(myVelocity.getX());
+		//System.out.println(myVelocity.getX());
 		doImpulses();
 		if (haveForcesChanged) {
 			balanceForces();
@@ -303,7 +303,7 @@ public class PhysicsBody {
 		if (!cur.getCollisionConstant()) {
 
 			if (xOrY) {
-				System.out.println("COLLISOIN");
+				//System.out.println("COLLISOIN");
 
 				// cancel out current velocity
 				cur.setTranslateX(cur.getTranslateX()
