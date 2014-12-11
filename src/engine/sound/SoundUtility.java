@@ -35,7 +35,9 @@ public class SoundUtility {
 
     public void initializeMusic () {
         for(Level level : myLevels) {
-            addBackGroundMusic(level.getBackgroundMusic());
+            if(level.getBackgroundMusic() != null) {
+                addBackGroundMusic(level.getBackgroundMusic());
+            }
         }
     }
 
