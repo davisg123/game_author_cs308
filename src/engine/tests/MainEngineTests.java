@@ -93,14 +93,14 @@ public class MainEngineTests extends Application {
 //        myLabels.add(labelText);
         
         //create the floor
-        GameObject floorRight = new GameObject(null,"floor.png",
+        GameObject floorRight = new GameObject(null,"bricks.jpg",
                                    200, 200, 20, 200, 0, "floor_right");
         floorRight.setIdentifier(new Identifier("floor","a"));
         //ugh, why do we have to set this explicitly?
         PhysicsBody floorRightBody = new PhysicsBody(20,200);
         floorRightBody.addScalar((new CollisionConstant(1.0)));
         floorRight.setPhysicsBody(floorRightBody);
-        GameObject floorLeft = new GameObject(null,"floor.png",
+        GameObject floorLeft = new GameObject(null,"bricks.jpg",
                                                -50, 200, 20, 200, 0, "floor_left");
         floorLeft.setIdentifier(new Identifier("floor","b"));
         PhysicsBody floorLeftBody = new PhysicsBody(20,210);
@@ -111,9 +111,9 @@ public class MainEngineTests extends Application {
         myFloorObjects.add(floorLeft);
         
         //create a ball
-        GameObject ball = new GameObject(null,"ball.png",50,150,30,30,0,"ball_object");
+        GameObject ball = new GameObject(null,"mario.png",50,150,80,60,0,"ball_object");
         ball.setIdentifier(new Identifier("ball","a"));
-        PhysicsBody ballBody = new PhysicsBody(37,37);
+        PhysicsBody ballBody = new PhysicsBody(90,70);
         ballBody.addForce(new Gravity(0,1.0));
         ballBody.addScalar(new GravityConstant(30.0));
         ball.setPhysicsBody(ballBody);
