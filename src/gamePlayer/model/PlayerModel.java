@@ -1,7 +1,9 @@
 package gamePlayer.model;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
+
 import data.DataManager;
 import application.SplashScreen;
 import authoring.model.GameData;
@@ -39,13 +41,24 @@ public class PlayerModel {
 	}
 
 	public void loadGameFile() {
-		Path filePath = myFileSelector.selectFile();
-		myGameData = myDataManager.readGameFile(filePath.toString());
+		File f = myFileSelector.selectFile();
+		System.out.println(f.getAbsolutePath());
+		myGameData = myDataManager.readGameFile(f);
+		if(myGameData == null) System.out.println("Null!!!!");
 		myGameManager = new GameManager(myGameData.getConditions(),
 				myGameData.getGameObjects(), myGameData.getLevels(),
-				myPlayerView.getGroup(), filePath.getParent().toString());
+				myPlayerView.getGroup(), f.toString());
 		myGameManager.initialize();
 		extractButtonConditions();
+		
+		
+//		Path filePath = myFileSelector.selectFile();
+//		myGameData = myDataManager.readGameFile(filePath.toString());
+//		myGameManager = new GameManager(myGameData.getConditions(),
+//				myGameData.getGameObjects(), myGameData.getLevels(),
+//				myPlayerView.getGroup(), filePath.getParent().toString());
+//		myGameManager.initialize();
+//		extractButtonConditions();
 	}
 
 	public void saveGameToWeb() {

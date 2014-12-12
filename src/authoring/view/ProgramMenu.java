@@ -11,6 +11,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import authoring.controller.AuthoringController;
@@ -34,8 +35,10 @@ public class ProgramMenu extends MenuBar {
 	TabPane myTabs;
 	private double myWidth;
 	private double myHeight;
-	FileChooser myFileChooser;
+	private FileChooser myFileChooser;
+	private DirectoryChooser myDirectoryChooser;
 	Map ControllerMap;
+	private DataManager myDataManager;
 
 	public ProgramMenu(TabPane tab, Locale locale, double width, double height) {
 		myWidth = width;
@@ -45,6 +48,8 @@ public class ProgramMenu extends MenuBar {
 		myLanguage = ResourceBundle.getBundle(DEFAULT_RESOURCE, myLocale);
 		// ControllerMap = new HashMap<>
 		myFileChooser = new FileChooser();
+		myDirectoryChooser = new DirectoryChooser();
+		myDataManager = new DataManager();
 		this.getMenus().add(FileMenu());
 
 	}
@@ -97,22 +102,21 @@ public class ProgramMenu extends MenuBar {
 	}
 
 	private void loadData(){
-		File gameFile = myFileChooser.showOpenDialog(new Stage());
-		if (gameFile != null) {
-			makeFolders(gameFile);
-			Tab tab = new Tab(gameFile.getName());
+		File gameLocation = myDirectoryChooser.showDialog(new Stage());
+		if (gameLocation != null) {
+			makeFolders(gameLocation);
+			Tab tab = new Tab(gameLocation.getName());
 			AuthoringView newView = new AuthoringView(myWidth, myHeight);
 			AuthoringModel newModel = new AuthoringModel();
 			AuthoringController newController = new AuthoringController(
-					newView, newModel, myWidth, myHeight, myLanguage, gameFile.getParentFile());
+					newView, newModel, myWidth, myHeight, myLanguage, gameLocation);
 			newView.setController(newController);
 			tab.setContent(newView);
 			myTabs.getTabs().add(tab);
 			myTabs.getSelectionModel().select(tab);
 		}
-		DataManager manager = new DataManager();
 		try {
-			GameData gameData = manager.readGameFile(gameFile.getAbsolutePath());
+			GameData gameData = myDataManager.readGameFile(gameLocation);
 			System.out.println("game loaded");
 			int currentTab = myTabs.getSelectionModel().getSelectedIndex();
 			((AuthoringView) myTabs.getTabs().get(currentTab).getContent())
@@ -127,15 +131,15 @@ public class ProgramMenu extends MenuBar {
 	 */
 
 	private void addNew() {
-
-		File gameFile = myFileChooser.showSaveDialog(new Stage());
-		if (gameFile != null) {
-			makeFolders(gameFile);
-			Tab tab = new Tab(gameFile.getName());
+		
+		File gameLocation = myFileChooser.showSaveDialog(new Stage());
+		if (gameLocation != null) {
+			makeFolders(gameLocation);
+			Tab tab = new Tab(gameLocation.getName());
 			AuthoringView newView = new AuthoringView(myWidth, myHeight);
 			AuthoringModel newModel = new AuthoringModel();
 			AuthoringController newController = new AuthoringController(
-					newView, newModel, myWidth, myHeight, myLanguage, gameFile);
+					newView, newModel, myWidth, myHeight, myLanguage, gameLocation);
 			newView.setController(newController);
 			tab.setContent(newView);
 			myTabs.getTabs().add(tab);
