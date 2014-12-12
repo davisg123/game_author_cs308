@@ -37,7 +37,6 @@ public class GameManager {
     private String myRelativePath;
     private static final double DEFAULT_SPEED = 60.0;
     
-    
     public GameManager (ConditionsCollection myGameConditions, GameObjectsCollection myGameObjects, LevelsCollection myLevels, Group myRootGroup, String relativePath) {
         super();
         this.myGameConditions = myGameConditions;
@@ -49,6 +48,7 @@ public class GameManager {
         this.myRelativePath = relativePath;
         createLevelManager();
         initializeConditions();
+        
     }
     
     /**
@@ -108,6 +108,7 @@ public class GameManager {
            myAnimation.play();
        }
    }
+   
    
    /**
     * Function to do each game frame
@@ -174,4 +175,9 @@ public class GameManager {
     public SoundUtility getSoundUtility () {
         return mySoundUtility;
     }
+    
+    public Group getGroup(){
+    	return myRootGroup; 
+    }
+    
 }

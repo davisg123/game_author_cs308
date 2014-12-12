@@ -58,7 +58,9 @@ public class SoundUtility {
     private MediaPlayer makeMediaPlayer (String musicPath) {
         File music = new File(myFilePathUtility.getFilePath()+musicPath);
         Media media = new Media(music.toURI().toString());
-        return new MediaPlayer(media);
+        MediaPlayer player = new MediaPlayer(media);
+        player.setCycleCount(MediaPlayer.INDEFINITE);
+        return player;
     }
 
     public void playAudioClip(String audioClipPath) {
