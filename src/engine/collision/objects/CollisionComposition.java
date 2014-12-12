@@ -21,7 +21,6 @@ public class CollisionComposition {
 		double yVel = other.getPhysicsBody().getVelocity().getY();
 		double curX;
 		double curY;
-		GameObject test = new GameObject(other);
 		boolean x;
 		boolean y;
 		double xPoint;
@@ -90,11 +89,11 @@ public class CollisionComposition {
 		} else {
 			if (other.getTranslateY() < fixed.getTranslateY()) {
 				toMove = collisionHelper(fixed.getTranslateY(),
-						other.getTranslateY(), fixed.getPhysicsBody()
-								.getCollisionBodyWidth() / 2.0, other
-								.getPhysicsBody().getCollisionBodyWidth() / 2.0);
+						other.getTranslateY(), 0.0, other
+								.getPhysicsBody().getCollisionBodyWidth());
 
 			} else {
+				System.out.println(xAxis);
 				toMove = -1.0
 						* collisionHelper(fixed.getTranslateY(),
 								other.getTranslateY(), fixed.getPhysicsBody()
@@ -102,11 +101,11 @@ public class CollisionComposition {
 										.getPhysicsBody()
 										.getCollisionBodyWidth() / 2.0);
 			}
+			System.out.println(toMove);
 			other.getPhysicsBody().setVelocity(
 					new Velocity(other.getPhysicsBody().getVelocity().getX(),
 							fixed.getPhysicsBody().getVelocity().getY()));
-			other.setTranslateY(other.getTranslateY() - toMove);
-
+			other.setTranslateY(other.getTranslateY() - toMove+other.getPhysicsBody().getCollisionBodyWidth()/2.0);
 		}
 	}
 
