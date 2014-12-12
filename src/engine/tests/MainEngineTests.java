@@ -86,10 +86,10 @@ public class MainEngineTests extends Application {
         GameObjectsCollection myLabels = new GameObjectsCollection();
         
 //        //create Labels for High scores, names, text etc
-//        GameObject labelText = new GameObject(null, "", 0,0,300,300,0,"label_Text");
-//        labelText.setIdentifier(new Identifier("LabelText","asdf"));
-//        labelText.setLabel("THIS IS A LABEL, DO WHAT YOU WANT");
-//        myLabels.add(labelText);
+        GameObject labelText = new GameObject(null, "", 0,0,300,300,0,"label_Text");
+        labelText.setIdentifier(new Identifier("LabelText","asdf"));
+        labelText.setLabel("THIS IS A LABEL, DO WHAT YOU WANT");
+       myLabels.add(labelText);
         
         //create the floor
         GameObject floorRight = new GameObject(null,"floor.png",
