@@ -258,7 +258,7 @@ public class MainEngineTests extends Application {
         /*
          * uncomment for saving game
          */
-        
+        /*
         GameData data = new GameData(myLevels,myConditions,allGameObjects);
         DataManager manager = new DataManager();
         try {
@@ -268,7 +268,7 @@ public class MainEngineTests extends Application {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
+        */
         
         /*******
          * game
