@@ -22,6 +22,7 @@ import engine.actions.TranslateYType;
 import engine.actions.XVelocityIDAction;
 import engine.actions.YImpulseIDAction;
 import engine.actions.YVelocityIDAction;
+import engine.conditions.BoundaryConditionX;
 import engine.conditions.BoundaryConditionY;
 import engine.conditions.ButtonCondition;
 import engine.conditions.ButtonConditionManager;
@@ -211,6 +212,15 @@ public class MainEngineTests extends Application {
         BoundaryConditionY boundaryCondition = new BoundaryConditionY(boundaryActionList,myFloorObjects.getIdentifierList(),-50.0,false);
         boundaryCondition.setIdentifier(new Identifier("bound_cond","a"));
         myConditions.add(boundaryCondition);
+        
+        Action boundaryScrollActionBall = new TranslateXType("ball",-1.0);
+        Action boundaryScrollActionFloor = new TranslateXType("floor",-1.0);
+        ArrayList<Action> scrollActionList = new ArrayList<Action>();
+        scrollActionList.add(boundaryScrollActionBall);
+        scrollActionList.add(boundaryScrollActionFloor);
+        BoundaryConditionX boundaryConditionScroll = new BoundaryConditionX(scrollActionList,myBallObjects.getIdentifierList(),200.0,true);
+        boundaryConditionScroll.setIdentifier(new Identifier("bound_scroll","a"));
+        myConditions.add(boundaryConditionScroll);
 
         
         /*
@@ -248,7 +258,7 @@ public class MainEngineTests extends Application {
         /*
          * uncomment for saving game
          */
-        
+        /*
         GameData data = new GameData(myLevels,myConditions,allGameObjects);
         DataManager manager = new DataManager();
         try {
@@ -258,7 +268,7 @@ public class MainEngineTests extends Application {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
+        */
         
         /*******
          * game

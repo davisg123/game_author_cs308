@@ -18,7 +18,6 @@ public class CollisionComposition {
 		GameObject other = (one.getPhysicsBody().getScalar("CollisionConstant")
 				.getValue() == 1.0) ? two : one;
 		double xVel = other.getPhysicsBody().getVelocity().getX();
-		System.out.println(xVel);
 		double yVel = other.getPhysicsBody().getVelocity().getY();
 		double curX;
 		double curY;
@@ -66,7 +65,6 @@ public class CollisionComposition {
 		// System.out.println(xChange / (Math.abs(curX)+Math.abs(otherX)));
 		// create new condition to stop x or y
 		boolean xAxis = isOnXAxis(one, two);
-		System.out.println(xAxis);
 		GameObject fixed = (one.getPhysicsBody().getScalar("CollisionConstant")
 				.getValue() == 1) ? one : two;
 		GameObject other = (one.getPhysicsBody().getScalar("CollisionConstant")
