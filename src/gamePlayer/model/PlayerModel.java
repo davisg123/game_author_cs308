@@ -7,7 +7,7 @@ import application.SplashScreen;
 import authoring.model.GameData;
 import authoring.model.collections.ConditionsCollection;
 import engine.GameManager;
-import engine.conditions.ButtonCondition;
+import engine.conditions.ButtonPressCondition;
 import engine.conditions.Condition;
 import gamePlayer.view.FileSelectionWizard;
 import gamePlayer.view.PlayerView;
@@ -78,7 +78,7 @@ public class PlayerModel {
 	private void extractButtonConditions() {
 		ConditionsCollection conditions = myGameData.getConditions();
 		for (Condition c : conditions) {
-			if (c instanceof ButtonCondition)
+			if (c instanceof ButtonPressCondition)
 				myButtonConditions.add(c);
 		}
 	}
