@@ -104,16 +104,7 @@ public class ProgramMenu extends MenuBar {
 	private void loadData(){
 		File gameLocation = myDirectoryChooser.showDialog(new Stage());
 		if (gameLocation != null) {
-			makeFolders(gameLocation);
-			Tab tab = new Tab(gameLocation.getName());
-			AuthoringView newView = new AuthoringView(myWidth, myHeight);
-			AuthoringModel newModel = new AuthoringModel();
-			AuthoringController newController = new AuthoringController(
-					newView, newModel, myWidth, myHeight, myLanguage, gameLocation);
-			newView.setController(newController);
-			tab.setContent(newView);
-			myTabs.getTabs().add(tab);
-			myTabs.getSelectionModel().select(tab);
+			setupGame(gameLocation);
 		}
 		try {
 			GameData gameData = myDataManager.readGameFile(gameLocation);
@@ -135,16 +126,20 @@ public class ProgramMenu extends MenuBar {
 		File gameLocation = myFileChooser.showSaveDialog(new Stage());
 		if (gameLocation != null) {
 			makeFolders(gameLocation);
-			Tab tab = new Tab(gameLocation.getName());
-			AuthoringView newView = new AuthoringView(myWidth, myHeight);
-			AuthoringModel newModel = new AuthoringModel();
-			AuthoringController newController = new AuthoringController(
-					newView, newModel, myWidth, myHeight, myLanguage, gameLocation);
-			newView.setController(newController);
-			tab.setContent(newView);
-			myTabs.getTabs().add(tab);
-			myTabs.getSelectionModel().select(tab);
+			setupGame(gameLocation);
 		}
+	}
+
+	private void setupGame(File gameLocation) {
+		Tab tab = new Tab(gameLocation.getName());
+		AuthoringView newView = new AuthoringView(myWidth, myHeight);
+		AuthoringModel newModel = new AuthoringModel();
+		AuthoringController newController = new AuthoringController(
+				newView, newModel, myWidth, myHeight, myLanguage, gameLocation);
+		newView.setController(newController);
+		tab.setContent(newView);
+		myTabs.getTabs().add(tab);
+		myTabs.getSelectionModel().select(tab);
 	}
 
 	private void makeFolders(File gameLocation) {
