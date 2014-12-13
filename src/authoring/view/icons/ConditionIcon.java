@@ -9,28 +9,15 @@ import authoring.view.propertiesview.ConditionProperties;
 import authoring.view.propertiesview.Properties;
 import engine.conditions.Condition;
 
-public class ConditionIcon extends BaseIcon implements IPropertiesMaker{
+public class ConditionIcon extends TextIcon implements IPropertiesMaker{
 
 	private Condition myCondition;
-	private GameHandler[] myEvents;
 	
-	public ConditionIcon(String label, Condition condition, GameHandler[] handler) {
+	public ConditionIcon(String label, Condition condition, GameHandler... handler) {
 		super(label, handler);
 		myCondition = condition;
-		myEvents = handler;
-		setupGraphic();
 	}
 	
-	//SAME AS LEVEL ICON, REFACTOR
-	public void setupGraphic(){
-		Text text = new Text(myLabel);
-		text.setFont(new Font(DEFAULT_FONT_SIZE));
-		this.getChildren().add(text);
-		for (GameHandler g : myOnClick) {
-			this.addEventFilter(g.getEventType(), g);
-		}
-	}
-
 	public Condition getCondition(){
 		return myCondition;
 	}

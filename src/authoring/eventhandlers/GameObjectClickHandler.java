@@ -16,7 +16,7 @@ public class GameObjectClickHandler implements GameHandler<MouseEvent>{
 	@Override
 	public void handle(MouseEvent event) {
 		GameObjectIcon g = (GameObjectIcon) event.getSource();
-		myProperties.makeProperties(g.getGameObject());
+		myProperties.displayProperties(g.getGameObject());
 		
 	}
 

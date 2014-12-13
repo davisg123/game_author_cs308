@@ -3,15 +3,9 @@ package authoring.view.propertiesview;
 import java.util.ResourceBundle;
 
 import javafx.scene.layout.VBox;
-import authoring.eventhandlers.AddConditionIDHandler;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.CollectionView;
-import authoring.view.icons.ConditionIcon;
 import authoring.view.icons.IPropertiesMaker;
-import authoring.view.icons.ImageIcon;
-import authoring.view.icons.LevelIcon;
-import authoring.view.icons.SoundIcon;
-import engine.conditions.Condition;
 import engine.gameObject.GameObject;
 
 public class PropertiesView extends CollectionView {
@@ -24,7 +18,6 @@ public class PropertiesView extends CollectionView {
 
 	private GameObjectProperties myGameObjectsProperties;
 	private GameObject myCurrentGameObject;
-	private Condition myCurrentCondition;
 
 	private double myWidth;
 	private double myHeight;
@@ -38,20 +31,34 @@ public class PropertiesView extends CollectionView {
 		myHeight = height;
 
 	}
-	
-	public void makeProperties(IPropertiesMaker icon){
+
+	/**
+	 * The icon (that must implement IPropertiesMaker) to display properties
+	 * for.
+	 * 
+	 * @param icon
+	 */
+	public void displayProperties(IPropertiesMaker icon) {
 		myContents.getChildren().clear();
 		this.setContent(icon.makeProperties());
 	}
-	
-	public void makeProperties(GameObject gameObj) {
+
+	/**
+	 * This method was overloaded since it is being used in several handlers
+	 * besides the click handler that only have access to a particular game
+	 * object and not the game object icon. The game object can be taken from
+	 * the icon, but creating an icon from solely a game object is difficult.
+	 * 
+	 * @param gameObj The game object to make properties for.
+	 */
+	public void displayProperties(GameObject gameObj) {
 		myContents.getChildren().clear();
 		myCurrentGameObject = gameObj;
 		myGameObjectsProperties = new GameObjectProperties(gameObj, myWidth,
 				myHeight, this.myButtonBehaviors);
 		this.setContent(myGameObjectsProperties);
 	}
-	
+
 	public GameObject getCurrentGameObject() {
 		return this.myCurrentGameObject;
 	}

@@ -16,7 +16,7 @@ private PropertiesView myProperties;
 	@Override
 	public void handle(MouseEvent event) {
 		IPropertiesMaker icon = (IPropertiesMaker) event.getSource();
-		myProperties.makeProperties(icon);
+		myProperties.displayProperties(icon);
 	}
 
 	@Override

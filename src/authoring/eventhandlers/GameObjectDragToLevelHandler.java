@@ -67,7 +67,7 @@ public class GameObjectDragToLevelHandler implements GameHandler<MouseEvent> {
 				
 					
 					
-					myProps.makeProperties(myNewGameObject);
+					myProps.displayProperties(myNewGameObject);
 				}
 			}
 		}
