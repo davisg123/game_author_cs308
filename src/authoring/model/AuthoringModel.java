@@ -48,13 +48,11 @@ public class AuthoringModel {
 	
 	private GameData convertToSerializable(){
 		GameData mySerializableGame = new GameData();
-		int IDcounter = 0;
 		List<GameObject> allGameObjects = new ArrayList<GameObject>();
 		for(String s : myGame.getImages()){
 			mySerializableGame.getImages().add(s);
 		}
 		for(GameObject g: myGame.getGameObjects()){
-			g.setIdentifier(new Identifier(g.getID(),"Template"));
 			allGameObjects.add(g);
 		}
 		for(Level l: myGame.getLevels()){
@@ -71,6 +69,7 @@ public class AuthoringModel {
 			Level levelToAdd = new Level(levelGameObjectsIDs);
 			levelToAdd.setStartIndicator(l.isStartLevel());
 			levelToAdd.setIdentifier(new Identifier(l.getIdentifier().getType(),l.getIdentifier().getUniqueId()));
+			levelToAdd.setConditionIds(l.getConditionIdentifiers());
 			mySerializableGame.getLevels().add(levelToAdd);
 		}
 		for(Condition c : myGame.getConditions()){
@@ -78,6 +77,9 @@ public class AuthoringModel {
 		}
 		for(GameObject g: allGameObjects){
 			mySerializableGame.getGameObjects().add(g);
+		}
+		for(String s: myGame.getSounds()){
+			mySerializableGame.getSounds().add(s);;
 		}
 		return mySerializableGame;
 	}
@@ -102,6 +104,7 @@ public class AuthoringModel {
 			Level newLevel = new Level(newObjects);
 			newLevel.setStartIndicator(l.isStartLevel());
 			newLevel.setIdentifier(l.getIdentifier());
+			newLevel.setConditionIds(l.getConditionIdentifiers());
 			myGame.getLevels().add(newLevel);
 		}
 		for(Condition c: input.getConditions()){
@@ -109,6 +112,9 @@ public class AuthoringModel {
 		}
 		for(GameObject g : input.getGameObjects()){
 			myGame.getGameObjects().add(g);
+		}
+		for(String s: input.getSounds()){
+			myGame.getSounds().add(s);
 		}
 	}
 
