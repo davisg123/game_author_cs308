@@ -99,20 +99,21 @@ public class PlayerModel {
 	 * This will save a file with file selector
 	 */
 	public void saveGameProgress() {
-		String progressName = myProgressSelector.saveProgressState();
-		try {
-			boolean success = myDataManager.writeProgressFile(myGameData, myGameLocation, progressName);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+//		String progressName = myProgressSelector.saveProgressState();
+//		try {
+//			boolean success = myDataManager.writeProgressFile(myGameData, myGameLocation, progressName);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+		boolean success = myProgressSelector.saveProgressState();
 	}
 	
 	/**
 	 * This will load a file with file selector
 	 */
 	public void loadGameProgress() {
-		String progressName = myProgressSelector.loadProgressState();
-		myGameData = myDataManager.readProgressFile(myGameLocation, progressName);
+		myGameData = myProgressSelector.loadProgressState();
+//		myGameData = myDataManager.readProgressFile(myGameLocation, progressName);
 		// reinitializes for new GameData file
 		loadGameData();
 	}
