@@ -1,7 +1,14 @@
 package gamePlayer.model;
 
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
+
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import data.DataManager;
 import application.SplashScreen;
 import authoring.model.GameData;
@@ -11,6 +18,7 @@ import engine.conditions.ButtonPressCondition;
 import engine.conditions.Condition;
 import gamePlayer.view.FileSelectionWizard;
 import gamePlayer.view.PlayerView;
+import gamePlayer.view.ProgressSelector;
 
 /**
  * 
@@ -26,12 +34,48 @@ public class PlayerModel {
 	private GameManager myGameManager;
 	private ConditionsCollection myButtonConditions;
 	private FileSelectionWizard myFileSelector;
+	private File myGameLocation;
+	private ProgressSelector myProgressSelector;
+//	private BooleanProperty progressLoaded;
+	private StringProperty progressFileName;
 
 	public PlayerModel() {
 		myPlayerView = new PlayerView(this);
 		myDataManager = new DataManager();
 		myButtonConditions = new ConditionsCollection();
 		myFileSelector = new FileSelectionWizard();
+//		progressLoaded = new SimpleBooleanProperty();
+//		addProgressChangeListener();
+		progressFileName = new SimpleStringProperty();
+		addStringChangeListener();
+	}
+
+//	private void addProgressChangeListener() {
+//		progressLoaded.addListener(new ChangeListener<Boolean>() {
+//			@Override
+//			public void changed(ObservableValue<? extends Boolean> observable,
+//					Boolean oldValue, Boolean newValue) {
+//				// TODO Auto-generated method stub
+//				if(newValue==true) {
+//					System.out.println("made it");
+//					loadGameData();
+//				}
+//			}
+//		});
+//	}
+	
+	private void addStringChangeListener() {
+		progressFileName.addListener(new ChangeListener<String>() {
+
+			@Override
+			public void changed(ObservableValue<? extends String> observable,
+					String oldValue, String newValue) {
+				System.out.println(newValue);
+				myGameData = myDataManager.readProgressFile(myGameLocation, newValue);
+				loadGameData();
+			}
+			
+		});
 	}
 	
 	public void initializeView() throws IOException {
@@ -39,11 +83,23 @@ public class PlayerModel {
 	}
 
 	public void loadGameFile() {
-		Path filePath = myFileSelector.selectFile();
-		myGameData = myDataManager.readGameFile(filePath.toString());
+		myGameLocation = myFileSelector.selectFile();
+		System.out.println(myGameLocation.getAbsolutePath());
+		myGameData = myDataManager.readGameFile(myGameLocation);
+//		myProgressSelector = new ProgressSelector(myGameLocation, myGameData, 
+//				progressLoaded, progressFileName);
+		myProgressSelector = new ProgressSelector(myGameLocation, progressFileName);
+		loadGameData();
+	}
+
+	private void loadGameData() {
+		System.out.println(myGameData);
+		System.out.println(myGameData.getGameObjects());
+//		progressLoaded.set(false);
+		if(myGameData == null) System.out.println("Null!!!!");
 		myGameManager = new GameManager(myGameData.getConditions(),
 				myGameData.getGameObjects(), myGameData.getLevels(),
-				myPlayerView.getGroup(), filePath.getParent().toString());
+				myPlayerView.getGroup(), myGameLocation.toString());
 		myGameManager.initialize();
 		extractButtonConditions();
 	}
@@ -84,17 +140,26 @@ public class PlayerModel {
 	}
 
 	/**
-	 * This will save a file wtih file selector
+	 * This will save a file with file selector
 	 */
 	public void saveGameProgress() {
-//		myDataManager.writeGameFile(myGameManager.getGameData(), );
+//		String progressName = myProgressSelector.saveProgressState();
+//		try {
+//			boolean success = myDataManager.writeProgressFile(myGameData, myGameLocation, progressName);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+		myProgressSelector.saveProgressState(myGameData);
 	}
 	
 	/**
 	 * This will load a file with file selector
 	 */
 	public void loadGameProgress() {
-	
+		myProgressSelector.loadProgressState();
+//		myGameData = myDataManager.readProgressFile(myGameLocation, progressName);
+		// reinitializes for new GameData file
 	}
-
+	
+	
 }
