@@ -15,7 +15,11 @@ public class MakeNewRandomObjectAction extends MakeNewObjectAction{
 	public MakeNewRandomObjectAction(String type, Double lowerXBound, Double upperXBound, Double lowerYBound, Double upperYBound){
 		super(type); 
 		r = new Random(); 
-		
+	               myLowerXBound = lowerXBound;
+	                myLowerYBound = lowerYBound;
+	                myUpperXBound = upperXBound;
+	                myUpperYBound = upperYBound;
+	
 	}
 
 	
@@ -33,9 +37,9 @@ public class MakeNewRandomObjectAction extends MakeNewObjectAction{
 	}
 	
 	public void makeRandomObject(GameObject object){
-		double x = r.nextInt((int) (myUpperXBound-myLowerXBound)) + myLowerXBound; 
-		double y = r.nextInt((int) (myUpperYBound-myLowerYBound)) + myLowerYBound; 
-		GameObject newObject = new GameObject(object, x, y, myType); 
+            double x =  (myUpperXBound-myLowerXBound) * r.nextFloat() + myLowerXBound; 
+            double y =  (myUpperYBound-myLowerYBound) * r.nextFloat() + myLowerYBound; 
+            GameObject newObject = new GameObject(object, x, y, myType); 
 		newObject.setIdentifier(object.getIdentifier());
 		newObject.setPhysicsBody(object.getPhysicsBody());
 		myRenderer.createAndAssignRenderedNode(newObject);
