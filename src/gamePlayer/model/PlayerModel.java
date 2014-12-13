@@ -13,6 +13,7 @@ import engine.conditions.ButtonCondition;
 import engine.conditions.Condition;
 import gamePlayer.view.FileSelectionWizard;
 import gamePlayer.view.PlayerView;
+import gamePlayer.view.ProgressSelector;
 
 /**
  * 
@@ -28,6 +29,8 @@ public class PlayerModel {
 	private GameManager myGameManager;
 	private ConditionsCollection myButtonConditions;
 	private FileSelectionWizard myFileSelector;
+	private File myGameLocation;
+	private ProgressSelector myProgressSelector;
 
 	public PlayerModel() {
 		myPlayerView = new PlayerView(this);
@@ -41,13 +44,18 @@ public class PlayerModel {
 	}
 
 	public void loadGameFile() {
-		File f = myFileSelector.selectFile();
-		System.out.println(f.getAbsolutePath());
-		myGameData = myDataManager.readGameFile(f);
+		myGameLocation = myFileSelector.selectFile();
+		System.out.println(myGameLocation.getAbsolutePath());
+		myProgressSelector = new ProgressSelector(myGameLocation);
+		loadGameData();
+	}
+
+	private void loadGameData() {
+		myGameData = myDataManager.readGameFile(myGameLocation);
 		if(myGameData == null) System.out.println("Null!!!!");
 		myGameManager = new GameManager(myGameData.getConditions(),
 				myGameData.getGameObjects(), myGameData.getLevels(),
-				myPlayerView.getGroup(), f.toString());
+				myPlayerView.getGroup(), myGameLocation.toString());
 		myGameManager.initialize();
 		extractButtonConditions();
 	}
@@ -88,17 +96,25 @@ public class PlayerModel {
 	}
 
 	/**
-	 * This will save a file wtih file selector
+	 * This will save a file with file selector
 	 */
 	public void saveGameProgress() {
-//		myDataManager.writeGameFile(myGameManager.getGameData(), );
+		String progressName = myProgressSelector.saveProgressState();
+		try {
+			boolean success = myDataManager.writeProgressFile(myGameData, myGameLocation, progressName);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**
 	 * This will load a file with file selector
 	 */
 	public void loadGameProgress() {
-	
+		String progressName = myProgressSelector.loadProgressState();
+		myGameData = myDataManager.readProgressFile(myGameLocation, progressName);
+		// reinitializes for new GameData file
+		loadGameData();
 	}
 
 }

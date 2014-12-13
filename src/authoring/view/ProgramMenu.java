@@ -148,6 +148,8 @@ public class ProgramMenu extends MenuBar {
 		imageFolder.mkdir();
 		File soundFolder = new File(gameLocation.getPath() + "/sounds");
 		soundFolder.mkdir();
-
+		File progressFolder = new File(gameLocation.getPath() + "/" 
+				+ DataManager.PROGRESS_FOLDER_NAME);
+		progressFolder.mkdir();
 	}
 }

@@ -19,6 +19,7 @@ import engine.physics.Scalar;
 
 public class DataManager {
 	
+	public static final String PROGRESS_FOLDER_NAME = "progress";
 	private GsonBuilder gson;
 	
 	public DataManager() {
@@ -39,7 +40,7 @@ public class DataManager {
 	 */
 	public boolean writeGameFile(GameData data, File dataPath) throws IOException {
 		String fileName = dataPath.getName() + ".json";
-		File f = new File(dataPath, fileName);
+		//File f = new File(dataPath, fileName);
 		return writeFile(data, dataPath, fileName);
 	}
 	
@@ -50,6 +51,17 @@ public class DataManager {
 	 */
 	public GameData readGameFile(File dataPath) {
 		String fileName = dataPath.getName() + ".json";
+		return (GameData)readFile(GameData.class, dataPath, fileName);
+	}
+	
+	public boolean writeProgressFile(GameData data, File dataPath, String progressName) 
+			throws IOException {
+		String fileName = PROGRESS_FOLDER_NAME + "/" + progressName + ".json";
+		return writeFile(data, dataPath, fileName);
+	}
+	
+	public GameData readProgressFile(File dataPath, String progressName) {
+		String fileName = PROGRESS_FOLDER_NAME + "/" + progressName + ".json";
 		return (GameData)readFile(GameData.class, dataPath, fileName);
 	}
 	
