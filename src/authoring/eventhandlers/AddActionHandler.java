@@ -50,15 +50,7 @@ public class AddActionHandler implements GameHandler<Event> {
 			Constructor[] constructors = classType.getDeclaredConstructors();
 			myConstructor = constructors[0];
 			myParameterTypes = constructors[0].getParameters();
-			System.out.println(myConstructor);
 
-			
-			
-			for (Parameter p : myParameterTypes){
-				System.out.println(p.getParameterizedType());
-			}
-
-			//System.out.println(Arrays.deepToString(myParameterTypes));
 
 			myCPW = new ConditionParameterWizard("Choose Parameters",
 					WIZARD_WIDTH, WIZARD_HEIGHT, myParameterTypes, classType,
@@ -85,8 +77,7 @@ public class AddActionHandler implements GameHandler<Event> {
 			myCondition.addAction(a);
 			myCPW.close();
 		} catch (Exception e) {
-			System.out.println("Could not construct");
-			e.printStackTrace();
+			System.out.println("Could not construct action");
 		}
 	}
 		
@@ -138,8 +129,7 @@ public class AddActionHandler implements GameHandler<Event> {
 	}
 
 	@Override
-	public EventType<Event> getEventType() {
-		// TODO Auto-generated method stub
+	public EventType<Event> getEventType(){
 		return Event.ANY;
 	}
 	
