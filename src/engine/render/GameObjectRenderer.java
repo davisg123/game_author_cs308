@@ -48,6 +48,7 @@ public class GameObjectRenderer {
 	public void renderGameObjects (Level level) {
 		myCanvas.getChildren().clear();
 		myCurrentLevel = level;
+		setBackGroundImage(level);
 		for(Iterator<GameObject> iter = myCurrentLevel.getGameObjectIterator(); iter.hasNext();) {
 			GameObject obj = iter.next();
 			if (!obj.getIdentifier().getUniqueId().equals("template")){
