@@ -70,7 +70,7 @@ public class MarioGameTest extends Application {
 
         myRootGroup = new Group();
 
-        myScene = new Scene(myRootGroup,300,300);
+        myScene = new Scene(myRootGroup,807,400);
         ButtonConditionManager.getInstance().beginListeningToScene(myScene);
         myStage.setScene(myScene);
         myStage.show();
@@ -83,32 +83,48 @@ public class MarioGameTest extends Application {
          * create a sprite and put it in a collection
          *****/
         GameObjectsCollection myFloorObjects = new GameObjectsCollection();
+        GameObjectsCollection myPlatformObjects = new GameObjectsCollection();
         GameObjectsCollection myBallObjects = new GameObjectsCollection();
         GameObjectsCollection myLabels = new GameObjectsCollection();
         
+        
+        //Create button for Splash Screen
+        
+        
 //        //create Labels for High scores, names, text etc
-        GameObject labelText = new GameObject(null, "", 0,0,300,300,0,"label_Text");
-        labelText.setIdentifier(new Identifier("LabelText","asdf"));
-        labelText.setLabel("THIS IS A LABEL, DO WHAT YOU WANT");
-       myLabels.add(labelText);
+//        GameObject labelText = new GameObject(null, "", 0,0,200,100,0,"label_Text");
+//        labelText.setIdentifier(new Identifier("LabelText","asdf"));
+//        labelText.setLabel("THIS IS A LABEL, DO WHAT YOU WANT");
+//       myLabels.add(labelText);
         
         //create the floor
-        GameObject floorRight = new GameObject(null,"floor.png",
-                                   200, 200, 20, 200, 0, "floor_right");
-        floorRight.setIdentifier(new Identifier("floor","a"));
-        //ugh, why do we have to set this explicitly?
-        PhysicsBody floorRightBody = new PhysicsBody(20,200);
-        floorRightBody.addScalar((new CollisionConstant(1.0)));
-        floorRight.setPhysicsBody(floorRightBody);
-        GameObject floorLeft = new GameObject(null,"floor.png",
-                                               -50, 200, 20, 200, 0, "floor_left");
-        floorLeft.setIdentifier(new Identifier("floor","b"));
-        PhysicsBody floorLeftBody = new PhysicsBody(20,210);
-        floorLeftBody.addScalar((new CollisionConstant(1.0)));
-        floorLeft.setPhysicsBody(floorLeftBody);
-        //floorBody.setAcceleration(new Acceleration(0.0,-77.0));
-        myFloorObjects.add(floorRight);
-        myFloorObjects.add(floorLeft);
+        
+        
+        GameObject floor1 = new GameObject(null, "floor3.png", 
+                                           1, 347, 8500.0, 800, 0, "FloorBlock1");
+        floor1.setIdentifier(new Identifier("FloorBlock","a")); 
+        PhysicsBody floor1Body = new PhysicsBody(50,50);
+        floor1Body.addScalar((new CollisionConstant(1.0)));
+        floor1.setPhysicsBody(floor1Body);
+        myFloorObjects.add(floor1);
+        
+        GameObject platform1 = new GameObject(null, "BrickBlock_NSMB.png", 
+                                            200, 100, 50, 50, 0, "PlatformBlock1");
+        platform1.setIdentifier(new Identifier("PlatformBlock","a")); 
+        PhysicsBody platform1Body = new PhysicsBody(50,50);
+        platform1Body.addScalar((new CollisionConstant(1.0)));
+        platform1.setPhysicsBody(platform1Body);
+        
+        GameObject platform2 = new GameObject(null, "BrickBlock_NSMB.png", 
+                                              250, 100, 50, 50, 0, "PlatformBlock1");
+        platform2.setIdentifier(new Identifier("PlatformBlock","b"));   
+        PhysicsBody platform2Body = new PhysicsBody(50,50);
+        platform2Body.addScalar((new CollisionConstant(1.0)));
+        platform2.setPhysicsBody(platform2Body);
+        
+        
+        myPlatformObjects.add(platform1);
+        myPlatformObjects.add(platform2);
         
         //create a ball
         GameObject ball = new GameObject(null,"ball.png",50,150,30,30,0,"ball_object");
@@ -198,7 +214,7 @@ public class MarioGameTest extends Application {
         
         //collision stuff
         ArrayList<Action> ConditionActionList = new ArrayList<Action>();
-        FixedCollisionTypeAction collisionAction = new FixedCollisionTypeAction("ball","floor",0.0);
+        FixedCollisionTypeAction collisionAction = new FixedCollisionTypeAction("ball","FloorBlock",0.0);
         ConditionActionList.add(collisionAction);
         TypeCollisionCondition ballAndPlatformCollision = new TypeCollisionCondition(ConditionActionList,"ball","floor");
         ballAndPlatformCollision.setIdentifier(new Identifier("collision_cond","a"));
@@ -209,7 +225,7 @@ public class MarioGameTest extends Application {
         ArrayList<Action> boundaryActionList = new ArrayList<Action>();
         boundaryActionList.add(boundaryLeftAction);
         boundaryActionList.add(boundaryRightAction);
-        BoundaryConditionY boundaryCondition = new BoundaryConditionY(boundaryActionList,myFloorObjects.getIdentifierList(),-50.0,false);
+        BoundaryConditionY boundaryCondition = new BoundaryConditionY(boundaryActionList,myPlatformObjects.getIdentifierList(),-50.0,false);
         boundaryCondition.setIdentifier(new Identifier("bound_cond","a"));
         myConditions.add(boundaryCondition);
         
@@ -241,6 +257,7 @@ public class MarioGameTest extends Application {
         
         GameObjectsCollection allGameObjects = new GameObjectsCollection();
         allGameObjects.addAll(myBallObjects);
+        allGameObjects.addAll(myPlatformObjects);
         allGameObjects.addAll(myFloorObjects);
         allGameObjects.add(fireball);
         allGameObjects.addAll(myLabels);
