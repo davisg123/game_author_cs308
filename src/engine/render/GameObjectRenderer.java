@@ -48,6 +48,7 @@ public class GameObjectRenderer {
 	public void renderGameObjects (Level level) {
 		myCanvas.getChildren().clear();
 		myCurrentLevel = level;
+		setBackGroundImage(level);
 		for(Iterator<GameObject> iter = myCurrentLevel.getGameObjectIterator(); iter.hasNext();) {
 			GameObject obj = iter.next();
 			if (!obj.getIdentifier().getUniqueId().equals("template")){
@@ -129,8 +130,11 @@ public class GameObjectRenderer {
 	 */
 	private Node createCollisionBody (GameObject obj) {
 		PhysicsBody body = obj.getPhysicsBody();
-		Rectangle hitBox = new Rectangle(body.getCollisionBodyHeight(),body.getCollisionBodyWidth());
-		hitBox.setVisible(false);
+		Rectangle hitBox = null;
+		if(body!=null) {
+			hitBox = new Rectangle(body.getCollisionBodyHeight(),body.getCollisionBodyWidth());
+			hitBox.setVisible(false);
+		}
 		return hitBox;
 	}
 

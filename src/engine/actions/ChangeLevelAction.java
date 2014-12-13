@@ -6,8 +6,8 @@ import engine.level.LevelManager;
 
 public class ChangeLevelAction implements Action, Initializable{
 
-	Identifier levelID; 
-	LevelManager myLevelManager;
+	private Identifier levelID; 
+	private transient LevelManager myLevelManager;
 	
 	public ChangeLevelAction(Identifier id){
 		levelID=id; 

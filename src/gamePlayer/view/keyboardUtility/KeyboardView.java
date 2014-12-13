@@ -13,7 +13,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import authoring.model.collections.ConditionsCollection;
-import engine.conditions.ButtonCondition;
+import engine.conditions.ButtonPressCondition;
 import engine.conditions.Condition;
 
 /**
@@ -74,7 +74,7 @@ public class KeyboardView {
 		Button button = new Button(key);
 		button.setId("keyButton");
 		button.setPrefSize(KEY_WIDTH, KEY_HEIGHT);
-		button.setDisable(key == "");
+		button.setDisable(key.equals(""));
 		button.setOnAction((event) -> {
 			myKeyMapForm.createKeyMapForm(key);
 		});
@@ -87,7 +87,7 @@ public class KeyboardView {
 	private ComboBox<String> comboBoxForButton() {
 		ComboBox<String> functionCombos = new ComboBox<String>();
 		for (Iterator<Condition> conditionIterator = myButtonConditions.iterator(); conditionIterator.hasNext();) {
-			ButtonCondition condition = (ButtonCondition) conditionIterator.next();
+			ButtonPressCondition condition = (ButtonPressCondition) conditionIterator.next();
 			functionCombos.getItems().add(condition.getKeyIdentifier());
 		}
 		return functionCombos;
@@ -98,7 +98,7 @@ public class KeyboardView {
 		KeyCode kc = this.myMappedKeys.getKeyCode(button);
 		myButtonConditionsMap.put(kc, keyFunction);
 		for(Condition c : myButtonConditions) {
-			ButtonCondition bc = (ButtonCondition) c;
+			ButtonPressCondition bc = (ButtonPressCondition) c;
 			List<KeyCode> kcl = bc.getKeyList();
 			for(KeyCode k : kcl)
 			{
