@@ -21,12 +21,6 @@ public class FileSelectionWizard {
 		DirectoryChooser directoryChooser = new DirectoryChooser();
 		directoryChooser.setTitle("Open Resource File");
 		return directoryChooser.showDialog(myFileStage);
-		
-//		FileChooser fileChooser = new FileChooser();
-//		fileChooser.setTitle("Open Resource File");
-//		fileChooser.getExtensionFilters().addAll(
-//				new FileChooser.ExtensionFilter("JSON", "*.json"));
-//		return fileChooser.showOpenDialog(myFileStage).toPath();
 	}
 
 }

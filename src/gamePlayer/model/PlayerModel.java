@@ -50,15 +50,6 @@ public class PlayerModel {
 				myPlayerView.getGroup(), f.toString());
 		myGameManager.initialize();
 		extractButtonConditions();
-		
-		
-//		Path filePath = myFileSelector.selectFile();
-//		myGameData = myDataManager.readGameFile(filePath.toString());
-//		myGameManager = new GameManager(myGameData.getConditions(),
-//				myGameData.getGameObjects(), myGameData.getLevels(),
-//				myPlayerView.getGroup(), filePath.getParent().toString());
-//		myGameManager.initialize();
-//		extractButtonConditions();
 	}
 
 	public void saveGameToWeb() {

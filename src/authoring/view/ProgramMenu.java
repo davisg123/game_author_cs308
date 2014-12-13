@@ -147,11 +147,11 @@ public class ProgramMenu extends MenuBar {
 		}
 	}
 
-	private void makeFolders(File gameFile) {
-		gameFile.mkdir();
-		File imageFolder = new File(gameFile.getPath() + "/images");
+	private void makeFolders(File gameLocation) {
+		gameLocation.mkdir();
+		File imageFolder = new File(gameLocation.getPath() + "/images");
 		imageFolder.mkdir();
-		File soundFolder = new File(gameFile.getPath() + "/sounds");
+		File soundFolder = new File(gameLocation.getPath() + "/sounds");
 		soundFolder.mkdir();
 
 	}
