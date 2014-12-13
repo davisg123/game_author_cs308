@@ -204,12 +204,12 @@ public class MainEngineTests extends Application {
         ballAndPlatformCollision.setIdentifier(new Identifier("collision_cond","a"));
         myConditions.add(ballAndPlatformCollision);
         
-        Action boundaryRightAction = new TranslateYType("floor",350.0);
-        Action boundaryLeftAction = new TranslateYType("floor",350.0);
+        Action boundaryRightAction = new TranslateYType("floor",10.0);
+        Action boundaryLeftAction = new TranslateYType("floor",10.0);
         ArrayList<Action> boundaryActionList = new ArrayList<Action>();
         boundaryActionList.add(boundaryLeftAction);
         boundaryActionList.add(boundaryRightAction);
-        BoundaryConditionY boundaryCondition = new BoundaryConditionY(boundaryActionList,myFloorObjects.getIdentifierList(),-50.0,false);
+        BoundaryConditionY boundaryCondition = new BoundaryConditionY(boundaryActionList,myFloorObjects.getIdentifierList(),300.0,false);
         boundaryCondition.setIdentifier(new Identifier("bound_cond","a"));
         myConditions.add(boundaryCondition);
         
