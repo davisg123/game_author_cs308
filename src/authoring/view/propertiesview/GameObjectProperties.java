@@ -88,7 +88,7 @@ public class GameObjectProperties extends Properties {
 		physicsProperties = new LinkedHashMap<String, PropertyTextField>();
 		
 
-		PropertyTextField unmodifiableName = new PropertyTextField("Name: ", gameObject.getID());
+		PropertyTextField unmodifiableName = new PropertyTextField("Type: ", gameObject.getIdentifier().getType());
 		unmodifiableName.setDisable(true);
 		PropertyTextField unmodifiableID = new PropertyTextField("ID: ",gameObject.getIdentifier().getUniqueId());
 		unmodifiableID.setDisable(true);

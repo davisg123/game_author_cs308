@@ -16,10 +16,12 @@ public abstract class Wizard extends Stage{
 
 	protected Map<String, PropertyTextField> myMap;
 	protected VBox myWindow;
+	protected String myTitle;
 	
 	public Wizard(String title, double width, double height, EventHandler<ActionEvent> event){
 		myMap = new LinkedHashMap<String, PropertyTextField>();
 		myWindow = new VBox();
+		myTitle = title;
 		
 		this.setTitle(title);
 		this.initStyle(StageStyle.DECORATED);
