@@ -17,7 +17,8 @@ public class ConditionChoicesVBox extends VBox{
 		myToggleGroup = new ToggleGroup();
 		
 		RadioButton[] radioButtons = {
-				new RadioButton("ButtonCondition"),
+				new RadioButton("ButtonPressCondition"),
+				new RadioButton("ButtonReleaseCondition"),
 				new RadioButton("BoundaryConditionX"),
 				new RadioButton("BoundaryConditionY"),
 				new RadioButton("TimeCondition"),
