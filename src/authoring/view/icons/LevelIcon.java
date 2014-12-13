@@ -1,11 +1,14 @@
 package authoring.view.icons;
 
-import engine.level.Level;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import authoring.eventhandlers.AddConditionIDHandler;
 import authoring.eventhandlers.GameHandler;
+import authoring.view.propertiesview.LevelProperties;
+import authoring.view.propertiesview.Properties;
+import engine.level.Level;
 
-public class LevelIcon extends BaseIcon {
+public class LevelIcon extends BaseIcon implements IPropertiesMaker{
 
 	public static final int DEFAULT_FONT_SIZE = 20;
 	private Level myLevel;
@@ -35,6 +38,11 @@ public class LevelIcon extends BaseIcon {
 
 	public GameHandler[] getLevelEvents() {
 		return myLevelEvents;
+	}
+
+	@Override
+	public Properties makeProperties() {
+		return new LevelProperties(this, new AddConditionIDHandler(this.getLevel()));
 	}
 	
 

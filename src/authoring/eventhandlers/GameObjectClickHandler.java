@@ -7,8 +7,6 @@ import authoring.view.propertiesview.PropertiesView;
 
 public class GameObjectClickHandler implements GameHandler<MouseEvent>{
 
-	//VERY similar to image click handler, refactor
-	
 	private PropertiesView myProperties;
 	
 	public GameObjectClickHandler(PropertiesView props){

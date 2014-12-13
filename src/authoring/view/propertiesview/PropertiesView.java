@@ -7,6 +7,7 @@ import authoring.eventhandlers.AddConditionIDHandler;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.CollectionView;
 import authoring.view.icons.ConditionIcon;
+import authoring.view.icons.IPropertiesMaker;
 import authoring.view.icons.ImageIcon;
 import authoring.view.icons.LevelIcon;
 import authoring.view.icons.SoundIcon;
@@ -20,7 +21,6 @@ public class PropertiesView extends CollectionView {
 	private VBox myContents = new VBox();
 
 	private GameHandler[] myButtonBehaviors;
-	private GameHandler myAddActionButtonBehavior;
 
 	private GameObjectProperties myGameObjectsProperties;
 	private GameObject myCurrentGameObject;
@@ -38,21 +38,12 @@ public class PropertiesView extends CollectionView {
 		myHeight = height;
 
 	}
-
-	// public void makeProperties(Graphic g){
-	// g.makeProperties();
-	// }
-
-	public void makeProperties(ImageIcon g) {
+	
+	public void makeProperties(IPropertiesMaker icon){
 		myContents.getChildren().clear();
-		this.setContent(new FileProperties(g));
+		this.setContent(icon.makeProperties());
 	}
-
-	public void makeProperties(SoundIcon g) {
-		myContents.getChildren().clear();
-		this.setContent(new FileProperties(g));
-	}
-
+	
 	public void makeProperties(GameObject gameObj) {
 		myContents.getChildren().clear();
 		myCurrentGameObject = gameObj;
@@ -60,22 +51,7 @@ public class PropertiesView extends CollectionView {
 				myHeight, this.myButtonBehaviors);
 		this.setContent(myGameObjectsProperties);
 	}
-
-	public void makeProperties(LevelIcon g) {
-		LevelProperties props = new LevelProperties(g, new AddConditionIDHandler(g.getLevel()));
-		myContents.getChildren().clear();
-		this.setContent(props);
-	}
-
-	public void makeProperties(ConditionIcon g) {
-		myContents.getChildren().clear();
-		this.setContent(new ConditionProperties(g, myAddActionButtonBehavior));
-	}
-
-	public void displayProperties(Properties props) {
-		this.setContent(props);
-	}
-
+	
 	public GameObject getCurrentGameObject() {
 		return this.myCurrentGameObject;
 	}
@@ -86,9 +62,6 @@ public class PropertiesView extends CollectionView {
 
 	public void setButtonBehaviors(GameHandler... gh) {
 		myButtonBehaviors = gh;
-	}
-	public void setAddActionButtonBehaviors(GameHandler gh) {
-		myAddActionButtonBehavior = gh;
 	}
 
 }
