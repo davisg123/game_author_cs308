@@ -1,0 +1,4 @@
+<map id="engine.level.LevelManager.setLevelEnabledConditions" name="engine.level.LevelManager.setLevelEnabledConditions">
+<area shape="rect" id="node2" href="$df/d67/classengine_1_1level_1_1_level_manager.html#a766cb6198dd991f0bdf6386dace3a65b" title="engine.level.LevelManager.enable\lCondition" alt="" coords="269,5,507,46"/>
+<area shape="rect" id="node3" href="$df/d84/classengine_1_1level_1_1_level.html#a264b568258eafa3d2c664c94e7498621" title="engine.level.Level.getCondition\lIdentifiers" alt="" coords="278,70,498,111"/>
+</map>

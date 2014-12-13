@@ -1,0 +1,12 @@
+<map id="data.DataManager.writeFile" name="data.DataManager.writeFile">
+<area shape="rect" id="node2" href="$d1/d95/classdata_1_1_data_manager.html#a138b23f88dcdd16ef1a2a095638963dc" title="data.DataManager.writeGameFile" alt="" coords="256,20,491,47"/>
+<area shape="rect" id="node5" href="$d1/d95/classdata_1_1_data_manager.html#a635a83b3bf3ae9c504c420c3794c47cc" title="data.DataManager.writeProgressFile" alt="" coords="248,77,499,104"/>
+<area shape="rect" id="node3" href="$d4/d68/classauthoring_1_1model_1_1_authoring_model.html#a1cdb75c271642f158391ccecc24a539c" title="authoring.model.Authoring\lModel.save" alt="" coords="565,5,758,46"/>
+<area shape="rect" id="node4" href="$de/d41/classauthoring_1_1controller_1_1_authoring_controller.html#adbe015f9624bd3077b0eba208ece1966" title="authoring.controller.Authoring\lController.saveData" alt="" coords="825,5,1037,46"/>
+<area shape="rect" id="node6" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#ad6c70f114f81a6e1739a019d500fab9f" title="gamePlayer.view.Progress\lSelector.saveProgressEvent" alt="" coords="561,70,761,111"/>
+<area shape="rect" id="node11" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#a6a664023c1828d7dc03d05507c2049ed" title="gamePlayer.view.Progress\lSelector.overwriteProgressEvent" alt="" coords="547,135,775,177"/>
+<area shape="rect" id="node7" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#abf378d2a28ee207f92264da056c28a13" title="gamePlayer.view.Progress\lSelector.buildSaveWindow" alt="" coords="837,102,1024,143"/>
+<area shape="rect" id="node8" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#ae3ab91c2aa658dfafc8fe6bc02191f43" title="gamePlayer.view.Progress\lSelector.saveProgressState" alt="" coords="1086,102,1285,143"/>
+<area shape="rect" id="node9" href="$d2/dc9/classgame_player_1_1model_1_1_player_model.html#a245d6c46b8a79a80def826b969b195e6" title="gamePlayer.model.PlayerModel.save\lGameProgress" alt="" coords="1333,102,1589,143"/>
+<area shape="rect" id="node10" href="$d9/dff/classgame_player_1_1view_1_1_menu_bar_controller.html#a3e80307e5f56598e5c990f40869895e1" title="gamePlayer.view.MenuBarController.save\lGameProgress" alt="" coords="1637,102,1920,143"/>
+</map>
