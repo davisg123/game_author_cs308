@@ -1,0 +1,10 @@
+<map id="errorsAndExceptions.ErrorPopUp.display" name="errorsAndExceptions.ErrorPopUp.display">
+<area shape="rect" id="node2" href="$d8/d3a/classerrors_and_exceptions_1_1_error_test_main.html#aeaf0c935669e041cd27c4d2de21171a3" title="errorsAndExceptions.Error\lTestMain.start" alt="" coords="307,5,496,46"/>
+<area shape="rect" id="node3" href="$df/d81/classauthoring_1_1eventhandlers_1_1_save_as_new_handler.html#ae608a7a9d0d28d19eb1c55cbf5610f0a" title="authoring.eventhandlers.\lSaveAsNewHandler.updateName" alt="" coords="284,70,519,111"/>
+<area shape="rect" id="node5" href="$da/d4c/classauthoring_1_1eventhandlers_1_1_add_object_handler.html#abe73f943b230384279c9b2b89fbd8822" title="authoring.eventhandlers.\lAddObjectHandler.updateName" alt="" coords="289,135,514,177"/>
+<area shape="rect" id="node8" href="$d0/df2/classauthoring_1_1eventhandlers_1_1_game_object_drag_to_level_handler.html#a98ccf77195ecfc7146cd1737da68b6b2" title="authoring.eventhandlers.\lGameObjectDragToLevelHandler.updateName" alt="" coords="243,201,559,242"/>
+<area shape="rect" id="node4" href="$df/d81/classauthoring_1_1eventhandlers_1_1_save_as_new_handler.html#a912458649a9a99cded7c346f9d8b40f5" title="authoring.eventhandlers.\lSaveAsNewHandler.handle" alt="" coords="649,70,842,111"/>
+<area shape="rect" id="node6" href="$da/d4c/classauthoring_1_1eventhandlers_1_1_add_object_handler.html#ad31ca6859bb6a874f9c1a1106fc9b03b" title="authoring.eventhandlers.\lAddObjectHandler.createGameObject" alt="" coords="614,135,877,177"/>
+<area shape="rect" id="node7" href="$da/d4c/classauthoring_1_1eventhandlers_1_1_add_object_handler.html#ae0c51e52da299a8a98ac0c9aec97efcd" title="authoring.eventhandlers.\lAddObjectHandler.handle" alt="" coords="931,135,1115,177"/>
+<area shape="rect" id="node9" href="$d0/df2/classauthoring_1_1eventhandlers_1_1_game_object_drag_to_level_handler.html#ad5002cd6b7781653104f1820a573f902" title="authoring.eventhandlers.\lGameObjectDragToLevelHandler.handle" alt="" coords="608,201,883,242"/>
+</map>

@@ -1,0 +1,18 @@
+<map id="gamePlayer.view.MenuBarController.loadGameFile" name="gamePlayer.view.MenuBarController.loadGameFile">
+<area shape="rect" id="node2" href="$d2/dc9/classgame_player_1_1model_1_1_player_model.html#a810c0b28ae81f5a27c5df5f83f907088" title="gamePlayer.model.PlayerModel.load\lGameFile" alt="" coords="333,227,587,269"/>
+<area shape="rect" id="node3" href="$d2/dc9/classgame_player_1_1model_1_1_player_model.html#aca43542fe4bf7439f60a3e173cd56b9f" title="gamePlayer.model.PlayerModel.extract\lButtonConditions" alt="" coords="635,11,906,53"/>
+<area shape="rect" id="node5" href="$d7/dbf/classauthoring_1_1model_1_1_game_data.html#a4a3bfa5ed2418ba59bdf3e73b4ce310a" title="authoring.model.GameData.get\lConditions" alt="" coords="980,70,1207,111"/>
+<area shape="rect" id="node6" href="$d7/dbf/classauthoring_1_1model_1_1_game_data.html#ab6eab149af02a9649d0e2b162daf3600" title="authoring.model.GameData.get\lGameObjects" alt="" coords="657,129,884,170"/>
+<area shape="rect" id="node7" href="$d7/d3c/classgame_player_1_1view_1_1_player_view.html#afce0dda0a14523caaf59ad98ab7988ec" title="gamePlayer.view.PlayerView.get\lGroup" alt="" coords="659,194,882,235"/>
+<area shape="rect" id="node9" href="$d7/dbf/classauthoring_1_1model_1_1_game_data.html#a5188274f1af76c8d2e05a7c8dcba3805" title="authoring.model.GameData.get\lLevels" alt="" coords="657,259,884,301"/>
+<area shape="rect" id="node10" href="$d6/d94/classengine_1_1_game_manager.html#a9211b5f8cd80af33e24a2fcc886135e8" title="engine.GameManager.initialize" alt="" coords="661,325,880,352"/>
+<area shape="rect" id="node13" href="$d1/d95/classdata_1_1_data_manager.html#a01c83f361a872beb20614f8607434d03" title="data.DataManager.readGameFile" alt="" coords="654,376,887,403"/>
+<area shape="rect" id="node17" href="$d5/d03/classgame_player_1_1view_1_1_file_selection_wizard.html#a8031ffdef3d2bcb33b65fe7bcde5a69f" title="gamePlayer.view.FileSelection\lWizard.selectFile" alt="" coords="665,427,876,469"/>
+<area shape="rect" id="node4" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html#a1bdc1047736bbb23259d6a7fe4c6deeb" title="authoring.model.collections.\lGeneralCollection.add" alt="" coords="992,5,1195,46"/>
+<area shape="rect" id="node8" href="$db/d19/classgame_player_1_1view_1_1_game_canvas.html#aaf62ddebd656a3ec3174e6845851e2d9" title="gamePlayer.view.GameCanvas.getNode" alt="" coords="955,201,1231,228"/>
+<area shape="rect" id="node11" href="$d6/d94/classengine_1_1_game_manager.html#a5b9c3b1993da4d9a2e7e0397e1f57596" title="engine.GameManager.addFrames\lToGroup" alt="" coords="974,253,1213,294"/>
+<area shape="rect" id="node12" href="$d6/d94/classengine_1_1_game_manager.html#a1264479972233bc22827c6cd1b9ffce8" title="engine.GameManager.setGame\lSpeed" alt="" coords="980,318,1207,359"/>
+<area shape="rect" id="node14" href="$d1/d95/classdata_1_1_data_manager.html#aafa87bd5e8fd9aa07c7cd71a392460af" title="data.DataManager.readFile" alt="" coords="996,384,1191,411"/>
+<area shape="rect" id="node15" href="$d1/d95/classdata_1_1_data_manager.html#aae0df3600a2db2777609fe47c05244e8" title="data.DataManager.checkFor\lExtension" alt="" coords="1297,347,1500,389"/>
+<area shape="rect" id="node16" href="$d1/d95/classdata_1_1_data_manager.html#ae2b9bbc41a318b6009f75999180c9c2a" title="data.DataManager.hasValidName" alt="" coords="1280,413,1517,440"/>
+</map>

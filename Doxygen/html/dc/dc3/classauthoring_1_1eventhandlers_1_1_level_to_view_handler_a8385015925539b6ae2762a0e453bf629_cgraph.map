@@ -1,0 +1,10 @@
+<map id="authoring.eventhandlers.LevelToViewHandler.handle" name="authoring.eventhandlers.LevelToViewHandler.handle">
+<area shape="rect" id="node2" href="$d4/d04/classauthoring_1_1view_1_1levelview_1_1_levels_view.html#aa2b5fcd2823037e5a304a2179a75d2ec" title="authoring.view.levelview.\lLevelsView.addExistingLevel" alt="" coords="255,47,455,89"/>
+<area shape="rect" id="node3" href="$df/d84/classengine_1_1level_1_1_level.html#a3f515393a7ff1540b372822415262c24" title="engine.level.Level.getIdentifier" alt="" coords="518,25,733,52"/>
+<area shape="rect" id="node4" href="$d4/dac/classengine_1_1game_object_1_1_identifier.html#aa2630b5024b9595e43afe0bf53229433" title="engine.gameObject.Identifier.get\lUniqueId" alt="" coords="510,91,741,133"/>
+<area shape="rect" id="node5" href="$d3/d8d/classdata_1_1_observable.html#a211afd0ca0acad7240ab31386c1045dc" title="data.Observable.addObserver" alt="" coords="248,164,461,191"/>
+<area shape="rect" id="node6" href="$d5/d37/classauthoring_1_1view_1_1icons_1_1_level_icon.html#a7827720d35e2fb9b9f21df89db6033b1" title="authoring.view.icons.Level\lIcon.getLevel" alt="" coords="261,215,448,257"/>
+<area shape="rect" id="node7" href="$d5/d37/classauthoring_1_1view_1_1icons_1_1_level_icon.html#afb0a8a2f52c7347dfe35fdbc5aa9032e" title="authoring.view.icons.Level\lIcon.getLevelEvents" alt="" coords="261,281,448,322"/>
+<area shape="rect" id="node8" href="$d4/d04/classauthoring_1_1view_1_1levelview_1_1_levels_view.html#a4c50bd43678dde8a5d6df02141b2f4f3" title="authoring.view.levelview.\lLevelsView.levelOpenInTabs" alt="" coords="257,346,453,387"/>
+<area shape="rect" id="node9" href="$d1/d00/classauthoring_1_1view_1_1levelview_1_1_single_level_view.html#ac4a1ea42423440ceaa7b3105d74de522" title="authoring.view.levelview.\lSingleLevelView.setID" alt="" coords="267,411,443,453"/>
+</map>

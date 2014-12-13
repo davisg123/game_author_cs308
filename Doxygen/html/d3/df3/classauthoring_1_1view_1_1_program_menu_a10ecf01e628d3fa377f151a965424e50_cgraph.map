@@ -1,0 +1,7 @@
+<map id="authoring.view.ProgramMenu.loadData" name="authoring.view.ProgramMenu.loadData">
+<area shape="rect" id="node2" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#aac59d524c9952da64460ec1126974ff9" title="authoring.view.ProgramMenu.make\lFolders" alt="" coords="323,5,570,46"/>
+<area shape="rect" id="node3" href="$d1/d95/classdata_1_1_data_manager.html#a01c83f361a872beb20614f8607434d03" title="data.DataManager.readGameFile" alt="" coords="330,71,563,97"/>
+<area shape="rect" id="node4" href="$d1/d95/classdata_1_1_data_manager.html#aafa87bd5e8fd9aa07c7cd71a392460af" title="data.DataManager.readFile" alt="" coords="619,71,813,97"/>
+<area shape="rect" id="node5" href="$d1/d95/classdata_1_1_data_manager.html#ae2b9bbc41a318b6009f75999180c9c2a" title="data.DataManager.hasValidName" alt="" coords="861,41,1099,68"/>
+<area shape="rect" id="node6" href="$d1/d95/classdata_1_1_data_manager.html#aae0df3600a2db2777609fe47c05244e8" title="data.DataManager.checkFor\lExtension" alt="" coords="879,93,1081,134"/>
+</map>

@@ -1,0 +1,10 @@
+<map id="data.DataManager.readFile" name="data.DataManager.readFile">
+<area shape="rect" id="node2" href="$d1/d95/classdata_1_1_data_manager.html#a01c83f361a872beb20614f8607434d03" title="data.DataManager.readGameFile" alt="" coords="249,63,482,89"/>
+<area shape="rect" id="node3" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#a10ecf01e628d3fa377f151a965424e50" title="authoring.view.ProgramMenu.loadData" alt="" coords="531,12,800,39"/>
+<area shape="rect" id="node7" href="$d1/d37/classengine_1_1actions_1_1_load_action.html#af92860bc56b712c077bb2d726a17a8aa" title="engine.actions.LoadAction.execute" alt="" coords="543,63,788,89"/>
+<area shape="rect" id="node8" href="$d2/dc9/classgame_player_1_1model_1_1_player_model.html#a810c0b28ae81f5a27c5df5f83f907088" title="gamePlayer.model.PlayerModel.load\lGameFile" alt="" coords="539,114,792,155"/>
+<area shape="rect" id="node4" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#aa73ae8b737adefd919b8dd9c770afe5e" title="authoring.view.ProgramMenu.loadFile" alt="" coords="859,12,1117,39"/>
+<area shape="rect" id="node5" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#a4f80944f8d70afac9f86de8caa8439b5" title="authoring.view.ProgramMenu.\lFileMenu" alt="" coords="1176,5,1387,46"/>
+<area shape="rect" id="node6" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#a1979060c566560f24eee51c819341adc" title="authoring.view.ProgramMenu.\lProgramMenu" alt="" coords="1435,5,1645,46"/>
+<area shape="rect" id="node9" href="$d9/dff/classgame_player_1_1view_1_1_menu_bar_controller.html#af1f1b493dce9b79a0f464c4f1a6dfd09" title="gamePlayer.view.MenuBarController.load\lGameFile" alt="" coords="848,114,1128,155"/>
+</map>
