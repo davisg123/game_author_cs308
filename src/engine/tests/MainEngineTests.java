@@ -253,7 +253,13 @@ public class MainEngineTests extends Application {
         Level level0 = new Level(allGameObjects.getIdentifierList(),myConditions.getIdentifierList(),true);
         level0.setBackgroundMusic("Flappy_Bird_Theme_Song.mp3");
         level0.setBackgroundImage("Personnages-celebres-Troll-face-Troll-face-me-gusta-29215.jpg");
+        level0.setIdentifier(new Identifier("Level","0"));
+        Level level1 = new Level(allGameObjects.getIdentifierList(), myConditions.getIdentifierList(),false);
+        level1.setBackgroundImage("YouWin.png");
+        level1.setIdentifier(new Identifier("Level","1"));
         myLevels.add(level0);
+        myLevels.add(level1);
+        
         
         /*
          * uncomment for saving game
