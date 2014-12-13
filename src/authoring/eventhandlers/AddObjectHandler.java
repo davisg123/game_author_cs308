@@ -11,6 +11,7 @@ import authoring.view.wizards.GameObjectWizard;
 import authoring.view.wizards.NameWizard;
 import authoring.view.wizards.Wizard;
 import engine.gameObject.GameObject;
+import engine.gameObject.Identifier;
 import engine.gameObject.components.PhysicsBody;
 import engine.physics.Velocity;
 import errorsAndExceptions.ErrorPopUp;
@@ -66,7 +67,7 @@ public class AddObjectHandler implements GameHandler<Event> {
 	public void updateName(){
 		String tryID = myNameWizard.getMap().get("name").getInformation();
 		if(!myNameWizard.isDuplicated(tryID)){
-			myNewGameObject.getIdentifier().setType((myNameWizard.getMap().get("name").getInformation()));
+			myNewGameObject.setIdentifier(new Identifier(myNameWizard.getMap().get("name").getInformation(), "Template"));
 			myGameObjectCollection.add(myNewGameObject);
 		}
 		else{
