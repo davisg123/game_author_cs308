@@ -60,11 +60,13 @@ public class AuthoringModel {
 		for(Level l: myGame.getLevels()){
 			List<Identifier> levelGameObjectsIDs = new ArrayList<Identifier>();
 			for(GameObject g : l.getGameObjectsCollection()){
+				/**
 				Identifier i = new Identifier(g.getID(),Integer.toString(IDcounter));
 				g.setIdentifier(i);
 				IDcounter++;
+				**/
 				allGameObjects.add(g);
-				levelGameObjectsIDs.add(i);
+				levelGameObjectsIDs.add(g.getIdentifier());
 			}
 			Level levelToAdd = new Level(levelGameObjectsIDs);
 			levelToAdd.setStartIndicator(l.isStartLevel());

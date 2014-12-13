@@ -50,7 +50,7 @@ public abstract class GeneralCollection<T> extends Observable implements Iterabl
 		return myObjects.toString();
 	}
 	
-	public double getSize(){
+	public int getSize(){
 		return myObjects.size();
 	}
 	

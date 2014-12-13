@@ -3,13 +3,13 @@ package authoring.eventhandlers;
 import static authoring.view.levelview.SingleLevelView.OBJECT_X_OFFSET;
 import static authoring.view.levelview.SingleLevelView.OBJECT_Y_OFFSET;
 import javafx.event.EventType;
-import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import authoring.model.collections.LevelsCollection;
 import authoring.view.icons.GameObjectIcon;
 import authoring.view.levelview.LevelsView;
 import authoring.view.propertiesview.PropertiesView;
 import engine.gameObject.GameObject;
+import engine.gameObject.Identifier;
 import engine.level.Level;
 
 /**
@@ -45,6 +45,8 @@ public class GameObjectDragToLevelHandler implements GameHandler<MouseEvent> {
 		String id = myLevelView.getCurrentLevel().getID();
 		for (Level level : myLevelsCollection) {
 			if (level.getIdentifier().getUniqueId().equals(id) && myLevelView.contains(x + OBJECT_X_OFFSET, y + OBJECT_Y_OFFSET)) {
+				//FIX THIS TO BE UNIQUE, THIS IS REALLY REALLY BAD
+				newGameObject.setIdentifier(new Identifier(gameObject.getIdentifier().getType(),id +"-"+level.getGameObjectsCollection().getSize()));
 				level.addGameObject(newGameObject);
 				
 				myProps.makeProperties(newGameObject);

@@ -7,6 +7,7 @@ import javafx.scene.layout.VBox;
 import authoring.model.collections.GameObjectsCollection;
 import authoring.view.propertiesview.PropertyTextField;
 import engine.gameObject.GameObject;
+import engine.gameObject.Identifier;
 import errorsAndExceptions.ErrorPopUp;
 
 public class NameWizard extends Wizard{
@@ -47,6 +48,7 @@ public class NameWizard extends Wizard{
 		String tryID = g.getID();
 		if(!isDuplicatedID(tryID)){
 			g.setID(tryID);
+			g.setIdentifier(new Identifier(tryID, "Template"));
 			close();
 			myGameObjectCollection.add(g);
 		}
