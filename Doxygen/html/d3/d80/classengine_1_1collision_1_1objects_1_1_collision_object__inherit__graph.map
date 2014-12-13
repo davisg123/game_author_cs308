@@ -1,6 +1,0 @@
-<map id="engine.collision.objects.CollisionObject" name="engine.collision.objects.CollisionObject">
-<area shape="rect" id="node2" href="$db/d3a/classengine_1_1collision_1_1objects_1_1_enemy_collision_object.html" title="engine.collision.objects.\lEnemyCollisionObject" alt="" coords="235,5,408,46"/>
-<area shape="rect" id="node3" href="$d4/daa/classengine_1_1collision_1_1objects_1_1_fixed_object_collision_object.html" title="engine.collision.objects.\lFixedObjectCollisionObject" alt="" coords="227,70,415,111"/>
-<area shape="rect" id="node4" href="$dc/d87/classengine_1_1collision_1_1objects_1_1_hero_collision_object.html" title="engine.collision.objects.\lHeroCollisionObject" alt="" coords="235,135,408,177"/>
-<area shape="rect" id="node5" href="$d6/db8/classengine_1_1collision_1_1objects_1_1_powerup_collision_object.html" title="engine.collision.objects.\lPowerupCollisionObject" alt="" coords="235,201,408,242"/>
-</map>

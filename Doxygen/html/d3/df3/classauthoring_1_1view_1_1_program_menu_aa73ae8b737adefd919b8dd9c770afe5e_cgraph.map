@@ -1,8 +1,0 @@
-<map id="authoring.view.ProgramMenu.loadFile" name="authoring.view.ProgramMenu.loadFile">
-<area shape="rect" id="node2" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#a10ecf01e628d3fa377f151a965424e50" title="authoring.view.ProgramMenu.loadData" alt="" coords="312,41,581,68"/>
-<area shape="rect" id="node3" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#aac59d524c9952da64460ec1126974ff9" title="authoring.view.ProgramMenu.make\lFolders" alt="" coords="630,5,877,46"/>
-<area shape="rect" id="node4" href="$d1/d95/classdata_1_1_data_manager.html#a01c83f361a872beb20614f8607434d03" title="data.DataManager.readGameFile" alt="" coords="637,71,870,97"/>
-<area shape="rect" id="node5" href="$d1/d95/classdata_1_1_data_manager.html#aafa87bd5e8fd9aa07c7cd71a392460af" title="data.DataManager.readFile" alt="" coords="925,71,1120,97"/>
-<area shape="rect" id="node6" href="$d1/d95/classdata_1_1_data_manager.html#ae2b9bbc41a318b6009f75999180c9c2a" title="data.DataManager.hasValidName" alt="" coords="1168,41,1405,68"/>
-<area shape="rect" id="node7" href="$d1/d95/classdata_1_1_data_manager.html#aae0df3600a2db2777609fe47c05244e8" title="data.DataManager.checkFor\lExtension" alt="" coords="1185,93,1388,134"/>
-</map>

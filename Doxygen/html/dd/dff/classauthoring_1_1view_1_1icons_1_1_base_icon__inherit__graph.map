@@ -1,9 +1,0 @@
-<map id="authoring.view.icons.BaseIcon" name="authoring.view.icons.BaseIcon">
-<area shape="rect" id="node3" href="$d3/dcc/classauthoring_1_1view_1_1icons_1_1_condition_icon.html" title="authoring.view.icons.ConditionIcon" alt="" coords="371,21,611,48"/>
-<area shape="rect" id="node4" href="$de/d21/classauthoring_1_1view_1_1icons_1_1_file_icon.html" title="authoring.view.icons.FileIcon" alt="" coords="391,72,591,99"/>
-<area shape="rect" id="node9" href="$d5/d37/classauthoring_1_1view_1_1icons_1_1_level_icon.html" title="authoring.view.icons.LevelIcon" alt="" coords="384,123,597,149"/>
-<area shape="rect" id="node5" href="$d5/d47/classauthoring_1_1view_1_1icons_1_1_image_based_icon.html" title="authoring.view.icons.Image\lBasedIcon" alt="" coords="672,35,867,77"/>
-<area shape="rect" id="node8" href="$d1/db7/classauthoring_1_1view_1_1icons_1_1_sound_icon.html" title="authoring.view.icons.SoundIcon" alt="" coords="659,101,880,128"/>
-<area shape="rect" id="node6" href="$de/de8/classauthoring_1_1view_1_1icons_1_1_game_object_icon.html" title="authoring.view.icons.Game\lObjectIcon" alt="" coords="942,6,1135,47"/>
-<area shape="rect" id="node7" href="$df/d69/classauthoring_1_1view_1_1icons_1_1_image_icon.html" title="authoring.view.icons.ImageIcon" alt="" coords="929,72,1149,99"/>
-</map>
