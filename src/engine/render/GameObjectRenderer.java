@@ -129,8 +129,11 @@ public class GameObjectRenderer {
 	 */
 	private Node createCollisionBody (GameObject obj) {
 		PhysicsBody body = obj.getPhysicsBody();
-		Rectangle hitBox = new Rectangle(body.getCollisionBodyHeight(),body.getCollisionBodyWidth());
-		hitBox.setVisible(false);
+		Rectangle hitBox = null;
+		if(body!=null) {
+			hitBox = new Rectangle(body.getCollisionBodyHeight(),body.getCollisionBodyWidth());
+			hitBox.setVisible(false);
+		}
 		return hitBox;
 	}
 

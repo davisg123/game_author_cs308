@@ -22,8 +22,9 @@ import engine.actions.TranslateYType;
 import engine.actions.XVelocityIDAction;
 import engine.actions.YImpulseIDAction;
 import engine.actions.YVelocityIDAction;
+import engine.conditions.BoundaryConditionX;
 import engine.conditions.BoundaryConditionY;
-import engine.conditions.ButtonCondition;
+import engine.conditions.ButtonPressCondition;
 import engine.conditions.ButtonConditionManager;
 import engine.conditions.TimeCondition;
 import engine.conditions.TypeCollisionCondition;
@@ -86,10 +87,10 @@ public class MainEngineTests extends Application {
         GameObjectsCollection myLabels = new GameObjectsCollection();
         
 //        //create Labels for High scores, names, text etc
-//        GameObject labelText = new GameObject(null, "", 0,0,300,300,0,"label_Text");
-//        labelText.setIdentifier(new Identifier("LabelText","asdf"));
-//        labelText.setLabel("THIS IS A LABEL, DO WHAT YOU WANT");
-//        myLabels.add(labelText);
+        GameObject labelText = new GameObject(null, "", 0,0,300,300,0,"label_Text");
+        labelText.setIdentifier(new Identifier("LabelText","asdf"));
+        labelText.setLabel("THIS IS A LABEL, DO WHAT YOU WANT");
+       myLabels.add(labelText);
         
         //create the floor
         GameObject floorRight = new GameObject(null,"floor.png",
@@ -158,7 +159,7 @@ public class MainEngineTests extends Application {
         actionList.add(aAct);
         ArrayList<KeyCode> kclA = new ArrayList<KeyCode>();
         kclA.add(KeyCode.A);
-        ButtonCondition aCon = new ButtonCondition(actionList,kclA, 1.0, true);
+        ButtonPressCondition aCon = new ButtonPressCondition(actionList,kclA, 1.0, true);
         aCon.setIdentifier(new Identifier("button_cond","a"));
         ArrayList<Action> dActList = new ArrayList<Action>();
         dActList.add(dAct);
@@ -167,18 +168,18 @@ public class MainEngineTests extends Application {
         testList.add(ballAct);
         ArrayList<KeyCode> kclN = new ArrayList<KeyCode>();
         kclN.add(KeyCode.N);
-        ButtonCondition nCon = new ButtonCondition(testList, kclN, 5.0, true);
+        ButtonPressCondition nCon = new ButtonPressCondition(testList, kclN, 5.0, true);
         nCon.setIdentifier(new Identifier("button_cond", "n"));
         ArrayList<KeyCode> kclD = new ArrayList<KeyCode>();
         kclD.add(KeyCode.D);
-        ButtonCondition dCon = new ButtonCondition(dActList,kclD,1.0, true);
+        ButtonPressCondition dCon = new ButtonPressCondition(dActList,kclD,1.0, true);
         dCon.setIdentifier(new Identifier("button_cond","d")); 
         Action delete = new DeleteTypeAction("floor");
         ArrayList<Action> actions = new ArrayList<Action>();
         actions.add(delete);
         ArrayList<KeyCode> kclH = new ArrayList<KeyCode>();
         kclH.add(KeyCode.H);
-        ButtonCondition hCon = new ButtonCondition(actions, kclH, 1.0, true);
+        ButtonPressCondition hCon = new ButtonPressCondition(actions, kclH, 1.0, true);
         hCon.setIdentifier(new Identifier("button_cond", "h"));
         myConditions.add(aCon);
         myConditions.add(dCon);
@@ -191,7 +192,7 @@ public class MainEngineTests extends Application {
         wActList.add(new YImpulseIDAction(wActListId,-200.0));
         ArrayList<KeyCode> kclW = new ArrayList<KeyCode>();
         kclW.add(KeyCode.W);
-        ButtonCondition wCon = new ButtonCondition(wActList,kclW,100.0, true);
+        ButtonPressCondition wCon = new ButtonPressCondition(wActList,kclW,100.0, true);
         wCon.setIdentifier(new Identifier("button_cond","w"));
         myConditions.add(wCon);
         
@@ -211,6 +212,15 @@ public class MainEngineTests extends Application {
         BoundaryConditionY boundaryCondition = new BoundaryConditionY(boundaryActionList,myFloorObjects.getIdentifierList(),-50.0,false);
         boundaryCondition.setIdentifier(new Identifier("bound_cond","a"));
         myConditions.add(boundaryCondition);
+        
+        Action boundaryScrollActionBall = new TranslateXType("ball",-1.0);
+        Action boundaryScrollActionFloor = new TranslateXType("floor",-1.0);
+        ArrayList<Action> scrollActionList = new ArrayList<Action>();
+        scrollActionList.add(boundaryScrollActionBall);
+        scrollActionList.add(boundaryScrollActionFloor);
+        BoundaryConditionX boundaryConditionScroll = new BoundaryConditionX(scrollActionList,myBallObjects.getIdentifierList(),200.0,true);
+        boundaryConditionScroll.setIdentifier(new Identifier("bound_scroll","a"));
+        myConditions.add(boundaryConditionScroll);
 
         
         /*
@@ -248,7 +258,7 @@ public class MainEngineTests extends Application {
         /*
          * uncomment for saving game
          */
-        
+        /*
         GameData data = new GameData(myLevels,myConditions,allGameObjects);
         DataManager manager = new DataManager();
         try {
@@ -258,7 +268,7 @@ public class MainEngineTests extends Application {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        
+        */
         
         /*******
          * game

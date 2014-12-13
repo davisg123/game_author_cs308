@@ -11,7 +11,7 @@ import java.util.List;
 import engine.actions.Action;
 import javafx.scene.input.KeyCode;
 
-public class ButtonCondition extends Condition {
+public class ButtonPressCondition extends Condition {
     private List<KeyCode> myKeyList;
     private List<Action> myReleaseActions;
     private Double myFramesElapsed;
@@ -22,7 +22,7 @@ public class ButtonCondition extends Condition {
     
     
 
-    public ButtonCondition (List<Action> onPressActions, List<KeyCode> keyList, Double frameCount, Boolean keyRepeats) {
+    public ButtonPressCondition (List<Action> onPressActions, List<KeyCode> keyList, Double frameCount, Boolean keyRepeats) {
         super(onPressActions);
         myTargetFrameCount = frameCount;
         myKeyRepeats = keyRepeats;
