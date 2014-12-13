@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
@@ -11,7 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import engine.FilePathUtility;
-import engine.gameObject.*;
+import engine.gameObject.GameObject;
 import engine.gameObject.components.PhysicsBody;
 import engine.level.Level;
 
@@ -48,6 +49,7 @@ public class GameObjectRenderer {
 	public void renderGameObjects (Level level) {
 		myCanvas.getChildren().clear();
 		myCurrentLevel = level;
+		setBackGroundImage(level);
 		for(Iterator<GameObject> iter = myCurrentLevel.getGameObjectIterator(); iter.hasNext();) {
 			GameObject obj = iter.next();
 			if (!obj.getIdentifier().getUniqueId().equals("template")){
