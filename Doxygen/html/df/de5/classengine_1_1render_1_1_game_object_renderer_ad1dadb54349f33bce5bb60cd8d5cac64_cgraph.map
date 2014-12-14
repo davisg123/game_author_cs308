@@ -1,0 +1,14 @@
+<map id="engine.render.GameObjectRenderer.setBackGroundImage" name="engine.render.GameObjectRenderer.setBackGroundImage">
+<area shape="rect" id="node2" href="$df/de5/classengine_1_1render_1_1_game_object_renderer.html#a72580570f971246ef79428f21b6d25e9" title="engine.render.GameObject\lRenderer.createImageAndView" alt="" coords="294,135,511,177"/>
+<area shape="rect" id="node7" href="$df/d84/classengine_1_1level_1_1_level.html#a5dc36c31fcc8e0b5cbe2a942ec101fdb" title="engine.level.Level.getBackground\lImage" alt="" coords="285,201,521,242"/>
+<area shape="rect" id="node8" href="$d0/d7f/classengine_1_1game_object_1_1_game_object.html#a077db8b746f3cdc580e5954ec5c02060" title="engine.gameObject.GameObject.set\lCurrentImagePath" alt="" coords="275,266,530,307"/>
+<area shape="rect" id="node10" href="$d0/d7f/classengine_1_1game_object_1_1_game_object.html#a25787d700465cb1e5956383d1b5bd602" title="engine.gameObject.GameObject.set\lHeight" alt="" coords="275,331,530,373"/>
+<area shape="rect" id="node11" href="$d0/d7f/classengine_1_1game_object_1_1_game_object.html#a9a4690b212ecad4060ce8f9abbcedba5" title="engine.gameObject.GameObject.set\lIdentifier" alt="" coords="275,397,530,438"/>
+<area shape="rect" id="node12" href="$d2/d82/classengine_1_1render_1_1_rendered_node.html#a520a8c03b505d10c69e010e603cadfdd" title="engine.render.RenderedNode.set\lImageView" alt="" coords="287,462,519,503"/>
+<area shape="rect" id="node13" href="$d0/d7f/classengine_1_1game_object_1_1_game_object.html#ab09d473d8c2afe8cefb2ce2481bc66fd" title="engine.gameObject.GameObject.set\lRenderedNode" alt="" coords="275,527,530,569"/>
+<area shape="rect" id="node3" href="$d0/d7f/classengine_1_1game_object_1_1_game_object.html#ae8b88e1cf489e935426e2e252defbae0" title="engine.gameObject.GameObject.get\lCurrentImageName" alt="" coords="579,5,835,46"/>
+<area shape="rect" id="node4" href="$d9/db5/classengine_1_1_file_path_utility.html#ad8a72da93bd719a750bd549ed92a37d7" title="engine.FilePathUtility.get\lFilePath" alt="" coords="619,70,795,111"/>
+<area shape="rect" id="node5" href="$d0/d7f/classengine_1_1game_object_1_1_game_object.html#aaeb5730a3b51fe9cb3d817ea7172cfc2" title="engine.gameObject.GameObject.get\lHeight" alt="" coords="579,135,835,177"/>
+<area shape="rect" id="node6" href="$d0/d7f/classengine_1_1game_object_1_1_game_object.html#a31aa2c854220621b49fc5575b50b9342" title="engine.gameObject.GameObject.get\lWidth" alt="" coords="579,201,835,242"/>
+<area shape="rect" id="node9" href="$d2/d82/classengine_1_1render_1_1_rendered_node.html#a5e38d50cbd80bfbb0dd674596610c790" title="engine.render.RenderedNode.get\lImageView" alt="" coords="590,266,823,307"/>
+</map>
