@@ -17,7 +17,7 @@ import engine.physics.Velocity;
 
 public class XVelocityIDAction extends VelocityIDAction {
 
-	public XVelocityIDAction(ArrayList<Identifier> id, Double value) {
+	public XVelocityIDAction(List<Identifier> id, Double value) {
 		super(id, value);
 	}
 

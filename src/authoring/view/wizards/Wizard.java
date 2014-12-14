@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -16,17 +17,21 @@ public abstract class Wizard extends Stage{
 
 	protected Map<String, PropertyTextField> myMap;
 	protected VBox myWindow;
+	protected String myTitle;
+	protected Group myRoot;
 	
 	public Wizard(String title, double width, double height, EventHandler<ActionEvent> event){
 		myMap = new LinkedHashMap<String, PropertyTextField>();
 		myWindow = new VBox();
+		myTitle = title;
 		
 		this.setTitle(title);
 		this.initStyle(StageStyle.DECORATED);
-		Group root = new Group();
-		root.getChildren().add(initializeWizard(event));
+		myRoot = new Group();
 		
-		Scene scene = new Scene(root, width, height);
+		myRoot.getChildren().add(initializeWizard(event));
+		
+		Scene scene = new Scene(myRoot, width, height);
 		this.setScene(scene);
 		this.show();
 		

@@ -14,10 +14,10 @@ public class BoundaryConditionY extends GameObjectCondition {
 
     public BoundaryConditionY (List<Action> myActions,
                               List<Identifier> myIDs,
-                              Double boundary, Boolean rightTrigger) {
+                              Double boundary, Boolean upTrigger) {
         super(myActions, myIDs);
         myBoundary = boundary;
-        myUpTrigger = rightTrigger;
+        myUpTrigger = upTrigger;
     }
 
     @Override
@@ -28,7 +28,7 @@ public class BoundaryConditionY extends GameObjectCondition {
     }
     
     @Override
-    public void frameElapsed () {
+    public void respondToFrameElapsed () {
         for (GameObject obj : getGameObjects()){
             if (myUpTrigger && obj.getTranslateY() > myBoundary || !myUpTrigger && obj.getTranslateY() < myBoundary){
                 executeActions();

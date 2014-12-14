@@ -30,10 +30,6 @@ public class AddActionHandler implements GameHandler<Event> {
 	
 	private Condition myCondition;
 
-	public AddActionHandler() {
-
-	}
-
 	@Override
 	public void handle(Event arg0) {
 		myActionSelectionWizard = new ActionChoiceWizard("New ", WIZARD_WIDTH,
@@ -50,15 +46,7 @@ public class AddActionHandler implements GameHandler<Event> {
 			Constructor[] constructors = classType.getDeclaredConstructors();
 			myConstructor = constructors[0];
 			myParameterTypes = constructors[0].getParameters();
-			System.out.println(myConstructor);
 
-			
-			
-			for (Parameter p : myParameterTypes){
-				System.out.println(p.getParameterizedType());
-			}
-
-			//System.out.println(Arrays.deepToString(myParameterTypes));
 
 			myCPW = new ConditionParameterWizard("Choose Parameters",
 					WIZARD_WIDTH, WIZARD_HEIGHT, myParameterTypes, classType,
@@ -77,16 +65,13 @@ public class AddActionHandler implements GameHandler<Event> {
 			myInputParameters.add(myCPW.getMap().get(s).getInformation());
 		}
 		List<Object> inputs = convertInputParameters();
-		System.out.println(inputs);
 		try {
 			Action a = (Action) myConstructor.newInstance(inputs.toArray());
-			//a.setIdentifier(new Identifier("Condition", mySelectionWizard.getMap().get("name").getInformation()));
 			System.out.println(a.getClass());
 			myCondition.addAction(a);
 			myCPW.close();
 		} catch (Exception e) {
-			System.out.println("Could not construct");
-			e.printStackTrace();
+			System.out.println("Could not construct action");
 		}
 	}
 		
@@ -112,7 +97,7 @@ public class AddActionHandler implements GameHandler<Event> {
 						}
 					}
 				} catch (Exception e) {
-					System.out.println("Bad Class");
+					//System.out.println("Bad Class");
 				}
 				inputs.add(innerList);
 			}else{
@@ -129,7 +114,7 @@ public class AddActionHandler implements GameHandler<Event> {
 						inputs.add(innerObject);
 					}
 				} catch (Exception e) {
-					System.out.println("Bad Class");
+					//System.out.println("Bad Class");
 				}
 			}
 		}
@@ -138,8 +123,7 @@ public class AddActionHandler implements GameHandler<Event> {
 	}
 
 	@Override
-	public EventType<Event> getEventType() {
-		// TODO Auto-generated method stub
+	public EventType<Event> getEventType(){
 		return Event.ANY;
 	}
 	

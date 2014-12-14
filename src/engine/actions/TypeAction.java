@@ -5,7 +5,7 @@ import engine.level.Level;
 
 public abstract class TypeAction implements Action, Initializable{
 
-	protected Level myCurrentLevel; 
+	protected transient Level myCurrentLevel; 
 	protected String myType; 
 	
 	public TypeAction(String type){

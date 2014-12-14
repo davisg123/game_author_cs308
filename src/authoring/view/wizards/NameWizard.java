@@ -7,22 +7,24 @@ import javafx.scene.layout.VBox;
 import authoring.model.collections.GameObjectsCollection;
 import authoring.view.propertiesview.PropertyTextField;
 import engine.gameObject.GameObject;
+import engine.gameObject.Identifier;
 import errorsAndExceptions.ErrorPopUp;
 
-public class NameWizard extends Wizard{
+public abstract class NameWizard extends Wizard{
 
 	
-	private GameObjectsCollection myGameObjectCollection;
+	private GameObjectsCollection myCollection;
+	
 	
 	public NameWizard(String title, double width, double height,
 			EventHandler<ActionEvent> event, GameObjectsCollection col) {
 		super(title, width, height, event);
-		myGameObjectCollection = col;
+		myCollection = col;
 	}
 
 	@Override
 	public VBox initializeWizard(EventHandler<ActionEvent> event) {
-		PropertyTextField nameField = new PropertyTextField("Name: ", "");
+		PropertyTextField nameField = new PropertyTextField(myTitle + ": ", "");
 		myMap.put("name", nameField);
 		
 		super.addMapToWindow();
@@ -34,31 +36,24 @@ public class NameWizard extends Wizard{
 		return myWindow;
 	}
 	
-	public boolean isDuplicatedID(String s){
-		for(GameObject g : myGameObjectCollection){
-			if(g.getID().equals(s)){
+	
+	public boolean isDuplicated(String s){
+		for(GameObject g : myCollection){
+			if(getIdentifierComponent(g).equals(s)){
 				return true;
 			}			
 		}
 		return false;
 	}
 	
-	public void updateObjectName(GameObject g){	
-		String tryID = g.getID();
-		if(!isDuplicatedID(tryID)){
-			g.setID(tryID);
-			close();
-			myGameObjectCollection.add(g);
-		}
-		else{
-			close();
-			//System.out.println(g.getID());
-			//System.out.println();
-			ErrorPopUp epu = new ErrorPopUp();
-			epu.display("Need to enter unique ID", false);
-		}
-		
-		
-	}
+	
+	/**
+	 * Gets the desired identifier component. Determines if
+	 * the duplicate check is for the type or unique ID of the 
+	 * game object.
+	 * @param g GameObject to be checked
+	 * @return The type ID or unique ID of the game object
+	 */
+	protected abstract String getIdentifierComponent(GameObject g);
 
 }

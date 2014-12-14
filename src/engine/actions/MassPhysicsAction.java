@@ -1,7 +1,7 @@
 package engine.actions;
 
 import java.util.ArrayList;
-
+import java.util.List;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 import engine.physics.Mass;
@@ -14,7 +14,7 @@ import engine.physics.Scalar;
  */
 public class MassPhysicsAction extends ScalarPhysicsAction {
 
-	public MassPhysicsAction(ArrayList<Identifier> id, Double value) {
+	public MassPhysicsAction(List<Identifier> id, Double value) {
 		super(id, value);
 	}
 
