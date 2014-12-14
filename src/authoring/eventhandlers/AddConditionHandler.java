@@ -66,7 +66,7 @@ public class AddConditionHandler implements GameHandler<Event> {
 			
 			
 			for (Parameter p : myParameterTypes){
-				System.out.println(p.getParameterizedType());
+				//System.out.println(p.getParameterizedType());
 			}
 
 			//System.out.println(Arrays.deepToString(myParameterTypes));
@@ -76,7 +76,7 @@ public class AddConditionHandler implements GameHandler<Event> {
 					event -> fillConditionParameters());
 
 		} catch (ClassNotFoundException e) {
-			System.out.println("Bad Class");
+			//System.out.println("Bad Class");
 		}
 
 	}

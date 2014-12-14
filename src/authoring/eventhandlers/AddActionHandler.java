@@ -103,7 +103,7 @@ public class AddActionHandler implements GameHandler<Event> {
 						}
 					}
 				} catch (Exception e) {
-					System.out.println("Bad Class");
+					//System.out.println("Bad Class");
 				}
 				inputs.add(innerList);
 			}else{
@@ -120,7 +120,7 @@ public class AddActionHandler implements GameHandler<Event> {
 						inputs.add(innerObject);
 					}
 				} catch (Exception e) {
-					System.out.println("Bad Class");
+					//System.out.println("Bad Class");
 				}
 			}
 		}
