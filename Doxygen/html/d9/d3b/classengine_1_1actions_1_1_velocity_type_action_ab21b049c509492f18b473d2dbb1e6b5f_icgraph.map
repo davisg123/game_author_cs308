@@ -1,5 +1,0 @@
-<map id="engine.actions.VelocityTypeAction.determineVector" name="engine.actions.VelocityTypeAction.determineVector">
-<area shape="rect" id="node2" href="$d9/d3b/classengine_1_1actions_1_1_velocity_type_action.html#a52b498724d20c1afd7a900f1f9211f93" title="engine.actions.VelocityType\lAction.determineOperation" alt="" coords="251,5,447,46"/>
-<area shape="rect" id="node3" href="$d9/d3b/classengine_1_1actions_1_1_velocity_type_action.html#acf6e407d4f60eb8d1c7f11ae6876442a" title="engine.actions.VelocityType\lAction.applyPhysics" alt="" coords="497,5,693,46"/>
-<area shape="rect" id="node4" href="$d9/d3b/classengine_1_1actions_1_1_velocity_type_action.html#aa6767abcb43632713fdc097d4865f949" title="engine.actions.VelocityType\lAction.execute" alt="" coords="742,5,938,46"/>
-</map>

@@ -1,8 +1,0 @@
-<map id="engine.actions.SoundAction" name="engine.actions.SoundAction">
-<area shape="rect" id="node4" href="$d7/dae/classengine_1_1actions_1_1_pause_background_music.html" title="engine.actions.PauseBackground\lMusic" alt="" coords="699,5,933,46"/>
-<area shape="rect" id="node5" href="$d4/d45/classengine_1_1actions_1_1_play_background_music.html" title="engine.actions.PlayBackground\lMusic" alt="" coords="705,70,927,111"/>
-<area shape="rect" id="node6" href="$da/d69/classengine_1_1actions_1_1_set_music_volume.html" title="engine.actions.SetMusicVolume" alt="" coords="703,136,929,163"/>
-<area shape="rect" id="node7" href="$d4/da1/classengine_1_1actions_1_1_stop_background_music.html" title="engine.actions.StopBackground\lMusic" alt="" coords="703,187,929,229"/>
-<area shape="rect" id="node2" href="$d9/dd2/interfaceengine_1_1actions_1_1_action.html" title="engine.actions.Action" alt="" coords="243,132,402,159"/>
-<area shape="rect" id="node3" href="$d2/d15/interfaceengine_1_1actions_1_1_initializable.html" title="engine.actions.Initializable" alt="" coords="5,107,195,133"/>
-</map>
