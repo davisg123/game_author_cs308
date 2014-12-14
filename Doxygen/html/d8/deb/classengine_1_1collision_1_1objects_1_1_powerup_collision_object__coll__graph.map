@@ -1,0 +1,4 @@
+<map id="engine.collision.objects.PowerupCollisionObject" name="engine.collision.objects.PowerupCollisionObject">
+<area shape="rect" id="node2" href="$da/dc7/classengine_1_1collision_1_1objects_1_1_collision_object.html" title="engine.collision.objects.\lCollisionObject" alt="" coords="5,113,179,154"/>
+<area shape="rect" id="node3" href="$da/d1b/classengine_1_1collision_1_1objects_1_1_collision_composition.html" title="engine.collision.objects.\lCollisionComposition" alt="" coords="5,6,179,47"/>
+</map>
