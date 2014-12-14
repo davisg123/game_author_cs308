@@ -16,26 +16,22 @@ import authoring.view.propertiesview.PropertyTextField;
 public abstract class Wizard extends Stage{
 
 	protected Map<String, PropertyTextField> myMap;
-	protected ScrollPane myScrollPane;
 	protected VBox myWindow;
 	protected String myTitle;
+	protected Group myRoot;
 	
 	public Wizard(String title, double width, double height, EventHandler<ActionEvent> event){
 		myMap = new LinkedHashMap<String, PropertyTextField>();
 		myWindow = new VBox();
 		myTitle = title;
 		
-		myScrollPane = new ScrollPane();
-		myScrollPane.setPrefSize(width, height);
-		myScrollPane.setContent(initializeWizard(event));
-		
 		this.setTitle(title);
 		this.initStyle(StageStyle.DECORATED);
-		Group root = new Group();
+		myRoot = new Group();
 		
-		root.getChildren().add(myScrollPane);
+		myRoot.getChildren().add(initializeWizard(event));
 		
-		Scene scene = new Scene(root, width, height);
+		Scene scene = new Scene(myRoot, width, height);
 		this.setScene(scene);
 		this.show();
 		
