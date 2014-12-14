@@ -1,8 +1,0 @@
-<map id="engine.actions.ChangeComponentIDAction" name="engine.actions.ChangeComponentIDAction">
-<area shape="rect" id="node4" href="$db/d51/classengine_1_1actions_1_1_set_component_boolean_i_d_action.html" title="engine.actions.SetComponent\lBooleanIDAction" alt="" coords="751,5,967,46"/>
-<area shape="rect" id="node5" href="$d9/d5a/classengine_1_1actions_1_1_set_component_double_i_d_action.html" title="engine.actions.SetComponent\lDoubleIDAction" alt="" coords="751,70,967,111"/>
-<area shape="rect" id="node6" href="$d2/d80/classengine_1_1actions_1_1_set_component_string_i_d_action.html" title="engine.actions.SetComponent\lStringIDAction" alt="" coords="751,135,967,177"/>
-<area shape="rect" id="node7" href="$df/da0/classengine_1_1actions_1_1_switch_component_boolean_i_d_action.html" title="engine.actions.SwitchComponent\lBooleanIDAction" alt="" coords="741,201,976,242"/>
-<area shape="rect" id="node2" href="$d9/dd2/interfaceengine_1_1actions_1_1_action.html" title="engine.actions.Action" alt="" coords="243,136,402,163"/>
-<area shape="rect" id="node3" href="$d2/d15/interfaceengine_1_1actions_1_1_initializable.html" title="engine.actions.Initializable" alt="" coords="5,111,195,137"/>
-</map>
