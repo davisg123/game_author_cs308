@@ -1,5 +1,0 @@
-<map id="engine.actions.DeleteTypeAction.execute" name="engine.actions.DeleteTypeAction.execute">
-<area shape="rect" id="node2" href="$df/d84/classengine_1_1level_1_1_level.html#ac927326f1a3d7e17b5d577c336a5cfc1" title="engine.level.Level.getGame\lObjectsCollection" alt="" coords="257,5,455,46"/>
-<area shape="rect" id="node3" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html#a79482ff667a22bb0d5b702c03261fe8d" title="authoring.model.collections.\lGeneralCollection.iterator" alt="" coords="255,70,457,111"/>
-<area shape="rect" id="node4" href="$df/de5/classengine_1_1render_1_1_game_object_renderer.html#a84793b058b22a010a6706674284752e6" title="engine.render.GameObject\lRenderer.removeRenderedNode" alt="" coords="243,135,469,177"/>
-</map>

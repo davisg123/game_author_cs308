@@ -1,7 +1,0 @@
-<map id="engine.actions.DeleteIdAction" name="engine.actions.DeleteIdAction">
-<area shape="rect" id="node2" href="$d3/de4/classengine_1_1actions_1_1_i_d_action.html" title="engine.actions.IDAction" alt="" coords="665,121,837,148"/>
-<area shape="rect" id="node3" href="$d9/dd2/interfaceengine_1_1actions_1_1_action.html" title="engine.actions.Action" alt="" coords="323,71,482,97"/>
-<area shape="rect" id="node4" href="$d2/d15/interfaceengine_1_1actions_1_1_initializable.html" title="engine.actions.Initializable" alt="" coords="33,105,223,132"/>
-<area shape="rect" id="node5" href="$d1/d32/classauthoring_1_1model_1_1collections_1_1_game_objects_collection.html" title="authoring.model.collections.\lGameObjectsCollection" alt="" coords="301,182,504,223"/>
-<area shape="rect" id="node6" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html" title="authoring.model.collections.\lGeneralCollection\&lt; GameObject \&gt;" alt="" coords="6,182,250,223"/>
-</map>

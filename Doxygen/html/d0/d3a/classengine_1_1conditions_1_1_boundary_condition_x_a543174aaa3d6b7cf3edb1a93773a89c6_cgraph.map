@@ -1,5 +1,0 @@
-<map id="engine.conditions.BoundaryConditionX.frameElapsed" name="engine.conditions.BoundaryConditionX.frameElapsed">
-<area shape="rect" id="node2" href="$d0/d3a/classengine_1_1conditions_1_1_boundary_condition_x.html#a9bd2850c42047bdd3e6704ff992f1903" title="engine.conditions.Boundary\lConditionX.executeActions" alt="" coords="263,5,462,46"/>
-<area shape="rect" id="node4" href="$db/dfc/classengine_1_1conditions_1_1_game_object_condition.html#ad4be5108d7fc6570adf3a013d6771e37" title="engine.conditions.GameObject\lCondition.getGameObjects" alt="" coords="253,70,472,111"/>
-<area shape="rect" id="node3" href="$d1/d3b/classengine_1_1conditions_1_1_condition.html#a208317469c4d800311a582c46b581290" title="engine.conditions.Condition.get\lActions" alt="" coords="521,5,743,46"/>
-</map>
