@@ -39,7 +39,7 @@ public class LevelProperties extends Properties{
 		delCond.setOnAction(myConditionHandlers[1]);
 		this.getChildren().add(delCond);
 		
-		for(Identifier i : graphic.getLevel().getConditionCollection()){
+		for(Identifier i : graphic.getLevel().getConditionIdentifiers()){
 			Text textID = new Text(i.getUniqueId());
 			textID.setFont(new Font(DEFAULT_FONT_SIZE));
 			this.getChildren().add(textID);
