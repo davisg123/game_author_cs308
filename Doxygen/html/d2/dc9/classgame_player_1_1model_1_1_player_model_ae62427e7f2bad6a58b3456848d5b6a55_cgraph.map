@@ -1,8 +1,0 @@
-<map id="gamePlayer.model.PlayerModel.loadGameProgress" name="gamePlayer.model.PlayerModel.loadGameProgress">
-<area shape="rect" id="node2" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#a4ff93ccaf5f04d71bb01ccc4396fb436" title="gamePlayer.view.Progress\lSelector.loadProgressState" alt="" coords="307,38,503,79"/>
-<area shape="rect" id="node3" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#ad47ec1215944a14051a1106be29d45df" title="gamePlayer.view.Progress\lSelector.updateProgressList" alt="" coords="553,5,754,46"/>
-<area shape="rect" id="node4" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#aab6a2ce8eba029cc2b0712983e6b3ea5" title="gamePlayer.view.Progress\lSelector.buildLoadWindow" alt="" coords="560,70,747,111"/>
-<area shape="rect" id="node5" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#abdecb9a69426fb294cecf3d8a34a0ec0" title="gamePlayer.view.Progress\lSelector.setupWindow" alt="" coords="808,5,995,46"/>
-<area shape="rect" id="node6" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#ae8bb8d76db91e1663a7244f10f438db6" title="gamePlayer.view.Progress\lSelector.createButton" alt="" coords="808,70,995,111"/>
-<area shape="rect" id="node7" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#afd924fe94651082d7b665a09d29df60c" title="gamePlayer.view.Progress\lSelector.loadProgressEvent" alt="" coords="803,135,1000,177"/>
-</map>

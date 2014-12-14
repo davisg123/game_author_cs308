@@ -1,7 +1,0 @@
-<map id="authoring.view.icons.ImageIcon" name="authoring.view.icons.ImageIcon">
-<area shape="rect" id="node2" href="$d5/d47/classauthoring_1_1view_1_1icons_1_1_image_based_icon.html" title="authoring.view.icons.Image\lBasedIcon" alt="" coords="252,385,447,426"/>
-<area shape="rect" id="node3" href="$de/d21/classauthoring_1_1view_1_1icons_1_1_file_icon.html" title="authoring.view.icons.FileIcon" alt="" coords="123,293,321,320"/>
-<area shape="rect" id="node4" href="$dd/db4/classauthoring_1_1view_1_1icons_1_1_base_icon.html" title="authoring.view.icons.BaseIcon" alt="" coords="5,203,216,229"/>
-<area shape="rect" id="node6" href="$d3/d6a/interfaceauthoring_1_1eventhandlers_1_1_game_handler.html" title="authoring.eventhandlers.\lGameHandler\&lt; T extends\l Event \&gt;" alt="" coords="141,83,328,139"/>
-<area shape="rect" id="node10" href="$d7/d83/interfaceauthoring_1_1view_1_1icons_1_1_i_properties_maker.html" title="authoring.view.icons.IProperties\lMaker" alt="" coords="471,385,693,426"/>
-</map>

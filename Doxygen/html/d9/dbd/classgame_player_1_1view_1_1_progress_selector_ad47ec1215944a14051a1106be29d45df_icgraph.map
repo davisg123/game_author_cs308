@@ -1,8 +1,0 @@
-<map id="gamePlayer.view.ProgressSelector.updateProgressList" name="gamePlayer.view.ProgressSelector.updateProgressList">
-<area shape="rect" id="node2" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#a4ff93ccaf5f04d71bb01ccc4396fb436" title="gamePlayer.view.Progress\lSelector.loadProgressState" alt="" coords="258,5,454,46"/>
-<area shape="rect" id="node5" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#ae3ab91c2aa658dfafc8fe6bc02191f43" title="gamePlayer.view.Progress\lSelector.saveProgressState" alt="" coords="257,70,455,111"/>
-<area shape="rect" id="node3" href="$d2/dc9/classgame_player_1_1model_1_1_player_model.html#ae62427e7f2bad6a58b3456848d5b6a55" title="gamePlayer.model.PlayerModel.load\lGameProgress" alt="" coords="505,5,759,46"/>
-<area shape="rect" id="node4" href="$d9/dff/classgame_player_1_1view_1_1_menu_bar_controller.html#a739bfe0922b7fb11402ae37a72d637c9" title="gamePlayer.view.MenuBarController.load\lGameProgress" alt="" coords="809,5,1089,46"/>
-<area shape="rect" id="node6" href="$d2/dc9/classgame_player_1_1model_1_1_player_model.html#a245d6c46b8a79a80def826b969b195e6" title="gamePlayer.model.PlayerModel.save\lGameProgress" alt="" coords="504,70,760,111"/>
-<area shape="rect" id="node7" href="$d9/dff/classgame_player_1_1view_1_1_menu_bar_controller.html#a3e80307e5f56598e5c990f40869895e1" title="gamePlayer.view.MenuBarController.save\lGameProgress" alt="" coords="808,70,1091,111"/>
-</map>
