@@ -1,7 +1,0 @@
-<map id="authoring.view.propertiesview.LevelProperties.initializeProperties" name="authoring.view.propertiesview.LevelProperties.initializeProperties">
-<area shape="rect" id="node2" href="$df/d84/classengine_1_1level_1_1_level.html#a5dc36c31fcc8e0b5cbe2a942ec101fdb" title="engine.level.Level.getBackground\lImage" alt="" coords="294,5,530,46"/>
-<area shape="rect" id="node3" href="$df/d84/classengine_1_1level_1_1_level.html#a368275ed98c802fbf59a11423b9b9a0d" title="engine.level.Level.getBackground\lMusic" alt="" coords="294,70,530,111"/>
-<area shape="rect" id="node4" href="$df/d84/classengine_1_1level_1_1_level.html#a264b568258eafa3d2c664c94e7498621" title="engine.level.Level.getCondition\lIdentifiers" alt="" coords="302,135,522,177"/>
-<area shape="rect" id="node5" href="$d5/d37/classauthoring_1_1view_1_1icons_1_1_level_icon.html#a7827720d35e2fb9b9f21df89db6033b1" title="authoring.view.icons.Level\lIcon.getLevel" alt="" coords="319,201,505,242"/>
-<area shape="rect" id="node6" href="$dd/db4/classauthoring_1_1view_1_1icons_1_1_base_icon.html#a55d61a01b6e513966613bda6182fa1ef" title="authoring.view.icons.Base\lIcon.getName" alt="" coords="319,266,505,307"/>
-</map>
