@@ -21,7 +21,6 @@ public abstract class TranslateIDAction implements Action, Initializable {
     public TranslateIDAction (List<Identifier> iDs, Double value) {
         myGameObjectIDs = iDs;
         myValue = value;
-        myGameObjects = new GameObjectsCollection();
     }
     
     @Override
@@ -31,6 +30,7 @@ public abstract class TranslateIDAction implements Action, Initializable {
     
     @Override
     public void initialize (GameManager manager) {
+        myGameObjects = new GameObjectsCollection();
     	for (Identifier id: myGameObjectIDs){
     		myGameObjects.add(manager.objectForIdentifier(id));
     	}

@@ -8,7 +8,6 @@ import engine.gameObject.components.PhysicsBody;
 
 public class MakeNewRandomObjectAction extends MakeNewObjectAction{
 
-	protected transient Random r; 
 	protected Double myLowerXBound;
 	protected Double myUpperXBound;
 	protected Double myLowerYBound;
@@ -16,7 +15,6 @@ public class MakeNewRandomObjectAction extends MakeNewObjectAction{
 	
 	public MakeNewRandomObjectAction(String type, Double lowerXBound, Double upperXBound, Double lowerYBound, Double upperYBound){
 		super(type); 
-		r = new Random(); 
 		myLowerXBound = lowerXBound;
 		myLowerYBound = lowerYBound;
 		myUpperXBound = upperXBound;

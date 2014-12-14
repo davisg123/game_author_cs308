@@ -24,8 +24,6 @@ public abstract class PhysicsIDAction implements Action, Initializable {
 	public PhysicsIDAction(List<Identifier> id, Double value) {
 		myID = id;
 		myValue = value;
-		myCollision = new CollisionComposition();
-		myObjects = new ArrayList<GameObject>();
 	}
 
 	@Override
@@ -33,7 +31,10 @@ public abstract class PhysicsIDAction implements Action, Initializable {
 		applyPhysics(myObjects);
 	}
 
+	@Override
 	public void initialize(GameManager manager) {
+		myCollision = new CollisionComposition();
+		myObjects = new ArrayList<GameObject>();
 		for (Identifier id : myID) {
 			myObjects.add(manager.objectForIdentifier(id));
 		}

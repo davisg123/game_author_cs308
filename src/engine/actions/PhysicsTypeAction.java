@@ -17,11 +17,11 @@ public abstract class PhysicsTypeAction implements Action, Initializable{
 		myType=type;
 		mySecondType = secondType;
 		myValue=value; 
-		myCollision = new CollisionComposition();
 	}
 	
 	@Override
 	public void initialize(GameManager manager) {
+		myCollision = new CollisionComposition();
 		myGameObjects = manager.getLevelManager().getCurrentLevel().getGameObjectsCollection();
 	}
 

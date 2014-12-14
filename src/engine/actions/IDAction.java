@@ -14,11 +14,11 @@ public abstract class IDAction implements Action, Initializable{
 	
 	public IDAction(List<Identifier> ids){
 		myIDs = ids; 
-		myGameObjects = new GameObjectsCollection();
 	}
 	
 	@Override
 	public void initialize(GameManager manager) {
+		myGameObjects = new GameObjectsCollection();
 		for (GameObject object: manager.getAllGameObjects()){
 			if (myIDs.contains(object.getIdentifier())){
 				myGameObjects.add(object);

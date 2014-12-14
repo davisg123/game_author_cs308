@@ -18,7 +18,6 @@ public abstract class MakeNewObjectAction implements Action, Initializable {
 	
 	public MakeNewObjectAction(String type){
 		myType = type; 
-		r = new Random();
 	}
 	
 	
@@ -26,6 +25,7 @@ public abstract class MakeNewObjectAction implements Action, Initializable {
 	@Override
 	public void initialize(GameManager manager) {
 		myRenderer = manager.getRenderer();
+		r = new Random();
 		//will be template list
 		myMasterList = manager.getLevelManager().getTemplates(); 
 		myCurrentLevel = manager.getLevelManager().getCurrentLevel();
