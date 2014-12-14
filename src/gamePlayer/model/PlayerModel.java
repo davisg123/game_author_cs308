@@ -80,7 +80,6 @@ public class PlayerModel {
 			epu.display("File not found", false);
 		} catch (NullPointerException e) {
 			//User chose not to load a file. No action is needed.
-			System.out.println("loaded null");
 		}
 	}
 
