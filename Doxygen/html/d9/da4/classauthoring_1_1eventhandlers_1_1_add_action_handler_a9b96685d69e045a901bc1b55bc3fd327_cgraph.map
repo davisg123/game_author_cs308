@@ -1,0 +1,11 @@
+<map id="authoring.eventhandlers.AddActionHandler.createAction" name="authoring.eventhandlers.AddActionHandler.createAction">
+<area shape="rect" id="node2" href="$de/d50/classerrors_and_exceptions_1_1_error_pop_up.html#a879c9fa857c162edfab75ecf1558c944" title="errorsAndExceptions.Error\lPopUp.display" alt="" coords="864,38,1053,79"/>
+<area shape="rect" id="node5" href="$d9/da4/classauthoring_1_1eventhandlers_1_1_add_action_handler.html#a79570c2754dca122253b410d98017bd5" title="authoring.eventhandlers.\lAddActionHandler.finishAction" alt="" coords="283,122,496,163"/>
+<area shape="rect" id="node9" href="$d2/d02/classauthoring_1_1view_1_1wizards_1_1_action_choice_wizard.html#aa2dc1f8614d6d90b0b1fedf46e29d877" title="authoring.view.wizards.Action\lChoiceWizard.getSelectedAction" alt="" coords="275,223,503,265"/>
+<area shape="rect" id="node3" href="$de/d50/classerrors_and_exceptions_1_1_error_pop_up.html#adecc4a2ab81e607673649e10e6d7da52" title="errorsAndExceptions.Error\lPopUp.createButton" alt="" coords="1101,5,1291,46"/>
+<area shape="rect" id="node4" href="$de/d50/classerrors_and_exceptions_1_1_error_pop_up.html#a98549e423869b27d7ee3c87270786f60" title="errorsAndExceptions.Error\lPopUp.chooseStageWidth" alt="" coords="1101,70,1291,111"/>
+<area shape="rect" id="node6" href="$d6/d32/classauthoring_1_1view_1_1wizards_1_1_wizard.html#a0d419b2943c99507fca42fd769c24b0e" title="authoring.view.wizards.Wizard.getMap" alt="" coords="553,96,815,123"/>
+<area shape="rect" id="node7" href="$d9/da4/classauthoring_1_1eventhandlers_1_1_add_action_handler.html#a64e5293c6eba41df2313e81b59601cb0" title="authoring.eventhandlers.\lAddActionHandler.convertInput\lParameters" alt="" coords="574,147,794,203"/>
+<area shape="rect" id="node8" href="$d1/d3b/classengine_1_1conditions_1_1_condition.html#a02855e132c46ad2e5b6e23cca319deb5" title="engine.conditions.Condition.add\lAction" alt="" coords="571,226,797,267"/>
+<area shape="rect" id="node10" href="$d4/d31/classauthoring_1_1view_1_1wizards_1_1_action_choices_v_box.html#a1ad07a1a06d43384af4406151330781c" title="authoring.view.wizards.Action\lChoicesVBox.getSelected" alt="" coords="580,291,788,333"/>
+</map>
