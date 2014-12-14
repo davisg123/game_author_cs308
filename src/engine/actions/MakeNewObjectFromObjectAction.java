@@ -5,6 +5,7 @@ import java.util.Random;
 import engine.GameManager;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
+import engine.gameObject.components.PhysicsBody;
 
 public class MakeNewObjectFromObjectAction extends MakeNewObjectAction {
 
@@ -30,12 +31,10 @@ public class MakeNewObjectFromObjectAction extends MakeNewObjectAction {
 			if (object.getIdentifier().getType().equals(myType)){
 				GameObject newObject = new GameObject(object, myObject.getTranslateX(), myObject.getTranslateY(), myType);
 				newObject.setIdentifier(new Identifier(object.getIdentifier()));
-				newObject.setPhysicsBody(object.getPhysicsBody());
+				newObject.setPhysicsBody(new PhysicsBody(object.getPhysicsBody()));
 				myRenderer.createAndAssignRenderedNode(newObject);
 				newObject.setOrientation(myObject.getOrientation());
-				myCurrentLevel.addGameObject(newObject); 
-				
-
+				myCurrentLevel.addGameObject(newObject);	
 			}
 			
 		}
