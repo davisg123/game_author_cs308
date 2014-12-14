@@ -49,7 +49,7 @@ public class PhysicsBody {
 		this(0, 0);
 	}
 
-	public PhysicsBody(double collisionBodyWidth, double collisionBodyHeight) {
+	public PhysicsBody(double collisionBodyHeight, double collisionBodyWidth) {
 		myImpulses = new ArrayList<Impulse>();
 		myAcceleration = new Acceleration();
 		myVelocity = new Velocity();
@@ -97,6 +97,7 @@ public class PhysicsBody {
 
 	public void setVelocity(Vector v) {
 		myVelocity = v;
+
 	}
 
 	public void setAcceleration(Vector v) {
@@ -168,7 +169,6 @@ public class PhysicsBody {
 	// physics body, gameobject is passed through because I was told to do that
 	// to solve the x/y coordinates being elsewhere problem
 	public void updatePhysicalCharacteristics(GameObject sprite) {
-		//System.out.println(myVelocity.getX());
 		doImpulses();
 		if (haveForcesChanged) {
 			balanceForces();
@@ -183,7 +183,11 @@ public class PhysicsBody {
 				/ FRAMES_PER_SECOND);
 		sprite.setTranslateY(sprite.getTranslateY() + myVelocity.getY()
 				/ FRAMES_PER_SECOND);
-
+		if (sprite.getID().equals("ball_object")) {
+			System.out.println(sprite.getRenderedNode().getBoundsInParent()
+					.getHeight()+" "+sprite.getRenderedNode().getBoundsInParent()
+					.getWidth());
+		}
 	}
 
 	/**
@@ -266,83 +270,5 @@ public class PhysicsBody {
 	 * @param sprite
 	 *            -the sprite that collides with this one
 	 */
-
-	// doesn't need to be here, not removing it just to be safe
-	public void handleCollision(GameObject thisSprite, GameObject sprite) {
-		double xCenterOne = thisSprite.getPosition().getX();
-		double yCenterOne = thisSprite.getPosition().getY();
-		double xCenterTwo = sprite.getPosition().getX();
-		double yCenterTwo = sprite.getPosition().getY();
-		double widthOne = thisSprite.getPhysicsBody().getCollisionBodyWidth();
-		double lengthOne = thisSprite.getPhysicsBody().getCollisionBodyHeight();
-		double widthTwo = sprite.getPhysicsBody().getCollisionBodyWidth();
-		double lengthTwo = sprite.getPhysicsBody().getCollisionBodyHeight();
-		double xChange = 0.0;
-		double yChange = 0.0;
-
-		xChange = ((xCenterOne > yCenterOne) ? collisionHelper(xCenterOne,
-				xCenterTwo, widthOne, widthTwo) : collisionHelper(xCenterTwo,
-				xCenterOne, widthTwo, widthOne));
-		yChange = ((yCenterOne > yCenterOne) ? collisionHelper(yCenterOne,
-				yCenterTwo, lengthOne, lengthTwo) : collisionHelper(yCenterTwo,
-				yCenterOne, lengthTwo, lengthOne));
-
-		GameObject cur = ((thisSprite.getPhysicsBody().getVelocity()
-				.getMagnitude() == 0.0) ? sprite : thisSprite);
-		GameObject other = (!(thisSprite.getPhysicsBody().getVelocity()
-				.getMagnitude() == 0.0) ? sprite : thisSprite);
-		double curX = cur.getPhysicsBody().getVelocity().getX();
-		double curY = cur.getPhysicsBody().getVelocity().getY();
-		double otherX = other.getPhysicsBody().getVelocity().getX();
-		double otherY = other.getPhysicsBody().getVelocity().getY();
-		// collides in x is true, y is false;
-		boolean xOrY = false;// (xChange / (Math.abs(curX)+Math.abs(otherX)) >
-								// yChange / (Math.abs(curY)+Math.abs(otherY)));
-		// System.out.println(xChange / (Math.abs(curX)+Math.abs(otherX)));
-		// create new condition to stop x or y
-		if (!cur.getCollisionConstant()) {
-
-			if (xOrY) {
-				//System.out.println("COLLISOIN");
-
-				// cancel out current velocity
-				cur.setTranslateX(cur.getTranslateX()
-						- cur.getPhysicsBody().getVelocity().getX()
-						/ FRAMES_PER_SECOND);
-				// apply rivaling velocity
-				cur.setTranslateX(cur.getTranslateX()
-						+ other.getPhysicsBody().getVelocity().getX()
-						/ FRAMES_PER_SECOND);
-			} else {
-
-				// cancel out current velocity
-				cur.setTranslateY(cur.getTranslateY()
-						- cur.getPhysicsBody().getVelocity().getY()
-						/ FRAMES_PER_SECOND);
-
-				// apply rivaling velocity
-				cur.setTranslateY(cur.getTranslateY()
-						+ other.getPhysicsBody().getVelocity().getY()
-						/ FRAMES_PER_SECOND);
-			}
-		}
-	}
-
-	/**
-	 * 
-	 * @param centerOne
-	 *            -x or y of the first hitbox
-	 * @param centerTwo
-	 *            -x or y of the second hitbox
-	 * @param measureOne
-	 *            -height or width of first hitbox
-	 * @param measureTwo
-	 *            -height or width of second hitbox
-	 * @return double associated with collisions
-	 */
-	private double collisionHelper(double centerOne, double centerTwo,
-			double measureOne, double measureTwo) {
-		return (centerTwo + measureTwo) - (centerOne - measureOne);
-	}
 
 }
