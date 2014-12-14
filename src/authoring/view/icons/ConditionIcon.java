@@ -1,24 +1,28 @@
 package authoring.view.icons;
 
-import static authoring.view.icons.LevelIcon.DEFAULT_FONT_SIZE;
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import authoring.eventhandlers.AddActionHandler;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.propertiesview.ConditionProperties;
 import authoring.view.propertiesview.Properties;
 import engine.conditions.Condition;
 
-public class ConditionIcon extends TextIcon implements IPropertiesMaker{
+/**
+ * @author Kevin Li
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Arjun Jain
+ */
+public class ConditionIcon extends TextIcon implements IPropertiesMaker {
 
 	private Condition myCondition;
-	
-	public ConditionIcon(String label, Condition condition, GameHandler... handler) {
+
+	public ConditionIcon(String label, Condition condition,
+			GameHandler... handler) {
 		super(label, handler);
 		myCondition = condition;
 	}
-	
-	public Condition getCondition(){
+
+	public Condition getCondition() {
 		return myCondition;
 	}
 

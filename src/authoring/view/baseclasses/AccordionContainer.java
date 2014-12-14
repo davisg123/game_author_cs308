@@ -6,6 +6,8 @@ import javafx.scene.control.Accordion;
  * Base class that other classes can extend or call to create an accordion.
  * 
  * @author Kevin Li
+ * @author Chris Bernt
+ * @author Wesley Valentine
  *
  */
 public class AccordionContainer extends Accordion {

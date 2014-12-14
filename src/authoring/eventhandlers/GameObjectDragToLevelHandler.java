@@ -23,7 +23,9 @@ import errorsAndExceptions.ErrorPopUp;
  * 
  * @author Wesley Valentine
  * @author Chris Bernt
- * 
+ * @author Kevin Li
+ * @author Arjun Jain
+ * @author Safkat Islam
  *
  */
 public class GameObjectDragToLevelHandler implements GameHandler<MouseEvent> {
@@ -48,48 +50,50 @@ public class GameObjectDragToLevelHandler implements GameHandler<MouseEvent> {
 		double y = event.getSceneY();
 		GameObject gameObject = g.getGameObject();
 		myNewGameObject = new GameObject(gameObject);
-		myNewGameObject.setIdentifier(new Identifier(gameObject.getIdentifier().getType(),""));
+		myNewGameObject.setIdentifier(new Identifier(gameObject.getIdentifier()
+				.getType(), ""));
 		myNewGameObject.setX(x);
 		myNewGameObject.setY(y);
-		
-		try{
-		
+
+		try {
+
 			String id = myLevelView.getCurrentLevel().getID();
 			for (Level level : myLevelsCollection) {
-				if (level.getIdentifier().getUniqueId().equals(id) && myLevelView.contains(x + OBJECT_X_OFFSET, y + OBJECT_Y_OFFSET)) {
-	
+				if (level.getIdentifier().getUniqueId().equals(id)
+						&& myLevelView.contains(x + OBJECT_X_OFFSET, y
+								+ OBJECT_Y_OFFSET)) {
+
 					myGameObjectCollection = level.getGameObjectsCollection();
-					//prompt for identifier HERE
-					myNameWizard = new GameObjectUniqueIDWizard("Choose Unique ID", 230, 200, e -> updateName(level), myGameObjectCollection);
-					
-					
-					//myNewGameObject.setIdentifier(new Identifier(gameObject.getIdentifier().getType(),id +"-"+level.getGameObjectsCollection().getSize()));
-				
-					
-					
+					// prompt for identifier HERE
+					myNameWizard = new GameObjectUniqueIDWizard(
+							"Choose Unique ID", 230, 200,
+							e -> updateName(level), myGameObjectCollection);
+
+					// myNewGameObject.setIdentifier(new
+					// Identifier(gameObject.getIdentifier().getType(),id
+					// +"-"+level.getGameObjectsCollection().getSize()));
+
 					myProps.displayProperties(myNewGameObject);
 				}
 			}
-		}
-		catch(NullPointerException e){
-			
+		} catch (NullPointerException e) {
+
 		}
 
 	}
 
-	private void updateName(Level level){
+	private void updateName(Level level) {
 		String tryID = myNameWizard.getMap().get("name").getInformation();
-		if(!myNameWizard.isDuplicated(tryID)){
+		if (!myNameWizard.isDuplicated(tryID)) {
 			myNewGameObject.getIdentifier().setUniqueId(((tryID)));
 			level.addGameObject(myNewGameObject);
-		}
-		else{
+		} else {
 			ErrorPopUp epu = new ErrorPopUp();
 			epu.display("Need to enter unique ID", false);
 		}
 		myNameWizard.close();
 	}
-	
+
 	@Override
 	public EventType<MouseEvent> getEventType() {
 		return MouseEvent.MOUSE_RELEASED;

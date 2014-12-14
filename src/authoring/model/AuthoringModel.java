@@ -20,7 +20,13 @@ import errorsAndExceptions.ErrorPopUp;
 /**
  * The Model of the MVC, gets changes in information from the controller and
  * directly updates the view. Individual components observed by the view.
+ * 
  * @author Arjun Jain
+ * @author Kevin Li
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ *
+ *
  */
 public class AuthoringModel {
 	private GameData myGame;
@@ -31,10 +37,10 @@ public class AuthoringModel {
 		myDataManager = new DataManager();
 	}
 
-	public GameData getData(){
+	public GameData getData() {
 		return myGame;
 	}
-	
+
 	/**
 	 * Save the current GameData using serialization
 	 */
@@ -42,38 +48,42 @@ public class AuthoringModel {
 		// TODO - Data
 		GameData mySerializableGame = convertToSerializable();
 		try {
-			boolean success = myDataManager.writeGameFile(mySerializableGame, dataPath);
+			boolean success = myDataManager.writeGameFile(mySerializableGame,
+					dataPath);
 			System.out.println("game saved = " + success);
-			myDataManager.writeProgressFile(mySerializableGame, dataPath, "initial");
+			myDataManager.writeProgressFile(mySerializableGame, dataPath,
+					"initial");
 		} catch (IOException e) {
 			ErrorPopUp epu = new ErrorPopUp(e);
 			epu.display("Won't save", false);
 		}
 	}
-	
-	private GameData convertToSerializable(){
+
+	private GameData convertToSerializable() {
 		GameData mySerializableGame = new GameData();
 		List<GameObject> allGameObjects = new ArrayList<GameObject>();
-		for(String s : myGame.getImages()){
+		for (String s : myGame.getImages()) {
 			mySerializableGame.getImages().add(s);
 		}
-		for(GameObject g: myGame.getGameObjects()){
+		for (GameObject g : myGame.getGameObjects()) {
 			allGameObjects.add(g);
 		}
-		for(Level l: myGame.getLevels()){
+		for (Level l : myGame.getLevels()) {
 			List<Identifier> levelGameObjectsIDs = new ArrayList<Identifier>();
-			for(GameObject g : l.getGameObjectsCollection()){
+			for (GameObject g : l.getGameObjectsCollection()) {
 				/**
-				Identifier i = new Identifier(g.getID(),Integer.toString(IDcounter));
-				g.setIdentifier(i);
-				IDcounter++;
-				**/
+				 * Identifier i = new
+				 * Identifier(g.getID(),Integer.toString(IDcounter));
+				 * g.setIdentifier(i); IDcounter++;
+				 **/
 				allGameObjects.add(g);
 				levelGameObjectsIDs.add(g.getIdentifier());
 			}
 			Level levelToAdd = new Level(levelGameObjectsIDs);
 			levelToAdd.setStartIndicator(l.isStartLevel());
-			levelToAdd.setIdentifier(new Identifier(l.getIdentifier().getType(),l.getIdentifier().getUniqueId()));
+			levelToAdd.setIdentifier(new Identifier(
+					l.getIdentifier().getType(), l.getIdentifier()
+							.getUniqueId()));
 			levelToAdd.setConditionIds(l.getConditionIdentifiers());
 			levelToAdd.setBackgroundImage(l.getBackgroundImage());
 			levelToAdd.setBackgroundMusic(l.getBackgroundMusic());
@@ -81,35 +91,36 @@ public class AuthoringModel {
 			levelToAdd.setWidth(l.getWidth());
 			mySerializableGame.getLevels().add(levelToAdd);
 		}
-		for(Condition c : myGame.getConditions()){
+		for (Condition c : myGame.getConditions()) {
 			mySerializableGame.getConditions().add(c);
 		}
-		for(GameObject g: allGameObjects){
+		for (GameObject g : allGameObjects) {
 			mySerializableGame.getGameObjects().add(g);
 		}
-		for(String s: myGame.getSounds()){
-			mySerializableGame.getSounds().add(s);;
+		for (String s : myGame.getSounds()) {
+			mySerializableGame.getSounds().add(s);
+			;
 		}
 		return mySerializableGame;
 	}
-	
-	private void convertFromSerializable(GameData input){
-		for(String s : input.getImages()){
+
+	private void convertFromSerializable(GameData input) {
+		for (String s : input.getImages()) {
 			myGame.getImages().add(s);
 		}
-		for (Level l: input.getLevels()){
+		for (Level l : input.getLevels()) {
 			GameObjectsCollection newObjects = new GameObjectsCollection();
-			for(Identifier i: l.getGameObjectIDs()){
-				for(GameObject g : input.getGameObjects()){
-					if(i.getUniqueId().equals(g.getIdentifier().getUniqueId())){
+			for (Identifier i : l.getGameObjectIDs()) {
+				for (GameObject g : input.getGameObjects()) {
+					if (i.getUniqueId().equals(g.getIdentifier().getUniqueId())) {
 						newObjects.add(g);
 					}
 				}
-				for(GameObject g : newObjects){
+				for (GameObject g : newObjects) {
 					input.getGameObjects().remove(g);
 				}
 			}
-			//l.getGameObjectIDs().clear();
+			// l.getGameObjectIDs().clear();
 			Level newLevel = new Level(newObjects);
 			newLevel.setStartIndicator(l.isStartLevel());
 			newLevel.setIdentifier(l.getIdentifier());
@@ -120,13 +131,13 @@ public class AuthoringModel {
 			newLevel.setWidth(l.getWidth());
 			myGame.getLevels().add(newLevel);
 		}
-		for(Condition c: input.getConditions()){
+		for (Condition c : input.getConditions()) {
 			myGame.getConditions().add(c);
 		}
-		for(GameObject g : input.getGameObjects()){
+		for (GameObject g : input.getGameObjects()) {
 			myGame.getGameObjects().add(g);
 		}
-		for(String s: input.getSounds()){
+		for (String s : input.getSounds()) {
 			myGame.getSounds().add(s);
 		}
 	}
@@ -139,32 +150,36 @@ public class AuthoringModel {
 	}
 
 	/**
-	 * Allows the user to extract certain elements from a GameData object to import into their current project
-	 * @param gd Represents the GameData object from which we want to extract elements
+	 * Allows the user to extract certain elements from a GameData object to
+	 * import into their current project
+	 * 
+	 * @param gd
+	 *            Represents the GameData object from which we want to extract
+	 *            elements
 	 */
 	public void importData(GameData gd) {
 		// TODO - adds data to current authoring environment
 
 	}
-	
-	public ImagesCollection getImages(){
+
+	public ImagesCollection getImages() {
 		return myGame.getImages();
 	}
-	
-	public GameObjectsCollection getGameObjectCollection(){
+
+	public GameObjectsCollection getGameObjectCollection() {
 		return myGame.getGameObjects();
 	}
-	
-	public LevelsCollection getLevels(){
+
+	public LevelsCollection getLevels() {
 		return myGame.getLevels();
 	}
 
-	public ConditionsCollection getConditions(){
+	public ConditionsCollection getConditions() {
 		return myGame.getConditions();
 	}
 
-	public SoundsCollection getSounds(){
+	public SoundsCollection getSounds() {
 		return myGame.getSounds();
 	}
-	
+
 }

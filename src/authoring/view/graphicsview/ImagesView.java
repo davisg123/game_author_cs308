@@ -18,6 +18,8 @@ import authoring.view.icons.ImageIcon;
  * 
  * @author Kevin Li
  * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Arjun Jain
  *
  */
 public class ImagesView extends CollectionView implements Observer {

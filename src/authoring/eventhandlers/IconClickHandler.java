@@ -5,11 +5,18 @@ import javafx.scene.input.MouseEvent;
 import authoring.view.icons.IPropertiesMaker;
 import authoring.view.propertiesview.PropertiesView;
 
-public class IconClickHandler implements GameHandler<MouseEvent>{
+/**
+ * @author Kevin Li
+ * @author Arjun Jain
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Safkat Islam
+ */
+public class IconClickHandler implements GameHandler<MouseEvent> {
 
-private PropertiesView myProperties;
-	
-	public IconClickHandler(PropertiesView props){
+	private PropertiesView myProperties;
+
+	public IconClickHandler(PropertiesView props) {
 		myProperties = props;
 	}
 
@@ -23,5 +30,5 @@ private PropertiesView myProperties;
 	public EventType<MouseEvent> getEventType() {
 		return MouseEvent.MOUSE_PRESSED;
 	}
-	
+
 }

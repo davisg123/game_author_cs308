@@ -6,6 +6,12 @@ import javafx.scene.control.Button;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.generalcollectionview.CollectionOptions;
 
+/**
+ * @author Kevin Li
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Arjun Jain
+ */
 public class GraphicOptions extends CollectionOptions {
 	private Button addGraphicButton;
 

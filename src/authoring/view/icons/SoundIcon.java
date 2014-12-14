@@ -11,7 +11,13 @@ import authoring.eventhandlers.GameHandler;
 import authoring.view.propertiesview.FileProperties;
 import authoring.view.propertiesview.Properties;
 
-public class SoundIcon extends FileIcon implements IPropertiesMaker{
+/**
+ * @author Kevin Li
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Arjun Jain
+ */
+public class SoundIcon extends FileIcon implements IPropertiesMaker {
 	private static final int DEFAULT_SOUND_ICON_SIZE = 60;
 	private Image mySoundIcon;
 	private MediaPlayer myAudioPlayer;

@@ -27,7 +27,9 @@ import errorsAndExceptions.ErrorPopUp;
  * language.
  * 
  * @author Kevin Li
- *
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Arjun Jain
  */
 public class ProgramMenu extends MenuBar {
 	private static final String DEFAULT_RESOURCE = "authoring.resources.languages/language";
@@ -96,14 +98,14 @@ public class ProgramMenu extends MenuBar {
 				.getController().saveData();
 
 	}
-	
-	private MenuItem loadFile(){
+
+	private MenuItem loadFile() {
 		MenuItem loadFile = new MenuItem(myLanguage.getString("Load"));
 		loadFile.setOnAction(handle -> loadData());
 		return loadFile;
 	}
 
-	private void loadData(){
+	private void loadData() {
 		File gameLocation = myDirectoryChooser.showDialog(new Stage());
 		if (gameLocation != null) {
 			setupGame(gameLocation);
@@ -119,16 +121,16 @@ public class ProgramMenu extends MenuBar {
 			ErrorPopUp epu = new ErrorPopUp(e);
 			epu.display("File not found", false);
 		} catch (NullPointerException e) {
-			//User chose not to load a file. No action is needed.
+			// User chose not to load a file. No action is needed.
 		}
 	}
-	
+
 	/**
 	 * Method for adding a new tab.
 	 */
 
 	private void addNew() {
-		
+
 		File gameLocation = myFileChooser.showSaveDialog(new Stage());
 		if (gameLocation != null) {
 			makeFolders(gameLocation);
@@ -140,8 +142,8 @@ public class ProgramMenu extends MenuBar {
 		Tab tab = new Tab(gameLocation.getName());
 		AuthoringView newView = new AuthoringView(myWidth, myHeight);
 		AuthoringModel newModel = new AuthoringModel();
-		AuthoringController newController = new AuthoringController(
-				newView, newModel, myWidth, myHeight, myLanguage, gameLocation);
+		AuthoringController newController = new AuthoringController(newView,
+				newModel, myWidth, myHeight, myLanguage, gameLocation);
 		newView.setController(newController);
 		tab.setContent(newView);
 		myTabs.getTabs().add(tab);
@@ -150,13 +152,13 @@ public class ProgramMenu extends MenuBar {
 
 	private void makeFolders(File gameLocation) {
 		gameLocation.mkdir();
-		File imageFolder = new File(gameLocation.getPath() + "/" 
+		File imageFolder = new File(gameLocation.getPath() + "/"
 				+ DataManager.IMAGES_FOLDER_NAME);
 		imageFolder.mkdir();
-		File soundFolder = new File(gameLocation.getPath() + "/" 
+		File soundFolder = new File(gameLocation.getPath() + "/"
 				+ DataManager.SOUNDS_FOLDER_NAME);
 		soundFolder.mkdir();
-		File progressFolder = new File(gameLocation.getPath() + "/" 
+		File progressFolder = new File(gameLocation.getPath() + "/"
 				+ DataManager.PROGRESS_FOLDER_NAME);
 		progressFolder.mkdir();
 	}
