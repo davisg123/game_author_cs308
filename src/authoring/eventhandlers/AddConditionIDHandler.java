@@ -19,7 +19,7 @@ public class AddConditionIDHandler implements GameHandler<Event>{
 	
 	@Override
 	public void handle(Event arg0) {
-		myWizard = new AddConditionIDWizard("Add Condition ID", 200, 200, event -> addNewCondition());
+		myWizard = new AddConditionIDWizard("Add Condition", 200, 200, event -> addNewCondition());
 	}
 
 	@Override

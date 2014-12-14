@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -15,6 +16,7 @@ import authoring.view.propertiesview.PropertyTextField;
 public abstract class Wizard extends Stage{
 
 	protected Map<String, PropertyTextField> myMap;
+	protected ScrollPane myScrollPane;
 	protected VBox myWindow;
 	protected String myTitle;
 	
@@ -23,10 +25,15 @@ public abstract class Wizard extends Stage{
 		myWindow = new VBox();
 		myTitle = title;
 		
+		myScrollPane = new ScrollPane();
+		myScrollPane.setPrefSize(width, height);
+		myScrollPane.setContent(initializeWizard(event));
+		
 		this.setTitle(title);
 		this.initStyle(StageStyle.DECORATED);
 		Group root = new Group();
-		root.getChildren().add(initializeWizard(event));
+		
+		root.getChildren().add(myScrollPane);
 		
 		Scene scene = new Scene(root, width, height);
 		this.setScene(scene);
