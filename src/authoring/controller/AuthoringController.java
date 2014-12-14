@@ -6,14 +6,11 @@ import java.util.ResourceBundle;
 import javafx.geometry.Pos;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.BorderPane;
-import authoring.eventhandlers.AddActionHandler;
 import authoring.eventhandlers.AddConditionHandler;
-import authoring.eventhandlers.AddConditionIDHandler;
 import authoring.eventhandlers.AddImageHandler;
 import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.AddObjectHandler;
 import authoring.eventhandlers.AddSoundHandler;
-import authoring.eventhandlers.ConditionClickHandler;
 import authoring.eventhandlers.DeleteGameObjectHandler;
 import authoring.eventhandlers.EditGameObjectHandler;
 import authoring.eventhandlers.FileDragOverHandler;
@@ -21,13 +18,12 @@ import authoring.eventhandlers.GameObjGraphicDragHandler;
 import authoring.eventhandlers.GameObjectClickHandler;
 import authoring.eventhandlers.GameObjectDragHandler;
 import authoring.eventhandlers.GameObjectDragToLevelHandler;
+import authoring.eventhandlers.IconClickHandler;
 import authoring.eventhandlers.ImageDropHandler;
-import authoring.eventhandlers.ImagesClickHandler;
-import authoring.eventhandlers.LevelClickHandler;
 import authoring.eventhandlers.LevelToViewHandler;
 import authoring.eventhandlers.SaveAsNewHandler;
 import authoring.eventhandlers.SoundDropHandler;
-import authoring.eventhandlers.SoundsClickHandler;
+import authoring.eventhandlers.SoundsDoubleClickHandler;
 import authoring.model.AuthoringModel;
 import authoring.model.GameData;
 import authoring.view.AuthoringView;
@@ -154,12 +150,11 @@ public class AuthoringController {
 
 	private void initializeGameHandlers() {
 
-		myGraphics.setIconEvents(new ImagesClickHandler(myProperties));
+		myGraphics.setIconEvents(new IconClickHandler(myProperties));
 		myGraphics.setDragOver(new FileDragOverHandler());
 		myGraphics.setDragDrop(new ImageDropHandler(myModel.getImages(),
 				myGameLocation));
-		mySounds.setIconEvents(new SoundsClickHandler(myProperties,
-				myGameLocation));
+		mySounds.setIconEvents(new SoundsDoubleClickHandler(), new IconClickHandler(myProperties));
 		mySounds.setDragOver(new FileDragOverHandler());
 		mySounds.setDragDrop(new SoundDropHandler(myModel.getSounds(),
 				myGameLocation));
@@ -180,9 +175,9 @@ public class AuthoringController {
 						myProperties), new GameObjGraphicDragHandler(myLevels));
 
 		myLevelsAccordionView.setIconEvents(new LevelToViewHandler(myLevels),
-				new LevelClickHandler(myProperties));
+				new IconClickHandler(myProperties));
 
-		myConditionsAccordionView.setIconEvents(new ConditionClickHandler(
+		myConditionsAccordionView.setIconEvents(new IconClickHandler(
 				myProperties));
 
 		myConditionOptions.setButtonBehavior(new AddConditionHandler(myModel.getConditions()));
@@ -191,13 +186,12 @@ public class AuthoringController {
 				myProperties),
 				new GameObjectDragHandler(myLevels, myModel.getLevels(),
 						myProperties), new GameObjGraphicDragHandler(myLevels));
+		
 		myProperties.setButtonBehaviors(
 				new EditGameObjectHandler(myLevels,myModel.getLevels(), myProperties),
 				new SaveAsNewHandler(myModel.getGameObjectCollection(), myProperties),
 				new DeleteGameObjectHandler(myLevels, myModel.getLevels(),myProperties));
-		
-		
-		myProperties.setAddActionButtonBehaviors(new AddActionHandler());
+
 	}
 
 	/**
@@ -268,7 +262,7 @@ public class AuthoringController {
 	}
 
 	public void saveData() {
-		myModel.save(myGameLocation.getAbsolutePath());
+		myModel.save(myGameLocation);
 	}
 
 	public void loadData(GameData input) {

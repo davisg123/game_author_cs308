@@ -74,7 +74,7 @@ public class KeyboardView {
 		Button button = new Button(key);
 		button.setId("keyButton");
 		button.setPrefSize(KEY_WIDTH, KEY_HEIGHT);
-		button.setDisable(key == "");
+		button.setDisable(key.equals(""));
 		button.setOnAction((event) -> {
 			myKeyMapForm.createKeyMapForm(key);
 		});

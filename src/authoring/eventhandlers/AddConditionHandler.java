@@ -5,8 +5,9 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import javafx.event.Event;
 import javafx.event.EventType;
@@ -29,6 +30,7 @@ public class AddConditionHandler implements GameHandler<Event> {
 	private ActionChoiceWizard myActionChoiceWizard;
 
 	private List<String> myInputParameters;
+	private Map<String,String> displayMap;
 	private Parameter[] myParameterTypes;
 	private Class<?> classType;
 	private Constructor myConstructor;
@@ -55,8 +57,6 @@ public class AddConditionHandler implements GameHandler<Event> {
 
 		try {
 			classType = Class.forName(CONDITION_PATH_START + selected);
-			//System.out.println(classType.toString());
-
 		
 			
 			Constructor[] constructors = classType.getDeclaredConstructors();
@@ -66,7 +66,7 @@ public class AddConditionHandler implements GameHandler<Event> {
 			
 			
 			for (Parameter p : myParameterTypes){
-				System.out.println(p.getParameterizedType());
+				//System.out.println(p.getParameterizedType());
 			}
 
 			//System.out.println(Arrays.deepToString(myParameterTypes));
@@ -76,7 +76,7 @@ public class AddConditionHandler implements GameHandler<Event> {
 					event -> fillConditionParameters());
 
 		} catch (ClassNotFoundException e) {
-			System.out.println("Bad Class");
+			//System.out.println("Bad Class");
 		}
 
 	}
@@ -84,8 +84,10 @@ public class AddConditionHandler implements GameHandler<Event> {
 	private void fillConditionParameters() {
 		System.out.println("filling conditions");
 		myInputParameters = new ArrayList<String>();
+		displayMap = new LinkedHashMap<String,String>();
 		for (String s : myCPW.getMap().keySet()) {
 			myInputParameters.add(myCPW.getMap().get(s).getInformation());
+			displayMap.put(s, myCPW.getMap().get(s).getInformation());
 		}
 		mySelectionWizard.disableSelection();
 		//myWizard.enableActionCreation(event -> addAction());
@@ -156,13 +158,13 @@ public class AddConditionHandler implements GameHandler<Event> {
 
 		try {
 			Condition c = (Condition) myConstructor.newInstance(inputs.toArray());
+			
 			c.setIdentifier(new Identifier("Condition", mySelectionWizard.getMap().get("name").getInformation()));
+			c.setInputMap(displayMap);
 			myConditionsCollection.add(c);
 			mySelectionWizard.close();
-			System.out.println(c.getClass());
 		} catch (Exception e) {
 			System.out.println("Could not construct");
-			e.printStackTrace();
 		}
 	}
 

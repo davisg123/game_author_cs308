@@ -6,12 +6,15 @@ import javafx.event.Event;
 import javafx.event.EventType;
 import authoring.model.collections.GameObjectsCollection;
 import authoring.view.propertiesview.PropertyTextField;
+import authoring.view.wizards.GameObjectTypeWizard;
 import authoring.view.wizards.GameObjectWizard;
 import authoring.view.wizards.NameWizard;
 import authoring.view.wizards.Wizard;
 import engine.gameObject.GameObject;
+import engine.gameObject.Identifier;
 import engine.gameObject.components.PhysicsBody;
 import engine.physics.Velocity;
+import errorsAndExceptions.ErrorPopUp;
 
 public class AddObjectHandler implements GameHandler<Event> {
 
@@ -31,22 +34,6 @@ public class AddObjectHandler implements GameHandler<Event> {
 
 		myWizard = new GameObjectWizard("New Game Object", NEW_GAMEOBJECT_WINDOW_WIDTH, NEW_GAMEOBJECT_WINDOW_HEIGHT,
 				event -> createGameObject());
-
-		// Stage dialog = new Stage();
-		// dialog.setTitle("New Game Object");
-		// dialog.initStyle(StageStyle.DECORATED);
-		// Group root = new Group();
-		//
-		// //Make this not a properties but like a new object wizard
-		// GameObjectProperties properties = new GameObjectProperties(new
-		// GameObjectGraphic(new GameObject(), null, null));
-		// properties.setUpForNewObject().setOnMouseClicked(event ->
-		// createGameObject(properties, dialog));
-		// root.getChildren().add(properties);
-		// Scene scene = new Scene(root, NEW_GAMEOBJECT_WINDOW_WIDTH,
-		// NEW_GAMEOBJECT_WINDOW_HEIGHT);
-		// dialog.setScene(scene);
-		// dialog.show();
 
 	}
 
@@ -73,12 +60,20 @@ public class AddObjectHandler implements GameHandler<Event> {
 		myNewGameObject.setPhysicsBody(p);
 		myWizard.close();
 		
-		myNameWizard = new NameWizard("Choose Name", 230, 200, event -> updateName(), myGameObjectCollection);
+		myNameWizard = new GameObjectTypeWizard("Choose Type ID", 230, 200, event -> updateName(), myGameObjectCollection);
 		
 	}
 	
 	public void updateName(){
-		myNewGameObject.setID(myNameWizard.getMap().get("name").getInformation());
-		myNameWizard.updateObjectName(myNewGameObject);
+		String tryID = myNameWizard.getMap().get("name").getInformation();
+		if(!myNameWizard.isDuplicated(tryID)){
+			myNewGameObject.setIdentifier(new Identifier(myNameWizard.getMap().get("name").getInformation(), "Template"));
+			myGameObjectCollection.add(myNewGameObject);
+		}
+		else{
+			ErrorPopUp epu = new ErrorPopUp();
+			epu.display("Need to enter unique type", false);
+		}
+		myNameWizard.close();
 	}
 }

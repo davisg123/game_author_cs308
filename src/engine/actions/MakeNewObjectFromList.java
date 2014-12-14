@@ -7,7 +7,7 @@ import authoring.model.collections.GameObjectsCollection;
 
 public class MakeNewObjectFromList extends MakeNewRandomObjectAction{
 
-	private GameObjectsCollection myTemplateObjects;
+	private transient GameObjectsCollection myTemplateObjects;
 	
 	public MakeNewObjectFromList(String type, Double lowerXBound, Double upperXBound, 
 			Double lowerYBound, Double upperYBound, GameObjectsCollection objects) {

@@ -14,7 +14,7 @@ import engine.gameObject.Identifier;
  */
 
 public abstract class TranslateIDAction implements Action, Initializable {
-    protected GameObjectsCollection myGameObjects;
+    protected transient GameObjectsCollection myGameObjects;
     protected List<Identifier> myGameObjectIDs;
     protected Double myValue;
     
