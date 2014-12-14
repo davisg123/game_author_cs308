@@ -1,0 +1,5 @@
+<map id="authoring.view.icons.GameObjectIcon" name="authoring.view.icons.GameObjectIcon">
+<area shape="rect" id="node2" href="$d5/d47/classauthoring_1_1view_1_1icons_1_1_image_based_icon.html" title="authoring.view.icons.Image\lBasedIcon" alt="" coords="13,230,208,271"/>
+<area shape="rect" id="node3" href="$de/d21/classauthoring_1_1view_1_1icons_1_1_file_icon.html" title="authoring.view.icons.FileIcon" alt="" coords="11,155,209,181"/>
+<area shape="rect" id="node4" href="$dd/db4/classauthoring_1_1view_1_1icons_1_1_base_icon.html" title="authoring.view.icons.BaseIcon" alt="" coords="5,80,216,107"/>
+</map>

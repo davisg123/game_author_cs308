@@ -1,0 +1,5 @@
+<map id="engine.actions.DeleteTypeAction" name="engine.actions.DeleteTypeAction">
+<area shape="rect" id="node2" href="$d4/d87/classengine_1_1actions_1_1_type_action.html" title="engine.actions.TypeAction" alt="" coords="7,155,193,181"/>
+<area shape="rect" id="node3" href="$d9/dd2/interfaceengine_1_1actions_1_1_action.html" title="engine.actions.Action" alt="" coords="79,80,237,107"/>
+<area shape="rect" id="node4" href="$d2/d15/interfaceengine_1_1actions_1_1_initializable.html" title="engine.actions.Initializable" alt="" coords="5,5,195,32"/>
+</map>
