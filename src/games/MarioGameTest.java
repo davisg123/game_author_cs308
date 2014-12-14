@@ -13,6 +13,7 @@ import authoring.model.collections.GeneralCollection;
 import authoring.model.collections.LevelsCollection;
 import engine.GameManager;
 import engine.actions.Action;
+import engine.actions.DeleteIdAction;
 import engine.actions.DeleteTypeAction;
 import engine.actions.FixedCollisionTypeAction;
 import engine.actions.ImpulseAction;
@@ -340,6 +341,7 @@ public class MarioGameTest extends Application {
         //fireball Goomba
         
         List<Action> fireballGoombaConditionActionList = new ArrayList<Action>();
+        Action DeleteGoombaAction = new DeleteTypeAction("goomba");
         fireballGoombaConditionActionList.add(marioPlatformCollisionAction);
         TypeCollisionCondition fireballAndGoombaCollision = new TypeCollisionCondition(marioPlatformConditionActionList,"mario","PlatformBlock");
         fireballAndGoombaCollision.setIdentifier(new Identifier("collision_cond","a"));

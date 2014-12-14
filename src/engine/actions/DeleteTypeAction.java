@@ -1,7 +1,6 @@
 package engine.actions;
 
 import java.util.Iterator;
-
 import javafx.scene.Group;
 import engine.GameManager;
 import engine.gameObject.GameObject;
@@ -31,6 +30,7 @@ public class DeleteTypeAction extends TypeAction{
 			if (object.getIdentifier().getType().equals(myType)){
 				myRenderer.removeRenderedNode(object.getRenderedNode().getId());
 				it.remove();
+				 System.out.println("igothere");
 				
 			}
 		}
