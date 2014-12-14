@@ -83,7 +83,6 @@ public class ButtonPressCondition extends Condition {
     	else{
     	    if (myButtonActive){
     	        myButtonActive = false;
-    	        myFramesElapsed = 0.0;
     	        if (myReleaseActions != null){
     	            for (Action a: myReleaseActions){
     	                a.execute();

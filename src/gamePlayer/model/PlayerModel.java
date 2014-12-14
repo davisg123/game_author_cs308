@@ -1,7 +1,12 @@
 package gamePlayer.model;
 
+import java.io.File;
 import java.io.IOException;
-import java.nio.file.Path;
+
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import data.DataManager;
 import application.SplashScreen;
 import authoring.model.GameData;
@@ -11,11 +16,13 @@ import engine.conditions.ButtonPressCondition;
 import engine.conditions.Condition;
 import gamePlayer.view.FileSelectionWizard;
 import gamePlayer.view.PlayerView;
+import gamePlayer.view.ProgressSelector;
 
 /**
  * 
  * @author Abhishek B
  * @author Shreyas B
+ * @author Eli Lichtenberg
  * 
  */
 public class PlayerModel {
@@ -26,12 +33,31 @@ public class PlayerModel {
 	private GameManager myGameManager;
 	private ConditionsCollection myButtonConditions;
 	private FileSelectionWizard myFileSelector;
+	private File myGameLocation;
+	private ProgressSelector myProgressSelector;
+	private StringProperty progressFileName;
 
 	public PlayerModel() {
 		myPlayerView = new PlayerView(this);
 		myDataManager = new DataManager();
 		myButtonConditions = new ConditionsCollection();
 		myFileSelector = new FileSelectionWizard();
+		progressFileName = new SimpleStringProperty();
+		addStringChangeListener();
+	}
+	
+	private void addStringChangeListener() {
+		progressFileName.addListener(new ChangeListener<String>() {
+
+			@Override
+			public void changed(ObservableValue<? extends String> observable,
+					String oldValue, String newValue) {
+				System.out.println(newValue);
+				myGameData = myDataManager.readProgressFile(myGameLocation, newValue);
+				loadGameData();
+			}
+			
+		});
 	}
 	
 	public void initializeView() throws IOException {
@@ -39,11 +65,20 @@ public class PlayerModel {
 	}
 
 	public void loadGameFile() {
-		Path filePath = myFileSelector.selectFile();
-		myGameData = myDataManager.readGameFile(filePath.toString());
+		myGameLocation = myFileSelector.selectFile();
+		System.out.println(myGameLocation.getAbsolutePath());
+		myGameData = myDataManager.readGameFile(myGameLocation);
+		myProgressSelector = new ProgressSelector(myGameLocation, progressFileName);
+		loadGameData();
+	}
+
+	private void loadGameData() {
+		System.out.println(myGameData);
+		System.out.println(myGameData.getGameObjects());
+		if(myGameData == null) System.out.println("Null!!!!");
 		myGameManager = new GameManager(myGameData.getConditions(),
 				myGameData.getGameObjects(), myGameData.getLevels(),
-				myPlayerView.getGroup(), filePath.getParent().toString());
+				myPlayerView.getGroup(), myGameLocation.toString());
 		myGameManager.initialize();
 		extractButtonConditions();
 	}
@@ -84,17 +119,18 @@ public class PlayerModel {
 	}
 
 	/**
-	 * This will save a file wtih file selector
+	 * This will save a file with file selector
 	 */
 	public void saveGameProgress() {
-//		myDataManager.writeGameFile(myGameManager.getGameData(), );
+		myProgressSelector.saveProgressState(myGameData);
 	}
 	
 	/**
 	 * This will load a file with file selector
 	 */
 	public void loadGameProgress() {
-	
+		myProgressSelector.loadProgressState();
 	}
-
+	
+	
 }
