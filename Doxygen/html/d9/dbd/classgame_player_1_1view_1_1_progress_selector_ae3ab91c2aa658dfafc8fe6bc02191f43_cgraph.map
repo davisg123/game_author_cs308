@@ -1,0 +1,13 @@
+<map id="gamePlayer.view.ProgressSelector.saveProgressState" name="gamePlayer.view.ProgressSelector.saveProgressState">
+<area shape="rect" id="node2" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#abf378d2a28ee207f92264da056c28a13" title="gamePlayer.view.Progress\lSelector.buildSaveWindow" alt="" coords="261,103,448,145"/>
+<area shape="rect" id="node12" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#ad47ec1215944a14051a1106be29d45df" title="gamePlayer.view.Progress\lSelector.updateProgressList" alt="" coords="254,169,455,210"/>
+<area shape="rect" id="node3" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#ae8bb8d76db91e1663a7244f10f438db6" title="gamePlayer.view.Progress\lSelector.createButton" alt="" coords="525,5,712,46"/>
+<area shape="rect" id="node4" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#a6a664023c1828d7dc03d05507c2049ed" title="gamePlayer.view.Progress\lSelector.overwriteProgressEvent" alt="" coords="505,70,733,111"/>
+<area shape="rect" id="node10" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#ad6c70f114f81a6e1739a019d500fab9f" title="gamePlayer.view.Progress\lSelector.saveProgressEvent" alt="" coords="519,135,719,177"/>
+<area shape="rect" id="node11" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#abdecb9a69426fb294cecf3d8a34a0ec0" title="gamePlayer.view.Progress\lSelector.setupWindow" alt="" coords="525,201,712,242"/>
+<area shape="rect" id="node5" href="$de/d50/classerrors_and_exceptions_1_1_error_pop_up.html#a879c9fa857c162edfab75ecf1558c944" title="errorsAndExceptions.Error\lPopUp.display" alt="" coords="812,73,1001,114"/>
+<area shape="rect" id="node8" href="$d1/d95/classdata_1_1_data_manager.html#a635a83b3bf3ae9c504c420c3794c47cc" title="data.DataManager.writeProgressFile" alt="" coords="781,141,1032,168"/>
+<area shape="rect" id="node6" href="$de/d50/classerrors_and_exceptions_1_1_error_pop_up.html#a98549e423869b27d7ee3c87270786f60" title="errorsAndExceptions.Error\lPopUp.chooseStageWidth" alt="" coords="1083,74,1272,115"/>
+<area shape="rect" id="node7" href="$de/d50/classerrors_and_exceptions_1_1_error_pop_up.html#adecc4a2ab81e607673649e10e6d7da52" title="errorsAndExceptions.Error\lPopUp.createButton" alt="" coords="1083,9,1272,50"/>
+<area shape="rect" id="node9" href="$d1/d95/classdata_1_1_data_manager.html#a1d751c9995395d782f423aed87a6e51e" title="data.DataManager.writeFile" alt="" coords="1080,141,1275,168"/>
+</map>
