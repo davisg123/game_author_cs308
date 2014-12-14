@@ -1,0 +1,31 @@
+<map id="gamePlayer.view.MenuBarController" name="gamePlayer.view.MenuBarController">
+<area shape="rect" id="node4" href="$dc/d81/classgame_player_1_1view_1_1keyboard_utility_1_1_keyboard_view.html" title="gamePlayer.view.keyboard\lUtility.KeyboardView" alt="" coords="2039,133,2230,174"/>
+<area shape="rect" id="node6" href="$de/dfc/classgame_player_1_1view_1_1keyboard_utility_1_1_key_map_form.html" title="gamePlayer.view.keyboard\lUtility.KeyMapForm" alt="" coords="2438,195,2629,237"/>
+<area shape="rect" id="node17" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html" title="gamePlayer.view.Progress\lSelector" alt="" coords="2041,653,2228,694"/>
+<area shape="rect" id="node49" href="$d7/d3c/classgame_player_1_1view_1_1_player_view.html" title="gamePlayer.view.PlayerView" alt="" coords="2837,653,3035,680"/>
+<area shape="rect" id="node54" href="$d5/d03/classgame_player_1_1view_1_1_file_selection_wizard.html" title="gamePlayer.view.FileSelection\lWizard" alt="" coords="2029,410,2240,451"/>
+<area shape="rect" id="node32" href="$d6/d94/classengine_1_1_game_manager.html" title="engine.GameManager" alt="" coords="2053,1091,2217,1117"/>
+<area shape="rect" id="node35" href="$df/de5/classengine_1_1render_1_1_game_object_renderer.html" title="engine.render.GameObject\lRenderer" alt="" coords="1205,1306,1400,1347"/>
+<area shape="rect" id="node50" href="$db/d19/classgame_player_1_1view_1_1_game_canvas.html" title="gamePlayer.view.GameCanvas" alt="" coords="1194,1711,1411,1737"/>
+<area shape="rect" id="node11" href="$d5/d37/classgame_player_1_1view_1_1keyboard_utility_1_1_mapped_keys.html" title="gamePlayer.view.keyboard\lUtility.MappedKeys" alt="" coords="1615,127,1806,169"/>
+<area shape="rect" id="node13" href="$db/d2a/classauthoring_1_1model_1_1collections_1_1_conditions_collection.html" title="authoring.model.collections.\lConditionsCollection" alt="" coords="1201,738,1404,779"/>
+<area shape="rect" id="node15" href="$d2/dc9/classgame_player_1_1model_1_1_player_model.html" title="gamePlayer.model.PlayerModel" alt="" coords="2422,631,2645,657"/>
+<area shape="rect" id="node23" href="$d7/dbf/classauthoring_1_1model_1_1_game_data.html" title="authoring.model.GameData" alt="" coords="1610,912,1811,939"/>
+<area shape="rect" id="node33" href="$df/d67/classengine_1_1level_1_1_level_manager.html" title="engine.level.LevelManager" alt="" coords="1615,1364,1806,1391"/>
+<area shape="rect" id="node14" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html" title="authoring.model.collections.\lGeneralCollection\&lt; Condition \&gt;" alt="" coords="755,738,979,779"/>
+<area shape="rect" id="node19" href="$d1/d95/classdata_1_1_data_manager.html" title="data.DataManager" alt="" coords="1639,620,1782,647"/>
+<area shape="rect" id="node24" href="$df/de5/classauthoring_1_1model_1_1collections_1_1_levels_collection.html" title="authoring.model.collections.\lLevelsCollection" alt="" coords="765,1006,968,1047"/>
+<area shape="rect" id="node45" href="$da/d90/classengine_1_1sound_1_1_sound_utility.html" title="engine.sound.SoundUtility" alt="" coords="1208,1177,1397,1204"/>
+<area shape="rect" id="node25" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html" title="authoring.model.collections.\lGeneralCollection\&lt; Level \&gt;" alt="" coords="337,1006,540,1047"/>
+<area shape="rect" id="node27" href="$d9/d07/classauthoring_1_1model_1_1collections_1_1_sounds_collection.html" title="authoring.model.collections.\lSoundsCollection" alt="" coords="1201,803,1404,845"/>
+<area shape="rect" id="node28" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html" title="authoring.model.collections.\lGeneralCollection\&lt; String \&gt;" alt="" coords="765,841,968,882"/>
+<area shape="rect" id="node31" href="$d5/d60/classauthoring_1_1model_1_1collections_1_1_images_collection.html" title="authoring.model.collections.\lImagesCollection" alt="" coords="1201,869,1404,910"/>
+<area shape="rect" id="node29" href="$d1/d32/classauthoring_1_1model_1_1collections_1_1_game_objects_collection.html" title="authoring.model.collections.\lGameObjectsCollection" alt="" coords="337,1450,540,1491"/>
+<area shape="rect" id="node37" href="$df/d84/classengine_1_1level_1_1_level.html" title="engine.level.Level" alt="" coords="799,1373,934,1400"/>
+<area shape="rect" id="node30" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html" title="authoring.model.collections.\lGeneralCollection\&lt; GameObject \&gt;" alt="" coords="6,1450,250,1491"/>
+<area shape="rect" id="node38" href="$d3/d8d/classdata_1_1_observable.html" title="data.Observable" alt="" coords="375,1363,502,1389"/>
+<area shape="rect" id="node40" href="$dc/df6/interfaceengine_1_1game_object_1_1_identifiable.html" title="engine.gameObject.Identifiable" alt="" coords="329,1195,549,1221"/>
+<area shape="rect" id="node41" href="$d4/dac/classengine_1_1game_object_1_1_identifier.html" title="engine.gameObject.Identifier" alt="" coords="335,1245,542,1272"/>
+<area shape="rect" id="node44" href="$d9/db5/classengine_1_1_file_path_utility.html" title="engine.FilePathUtility" alt="" coords="790,1227,943,1253"/>
+<area shape="rect" id="node51" href="$da/da0/interfacegame_player_1_1view_1_1_view_controller.html" title="gamePlayer.view.ViewController" alt="" coords="755,1728,978,1755"/>
+</map>

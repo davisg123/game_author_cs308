@@ -1,0 +1,6 @@
+<map id="engine.actions.PhysicsComponentAction" name="engine.actions.PhysicsComponentAction">
+<area shape="rect" id="node2" href="$de/d8e/classengine_1_1actions_1_1_physics_i_d_action.html" title="engine.actions.PhysicsIDAction" alt="" coords="600,93,819,120"/>
+<area shape="rect" id="node3" href="$d9/dd2/interfaceengine_1_1actions_1_1_action.html" title="engine.actions.Action" alt="" coords="281,35,439,61"/>
+<area shape="rect" id="node4" href="$d2/d15/interfaceengine_1_1actions_1_1_initializable.html" title="engine.actions.Initializable" alt="" coords="5,5,195,32"/>
+<area shape="rect" id="node5" href="$da/d1b/classengine_1_1collision_1_1objects_1_1_collision_composition.html" title="engine.collision.objects.\lCollisionComposition" alt="" coords="273,86,447,127"/>
+</map>
