@@ -31,7 +31,9 @@ import errorsAndExceptions.ErrorPopUp;
  * Class that contains the visualization data of a single level.
  * 
  * @author Kevin Li
- *
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Arjun Jain
  */
 public class SingleLevelView extends ScrollPane implements Observer {
 	private static final int GAME_HEIGHT = 400;
@@ -63,7 +65,7 @@ public class SingleLevelView extends ScrollPane implements Observer {
 		myGamePane.setBackground(myDefaultBackground);
 
 		System.out.println("BG: " + bgImage);
-		
+
 		File file = new File(myGameLocation.getPath() + "/images/" + bgImage);
 		BufferedImage bufferedImage;
 		try {

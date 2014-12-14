@@ -1,13 +1,17 @@
 package authoring.eventhandlers;
 
-import java.util.Arrays;
-
 import javafx.event.Event;
 import javafx.event.EventType;
 import authoring.view.wizards.AddConditionIDWizard;
 import engine.gameObject.Identifier;
 import engine.level.Level;
-
+/**
+ * @author Kevin Li
+ * @author Arjun Jain
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ *
+ */
 public class AddConditionIDHandler implements GameHandler<Event>{
 
 	private Level myLevel;

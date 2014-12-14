@@ -12,7 +12,10 @@ import authoring.view.levelview.SingleLevelView;
  * 
  * @author Eli Lichtenberg
  * @author Wesley Valentine
- * 
+ * @author Kevin Li
+ * @author Chris Bernt
+ * @author Arjun Jain
+ * @author Safkat Islam
  */
 
 public class GameObjGraphicDragHandler implements GameHandler<MouseEvent> {

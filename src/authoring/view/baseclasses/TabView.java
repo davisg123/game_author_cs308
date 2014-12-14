@@ -4,6 +4,12 @@ import java.util.ResourceBundle;
 
 import javafx.scene.control.TabPane;
 
+/**
+ * @author Kevin Li
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Arjun Jain
+ */
 public class TabView extends TabPane {
 	protected ResourceBundle myLanguage;
 	protected double myHeight;

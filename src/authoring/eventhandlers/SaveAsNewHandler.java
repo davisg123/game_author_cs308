@@ -10,25 +10,33 @@ import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 import errorsAndExceptions.ErrorPopUp;
 
-public class SaveAsNewHandler implements GameHandler<Event>{
+/**
+ * @author Kevin Li
+ * @author Arjun Jain
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Safkat Islam
+ */
+public class SaveAsNewHandler implements GameHandler<Event> {
 
 	private GameObjectsCollection myGameObjectCollection;
 	private PropertiesView myProps;
 	private NameWizard myWizard;
 	private GameObject myNewGameObject;
-	
-	public SaveAsNewHandler(GameObjectsCollection coll, PropertiesView props){
+
+	public SaveAsNewHandler(GameObjectsCollection coll, PropertiesView props) {
 		myGameObjectCollection = coll;
 		myProps = props;
 	}
-	
+
 	@Override
 	public void handle(Event arg0) {
 
 		myNewGameObject = myProps.getEditedGameObject();
-		
-		myWizard = new GameObjectTypeWizard("Choose Type ID", 230, 200, event -> updateName(), myGameObjectCollection);
-		
+
+		myWizard = new GameObjectTypeWizard("Choose Type ID", 230, 200,
+				event -> updateName(), myGameObjectCollection);
+
 	}
 
 	@Override
@@ -36,17 +44,16 @@ public class SaveAsNewHandler implements GameHandler<Event>{
 		return Event.ANY;
 	}
 
-	private void updateName(){		
+	private void updateName() {
 		String tryID = myWizard.getMap().get("name").getInformation();
-		if(!myWizard.isDuplicated(tryID)){
+		if (!myWizard.isDuplicated(tryID)) {
 			myNewGameObject.setIdentifier(new Identifier(tryID, "Template"));
 			myGameObjectCollection.add(myNewGameObject);
-		}
-		else{
+		} else {
 			ErrorPopUp epu = new ErrorPopUp();
 			epu.display("Need to enter unique type", false);
 		}
 		myWizard.close();
 	}
-	
+
 }

@@ -1,7 +1,12 @@
 package authoring.model.collections;
-import engine.conditions.Condition;
 import engine.level.Level;
-
+/**
+ * @author Kevin Li
+ * @author Arjun Jain
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ *
+ */
 public class LevelsCollection extends GeneralCollection<Level>{
 	
 	@Override

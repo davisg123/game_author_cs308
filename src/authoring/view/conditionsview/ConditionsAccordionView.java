@@ -11,6 +11,12 @@ import data.Observable;
 import data.Observer;
 import engine.conditions.Condition;
 
+/**
+ * @author Kevin Li
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Arjun Jain
+ */
 public class ConditionsAccordionView extends CollectionView implements Observer {
 	private static final double VIEW_HEIGHT_RATIO = .65;
 	private static final double VIEW_WIDTH_RATIO = 0.2;
@@ -35,10 +41,12 @@ public class ConditionsAccordionView extends CollectionView implements Observer 
 		myEvents = gameHandlers;
 	}
 
-	public void addCondition(ConditionsCollection conditions, GameHandler ...gameHandlers) {
+	public void addCondition(ConditionsCollection conditions,
+			GameHandler... gameHandlers) {
 		myVbox.getChildren().clear();
-		for(Condition c: conditions){
-			ConditionIcon icon = new ConditionIcon(c.getIdentifier().getUniqueId(), c, gameHandlers);
+		for (Condition c : conditions) {
+			ConditionIcon icon = new ConditionIcon(c.getIdentifier()
+					.getUniqueId(), c, gameHandlers);
 			myVbox.getChildren().add(icon);
 		}
 	}

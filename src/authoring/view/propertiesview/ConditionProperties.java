@@ -10,6 +10,12 @@ import authoring.view.icons.ConditionIcon;
 import engine.actions.Action;
 import engine.conditions.Condition;
 
+/**
+ * @author Kevin Li
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Arjun Jain
+ */
 public class ConditionProperties extends Properties {
 
 	private GameHandler myHandler;
@@ -28,24 +34,27 @@ public class ConditionProperties extends Properties {
 		this.getChildren().clear();
 
 		VBox imageField = new VBox();
-		PropertyTextField nameField = new PropertyTextField("Name: ",icon.getName());
+		PropertyTextField nameField = new PropertyTextField("Name: ",
+				icon.getName());
 		nameField.setDisable(true);
 		imageField.getChildren().add(nameField);
 		this.getChildren().add(imageField);
 
-		for(String s : icon.getCondition().getInputMap().keySet()){
-			PropertyTextField t = new PropertyTextField(s.split(" ")[s.split(" ").length-1] + ": ", icon.getCondition().getInputMap().get(s));
+		for (String s : icon.getCondition().getInputMap().keySet()) {
+			PropertyTextField t = new PropertyTextField(
+					s.split(" ")[s.split(" ").length - 1] + ": ", icon
+							.getCondition().getInputMap().get(s));
 			t.setDisable(true);
 			imageField.getChildren().add(t);
 		}
-		
+
 		Button addAction = new Button();
 		addAction.setText("Add Action");
-		((AddActionHandler)myHandler).setCondition(myCondition);
+		((AddActionHandler) myHandler).setCondition(myCondition);
 		addAction.setOnAction(myHandler);
 		this.getChildren().add(addAction);
-		
-		for (Action a : myCondition.getActions()){
+
+		for (Action a : myCondition.getActions()) {
 			Text t = new Text(a.getClass().toString());
 			this.getChildren().add(t);
 		}

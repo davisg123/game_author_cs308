@@ -10,7 +10,13 @@ import engine.gameObject.Identifier;
 import authoring.view.wizards.LevelWizard;
 import authoring.view.wizards.Wizard;
 import engine.level.Level;
-
+/**
+ * @author Kevin Li
+ * @author Arjun Jain
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Safkat Islam
+ */
 public class AddLevelHandler implements GameHandler<Event> {
 
 	private LevelsView myLevels;

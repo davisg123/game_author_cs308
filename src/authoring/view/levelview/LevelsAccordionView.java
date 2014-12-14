@@ -11,14 +11,20 @@ import data.Observable;
 import data.Observer;
 import engine.level.Level;
 
-public class LevelsAccordionView extends CollectionView implements Observer{
+/**
+ * @author Kevin Li
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Arjun Jain
+ */
+public class LevelsAccordionView extends CollectionView implements Observer {
 	private static final double VIEW_HEIGHT_RATIO = .70;
 	private static final double VIEW_WIDTH_RATIO = 0.2;
-	private VBox myVbox = new VBox();	
+	private VBox myVbox = new VBox();
 	private GameHandler[] myEvents;
 	private GameHandler[] levelEvents;
 	private String myName;
-	
+
 	public LevelsAccordionView(ResourceBundle language, double width,
 			double height) {
 		super(language, width, height);
@@ -29,18 +35,18 @@ public class LevelsAccordionView extends CollectionView implements Observer{
 	@Override
 	public void update(Observable o, Object arg) {
 		addLevel((LevelsCollection) arg);
-		
+
 	}
-	
-	public void setIconEvents(GameHandler ... gameHandlers){
+
+	public void setIconEvents(GameHandler... gameHandlers) {
 		myEvents = gameHandlers;
 	}
-	
-	public void setLevelEvents(GameHandler ... gameHandlers){
+
+	public void setLevelEvents(GameHandler... gameHandlers) {
 		levelEvents = gameHandlers;
 	}
-	
-	public void addLevel(LevelsCollection levels){
+
+	public void addLevel(LevelsCollection levels) {
 		myVbox.getChildren().clear();
 		for (Level l : levels) {
 			myName = l.getIdentifier().getUniqueId();
@@ -49,8 +55,8 @@ public class LevelsAccordionView extends CollectionView implements Observer{
 			myVbox.getChildren().add(newLevel);
 		}
 	}
-	
-	public String getMyName(){
+
+	public String getMyName() {
 		return myName;
 	}
 }

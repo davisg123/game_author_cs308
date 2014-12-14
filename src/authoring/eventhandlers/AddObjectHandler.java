@@ -15,7 +15,13 @@ import engine.gameObject.Identifier;
 import engine.gameObject.components.PhysicsBody;
 import engine.physics.Velocity;
 import errorsAndExceptions.ErrorPopUp;
-
+/**
+ * @author Kevin Li
+ * @author Arjun Jain
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Safkat Islam
+ */
 public class AddObjectHandler implements GameHandler<Event> {
 
 	private GameObjectsCollection myGameObjectCollection;

@@ -11,19 +11,21 @@ import authoring.view.propertiesview.Properties;
  * the user uploads.
  * 
  * @author Kevin Li
- *
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Arjun Jain
  */
 
-public class ImageIcon extends ImageBasedIcon implements IPropertiesMaker{
+public class ImageIcon extends ImageBasedIcon implements IPropertiesMaker {
 
 	public ImageIcon(String name, File location, GameHandler[] event) {
 		super(name, location, event);
 		scaleDimensions();
 		this.addLabel();
 	}
-	
+
 	@Override
-	public Properties makeProperties(){
+	public Properties makeProperties() {
 		return new FileProperties(this);
 	}
 

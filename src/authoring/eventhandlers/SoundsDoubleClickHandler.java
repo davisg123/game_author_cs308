@@ -1,14 +1,17 @@
 package authoring.eventhandlers;
 
-import java.io.File;
-
 import javafx.event.EventType;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.media.AudioClip;
 import authoring.view.icons.SoundIcon;
-import authoring.view.propertiesview.PropertiesView;
 
+/**
+ * @author Kevin Li
+ * @author Arjun Jain
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Safkat Islam
+ */
 public class SoundsDoubleClickHandler implements GameHandler<MouseEvent> {
 
 	@Override
@@ -24,6 +27,6 @@ public class SoundsDoubleClickHandler implements GameHandler<MouseEvent> {
 	@Override
 	public EventType<MouseEvent> getEventType() {
 		return MouseEvent.MOUSE_PRESSED;
-		
+
 	}
 }

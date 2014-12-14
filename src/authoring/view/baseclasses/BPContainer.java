@@ -1,14 +1,14 @@
 package authoring.view.baseclasses;
 
-import java.util.ResourceBundle;
-
 import javafx.scene.layout.BorderPane;
 
 /**
  * Base class that other classes can extend to make BorderPanes.
  * 
  * @author Kevin Li
- *
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Arjun Jain
  */
 public class BPContainer extends BorderPane {
 

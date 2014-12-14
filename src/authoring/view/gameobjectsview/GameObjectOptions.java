@@ -6,11 +6,18 @@ import javafx.scene.control.Button;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.generalcollectionview.CollectionOptions;
 
-public class GameObjectOptions extends CollectionOptions{
+/**
+ * @author Kevin Li
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Arjun Jain
+ */
+public class GameObjectOptions extends CollectionOptions {
 
 	private Button addObjectButton;
 
-	public GameObjectOptions(ResourceBundle language, double width, double height) {
+	public GameObjectOptions(ResourceBundle language, double width,
+			double height) {
 		super(language, width, height);
 		addNewTabButton();
 	}
@@ -23,6 +30,5 @@ public class GameObjectOptions extends CollectionOptions{
 	public void setButtonBehavior(GameHandler handler) {
 		addObjectButton.setOnAction(handler);
 	}
-	
-	
+
 }
