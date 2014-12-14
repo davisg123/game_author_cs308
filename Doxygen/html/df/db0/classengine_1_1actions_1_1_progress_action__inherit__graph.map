@@ -1,6 +1,0 @@
-<map id="engine.actions.ProgressAction" name="engine.actions.ProgressAction">
-<area shape="rect" id="node4" href="$d1/d37/classengine_1_1actions_1_1_load_action.html" title="engine.actions.LoadAction" alt="" coords="5,229,195,256"/>
-<area shape="rect" id="node5" href="$d6/d11/classengine_1_1actions_1_1_save_action.html" title="engine.actions.SaveAction" alt="" coords="219,229,409,256"/>
-<area shape="rect" id="node2" href="$d9/dd2/interfaceengine_1_1actions_1_1_action.html" title="engine.actions.Action" alt="" coords="186,80,344,107"/>
-<area shape="rect" id="node3" href="$d2/d15/interfaceengine_1_1actions_1_1_initializable.html" title="engine.actions.Initializable" alt="" coords="112,5,301,32"/>
-</map>
