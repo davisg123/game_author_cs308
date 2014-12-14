@@ -9,8 +9,8 @@ import engine.gameObject.Identifier;
 public class ChangeComponentIDAction implements Action, Initializable{
 	
 	protected transient GameObjectsCollection myGameObjects;
-	protected transient Identifier myComponentID; 
-	protected transient List<Identifier> myObjectIDs; 
+	protected Identifier myComponentID; 
+	protected List<Identifier> myObjectIDs; 
 	
 	public ChangeComponentIDAction(List<Identifier> ids, Identifier componentID){
 		myObjectIDs = ids; 

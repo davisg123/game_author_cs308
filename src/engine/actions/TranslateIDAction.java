@@ -30,6 +30,7 @@ public abstract class TranslateIDAction implements Action, Initializable {
     
     @Override
     public void initialize (GameManager manager) {
+        myGameObjects = new GameObjectsCollection();
     	for (Identifier id: myGameObjectIDs){
     		myGameObjects.add(manager.objectForIdentifier(id));
     	}

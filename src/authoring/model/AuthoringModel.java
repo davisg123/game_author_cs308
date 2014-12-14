@@ -15,6 +15,7 @@ import engine.conditions.Condition;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 import engine.level.Level;
+import errorsAndExceptions.ErrorPopUp;
 
 /**
  * The Model of the MVC, gets changes in information from the controller and
@@ -45,7 +46,8 @@ public class AuthoringModel {
 			System.out.println("game saved = " + success);
 			myDataManager.writeProgressFile(mySerializableGame, dataPath, "initial");
 		} catch (IOException e) {
-			System.out.println("Won't Save");
+			ErrorPopUp epu = new ErrorPopUp(e);
+			epu.display("Won't save", false);
 		}
 	}
 	
@@ -73,6 +75,8 @@ public class AuthoringModel {
 			levelToAdd.setStartIndicator(l.isStartLevel());
 			levelToAdd.setIdentifier(new Identifier(l.getIdentifier().getType(),l.getIdentifier().getUniqueId()));
 			levelToAdd.setConditionIds(l.getConditionIdentifiers());
+			levelToAdd.setBackgroundImage(l.getBackgroundImage());
+			levelToAdd.setBackgroundMusic(l.getBackgroundMusic());
 			mySerializableGame.getLevels().add(levelToAdd);
 		}
 		for(Condition c : myGame.getConditions()){
@@ -108,6 +112,8 @@ public class AuthoringModel {
 			newLevel.setStartIndicator(l.isStartLevel());
 			newLevel.setIdentifier(l.getIdentifier());
 			newLevel.setConditionIds(l.getConditionIdentifiers());
+			newLevel.setBackgroundImage(l.getBackgroundImage());
+			newLevel.setBackgroundMusic(l.getBackgroundMusic());
 			myGame.getLevels().add(newLevel);
 		}
 		for(Condition c: input.getConditions()){

@@ -46,6 +46,7 @@ public class AddLevelHandler implements GameHandler<Event> {
 
 		levelData.addObserver(newLevelView);
 		newLevelView.setID(myLevelID);
+		newLevelView.setPaneSize(Double.valueOf(myWizard.getMap().get("width").getInformation()), Double.valueOf(myWizard.getMap().get("height").getInformation()));
 		levelData.setIdentifier(new Identifier("Level", myLevelID));
 		myLevelsCollection.add(levelData);
 		// System.out.println(levelData);

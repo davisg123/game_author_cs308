@@ -4,6 +4,7 @@ import java.util.ResourceBundle;
 
 import javafx.scene.layout.VBox;
 import authoring.eventhandlers.GameHandler;
+import authoring.model.collections.ConditionsCollection;
 import authoring.view.baseclasses.CollectionView;
 import authoring.view.icons.ConditionIcon;
 import data.Observable;
@@ -27,16 +28,19 @@ public class ConditionsAccordionView extends CollectionView implements Observer 
 
 	@Override
 	public void update(Observable o, Object arg) {
-		addCondition((Condition) arg, myEvents);
+		addCondition((ConditionsCollection) arg, myEvents);
 	}
 
 	public void setIconEvents(GameHandler... gameHandlers) {
 		myEvents = gameHandlers;
 	}
 
-	public void addCondition(Condition condition, GameHandler ...gameHandlers) {
-		ConditionIcon icon = new ConditionIcon(condition.getIdentifier().getUniqueId(), condition, gameHandlers);
-		myVbox.getChildren().add(icon);
+	public void addCondition(ConditionsCollection conditions, GameHandler ...gameHandlers) {
+		myVbox.getChildren().clear();
+		for(Condition c: conditions){
+			ConditionIcon icon = new ConditionIcon(c.getIdentifier().getUniqueId(), c, gameHandlers);
+			myVbox.getChildren().add(icon);
+		}
 	}
 
 }

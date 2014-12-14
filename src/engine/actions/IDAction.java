@@ -9,7 +9,7 @@ import engine.gameObject.Identifier;
 
 public abstract class IDAction implements Action, Initializable{
 
-	protected transient List<Identifier> myIDs;
+	protected List<Identifier> myIDs;
 	protected transient GameObjectsCollection myGameObjects; 
 	
 	public IDAction(List<Identifier> ids){
@@ -18,14 +18,12 @@ public abstract class IDAction implements Action, Initializable{
 	
 	@Override
 	public void initialize(GameManager manager) {
+		myGameObjects = new GameObjectsCollection();
 		for (GameObject object: manager.getAllGameObjects()){
 			if (myIDs.contains(object.getIdentifier())){
 				myGameObjects.add(object);
 			}
 		}
 	}
-
-
-	
 
 }

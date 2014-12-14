@@ -42,7 +42,6 @@ public class DataManager {
 	 */
 	public boolean writeGameFile(GameData data, File dataPath) throws IOException {
 		String fileName = dataPath.getName() + ".json";
-		//File f = new File(dataPath, fileName);
 		return writeFile(data, dataPath, fileName);
 	}
 	
@@ -50,8 +49,9 @@ public class DataManager {
 	 * Gets an object representing a game from a Json file.
 	 * @param fileName Name of Json file.
 	 * @return Object representing game.
+	 * @throws FileNotFoundException 
 	 */
-	public GameData readGameFile(File dataPath) {
+	public GameData readGameFile(File dataPath) throws FileNotFoundException {
 		String fileName = dataPath.getName() + ".json";
 		return (GameData)readFile(GameData.class, dataPath, fileName);
 	}
@@ -62,36 +62,27 @@ public class DataManager {
 		return writeFile(data, dataPath, fileName);
 	}
 	
-	public GameData readProgressFile(File dataPath, String progressName) {
+	public GameData readProgressFile(File dataPath, String progressName) throws FileNotFoundException {
 		String fileName = PROGRESS_FOLDER_NAME + "/" + progressName + ".json";
 		return (GameData)readFile(GameData.class, dataPath, fileName);
 	}
 	
-	//check to make sure only writing to json file
-	//turn true/false into errors?
 	private boolean writeFile(Object obj, File dataPath, String fileName) throws IOException {
 			String json = gson.create().toJson(obj);
 			File f = new File(dataPath, fileName);
-			System.out.println(dataPath + fileName);
 			FileWriter writer = new FileWriter(f);
 			writer.write(json);
 			writer.close();
 			return true;
 	}
 	
-	private Object readFile(Class cl, File dataPath, String fileName) {
+	private Object readFile(Class cl, File dataPath, String fileName) throws FileNotFoundException {
 	    File f = new File(dataPath, fileName);
-	    System.out.println(f.toString());
-			try {
-				BufferedReader br = new BufferedReader( new FileReader(f) );
-				Object obj = gson.create().fromJson(br, cl);
-				return obj;
-			} catch (FileNotFoundException e) {
-				return null;
-			}
+		BufferedReader br = new BufferedReader( new FileReader(f) );
+		Object obj = gson.create().fromJson(br, cl);
+		return obj;
 	}
 	
-	//possibly just force user to add ".json"
 	private boolean hasValidName(String fileName) {
 		if(!fileName.contains(".")) return true;
 		else {

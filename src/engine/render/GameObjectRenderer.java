@@ -29,6 +29,7 @@ public class GameObjectRenderer {
 	private Map<Identifier, RenderedNode> myRenderedNodes;
 	private Level myCurrentLevel;
 	private static final String IMAGES = "images";
+	private static final String BACKGROUND = "background";
 	private FilePathUtility myFilePathUtility;
 	/**
 	 * Constructor takes in a group as the Canvas of the game 
@@ -133,7 +134,8 @@ public class GameObjectRenderer {
 		Rectangle hitBox = null;
 		if(body!=null) {
 			hitBox = new Rectangle(body.getCollisionBodyHeight(),body.getCollisionBodyWidth());
-			hitBox.setVisible(false);
+			hitBox.setOpacity(0);
+			//hitBox.setVisible(false);
 		}
 		return hitBox;
 	}
@@ -148,7 +150,6 @@ public class GameObjectRenderer {
 	}
     
 
-    //TODO fix shitty code
     private void setBackGroundImage(Level level) {   
         FileInputStream in;
         try {
@@ -163,6 +164,15 @@ public class GameObjectRenderer {
         }
         catch (FileNotFoundException e) {
         }
+        
+        /*GameObject background = new GameObject();
+        background.setIdentifier(new Identifier(BACKGROUND,BACKGROUND));
+        background.setCurrentImagePath(level.getBackgroundImage());
+        ImageView view = createImageAndView(background);
+        background.setHeight(height);
+        RenderedNode node = new RenderedNode();
+        node.setImageView(view);
+        background.setRenderedNode(node);*/
     }
     
     public void setCameraFocus (GameObject obj) {

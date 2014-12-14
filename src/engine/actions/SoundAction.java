@@ -13,12 +13,12 @@ public abstract class SoundAction implements Action, Initializable {
     protected transient SoundUtility mySoundUtility;
     protected String mySoundPath;
     
-    public SoundAction () {
-        this("");
-    }
-    
     public SoundAction (String soundPath) {
         mySoundPath = soundPath;
+    }
+    
+    public SoundAction () {
+        this("");
     }
     
     @Override

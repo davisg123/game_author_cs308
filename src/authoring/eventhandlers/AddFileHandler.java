@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
+import errorsAndExceptions.ErrorPopUp;
 import javafx.event.Event;
 import javafx.event.EventType;
 import javafx.stage.FileChooser;
@@ -40,7 +41,8 @@ public abstract class AddFileHandler implements GameHandler<Event> {
 				Files.copy(sourceFile.toPath(), destFile.toPath());
 				myCollection.add(destFile.getName());
 			} catch (IOException e) {
-				System.out.println("Bad File");
+				ErrorPopUp epu = new ErrorPopUp(e);
+				epu.display("Bad File", false);
 			}
 		}
 	}
