@@ -1,0 +1,7 @@
+<map id="engine.actions.IDAction" name="engine.actions.IDAction">
+<area shape="rect" id="node4" href="$df/d4c/classengine_1_1actions_1_1_delete_id_action.html" title="engine.actions.DeleteIdAction" alt="" coords="673,5,885,32"/>
+<area shape="rect" id="node5" href="$d5/da2/classengine_1_1actions_1_1render_1_1_change_image_i_d_action.html" title="engine.actions.render.Change\lImageIDAction" alt="" coords="672,57,885,98"/>
+<area shape="rect" id="node6" href="$df/de5/classengine_1_1actions_1_1_rotate_image_i_d_action.html" title="engine.actions.RotateImage\lIDAction" alt="" coords="679,122,879,163"/>
+<area shape="rect" id="node2" href="$d9/dd2/interfaceengine_1_1actions_1_1_action.html" title="engine.actions.Action" alt="" coords="243,89,402,116"/>
+<area shape="rect" id="node3" href="$d2/d15/interfaceengine_1_1actions_1_1_initializable.html" title="engine.actions.Initializable" alt="" coords="5,64,195,91"/>
+</map>

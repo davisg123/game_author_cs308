@@ -1,0 +1,10 @@
+<map id="authoring.eventhandlers.DeleteLevelHandler" name="authoring.eventhandlers.DeleteLevelHandler">
+<area shape="rect" id="node2" href="$d3/d6a/interfaceauthoring_1_1eventhandlers_1_1_game_handler.html" title="authoring.eventhandlers.\lGameHandler\&lt; Event \&gt;" alt="" coords="857,23,1039,65"/>
+<area shape="rect" id="node3" href="$df/de5/classauthoring_1_1model_1_1collections_1_1_levels_collection.html" title="authoring.model.collections.\lLevelsCollection" alt="" coords="847,89,1049,130"/>
+<area shape="rect" id="node4" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html" title="authoring.model.collections.\lGeneralCollection\&lt; Level \&gt;" alt="" coords="425,5,628,46"/>
+<area shape="rect" id="node5" href="$d4/d04/classauthoring_1_1view_1_1levelview_1_1_levels_view.html" title="authoring.view.levelview.\lLevelsView" alt="" coords="860,154,1036,195"/>
+<area shape="rect" id="node6" href="$d0/d3f/classauthoring_1_1view_1_1baseclasses_1_1_tab_view.html" title="authoring.view.baseclasses.\lTabView" alt="" coords="427,70,626,111"/>
+<area shape="rect" id="node9" href="$d2/d4f/interfacedata_1_1_observer.html" title="data.Observer" alt="" coords="470,136,583,163"/>
+<area shape="rect" id="node11" href="$d3/d6a/interfaceauthoring_1_1eventhandlers_1_1_game_handler.html" title="authoring.eventhandlers.\lGameHandler\&lt; T extends\l Event \&gt;" alt="" coords="433,237,621,293"/>
+<area shape="rect" id="node13" href="$d6/d32/classauthoring_1_1view_1_1wizards_1_1_wizard.html" title="authoring.view.wizards.Wizard" alt="" coords="843,368,1053,395"/>
+</map>
