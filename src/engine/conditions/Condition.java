@@ -27,6 +27,7 @@ public abstract class Condition implements Identifiable, Initializable{
     
     public Condition(List<Action> actions){
         myActions = actions;
+        myEnabled = true;
     }
     
     public List<Action> getActions(){
@@ -46,12 +47,21 @@ public abstract class Condition implements Identifiable, Initializable{
      * method to call for executing the associated action/s
      */
     protected abstract void executeActions();
+    
+    /**
+     * method for children to respond to a frame elapsing
+     */
+    protected abstract void respondToFrameElapsed();
+    
     /**
      * method to call to increment the frame counter for conditions that are frame based
      */
     public void frameElapsed(){
-        //overridden by frame based conditions
+        if (myEnabled){
+            respondToFrameElapsed();
+        }
     }
+    
     
     @Override
     public void setIdentifier (Identifier myId) {

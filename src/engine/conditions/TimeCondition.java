@@ -26,7 +26,7 @@ public class TimeCondition extends Condition {
     }
     
     @Override
-    public void frameElapsed () {
+    public void respondToFrameElapsed () {
         if (!expired){
             myFrameCount++;
             if(myFrameCount >= myTargetFrameCount){

@@ -95,7 +95,7 @@ public class ButtonPressCondition extends Condition {
     }
     
     @Override
-    public void frameElapsed () {
+    public void respondToFrameElapsed () {
         executeActions();
     }
 }
