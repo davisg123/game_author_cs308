@@ -1,0 +1,7 @@
+<map id="engine.gameObject.components.PhysicsBody.reverseVelocity" name="engine.gameObject.components.PhysicsBody.reverseVelocity">
+<area shape="rect" id="node2" href="$da/d1b/classengine_1_1collision_1_1objects_1_1_collision_composition.html#a18ddea9b9a7eb7e0b581645e7c42b439" title="engine.collision.objects.\lCollisionComposition.reverseVelocites" alt="" coords="289,133,551,174"/>
+<area shape="rect" id="node3" href="$db/d3a/classengine_1_1collision_1_1objects_1_1_enemy_collision_object.html#a3fe5a215c527ee4263f5f1c2c851f58b" title="engine.collision.objects.\lEnemyCollisionObject.handleEnemy\lCollisionObject" alt="" coords="611,5,861,61"/>
+<area shape="rect" id="node4" href="$d6/db8/classengine_1_1collision_1_1objects_1_1_powerup_collision_object.html#a76f3d506523e34f32efeca2f2957c2f3" title="engine.collision.objects.\lPowerupCollisionObject.handleEnemy\lCollisionObject" alt="" coords="606,85,866,141"/>
+<area shape="rect" id="node5" href="$d6/db8/classengine_1_1collision_1_1objects_1_1_powerup_collision_object.html#a2bfd0d14c115bfbf39c23435d6660535" title="engine.collision.objects.\lPowerupCollisionObject.handlePowerup\lCollisionObject" alt="" coords="601,165,871,221"/>
+<area shape="rect" id="node6" href="$db/d3a/classengine_1_1collision_1_1objects_1_1_enemy_collision_object.html#aaf077e8098fd696546883adbb1081c04" title="engine.collision.objects.\lEnemyCollisionObject.handlePowerup\lCollisionObject" alt="" coords="606,245,866,301"/>
+</map>
