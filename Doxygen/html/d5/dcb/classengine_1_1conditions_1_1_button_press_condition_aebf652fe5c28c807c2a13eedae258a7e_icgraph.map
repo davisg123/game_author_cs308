@@ -1,0 +1,6 @@
+<map id="engine.conditions.ButtonPressCondition.getKeyIdentifier" name="engine.conditions.ButtonPressCondition.getKeyIdentifier">
+<area shape="rect" id="node2" href="$dc/d81/classgame_player_1_1view_1_1keyboard_utility_1_1_keyboard_view.html#ab1da0d92c8f96358ab19fe79774070d3" title="gamePlayer.view.keyboard\lUtility.KeyboardView.comboBox\lForButton" alt="" coords="273,5,492,61"/>
+<area shape="rect" id="node5" href="$dc/d81/classgame_player_1_1view_1_1keyboard_utility_1_1_keyboard_view.html#a0025b931b099cd0911ebf9d4579b3a8c" title="gamePlayer.view.keyboard\lUtility.KeyboardView.setNewKey" alt="" coords="273,85,493,126"/>
+<area shape="rect" id="node3" href="$dc/d81/classgame_player_1_1view_1_1keyboard_utility_1_1_keyboard_view.html#a2b8970ff772d04703468c56065a05394" title="gamePlayer.view.keyboard\lUtility.KeyboardView.createKeyboardView" alt="" coords="541,13,821,54"/>
+<area shape="rect" id="node4" href="$d9/dff/classgame_player_1_1view_1_1_menu_bar_controller.html#a7fe521fbb038790ea4cc4e27bc02f1fe" title="gamePlayer.view.MenuBarController.key\lCombos" alt="" coords="869,13,1144,54"/>
+</map>

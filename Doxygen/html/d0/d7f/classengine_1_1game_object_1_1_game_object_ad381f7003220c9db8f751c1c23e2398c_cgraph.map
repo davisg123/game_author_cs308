@@ -1,0 +1,7 @@
+<map id="engine.gameObject.GameObject.reset" name="engine.gameObject.GameObject.reset">
+<area shape="rect" id="node2" href="$d6/d66/classengine_1_1game_object_1_1_default_data.html#a35bf2f73b290db6ba9ca6e7308367791" title="engine.gameObject.Default\lData.getComponents" alt="" coords="323,5,520,46"/>
+<area shape="rect" id="node3" href="$d6/d66/classengine_1_1game_object_1_1_default_data.html#a8aab0797c94f7d483627c7f6cd04ed10" title="engine.gameObject.Default\lData.getImageName" alt="" coords="323,70,520,111"/>
+<area shape="rect" id="node4" href="$d6/d66/classengine_1_1game_object_1_1_default_data.html#a812108289abe5e5fe281d26b1322651b" title="engine.gameObject.Default\lData.getRotation" alt="" coords="323,135,520,177"/>
+<area shape="rect" id="node5" href="$d6/d66/classengine_1_1game_object_1_1_default_data.html#a4498c688cbc6b695b56bf76309561fb2" title="engine.gameObject.Default\lData.getXCoordinate" alt="" coords="323,201,520,242"/>
+<area shape="rect" id="node6" href="$d6/d66/classengine_1_1game_object_1_1_default_data.html#ada2c6337f48667f1ef0cf468132163ab" title="engine.gameObject.Default\lData.getYCoordinate" alt="" coords="323,266,520,307"/>
+</map>
