@@ -1,8 +1,0 @@
-<map id="authoring.view.propertiesview.LevelProperties.LevelProperties" name="authoring.view.propertiesview.LevelProperties.LevelProperties">
-<area shape="rect" id="node2" href="$d7/d69/classauthoring_1_1view_1_1propertiesview_1_1_level_properties.html#adfccccc49f33be4065112eaa53887038" title="authoring.view.propertiesview.\lLevelProperties.initializeProperties" alt="" coords="277,135,517,177"/>
-<area shape="rect" id="node3" href="$dd/db4/classauthoring_1_1view_1_1icons_1_1_base_icon.html#a55d61a01b6e513966613bda6182fa1ef" title="authoring.view.icons.Base\lIcon.getName" alt="" coords="591,5,777,46"/>
-<area shape="rect" id="node4" href="$d5/d37/classauthoring_1_1view_1_1icons_1_1_level_icon.html#a7827720d35e2fb9b9f21df89db6033b1" title="authoring.view.icons.Level\lIcon.getLevel" alt="" coords="591,70,777,111"/>
-<area shape="rect" id="node5" href="$df/d84/classengine_1_1level_1_1_level.html#a5dc36c31fcc8e0b5cbe2a942ec101fdb" title="engine.level.Level.getBackground\lImage" alt="" coords="566,135,802,177"/>
-<area shape="rect" id="node6" href="$df/d84/classengine_1_1level_1_1_level.html#a368275ed98c802fbf59a11423b9b9a0d" title="engine.level.Level.getBackground\lMusic" alt="" coords="566,201,802,242"/>
-<area shape="rect" id="node7" href="$df/d84/classengine_1_1level_1_1_level.html#a264b568258eafa3d2c664c94e7498621" title="engine.level.Level.getCondition\lIdentifiers" alt="" coords="574,266,794,307"/>
-</map>
