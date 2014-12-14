@@ -8,8 +8,10 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.FileChooser;
 import authoring.eventhandlers.GameHandler;
+import authoring.view.propertiesview.FileProperties;
+import authoring.view.propertiesview.Properties;
 
-public class SoundIcon extends FileIcon {
+public class SoundIcon extends FileIcon implements IPropertiesMaker{
 	private static final int DEFAULT_SOUND_ICON_SIZE = 60;
 	private Image mySoundIcon;
 	private MediaPlayer myAudioPlayer;
@@ -51,6 +53,11 @@ public class SoundIcon extends FileIcon {
 		else {
 			myAudioPlayer.play();
 		}
+	}
+
+	@Override
+	public Properties makeProperties() {
+		return new FileProperties(this);
 	}
 
 }

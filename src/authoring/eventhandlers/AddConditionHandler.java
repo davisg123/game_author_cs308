@@ -55,8 +55,6 @@ public class AddConditionHandler implements GameHandler<Event> {
 
 		try {
 			classType = Class.forName(CONDITION_PATH_START + selected);
-			//System.out.println(classType.toString());
-
 		
 			
 			Constructor[] constructors = classType.getDeclaredConstructors();
@@ -159,10 +157,8 @@ public class AddConditionHandler implements GameHandler<Event> {
 			c.setIdentifier(new Identifier("Condition", mySelectionWizard.getMap().get("name").getInformation()));
 			myConditionsCollection.add(c);
 			mySelectionWizard.close();
-			System.out.println(c.getClass());
 		} catch (Exception e) {
 			System.out.println("Could not construct");
-			e.printStackTrace();
 		}
 	}
 

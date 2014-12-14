@@ -1,6 +1,7 @@
 package authoring.view.wizards;
 
 import java.util.ResourceBundle;
+import java.util.TreeSet;
 
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
@@ -18,6 +19,7 @@ public class ConditionChoicesVBox extends VBox{
 	public void initializeGroup(){
 		
 		myToggleGroup = new ToggleGroup();
+
 		
 		for(String s : CONDITIONS_PARAMETERS.keySet()){
 			RadioButton rb = new RadioButton(s);
