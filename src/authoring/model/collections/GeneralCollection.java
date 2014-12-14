@@ -10,6 +10,10 @@ import data.Observable;
 /**
  * General Collection is the abstract superclass for all collections held in the game. Uses generics to share common behavior.
  * @author Arjun Jain
+ * @author Kevin Li
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ *
  *
  * @param <T> The generic type of object we want to make a collection of.
  */

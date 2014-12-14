@@ -7,7 +7,9 @@ import authoring.view.baseclasses.BPContainer;
  * Borderpane that holds the view.
  * 
  * @author Kevin Li
- *
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Arjun Jain
  */
 public class AuthoringView extends BPContainer {
 

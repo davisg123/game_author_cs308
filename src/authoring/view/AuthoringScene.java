@@ -13,7 +13,9 @@ import javafx.stage.Stage;
  * of the authoring environment and a TabPane for displaying these views.
  * 
  * @author Kevin Li
- *
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Arjun Jain
  */
 public class AuthoringScene {
 	private Scene myScene;

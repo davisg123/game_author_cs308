@@ -16,8 +16,11 @@ import engine.level.Level;
  * Event handler for dragging graphics on the level view. Fills properties view
  * with status and allows user to drag objects to adjust the level.
  * 
+ * @author Kevin Li
+ * @author Arjun Jain
+ * @author Chris Bernt
  * @author Wesley Valentine
- *
+ * @author Safkat Islam
  */
 
 public class GameObjectDragHandler implements GameHandler<MouseEvent> {
