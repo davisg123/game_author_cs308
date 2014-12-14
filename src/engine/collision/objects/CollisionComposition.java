@@ -74,9 +74,10 @@ public class CollisionComposition {
 		GameObject other = (one.getPhysicsBody().getScalar(a.toString())
 				.getValue() == 1) ? two : one;
 		if(other.getID().equals("mario"))
-		System.out.println(fixed.getTranslateY()
-				- other.getPhysicsBody().getCollisionBodyHeight()+" "+xAxis);
-		if (other.getID().equals("mario"))
+		{
+			System.out.println(xAxis);
+		}
+		if (!other.getPhysicsBody().hasCollided()) {
 			if (xAxis) {
 				other.getPhysicsBody().setVelocity(
 						new Velocity(0.0, other.getPhysicsBody().getVelocity()
@@ -102,10 +103,12 @@ public class CollisionComposition {
 							+ fixed.getPhysicsBody().getCollisionBodyHeight()
 							+ 1.0);
 				}
+				other.getPhysicsBody().setCollided();
 
 				// System.out.println(fixed.getTranslateY());
 				// System.out.println(other.getRenderedNode().get);
 			}
+		}
 	}
 
 	private double collisionHelper(double centerOne, double centerTwo,

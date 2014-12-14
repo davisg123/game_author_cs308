@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+
 import data.DataManager;
 import authoring.model.GameData;
 import authoring.model.collections.ConditionsCollection;
@@ -23,8 +24,10 @@ import engine.actions.MakeNewRandomObjectAction;
 import engine.actions.TranslateXType;
 import engine.actions.TranslateYType;
 import engine.actions.XVelocityIDAction;
+import engine.actions.XVelocityTypeAction;
 import engine.actions.YImpulseIDAction;
 import engine.actions.YVelocityIDAction;
+import engine.actions.YVelocityTypeAction;
 import engine.conditions.BoundaryConditionX;
 import engine.conditions.BoundaryConditionY;
 import engine.conditions.ButtonPressCondition;
@@ -223,6 +226,7 @@ public class MarioGameTest extends Application {
         TranslateYType yVelAction = new TranslateYType("mario",1.0);
         TranslateYType yVel1Action = new TranslateYType("goomba",1.0);
         
+        
         Action fireballMove = new TranslateXType("fireball", 2.0);
         List<Action> yVelActionList = new ArrayList<Action>();
         yVelActionList.add(yVelAction);
@@ -230,8 +234,10 @@ public class MarioGameTest extends Application {
         yVelActionList.add(fireballMove);
         
 
-        TranslateXType XVelAction = new TranslateXType("goomba",-1.0);
+        XVelocityTypeAction XVelAction = new XVelocityTypeAction("goomba",-60.0);
+        YVelocityTypeAction aa=new YVelocityTypeAction("goomba", 60.0);
         yVelActionList.add(XVelAction);
+        yVelActionList.add(aa);
 
         //Action yVelAction = new YVelocityIDAction(temp,0.0);
         Action xVelAction=new XVelocityIDAction(identList, 0.0);
