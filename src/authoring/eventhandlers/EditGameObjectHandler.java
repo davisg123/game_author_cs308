@@ -30,7 +30,7 @@ public class EditGameObjectHandler implements GameHandler<Event>{
 					if(level.removeGameObject(myPropertiesView.getCurrentGameObject())){
 						GameObject editedOne = myPropertiesView.getEditedGameObject(); 
 						level.addGameObject(editedOne);
-						myPropertiesView.makeProperties(editedOne);
+						myPropertiesView.displayProperties(editedOne);
 					}
 					
 				//System.out.println(level.getGameObjectsCollection());

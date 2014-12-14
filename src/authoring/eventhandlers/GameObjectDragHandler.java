@@ -71,7 +71,7 @@ public class GameObjectDragHandler implements GameHandler<MouseEvent> {
 				go.setY(newY);
 
 				level.addGameObject(go);
-				myProperties.makeProperties(go);
+				myProperties.displayProperties(go);
 			}
 		}
 
