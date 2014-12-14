@@ -1,9 +1,9 @@
 package engine.conditions;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import authoring.model.collections.GameObjectsCollection;
 import javafx.scene.Node;
 import engine.GameManager;
@@ -53,9 +53,11 @@ public class TypeCollisionCondition extends TimeCondition {
     
     private void checkCollisions(){
         myCollisionMap.clear();
-    	for (GameObject firstObject: myGameObjects){
+        GameObjectsCollection myGameObjectsCopy = new GameObjectsCollection();
+        myGameObjectsCopy.addAll(myGameObjects);
+    	for (GameObject firstObject: myGameObjectsCopy){
     		if (firstObject.getIdentifier().getType().equals(firstCollisionType)){
-    			for (GameObject secondObject: myGameObjects){
+    			for (GameObject secondObject: myGameObjectsCopy){
     				if (secondObject.getIdentifier().getType().equals(secondCollisionType)){
     				    String uniqueCollisionIdentifier = firstObject.getIdentifier().getHash()+secondObject.getIdentifier().getHash();
     	                            String reverseCollisionIdentifier = secondObject.getIdentifier().getHash()+firstObject.getIdentifier().getHash();
