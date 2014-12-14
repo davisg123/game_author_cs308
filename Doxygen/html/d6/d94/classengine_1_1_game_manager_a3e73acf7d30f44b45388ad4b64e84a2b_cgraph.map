@@ -1,5 +1,0 @@
-<map id="engine.GameManager.processFrame" name="engine.GameManager.processFrame">
-<area shape="rect" id="node2" href="$df/d67/classengine_1_1level_1_1_level_manager.html#adad4a716a01e48b28438fc3507d7f59f" title="engine.level.LevelManager.update" alt="" coords="273,35,511,61"/>
-<area shape="rect" id="node3" href="$df/d84/classengine_1_1level_1_1_level.html#ac48b0ea297ffef95c93a1f09cc3d37dc" title="engine.level.Level.update" alt="" coords="588,5,772,32"/>
-<area shape="rect" id="node4" href="$df/d67/classengine_1_1level_1_1_level_manager.html#a585776ee762226305e6e7a61ac5735b7" title="engine.level.LevelManager.update\lFrameBasedConditions" alt="" coords="561,57,799,98"/>
-</map>
