@@ -48,7 +48,6 @@ public class PlayerModel {
 		addFileNameChangeListener();
 	}
 	
-	// check here
 	private void addFileNameChangeListener() {
 		progressFileName.addListener(new ChangeListener<String>() {
 			@Override
