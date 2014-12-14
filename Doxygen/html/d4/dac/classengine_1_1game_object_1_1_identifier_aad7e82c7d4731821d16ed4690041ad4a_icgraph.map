@@ -1,6 +1,0 @@
-<map id="engine.gameObject.Identifier.getType" name="engine.gameObject.Identifier.getType">
-<area shape="rect" id="node2" href="$db/d42/classauthoring_1_1view_1_1wizards_1_1_game_object_type_wizard.html#adec8e9760a289bb75386c966f7e3c46f" title="authoring.view.wizards.Game\lObjectTypeWizard.getIdentifierComponent" alt="" coords="312,5,600,46"/>
-<area shape="rect" id="node3" href="$d0/df2/classauthoring_1_1eventhandlers_1_1_game_object_drag_to_level_handler.html#ad5002cd6b7781653104f1820a573f902" title="authoring.eventhandlers.\lGameObjectDragToLevelHandler.handle" alt="" coords="319,70,593,111"/>
-<area shape="rect" id="node4" href="$da/d8d/classauthoring_1_1view_1_1propertiesview_1_1_game_object_properties.html#a296e97b9faeabc086f698730de09a5c9" title="authoring.view.propertiesview.\lGameObjectProperties.initializeProperties" alt="" coords="313,135,599,177"/>
-<area shape="rect" id="node5" href="$da/d8d/classauthoring_1_1view_1_1propertiesview_1_1_game_object_properties.html#a666800a7063c728f47a848ab730362d3" title="authoring.view.propertiesview.\lGameObjectProperties.GameObjectProperties" alt="" coords="649,135,965,177"/>
-</map>
