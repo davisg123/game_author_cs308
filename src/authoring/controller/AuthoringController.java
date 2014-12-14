@@ -53,6 +53,7 @@ import authoring.view.soundsview.SoundsView;
  * @author Wesley Valentine
  * @author Chris Bernt
  * @author Arjun Jain
+ * @author Eli Lichtenberg
  *
  */
 public class AuthoringController {
