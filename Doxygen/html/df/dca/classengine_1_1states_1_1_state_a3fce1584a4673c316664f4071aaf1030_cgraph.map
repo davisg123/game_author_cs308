@@ -1,4 +1,0 @@
-<map id="engine.states.State.enter" name="engine.states.State.enter">
-<area shape="rect" id="node2" href="$d0/d7f/classengine_1_1game_object_1_1_game_object.html#a077db8b746f3cdc580e5954ec5c02060" title="engine.gameObject.GameObject.set\lCurrentImagePath" alt="" coords="241,5,495,46"/>
-<area shape="rect" id="node3" href="$d2/d82/classengine_1_1render_1_1_rendered_node.html#a5e38d50cbd80bfbb0dd674596610c790" title="engine.render.RenderedNode.get\lImageView" alt="" coords="545,5,778,46"/>
-</map>

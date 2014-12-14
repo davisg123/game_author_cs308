@@ -1,5 +1,0 @@
-<map id="engine.actions.VectorPhysicsAction.determineVector" name="engine.actions.VectorPhysicsAction.determineVector">
-<area shape="rect" id="node2" href="$de/d26/classengine_1_1actions_1_1_force_physics_action.html#a178d740f90451e7d81f8366b286dd235" title="engine.actions.ForcePhysics\lAction.determineOperation" alt="" coords="306,5,507,46"/>
-<area shape="rect" id="node3" href="$d3/dce/classengine_1_1actions_1_1_velocity_i_d_action.html#a6ea2ea6ea9c3142b081f485333a6366e" title="engine.actions.VelocityIDAction.determine\lOperation" alt="" coords="261,70,552,111"/>
-<area shape="rect" id="node4" href="$d4/de0/classengine_1_1actions_1_1_impulse_action.html#aaa38daac0a2519bedd8dc7871b179314" title="engine.actions.ImpulseAction.determine\lOperation" alt="" coords="267,135,546,177"/>
-</map>

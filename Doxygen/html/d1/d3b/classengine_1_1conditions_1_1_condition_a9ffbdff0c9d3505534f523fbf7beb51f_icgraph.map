@@ -1,7 +1,0 @@
-<map id="engine.conditions.Condition.getIdentifier" name="engine.conditions.Condition.getIdentifier">
-<area shape="rect" id="node2" href="$d0/db6/classauthoring_1_1view_1_1conditionsview_1_1_conditions_accordion_view.html#a66e4e2caf083e64aeda1ba08811d458d" title="authoring.view.conditionsview.\lConditionsAccordionView.addCondition" alt="" coords="278,5,546,46"/>
-<area shape="rect" id="node4" href="$db/d2a/classauthoring_1_1model_1_1collections_1_1_conditions_collection.html#aa9f4e4c0999a8ddddafed79ab7a40ef8" title="authoring.model.collections.\lConditionsCollection.getIdentifierList" alt="" coords="285,70,539,111"/>
-<area shape="rect" id="node3" href="$d0/db6/classauthoring_1_1view_1_1conditionsview_1_1_conditions_accordion_view.html#a5f73f209659bbabfca1f82fa06192aa4" title="authoring.view.conditionsview.\lConditionsAccordionView.update" alt="" coords="608,5,837,46"/>
-<area shape="rect" id="node5" href="$d7/d00/classengine_1_1tests_1_1_main_engine_tests.html#ad06079aee97fd7ffd4f2b14a8f01b808" title="engine.tests.MainEngineTests.create\lGameObject" alt="" coords="595,70,850,111"/>
-<area shape="rect" id="node6" href="$d7/d00/classengine_1_1tests_1_1_main_engine_tests.html#ad1e78dcd3453ebdeb09141cba734c133" title="engine.tests.MainEngineTests.start" alt="" coords="899,77,1143,104"/>
-</map>
