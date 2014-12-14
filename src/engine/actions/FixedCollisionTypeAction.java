@@ -23,6 +23,7 @@ public class FixedCollisionTypeAction extends PhysicsTypeAction {
             }
         }
         myCollision.fixedCollision(firstCollisionObject, secondCollisionObject);
+        System.out.println("igothere");
     }
     
 }
