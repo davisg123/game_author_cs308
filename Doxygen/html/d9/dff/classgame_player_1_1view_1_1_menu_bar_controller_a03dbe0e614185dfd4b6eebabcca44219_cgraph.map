@@ -1,0 +1,6 @@
+<map id="gamePlayer.view.MenuBarController.exitFromGame" name="gamePlayer.view.MenuBarController.exitFromGame">
+<area shape="rect" id="node2" href="$d2/dc9/classgame_player_1_1model_1_1_player_model.html#aa7194f2aee9fcab0ae5f7ecc6ad1d58a" title="gamePlayer.model.PlayerModel.exit\lFromGame" alt="" coords="331,49,581,90"/>
+<area shape="rect" id="node3" href="$d6/d94/classengine_1_1_game_manager.html#a653982a63107934de111e71c46c9c903" title="engine.GameManager.clear" alt="" coords="647,5,846,32"/>
+<area shape="rect" id="node4" href="$d7/d3c/classgame_player_1_1view_1_1_player_view.html#a9d3915901e4a9908d3b634178f9e2f8f" title="gamePlayer.view.PlayerView.close" alt="" coords="629,56,864,83"/>
+<area shape="rect" id="node5" href="$d6/d99/classapplication_1_1_splash_screen.html#a187cc6d68984a50192358e4dd7491b44" title="application.SplashScreen.show" alt="" coords="637,107,856,133"/>
+</map>
