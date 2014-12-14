@@ -1,0 +1,5 @@
+<map id="authoring.view.conditionsview.ConditionsAccordionView.update" name="authoring.view.conditionsview.ConditionsAccordionView.update">
+<area shape="rect" id="node2" href="$d0/db6/classauthoring_1_1view_1_1conditionsview_1_1_conditions_accordion_view.html#a66e4e2caf083e64aeda1ba08811d458d" title="authoring.view.conditionsview.\lConditionsAccordionView.addCondition" alt="" coords="283,38,551,79"/>
+<area shape="rect" id="node3" href="$d1/d3b/classengine_1_1conditions_1_1_condition.html#a9ffbdff0c9d3505534f523fbf7beb51f" title="engine.conditions.Condition.get\lIdentifier" alt="" coords="605,5,827,46"/>
+<area shape="rect" id="node4" href="$d4/dac/classengine_1_1game_object_1_1_identifier.html#aa2630b5024b9595e43afe0bf53229433" title="engine.gameObject.Identifier.get\lUniqueId" alt="" coords="601,70,831,111"/>
+</map>
