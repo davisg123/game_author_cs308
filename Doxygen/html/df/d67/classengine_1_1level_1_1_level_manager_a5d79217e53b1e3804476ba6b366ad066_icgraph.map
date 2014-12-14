@@ -1,0 +1,7 @@
+<map id="engine.level.LevelManager.setLevelEnabledConditions" name="engine.level.LevelManager.setLevelEnabledConditions">
+<area shape="rect" id="node2" href="$df/d67/classengine_1_1level_1_1_level_manager.html#a523599892453015eed0f1b506979af8a" title="engine.level.LevelManager.initialize\lCurrentLevel" alt="" coords="269,38,515,79"/>
+<area shape="rect" id="node3" href="$df/d67/classengine_1_1level_1_1_level_manager.html#ad3c392cf6260c53428255fb596442692" title="engine.level.LevelManager.change\lToLevel" alt="" coords="563,5,805,46"/>
+<area shape="rect" id="node5" href="$df/d67/classengine_1_1level_1_1_level_manager.html#a1d0f314bbf304bf86067ab87b832d2e0" title="engine.level.LevelManager.find\lAndSetStartLevel" alt="" coords="575,70,793,111"/>
+<area shape="rect" id="node4" href="$d1/d73/classengine_1_1actions_1_1_change_level_action.html#a8190adf308768b0d12f6432d0cf0fbc4" title="engine.actions.ChangeLevel\lAction.execute" alt="" coords="854,5,1055,46"/>
+<area shape="rect" id="node6" href="$df/d67/classengine_1_1level_1_1_level_manager.html#a0ea71eb9396652850db0d2da44c4ca81" title="engine.level.LevelManager.\lLevelManager" alt="" coords="857,70,1052,111"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="engine.actions.SetMusicVolume" name="engine.actions.SetMusicVolume">
+<area shape="rect" id="node2" href="$d7/d07/classengine_1_1actions_1_1_sound_action.html" title="engine.actions.SoundAction" alt="" coords="17,155,216,181"/>
+<area shape="rect" id="node3" href="$d9/dd2/interfaceengine_1_1actions_1_1_action.html" title="engine.actions.Action" alt="" coords="97,80,255,107"/>
+<area shape="rect" id="node4" href="$d2/d15/interfaceengine_1_1actions_1_1_initializable.html" title="engine.actions.Initializable" alt="" coords="23,5,212,32"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="engine.render.GameObjectRenderer.removeRenderedNode" name="engine.render.GameObjectRenderer.removeRenderedNode">
+<area shape="rect" id="node2" href="$de/d2b/classengine_1_1actions_1_1render_1_1_erase_canvas.html#acd8682c95e3804579eb323afa299f2a3" title="engine.actions.render.Erase\lCanvas.applyRender" alt="" coords="280,5,480,46"/>
+<area shape="rect" id="node3" href="$da/d60/classengine_1_1actions_1_1_delete_type_action.html#a087b7d237e7e6527a701a0db7eec7825" title="engine.actions.DeleteType\lAction.execute" alt="" coords="285,70,475,111"/>
+</map>
