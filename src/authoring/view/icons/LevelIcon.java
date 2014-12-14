@@ -1,8 +1,7 @@
 package authoring.view.icons;
 
-import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import authoring.eventhandlers.AddConditionIDHandler;
+import authoring.eventhandlers.DeleteConditionHandler;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.propertiesview.LevelProperties;
 import authoring.view.propertiesview.Properties;
@@ -31,7 +30,7 @@ public class LevelIcon extends TextIcon implements IPropertiesMaker{
 
 	@Override
 	public Properties makeProperties() {
-		return new LevelProperties(this, new AddConditionIDHandler(this.getLevel()));
+		return new LevelProperties(this, new AddConditionIDHandler(this.getLevel()), new DeleteConditionHandler(this.getLevel()));
 	}
 	
 
