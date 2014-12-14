@@ -17,6 +17,14 @@ import engine.conditions.Condition;
 import engine.physics.Force;
 import engine.physics.Scalar;
 
+/**
+ * Responsible for loading and saving of all files within authoring 
+ * environment and game engine.
+ * 
+ * @author Eli Lichtenberg
+ * @author Safkat Islam
+ *
+ */
 public class DataManager {
 	
 	public static final String IMAGES_FOLDER_NAME = "images";
@@ -35,10 +43,10 @@ public class DataManager {
 	
 	/**
 	 * Creates a Json file based on an object representing a game.
-	 * @param obj Object representing game.
-	 * @param file Name Name of Json file.
-	 * @return Returns true if successfully writes file.
-	 * @throws IOException 
+	 * @param data Game data being saved.
+	 * @param dataPath Game folder location.
+	 * @return
+	 * @throws IOException
 	 */
 	public boolean writeGameFile(GameData data, File dataPath) throws IOException {
 		String fileName = dataPath.getName() + ".json";
@@ -47,21 +55,38 @@ public class DataManager {
 	
 	/**
 	 * Gets an object representing a game from a Json file.
-	 * @param fileName Name of Json file.
-	 * @return Object representing game.
-	 * @throws FileNotFoundException 
+	 * @param dataPath Game folder location.
+	 * @return
+	 * @throws FileNotFoundException
 	 */
 	public GameData readGameFile(File dataPath) throws FileNotFoundException {
 		String fileName = dataPath.getName() + ".json";
 		return (GameData)readFile(GameData.class, dataPath, fileName);
 	}
 	
+	/**
+	 * Creates a Json file based on an object representing a game at a certain 
+	 * progress state.
+	 * @param data Game progress data being saved.
+	 * @param dataPath Game folder location.
+	 * @param progressName Name of progress state file.
+	 * @return
+	 * @throws IOException
+	 */
 	public boolean writeProgressFile(GameData data, File dataPath, String progressName) 
 			throws IOException {
 		String fileName = PROGRESS_FOLDER_NAME + "/" + progressName + ".json";
 		return writeFile(data, dataPath, fileName);
 	}
 	
+	/**
+	 * Gets an object representing a game at a certain progress state from a 
+	 * Json file.
+	 * @param dataPath Game folder location.
+	 * @param progressName Name of progress state file.
+	 * @return
+	 * @throws FileNotFoundException
+	 */
 	public GameData readProgressFile(File dataPath, String progressName) throws FileNotFoundException {
 		String fileName = PROGRESS_FOLDER_NAME + "/" + progressName + ".json";
 		return (GameData)readFile(GameData.class, dataPath, fileName);
