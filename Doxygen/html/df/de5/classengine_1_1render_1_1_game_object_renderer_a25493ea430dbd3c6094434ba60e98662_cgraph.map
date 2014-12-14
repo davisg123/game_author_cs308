@@ -1,5 +1,0 @@
-<map id="engine.render.GameObjectRenderer.createCollisionBody" name="engine.render.GameObjectRenderer.createCollisionBody">
-<area shape="rect" id="node2" href="$d9/d9d/classengine_1_1game_object_1_1components_1_1_physics_body.html#aba2ed3bce8ee8e404907c88b144626fc" title="engine.gameObject.components.\lPhysicsBody.getCollisionBodyHeight" alt="" coords="264,5,515,46"/>
-<area shape="rect" id="node3" href="$d9/d9d/classengine_1_1game_object_1_1components_1_1_physics_body.html#ae64e43632570392c3118b3d00af853fc" title="engine.gameObject.components.\lPhysicsBody.getCollisionBodyWidth" alt="" coords="268,70,511,111"/>
-<area shape="rect" id="node4" href="$d0/d7f/classengine_1_1game_object_1_1_game_object.html#a60c5b6933aac9969491a3562a963c043" title="engine.gameObject.GameObject.get\lPhysicsBody" alt="" coords="261,135,517,177"/>
-</map>
