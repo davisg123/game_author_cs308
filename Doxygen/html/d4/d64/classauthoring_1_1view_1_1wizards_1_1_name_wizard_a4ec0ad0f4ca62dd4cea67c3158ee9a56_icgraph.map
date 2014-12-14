@@ -1,0 +1,10 @@
+<map id="authoring.view.wizards.NameWizard.getIdentifierComponent" name="authoring.view.wizards.NameWizard.getIdentifierComponent">
+<area shape="rect" id="node2" href="$d4/d64/classauthoring_1_1view_1_1wizards_1_1_name_wizard.html#ab58a390fee006f8b0c2ff6d8216c8981" title="authoring.view.wizards.Name\lWizard.isDuplicated" alt="" coords="273,70,479,111"/>
+<area shape="rect" id="node3" href="$da/d4c/classauthoring_1_1eventhandlers_1_1_add_object_handler.html#abe73f943b230384279c9b2b89fbd8822" title="authoring.eventhandlers.\lAddObjectHandler.updateName" alt="" coords="574,5,799,46"/>
+<area shape="rect" id="node6" href="$d0/df2/classauthoring_1_1eventhandlers_1_1_game_object_drag_to_level_handler.html#a98ccf77195ecfc7146cd1737da68b6b2" title="authoring.eventhandlers.\lGameObjectDragToLevelHandler.updateName" alt="" coords="529,70,845,111"/>
+<area shape="rect" id="node8" href="$df/d81/classauthoring_1_1eventhandlers_1_1_save_as_new_handler.html#ae608a7a9d0d28d19eb1c55cbf5610f0a" title="authoring.eventhandlers.\lSaveAsNewHandler.updateName" alt="" coords="569,135,804,177"/>
+<area shape="rect" id="node4" href="$da/d4c/classauthoring_1_1eventhandlers_1_1_add_object_handler.html#ad31ca6859bb6a874f9c1a1106fc9b03b" title="authoring.eventhandlers.\lAddObjectHandler.createGameObject" alt="" coords="899,5,1162,46"/>
+<area shape="rect" id="node5" href="$da/d4c/classauthoring_1_1eventhandlers_1_1_add_object_handler.html#ae0c51e52da299a8a98ac0c9aec97efcd" title="authoring.eventhandlers.\lAddObjectHandler.handle" alt="" coords="1216,5,1400,46"/>
+<area shape="rect" id="node7" href="$d0/df2/classauthoring_1_1eventhandlers_1_1_game_object_drag_to_level_handler.html#ad5002cd6b7781653104f1820a573f902" title="authoring.eventhandlers.\lGameObjectDragToLevelHandler.handle" alt="" coords="893,70,1168,111"/>
+<area shape="rect" id="node9" href="$df/d81/classauthoring_1_1eventhandlers_1_1_save_as_new_handler.html#a912458649a9a99cded7c346f9d8b40f5" title="authoring.eventhandlers.\lSaveAsNewHandler.handle" alt="" coords="934,135,1127,177"/>
+</map>

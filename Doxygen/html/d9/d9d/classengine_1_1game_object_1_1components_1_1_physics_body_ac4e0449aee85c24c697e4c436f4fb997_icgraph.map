@@ -1,0 +1,4 @@
+<map id="engine.gameObject.components.PhysicsBody.doImpulses" name="engine.gameObject.components.PhysicsBody.doImpulses">
+<area shape="rect" id="node2" href="$d9/d9d/classengine_1_1game_object_1_1components_1_1_physics_body.html#a322c2d4e1205c1fc9bafabe04f394cb6" title="engine.gameObject.components.\lPhysicsBody.updatePhysicalCharacteristics" alt="" coords="289,5,583,46"/>
+<area shape="rect" id="node3" href="$d0/d7f/classengine_1_1game_object_1_1_game_object.html#ac7465f9b7adb414a894231d97e4ae91c" title="engine.gameObject.GameObject.update" alt="" coords="632,12,912,39"/>
+</map>
