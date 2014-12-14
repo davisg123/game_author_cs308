@@ -19,7 +19,7 @@ public abstract class PhysicsIDAction implements Action, Initializable {
 
 	protected Double myValue;
 	protected CollisionComposition myCollision;
-	protected Collection<GameObject> myObjects;
+	protected transient Collection<GameObject> myObjects;
 	protected List<Identifier> myID;
 
 	public PhysicsIDAction(List<Identifier> id, Double value) {

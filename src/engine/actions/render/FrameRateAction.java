@@ -12,7 +12,7 @@ import engine.actions.Initializable;
 
 public class FrameRateAction implements Action, Initializable {
     
-    private GameManager myGameManager;
+    private transient GameManager myGameManager;
     private Double myFrameRate;
     
     public FrameRateAction (Double frameRate) {

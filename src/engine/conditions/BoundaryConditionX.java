@@ -27,7 +27,7 @@ public class BoundaryConditionX extends GameObjectCondition {
     }
     
     @Override
-    public void frameElapsed () {
+    public void respondToFrameElapsed () {
         for (GameObject obj : getGameObjects()){
             if (myRightTrigger && obj.getTranslateX() > myBoundary || !myRightTrigger && obj.getTranslateX() < myBoundary){
                 executeActions();

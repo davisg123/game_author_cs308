@@ -11,7 +11,7 @@ public abstract class PhysicsTypeAction implements Action, Initializable{
 	protected String mySecondType;
 	protected CollisionComposition myCollision;
 	protected Double myValue;
-	protected GameObjectsCollection myGameObjects;
+	protected transient GameObjectsCollection myGameObjects;
 	
 	public PhysicsTypeAction(String type, String secondType, Double value){
 		myType=type;

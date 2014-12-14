@@ -3,14 +3,9 @@ package authoring.view.propertiesview;
 import java.util.ResourceBundle;
 
 import javafx.scene.layout.VBox;
-import authoring.eventhandlers.AddConditionIDHandler;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.CollectionView;
-import authoring.view.icons.ConditionIcon;
-import authoring.view.icons.ImageIcon;
-import authoring.view.icons.LevelIcon;
-import authoring.view.icons.SoundIcon;
-import engine.conditions.Condition;
+import authoring.view.icons.IPropertiesMaker;
 import engine.gameObject.GameObject;
 
 public class PropertiesView extends CollectionView {
@@ -20,11 +15,9 @@ public class PropertiesView extends CollectionView {
 	private VBox myContents = new VBox();
 
 	private GameHandler[] myButtonBehaviors;
-	private GameHandler myAddActionButtonBehavior;
 
 	private GameObjectProperties myGameObjectsProperties;
 	private GameObject myCurrentGameObject;
-	private Condition myCurrentCondition;
 
 	private double myWidth;
 	private double myHeight;
@@ -39,41 +32,31 @@ public class PropertiesView extends CollectionView {
 
 	}
 
-	// public void makeProperties(Graphic g){
-	// g.makeProperties();
-	// }
-
-	public void makeProperties(ImageIcon g) {
+	/**
+	 * The icon (that must implement IPropertiesMaker) to display properties
+	 * for.
+	 * 
+	 * @param icon
+	 */
+	public void displayProperties(IPropertiesMaker icon) {
 		myContents.getChildren().clear();
-		this.setContent(new FileProperties(g));
+		this.setContent(icon.makeProperties());
 	}
 
-	public void makeProperties(SoundIcon g) {
-		myContents.getChildren().clear();
-		this.setContent(new FileProperties(g));
-	}
-
-	public void makeProperties(GameObject gameObj) {
+	/**
+	 * This method was overloaded since it is being used in several handlers
+	 * besides the click handler that only have access to a particular game
+	 * object and not the game object icon. The game object can be taken from
+	 * the icon, but creating an icon from solely a game object is difficult.
+	 * 
+	 * @param gameObj The game object to make properties for.
+	 */
+	public void displayProperties(GameObject gameObj) {
 		myContents.getChildren().clear();
 		myCurrentGameObject = gameObj;
 		myGameObjectsProperties = new GameObjectProperties(gameObj, myWidth,
 				myHeight, this.myButtonBehaviors);
 		this.setContent(myGameObjectsProperties);
-	}
-
-	public void makeProperties(LevelIcon g) {
-		LevelProperties props = new LevelProperties(g, new AddConditionIDHandler(g.getLevel()));
-		myContents.getChildren().clear();
-		this.setContent(props);
-	}
-
-	public void makeProperties(ConditionIcon g) {
-		myContents.getChildren().clear();
-		this.setContent(new ConditionProperties(g, myAddActionButtonBehavior));
-	}
-
-	public void displayProperties(Properties props) {
-		this.setContent(props);
 	}
 
 	public GameObject getCurrentGameObject() {
@@ -86,9 +69,6 @@ public class PropertiesView extends CollectionView {
 
 	public void setButtonBehaviors(GameHandler... gh) {
 		myButtonBehaviors = gh;
-	}
-	public void setAddActionButtonBehaviors(GameHandler gh) {
-		myAddActionButtonBehavior = gh;
 	}
 
 }

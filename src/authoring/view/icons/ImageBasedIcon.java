@@ -4,14 +4,15 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
-
 import javafx.embed.swing.SwingFXUtils;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
+
+import javax.imageio.ImageIO;
+
 import authoring.eventhandlers.GameHandler;
+import authoring.view.propertiesview.FileProperties;
+import authoring.view.propertiesview.Properties;
 
 /**
  * Represents an image, but does not instantiate JavaFX object so that the
@@ -23,7 +24,7 @@ import authoring.eventhandlers.GameHandler;
  * @author Wesley Valentine
  *
  */
-public abstract class ImageBasedIcon extends FileIcon {
+public abstract class ImageBasedIcon extends FileIcon{
 
 	private static final int DEFAULT_ROTATION = 0;
 	private static final int DEFAULT_IMAGE_HEIGHT = 50;

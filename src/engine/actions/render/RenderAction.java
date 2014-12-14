@@ -17,9 +17,9 @@ import engine.render.GameObjectRenderer;
 
 public abstract class RenderAction implements Action, Initializable {
 
-    protected List<GameObject> myGameObjects;
-    protected GameObjectRenderer myRenderer;
-    protected Level myLevel;
+    protected transient List<GameObject> myGameObjects;
+    protected transient GameObjectRenderer myRenderer;
+    protected transient Level myLevel;
     
     /**
      * 
