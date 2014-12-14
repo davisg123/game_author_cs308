@@ -1,5 +1,7 @@
 package engine.tests;
 
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,14 +11,15 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
+import authoring.model.GameData;
 import authoring.model.collections.ConditionsCollection;
 import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.LevelsCollection;
+import data.DataManager;
 import engine.GameManager;
 import engine.actions.Action;
 import engine.actions.DeleteTypeAction;
 import engine.actions.FixedCollisionTypeAction;
-import engine.actions.ResetLevelAction;
 import engine.actions.TranslateXRandomType;
 import engine.actions.TranslateYType;
 import engine.actions.XVelocityIDAction;
@@ -189,14 +192,6 @@ public class FallDownEngineTestFull extends Application {
         boundaryConditionFloorTop.setIdentifier(new Identifier("bound_cond", "bound_top"));
         myConditions.add(boundaryConditionFloorTop);
         
-        Action resetLevelAction = new ResetLevelAction();
-        ArrayList<Action> resetActions = new ArrayList<Action>();
-        resetActions.add(resetLevelAction);
-        
-        BoundaryConditionY boundaryConditionBallTop = new BoundaryConditionY(resetActions, myBallObjects.getIdentifierList(), 0.0, false) ;
-        boundaryConditionBallTop.setIdentifier(new Identifier("bound_cond", "bound_top"));
-        myConditions.add(boundaryConditionBallTop);
-
         ArrayList<Action> stopBallLeftList = new ArrayList<Action>();
         Action stopBallLeftAction = new XVelocityIDAction(temp, 10.0);
         stopBallLeftList.add(stopBallLeftAction);
@@ -244,14 +239,15 @@ public class FallDownEngineTestFull extends Application {
         /*
          * uncomment for saving game
          */
-        /*
+        
         GameData data = new GameData(myLevels,myConditions,allGameObjects);
         DataManager manager = new DataManager();
+        File f = new File("/src/data/games/fd_final/");
         try {
-            manager.writeGameFile(data, "fd_final.json", Paths.get(".").toString()+"/src/data/games/fd_final/");
+            manager.writeGameFile(data, f);//"fd_final.json", Paths.get(".").toString()+"/src/data/games/fd_final/");
         }
         catch (IOException e) {
-        }*/
+        }
         
         
         /*******
