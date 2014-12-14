@@ -1,0 +1,13 @@
+<map id="engine.level.Level.getConditionIdentifiers" name="engine.level.Level.getConditionIdentifiers">
+<area shape="rect" id="node2" href="$d3/d6a/classauthoring_1_1eventhandlers_1_1_delete_condition_from_level_handler.html#ac5c4aa0bf32c1aeda571fe6b597161d2" title="authoring.eventhandlers.\lDeleteConditionFromLevelHandler.delete\lCondition" alt="" coords="275,5,557,61"/>
+<area shape="rect" id="node4" href="$d7/d69/classauthoring_1_1view_1_1propertiesview_1_1_level_properties.html#adfccccc49f33be4065112eaa53887038" title="authoring.view.propertiesview.\lLevelProperties.initializeProperties" alt="" coords="296,85,536,126"/>
+<area shape="rect" id="node6" href="$df/d67/classengine_1_1level_1_1_level_manager.html#a5d79217e53b1e3804476ba6b366ad066" title="engine.level.LevelManager.set\lLevelEnabledConditions" alt="" coords="309,150,523,191"/>
+<area shape="rect" id="node3" href="$d3/d6a/classauthoring_1_1eventhandlers_1_1_delete_condition_from_level_handler.html#a7e77b1f6c48ae7ca3a950f5c26cc5d7a" title="authoring.eventhandlers.\lDeleteConditionFromLevelHandler.handle" alt="" coords="605,13,891,54"/>
+<area shape="rect" id="node5" href="$d7/d69/classauthoring_1_1view_1_1propertiesview_1_1_level_properties.html#a44c79e27fd8919f64839d9210c8bd41a" title="authoring.view.propertiesview.\lLevelProperties.LevelProperties" alt="" coords="637,85,859,126"/>
+<area shape="rect" id="node7" href="$df/d67/classengine_1_1level_1_1_level_manager.html#a523599892453015eed0f1b506979af8a" title="engine.level.LevelManager.initialize\lCurrentLevel" alt="" coords="625,150,871,191"/>
+<area shape="rect" id="node8" href="$df/d67/classengine_1_1level_1_1_level_manager.html#a1d0f314bbf304bf86067ab87b832d2e0" title="engine.level.LevelManager.find\lAndSetStartLevel" alt="" coords="939,117,1157,158"/>
+<area shape="rect" id="node10" href="$df/d67/classengine_1_1level_1_1_level_manager.html#ad89101547413fe335873b050fd091c79" title="engine.level.LevelManager.set\lCurrentLevel" alt="" coords="941,182,1155,223"/>
+<area shape="rect" id="node9" href="$df/d67/classengine_1_1level_1_1_level_manager.html#a0ea71eb9396652850db0d2da44c4ca81" title="engine.level.LevelManager.\lLevelManager" alt="" coords="1229,117,1424,158"/>
+<area shape="rect" id="node11" href="$df/d67/classengine_1_1level_1_1_level_manager.html#ad3c392cf6260c53428255fb596442692" title="engine.level.LevelManager.change\lToLevel" alt="" coords="1206,182,1447,223"/>
+<area shape="rect" id="node12" href="$d1/d73/classengine_1_1actions_1_1_change_level_action.html#a8190adf308768b0d12f6432d0cf0fbc4" title="engine.actions.ChangeLevel\lAction.execute" alt="" coords="1497,182,1698,223"/>
+</map>

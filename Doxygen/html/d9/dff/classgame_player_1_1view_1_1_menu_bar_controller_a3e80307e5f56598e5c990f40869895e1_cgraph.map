@@ -1,0 +1,15 @@
+<map id="gamePlayer.view.MenuBarController.saveGameProgress" name="gamePlayer.view.MenuBarController.saveGameProgress">
+<area shape="rect" id="node2" href="$d2/dc9/classgame_player_1_1model_1_1_player_model.html#a245d6c46b8a79a80def826b969b195e6" title="gamePlayer.model.PlayerModel.save\lGameProgress" alt="" coords="336,71,592,113"/>
+<area shape="rect" id="node3" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#ae3ab91c2aa658dfafc8fe6bc02191f43" title="gamePlayer.view.Progress\lSelector.saveProgressState" alt="" coords="641,71,839,113"/>
+<area shape="rect" id="node4" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#ad47ec1215944a14051a1106be29d45df" title="gamePlayer.view.Progress\lSelector.updateProgressList" alt="" coords="889,38,1090,79"/>
+<area shape="rect" id="node5" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#abf378d2a28ee207f92264da056c28a13" title="gamePlayer.view.Progress\lSelector.buildSaveWindow" alt="" coords="896,103,1083,145"/>
+<area shape="rect" id="node6" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#abdecb9a69426fb294cecf3d8a34a0ec0" title="gamePlayer.view.Progress\lSelector.setupWindow" alt="" coords="1160,5,1347,46"/>
+<area shape="rect" id="node7" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#ae8bb8d76db91e1663a7244f10f438db6" title="gamePlayer.view.Progress\lSelector.createButton" alt="" coords="1160,70,1347,111"/>
+<area shape="rect" id="node8" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#ad6c70f114f81a6e1739a019d500fab9f" title="gamePlayer.view.Progress\lSelector.saveProgressEvent" alt="" coords="1153,135,1353,177"/>
+<area shape="rect" id="node14" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#a6a664023c1828d7dc03d05507c2049ed" title="gamePlayer.view.Progress\lSelector.overwriteProgressEvent" alt="" coords="1139,201,1367,242"/>
+<area shape="rect" id="node9" href="$d1/d95/classdata_1_1_data_manager.html#a635a83b3bf3ae9c504c420c3794c47cc" title="data.DataManager.writeProgressFile" alt="" coords="1416,145,1667,172"/>
+<area shape="rect" id="node11" href="$de/d50/classerrors_and_exceptions_1_1_error_pop_up.html#a879c9fa857c162edfab75ecf1558c944" title="errorsAndExceptions.Error\lPopUp.display" alt="" coords="1447,199,1636,241"/>
+<area shape="rect" id="node10" href="$d1/d95/classdata_1_1_data_manager.html#a1d751c9995395d782f423aed87a6e51e" title="data.DataManager.writeFile" alt="" coords="1715,145,1909,172"/>
+<area shape="rect" id="node12" href="$de/d50/classerrors_and_exceptions_1_1_error_pop_up.html#a98549e423869b27d7ee3c87270786f60" title="errorsAndExceptions.Error\lPopUp.chooseStageWidth" alt="" coords="1717,263,1907,305"/>
+<area shape="rect" id="node13" href="$de/d50/classerrors_and_exceptions_1_1_error_pop_up.html#adecc4a2ab81e607673649e10e6d7da52" title="errorsAndExceptions.Error\lPopUp.createButton" alt="" coords="1717,198,1907,239"/>
+</map>

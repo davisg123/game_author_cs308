@@ -1,0 +1,5 @@
+<map id="authoring.eventhandlers.DeleteGameObjectHandler.handle" name="authoring.eventhandlers.DeleteGameObjectHandler.handle">
+<area shape="rect" id="node2" href="$d4/d9e/classauthoring_1_1view_1_1propertiesview_1_1_properties_view.html#a888e2a8b8e4f14aecd7589904fbef718" title="authoring.view.propertiesview.\lPropertiesView.getCurrentGameObject" alt="" coords="294,5,562,46"/>
+<area shape="rect" id="node3" href="$d4/d04/classauthoring_1_1view_1_1levelview_1_1_levels_view.html#a077268144cda48745d9049eb96595e49" title="authoring.view.levelview.\lLevelsView.getCurrentLevel" alt="" coords="330,70,526,111"/>
+<area shape="rect" id="node4" href="$d1/d00/classauthoring_1_1view_1_1levelview_1_1_single_level_view.html#a42ad723beb65c70be407b1d5ac5e9023" title="authoring.view.levelview.\lSingleLevelView.getID" alt="" coords="340,135,516,177"/>
+</map>
