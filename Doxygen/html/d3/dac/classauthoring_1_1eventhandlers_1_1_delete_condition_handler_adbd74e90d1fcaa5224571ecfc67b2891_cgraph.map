@@ -1,5 +1,0 @@
-<map id="authoring.eventhandlers.DeleteConditionHandler.handle" name="authoring.eventhandlers.DeleteConditionHandler.handle">
-<area shape="rect" id="node2" href="$d3/dac/classauthoring_1_1eventhandlers_1_1_delete_condition_handler.html#a546fb1ccbd7a604464ab23355f1c3ae3" title="authoring.eventhandlers.\lDeleteConditionHandler.delete\lCondition" alt="" coords="275,20,493,76"/>
-<area shape="rect" id="node3" href="$d6/d32/classauthoring_1_1view_1_1wizards_1_1_wizard.html#a0d419b2943c99507fca42fd769c24b0e" title="authoring.view.wizards.Wizard.getMap" alt="" coords="542,5,805,32"/>
-<area shape="rect" id="node4" href="$db/d2a/classauthoring_1_1model_1_1collections_1_1_conditions_collection.html#a14ffeee8cc697f66248f78421f2bc119" title="authoring.model.collections.\lConditionsCollection.removeByID" alt="" coords="557,57,790,98"/>
-</map>
