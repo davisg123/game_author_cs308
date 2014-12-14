@@ -1,6 +1,0 @@
-<map id="authoring.model.collections.GeneralCollection.remove" name="authoring.model.collections.GeneralCollection.remove">
-<area shape="rect" id="node2" href="$d4/d68/classauthoring_1_1model_1_1_authoring_model.html#a11495359850ef25b7338f7e7ba0554d0" title="authoring.model.Authoring\lModel.convertFromSerializable" alt="" coords="257,5,474,46"/>
-<area shape="rect" id="node5" href="$df/d84/classengine_1_1level_1_1_level.html#a62fad5769cbf1d6156e1be0b10757b9e" title="engine.level.Level.remove\lGameObject" alt="" coords="271,70,459,111"/>
-<area shape="rect" id="node3" href="$d4/d68/classauthoring_1_1model_1_1_authoring_model.html#a3935f1a8c2e6b6fcd4609ffb4b1b8cf0" title="authoring.model.Authoring\lModel.load" alt="" coords="523,5,717,46"/>
-<area shape="rect" id="node4" href="$de/d41/classauthoring_1_1controller_1_1_authoring_controller.html#a78ad41cfba48debac79f09f1211cb108" title="authoring.controller.Authoring\lController.loadData" alt="" coords="766,5,978,46"/>
-</map>
