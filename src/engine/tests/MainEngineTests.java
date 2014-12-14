@@ -110,6 +110,7 @@ public class MainEngineTests extends Application {
         myFloorObjects.add(floorRight);
         myFloorObjects.add(floorLeft);
         
+               
         //create a ball
         GameObject ball = new GameObject(null,"ball.png",50,150,30,30,0,"ball_object");
         ball.setIdentifier(new Identifier("ball","a"));

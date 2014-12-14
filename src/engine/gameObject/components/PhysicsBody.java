@@ -66,7 +66,7 @@ public class PhysicsBody {
 	}
 	
 	public PhysicsBody(PhysicsBody body){
-		this(body.getCollisionBodyWidth(), body.getCollisionBodyHeight());
+		this(body.getCollisionBodyHeight(), body.getCollisionBodyWidth());
 	}
 
 	/**
