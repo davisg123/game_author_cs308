@@ -65,14 +65,8 @@ public class AuthoringController {
 	private ResourceBundle myLanguage;
 	private double myWidth;
 	private double myHeight;
-
-	/**
-	 * Contains front-end representations of all Game Data stored in the
-	 * back-end; Levels, Sprites, Graphics, Sounds
-	 */
 	private LevelsView myLevels;
 	private LevelOptions myLevelOptions;
-
 	private GameObjectsView myGameObjects;
 	private GameObjectOptions myObjectOptions;
 
@@ -101,7 +95,7 @@ public class AuthoringController {
 
 	/**
 	 * Sets the contents of the AuthoringView - which is essentially an empty
-	 * borderpane.
+	 * BorderPane.
 	 */
 
 	private void initializeView() {
@@ -110,7 +104,15 @@ public class AuthoringController {
 		myView.setLeft(initializeLeft());
 		myView.setRight(initializeRight());
 		initializeGameHandlers();
+		initializeObs();
 
+	}
+
+	/**
+	 * Method that initializes the observer/observable interaction between model
+	 * and view components.
+	 */
+	private void initializeObs() {
 		myModel.getImages().addObserver(myGraphics);
 		myModel.getGameObjectCollection().addObserver(myGameObjects);
 
@@ -118,13 +120,12 @@ public class AuthoringController {
 
 		myModel.getLevels().addObserver(myLevelsAccordionView);
 		myModel.getConditions().addObserver(myConditionsAccordionView);
-
 	}
 
 	/**
 	 * Initializes all the view components that have a 1 to 1 relationship with
-	 * backend data components. Provides event handlers for View objects to
-	 * handle sending data to the backend
+	 * back end data components. Provides event handlers for View objects to
+	 * handle sending data to the back end.
 	 */
 
 	private void initializeViewComponents() {
@@ -150,31 +151,36 @@ public class AuthoringController {
 
 	}
 
+	/**
+	 * Method that initializes and assigns the proper eventhandlers to each view
+	 * component.
+	 */
 	private void initializeGameHandlers() {
 
 		myGraphics.setIconEvents(new IconClickHandler(myProperties));
 		myGraphics.setDragOver(new FileDragOverHandler());
 		myGraphics.setDragDrop(new ImageDropHandler(myModel.getImages(),
 				myGameLocation));
-		mySounds.setIconEvents(new SoundsDoubleClickHandler(), new IconClickHandler(myProperties));
+		mySounds.setIconEvents(new SoundsDoubleClickHandler(),
+				new IconClickHandler(myProperties));
 		mySounds.setDragOver(new FileDragOverHandler());
 		mySounds.setDragDrop(new SoundDropHandler(myModel.getSounds(),
 				myGameLocation));
 		myGameObjects.setIconEvents(new GameObjectClickHandler(myProperties),
 				new GameObjectDragToLevelHandler(myLevels, myModel.getLevels(),
 						myProperties));
-		
+
 		myLevelOptions.setAddLevelButtonBehavior(new AddLevelHandler(myModel
 				.getLevels(), myLevels));
-		myLevelOptions.setDeleteLevelButtonBehavior(new DeleteLevelHandler(myModel.getLevels(), myLevels));
-		
-		
+		myLevelOptions.setDeleteLevelButtonBehavior(new DeleteLevelHandler(
+				myModel.getLevels(), myLevels));
+
 		myGraphicOptions.setButtonBehavior(new AddImageHandler(myModel
 				.getImages(), myGameLocation));
-		
+
 		mySoundOptions.setButtonBehavior(new AddSoundHandler(myModel
 				.getSounds(), myGameLocation));
-		
+
 		myObjectOptions.setButtonBehavior(new AddObjectHandler(myModel
 				.getGameObjectCollection()));
 
@@ -188,25 +194,30 @@ public class AuthoringController {
 		myConditionsAccordionView.setIconEvents(new IconClickHandler(
 				myProperties));
 
-		myConditionOptions.setAddConditionButtonBehavior(new AddConditionHandler(myModel.getConditions()));
-		myConditionOptions.setDeleteConditionButtonBehavior(new DeleteConditionHandler(myModel.getConditions()));
+		myConditionOptions
+				.setAddConditionButtonBehavior(new AddConditionHandler(myModel
+						.getConditions()));
+		myConditionOptions
+				.setDeleteConditionButtonBehavior(new DeleteConditionHandler(
+						myModel.getConditions()));
 
 		myLevelsAccordionView.setLevelEvents(new GameObjectClickHandler(
 				myProperties),
 				new GameObjectDragHandler(myLevels, myModel.getLevels(),
 						myProperties), new GameObjGraphicDragHandler(myLevels));
-		
-		myProperties.setButtonBehaviors(
-				new EditGameObjectHandler(myLevels,myModel.getLevels(), myProperties),
-				new SaveAsNewHandler(myModel.getGameObjectCollection(), myProperties),
-				new DeleteGameObjectHandler(myLevels, myModel.getLevels(),myProperties));
+
+		myProperties.setButtonBehaviors(new EditGameObjectHandler(myLevels,
+				myModel.getLevels(), myProperties), new SaveAsNewHandler(
+				myModel.getGameObjectCollection(), myProperties),
+				new DeleteGameObjectHandler(myLevels, myModel.getLevels(),
+						myProperties));
 
 	}
 
 	/**
-	 * Initializes what goes on the left side of the borderpane.
+	 * Places the correct view components into the center of the BorderPane
 	 * 
-	 * @return AccordianView a node.
+	 * @return BorderPane to be displayed on the left side of the AuthoringView
 	 */
 	private BorderPane intitializeCenter() {
 		BPContainer center = new BPContainer(myWidth * CENTER_WIDTH_RATIO,
@@ -216,6 +227,13 @@ public class AuthoringController {
 		return center;
 
 	}
+
+	/**
+	 * Places the correct view components into the left of the BorderPane
+	 * 
+	 * @return AccordianContainer to be displayed on the left side of the
+	 *         AuthoringView
+	 */
 
 	private AccordionContainer initializeLeft() {
 		AccordionContainer leftView = new AccordionContainer(myWidth, myHeight);
@@ -263,6 +281,12 @@ public class AuthoringController {
 		return leftView;
 	}
 
+	/**
+	 * Places the correct view components into the right of the BorderPane
+	 * 
+	 * @return TitledPane to be displayed on the right side of the AuthoringView
+	 */
+
 	private TitledPane initializeRight() {
 		TitledPane properties = new TitledPane(
 				myLanguage.getString("Properties"), myProperties);
@@ -270,9 +294,17 @@ public class AuthoringController {
 		return properties;
 	}
 
+	/**
+	 * Method to save the data stored in the model out to a GSON File.
+	 */
+
 	public void saveData() {
 		myModel.save(myGameLocation);
 	}
+
+	/**
+	 * Method to load the data stored in the model from a GSON File.
+	 */
 
 	public void loadData(GameData input) {
 		myModel.load(input);

@@ -20,12 +20,8 @@ import authoring.model.collections.SoundsCollection;
  * @author Kevin Li
  *
  */
-public class GameData {//implements Serializable {
+public class GameData {
 
-	/**
-	 * Maybe put in properties file?
-	 */
-//	private static final long serialVersionUID = 6633782568176674709L;
 	private Map<String, GeneralCollection> myCollections;
 	private LevelsCollection myLevels;
 	private ConditionsCollection myConditions;
@@ -40,25 +36,26 @@ public class GameData {//implements Serializable {
 		myImages = new ImagesCollection();
 		mySounds = new SoundsCollection();
 		myCollections = new HashMap<String, GeneralCollection>();
-//		addAllToMyCollections(new LevelsCollection(),
-//				new GameObjectsCollection(), new ConditionsCollection(),
-//				new ImagesCollection(), new SoundsCollection());
+		// addAllToMyCollections(new LevelsCollection(),
+		// new GameObjectsCollection(), new ConditionsCollection(),
+		// new ImagesCollection(), new SoundsCollection());
 	}
-	
-	//Will refactor this later. 
-	public GameData(LevelsCollection levels, ConditionsCollection conditions, GameObjectsCollection gameObjects){
-		myLevels=levels;
-		myConditions=conditions; 
-		myGameObjects=gameObjects; 
-		myImages = new ImagesCollection(); 
-		mySounds = new SoundsCollection(); 
+
+	// Will refactor this later.
+	public GameData(LevelsCollection levels, ConditionsCollection conditions,
+			GameObjectsCollection gameObjects) {
+		myLevels = levels;
+		myConditions = conditions;
+		myGameObjects = gameObjects;
+		myImages = new ImagesCollection();
+		mySounds = new SoundsCollection();
 		myCollections = new HashMap<String, GeneralCollection>();
 		addAllToMyCollections(new LevelsCollection(),
 				new GameObjectsCollection(), new ConditionsCollection(),
 				new ImagesCollection(), new SoundsCollection());
-		
+
 	}
-	
+
 	/**
 	 * Changing collections to be a map, so that the get method duplication is
 	 * removed.
@@ -77,7 +74,6 @@ public class GameData {//implements Serializable {
 		return myLevels;
 	}
 
-
 	/**
 	 * GameObject Methods
 	 */
@@ -86,7 +82,6 @@ public class GameData {//implements Serializable {
 		return myGameObjects;
 	}
 
-
 	/**
 	 * Condition Methods
 	 */
@@ -94,7 +89,6 @@ public class GameData {//implements Serializable {
 	public ConditionsCollection getConditions() {
 		return myConditions;
 	}
-
 
 	/**
 	 * Graphic Methods

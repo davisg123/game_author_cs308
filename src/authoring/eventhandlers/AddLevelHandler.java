@@ -6,9 +6,8 @@ import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.LevelsCollection;
 import authoring.view.levelview.LevelsView;
 import authoring.view.levelview.SingleLevelView;
-import engine.gameObject.Identifier;
 import authoring.view.wizards.LevelWizard;
-import authoring.view.wizards.Wizard;
+import engine.gameObject.Identifier;
 import engine.level.Level;
 /**
  * @author Kevin Li
