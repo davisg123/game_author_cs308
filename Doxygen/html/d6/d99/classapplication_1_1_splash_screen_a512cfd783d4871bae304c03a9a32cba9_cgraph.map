@@ -1,0 +1,21 @@
+<map id="application.SplashScreen.SplashScreen" name="application.SplashScreen.SplashScreen">
+<area shape="rect" id="node2" href="$d6/d99/classapplication_1_1_splash_screen.html#abad5bc7bafefe1a4e59b0d121dc895e9" title="application.SplashScreen.initialize\lGUIElements" alt="" coords="241,71,479,113"/>
+<area shape="rect" id="node3" href="$d6/d99/classapplication_1_1_splash_screen.html#a64f7fd7ccc13a6162955b616661c9343" title="application.SplashScreen.author" alt="" coords="528,24,757,51"/>
+<area shape="rect" id="node5" href="$d6/d99/classapplication_1_1_splash_screen.html#af35ff913e798fa504502185f76703a74" title="application.SplashScreen.play" alt="" coords="536,79,749,105"/>
+<area shape="rect" id="node18" href="$de/d50/classerrors_and_exceptions_1_1_error_pop_up.html#a879c9fa857c162edfab75ecf1558c944" title="errorsAndExceptions.Error\lPopUp.display" alt="" coords="548,130,737,171"/>
+<area shape="rect" id="node4" href="$d6/dbb/classauthoring_1_1view_1_1_authoring_scene.html#ace57bedce7a54a2242cb8bb7f799db59" title="authoring.view.Authoring\lScene.getScene" alt="" coords="869,13,1048,54"/>
+<area shape="rect" id="node6" href="$d2/dc9/classgame_player_1_1model_1_1_player_model.html#af8fd7a780ad8f9eebd18f451e188717e" title="gamePlayer.model.PlayerModel.initializeView" alt="" coords="805,79,1112,105"/>
+<area shape="rect" id="node7" href="$d7/d3c/classgame_player_1_1view_1_1_player_view.html#ab5225b160ab16323a5485bd1c3f62303" title="gamePlayer.view.PlayerView.initialize" alt="" coords="1160,79,1413,105"/>
+<area shape="rect" id="node8" href="$d9/dff/classgame_player_1_1view_1_1_menu_bar_controller.html#ab4abbcee902ab2c855f544253f38d26d" title="gamePlayer.view.MenuBarController.set\lModel" alt="" coords="1462,6,1735,47"/>
+<area shape="rect" id="node9" href="$d9/dff/classgame_player_1_1view_1_1_menu_bar_controller.html#a697f93e09ded58d03b51bf4bf4951c45" title="gamePlayer.view.MenuBarController.set\lKeyboard" alt="" coords="1462,71,1735,113"/>
+<area shape="rect" id="node11" href="$d7/d3c/classgame_player_1_1view_1_1_player_view.html#a1819e3a1d44b1db95bdf3a4bc6df7ebc" title="gamePlayer.view.PlayerView.initialize\lGUIComponents" alt="" coords="1472,173,1725,214"/>
+<area shape="rect" id="node10" href="$d2/dc9/classgame_player_1_1model_1_1_player_model.html#a41f9fb103afe731f32e642a5eff1e2c4" title="gamePlayer.model.PlayerModel.get\lButtonConditions" alt="" coords="1799,53,2046,94"/>
+<area shape="rect" id="node12" href="$d9/d10/classengine_1_1conditions_1_1_button_condition_manager.html#acf0bbdb37a1c9d9cdfa827f114a50766" title="engine.conditions.Button\lConditionManager.getInstance" alt="" coords="1815,118,2031,159"/>
+<area shape="rect" id="node14" href="$d9/d10/classengine_1_1conditions_1_1_button_condition_manager.html#af8a4f0078c3bd2347bb067ea1ca6f789" title="engine.conditions.Button\lConditionManager.beginListening\lToScene" alt="" coords="1806,183,2039,239"/>
+<area shape="rect" id="node17" href="$db/d19/classgame_player_1_1view_1_1_game_canvas.html#aaf62ddebd656a3ec3174e6845851e2d9" title="gamePlayer.view.GameCanvas.getNode" alt="" coords="1785,263,2061,289"/>
+<area shape="rect" id="node13" href="$d9/d10/classengine_1_1conditions_1_1_button_condition_manager.html#ae9501a9a4b3fbc32cd49920845a49bef" title="engine.conditions.Button\lConditionManager.ButtonCondition\lManager" alt="" coords="2110,111,2354,167"/>
+<area shape="rect" id="node15" href="$d9/d10/classengine_1_1conditions_1_1_button_condition_manager.html#a7250e158819df1055783c7c5792df2b8" title="engine.conditions.Button\lConditionManager.keyPressed" alt="" coords="2125,190,2339,231"/>
+<area shape="rect" id="node16" href="$d9/d10/classengine_1_1conditions_1_1_button_condition_manager.html#af721ec94336669669bf9b13aabc8e21c" title="engine.conditions.Button\lConditionManager.keyReleased" alt="" coords="2122,255,2342,297"/>
+<area shape="rect" id="node19" href="$de/d50/classerrors_and_exceptions_1_1_error_pop_up.html#adecc4a2ab81e607673649e10e6d7da52" title="errorsAndExceptions.Error\lPopUp.createButton" alt="" coords="864,130,1053,171"/>
+<area shape="rect" id="node20" href="$de/d50/classerrors_and_exceptions_1_1_error_pop_up.html#a98549e423869b27d7ee3c87270786f60" title="errorsAndExceptions.Error\lPopUp.chooseStageWidth" alt="" coords="864,195,1053,237"/>
+</map>

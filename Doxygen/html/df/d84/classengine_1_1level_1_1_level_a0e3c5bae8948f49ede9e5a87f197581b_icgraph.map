@@ -1,0 +1,4 @@
+<map id="engine.level.Level.addGameObject" name="engine.level.Level.addGameObject">
+<area shape="rect" id="node2" href="$d0/df2/classauthoring_1_1eventhandlers_1_1_game_object_drag_to_level_handler.html#a98ccf77195ecfc7146cd1737da68b6b2" title="authoring.eventhandlers.\lGameObjectDragToLevelHandler.updateName" alt="" coords="257,5,573,46"/>
+<area shape="rect" id="node3" href="$d0/df2/classauthoring_1_1eventhandlers_1_1_game_object_drag_to_level_handler.html#ad5002cd6b7781653104f1820a573f902" title="authoring.eventhandlers.\lGameObjectDragToLevelHandler.handle" alt="" coords="621,5,896,46"/>
+</map>
