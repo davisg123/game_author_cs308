@@ -1,5 +1,0 @@
-<map id="authoring.view.icons.GameObjectIcon.getGameObject" name="authoring.view.icons.GameObjectIcon.getGameObject">
-<area shape="rect" id="node2" href="$d9/db6/classauthoring_1_1eventhandlers_1_1_game_object_click_handler.html#a9e7e6751a84bd94acd86479da0b02ffe" title="authoring.eventhandlers.\lGameObjectClickHandler.handle" alt="" coords="272,5,499,46"/>
-<area shape="rect" id="node3" href="$d1/da4/classauthoring_1_1eventhandlers_1_1_game_object_drag_handler.html#a122ab06aa51a9961e85f5a457142f60c" title="authoring.eventhandlers.\lGameObjectDragHandler.handle" alt="" coords="271,70,500,111"/>
-<area shape="rect" id="node4" href="$d0/df2/classauthoring_1_1eventhandlers_1_1_game_object_drag_to_level_handler.html#ad5002cd6b7781653104f1820a573f902" title="authoring.eventhandlers.\lGameObjectDragToLevelHandler.handle" alt="" coords="248,135,523,177"/>
-</map>
