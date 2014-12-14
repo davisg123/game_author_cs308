@@ -1,0 +1,23 @@
+<map id="authoring.eventhandlers.SaveAsNewHandler" name="authoring.eventhandlers.SaveAsNewHandler">
+<area shape="rect" id="node2" href="$d3/d6a/interfaceauthoring_1_1eventhandlers_1_1_game_handler.html" title="authoring.eventhandlers.\lGameHandler\&lt; Event \&gt;" alt="" coords="1717,5,1899,46"/>
+<area shape="rect" id="node3" href="$d0/d7f/classengine_1_1game_object_1_1_game_object.html" title="engine.gameObject.GameObject" alt="" coords="1243,883,1474,909"/>
+<area shape="rect" id="node26" href="$d4/d9e/classauthoring_1_1view_1_1propertiesview_1_1_properties_view.html" title="authoring.view.propertiesview.\lPropertiesView" alt="" coords="1702,330,1914,371"/>
+<area shape="rect" id="node4" href="$d7/de6/interfaceengine_1_1game_object_1_1_i_enabled.html" title="engine.gameObject.IEnabled" alt="" coords="823,883,1028,909"/>
+<area shape="rect" id="node6" href="$dc/df6/interfaceengine_1_1game_object_1_1_identifiable.html" title="engine.gameObject.Identifiable" alt="" coords="815,984,1035,1011"/>
+<area shape="rect" id="node7" href="$d4/dac/classengine_1_1game_object_1_1_identifier.html" title="engine.gameObject.Identifier" alt="" coords="822,1108,1029,1135"/>
+<area shape="rect" id="node9" href="$da/d35/classengine_1_1scrolling_1_1_scrolling_utility.html" title="engine.scrolling.Scrolling\lUtility" alt="" coords="836,1173,1015,1214"/>
+<area shape="rect" id="node23" href="$d6/d66/classengine_1_1game_object_1_1_default_data.html" title="engine.gameObject.DefaultData" alt="" coords="811,832,1039,859"/>
+<area shape="rect" id="node12" href="$d2/d82/classengine_1_1render_1_1_rendered_node.html" title="engine.render.RenderedNode" alt="" coords="821,704,1029,731"/>
+<area shape="rect" id="node41" href="$d6/d32/classauthoring_1_1view_1_1wizards_1_1_wizard.html" title="authoring.view.wizards.Wizard" alt="" coords="820,132,1031,159"/>
+<area shape="rect" id="node17" href="$d9/d9d/classengine_1_1game_object_1_1components_1_1_physics_body.html" title="engine.gameObject.components.\lPhysicsBody" alt="" coords="808,1035,1043,1077"/>
+<area shape="rect" id="node21" href="$d5/d1f/classengine_1_1physics_1_1_vector.html" title="engine.physics.Vector" alt="" coords="369,972,530,999"/>
+<area shape="rect" id="node22" href="$dc/db5/classengine_1_1physics_1_1_physics_component.html" title="engine.physics.PhysicsComponent" alt="" coords="5,972,248,999"/>
+<area shape="rect" id="node24" href="$d1/d32/classauthoring_1_1model_1_1collections_1_1_game_objects_collection.html" title="authoring.model.collections.\lGameObjectsCollection" alt="" coords="1257,65,1460,106"/>
+<area shape="rect" id="node40" href="$d4/d64/classauthoring_1_1view_1_1wizards_1_1_name_wizard.html" title="authoring.view.wizards.Name\lWizard" alt="" coords="1705,139,1911,181"/>
+<area shape="rect" id="node25" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html" title="authoring.model.collections.\lGeneralCollection\&lt; GameObject \&gt;" alt="" coords="803,65,1047,106"/>
+<area shape="rect" id="node27" href="$de/d93/classauthoring_1_1view_1_1baseclasses_1_1_collection_view.html" title="authoring.view.baseclasses.\lCollectionView" alt="" coords="1259,218,1458,259"/>
+<area shape="rect" id="node30" href="$d3/d6a/interfaceauthoring_1_1eventhandlers_1_1_game_handler.html" title="authoring.eventhandlers.\lGameHandler\&lt; T extends\l Event \&gt;" alt="" coords="831,573,1019,629"/>
+<area shape="rect" id="node33" href="$da/d8d/classauthoring_1_1view_1_1propertiesview_1_1_game_object_properties.html" title="authoring.view.propertiesview.\lGameObjectProperties" alt="" coords="1253,457,1465,498"/>
+<area shape="rect" id="node34" href="$de/d73/classauthoring_1_1view_1_1propertiesview_1_1_properties.html" title="authoring.view.propertiesview.\lProperties" alt="" coords="819,335,1031,377"/>
+<area shape="rect" id="node38" href="$dd/db2/classauthoring_1_1view_1_1baseclasses_1_1_accordion_container.html" title="authoring.view.baseclasses.\lAccordionContainer" alt="" coords="826,509,1025,550"/>
+</map>
