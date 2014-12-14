@@ -9,40 +9,49 @@ import authoring.view.levelview.SingleLevelView;
 import authoring.view.wizards.AddConditionIDWizard;
 import authoring.view.wizards.Wizard;
 
-public class DeleteLevelHandler implements GameHandler<Event>{
+/**
+ * @author Kevin Li
+ * @author Arjun Jain
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Safkat Islam
+ */
+public class DeleteLevelHandler implements GameHandler<Event> {
 
 	private LevelsCollection myLevelsCollection;
 	private Wizard myDeleteLevelWizard;
 	private LevelsView myLevelsTabs;
-	
-	public DeleteLevelHandler(LevelsCollection collection, LevelsView lv){
+
+	public DeleteLevelHandler(LevelsCollection collection, LevelsView lv) {
 		myLevelsCollection = collection;
 		myLevelsTabs = lv;
 	}
-	
+
 	@Override
 	public void handle(Event arg0) {
-		
-		myDeleteLevelWizard = new AddConditionIDWizard("Delete Level", 200, 200, event -> deleteLevel());
-		
+
+		myDeleteLevelWizard = new AddConditionIDWizard("Delete Level", 200,
+				200, event -> deleteLevel());
+
 	}
 
 	@Override
 	public EventType<Event> getEventType() {
 		return Event.ANY;
 	}
-	
-	private void deleteLevel(){
-		String toRemove = myDeleteLevelWizard.getMap().get("ID").getInformation();
+
+	private void deleteLevel() {
+		String toRemove = myDeleteLevelWizard.getMap().get("ID")
+				.getInformation();
 		myLevelsCollection.removeByID(toRemove);
-		
+
 		for (Tab tab : myLevelsTabs.getTabs()) {
 			if (((SingleLevelView) tab.getContent()).getID().equals(toRemove)) {
 				myLevelsTabs.getTabs().remove(tab);
 				break;
 			}
 		}
-		
+
 		myDeleteLevelWizard.close();
 	}
 

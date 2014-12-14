@@ -8,6 +8,12 @@ import authoring.view.baseclasses.CollectionView;
 import authoring.view.icons.IPropertiesMaker;
 import engine.gameObject.GameObject;
 
+/**
+ * @author Kevin Li
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Arjun Jain
+ */
 public class PropertiesView extends CollectionView {
 
 	private static final double VIEW_HEIGHT_RATIO = .95;
@@ -49,7 +55,8 @@ public class PropertiesView extends CollectionView {
 	 * object and not the game object icon. The game object can be taken from
 	 * the icon, but creating an icon from solely a game object is difficult.
 	 * 
-	 * @param gameObj The game object to make properties for.
+	 * @param gameObj
+	 *            The game object to make properties for.
 	 */
 	public void displayProperties(GameObject gameObj) {
 		myContents.getChildren().clear();

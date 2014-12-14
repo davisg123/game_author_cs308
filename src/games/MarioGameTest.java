@@ -111,7 +111,7 @@ public class MarioGameTest extends Application {
         GameObject floor1 = new GameObject(null, "floor3.png", 
                                            1, 347, 8500.0, 800, 0, "FloorBlock1");
         floor1.setIdentifier(new Identifier("FloorBlock","a")); 
-        PhysicsBody floor1Body = new PhysicsBody(50,50);
+        PhysicsBody floor1Body = new PhysicsBody(8500,800);
         floor1Body.addScalar((new CollisionConstant(1.0)));
         floor1.setPhysicsBody(floor1Body);
         myFloorObjects.add(floor1);
@@ -125,7 +125,7 @@ public class MarioGameTest extends Application {
         myPlatformObjects.add(platform1);
         
         GameObject platform2 = new GameObject(null, "BrickBlock_NSMB.png", 
-                                              350, 180, 50, 50, 0, "PlatformBlock1");
+                                              351, 180, 50, 50, 0, "PlatformBlock2");
         platform2.setIdentifier(new Identifier("PlatformBlock","b"));   
         PhysicsBody platform2Body = new PhysicsBody(50,50);
         platform2Body.addScalar((new CollisionConstant(1.0)));
@@ -134,7 +134,7 @@ public class MarioGameTest extends Application {
         
         
         GameObject platform3 = new GameObject(null, "BrickBlock_NSMB.png", 
-                                              400, 180, 50, 50, 0, "PlatformBlock1");
+                                              402, 180, 50, 50, 0, "PlatformBlock2");
         platform3.setIdentifier(new Identifier("PlatformBlock","c")); 
         PhysicsBody platform3Body = new PhysicsBody(50,50);
         platform3Body.addScalar((new CollisionConstant(1.0)));
@@ -142,11 +142,11 @@ public class MarioGameTest extends Application {
         myPlatformObjects.add(platform3);
 
         GameObject platform4 = new GameObject(null, "BrickBlock_NSMB.png", 
-                                              450, 180, 50, 50, 0, "PlatformBlock1");
+                                              453, 180, 50, 50, 0, "PlatformBlock3");
         platform4.setIdentifier(new Identifier("PlatformBlock","d"));   
         PhysicsBody platform4Body = new PhysicsBody(50,50);
         platform4Body.addScalar((new CollisionConstant(1.0)));
-        platform4.setPhysicsBody(platform2Body);
+        platform4.setPhysicsBody(platform4Body);
         myPlatformObjects.add(platform4);
 
         GameObject questionBlock1 = new GameObject(null, "Question Block.gif", 
@@ -170,39 +170,39 @@ public class MarioGameTest extends Application {
         //create a player
         GameObject mario = new GameObject(null,"Mario.gif",200,50,30,30,0,"mario");
         mario.setIdentifier(new Identifier("mario","a"));
-        PhysicsBody marioBody = new PhysicsBody(37,37);
+        PhysicsBody marioBody = new PhysicsBody(30,30);
         marioBody.addForce(new Gravity(0,1.0));
         marioBody.addScalar(new GravityConstant(10.0));
         mario.setPhysicsBody(marioBody);
         myMarioObjects.add(mario);
         
         //create a fireball
-        GameObject fireball = new GameObject(null, "ball.png", 50,50, 10, 10, 0, "ball_object");
+        GameObject fireball = new GameObject(null, "fireball.gif", 50,50, 10, 10, 0, "fireball");
         fireball.setIdentifier(new Identifier("fireball", "template"));
         PhysicsBody fireballBody = new PhysicsBody(10, 10);
         fireball.setPhysicsBody(fireballBody);
         
         //create enemies
-        GameObject goomba = new GameObject(null,"Goomba.gif",200,150,30,30,0,"mario");
+        GameObject goomba = new GameObject(null,"Goomba.gif",200,150,30,30,0,"goomba");
         goomba.setIdentifier(new Identifier("goomba","template"));
-        PhysicsBody goombaBody = new PhysicsBody(37,37);
+        PhysicsBody goombaBody = new PhysicsBody(30,30);
         goombaBody.addForce(new Gravity(0,1.0));
-        goombaBody.addScalar(new GravityConstant(50.0));
+        goombaBody.addScalar(new GravityConstant(10.0));
         goomba.setPhysicsBody(goombaBody);
         myGoombaObjects.add(goomba);
         
-        GameObject goomba1 = new GameObject(null,"Goomba.gif",500,150,30,30,0,"mario");
+        GameObject goomba1 = new GameObject(null,"Goomba.gif",300,150,30,30,0,"goomba");
         goomba1.setIdentifier(new Identifier("goomba","a"));
-        PhysicsBody goombaBody1 = new PhysicsBody(37,37);
+        PhysicsBody goombaBody1 = new PhysicsBody(30,30);
         goombaBody1.addForce(new Gravity(0,1.0));
-        goombaBody1.addScalar(new GravityConstant(50.0));
+        goombaBody1.addScalar(new GravityConstant(10.0));
         goomba1.setPhysicsBody(goombaBody1);
         myGoombaObjects.add(goomba1);
         
         
-        GameObject goomba2 = new GameObject(null,"Goomba.gif",700,150,30,30,0,"mario");
+        GameObject goomba2 = new GameObject(null,"Goomba.gif",400,150,30,30,0,"goomba");
         goomba2.setIdentifier(new Identifier("goomba","b"));
-        PhysicsBody goombaBody2 = new PhysicsBody(37,37);
+        PhysicsBody goombaBody2 = new PhysicsBody(30,30);
         goombaBody2.addForce(new Gravity(0,1.0));
         goombaBody2.addScalar(new GravityConstant(50.0));
         goomba2.setPhysicsBody(goombaBody2);
@@ -328,7 +328,7 @@ public class MarioGameTest extends Application {
         FixedCollisionTypeAction goombaCollisionAction = new FixedCollisionTypeAction("goomba","FloorBlock",0.0);
         GoombaConditionActionList.add(goombaCollisionAction);
         TypeCollisionCondition goombaAndFloorCollision = new TypeCollisionCondition(GoombaConditionActionList,"goomba","FloorBlock");
-        goombaAndFloorCollision.setIdentifier(new Identifier("collision_cond","a"));
+        goombaAndFloorCollision.setIdentifier(new Identifier("collision_cond","b"));
         myConditions.add(goombaAndFloorCollision);
         
         //Platform Collisions
@@ -337,7 +337,7 @@ public class MarioGameTest extends Application {
         FixedCollisionTypeAction marioPlatformCollisionAction = new FixedCollisionTypeAction("mario","PlatformBlock",0.0);
         marioPlatformConditionActionList.add(marioPlatformCollisionAction);
         TypeCollisionCondition marioAndPlatformCollision = new TypeCollisionCondition(marioPlatformConditionActionList,"mario","PlatformBlock");
-        marioAndPlatformCollision.setIdentifier(new Identifier("collision_cond","a"));
+        marioAndPlatformCollision.setIdentifier(new Identifier("collision_cond","c"));
         myConditions.add(marioAndPlatformCollision);
         
         
@@ -392,7 +392,7 @@ public class MarioGameTest extends Application {
         scrollActionList.add(boundaryScrollActionMushroom);
         scrollActionList.add(boundaryScrollActionFireball);
         scrollActionList.add(boundaryScrollActionGoomba);
-        BoundaryConditionX boundaryConditionScroll = new BoundaryConditionX(scrollActionList,myMarioObjects.getIdentifierList(),350.0,true);
+        BoundaryConditionX boundaryConditionScroll = new BoundaryConditionX(scrollActionList,myMarioObjects.getIdentifierList(),300.0,true);
         boundaryConditionScroll.setIdentifier(new Identifier("bound_scroll","a"));
         myConditions.add(boundaryConditionScroll);
 
@@ -423,20 +423,27 @@ public class MarioGameTest extends Application {
         allGameObjects.addAll(myLabels);
         allGameObjects.addAll(myMushroomObjects);
 
+        
+        GameObjectsCollection startObj = new GameObjectsCollection();
+        ConditionsCollection startConditions = new ConditionsCollection();
+        
 
         /*******
          * levels
          *******/
         LevelsCollection myLevels = new LevelsCollection();
-        Level level0 = new Level(allGameObjects.getIdentifierList(),myConditions.getIdentifierList(),true);
+        Level start = new Level(startObj.getIdentifierList(),startConditions.getIdentifierList(),true);
+        
+        Level level0 = new Level(allGameObjects.getIdentifierList(),myConditions.getIdentifierList(),false);
         level0.setBackgroundMusic("SuperMarioBrosFull.mp3");
         level0.setBackgroundImage("overworld_bg.png");
         level0.setIdentifier(new Identifier("Level","0"));
-        Level level1 = new Level(allGameObjects.getIdentifierList(), myConditions.getIdentifierList(),false);
-        level1.setBackgroundImage("overworld_bg.png");
-        level1.setIdentifier(new Identifier("Level","1"));
+        //Level level1 = new Level(allGameObjects.getIdentifierList(), myConditions.getIdentifierList(),false);
+        //level1.setBackgroundImage("overworld_bg.png");
+        //level1.setIdentifier(new Identifier("Level","1"));
+        myLevels.add(start);
         myLevels.add(level0);
-        myLevels.add(level1);
+        //myLevels.add(level1);
         
 //        
 //        /*

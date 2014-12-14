@@ -6,6 +6,12 @@ import javafx.scene.control.Button;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.generalcollectionview.CollectionOptions;
 
+/**
+ * @author Kevin Li
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Arjun Jain
+ */
 public class ConditionOptions extends CollectionOptions {
 	private Button addConditionButton;
 	private Button deleteConditionButton;
@@ -18,14 +24,16 @@ public class ConditionOptions extends CollectionOptions {
 	private void addButtons() {
 		addConditionButton = makeButton(myLanguage.getString("Add_Condition"));
 		this.getItems().add(addConditionButton);
-		deleteConditionButton = makeButton(myLanguage.getString("Delete_Condition"));
+		deleteConditionButton = makeButton(myLanguage
+				.getString("Delete_Condition"));
 		this.getItems().add(deleteConditionButton);
 	}
 
 	public void setAddConditionButtonBehavior(GameHandler handler) {
 		addConditionButton.setOnAction(handler);
 	}
-	public void setDeleteConditionButtonBehavior(GameHandler handler){
+
+	public void setDeleteConditionButtonBehavior(GameHandler handler) {
 		deleteConditionButton.setOnAction(handler);
 	}
 }

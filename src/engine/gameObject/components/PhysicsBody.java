@@ -1,13 +1,15 @@
 package engine.gameObject.components;
 
 import java.awt.geom.Point2D;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+
 import engine.gameObject.GameObject;
+
 import java.util.Map;
+
 import engine.physics.Acceleration;
 import engine.physics.Buoyancy;
 import engine.physics.CoefficientOfFriction;
@@ -23,6 +25,7 @@ import engine.physics.Scalar;
 import engine.physics.Vector;
 import engine.physics.Velocity;
 import engine.physics.Volume;
+import errorsAndExceptions.ErrorPopUp;
 
 /**
  * 
@@ -49,7 +52,7 @@ public class PhysicsBody {
 		this(0, 0);
 	}
 
-	public PhysicsBody(double collisionBodyWidth, double collisionBodyHeight) {
+	public PhysicsBody(double collisionBodyHeight, double collisionBodyWidth) {
 		myImpulses = new ArrayList<Impulse>();
 		myAcceleration = new Acceleration();
 		myVelocity = new Velocity();
@@ -63,7 +66,7 @@ public class PhysicsBody {
 	}
 	
 	public PhysicsBody(PhysicsBody body){
-		this(body.getCollisionBodyWidth(), body.getCollisionBodyHeight());
+		this(body.getCollisionBodyHeight(), body.getCollisionBodyWidth());
 	}
 
 	/**
@@ -206,7 +209,8 @@ public class PhysicsBody {
 		try {
 			return myActiveForces.get(s);
 		} catch (NullPointerException e) {
-			System.out.println("Not an active force");
+			ErrorPopUp epu = new ErrorPopUp(e);
+			epu.display("Not an active force", false);
 			return null;
 		}
 	}

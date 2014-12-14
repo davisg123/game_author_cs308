@@ -15,7 +15,13 @@ import engine.gameObject.Identifier;
 import engine.gameObject.components.PhysicsBody;
 import engine.physics.Velocity;
 import errorsAndExceptions.ErrorPopUp;
-
+/**
+ * @author Kevin Li
+ * @author Arjun Jain
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Safkat Islam
+ */
 public class AddObjectHandler implements GameHandler<Event> {
 
 	private GameObjectsCollection myGameObjectCollection;
@@ -52,8 +58,8 @@ public class AddObjectHandler implements GameHandler<Event> {
 		
 		
 		
-		PhysicsBody p = new PhysicsBody(Double.parseDouble(map.get("width")
-				.getInformation()),Double.parseDouble(map.get("height")
+		PhysicsBody p = new PhysicsBody(Double.parseDouble(map.get("height")
+				.getInformation()),Double.parseDouble(map.get("width")
 				.getInformation()));
 		p.setVelocity(new Velocity(Double.parseDouble(map.get("initXV").getInformation()), Double.parseDouble(map.get("initYV").getInformation())));
 		

@@ -18,7 +18,8 @@ import authoring.view.icons.ImageBasedIcon;
  * 
  * @author Kevin Li
  * @author Wesley Valentine
- *
+ * @author Chris Bernt
+ * @author Arjun Jain
  */
 public class LevelsView extends TabView implements Observer {
 	private static final double VIEW_HEIGHT_RATIO = .87;
@@ -35,7 +36,7 @@ public class LevelsView extends TabView implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-	
+
 	}
 
 	/**

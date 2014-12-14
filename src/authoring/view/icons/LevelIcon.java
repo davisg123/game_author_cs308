@@ -7,7 +7,13 @@ import authoring.view.propertiesview.LevelProperties;
 import authoring.view.propertiesview.Properties;
 import engine.level.Level;
 
-public class LevelIcon extends TextIcon implements IPropertiesMaker{
+/**
+ * @author Kevin Li
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Arjun Jain
+ */
+public class LevelIcon extends TextIcon implements IPropertiesMaker {
 
 	public static final int DEFAULT_FONT_SIZE = 20;
 	private Level myLevel;
@@ -23,15 +29,16 @@ public class LevelIcon extends TextIcon implements IPropertiesMaker{
 	public Level getLevel() {
 		return myLevel;
 	}
-	
-	public GameHandler[] getLevelEvents(){
+
+	public GameHandler[] getLevelEvents() {
 		return myLevelEvents;
 	}
 
 	@Override
 	public Properties makeProperties() {
-		return new LevelProperties(this, new AddConditionIDHandler(this.getLevel()), new DeleteConditionFromLevelHandler(this.getLevel()));
+		return new LevelProperties(this, new AddConditionIDHandler(
+				this.getLevel()), new DeleteConditionFromLevelHandler(
+				this.getLevel()));
 	}
-	
 
 }
