@@ -2,28 +2,26 @@ package authoring.eventhandlers;
 
 import javafx.event.EventType;
 import javafx.scene.input.MouseEvent;
-import authoring.view.icons.LevelIcon;
+import authoring.view.icons.IPropertiesMaker;
 import authoring.view.propertiesview.PropertiesView;
 
-public class LevelClickHandler implements GameHandler<MouseEvent>{
+public class IconClickHandler implements GameHandler<MouseEvent>{
+
+private PropertiesView myProperties;
 	
-	private PropertiesView myProperties;
-	
-	public LevelClickHandler(PropertiesView props){
+	public IconClickHandler(PropertiesView props){
 		myProperties = props;
 	}
-	
+
 	@Override
 	public void handle(MouseEvent event) {
-		LevelIcon level = (LevelIcon) event.getSource();
-		myProperties.makeProperties(level);
-		
+		IPropertiesMaker icon = (IPropertiesMaker) event.getSource();
+		myProperties.displayProperties(icon);
 	}
 
 	@Override
 	public EventType<MouseEvent> getEventType() {
 		return MouseEvent.MOUSE_PRESSED;
 	}
-
+	
 }
-

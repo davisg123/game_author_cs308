@@ -11,9 +11,10 @@ public class LoadAction extends ProgressAction{
 	
 	@Override
 	public void execute() {
+		/**
 		GameData myGameData = myDataManager.readGameFile("Test File");
 		myGameManager.load(myGameData);
-		
+		**/
 		
 	}
 }
