@@ -1,5 +1,12 @@
 package authoring.model.collections;
 
-public class SoundsCollection extends GeneralCollection<String>{
+/**
+ * @author Kevin Li
+ * @author Arjun Jain
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ *
+ */
+public class SoundsCollection extends GeneralCollection<String> {
 
 }

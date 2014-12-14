@@ -4,13 +4,20 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
-import errorsAndExceptions.ErrorPopUp;
 import javafx.event.Event;
 import javafx.event.EventType;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
 import authoring.model.collections.GeneralCollection;
+import errorsAndExceptions.ErrorPopUp;
 
+/**
+ * @author Kevin Li
+ * @author Arjun Jain
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Safkat Islam
+ */
 public abstract class FileDropHandler implements GameHandler<Event> {
 	GeneralCollection myCollection;
 	File myGameFile;
@@ -18,7 +25,7 @@ public abstract class FileDropHandler implements GameHandler<Event> {
 
 	public FileDropHandler(File file) {
 		myGameFile = file;
-		
+
 	}
 
 	@Override

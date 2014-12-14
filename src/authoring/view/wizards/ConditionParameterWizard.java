@@ -11,13 +11,19 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 import authoring.view.propertiesview.PropertyTextField;
 
-
-public class ConditionParameterWizard extends Wizard{
+/**
+ * @author Kevin Li
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Arjun Jain
+ */
+public class ConditionParameterWizard extends Wizard {
 
 	private Parameter[] myParameterTypes;
 	private Class<?> myConditionClass;
-		
-	public ConditionParameterWizard(String title, double width, double height, Parameter[] pTypes, Class<?> conditionClass,
+
+	public ConditionParameterWizard(String title, double width, double height,
+			Parameter[] pTypes, Class<?> conditionClass,
 			EventHandler<ActionEvent> event) {
 		super(title, width, height, event);
 		myParameterTypes = pTypes;
@@ -29,35 +35,33 @@ public class ConditionParameterWizard extends Wizard{
 	public VBox initializeWizard(EventHandler<ActionEvent> event) {
 		return myWindow;
 	}
-	
-	private void showParameters(EventHandler<ActionEvent> event){
-		//since we need to assign parameter types after initializing, this is essentially this wizard's "initialize"
+
+	private void showParameters(EventHandler<ActionEvent> event) {
+		// since we need to assign parameter types after initializing, this is
+		// essentially this wizard's "initialize"
 
 		String[] classPath = myConditionClass.toString().split("\\.");
-		String className = classPath[classPath.length-1];
-		
+		String className = classPath[classPath.length - 1];
+
 		String params;
-		if(className.contains("Condition")){
+		if (className.contains("Condition")) {
 			params = CONDITIONS_PARAMETERS.getString(className);
-		}
-		else{
+		} else {
 			params = ACTIONS_PARAMETERS.getString(className);
 		}
-		
+
 		System.out.println(params);
-		
+
 		String[] paramArray = params.split(",");
-		for(String s: paramArray){
+		for (String s : paramArray) {
 			myMap.put(s, new PropertyTextField(s, ""));
 		}
 		super.addMapToWindow();
-		
+
 		Button addButton = new Button("Continue");
 		addButton.setOnAction(event);
 		myWindow.getChildren().add(addButton);
-		
+
 	}
-	
-	
 
 }

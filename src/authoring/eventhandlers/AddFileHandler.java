@@ -11,6 +11,13 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import authoring.model.collections.GeneralCollection;
 
+/**
+ * @author Kevin Li
+ * @author Arjun Jain
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Safkat Islam
+ */
 public abstract class AddFileHandler implements GameHandler<Event> {
 	protected GeneralCollection myCollection;
 	protected File myGameFile;

@@ -7,6 +7,13 @@ import javafx.application.Application;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+/**
+ * @author Kevin Li
+ * @author Arjun Jain
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ *
+ */
 public class Main extends Application {
 	public static final double SCREEN_WIDTH = Screen.getPrimary()
 			.getVisualBounds().getWidth() * 3 / 4;

@@ -11,6 +11,12 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.ToolBar;
 
+/**
+ * @author Kevin Li
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Arjun Jain
+ */
 public class LevelOptions extends CollectionOptions {
 	private Button addLevelButton;
 	private Button deleteLevelButton;
@@ -30,7 +36,8 @@ public class LevelOptions extends CollectionOptions {
 	public void setAddLevelButtonBehavior(GameHandler handler) {
 		addLevelButton.setOnAction(handler);
 	}
-	public void setDeleteLevelButtonBehavior(GameHandler handler){
+
+	public void setDeleteLevelButtonBehavior(GameHandler handler) {
 		deleteLevelButton.setOnAction(handler);
 	}
 }

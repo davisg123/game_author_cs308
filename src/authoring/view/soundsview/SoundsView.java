@@ -16,7 +16,9 @@ import data.Observer;
  * Updates via observer whenever a change occurs in SoundCollection.
  * 
  * @author Kevin Li
- *
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Arjun Jain
  */
 public class SoundsView extends CollectionView implements Observer {
 	private static final double VIEW_HEIGHT_RATIO = .65;

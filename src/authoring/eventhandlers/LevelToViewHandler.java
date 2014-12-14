@@ -6,6 +6,13 @@ import authoring.view.icons.LevelIcon;
 import authoring.view.levelview.LevelsView;
 import authoring.view.levelview.SingleLevelView;
 
+/**
+ * @author Kevin Li
+ * @author Arjun Jain
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Safkat Islam
+ */
 public class LevelToViewHandler implements GameHandler<MouseEvent> {
 
 	private LevelsView myLevels;

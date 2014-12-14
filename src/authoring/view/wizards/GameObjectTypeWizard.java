@@ -5,10 +5,15 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import authoring.model.collections.GameObjectsCollection;
 
-public class GameObjectTypeWizard extends NameWizard{
-	public GameObjectTypeWizard(String title, double width,
-			double height, EventHandler<ActionEvent> event,
-			GameObjectsCollection col) {
+/**
+ * @author Kevin Li
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Arjun Jain
+ */
+public class GameObjectTypeWizard extends NameWizard {
+	public GameObjectTypeWizard(String title, double width, double height,
+			EventHandler<ActionEvent> event, GameObjectsCollection col) {
 		super(title, width, height, event, col);
 	}
 

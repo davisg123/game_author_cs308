@@ -6,7 +6,13 @@ import authoring.view.wizards.AddConditionIDWizard;
 import authoring.view.wizards.Wizard;
 import engine.gameObject.Identifier;
 import engine.level.Level;
-
+/**
+ * @author Kevin Li
+ * @author Arjun Jain
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Safkat Islam
+ */
 public class DeleteConditionFromLevelHandler implements GameHandler<Event>{
 
 	private Level myLevel;

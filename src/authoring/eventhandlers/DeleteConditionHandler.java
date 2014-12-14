@@ -5,7 +5,13 @@ import javafx.event.EventType;
 import authoring.model.collections.ConditionsCollection;
 import authoring.view.wizards.AddConditionIDWizard;
 import authoring.view.wizards.Wizard;
-
+/**
+ * @author Kevin Li
+ * @author Arjun Jain
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Safkat Islam
+ */
 public class DeleteConditionHandler implements GameHandler<Event>{
 
 	private ConditionsCollection myConditionsCollection;

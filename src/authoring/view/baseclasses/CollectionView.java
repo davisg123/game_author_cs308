@@ -2,7 +2,6 @@ package authoring.view.baseclasses;
 
 import java.util.ResourceBundle;
 
-import javafx.event.Event;
 import javafx.scene.control.ScrollPane;
 import authoring.eventhandlers.GameHandler;
 
@@ -10,7 +9,9 @@ import authoring.eventhandlers.GameHandler;
  * Base class other classes can extend to make ScrollPanes.
  * 
  * @author Kevin Li
- *
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Arjun Jain
  */
 public class CollectionView extends ScrollPane {
 	protected ResourceBundle myLanguage;
@@ -29,8 +30,8 @@ public class CollectionView extends ScrollPane {
 		setMinSize(width, height);
 		setMaxSize(width, height);
 	}
-	
-	public void setIconEvents(GameHandler ... gameHandlers){
+
+	public void setIconEvents(GameHandler... gameHandlers) {
 		myIconEvents = gameHandlers;
 	}
 }

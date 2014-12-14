@@ -4,6 +4,12 @@ import java.io.File;
 
 import authoring.eventhandlers.GameHandler;
 
+/**
+ * @author Kevin Li
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Arjun Jain
+ */
 public abstract class FileIcon extends BaseIcon {
 	protected File myGameLocation;
 

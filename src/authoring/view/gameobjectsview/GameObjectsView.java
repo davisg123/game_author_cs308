@@ -3,13 +3,12 @@ package authoring.view.gameobjectsview;
 import java.io.File;
 import java.util.ResourceBundle;
 
-import data.Observable;
-import data.Observer;
 import javafx.scene.layout.VBox;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.CollectionView;
 import authoring.view.icons.GameObjectIcon;
-import authoring.view.icons.ImageBasedIcon;
+import data.Observable;
+import data.Observer;
 import engine.gameObject.GameObject;
 
 /**
@@ -17,7 +16,9 @@ import engine.gameObject.GameObject;
  * automatically if changes occur in SpritesCollection via observer.
  * 
  * @author Kevin Li
- *
+ * @author Chris Bernt
+ * @author Wesley Valentine
+ * @author Arjun Jain
  */
 public class GameObjectsView extends CollectionView implements Observer {
 
