@@ -11,7 +11,9 @@ import authoring.eventhandlers.AddImageHandler;
 import authoring.eventhandlers.AddLevelHandler;
 import authoring.eventhandlers.AddObjectHandler;
 import authoring.eventhandlers.AddSoundHandler;
+import authoring.eventhandlers.DeleteConditionHandler;
 import authoring.eventhandlers.DeleteGameObjectHandler;
+import authoring.eventhandlers.DeleteLevelHandler;
 import authoring.eventhandlers.EditGameObjectHandler;
 import authoring.eventhandlers.FileDragOverHandler;
 import authoring.eventhandlers.GameObjGraphicDragHandler;
@@ -161,12 +163,18 @@ public class AuthoringController {
 		myGameObjects.setIconEvents(new GameObjectClickHandler(myProperties),
 				new GameObjectDragToLevelHandler(myLevels, myModel.getLevels(),
 						myProperties));
-		myLevelOptions.setButtonBehavior(new AddLevelHandler(myModel
+		
+		myLevelOptions.setAddLevelButtonBehavior(new AddLevelHandler(myModel
 				.getLevels(), myLevels));
+		myLevelOptions.setDeleteLevelButtonBehavior(new DeleteLevelHandler(myModel.getLevels(), myLevels));
+		
+		
 		myGraphicOptions.setButtonBehavior(new AddImageHandler(myModel
 				.getImages(), myGameLocation));
+		
 		mySoundOptions.setButtonBehavior(new AddSoundHandler(myModel
 				.getSounds(), myGameLocation));
+		
 		myObjectOptions.setButtonBehavior(new AddObjectHandler(myModel
 				.getGameObjectCollection()));
 
@@ -180,7 +188,8 @@ public class AuthoringController {
 		myConditionsAccordionView.setIconEvents(new IconClickHandler(
 				myProperties));
 
-		myConditionOptions.setButtonBehavior(new AddConditionHandler(myModel.getConditions()));
+		myConditionOptions.setAddConditionButtonBehavior(new AddConditionHandler(myModel.getConditions()));
+		myConditionOptions.setDeleteConditionButtonBehavior(new DeleteConditionHandler(myModel.getConditions()));
 
 		myLevelsAccordionView.setLevelEvents(new GameObjectClickHandler(
 				myProperties),
