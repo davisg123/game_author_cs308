@@ -429,20 +429,27 @@ public class MarioGameTest extends Application {
         allGameObjects.addAll(myLabels);
         allGameObjects.addAll(myMushroomObjects);
 
+        
+        GameObjectsCollection startObj = new GameObjectsCollection();
+        ConditionsCollection startConditions = new ConditionsCollection();
+        
 
         /*******
          * levels
          *******/
         LevelsCollection myLevels = new LevelsCollection();
-        Level level0 = new Level(allGameObjects.getIdentifierList(),myConditions.getIdentifierList(),true);
+        Level start = new Level(startObj.getIdentifierList(),startConditions.getIdentifierList(),true);
+        
+        Level level0 = new Level(allGameObjects.getIdentifierList(),myConditions.getIdentifierList(),false);
         level0.setBackgroundMusic("SuperMarioBrosFull.mp3");
         level0.setBackgroundImage("overworld_bg.png");
         level0.setIdentifier(new Identifier("Level","0"));
-        Level level1 = new Level(allGameObjects.getIdentifierList(), myConditions.getIdentifierList(),false);
-        level1.setBackgroundImage("overworld_bg.png");
-        level1.setIdentifier(new Identifier("Level","1"));
+        //Level level1 = new Level(allGameObjects.getIdentifierList(), myConditions.getIdentifierList(),false);
+        //level1.setBackgroundImage("overworld_bg.png");
+        //level1.setIdentifier(new Identifier("Level","1"));
+        myLevels.add(start);
         myLevels.add(level0);
-        myLevels.add(level1);
+        //myLevels.add(level1);
         
 //        
 //        /*
