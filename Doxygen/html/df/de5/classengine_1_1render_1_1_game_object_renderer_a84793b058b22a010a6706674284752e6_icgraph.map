@@ -1,0 +1,7 @@
+<map id="engine.render.GameObjectRenderer.removeRenderedNode" name="engine.render.GameObjectRenderer.removeRenderedNode">
+<area shape="rect" id="node2" href="$de/d2b/classengine_1_1actions_1_1render_1_1_erase_canvas.html#acd8682c95e3804579eb323afa299f2a3" title="engine.actions.render.Erase\lCanvas.applyRender" alt="" coords="295,5,495,46"/>
+<area shape="rect" id="node3" href="$d0/d2e/classengine_1_1actions_1_1_delete_interacting_objects_action.html#a1a86173d122fd3b90254342a5e2a7837" title="engine.actions.DeleteInteracting\lObjectsAction.execute" alt="" coords="280,70,509,111"/>
+<area shape="rect" id="node4" href="$db/db5/classengine_1_1actions_1_1render_1_1_change_image_type_action.html#a09110a0a08bac229b9e2feddf1d3378c" title="engine.actions.render.Change\lImageTypeAction.execute" alt="" coords="288,135,501,177"/>
+<area shape="rect" id="node5" href="$da/d60/classengine_1_1actions_1_1_delete_type_action.html#a087b7d237e7e6527a701a0db7eec7825" title="engine.actions.DeleteType\lAction.execute" alt="" coords="300,201,489,242"/>
+<area shape="rect" id="node6" href="$d5/da2/classengine_1_1actions_1_1render_1_1_change_image_i_d_action.html#a7fe8769783e7338aa33561e0777d9a3e" title="engine.actions.render.Change\lImageIDAction.execute" alt="" coords="288,266,501,307"/>
+</map>
