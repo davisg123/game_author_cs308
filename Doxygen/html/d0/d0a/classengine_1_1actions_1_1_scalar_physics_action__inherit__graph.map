@@ -1,0 +1,9 @@
+<map id="engine.actions.ScalarPhysicsAction" name="engine.actions.ScalarPhysicsAction">
+<area shape="rect" id="node6" href="$da/d7b/classengine_1_1actions_1_1_density_physics_action.html" title="engine.actions.DensityPhysics\lAction" alt="" coords="1265,5,1479,46"/>
+<area shape="rect" id="node7" href="$d8/d27/classengine_1_1actions_1_1_mass_physics_action.html" title="engine.actions.MassPhysics\lAction" alt="" coords="1273,70,1471,111"/>
+<area shape="rect" id="node8" href="$df/df6/classengine_1_1actions_1_1_volume_physics_action.html" title="engine.actions.VolumePhysics\lAction" alt="" coords="1265,135,1479,177"/>
+<area shape="rect" id="node2" href="$de/d9e/classengine_1_1actions_1_1_physics_component_action.html" title="engine.actions.PhysicsComponent\lAction" alt="" coords="718,70,959,111"/>
+<area shape="rect" id="node3" href="$de/d8e/classengine_1_1actions_1_1_physics_i_d_action.html" title="engine.actions.PhysicsIDAction" alt="" coords="451,77,669,104"/>
+<area shape="rect" id="node4" href="$d9/dd2/interfaceengine_1_1actions_1_1_action.html" title="engine.actions.Action" alt="" coords="243,103,402,129"/>
+<area shape="rect" id="node5" href="$d2/d15/interfaceengine_1_1actions_1_1_initializable.html" title="engine.actions.Initializable" alt="" coords="5,77,195,104"/>
+</map>

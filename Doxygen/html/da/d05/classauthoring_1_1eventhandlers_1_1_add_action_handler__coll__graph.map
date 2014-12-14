@@ -1,0 +1,24 @@
+<map id="authoring.eventhandlers.AddActionHandler" name="authoring.eventhandlers.AddActionHandler">
+<area shape="rect" id="node2" href="$d3/d6a/interfaceauthoring_1_1eventhandlers_1_1_game_handler.html" title="authoring.eventhandlers.\lGameHandler\&lt; Event \&gt;" alt="" coords="2426,750,2609,791"/>
+<area shape="rect" id="node3" href="$d1/d3b/classengine_1_1conditions_1_1_condition.html" title="engine.conditions.Condition" alt="" coords="2418,816,2617,843"/>
+<area shape="rect" id="node4" href="$dc/df6/interfaceengine_1_1game_object_1_1_identifiable.html" title="engine.gameObject.Identifiable" alt="" coords="329,127,549,153"/>
+<area shape="rect" id="node14" href="$df/d84/classengine_1_1level_1_1_level.html" title="engine.level.Level" alt="" coords="799,287,934,313"/>
+<area shape="rect" id="node5" href="$d2/d15/interfaceengine_1_1actions_1_1_initializable.html" title="engine.actions.Initializable" alt="" coords="2027,816,2216,843"/>
+<area shape="rect" id="node6" href="$d4/dac/classengine_1_1game_object_1_1_identifier.html" title="engine.gameObject.Identifier" alt="" coords="335,708,542,735"/>
+<area shape="rect" id="node7" href="$d6/d94/classengine_1_1_game_manager.html" title="engine.GameManager" alt="" coords="2039,532,2203,559"/>
+<area shape="rect" id="node8" href="$df/de5/classauthoring_1_1model_1_1collections_1_1_levels_collection.html" title="authoring.model.collections.\lLevelsCollection" alt="" coords="765,665,968,706"/>
+<area shape="rect" id="node10" href="$df/d67/classengine_1_1level_1_1_level_manager.html" title="engine.level.LevelManager" alt="" coords="1570,383,1761,409"/>
+<area shape="rect" id="node22" href="$da/d90/classengine_1_1sound_1_1_sound_utility.html" title="engine.sound.SoundUtility" alt="" coords="1164,253,1353,280"/>
+<area shape="rect" id="node9" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html" title="authoring.model.collections.\lGeneralCollection\&lt; Level \&gt;" alt="" coords="337,791,540,833"/>
+<area shape="rect" id="node12" href="$df/de5/classengine_1_1render_1_1_game_object_renderer.html" title="engine.render.GameObject\lRenderer" alt="" coords="1161,155,1356,197"/>
+<area shape="rect" id="node15" href="$d3/d8d/classdata_1_1_observable.html" title="data.Observable" alt="" coords="375,279,502,305"/>
+<area shape="rect" id="node17" href="$d1/d32/classauthoring_1_1model_1_1collections_1_1_game_objects_collection.html" title="authoring.model.collections.\lGameObjectsCollection" alt="" coords="337,435,540,477"/>
+<area shape="rect" id="node18" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html" title="authoring.model.collections.\lGeneralCollection\&lt; GameObject \&gt;" alt="" coords="6,435,250,477"/>
+<area shape="rect" id="node21" href="$d9/db5/classengine_1_1_file_path_utility.html" title="engine.FilePathUtility" alt="" coords="790,208,943,235"/>
+<area shape="rect" id="node25" href="$db/d2a/classauthoring_1_1model_1_1collections_1_1_conditions_collection.html" title="authoring.model.collections.\lConditionsCollection" alt="" coords="1157,469,1360,510"/>
+<area shape="rect" id="node26" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html" title="authoring.model.collections.\lGeneralCollection\&lt; Condition \&gt;" alt="" coords="755,525,979,566"/>
+<area shape="rect" id="node30" href="$d2/d02/classauthoring_1_1view_1_1wizards_1_1_action_choice_wizard.html" title="authoring.view.wizards.Action\lChoiceWizard" alt="" coords="2413,1022,2621,1063"/>
+<area shape="rect" id="node31" href="$d6/d32/classauthoring_1_1view_1_1wizards_1_1_wizard.html" title="authoring.view.wizards.Wizard" alt="" coords="2016,973,2227,1000"/>
+<area shape="rect" id="node41" href="$d4/d30/classauthoring_1_1view_1_1wizards_1_1_condition_parameter_wizard.html" title="authoring.view.wizards.Condition\lParameterWizard" alt="" coords="2403,957,2631,998"/>
+<area shape="rect" id="node35" href="$d4/d31/classauthoring_1_1view_1_1wizards_1_1_action_choices_v_box.html" title="authoring.view.wizards.Action\lChoicesVBox" alt="" coords="2017,1061,2225,1102"/>
+</map>
