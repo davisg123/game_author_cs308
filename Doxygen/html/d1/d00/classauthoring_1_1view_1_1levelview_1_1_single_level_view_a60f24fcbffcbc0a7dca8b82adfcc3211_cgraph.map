@@ -1,7 +1,0 @@
-<map id="authoring.view.levelview.SingleLevelView.addGameObjectToView" name="authoring.view.levelview.SingleLevelView.addGameObjectToView">
-<area shape="rect" id="node2" href="$d0/d7f/classengine_1_1game_object_1_1_game_object.html#aaeb5730a3b51fe9cb3d817ea7172cfc2" title="engine.gameObject.GameObject.get\lHeight" alt="" coords="325,5,581,46"/>
-<area shape="rect" id="node3" href="$d0/d7f/classengine_1_1game_object_1_1_game_object.html#acdb2cff95ddb4ab047d24c7edd046817" title="engine.gameObject.GameObject.get\lRotation" alt="" coords="325,70,581,111"/>
-<area shape="rect" id="node4" href="$d0/d7f/classengine_1_1game_object_1_1_game_object.html#a31aa2c854220621b49fc5575b50b9342" title="engine.gameObject.GameObject.get\lWidth" alt="" coords="325,135,581,177"/>
-<area shape="rect" id="node5" href="$d1/d00/classauthoring_1_1view_1_1levelview_1_1_single_level_view.html#aa99c32328153118600c181bde6bc45a7" title="authoring.view.levelview.\lSingleLevelView.moveGameObject\lToLevel" alt="" coords="332,200,575,256"/>
-<area shape="rect" id="node6" href="$d5/d47/classauthoring_1_1view_1_1icons_1_1_image_based_icon.html#ae10b82e7e8cb6cedcb26afa55a25920d" title="authoring.view.icons.Image\lBasedIcon.setDimensions" alt="" coords="356,279,551,321"/>
-</map>
