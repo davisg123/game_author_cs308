@@ -1,5 +1,0 @@
-<map id="engine.gameObject.components.PhysicsBody.reverseVelocity" name="engine.gameObject.components.PhysicsBody.reverseVelocity">
-<area shape="rect" id="node2" href="$d5/d1f/classengine_1_1physics_1_1_vector.html#a1bc7c00d836a738d45eb584223973dec" title="engine.physics.Vector.getX" alt="" coords="309,5,502,32"/>
-<area shape="rect" id="node3" href="$d5/d1f/classengine_1_1physics_1_1_vector.html#a6f71261863fa29e27f1b3f1051529321" title="engine.physics.Vector.getY" alt="" coords="309,56,501,83"/>
-<area shape="rect" id="node4" href="$d9/d9d/classengine_1_1game_object_1_1components_1_1_physics_body.html#a5f54f878a7fef4a77a58bbee39e8c9d3" title="engine.gameObject.components.\lPhysicsBody.setVelocity" alt="" coords="288,107,523,149"/>
-</map>
