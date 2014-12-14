@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import authoring.model.GameData;
 import data.DataManager;
+import errorsAndExceptions.ErrorPopUp;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -38,6 +39,13 @@ public class ProgressSelector {
 	StringProperty myProgressFileName;
 	Stage myProgressStage;
 	
+	/**
+	 * Constructs a new ProgressSelector object to allow for saving and 
+	 * loading of game progress states.
+	 * @param gameLocation Location of game folder.
+	 * @param progressFileName String property that updates in PlayerModel in 
+	 * response to changes in this class.
+	 */
 	public ProgressSelector(File gameLocation, StringProperty progressFileName) {
 		myGameLocation = gameLocation;
 		myProgressFolder = new File(gameLocation, DataManager.PROGRESS_FOLDER_NAME);
@@ -73,11 +81,18 @@ public class ProgressSelector {
 		FXCollections.sort(myProgressList);
 	}
 
+	/**
+	 * Opens up window to load a game progress state.
+	 */
 	public void loadProgressState() {
 		updateProgressList();
 		buildLoadWindow();
 	}
 
+	/**
+	 * Opens up a window to save a game progress state.
+	 * @param saveData Game data being saved.
+	 */
 	public void saveProgressState(GameData saveData) {
 		updateProgressList();
 		buildSaveWindow(saveData);
@@ -132,7 +147,8 @@ public class ProgressSelector {
 		try {
 			myDataManager.writeProgressFile(saveData, myGameLocation, saveText);
 		} catch (IOException e) {
-			e.printStackTrace();
+			ErrorPopUp epu = new ErrorPopUp(e);
+			epu.display("Input/output error", false);
 		}
 		myProgressStage.close();
 	}
@@ -141,7 +157,8 @@ public class ProgressSelector {
 		try {
 			myDataManager.writeProgressFile(saveData, myGameLocation, selectedProgressState);
 		} catch (IOException e) {
-			e.printStackTrace();
+			ErrorPopUp epu = new ErrorPopUp(e);
+			epu.display("Input/output error", false);
 		}
 		myProgressStage.close();
 	}
