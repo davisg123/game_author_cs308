@@ -73,41 +73,32 @@ public class CollisionComposition {
 				.getValue() == 1) ? one : two;
 		GameObject other = (one.getPhysicsBody().getScalar(a.toString())
 				.getValue() == 1) ? two : one;
-		if(other.getID().equals("mario"))
-		{
-			System.out.println(xAxis);
-		}
-		if (!other.getPhysicsBody().hasCollided()) {
-			if (xAxis) {
-				other.getPhysicsBody().setVelocity(
-						new Velocity(0.0, other.getPhysicsBody().getVelocity()
-								.getY()));
-				if (other.getTranslateX() < fixed.getTranslateX()) {
-					other.setTranslateX(fixed.getTranslateX()
-							- other.getPhysicsBody().getCollisionBodyWidth());
-				} else {
-					other.setTranslateX(fixed.getTranslateX()
-							+ fixed.getPhysicsBody().getCollisionBodyWidth());
-				}
+		if (xAxis) {
+			other.getPhysicsBody().setVelocity(
+					new Velocity(0.0, other.getPhysicsBody().getVelocity()
+							.getY()));
+			if (other.getTranslateX() < fixed.getTranslateX()) {
+				other.setTranslateX(fixed.getTranslateX()
+						- other.getPhysicsBody().getCollisionBodyWidth());
 			} else {
-				other.getPhysicsBody().setVelocity(
-						new Velocity(other.getPhysicsBody().getVelocity()
-								.getX(), fixed.getPhysicsBody().getVelocity()
-								.getY()));
-				if (other.getTranslateY() < fixed.getTranslateY()) {
-					other.setTranslateY(fixed.getTranslateY()
-							- other.getPhysicsBody().getCollisionBodyHeight()
-							- 1.0);
-				} else {
-					other.setTranslateY(fixed.getTranslateY()
-							+ fixed.getPhysicsBody().getCollisionBodyHeight()
-							+ 1.0);
-				}
-				other.getPhysicsBody().setCollided();
-
-				// System.out.println(fixed.getTranslateY());
-				// System.out.println(other.getRenderedNode().get);
+				other.setTranslateX(fixed.getTranslateX()
+						+ fixed.getPhysicsBody().getCollisionBodyWidth());
 			}
+		} else {
+			other.getPhysicsBody().setVelocity(
+					new Velocity(other.getPhysicsBody().getVelocity().getX(),
+							fixed.getPhysicsBody().getVelocity().getY()));
+			if (other.getTranslateY() < fixed.getTranslateY()) {
+				other.setTranslateY(fixed.getTranslateY()
+						- other.getPhysicsBody().getCollisionBodyHeight() - 1.0);
+			} else {
+				other.setTranslateY(fixed.getTranslateY()
+						+ fixed.getPhysicsBody().getCollisionBodyHeight() + 1.0);
+			}
+
+			// System.out.println(fixed.getTranslateY());
+			// System.out.println(other.getRenderedNode().get);
+
 		}
 	}
 
