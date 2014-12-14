@@ -50,7 +50,7 @@ public class AuthoringModel {
 		try {
 			boolean success = myDataManager.writeGameFile(mySerializableGame,
 					dataPath);
-			System.out.println("game saved = " + success);
+			//System.out.println("game saved = " + success);
 			myDataManager.writeProgressFile(mySerializableGame, dataPath,
 					"initial");
 		} catch (IOException e) {

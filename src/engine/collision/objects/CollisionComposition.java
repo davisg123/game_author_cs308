@@ -89,10 +89,10 @@ public class CollisionComposition {
 							fixed.getPhysicsBody().getVelocity().getY()));
 			if (other.getTranslateY() < fixed.getTranslateY()) {
 				other.setTranslateY(fixed.getTranslateY()
-						- other.getPhysicsBody().getCollisionBodyHeight() - 1.0);
+						- other.getPhysicsBody().getCollisionBodyHeight());
 			} else {
 				other.setTranslateY(fixed.getTranslateY()
-						+ fixed.getPhysicsBody().getCollisionBodyHeight() + 1.0);
+						+ fixed.getPhysicsBody().getCollisionBodyHeight());
 			}
 
 			// System.out.println(fixed.getTranslateY());

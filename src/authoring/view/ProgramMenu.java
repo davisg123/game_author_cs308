@@ -114,7 +114,7 @@ public class ProgramMenu extends MenuBar {
 		GameData gameData;
 		try {
 			gameData = myDataManager.readGameFile(gameLocation);
-			System.out.println("game loaded");
+			//System.out.println("game loaded");
 			int currentTab = myTabs.getSelectionModel().getSelectedIndex();
 			((AuthoringView) myTabs.getTabs().get(currentTab).getContent())
 					.getController().loadData(gameData);

@@ -159,7 +159,7 @@ public class LevelManager implements Iterable<Level> {
 
 	private void makeTemplates(){
 		for (GameObject object: myGameObjects){
-			if (object.getIdentifier().getUniqueId().equals("template")){
+			if (object.getIdentifier().getUniqueId().equals("Template")){
 				myTemplateObjects.add(object);
 			}
 		}

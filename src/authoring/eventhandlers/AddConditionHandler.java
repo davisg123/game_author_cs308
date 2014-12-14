@@ -89,7 +89,7 @@ public class AddConditionHandler implements GameHandler<Event> {
 	}
 
 	private void fillConditionParameters() {
-		System.out.println("filling conditions");
+		//System.out.println("filling conditions");
 		myInputParameters = new ArrayList<String>();
 		displayMap = new LinkedHashMap<String, String>();
 		for (String s : myCPW.getMap().keySet()) {

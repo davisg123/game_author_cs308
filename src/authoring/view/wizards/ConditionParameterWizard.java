@@ -50,7 +50,7 @@ public class ConditionParameterWizard extends Wizard {
 			params = ACTIONS_PARAMETERS.getString(className);
 		}
 
-		System.out.println(params);
+		//System.out.println(params);
 
 		String[] paramArray = params.split(",");
 		for (String s : paramArray) {

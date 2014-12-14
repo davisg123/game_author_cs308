@@ -76,7 +76,7 @@ public class AddActionHandler implements GameHandler<Event> {
 		Action a;
 		try {
 			a = (Action) myConstructor.newInstance(inputs.toArray());
-			System.out.println(a.getClass());
+			//System.out.println(a.getClass());
 			myCondition.addAction(a);
 			myCPW.close();
 		} catch (InstantiationException | IllegalAccessException

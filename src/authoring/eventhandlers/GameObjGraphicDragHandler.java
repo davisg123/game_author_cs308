@@ -34,8 +34,8 @@ public class GameObjGraphicDragHandler implements GameHandler<MouseEvent> {
 				* (slv.getPaneWidth() - slv.getViewWidth());
 		double mouseY = event.getSceneY() + slv.getVvalue()
 				* (slv.getPaneHeight() - slv.getViewHeight());
-		System.out.println(slv.getVvalue());
-		System.out.println(slv.getPaneWidth());
+		//System.out.println(slv.getVvalue());
+		//System.out.println(slv.getPaneWidth());
 
 		slv.moveGameObjectToLevel(g, mouseX, mouseY);
 	}

@@ -108,7 +108,6 @@ public class LevelsView extends TabView implements Observer {
 		this.getSelectionModel().select(tab);
 		return newView;
 	}
-
 	public boolean levelOpenInTabs(String id) {
 
 		for (Tab tab : this.getTabs()) {

@@ -64,7 +64,7 @@ public class SingleLevelView extends ScrollPane implements Observer {
 		myGameLocation = gameLoc;
 		myGamePane.setBackground(myDefaultBackground);
 
-		System.out.println("BG: " + bgImage);
+		//System.out.println("BG: " + bgImage);
 
 		File file = new File(myGameLocation.getPath() + "/images/" + bgImage);
 		BufferedImage bufferedImage;
@@ -75,7 +75,7 @@ public class SingleLevelView extends ScrollPane implements Observer {
 					null, null, null);
 			Background background = new Background(backgroundImage);
 			myGamePane.setBackground(background);
-			System.out.println("hit");
+			//System.out.println("hit");
 		} catch (IOException e) {
 			ErrorPopUp epu = new ErrorPopUp(e);
 			epu.display("Invalid image selected for background", false);
