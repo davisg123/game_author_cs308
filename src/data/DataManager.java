@@ -19,6 +19,8 @@ import engine.physics.Scalar;
 
 public class DataManager {
 	
+	public static final String IMAGES_FOLDER_NAME = "images";
+	public static final String SOUNDS_FOLDER_NAME = "sounds";
 	public static final String PROGRESS_FOLDER_NAME = "progress";
 	private GsonBuilder gson;
 	
