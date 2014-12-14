@@ -1,4 +1,0 @@
-<map id="engine.actions.PhysicsIDAction.initialize" name="engine.actions.PhysicsIDAction.initialize">
-<area shape="rect" id="node2" href="$d6/d94/classengine_1_1_game_manager.html#a9af317a4a01084f259f64666d5552223" title="engine.GameManager.object\lForIdentifier" alt="" coords="329,5,535,46"/>
-<area shape="rect" id="node3" href="$df/d67/classengine_1_1level_1_1_level_manager.html#a6e15411e375d875fa72058d499bec766" title="engine.level.LevelManager.object\lForIdentifier" alt="" coords="585,5,818,46"/>
-</map>

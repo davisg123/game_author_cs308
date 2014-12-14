@@ -1,5 +1,0 @@
-<map id="engine.actions.PhysicsIDAction.TwoArgInterface.operation" name="engine.actions.PhysicsIDAction.TwoArgInterface.operation">
-<area shape="rect" id="node2" href="$de/d8e/classengine_1_1actions_1_1_physics_i_d_action.html#af11386e3f1264341e71ef6576e4b6f72" title="engine.actions.PhysicsIDAction.for\lHelper" alt="" coords="277,38,517,79"/>
-<area shape="rect" id="node3" href="$df/d04/classengine_1_1actions_1_1_reverse_velocity_i_d_action.html#a68591c8a222c853219a8e380671d42be" title="engine.actions.ReverseVelocity\lIDAction.applyPhysics" alt="" coords="577,5,796,46"/>
-<area shape="rect" id="node4" href="$de/d9e/classengine_1_1actions_1_1_physics_component_action.html#ad28fe2090a449c232cc5594fc0941b79" title="engine.actions.PhysicsComponent\lAction.applyPhysics" alt="" coords="566,70,807,111"/>
-</map>
