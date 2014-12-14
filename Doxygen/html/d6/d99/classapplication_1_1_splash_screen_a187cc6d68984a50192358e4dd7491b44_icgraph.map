@@ -1,0 +1,5 @@
+<map id="application.SplashScreen.show" name="application.SplashScreen.show">
+<area shape="rect" id="node2" href="$d2/dc9/classgame_player_1_1model_1_1_player_model.html#aa7194f2aee9fcab0ae5f7ecc6ad1d58a" title="gamePlayer.model.PlayerModel.exit\lFromGame" alt="" coords="273,5,522,46"/>
+<area shape="rect" id="node4" href="$d9/d96/classapplication_1_1_main.html#a4e5ad4e3de8bbd8654120180a94e870d" title="application.Main.start" alt="" coords="318,71,477,97"/>
+<area shape="rect" id="node3" href="$d9/dff/classgame_player_1_1view_1_1_menu_bar_controller.html#a03dbe0e614185dfd4b6eebabcca44219" title="gamePlayer.view.MenuBarController.exit\lFromGame" alt="" coords="571,5,847,46"/>
+</map>
