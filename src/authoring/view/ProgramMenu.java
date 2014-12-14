@@ -144,9 +144,11 @@ public class ProgramMenu extends MenuBar {
 
 	private void makeFolders(File gameLocation) {
 		gameLocation.mkdir();
-		File imageFolder = new File(gameLocation.getPath() + "/images");
+		File imageFolder = new File(gameLocation.getPath() + "/" 
+				+ DataManager.IMAGES_FOLDER_NAME);
 		imageFolder.mkdir();
-		File soundFolder = new File(gameLocation.getPath() + "/sounds");
+		File soundFolder = new File(gameLocation.getPath() + "/" 
+				+ DataManager.SOUNDS_FOLDER_NAME);
 		soundFolder.mkdir();
 		File progressFolder = new File(gameLocation.getPath() + "/" 
 				+ DataManager.PROGRESS_FOLDER_NAME);
