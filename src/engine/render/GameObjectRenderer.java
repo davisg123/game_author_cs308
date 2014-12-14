@@ -134,7 +134,8 @@ public class GameObjectRenderer {
 		Rectangle hitBox = null;
 		if(body!=null) {
 			hitBox = new Rectangle(body.getCollisionBodyHeight(),body.getCollisionBodyWidth());
-			hitBox.setVisible(false);
+			hitBox.setOpacity(0);
+			//hitBox.setVisible(false);
 		}
 		return hitBox;
 	}

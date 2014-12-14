@@ -9,7 +9,7 @@ public abstract class PhysicsTypeAction implements Action, Initializable{
 
 	protected String myType; 
 	protected String mySecondType;
-	protected CollisionComposition myCollision;
+	protected transient CollisionComposition myCollision;
 	protected Double myValue;
 	protected transient GameObjectsCollection myGameObjects;
 	
@@ -17,11 +17,11 @@ public abstract class PhysicsTypeAction implements Action, Initializable{
 		myType=type;
 		mySecondType = secondType;
 		myValue=value; 
-		myCollision = new CollisionComposition();
 	}
 	
 	@Override
 	public void initialize(GameManager manager) {
+		myCollision = new CollisionComposition();
 		myGameObjects = manager.getLevelManager().getCurrentLevel().getGameObjectsCollection();
 	}
 

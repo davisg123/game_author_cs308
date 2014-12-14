@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 
 import javax.imageio.ImageIO;
 
+import errorsAndExceptions.ErrorPopUp;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.propertiesview.FileProperties;
 import authoring.view.propertiesview.Properties;
@@ -72,7 +73,8 @@ public abstract class ImageBasedIcon extends FileIcon{
 			}
 
 		} catch (IOException e) {
-			System.out.println("Couldn't use path");
+			ErrorPopUp epu = new ErrorPopUp(e);
+			epu.display("Couldn't use path", false);
 		}
 	}
 
