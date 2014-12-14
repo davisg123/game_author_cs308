@@ -1,6 +1,0 @@
-<map id="gamePlayer.view.ProgressSelector.loadProgressState" name="gamePlayer.view.ProgressSelector.loadProgressState">
-<area shape="rect" id="node2" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#aab6a2ce8eba029cc2b0712983e6b3ea5" title="gamePlayer.view.Progress\lSelector.buildLoadWindow" alt="" coords="259,37,445,78"/>
-<area shape="rect" id="node5" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#ad47ec1215944a14051a1106be29d45df" title="gamePlayer.view.Progress\lSelector.updateProgressList" alt="" coords="251,102,453,143"/>
-<area shape="rect" id="node3" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#afd924fe94651082d7b665a09d29df60c" title="gamePlayer.view.Progress\lSelector.loadProgressEvent" alt="" coords="501,5,699,46"/>
-<area shape="rect" id="node4" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#abdecb9a69426fb294cecf3d8a34a0ec0" title="gamePlayer.view.Progress\lSelector.setupWindow" alt="" coords="507,70,693,111"/>
-</map>

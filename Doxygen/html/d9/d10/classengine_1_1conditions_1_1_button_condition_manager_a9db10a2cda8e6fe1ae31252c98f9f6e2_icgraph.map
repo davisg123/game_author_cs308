@@ -1,6 +1,0 @@
-<map id="engine.conditions.ButtonConditionManager.keyIsActive" name="engine.conditions.ButtonConditionManager.keyIsActive">
-<area shape="rect" id="node2" href="$d5/df0/classengine_1_1conditions_1_1_button_release_condition.html#a87b7f59ff63237d1382841cdc50bd8d0" title="engine.conditions.Button\lReleaseCondition.executeActions" alt="" coords="267,5,501,46"/>
-<area shape="rect" id="node4" href="$d5/dcb/classengine_1_1conditions_1_1_button_press_condition.html#ad6cac85b5b1e5062062d62505ab1555a" title="engine.conditions.Button\lPressCondition.executeActions" alt="" coords="275,70,493,111"/>
-<area shape="rect" id="node3" href="$d5/df0/classengine_1_1conditions_1_1_button_release_condition.html#a451cdc687661b047921d1909545bc436" title="engine.conditions.Button\lReleaseCondition.frameElapsed" alt="" coords="550,5,773,46"/>
-<area shape="rect" id="node5" href="$d5/dcb/classengine_1_1conditions_1_1_button_press_condition.html#a1f7240429f750b92e05aad0438a905df" title="engine.conditions.Button\lPressCondition.frameElapsed" alt="" coords="557,70,766,111"/>
-</map>
