@@ -20,7 +20,7 @@ public class AddConditionIDWizard extends Wizard{
 		
 		super.addMapToWindow();
 		
-		Button add = new Button("Add Condition");
+		Button add = new Button(myTitle);
 		add.setOnAction(event);
 		myWindow.getChildren().add(add);
 		

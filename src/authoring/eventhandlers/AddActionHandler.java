@@ -30,10 +30,6 @@ public class AddActionHandler implements GameHandler<Event> {
 	
 	private Condition myCondition;
 
-	public AddActionHandler() {
-
-	}
-
 	@Override
 	public void handle(Event arg0) {
 		myActionSelectionWizard = new ActionChoiceWizard("New ", WIZARD_WIDTH,
@@ -69,10 +65,8 @@ public class AddActionHandler implements GameHandler<Event> {
 			myInputParameters.add(myCPW.getMap().get(s).getInformation());
 		}
 		List<Object> inputs = convertInputParameters();
-		System.out.println(inputs);
 		try {
 			Action a = (Action) myConstructor.newInstance(inputs.toArray());
-			//a.setIdentifier(new Identifier("Condition", mySelectionWizard.getMap().get("name").getInformation()));
 			System.out.println(a.getClass());
 			myCondition.addAction(a);
 			myCPW.close();
