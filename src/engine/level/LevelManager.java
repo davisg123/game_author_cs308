@@ -68,7 +68,7 @@ public class LevelManager implements Iterable<Level> {
 
 	private void setCurrentLevel(Level level) {
 		myCurrentLevel = level;
-		myCurrentLevel.initialize(this);
+		initializeCurrentLevel();
 	}
 
 	/**
