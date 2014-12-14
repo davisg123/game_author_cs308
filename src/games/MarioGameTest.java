@@ -311,6 +311,7 @@ public class MarioGameTest extends Application {
         //collision stuff
         
         //Floor Collisions
+        
         List<Action> MarioConditionActionList = new ArrayList<Action>();
         FixedCollisionTypeAction collisionAction = new FixedCollisionTypeAction("mario","FloorBlock",0.0);
         MarioConditionActionList.add(collisionAction);

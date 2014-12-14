@@ -152,7 +152,9 @@ public class LevelManager implements Iterable<Level> {
 	 */
 	private void enableCondition(Identifier conditionID) {
 		for (Condition condition : myConditions) {
-			condition.setEnabled(condition.getIdentifier().equals(conditionID));
+		    if (condition.getIdentifier().equals(conditionID)){
+		                              condition.setEnabled(true);
+		                         }
 		}
 	}
 
