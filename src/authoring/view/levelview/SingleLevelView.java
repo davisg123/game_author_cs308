@@ -78,7 +78,7 @@ public class SingleLevelView extends ScrollPane implements Observer {
 			System.out.println("hit");
 		} catch (IOException e) {
 			ErrorPopUp epu = new ErrorPopUp(e);
-			epu.display("Not an image selected for background", false);
+			epu.display("Invalid image selected for background", false);
 		}
 		this.setContent(myGamePane);
 	}
