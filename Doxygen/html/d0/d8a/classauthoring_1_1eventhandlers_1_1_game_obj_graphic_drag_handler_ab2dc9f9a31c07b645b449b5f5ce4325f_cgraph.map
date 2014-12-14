@@ -1,4 +1,0 @@
-<map id="authoring.eventhandlers.GameObjGraphicDragHandler.handle" name="authoring.eventhandlers.GameObjGraphicDragHandler.handle">
-<area shape="rect" id="node2" href="$d4/d04/classauthoring_1_1view_1_1levelview_1_1_levels_view.html#a077268144cda48745d9049eb96595e49" title="authoring.view.levelview.\lLevelsView.getCurrentLevel" alt="" coords="335,5,531,46"/>
-<area shape="rect" id="node3" href="$d1/d00/classauthoring_1_1view_1_1levelview_1_1_single_level_view.html#aa99c32328153118600c181bde6bc45a7" title="authoring.view.levelview.\lSingleLevelView.moveGameObject\lToLevel" alt="" coords="312,69,555,125"/>
-</map>
