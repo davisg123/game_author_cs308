@@ -16,6 +16,7 @@ import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import authoring.eventhandlers.GameHandler;
 import authoring.main.Main;
 import authoring.view.icons.GameObjectIcon;
@@ -43,7 +44,7 @@ public class SingleLevelView extends ScrollPane implements Observer {
 	public static final double OBJECT_X_OFFSET = -Main.SCREEN_WIDTH * .2;
 	public static final double OBJECT_Y_OFFSET = -Main.SCREEN_HEIGHT * .23;
 	private File myGameLocation;
-
+	private Rectangle myGameOutline;
 	private GameHandler[] myEvents;
 	private String myID;
 	private Pane myGamePane;
@@ -52,6 +53,9 @@ public class SingleLevelView extends ScrollPane implements Observer {
 	public SingleLevelView(File gameLoc, double width, double height,
 			String bgImage, GameHandler... handlers) {
 		myGamePane = new Pane();
+		myGameOutline = new Rectangle();
+		myGameOutline.setWidth(GAME_WIDTH);
+		myGameOutline.setHeight(GAME_HEIGHT);
 		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
 		myEvents = handlers;
 		myGameLocation = gameLoc;
