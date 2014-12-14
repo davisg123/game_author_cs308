@@ -1,8 +1,0 @@
-<map id="authoring.eventhandlers.GameObjGraphicDragHandler.handle" name="authoring.eventhandlers.GameObjGraphicDragHandler.handle">
-<area shape="rect" id="node2" href="$d4/d04/classauthoring_1_1view_1_1levelview_1_1_levels_view.html#a077268144cda48745d9049eb96595e49" title="authoring.view.levelview.\lLevelsView.getCurrentLevel" alt="" coords="335,5,531,46"/>
-<area shape="rect" id="node3" href="$d1/d00/classauthoring_1_1view_1_1levelview_1_1_single_level_view.html#a5e56dece97369ecf0769569c76dafff9" title="authoring.view.levelview.\lSingleLevelView.getPaneHeight" alt="" coords="323,70,543,111"/>
-<area shape="rect" id="node4" href="$d1/d00/classauthoring_1_1view_1_1levelview_1_1_single_level_view.html#abd3e95fc686736a42f31b91e7c8fe130" title="authoring.view.levelview.\lSingleLevelView.getPaneWidth" alt="" coords="327,135,540,177"/>
-<area shape="rect" id="node5" href="$d1/d00/classauthoring_1_1view_1_1levelview_1_1_single_level_view.html#a1810f27994fea9fee4a6b1909a3f5449" title="authoring.view.levelview.\lSingleLevelView.getViewHeight" alt="" coords="324,201,543,242"/>
-<area shape="rect" id="node6" href="$d1/d00/classauthoring_1_1view_1_1levelview_1_1_single_level_view.html#a3262632b08f2ecc04550d9825cb05c17" title="authoring.view.levelview.\lSingleLevelView.getViewWidth" alt="" coords="328,266,539,307"/>
-<area shape="rect" id="node7" href="$d1/d00/classauthoring_1_1view_1_1levelview_1_1_single_level_view.html#aa99c32328153118600c181bde6bc45a7" title="authoring.view.levelview.\lSingleLevelView.moveGameObject\lToLevel" alt="" coords="312,331,555,387"/>
-</map>

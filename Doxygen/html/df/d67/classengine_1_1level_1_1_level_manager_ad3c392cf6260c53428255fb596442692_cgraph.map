@@ -1,8 +1,0 @@
-<map id="engine.level.LevelManager.changeToLevel" name="engine.level.LevelManager.changeToLevel">
-<area shape="rect" id="node2" href="$df/d67/classengine_1_1level_1_1_level_manager.html#ad89101547413fe335873b050fd091c79" title="engine.level.LevelManager.set\lCurrentLevel" alt="" coords="297,103,511,145"/>
-<area shape="rect" id="node3" href="$df/d84/classengine_1_1level_1_1_level.html#ace23cd4ed278a5bb85e964ff3c8818b5" title="engine.level.Level.initialize" alt="" coords="561,111,751,137"/>
-<area shape="rect" id="node4" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html#a1bdc1047736bbb23259d6a7fe4c6deeb" title="authoring.model.collections.\lGeneralCollection.add" alt="" coords="827,5,1029,46"/>
-<area shape="rect" id="node5" href="$d0/d7f/classengine_1_1game_object_1_1_game_object.html#accd456b2eaab9c7056de825a28b066c8" title="engine.gameObject.GameObject.get\lIdentifier" alt="" coords="800,70,1056,111"/>
-<area shape="rect" id="node6" href="$d4/dac/classengine_1_1game_object_1_1_identifier.html#aa2630b5024b9595e43afe0bf53229433" title="engine.gameObject.Identifier.get\lUniqueId" alt="" coords="813,135,1043,177"/>
-<area shape="rect" id="node7" href="$df/d67/classengine_1_1level_1_1_level_manager.html#a6e15411e375d875fa72058d499bec766" title="engine.level.LevelManager.object\lForIdentifier" alt="" coords="811,201,1045,242"/>
-</map>

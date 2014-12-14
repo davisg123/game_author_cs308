@@ -1,5 +1,0 @@
-<map id="engine.GameManager.togglePause" name="engine.GameManager.togglePause">
-<area shape="rect" id="node2" href="$d2/dc9/classgame_player_1_1model_1_1_player_model.html#a1e406e21d6a42c4690948560aa9d85ae" title="gamePlayer.model.PlayerModel.pauseGame" alt="" coords="261,35,565,61"/>
-<area shape="rect" id="node3" href="$d9/dff/classgame_player_1_1view_1_1_menu_bar_controller.html#a4813fa523f9590894d99509e5703f78e" title="gamePlayer.view.MenuBarController.pauseGame" alt="" coords="613,5,944,32"/>
-<area shape="rect" id="node4" href="$d9/dff/classgame_player_1_1view_1_1_menu_bar_controller.html#a7fe521fbb038790ea4cc4e27bc02f1fe" title="gamePlayer.view.MenuBarController.key\lCombos" alt="" coords="641,57,916,98"/>
-</map>
