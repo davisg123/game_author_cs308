@@ -1,9 +1,8 @@
-package engine.actions.render;
+package engine.actions;
 
 import java.util.List;
 
 import engine.GameManager;
-import engine.actions.IDAction;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 import engine.render.GameObjectRenderer;
@@ -29,7 +28,7 @@ public class ChangeImageIDAction extends IDAction{
 	public void execute() {
 		for (GameObject object: myGameObjects){
 			myRenderer.removeRenderedNode(object.getIdentifier());
-			object.setCurrentImagePath(myPathName);
+			object.setCurrentImagePath("images/" + myPathName);
 			myRenderer.createAndAssignRenderedNode(object);
 		}
 	}

@@ -3,10 +3,13 @@ package engine.gameObject;
 import engine.gameObject.components.*;
 import engine.render.RenderedNode;
 import engine.scrolling.ScrollingUtility;
+
 import java.awt.geom.Point2D;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 import javafx.beans.property.DoubleProperty;
 import javafx.scene.image.Image;
 
@@ -44,6 +47,9 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
 
     //Is it colliding with something
     private boolean collisionEnabled;
+    
+    private String gameLocation ="/src/SonicFalls/";
+    private File gameLocationFile = new File(gameLocation);
 
 
     /**
@@ -261,8 +267,13 @@ public class GameObject implements IEnabled, Iterable<Component>, Identifiable{
     }
 
     public void setCurrentImagePath (String imageName) { 
-        myCurrentImageName = imageName;
-        myRenderedNode.getImageView().setImage(new Image(getClass().getResourceAsStream(imageName)));
+        // myRenderedNode.getImageView().setImage(new Image(getClass().getResourceAsStream(myCurrentImageName)));
+        String rootPath = gameLocationFile.toString();
+        //myRenderedNode.getImageView().setImage(new Image("file:"+rootPath+imageName));
+        //System.out.println(System.getProperty("user.dir") + "\src\SonicFalls\images\rolling.gif");
+//        System.out.println(rootPath + imageName);
+        String str = System.getProperty("user.dir") + "\\src\\SonicFalls\\images\\rolling.gif";
+        myRenderedNode.getImageView().setImage(new Image("file:"+str));
     }
 
     @Override

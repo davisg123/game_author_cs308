@@ -27,10 +27,8 @@ public class MakeNewRandomObjectAction extends MakeNewObjectAction{
 	@Override
 	public void execute() {
 		for (GameObject object: myMasterList){
-			//TODO: make this a template list
 			if (object.getIdentifier().getType().equals(myType)){
 				makeRandomObject(object);
-				
 			}
 		}
 		
