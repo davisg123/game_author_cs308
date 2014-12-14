@@ -1,0 +1,13 @@
+<map id="authoring.eventhandlers.AddConditionHandler.fillConditionParameters" name="authoring.eventhandlers.AddConditionHandler.fillConditionParameters">
+<area shape="rect" id="node2" href="$d3/d92/classauthoring_1_1view_1_1wizards_1_1_condition_selection_wizard.html#a55878f6e0abaa960b2fa52130dde8a6f" title="authoring.view.wizards.Condition\lSelectionWizard.disableSelection" alt="" coords="305,6,535,47"/>
+<area shape="rect" id="node3" href="$d3/d92/classauthoring_1_1view_1_1wizards_1_1_condition_selection_wizard.html#a762ba9a1a888f879f35e3342742f31e8" title="authoring.view.wizards.Condition\lSelectionWizard.enableFinalize" alt="" coords="306,71,534,113"/>
+<area shape="rect" id="node4" href="$d0/d9b/classauthoring_1_1eventhandlers_1_1_add_condition_handler.html#a1dbd177bba812a645c78db0a93e6ee71" title="authoring.eventhandlers.\lAddConditionHandler.finishCondition" alt="" coords="293,137,547,178"/>
+<area shape="rect" id="node12" href="$d6/d32/classauthoring_1_1view_1_1wizards_1_1_wizard.html#a0d419b2943c99507fca42fd769c24b0e" title="authoring.view.wizards.Wizard.getMap" alt="" coords="289,203,551,229"/>
+<area shape="rect" id="node5" href="$d0/d9b/classauthoring_1_1eventhandlers_1_1_add_condition_handler.html#ad09caf055d0f6cc1e01c4029caeefb5c" title="authoring.eventhandlers.\lAddConditionHandler.convertInput\lParameters" alt="" coords="600,5,840,61"/>
+<area shape="rect" id="node6" href="$de/d50/classerrors_and_exceptions_1_1_error_pop_up.html#a879c9fa857c162edfab75ecf1558c944" title="errorsAndExceptions.Error\lPopUp.display" alt="" coords="888,46,1077,87"/>
+<area shape="rect" id="node9" href="$d1/d3b/classengine_1_1conditions_1_1_condition.html#a13aea023be9fc9c78c0fcf66b908054f" title="engine.conditions.Condition.set\lIdentifier" alt="" coords="609,137,831,178"/>
+<area shape="rect" id="node10" href="$d1/d3b/classengine_1_1conditions_1_1_condition.html#a032794f008153a8a356234754ec662e4" title="engine.conditions.Condition.set\lInputMap" alt="" coords="609,202,831,243"/>
+<area shape="rect" id="node11" href="$db/d2a/classauthoring_1_1model_1_1collections_1_1_conditions_collection.html#af4aa1e8459d542b7f0e78ffe3b004d77" title="authoring.model.collections.\lConditionsCollection.add" alt="" coords="619,267,821,309"/>
+<area shape="rect" id="node7" href="$de/d50/classerrors_and_exceptions_1_1_error_pop_up.html#adecc4a2ab81e607673649e10e6d7da52" title="errorsAndExceptions.Error\lPopUp.createButton" alt="" coords="1125,13,1315,54"/>
+<area shape="rect" id="node8" href="$de/d50/classerrors_and_exceptions_1_1_error_pop_up.html#a98549e423869b27d7ee3c87270786f60" title="errorsAndExceptions.Error\lPopUp.chooseStageWidth" alt="" coords="1125,78,1315,119"/>
+</map>

@@ -1,0 +1,15 @@
+<map id="authoring.view.ProgramMenu.FileMenu" name="authoring.view.ProgramMenu.FileMenu">
+<area shape="rect" id="node2" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#aa73ae8b737adefd919b8dd9c770afe5e" title="authoring.view.ProgramMenu.loadFile" alt="" coords="265,72,524,99"/>
+<area shape="rect" id="node10" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#a070bc1672ff24943b56065a223b2ef91" title="authoring.view.ProgramMenu.newFile" alt="" coords="267,123,523,149"/>
+<area shape="rect" id="node13" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#a827ad0690ad7dc9f87b64ffa1979a323" title="authoring.view.ProgramMenu.saveFile" alt="" coords="264,173,525,200"/>
+<area shape="rect" id="node3" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#a10ecf01e628d3fa377f151a965424e50" title="authoring.view.ProgramMenu.loadData" alt="" coords="575,72,844,99"/>
+<area shape="rect" id="node4" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#a64b6179ade9bc9185ddb677a3bdc883b" title="authoring.view.ProgramMenu.setupGame" alt="" coords="894,123,1181,149"/>
+<area shape="rect" id="node5" href="$d1/d95/classdata_1_1_data_manager.html#adf2d2f38be8e2b2934f3ec7e944e2c3a" title="data.DataManager.readGameFile" alt="" coords="921,5,1154,32"/>
+<area shape="rect" id="node7" href="$de/d50/classerrors_and_exceptions_1_1_error_pop_up.html#a879c9fa857c162edfab75ecf1558c944" title="errorsAndExceptions.Error\lPopUp.display" alt="" coords="943,57,1132,98"/>
+<area shape="rect" id="node6" href="$d1/d95/classdata_1_1_data_manager.html#aec1d7a9fb10c2bd1ce23e7aff5eba74c" title="data.DataManager.readFile" alt="" coords="1229,5,1424,32"/>
+<area shape="rect" id="node8" href="$de/d50/classerrors_and_exceptions_1_1_error_pop_up.html#adecc4a2ab81e607673649e10e6d7da52" title="errorsAndExceptions.Error\lPopUp.createButton" alt="" coords="1232,57,1421,98"/>
+<area shape="rect" id="node9" href="$de/d50/classerrors_and_exceptions_1_1_error_pop_up.html#a98549e423869b27d7ee3c87270786f60" title="errorsAndExceptions.Error\lPopUp.chooseStageWidth" alt="" coords="1232,122,1421,163"/>
+<area shape="rect" id="node11" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#aa2afa7ec1c018b777d601e527cbe23c2" title="authoring.view.ProgramMenu.addNew" alt="" coords="578,123,841,149"/>
+<area shape="rect" id="node12" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#acaa62dc220ec4e45a79361815a0a6bc4" title="authoring.view.ProgramMenu.make\lFolders" alt="" coords="914,174,1161,215"/>
+<area shape="rect" id="node14" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#a6e7ed5f0b0f21040bbe8ffd139e24373" title="authoring.view.ProgramMenu.saveData" alt="" coords="573,173,845,200"/>
+</map>
