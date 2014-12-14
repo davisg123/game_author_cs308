@@ -48,6 +48,7 @@ public class GameObjectRenderer {
 	 */
 	public void renderGameObjects (Level level) {
 		myCanvas.getChildren().clear();
+		myRenderedNodes.clear();
 		myCurrentLevel = level;
 		setBackGroundImage(level);
 		for(Iterator<GameObject> iter = myCurrentLevel.getGameObjectIterator(); iter.hasNext();) {
@@ -74,8 +75,9 @@ public class GameObjectRenderer {
 		node.setTranslateY(obj.getY());
 		node.setId(obj.getID());
 		myRenderedNodes.put(obj.getIdentifier(), node);
-		myCanvas.getChildren().add(node);
 		obj.setRenderedNode(node);
+		myCanvas.getChildren().add(node);
+		
 	}
 
 	/**
