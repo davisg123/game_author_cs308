@@ -22,6 +22,8 @@ public class Level extends Observable implements Identifiable {
     private Identifier myId;
     private String myBackgroundImage;
     private String myBackgroundMusic;
+    private int myWidth;
+    private int myHeight;
     private GameObjectsCollection myDefaultGameObjects;
     private GameObjectsCollection myWorkingGameObjects;
     private List<Identifier> myGameObjectIdList;
@@ -172,4 +174,18 @@ public class Level extends Observable implements Identifiable {
     public String getBackgroundMusic(){
     	return myBackgroundMusic;
     }
+    
+    public void setWidth(int i){
+    	myWidth = i;
+    }
+    public void setHeight(int i){
+    	myHeight = i;
+    }
+    public int getHeight(){
+    	return myHeight;
+    }
+    public int getWidth(){
+    	return myWidth;
+    }
+
 }
