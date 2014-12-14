@@ -170,7 +170,7 @@ public class MarioGameTest extends Application {
         //create a player
         GameObject mario = new GameObject(null,"Mario.gif",200,50,30,30,0,"mario");
         mario.setIdentifier(new Identifier("mario","a"));
-        PhysicsBody marioBody = new PhysicsBody(37,37);
+        PhysicsBody marioBody = new PhysicsBody(30,30);
         marioBody.addForce(new Gravity(0,1.0));
         marioBody.addScalar(new GravityConstant(10.0));
         mario.setPhysicsBody(marioBody);
