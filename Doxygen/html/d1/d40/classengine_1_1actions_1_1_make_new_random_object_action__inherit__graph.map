@@ -1,6 +1,0 @@
-<map id="engine.actions.MakeNewRandomObjectAction" name="engine.actions.MakeNewRandomObjectAction">
-<area shape="rect" id="node5" href="$df/d28/classengine_1_1actions_1_1_make_new_object_from_list.html" title="engine.actions.MakeNewObject\lFromList" alt="" coords="11,337,232,378"/>
-<area shape="rect" id="node2" href="$d2/dc5/classengine_1_1actions_1_1_make_new_object_action.html" title="engine.actions.MakeNewObject\lAction" alt="" coords="11,155,232,197"/>
-<area shape="rect" id="node3" href="$d9/dd2/interfaceengine_1_1actions_1_1_action.html" title="engine.actions.Action" alt="" coords="101,80,259,107"/>
-<area shape="rect" id="node4" href="$d2/d15/interfaceengine_1_1actions_1_1_initializable.html" title="engine.actions.Initializable" alt="" coords="27,5,216,32"/>
-</map>
