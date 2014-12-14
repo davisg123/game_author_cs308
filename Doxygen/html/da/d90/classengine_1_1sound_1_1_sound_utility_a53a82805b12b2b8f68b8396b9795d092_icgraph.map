@@ -1,0 +1,6 @@
+<map id="engine.sound.SoundUtility.stopBackGroundMusic" name="engine.sound.SoundUtility.stopBackGroundMusic">
+<area shape="rect" id="node2" href="$d4/da1/classengine_1_1actions_1_1_stop_background_music.html#a819fc2d4150184c3f43a203c7dcd83a6" title="engine.actions.StopBackground\lMusic.execute" alt="" coords="282,5,507,46"/>
+<area shape="rect" id="node3" href="$df/d67/classengine_1_1level_1_1_level_manager.html#a523599892453015eed0f1b506979af8a" title="engine.level.LevelManager.initialize\lCurrentLevel" alt="" coords="272,70,517,111"/>
+<area shape="rect" id="node4" href="$df/d67/classengine_1_1level_1_1_level_manager.html#a1d0f314bbf304bf86067ab87b832d2e0" title="engine.level.LevelManager.find\lAndSetStartLevel" alt="" coords="566,70,783,111"/>
+<area shape="rect" id="node5" href="$df/d67/classengine_1_1level_1_1_level_manager.html#a0ea71eb9396652850db0d2da44c4ca81" title="engine.level.LevelManager.\lLevelManager" alt="" coords="832,70,1027,111"/>
+</map>

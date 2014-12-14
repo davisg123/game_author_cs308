@@ -1,0 +1,11 @@
+<map id="authoring.eventhandlers.AddConditionHandler" name="authoring.eventhandlers.AddConditionHandler">
+<area shape="rect" id="node2" href="$d3/d6a/interfaceauthoring_1_1eventhandlers_1_1_game_handler.html" title="authoring.eventhandlers.\lGameHandler\&lt; Event \&gt;" alt="" coords="991,9,1174,50"/>
+<area shape="rect" id="node3" href="$d2/d02/classauthoring_1_1view_1_1wizards_1_1_action_choice_wizard.html" title="authoring.view.wizards.Action\lChoiceWizard" alt="" coords="979,74,1187,115"/>
+<area shape="rect" id="node4" href="$d6/d32/classauthoring_1_1view_1_1wizards_1_1_wizard.html" title="authoring.view.wizards.Wizard" alt="" coords="540,281,751,308"/>
+<area shape="rect" id="node16" href="$d4/d30/classauthoring_1_1view_1_1wizards_1_1_condition_parameter_wizard.html" title="authoring.view.wizards.Condition\lParameterWizard" alt="" coords="969,307,1197,349"/>
+<area shape="rect" id="node20" href="$d3/d92/classauthoring_1_1view_1_1wizards_1_1_condition_selection_wizard.html" title="authoring.view.wizards.Condition\lSelectionWizard" alt="" coords="969,242,1197,283"/>
+<area shape="rect" id="node10" href="$d4/d31/classauthoring_1_1view_1_1wizards_1_1_action_choices_v_box.html" title="authoring.view.wizards.Action\lChoicesVBox" alt="" coords="541,19,749,61"/>
+<area shape="rect" id="node21" href="$d2/d2f/classauthoring_1_1view_1_1wizards_1_1_condition_choices_v_box.html" title="authoring.view.wizards.Condition\lChoicesVBox" alt="" coords="531,137,759,178"/>
+<area shape="rect" id="node18" href="$db/d2a/classauthoring_1_1model_1_1collections_1_1_conditions_collection.html" title="authoring.model.collections.\lConditionsCollection" alt="" coords="981,487,1184,529"/>
+<area shape="rect" id="node19" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html" title="authoring.model.collections.\lGeneralCollection\&lt; Condition \&gt;" alt="" coords="533,487,757,529"/>
+</map>

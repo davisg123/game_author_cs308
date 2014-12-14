@@ -1,0 +1,15 @@
+<map id="engine.level.LevelManager.objectForIdentifier" name="engine.level.LevelManager.objectForIdentifier">
+<area shape="rect" id="node2" href="$df/d84/classengine_1_1level_1_1_level.html#ace23cd4ed278a5bb85e964ff3c8818b5" title="engine.level.Level.initialize" alt="" coords="297,77,487,104"/>
+<area shape="rect" id="node9" href="$d6/d94/classengine_1_1_game_manager.html#a9af317a4a01084f259f64666d5552223" title="engine.GameManager.object\lForIdentifier" alt="" coords="289,234,495,275"/>
+<area shape="rect" id="node3" href="$df/d67/classengine_1_1level_1_1_level_manager.html#a523599892453015eed0f1b506979af8a" title="engine.level.LevelManager.initialize\lCurrentLevel" alt="" coords="559,5,804,46"/>
+<area shape="rect" id="node6" href="$df/d67/classengine_1_1level_1_1_level_manager.html#ad89101547413fe335873b050fd091c79" title="engine.level.LevelManager.set\lCurrentLevel" alt="" coords="574,70,789,111"/>
+<area shape="rect" id="node4" href="$df/d67/classengine_1_1level_1_1_level_manager.html#a1d0f314bbf304bf86067ab87b832d2e0" title="engine.level.LevelManager.find\lAndSetStartLevel" alt="" coords="879,5,1097,46"/>
+<area shape="rect" id="node5" href="$df/d67/classengine_1_1level_1_1_level_manager.html#a0ea71eb9396652850db0d2da44c4ca81" title="engine.level.LevelManager.\lLevelManager" alt="" coords="1161,5,1356,46"/>
+<area shape="rect" id="node7" href="$df/d67/classengine_1_1level_1_1_level_manager.html#ad3c392cf6260c53428255fb596442692" title="engine.level.LevelManager.change\lToLevel" alt="" coords="867,70,1109,111"/>
+<area shape="rect" id="node8" href="$d1/d73/classengine_1_1actions_1_1_change_level_action.html#a8190adf308768b0d12f6432d0cf0fbc4" title="engine.actions.ChangeLevel\lAction.execute" alt="" coords="1158,70,1359,111"/>
+<area shape="rect" id="node10" href="$db/d61/classengine_1_1actions_1_1_make_new_object_from_object_action.html#ae23a770628b915713b433612f27a7759" title="engine.actions.MakeNewObject\lFromObjectAction.initialize" alt="" coords="571,135,792,177"/>
+<area shape="rect" id="node11" href="$d0/da8/classengine_1_1actions_1_1_change_component_i_d_action.html#a6ea70c000c15a23106498e80a82d3dc9" title="engine.actions.ChangeComponent\lIDAction.initialize" alt="" coords="560,201,803,242"/>
+<area shape="rect" id="node12" href="$db/dfc/classengine_1_1conditions_1_1_game_object_condition.html#ae7a1fd15e4470ff08c9ceca63c43f988" title="engine.conditions.GameObject\lCondition.initialize" alt="" coords="572,266,791,307"/>
+<area shape="rect" id="node13" href="$df/d90/classengine_1_1actions_1_1_translate_i_d_action.html#a3ecf53d053e126273849e988a1db324a" title="engine.actions.Translate\lIDAction.initialize" alt="" coords="593,331,769,373"/>
+<area shape="rect" id="node14" href="$de/d8e/classengine_1_1actions_1_1_physics_i_d_action.html#aff31aa0aeb7f4cb6efbe3afbf9ff4d54" title="engine.actions.PhysicsIDAction.initialize" alt="" coords="544,397,819,424"/>
+</map>
