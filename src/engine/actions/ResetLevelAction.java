@@ -6,20 +6,16 @@ import engine.level.LevelManager;
 
 public class ResetLevelAction implements Action, Initializable{
 
-	private Level myCurrentLevel; 
+	private GameManager myManager;
 	
 	@Override
 	public void initialize(GameManager manager) {
-		
-		myCurrentLevel = manager.getLevelManager().getCurrentLevel(); 
-		
+		myManager = manager;
 	}
 
 	@Override
 	public void execute() {
-		
-		myCurrentLevel.resetLevel();
-	
+		myManager.getLevelManager().initializeCurrentLevel();
 	}
 
 	

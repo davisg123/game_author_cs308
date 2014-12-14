@@ -1,5 +1,6 @@
 package engine.tests;
 
+import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,13 +10,16 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
+import authoring.model.GameData;
 import authoring.model.collections.ConditionsCollection;
 import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.LevelsCollection;
+import data.DataManager;
 import engine.GameManager;
 import engine.actions.Action;
 import engine.actions.DeleteTypeAction;
 import engine.actions.FixedCollisionTypeAction;
+import engine.actions.ResetLevelAction;
 import engine.actions.TranslateXRandomType;
 import engine.actions.TranslateYType;
 import engine.actions.XVelocityIDAction;
@@ -184,22 +188,30 @@ public class FallDownEngineTestFull extends Application {
         boundaryTopActionList.add(shiftDown);
         boundaryTopActionList.add(shiftX);
         
-        BoundaryConditionY boundaryConditionTop = new BoundaryConditionY(boundaryTopActionList, myFloorObjects.getIdentifierList(), 0.0, false);
-        boundaryConditionTop.setIdentifier(new Identifier("bound_cond", "bound_top"));
-        myConditions.add(boundaryConditionTop);
+        BoundaryConditionY boundaryConditionFloorTop = new BoundaryConditionY(boundaryTopActionList, myFloorObjects.getIdentifierList(), 0.0, false);
+        boundaryConditionFloorTop.setIdentifier(new Identifier("bound_cond", "bound_top"));
+        myConditions.add(boundaryConditionFloorTop);
+        
+        Action resetLevelAction = new ResetLevelAction();
+        ArrayList<Action> resetActions = new ArrayList<Action>();
+    //    resetActions.add(resetLevelAction);
+        
+        BoundaryConditionY boundaryConditionBallTop = new BoundaryConditionY(resetActions, myBallObjects.getIdentifierList(), 0.0, false) ;
+        boundaryConditionBallTop.setIdentifier(new Identifier("bound_cond", "bound_top"));
+        myConditions.add(boundaryConditionBallTop);
 
         ArrayList<Action> stopBallLeftList = new ArrayList<Action>();
         Action stopBallLeftAction = new XVelocityIDAction(temp, 10.0);
         stopBallLeftList.add(stopBallLeftAction);
         
+        BoundaryConditionX boundaryConditionLeft = new BoundaryConditionX(stopBallLeftList, myBallObjects.getIdentifierList(), 0.0, false);
+        boundaryConditionLeft.setIdentifier(new Identifier("bound_cond", "bound_left"));
+        myConditions.add(boundaryConditionLeft);
+        
         ArrayList<Action> stopBallRightList = new ArrayList<Action>();
         Action stopBallRightAction = new XVelocityIDAction(temp, -10.0);
         stopBallRightList.add(stopBallRightAction);
         
-        BoundaryConditionX boundaryConditionLeft = new BoundaryConditionX(stopBallLeftList, myBallObjects.getIdentifierList(), 0.0, false);
-        boundaryConditionLeft.setIdentifier(new Identifier("bound_cond", "bound_left"));
-        myConditions.add(boundaryConditionLeft);
-
 		BoundaryConditionX boundaryConditionRight = new BoundaryConditionX(stopBallRightList, myBallObjects.getIdentifierList(), 270.0, true);
 		boundaryConditionRight.setIdentifier(new Identifier("bound_cond", "bound_right"));
         myConditions.add(boundaryConditionRight);
@@ -228,8 +240,9 @@ public class FallDownEngineTestFull extends Application {
          * levels
          *******/
         LevelsCollection myLevels = new LevelsCollection();
-        Level mainLevel = new Level(allGameObjects.getIdentifierList(),myConditions.getIdentifierList(),true);
-        myLevels.add(mainLevel);
+        Level level1 = new Level(allGameObjects.getIdentifierList(),myConditions.getIdentifierList(),true);
+        level1.setIdentifier(new Identifier("level","level1"));
+        myLevels.add(level1);
         
         /*
          * uncomment for saving game
@@ -241,10 +254,8 @@ public class FallDownEngineTestFull extends Application {
             manager.writeGameFile(data, "fd_final.json", Paths.get(".").toString()+"/src/data/games/fd_final/");
         }
         catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        */
+        }*/
+        
         
         /*******
          * game
