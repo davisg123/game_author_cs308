@@ -1,8 +1,6 @@
 package engine.actions;
 
 import engine.GameManager;
-import engine.level.Level;
-import engine.level.LevelManager;
 
 public class ResetLevelAction implements Action, Initializable{
 
@@ -16,6 +14,7 @@ public class ResetLevelAction implements Action, Initializable{
 	@Override
 	public void execute() {
 		myManager.getLevelManager().initializeCurrentLevel();
+		System.out.println("HIII");
 	}
 
 	

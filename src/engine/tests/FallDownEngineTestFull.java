@@ -1,6 +1,5 @@
 package engine.tests;
 
-import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,11 +9,9 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.input.KeyCode;
 import javafx.stage.Stage;
-import authoring.model.GameData;
 import authoring.model.collections.ConditionsCollection;
 import authoring.model.collections.GameObjectsCollection;
 import authoring.model.collections.LevelsCollection;
-import data.DataManager;
 import engine.GameManager;
 import engine.actions.Action;
 import engine.actions.DeleteTypeAction;
@@ -194,7 +191,7 @@ public class FallDownEngineTestFull extends Application {
         
         Action resetLevelAction = new ResetLevelAction();
         ArrayList<Action> resetActions = new ArrayList<Action>();
-    //    resetActions.add(resetLevelAction);
+        resetActions.add(resetLevelAction);
         
         BoundaryConditionY boundaryConditionBallTop = new BoundaryConditionY(resetActions, myBallObjects.getIdentifierList(), 0.0, false) ;
         boundaryConditionBallTop.setIdentifier(new Identifier("bound_cond", "bound_top"));
