@@ -1,0 +1,5 @@
+<map id="authoring.view.levelview.LevelsAccordionView.update" name="authoring.view.levelview.LevelsAccordionView.update">
+<area shape="rect" id="node2" href="$d9/d7c/classauthoring_1_1view_1_1levelview_1_1_levels_accordion_view.html#a9ef72a816ee64e1e386b80f174c8b867" title="authoring.view.levelview.\lLevelsAccordionView.addLevel" alt="" coords="257,27,471,69"/>
+<area shape="rect" id="node3" href="$df/d84/classengine_1_1level_1_1_level.html#a3f515393a7ff1540b372822415262c24" title="engine.level.Level.getIdentifier" alt="" coords="529,5,743,32"/>
+<area shape="rect" id="node4" href="$d4/dac/classengine_1_1game_object_1_1_identifier.html#aa2630b5024b9595e43afe0bf53229433" title="engine.gameObject.Identifier.get\lUniqueId" alt="" coords="521,57,751,98"/>
+</map>
