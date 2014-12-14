@@ -26,7 +26,7 @@ import engine.level.Level;
 
 public class GameObjectRenderer {
 	private Group myCanvas;
-	private Map<String, RenderedNode> myRenderedNodes;
+	private Map<Identifier, RenderedNode> myRenderedNodes;
 	private Level myCurrentLevel;
 	private static final String IMAGES = "images";
 	private static final String BACKGROUND = "background";
@@ -73,7 +73,7 @@ public class GameObjectRenderer {
 		node.setTranslateX(obj.getX());
 		node.setTranslateY(obj.getY());
 		node.setId(obj.getID());
-		myRenderedNodes.put(obj.getID(), node);
+		myRenderedNodes.put(obj.getIdentifier(), node);
 		myCanvas.getChildren().add(node);
 		obj.setRenderedNode(node);
 	}
@@ -143,7 +143,7 @@ public class GameObjectRenderer {
 	 * Removes a rendered Node from the list of currently rendered Nodes
 	 * @param nodeID
 	 */
-	public void removeRenderedNode (String nodeID) {
+	public void removeRenderedNode (Identifier nodeID) {
 		myCanvas.getChildren().remove(myRenderedNodes.get(nodeID));
 		myRenderedNodes.remove(nodeID);
 	}

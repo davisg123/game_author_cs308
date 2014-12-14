@@ -29,9 +29,9 @@ public class DeleteTypeAction extends TypeAction{
 		for (Iterator<GameObject> it = myCurrentLevel.getGameObjectsCollection().iterator(); it.hasNext();){
 			GameObject object = it.next();
 			if (object.getIdentifier().getType().equals(myType)){
-				myRenderer.removeRenderedNode(object.getRenderedNode().getId());
+				myRenderer.removeRenderedNode(object.getIdentifier());
 				it.remove();
-				
+
 			}
 		}
 		
