@@ -1,0 +1,6 @@
+<map id="engine.conditions.GameObjectCondition.getGameObjects" name="engine.conditions.GameObjectCondition.getGameObjects">
+<area shape="rect" id="node2" href="$d9/dd2/classengine_1_1conditions_1_1_movement_condition.html#a09244bc34bdaa228b0a20df7b2c05bbf" title="engine.conditions.Movement\lCondition.assignListeners" alt="" coords="273,5,479,46"/>
+<area shape="rect" id="node4" href="$d0/d3a/classengine_1_1conditions_1_1_boundary_condition_x.html#a543174aaa3d6b7cf3edb1a93773a89c6" title="engine.conditions.Boundary\lConditionX.frameElapsed" alt="" coords="277,70,475,111"/>
+<area shape="rect" id="node5" href="$d2/dd3/classengine_1_1conditions_1_1_boundary_condition_y.html#a66a0d9fd1ec28d36ee07cb2b93bcb170" title="engine.conditions.Boundary\lConditionY.frameElapsed" alt="" coords="277,135,475,177"/>
+<area shape="rect" id="node3" href="$d9/dd2/classengine_1_1conditions_1_1_movement_condition.html#a0d77d232f4cc9d4c348422409ecc3251" title="engine.conditions.Movement\lCondition.MovementCondition" alt="" coords="529,5,743,46"/>
+</map>
