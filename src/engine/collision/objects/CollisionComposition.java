@@ -22,7 +22,6 @@ public class CollisionComposition {
 		double yVel = other.getPhysicsBody().getVelocity().getY();
 		double curX;
 		double curY;
-		GameObject test = new GameObject(other);
 		boolean x;
 		boolean y;
 		double xPoint;
@@ -32,8 +31,8 @@ public class CollisionComposition {
 			yPoint = other.getTranslateY();
 			x = false;
 			y = false;
-			curX = xVel / (i / 2.0);
-			curY = yVel / (i / 2.0);
+			curX = xVel / (i / 2.0-.4);
+			curY = yVel / (i / 2.0-.4);
 			other.setTranslateX(xPoint - curX);
 			if (other.getRenderedNode().getBoundsInParent()
 					.intersects(fixed.getRenderedNode().getBoundsInParent())) {
