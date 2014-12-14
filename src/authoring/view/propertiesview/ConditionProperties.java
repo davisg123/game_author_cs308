@@ -15,7 +15,6 @@ public class ConditionProperties extends Properties {
 	private GameHandler myHandler;
 	private Condition myCondition;
 
-	// will refactor pl0X
 	public ConditionProperties(Object o, GameHandler gh) {
 		myHandler = gh;
 		myCondition = ((ConditionIcon) o).getCondition();

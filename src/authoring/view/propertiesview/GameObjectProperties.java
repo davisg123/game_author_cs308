@@ -88,9 +88,12 @@ public class GameObjectProperties extends Properties {
 		physicsProperties = new LinkedHashMap<String, PropertyTextField>();
 		
 
-		PropertyTextField unmodifiableName = new PropertyTextField("Name: ", gameObject.getID());
+		PropertyTextField unmodifiableName = new PropertyTextField("Type: ", gameObject.getIdentifier().getType());
 		unmodifiableName.setDisable(true);
+		PropertyTextField unmodifiableID = new PropertyTextField("ID: ",gameObject.getIdentifier().getUniqueId());
+		unmodifiableID.setDisable(true);
 		inherentTextProperties.put("name",unmodifiableName);
+		inherentTextProperties.put("id", unmodifiableID);
 		inherentTextProperties.put("image",new PropertyTextField("Image: ", gameObject.getCurrentImageName()));
 		inherentTextProperties.put("width", new PropertyTextField("Width: ", Double.toString(gameObject.getWidth())));
 		inherentTextProperties.put("height",new PropertyTextField("Height: ", Double.toString(gameObject.getHeight())));
@@ -160,10 +163,10 @@ public class GameObjectProperties extends Properties {
 						.get("width").getInformation()),
 				Double.parseDouble(concreteTextProperties.get("rotation")
 						.getInformation()), g.getID());
-			
-		PhysicsBody pb = new PhysicsBody(Double.parseDouble(inherentTextProperties.get("width")
-				.getInformation()), Double.parseDouble(inherentTextProperties
-				.get("height").getInformation()));
+		edited.setIdentifier(g.getIdentifier());
+		PhysicsBody pb = new PhysicsBody( Double.parseDouble(inherentTextProperties
+				.get("height").getInformation()),Double.parseDouble(inherentTextProperties.get("width")
+						.getInformation()));
 
 		pb.addScalar(new Mass(Double.parseDouble(physicsProperties.get("mass").getInformation())));
 		pb.addScalar(new GravityConstant(Double.parseDouble(physicsProperties.get("gravity constant").getInformation())));
