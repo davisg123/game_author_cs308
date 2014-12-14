@@ -9,8 +9,8 @@ import engine.gameObject.Identifier;
 
 public abstract class IDAction implements Action, Initializable{
 
-	protected List<Identifier> myIDs;
-	protected GameObjectsCollection myGameObjects; 
+	protected transient List<Identifier> myIDs;
+	protected transient GameObjectsCollection myGameObjects; 
 	
 	public IDAction(List<Identifier> ids){
 		myIDs = ids; 

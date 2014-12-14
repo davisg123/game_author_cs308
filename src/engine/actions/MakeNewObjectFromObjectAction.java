@@ -7,7 +7,7 @@ import engine.gameObject.Identifier;
 public class MakeNewObjectFromObjectAction extends MakeNewObjectAction {
 
 	private Identifier objectID; 
-	private GameObject myObject; 
+	private transient GameObject myObject; 
 	
 	public MakeNewObjectFromObjectAction(String type, Identifier id) {
 		super(type);
