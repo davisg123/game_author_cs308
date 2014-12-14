@@ -1,7 +1,7 @@
 package engine.conditions;
 
-import java.util.ArrayList;
 import java.util.List;
+
 import engine.actions.Action;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;

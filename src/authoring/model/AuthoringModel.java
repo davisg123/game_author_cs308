@@ -59,6 +59,12 @@ public class AuthoringModel {
 		}
 	}
 
+	/**
+	 * Converts the GameData stored in model into a GameData object that can be
+	 * serialized.
+	 * 
+	 * @return GameData that can be serialized into GSON.
+	 */
 	private GameData convertToSerializable() {
 		GameData mySerializableGame = new GameData();
 		List<GameObject> allGameObjects = new ArrayList<GameObject>();
@@ -104,6 +110,13 @@ public class AuthoringModel {
 		return mySerializableGame;
 	}
 
+	/**
+	 * Converts a serializable GameData object into one that can be interpreted
+	 * by the authoring environment.
+	 * 
+	 * @param input
+	 *            Serializable GameData
+	 */
 	private void convertFromSerializable(GameData input) {
 		for (String s : input.getImages()) {
 			myGame.getImages().add(s);
@@ -120,7 +133,6 @@ public class AuthoringModel {
 					input.getGameObjects().remove(g);
 				}
 			}
-			// l.getGameObjectIDs().clear();
 			Level newLevel = new Level(newObjects);
 			newLevel.setStartIndicator(l.isStartLevel());
 			newLevel.setIdentifier(l.getIdentifier());

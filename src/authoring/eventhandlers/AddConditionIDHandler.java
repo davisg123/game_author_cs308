@@ -10,7 +10,7 @@ import engine.level.Level;
  * @author Arjun Jain
  * @author Chris Bernt
  * @author Wesley Valentine
- *
+ * @author Safkat Islam
  */
 public class AddConditionIDHandler implements GameHandler<Event>{
 

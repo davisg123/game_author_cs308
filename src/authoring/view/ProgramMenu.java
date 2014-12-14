@@ -30,6 +30,7 @@ import errorsAndExceptions.ErrorPopUp;
  * @author Chris Bernt
  * @author Wesley Valentine
  * @author Arjun Jain
+ * @author Eli Lichtenberg
  */
 public class ProgramMenu extends MenuBar {
 	private static final String DEFAULT_RESOURCE = "authoring.resources.languages/language";
