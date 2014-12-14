@@ -1,0 +1,6 @@
+<map id="authoring.view.levelview.LevelsView.addNewLevel" name="authoring.view.levelview.LevelsView.addNewLevel">
+<area shape="rect" id="node2" href="$d4/d95/classauthoring_1_1eventhandlers_1_1_add_level_handler.html#a661a922286bb73b71fae0c5f17e076eb" title="authoring.eventhandlers.\lAddLevelHandler.createLevel" alt="" coords="233,5,439,46"/>
+<area shape="rect" id="node3" href="$d4/d95/classauthoring_1_1eventhandlers_1_1_add_level_handler.html#a5a230a4a3782a8abc4e950d761b3ca4c" title="authoring.eventhandlers.\lAddLevelHandler.getPrompt" alt="" coords="489,5,690,46"/>
+<area shape="rect" id="node4" href="$d4/d95/classauthoring_1_1eventhandlers_1_1_add_level_handler.html#a23ded002286606515b56a80a315ece08" title="authoring.eventhandlers.\lAddLevelHandler.promptLevelID" alt="" coords="739,5,965,46"/>
+<area shape="rect" id="node5" href="$d4/d95/classauthoring_1_1eventhandlers_1_1_add_level_handler.html#a9a0d2dde9cdac11aa5914db24e516b1a" title="authoring.eventhandlers.\lAddLevelHandler.handle" alt="" coords="1014,5,1197,46"/>
+</map>

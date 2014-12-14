@@ -1,0 +1,8 @@
+<map id="engine.actions.SetComponentDoubleIDAction" name="engine.actions.SetComponentDoubleIDAction">
+<area shape="rect" id="node2" href="$d0/da8/classengine_1_1actions_1_1_change_component_i_d_action.html" title="engine.actions.ChangeComponent\lIDAction" alt="" coords="680,74,923,115"/>
+<area shape="rect" id="node3" href="$d9/dd2/interfaceengine_1_1actions_1_1_action.html" title="engine.actions.Action" alt="" coords="334,31,493,57"/>
+<area shape="rect" id="node4" href="$d2/d15/interfaceengine_1_1actions_1_1_initializable.html" title="engine.actions.Initializable" alt="" coords="33,5,223,32"/>
+<area shape="rect" id="node5" href="$d4/dac/classengine_1_1game_object_1_1_identifier.html" title="engine.gameObject.Identifier" alt="" coords="310,81,517,108"/>
+<area shape="rect" id="node7" href="$d1/d32/classauthoring_1_1model_1_1collections_1_1_game_objects_collection.html" title="authoring.model.collections.\lGameObjectsCollection" alt="" coords="312,133,515,174"/>
+<area shape="rect" id="node8" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html" title="authoring.model.collections.\lGeneralCollection\&lt; GameObject \&gt;" alt="" coords="6,133,250,174"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="engine.conditions.ButtonPressCondition" name="engine.conditions.ButtonPressCondition">
+<area shape="rect" id="node2" href="$d1/d3b/classengine_1_1conditions_1_1_condition.html" title="engine.conditions.Condition" alt="" coords="130,80,328,107"/>
+<area shape="rect" id="node3" href="$dc/df6/interfaceengine_1_1game_object_1_1_identifiable.html" title="engine.gameObject.Identifiable" alt="" coords="5,5,224,32"/>
+<area shape="rect" id="node4" href="$d2/d15/interfaceengine_1_1actions_1_1_initializable.html" title="engine.actions.Initializable" alt="" coords="249,5,439,32"/>
+</map>

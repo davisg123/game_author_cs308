@@ -1,0 +1,10 @@
+<map id="engine.level.Level.getBackgroundMusic" name="engine.level.Level.getBackgroundMusic">
+<area shape="rect" id="node2" href="$df/d67/classengine_1_1level_1_1_level_manager.html#a523599892453015eed0f1b506979af8a" title="engine.level.LevelManager.initialize\lCurrentLevel" alt="" coords="291,70,536,111"/>
+<area shape="rect" id="node8" href="$d7/d69/classauthoring_1_1view_1_1propertiesview_1_1_level_properties.html#adfccccc49f33be4065112eaa53887038" title="authoring.view.propertiesview.\lLevelProperties.initializeProperties" alt="" coords="293,135,533,177"/>
+<area shape="rect" id="node3" href="$df/d67/classengine_1_1level_1_1_level_manager.html#a1d0f314bbf304bf86067ab87b832d2e0" title="engine.level.LevelManager.find\lAndSetStartLevel" alt="" coords="587,5,805,46"/>
+<area shape="rect" id="node5" href="$df/d67/classengine_1_1level_1_1_level_manager.html#ad89101547413fe335873b050fd091c79" title="engine.level.LevelManager.set\lCurrentLevel" alt="" coords="589,70,803,111"/>
+<area shape="rect" id="node4" href="$df/d67/classengine_1_1level_1_1_level_manager.html#a0ea71eb9396652850db0d2da44c4ca81" title="engine.level.LevelManager.\lLevelManager" alt="" coords="880,5,1075,46"/>
+<area shape="rect" id="node6" href="$df/d67/classengine_1_1level_1_1_level_manager.html#ad3c392cf6260c53428255fb596442692" title="engine.level.LevelManager.change\lToLevel" alt="" coords="857,70,1098,111"/>
+<area shape="rect" id="node7" href="$d1/d73/classengine_1_1actions_1_1_change_level_action.html#a8190adf308768b0d12f6432d0cf0fbc4" title="engine.actions.ChangeLevel\lAction.execute" alt="" coords="1147,70,1349,111"/>
+<area shape="rect" id="node9" href="$d7/d69/classauthoring_1_1view_1_1propertiesview_1_1_level_properties.html#a44c79e27fd8919f64839d9210c8bd41a" title="authoring.view.propertiesview.\lLevelProperties.LevelProperties" alt="" coords="585,135,807,177"/>
+</map>

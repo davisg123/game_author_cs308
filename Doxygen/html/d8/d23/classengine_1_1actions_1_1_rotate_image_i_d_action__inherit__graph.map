@@ -1,0 +1,5 @@
+<map id="engine.actions.RotateImageIDAction" name="engine.actions.RotateImageIDAction">
+<area shape="rect" id="node2" href="$d3/de4/classengine_1_1actions_1_1_i_d_action.html" title="engine.actions.IDAction" alt="" coords="18,155,189,181"/>
+<area shape="rect" id="node3" href="$d9/dd2/interfaceengine_1_1actions_1_1_action.html" title="engine.actions.Action" alt="" coords="83,80,241,107"/>
+<area shape="rect" id="node4" href="$d2/d15/interfaceengine_1_1actions_1_1_initializable.html" title="engine.actions.Initializable" alt="" coords="9,5,199,32"/>
+</map>
