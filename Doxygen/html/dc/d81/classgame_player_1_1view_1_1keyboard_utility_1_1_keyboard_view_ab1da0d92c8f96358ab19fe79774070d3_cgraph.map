@@ -1,5 +1,0 @@
-<map id="gamePlayer.view.keyboardUtility.KeyboardView.comboBoxForButton" name="gamePlayer.view.keyboardUtility.KeyboardView.comboBoxForButton">
-<area shape="rect" id="node2" href="$d5/dcb/classengine_1_1conditions_1_1_button_press_condition.html#aebf652fe5c28c807c2a13eedae258a7e" title="engine.conditions.Button\lPressCondition.getKeyIdentifier" alt="" coords="272,5,491,46"/>
-<area shape="rect" id="node4" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html#a79482ff667a22bb0d5b702c03261fe8d" title="authoring.model.collections.\lGeneralCollection.iterator" alt="" coords="280,70,483,111"/>
-<area shape="rect" id="node3" href="$d4/dac/classengine_1_1game_object_1_1_identifier.html#aa2630b5024b9595e43afe0bf53229433" title="engine.gameObject.Identifier.get\lUniqueId" alt="" coords="539,5,770,46"/>
-</map>
