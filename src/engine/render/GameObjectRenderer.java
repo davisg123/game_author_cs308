@@ -134,7 +134,8 @@ public class GameObjectRenderer {
 		Rectangle hitBox = null;
 		if(body!=null) {
 			hitBox = new Rectangle(body.getCollisionBodyHeight(),body.getCollisionBodyWidth());
-			hitBox.setVisible(false);
+			hitBox.setOpacity(0);
+			//hitBox.setVisible(false);
 		}
 		return hitBox;
 	}
@@ -150,14 +151,28 @@ public class GameObjectRenderer {
     
 
     private void setBackGroundImage(Level level) {   
-        GameObject background = new GameObject();
+        FileInputStream in;
+        try {
+            in = new FileInputStream(myFilePathUtility.getFilePath()+level.getBackgroundImage());
+            Image image = new Image(in);
+            ImageView view = new ImageView();
+            view.setImage(image);
+            view.setPreserveRatio(true);
+            view.setSmooth(true);
+            view.setCache(true);
+            myCanvas.getChildren().add(view);
+        }
+        catch (FileNotFoundException e) {
+        }
+        
+        /*GameObject background = new GameObject();
         background.setIdentifier(new Identifier(BACKGROUND,BACKGROUND));
         background.setCurrentImagePath(level.getBackgroundImage());
         ImageView view = createImageAndView(background);
         background.setHeight(height);
         RenderedNode node = new RenderedNode();
         node.setImageView(view);
-        background.setRenderedNode(node);
+        background.setRenderedNode(node);*/
     }
     
     public void setCameraFocus (GameObject obj) {

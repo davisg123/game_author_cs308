@@ -427,7 +427,7 @@ public class MarioGameTest extends Application {
          *******/
         LevelsCollection myLevels = new LevelsCollection();
         Level level0 = new Level(allGameObjects.getIdentifierList(),myConditions.getIdentifierList(),true);
-//        level0.setBackgroundMusic("Super Mario Bros. - Full.mp3");
+        level0.setBackgroundMusic("SuperMarioBrosFull.mp3");
         level0.setBackgroundImage("overworld_bg.png");
         level0.setIdentifier(new Identifier("Level","0"));
         Level level1 = new Level(allGameObjects.getIdentifierList(), myConditions.getIdentifierList(),false);
