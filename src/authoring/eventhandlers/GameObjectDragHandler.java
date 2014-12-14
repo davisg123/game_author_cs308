@@ -21,6 +21,7 @@ import engine.level.Level;
  * @author Chris Bernt
  * @author Wesley Valentine
  * @author Safkat Islam
+ * @author Eli Lichtenberg
  */
 
 public class GameObjectDragHandler implements GameHandler<MouseEvent> {
