@@ -1,6 +1,0 @@
-<map id="authoring.view.AuthoringScene.getScene" name="authoring.view.AuthoringScene.getScene">
-<area shape="rect" id="node2" href="$d6/d99/classapplication_1_1_splash_screen.html#a64f7fd7ccc13a6162955b616661c9343" title="application.SplashScreen.author" alt="" coords="232,12,461,39"/>
-<area shape="rect" id="node5" href="$da/d40/classauthoring_1_1main_1_1_main.html#acc1aea4e4aea508e69575aae33e1d19f" title="authoring.main.Main.start" alt="" coords="253,63,440,89"/>
-<area shape="rect" id="node3" href="$d6/d99/classapplication_1_1_splash_screen.html#abad5bc7bafefe1a4e59b0d121dc895e9" title="application.SplashScreen.initialize\lGUIElements" alt="" coords="510,5,749,46"/>
-<area shape="rect" id="node4" href="$d6/d99/classapplication_1_1_splash_screen.html#a512cfd783d4871bae304c03a9a32cba9" title="application.SplashScreen.\lSplashScreen" alt="" coords="797,5,984,46"/>
-</map>

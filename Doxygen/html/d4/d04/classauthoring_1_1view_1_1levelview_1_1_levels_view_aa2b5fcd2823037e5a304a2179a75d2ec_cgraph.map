@@ -1,6 +1,0 @@
-<map id="authoring.view.levelview.LevelsView.addExistingLevel" name="authoring.view.levelview.LevelsView.addExistingLevel">
-<area shape="rect" id="node2" href="$df/d84/classengine_1_1level_1_1_level.html#a886b9636f7fa86609fdc79e215a95a87" title="engine.level.Level.getHeight" alt="" coords="268,5,471,32"/>
-<area shape="rect" id="node3" href="$df/d84/classengine_1_1level_1_1_level.html#a3f515393a7ff1540b372822415262c24" title="engine.level.Level.getIdentifier" alt="" coords="262,56,477,83"/>
-<area shape="rect" id="node4" href="$d4/dac/classengine_1_1game_object_1_1_identifier.html#aa2630b5024b9595e43afe0bf53229433" title="engine.gameObject.Identifier.get\lUniqueId" alt="" coords="254,107,485,149"/>
-<area shape="rect" id="node5" href="$df/d84/classengine_1_1level_1_1_level.html#a4b0ca0969bc5ab4b595b229cc95482e8" title="engine.level.Level.getWidth" alt="" coords="272,173,467,200"/>
-</map>
