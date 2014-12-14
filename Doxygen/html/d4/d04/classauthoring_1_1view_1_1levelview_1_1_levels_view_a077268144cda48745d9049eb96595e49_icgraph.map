@@ -1,7 +1,0 @@
-<map id="authoring.view.levelview.LevelsView.getCurrentLevel" name="authoring.view.levelview.LevelsView.getCurrentLevel">
-<area shape="rect" id="node2" href="$d5/d71/classauthoring_1_1eventhandlers_1_1_delete_game_object_handler.html#accab3889f56825006dc927d15f7c2957" title="authoring.eventhandlers.\lDeleteGameObjectHandler.handle" alt="" coords="268,5,508,46"/>
-<area shape="rect" id="node3" href="$d6/df5/classauthoring_1_1eventhandlers_1_1_edit_game_object_handler.html#ac0a03e6b751068903df50296d9f1fbd7" title="authoring.eventhandlers.\lEditGameObjectHandler.handle" alt="" coords="277,70,499,111"/>
-<area shape="rect" id="node4" href="$d0/d8a/classauthoring_1_1eventhandlers_1_1_game_obj_graphic_drag_handler.html#ab2dc9f9a31c07b645b449b5f5ce4325f" title="authoring.eventhandlers.\lGameObjGraphicDragHandler.handle" alt="" coords="259,135,517,177"/>
-<area shape="rect" id="node5" href="$d1/da4/classauthoring_1_1eventhandlers_1_1_game_object_drag_handler.html#a122ab06aa51a9961e85f5a457142f60c" title="authoring.eventhandlers.\lGameObjectDragHandler.handle" alt="" coords="273,201,503,242"/>
-<area shape="rect" id="node6" href="$d0/df2/classauthoring_1_1eventhandlers_1_1_game_object_drag_to_level_handler.html#ad5002cd6b7781653104f1820a573f902" title="authoring.eventhandlers.\lGameObjectDragToLevelHandler.handle" alt="" coords="251,266,525,307"/>
-</map>

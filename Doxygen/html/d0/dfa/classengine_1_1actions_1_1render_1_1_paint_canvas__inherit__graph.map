@@ -1,5 +1,0 @@
-<map id="engine.actions.render.PaintCanvas" name="engine.actions.render.PaintCanvas">
-<area shape="rect" id="node2" href="$da/d10/classengine_1_1actions_1_1render_1_1_render_action.html" title="engine.actions.render.Render\lAction" alt="" coords="5,155,213,197"/>
-<area shape="rect" id="node3" href="$d9/dd2/interfaceengine_1_1actions_1_1_action.html" title="engine.actions.Action" alt="" coords="89,80,247,107"/>
-<area shape="rect" id="node4" href="$d2/d15/interfaceengine_1_1actions_1_1_initializable.html" title="engine.actions.Initializable" alt="" coords="15,5,204,32"/>
-</map>

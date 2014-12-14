@@ -1,8 +1,0 @@
-<map id="engine.physics.Force.addOrChangeValue" name="engine.physics.Force.addOrChangeValue">
-<area shape="rect" id="node2" href="$d9/d9d/classengine_1_1game_object_1_1components_1_1_physics_body.html#a5241a38b82aed5ed11e7b3674ecb83ce" title="engine.gameObject.components.\lPhysicsBody.addForce" alt="" coords="237,70,472,111"/>
-<area shape="rect" id="node3" href="$d7/d00/classengine_1_1tests_1_1_main_engine_tests.html#ad06079aee97fd7ffd4f2b14a8f01b808" title="engine.tests.MainEngineTests.create\lGameObject" alt="" coords="521,5,775,46"/>
-<area shape="rect" id="node5" href="$dc/d21/classgames_1_1_mario_game_test.html#aab9eed35cd4d8ae1d108ae914b6a73ff" title="games.MarioGameTest.create\lGameObject" alt="" coords="541,70,755,111"/>
-<area shape="rect" id="node7" href="$df/d71/classengine_1_1tests_1_1_physics_body_testing.html#a972062e773bb78d10114b5c8d0ee9be3" title="engine.tests.PhysicsBody\lTesting.main" alt="" coords="556,135,740,177"/>
-<area shape="rect" id="node4" href="$d7/d00/classengine_1_1tests_1_1_main_engine_tests.html#ad1e78dcd3453ebdeb09141cba734c133" title="engine.tests.MainEngineTests.start" alt="" coords="825,12,1069,39"/>
-<area shape="rect" id="node6" href="$dc/d21/classgames_1_1_mario_game_test.html#a8b7c287ffdfcacefeb373e7430a608c8" title="games.MarioGameTest.start" alt="" coords="845,77,1048,104"/>
-</map>
