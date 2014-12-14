@@ -1,0 +1,5 @@
+<map id="gamePlayer.view.ProgressSelector.buildSaveWindow" name="gamePlayer.view.ProgressSelector.buildSaveWindow">
+<area shape="rect" id="node2" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#ae3ab91c2aa658dfafc8fe6bc02191f43" title="gamePlayer.view.Progress\lSelector.saveProgressState" alt="" coords="241,5,439,46"/>
+<area shape="rect" id="node3" href="$d2/dc9/classgame_player_1_1model_1_1_player_model.html#a245d6c46b8a79a80def826b969b195e6" title="gamePlayer.model.PlayerModel.save\lGameProgress" alt="" coords="488,5,744,46"/>
+<area shape="rect" id="node4" href="$d9/dff/classgame_player_1_1view_1_1_menu_bar_controller.html#a3e80307e5f56598e5c990f40869895e1" title="gamePlayer.view.MenuBarController.save\lGameProgress" alt="" coords="792,5,1075,46"/>
+</map>
