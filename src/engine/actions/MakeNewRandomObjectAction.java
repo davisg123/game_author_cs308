@@ -8,7 +8,7 @@ import engine.gameObject.components.PhysicsBody;
 
 public class MakeNewRandomObjectAction extends MakeNewObjectAction{
 
-	protected Random r; 
+	protected transient Random r; 
 	protected Double myLowerXBound;
 	protected Double myUpperXBound;
 	protected Double myLowerYBound;

@@ -17,7 +17,7 @@ import engine.gameObject.Identifier;
 public abstract class PhysicsIDAction implements Action, Initializable {
 
 	protected Double myValue;
-	protected CollisionComposition myCollision;
+	protected transient CollisionComposition myCollision;
 	protected transient Collection<GameObject> myObjects;
 	protected List<Identifier> myID;
 

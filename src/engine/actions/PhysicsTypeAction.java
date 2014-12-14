@@ -9,7 +9,7 @@ public abstract class PhysicsTypeAction implements Action, Initializable{
 
 	protected String myType; 
 	protected String mySecondType;
-	protected CollisionComposition myCollision;
+	protected transient CollisionComposition myCollision;
 	protected Double myValue;
 	protected transient GameObjectsCollection myGameObjects;
 	

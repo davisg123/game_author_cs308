@@ -13,7 +13,7 @@ public abstract class MakeNewObjectAction implements Action, Initializable {
 	protected transient GameObjectsCollection myMasterList;
 	protected transient GameObjectRenderer myRenderer; 
 	protected String myType; 
-	protected Random r;
+	protected transient Random r;
 
 	
 	public MakeNewObjectAction(String type){
