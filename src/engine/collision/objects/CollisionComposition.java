@@ -11,7 +11,6 @@ import engine.physics.Velocity;
  *
  */
 public class CollisionComposition {
-	private static final double FRAMES_PER_SECOND = 60.0;
 
 	public boolean isOnXAxis(GameObject one, GameObject two) {
 		GameObject fixed = (one.getPhysicsBody().getScalar("CollisionConstant")
@@ -22,7 +21,6 @@ public class CollisionComposition {
 		double yVel = other.getPhysicsBody().getVelocity().getY();
 		double curX;
 		double curY;
-		GameObject test = new GameObject(other);
 		boolean x;
 		boolean y;
 		double xPoint;
@@ -73,10 +71,7 @@ public class CollisionComposition {
 				.getValue() == 1) ? one : two;
 		GameObject other = (one.getPhysicsBody().getScalar(a.toString())
 				.getValue() == 1) ? two : one;
-		if(other.getID().equals("mario"))
-		System.out.println(fixed.getTranslateY()
-				- other.getPhysicsBody().getCollisionBodyHeight()+" "+xAxis);
-		if (other.getID().equals("mario"))
+		
 			if (xAxis) {
 				other.getPhysicsBody().setVelocity(
 						new Velocity(0.0, other.getPhysicsBody().getVelocity()
