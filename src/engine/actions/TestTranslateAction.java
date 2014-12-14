@@ -5,7 +5,7 @@ import engine.GameManager;
 
 public class TestTranslateAction implements Action {
 	
-	String myID;
+	private String myID;
 	
 	public TestTranslateAction(String id) {
 		myID = id;

@@ -6,7 +6,7 @@ import engine.level.LevelManager;
 
 public class ResetLevelAction implements Action, Initializable{
 
-	private Level myCurrentLevel; 
+	private transient Level myCurrentLevel; 
 	
 	@Override
 	public void initialize(GameManager manager) {

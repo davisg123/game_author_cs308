@@ -5,7 +5,7 @@ import engine.gameObject.GameObject;
 
 public class ChangeImageTypeAction extends TypeAction{
 
-	String myPathName; 
+	private String myPathName; 
 	
 	public ChangeImageTypeAction(String type, String pathname){
 		super(type);

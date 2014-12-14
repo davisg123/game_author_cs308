@@ -9,7 +9,7 @@ import engine.gameObject.Identifier;
 
 public class DeleteIdAction extends IDAction{
 
-	private GameObjectsCollection myGameObjects; 
+	private transient GameObjectsCollection myGameObjects; 
 	
 	
 	public DeleteIdAction(List<Identifier> ids){

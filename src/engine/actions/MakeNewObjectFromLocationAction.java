@@ -5,8 +5,8 @@ import engine.gameObject.GameObject;
 
 public class MakeNewObjectFromLocationAction extends MakeNewObjectAction{
 
-	private Double myX; 
-	private Double myY; 
+	private transient Double myX; 
+	private transient Double myY; 
 	
 	public MakeNewObjectFromLocationAction(String type, Double x, Double y) {
 		super(type);

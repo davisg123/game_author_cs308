@@ -7,8 +7,8 @@ import engine.render.GameObjectRenderer;
 
 public abstract class MakeNewObjectAction implements Action, Initializable {
 
-	protected Level myCurrentLevel; 
-	protected GameObjectsCollection myMasterList;
+	protected transient Level myCurrentLevel; 
+	protected transient GameObjectsCollection myMasterList;
 	protected transient GameObjectRenderer myRenderer; 
 	protected String myType; 
 	

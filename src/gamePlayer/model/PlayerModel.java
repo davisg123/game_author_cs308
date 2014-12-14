@@ -43,20 +43,17 @@ public class PlayerModel {
 		myButtonConditions = new ConditionsCollection();
 		myFileSelector = new FileSelectionWizard();
 		progressFileName = new SimpleStringProperty();
-		addStringChangeListener();
+		addFileNameChangeListener();
 	}
 	
-	private void addStringChangeListener() {
+	private void addFileNameChangeListener() {
 		progressFileName.addListener(new ChangeListener<String>() {
-
 			@Override
 			public void changed(ObservableValue<? extends String> observable,
 					String oldValue, String newValue) {
-				System.out.println(newValue);
 				myGameData = myDataManager.readProgressFile(myGameLocation, newValue);
 				loadGameData();
 			}
-			
 		});
 	}
 	
@@ -66,16 +63,12 @@ public class PlayerModel {
 
 	public void loadGameFile() {
 		myGameLocation = myFileSelector.selectFile();
-		System.out.println(myGameLocation.getAbsolutePath());
 		myGameData = myDataManager.readGameFile(myGameLocation);
 		myProgressSelector = new ProgressSelector(myGameLocation, progressFileName);
 		loadGameData();
 	}
 
 	private void loadGameData() {
-		System.out.println(myGameData);
-		System.out.println(myGameData.getGameObjects());
-		if(myGameData == null) System.out.println("Null!!!!");
 		myGameManager = new GameManager(myGameData.getConditions(),
 				myGameData.getGameObjects(), myGameData.getLevels(),
 				myPlayerView.getGroup(), myGameLocation.toString());

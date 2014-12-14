@@ -91,10 +91,10 @@ public class ProgressSelector {
 
 	private void buildSaveWindow(GameData saveData) {
 		VBox root = setupWindow("Save or overwrite progress state");
-		TextField name = new TextField();
 		HBox header = new HBox();
 		root.getChildren().add(header);
 		header.toBack();
+		TextField name = new TextField();
 		name.setPromptText("Enter name for progress state");
 		name.setPrefColumnCount(TEXT_COLUMN_COUNT);
 		header.getChildren().add(name);
