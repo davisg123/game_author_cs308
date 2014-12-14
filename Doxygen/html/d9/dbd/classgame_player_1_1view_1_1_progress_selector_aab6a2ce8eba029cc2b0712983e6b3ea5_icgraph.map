@@ -1,5 +1,0 @@
-<map id="gamePlayer.view.ProgressSelector.buildLoadWindow" name="gamePlayer.view.ProgressSelector.buildLoadWindow">
-<area shape="rect" id="node2" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html#a4ff93ccaf5f04d71bb01ccc4396fb436" title="gamePlayer.view.Progress\lSelector.loadProgressState" alt="" coords="241,5,437,46"/>
-<area shape="rect" id="node3" href="$d2/dc9/classgame_player_1_1model_1_1_player_model.html#ae62427e7f2bad6a58b3456848d5b6a55" title="gamePlayer.model.PlayerModel.load\lGameProgress" alt="" coords="485,5,739,46"/>
-<area shape="rect" id="node4" href="$d9/dff/classgame_player_1_1view_1_1_menu_bar_controller.html#a739bfe0922b7fb11402ae37a72d637c9" title="gamePlayer.view.MenuBarController.load\lGameProgress" alt="" coords="787,5,1067,46"/>
-</map>

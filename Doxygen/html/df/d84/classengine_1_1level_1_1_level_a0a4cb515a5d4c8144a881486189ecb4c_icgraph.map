@@ -1,8 +1,0 @@
-<map id="engine.level.Level.setBackgroundImage" name="engine.level.Level.setBackgroundImage">
-<area shape="rect" id="node2" href="$d7/d00/classengine_1_1tests_1_1_main_engine_tests.html#ad06079aee97fd7ffd4f2b14a8f01b808" title="engine.tests.MainEngineTests.create\lGameObject" alt="" coords="289,5,543,46"/>
-<area shape="rect" id="node4" href="$d4/d95/classauthoring_1_1eventhandlers_1_1_add_level_handler.html#a661a922286bb73b71fae0c5f17e076eb" title="authoring.eventhandlers.\lAddLevelHandler.createLevel" alt="" coords="313,70,519,111"/>
-<area shape="rect" id="node3" href="$d7/d00/classengine_1_1tests_1_1_main_engine_tests.html#ad1e78dcd3453ebdeb09141cba734c133" title="engine.tests.MainEngineTests.start" alt="" coords="593,12,837,39"/>
-<area shape="rect" id="node5" href="$d4/d95/classauthoring_1_1eventhandlers_1_1_add_level_handler.html#a5a230a4a3782a8abc4e950d761b3ca4c" title="authoring.eventhandlers.\lAddLevelHandler.getPrompt" alt="" coords="614,70,815,111"/>
-<area shape="rect" id="node6" href="$d4/d95/classauthoring_1_1eventhandlers_1_1_add_level_handler.html#a23ded002286606515b56a80a315ece08" title="authoring.eventhandlers.\lAddLevelHandler.promptLevelID" alt="" coords="885,70,1112,111"/>
-<area shape="rect" id="node7" href="$d4/d95/classauthoring_1_1eventhandlers_1_1_add_level_handler.html#a9a0d2dde9cdac11aa5914db24e516b1a" title="authoring.eventhandlers.\lAddLevelHandler.handle" alt="" coords="1161,70,1343,111"/>
-</map>
