@@ -1,0 +1,4 @@
+<map id="engine.actions.PhysicsIDAction.forHelper" name="engine.actions.PhysicsIDAction.forHelper">
+<area shape="rect" id="node2" href="$df/d04/classengine_1_1actions_1_1_reverse_velocity_i_d_action.html#a68591c8a222c853219a8e380671d42be" title="engine.actions.ReverseVelocity\lIDAction.applyPhysics" alt="" coords="305,5,524,46"/>
+<area shape="rect" id="node3" href="$de/d9e/classengine_1_1actions_1_1_physics_component_action.html#ad28fe2090a449c232cc5594fc0941b79" title="engine.actions.PhysicsComponent\lAction.applyPhysics" alt="" coords="294,70,535,111"/>
+</map>

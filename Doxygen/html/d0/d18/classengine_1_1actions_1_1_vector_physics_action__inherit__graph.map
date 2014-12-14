@@ -1,0 +1,17 @@
+<map id="engine.actions.VectorPhysicsAction" name="engine.actions.VectorPhysicsAction">
+<area shape="rect" id="node6" href="$de/d26/classengine_1_1actions_1_1_force_physics_action.html" title="engine.actions.ForcePhysics\lAction" alt="" coords="1274,135,1475,177"/>
+<area shape="rect" id="node11" href="$d4/de0/classengine_1_1actions_1_1_impulse_action.html" title="engine.actions.ImpulseAction" alt="" coords="1270,292,1479,319"/>
+<area shape="rect" id="node14" href="$d3/dce/classengine_1_1actions_1_1_velocity_i_d_action.html" title="engine.actions.VelocityIDAction" alt="" coords="1264,376,1485,403"/>
+<area shape="rect" id="node2" href="$de/d9e/classengine_1_1actions_1_1_physics_component_action.html" title="engine.actions.PhysicsComponent\lAction" alt="" coords="718,285,959,326"/>
+<area shape="rect" id="node3" href="$de/d8e/classengine_1_1actions_1_1_physics_i_d_action.html" title="engine.actions.PhysicsIDAction" alt="" coords="451,292,669,319"/>
+<area shape="rect" id="node4" href="$d9/dd2/interfaceengine_1_1actions_1_1_action.html" title="engine.actions.Action" alt="" coords="243,317,402,344"/>
+<area shape="rect" id="node5" href="$d2/d15/interfaceengine_1_1actions_1_1_initializable.html" title="engine.actions.Initializable" alt="" coords="5,292,195,319"/>
+<area shape="rect" id="node7" href="$d4/dc6/classengine_1_1actions_1_1_x_friction_physics_action.html" title="engine.actions.XFriction\lPhysicsAction" alt="" coords="1563,5,1735,46"/>
+<area shape="rect" id="node8" href="$d5/de6/classengine_1_1actions_1_1_x_gravity_physics_action.html" title="engine.actions.XGravityPhysics\lAction" alt="" coords="1540,70,1759,111"/>
+<area shape="rect" id="node9" href="$db/ddb/classengine_1_1actions_1_1_y_friction_physics_action.html" title="engine.actions.YFriction\lPhysicsAction" alt="" coords="1564,135,1735,177"/>
+<area shape="rect" id="node10" href="$dd/d79/classengine_1_1actions_1_1_y_gravity_physics_action.html" title="engine.actions.YGravityPhysics\lAction" alt="" coords="1540,201,1759,242"/>
+<area shape="rect" id="node12" href="$de/d83/classengine_1_1actions_1_1_x_impulse_i_d_action.html" title="engine.actions.XImpulseIDAction" alt="" coords="1534,267,1765,293"/>
+<area shape="rect" id="node13" href="$d3/de2/classengine_1_1actions_1_1_y_impulse_i_d_action.html" title="engine.actions.YImpulseIDAction" alt="" coords="1535,317,1764,344"/>
+<area shape="rect" id="node15" href="$d2/da8/classengine_1_1actions_1_1_x_velocity_i_d_action.html" title="engine.actions.XVelocity\lIDAction" alt="" coords="1561,369,1737,410"/>
+<area shape="rect" id="node16" href="$d1/da7/classengine_1_1actions_1_1_y_velocity_i_d_action.html" title="engine.actions.YVelocity\lIDAction" alt="" coords="1562,434,1737,475"/>
+</map>
