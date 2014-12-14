@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import javafx.application.Application;
@@ -28,6 +29,7 @@ import engine.conditions.BoundaryConditionX;
 import engine.conditions.BoundaryConditionY;
 import engine.conditions.ButtonConditionManager;
 import engine.conditions.ButtonPressCondition;
+import engine.conditions.Condition;
 import engine.conditions.TimeCondition;
 import engine.conditions.TypeCollisionCondition;
 import engine.gameObject.GameObject;
@@ -249,6 +251,11 @@ public class FallDownEngineTestFull extends Application {
         catch (IOException e) {
         }
         
+        
+        for(Condition c : myConditions)
+        {
+        	c.setInputMap(new LinkedHashMap<String, String>());
+        }
         
         /*******
          * game

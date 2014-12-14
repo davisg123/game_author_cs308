@@ -2,12 +2,11 @@ package engine.conditions;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import engine.GameManager;
 import engine.actions.Action;
 import engine.actions.Initializable;
-import engine.actions.PhysicsTypeAction;
-import engine.actions.TranslateTypeAction;
 import engine.gameObject.Identifiable;
 import engine.gameObject.Identifier;
 
@@ -24,6 +23,7 @@ public abstract class Condition implements Identifiable, Initializable{
     private Boolean myEnabled;
     protected transient GameManager myGameManager;
     protected Identifier myId;
+    private Map<String,String> myInputs;
     
     public Condition(List<Action> actions){
         myActions = actions;
@@ -42,7 +42,13 @@ public abstract class Condition implements Identifiable, Initializable{
         return myEnabled;
     }
     
+    public void setInputMap(Map<String,String> inputs){
+    	myInputs = inputs;
+    }
     
+    public Map<String,String> getInputMap(){
+    	return myInputs;
+    }
     /**
      * method to call for executing the associated action/s
      */
@@ -97,3 +103,4 @@ public abstract class Condition implements Identifiable, Initializable{
     
     
 }
+
