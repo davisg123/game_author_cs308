@@ -1,8 +1,11 @@
 package engine.actions;
 
+import java.util.Random;
+
 import engine.GameManager;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
+import engine.gameObject.components.PhysicsBody;
 
 public class MakeNewObjectFromObjectAction extends MakeNewObjectAction {
 
@@ -12,7 +15,6 @@ public class MakeNewObjectFromObjectAction extends MakeNewObjectAction {
 	public MakeNewObjectFromObjectAction(String type, Identifier id) {
 		super(type);
 		objectID = id; 
-		
 	}
 
 	@Override
@@ -28,13 +30,11 @@ public class MakeNewObjectFromObjectAction extends MakeNewObjectAction {
 			//TODO: To TEMPLATELIST
 			if (object.getIdentifier().getType().equals(myType)){
 				GameObject newObject = new GameObject(object, myObject.getTranslateX(), myObject.getTranslateY(), myType);
-				newObject.setIdentifier(object.getIdentifier());
-				newObject.setPhysicsBody(object.getPhysicsBody());
+				newObject.setIdentifier(new Identifier(object.getIdentifier()));
+				newObject.setPhysicsBody(new PhysicsBody(object.getPhysicsBody()));
 				myRenderer.createAndAssignRenderedNode(newObject);
 				newObject.setOrientation(myObject.getOrientation());
-				myCurrentLevel.addGameObject(newObject);
-				
-				
+				myCurrentLevel.addGameObject(newObject);	
 			}
 			
 		}

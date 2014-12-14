@@ -49,8 +49,8 @@ public class MenuBarController implements Initializable{
 	}
 	
 	@FXML
-	private void exitFromGame(final ActionEvent event){
-		myPlayerModel.exitFromGame();
+	private void exitFromGamePlayer(final ActionEvent event){
+		myPlayerModel.exitFromGamePlayer();
 		gameOptions.setDisable(true);
 		gamePreferences.setDisable(true);
 	}

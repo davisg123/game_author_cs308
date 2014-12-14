@@ -1,10 +1,17 @@
 package errorsAndExceptions;
 
+import java.io.PrintWriter;
+import java.io.StringWriter;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.layout.Priority;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -19,27 +26,34 @@ import javafx.stage.Stage;
  */
 public class ErrorPopUp {
 	
-	private static final int POP_UP_HEIGHT = 100;
+	private static final int MAX_BUTTON_WIDTH = 250;
+	private static final int POP_UP_HEIGHT = 200;
 	private static final int POP_UP_WIDTH = 300;
 	private static final int TEXT_Y_COORD = POP_UP_HEIGHT/2;
 	private static final int TEXT_X_COORD = POP_UP_WIDTH/4;
-	private static final int BUTTON_Y_COORD = POP_UP_HEIGHT*5/8;
+	private static final int BUTTON_Y_COORD = POP_UP_HEIGHT*4/8;
 	private static final int BUTTON_X_COORD = POP_UP_WIDTH/2;
 	private static final String ERROR_TITLE = "User Error";
 	private static final String BUTTON_TEXT = "OK";
-	private Group root;
+	private VBox root;
 	private Stage popUpStage;
+	private Scene myScene;
+	
+	private Exception myException;
 	
 	/**
 	 * Constructor.
 	 */
-	public ErrorPopUp() {
+	public ErrorPopUp(Exception e) {
 		popUpStage = new Stage();
 		popUpStage.setTitle(ERROR_TITLE);
-		root = new Group();
-		Scene scene = new Scene(root, POP_UP_WIDTH, POP_UP_HEIGHT, Color.LIGHTGRAY);
-		popUpStage.setScene(scene);
+		root = new VBox();
+		myScene = new Scene(root, POP_UP_WIDTH, POP_UP_HEIGHT, Color.valueOf("#00008b"));
+		myScene.getStylesheets().add(getClass().getResource("ErrorStyle.css").toExternalForm());
+		popUpStage.setScene(myScene);
+		myException = e;
 	}
+	
 	
 	/**
 	 * EventHandler to close the PopUp window.
@@ -48,6 +62,25 @@ public class ErrorPopUp {
 		@Override
 		public void handle(ActionEvent evt){
 			popUpStage.close();
+		}
+	};
+	
+	private EventHandler<ActionEvent> viewErrorTrace = new EventHandler<ActionEvent>() {
+		@Override
+		public void handle(ActionEvent evt) {
+			Stage errorTraceStage = new Stage();
+			VBox errorBox = new VBox();
+			ScrollPane sp = new ScrollPane();
+			Label errorTrace = new Label(getStackTrace());
+			errorTrace.setId("error");
+			sp.setContent(errorTrace);
+			errorBox.getChildren().add(sp);
+			errorBox.setVgrow(sp, Priority.ALWAYS);
+			Scene scene = new Scene(errorBox, POP_UP_WIDTH*2, POP_UP_HEIGHT*3, Color.LIGHTGRAY);
+			scene.getStylesheets().add(getClass().getResource("ErrorStyle.css").toExternalForm());
+			errorTraceStage.setScene(scene);
+			errorTraceStage.centerOnScreen();
+			errorTraceStage.show();
 		}
 	};
 	
@@ -60,21 +93,54 @@ public class ErrorPopUp {
 	 */
 	public void display(String errorMessage, boolean throwException) throws VoogaException{
 		root.getChildren().clear();
-		Text errorText = new Text(TEXT_X_COORD, TEXT_Y_COORD, errorMessage);
-		root.getChildren().add(errorText);
+//		VBox box = new VBox();
+		root.getStyleClass().add("vbox");
+		Text errorText = new Text(errorMessage);
+		errorText.setId("text");
 		
-		Button b = new Button();
-		b.setText(BUTTON_TEXT);
-		b.setLayoutX(BUTTON_X_COORD);
-		b.setLayoutY(BUTTON_Y_COORD);
-		root.getChildren().add(b);
-		b.setOnAction(closePopUp);
+		root.getChildren().add(errorText);
+		Button okButton = createButton(root, "OK", BUTTON_X_COORD, BUTTON_Y_COORD, closePopUp);
+		Button viewButton = createButton(root, "View Error Trace", BUTTON_X_COORD-40, BUTTON_Y_COORD+40, viewErrorTrace);
+		root.getChildren().add(okButton);
+		root.getChildren().add(viewButton);
+		double buttonWidth = viewButton.getWidth();
+		//get width of button so can send to chooseStageWidth method
+		root.autosize();
+//		root.getChildren().add(box);
+		popUpStage.centerOnScreen();
+		double newStageWidth = chooseStageWidth(buttonWidth);
+		popUpStage.setWidth(newStageWidth);
+		//popUpStage.setWidth(2*textWidth);
 		popUpStage.show();
 		
 		if(throwException)
 		{
 			throw new VoogaException(errorMessage);
 		}
+	}
+
+	private double chooseStageWidth(double buttonWidth) {
+		// TODO Auto-generated method stub
+		return Math.max(2*root.getWidth(), MAX_BUTTON_WIDTH);
+	}
+
+	private Button createButton(VBox vbox, String message, double x, double y, EventHandler<ActionEvent> event) {
+		// TODO Auto-generated method stub
+		Button b = new Button();
+		b.setText(message);
+		b.setLayoutX(x);
+		b.setLayoutY(y);
+		b.setOnAction(event);
+		b.setId("buttons");
+		return b;
+	}
+
+	private String getStackTrace() {
+		// TODO Auto-generated method stub
+		StringWriter sw = new StringWriter();
+		PrintWriter pw = new PrintWriter(sw);
+		myException.printStackTrace(pw);
+		return sw.toString();
 	}
 
 }

@@ -3,7 +3,6 @@ package engine.actions;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-
 import engine.GameManager;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
@@ -15,7 +14,7 @@ import engine.gameObject.Identifier;
  */
 public class ReverseVelocityIDAction extends PhysicsIDAction {
 
-	public ReverseVelocityIDAction(ArrayList<Identifier> id, Double value) {
+	public ReverseVelocityIDAction(List<Identifier> id, Double value) {
 		super(id, value);
 		// TODO Auto-generated constructor stub
 	}

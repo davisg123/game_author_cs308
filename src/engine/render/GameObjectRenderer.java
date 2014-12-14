@@ -26,9 +26,10 @@ import engine.level.Level;
 
 public class GameObjectRenderer {
 	private Group myCanvas;
-	private Map<String, RenderedNode> myRenderedNodes;
+	private Map<Identifier, RenderedNode> myRenderedNodes;
 	private Level myCurrentLevel;
 	private static final String IMAGES = "images";
+	private static final String BACKGROUND = "background";
 	private FilePathUtility myFilePathUtility;
 	/**
 	 * Constructor takes in a group as the Canvas of the game 
@@ -72,7 +73,7 @@ public class GameObjectRenderer {
 		node.setTranslateX(obj.getX());
 		node.setTranslateY(obj.getY());
 		node.setId(obj.getID());
-		myRenderedNodes.put(obj.getID(), node);
+		myRenderedNodes.put(obj.getIdentifier(), node);
 		myCanvas.getChildren().add(node);
 		obj.setRenderedNode(node);
 	}
@@ -142,27 +143,21 @@ public class GameObjectRenderer {
 	 * Removes a rendered Node from the list of currently rendered Nodes
 	 * @param nodeID
 	 */
-	public void removeRenderedNode (String nodeID) {
+	public void removeRenderedNode (Identifier nodeID) {
 		myCanvas.getChildren().remove(myRenderedNodes.get(nodeID));
 		myRenderedNodes.remove(nodeID);
 	}
     
 
-    //TODO fix shitty code
     private void setBackGroundImage(Level level) {   
-        FileInputStream in;
-        try {
-            in = new FileInputStream(myFilePathUtility.getFilePath()+level.getBackgroundImage());
-            Image image = new Image(in);
-            ImageView view = new ImageView();
-            view.setImage(image);
-            view.setPreserveRatio(true);
-            view.setSmooth(true);
-            view.setCache(true);
-            myCanvas.getChildren().add(view);
-        }
-        catch (FileNotFoundException e) {
-        }
+        GameObject background = new GameObject();
+        background.setIdentifier(new Identifier(BACKGROUND,BACKGROUND));
+        background.setCurrentImagePath(level.getBackgroundImage());
+        ImageView view = createImageAndView(background);
+        background.setHeight(height);
+        RenderedNode node = new RenderedNode();
+        node.setImageView(view);
+        background.setRenderedNode(node);
     }
     
     public void setCameraFocus (GameObject obj) {

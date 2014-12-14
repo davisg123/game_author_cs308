@@ -1,13 +1,22 @@
 package engine.gameObject;
 
+import java.util.Random;
+
 public class Identifier {
     private String myType;
     private String myUniqueId;
+    private Random r; 
     
     
     public Identifier (String myType, String myUniqueId) {
         this.myType = myType;
         this.myUniqueId = myUniqueId;
+    }
+    
+    public Identifier (Identifier id){
+    	r = new Random();
+    	myType = id.getType();
+    	myUniqueId = id.getUniqueId()+r.nextInt();
     }
     
     public static Identifier valueOf (String descriptor) {

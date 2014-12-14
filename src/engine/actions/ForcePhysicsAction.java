@@ -2,7 +2,7 @@ package engine.actions;
 
 import java.util.ArrayList;
 import java.util.Collection;
-
+import java.util.List;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 import engine.physics.Force;
@@ -15,7 +15,7 @@ import engine.physics.Vector;
  */
 public abstract class ForcePhysicsAction extends VectorPhysicsAction {
 
-	public ForcePhysicsAction(ArrayList<Identifier> id, Double value) {
+	public ForcePhysicsAction(List<Identifier> id, Double value) {
 		super(id, value);
 	}
 
