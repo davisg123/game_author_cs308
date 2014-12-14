@@ -1,6 +1,0 @@
-<map id="engine.actions.PhysicsTypeAction" name="engine.actions.PhysicsTypeAction">
-<area shape="rect" id="node4" href="$db/dbb/classengine_1_1actions_1_1_fixed_collision_type_action.html" title="engine.actions.FixedCollision\lTypeAction" alt="" coords="5,246,208,287"/>
-<area shape="rect" id="node5" href="$de/d3a/classengine_1_1actions_1_1_x_impulse_type_action.html" title="engine.actions.XImpulseType\lAction" alt="" coords="232,246,437,287"/>
-<area shape="rect" id="node2" href="$d9/dd2/interfaceengine_1_1actions_1_1_action.html" title="engine.actions.Action" alt="" coords="199,80,357,107"/>
-<area shape="rect" id="node3" href="$d2/d15/interfaceengine_1_1actions_1_1_initializable.html" title="engine.actions.Initializable" alt="" coords="125,5,315,32"/>
-</map>

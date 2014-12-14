@@ -1,8 +1,0 @@
-<map id="gamePlayer.model.PlayerModel.getButtonConditions" name="gamePlayer.model.PlayerModel.getButtonConditions">
-<area shape="rect" id="node2" href="$d9/dff/classgame_player_1_1view_1_1_menu_bar_controller.html#a697f93e09ded58d03b51bf4bf4951c45" title="gamePlayer.view.MenuBarController.set\lKeyboard" alt="" coords="302,5,575,46"/>
-<area shape="rect" id="node3" href="$d7/d3c/classgame_player_1_1view_1_1_player_view.html#ab5225b160ab16323a5485bd1c3f62303" title="gamePlayer.view.PlayerView.initialize" alt="" coords="624,12,877,39"/>
-<area shape="rect" id="node4" href="$d2/dc9/classgame_player_1_1model_1_1_player_model.html#af8fd7a780ad8f9eebd18f451e188717e" title="gamePlayer.model.PlayerModel.initializeView" alt="" coords="925,12,1232,39"/>
-<area shape="rect" id="node5" href="$d6/d99/classapplication_1_1_splash_screen.html#af35ff913e798fa504502185f76703a74" title="application.SplashScreen.play" alt="" coords="1280,12,1493,39"/>
-<area shape="rect" id="node6" href="$d6/d99/classapplication_1_1_splash_screen.html#abad5bc7bafefe1a4e59b0d121dc895e9" title="application.SplashScreen.initialize\lGUIElements" alt="" coords="1542,5,1781,46"/>
-<area shape="rect" id="node7" href="$d6/d99/classapplication_1_1_splash_screen.html#a512cfd783d4871bae304c03a9a32cba9" title="application.SplashScreen.\lSplashScreen" alt="" coords="1829,5,2016,46"/>
-</map>

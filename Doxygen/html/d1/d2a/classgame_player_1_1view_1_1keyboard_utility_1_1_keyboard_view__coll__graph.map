@@ -1,6 +1,0 @@
-<map id="gamePlayer.view.keyboardUtility.KeyboardView" name="gamePlayer.view.keyboardUtility.KeyboardView">
-<area shape="rect" id="node3" href="$de/dfc/classgame_player_1_1view_1_1keyboard_utility_1_1_key_map_form.html" title="gamePlayer.view.keyboard\lUtility.KeyMapForm" alt="" coords="1073,130,1263,171"/>
-<area shape="rect" id="node8" href="$d5/d37/classgame_player_1_1view_1_1keyboard_utility_1_1_mapped_keys.html" title="gamePlayer.view.keyboard\lUtility.MappedKeys" alt="" coords="286,117,477,158"/>
-<area shape="rect" id="node10" href="$db/d2a/classauthoring_1_1model_1_1collections_1_1_conditions_collection.html" title="authoring.model.collections.\lConditionsCollection" alt="" coords="280,234,483,275"/>
-<area shape="rect" id="node11" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html" title="authoring.model.collections.\lGeneralCollection\&lt; Condition \&gt;" alt="" coords="5,234,229,275"/>
-</map>
