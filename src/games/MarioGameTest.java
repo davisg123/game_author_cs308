@@ -255,6 +255,8 @@ public class MarioGameTest extends Application {
         aCon.setIdentifier(new Identifier("button_cond","a"));
         myConditions.add(aCon);
         
+        
+        
         //Move Right
         Action dAct = new XVelocityIDAction(identList ,100.0);
         List<Action> dActList = new ArrayList<Action>();
