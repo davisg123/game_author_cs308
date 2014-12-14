@@ -115,13 +115,13 @@ public class LevelManager implements Iterable<Level> {
 	 */
 	public void initializeCurrentLevel() {
 		disableAllConditions();
-		setLevelEnabledConditions();
 		for(Level level : myLevels) {
 		    mySoundPlayer.stopBackGroundMusic(level.getBackgroundMusic());
 		}
 		mySoundPlayer.playBackGroundMusic(myCurrentLevel.getBackgroundMusic());
 		myCurrentLevel.initialize(this);
 		myRenderer.renderGameObjects(myCurrentLevel);
+		setLevelEnabledConditions();
 	}
 
 	/**
