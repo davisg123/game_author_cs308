@@ -1,6 +1,0 @@
-<map id="authoring.view.icons.LevelIcon.getLevel" name="authoring.view.icons.LevelIcon.getLevel">
-<area shape="rect" id="node2" href="$dc/dc3/classauthoring_1_1eventhandlers_1_1_level_to_view_handler.html#a8385015925539b6ae2762a0e453bf629" title="authoring.eventhandlers.\lLevelToViewHandler.handle" alt="" coords="263,5,457,46"/>
-<area shape="rect" id="node3" href="$d7/d69/classauthoring_1_1view_1_1propertiesview_1_1_level_properties.html#adfccccc49f33be4065112eaa53887038" title="authoring.view.propertiesview.\lLevelProperties.initializeProperties" alt="" coords="240,70,480,111"/>
-<area shape="rect" id="node5" href="$d5/d37/classauthoring_1_1view_1_1icons_1_1_level_icon.html#a02246135155714c115dc47cc77d59760" title="authoring.view.icons.Level\lIcon.makeProperties" alt="" coords="267,135,453,177"/>
-<area shape="rect" id="node4" href="$d7/d69/classauthoring_1_1view_1_1propertiesview_1_1_level_properties.html#aeb26651cb398a322a82008c4792c437f" title="authoring.view.propertiesview.\lLevelProperties.LevelProperties" alt="" coords="529,70,751,111"/>
-</map>

@@ -1,5 +1,0 @@
-<map id="engine.actions.SwitchComponentBooleanIDAction" name="engine.actions.SwitchComponentBooleanIDAction">
-<area shape="rect" id="node2" href="$d0/da8/classengine_1_1actions_1_1_change_component_i_d_action.html" title="engine.actions.ChangeComponent\lIDAction" alt="" coords="5,155,248,197"/>
-<area shape="rect" id="node3" href="$d9/dd2/interfaceengine_1_1actions_1_1_action.html" title="engine.actions.Action" alt="" coords="106,80,264,107"/>
-<area shape="rect" id="node4" href="$d2/d15/interfaceengine_1_1actions_1_1_initializable.html" title="engine.actions.Initializable" alt="" coords="32,5,221,32"/>
-</map>
