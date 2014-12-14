@@ -1,7 +1,0 @@
-<map id="authoring.eventhandlers.AddConditionHandler.finishCondition" name="authoring.eventhandlers.AddConditionHandler.finishCondition">
-<area shape="rect" id="node2" href="$db/d2a/classauthoring_1_1model_1_1collections_1_1_conditions_collection.html#af4aa1e8459d542b7f0e78ffe3b004d77" title="authoring.model.collections.\lConditionsCollection.add" alt="" coords="337,5,540,46"/>
-<area shape="rect" id="node3" href="$d0/d9b/classauthoring_1_1eventhandlers_1_1_add_condition_handler.html#ad09caf055d0f6cc1e01c4029caeefb5c" title="authoring.eventhandlers.\lAddConditionHandler.convertInput\lParameters" alt="" coords="319,69,559,125"/>
-<area shape="rect" id="node4" href="$d6/d32/classauthoring_1_1view_1_1wizards_1_1_wizard.html#a0d419b2943c99507fca42fd769c24b0e" title="authoring.view.wizards.Wizard.getMap" alt="" coords="307,149,570,176"/>
-<area shape="rect" id="node5" href="$d1/d3b/classengine_1_1conditions_1_1_condition.html#a13aea023be9fc9c78c0fcf66b908054f" title="engine.conditions.Condition.set\lIdentifier" alt="" coords="327,201,550,242"/>
-<area shape="rect" id="node6" href="$d1/d3b/classengine_1_1conditions_1_1_condition.html#a032794f008153a8a356234754ec662e4" title="engine.conditions.Condition.set\lInputMap" alt="" coords="327,266,550,307"/>
-</map>

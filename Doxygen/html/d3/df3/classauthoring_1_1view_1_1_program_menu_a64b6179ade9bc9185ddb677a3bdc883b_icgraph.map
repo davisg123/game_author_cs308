@@ -1,8 +1,0 @@
-<map id="authoring.view.ProgramMenu.setupGame" name="authoring.view.ProgramMenu.setupGame">
-<area shape="rect" id="node2" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#aa2afa7ec1c018b777d601e527cbe23c2" title="authoring.view.ProgramMenu.addNew" alt="" coords="345,5,607,32"/>
-<area shape="rect" id="node6" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#a10ecf01e628d3fa377f151a965424e50" title="authoring.view.ProgramMenu.loadData" alt="" coords="341,56,611,83"/>
-<area shape="rect" id="node3" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#a070bc1672ff24943b56065a223b2ef91" title="authoring.view.ProgramMenu.newFile" alt="" coords="660,5,916,32"/>
-<area shape="rect" id="node4" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#a4f80944f8d70afac9f86de8caa8439b5" title="authoring.view.ProgramMenu.\lFileMenu" alt="" coords="965,23,1176,65"/>
-<area shape="rect" id="node5" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#a1979060c566560f24eee51c819341adc" title="authoring.view.ProgramMenu.\lProgramMenu" alt="" coords="1224,23,1435,65"/>
-<area shape="rect" id="node7" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#aa73ae8b737adefd919b8dd9c770afe5e" title="authoring.view.ProgramMenu.loadFile" alt="" coords="659,56,917,83"/>
-</map>
