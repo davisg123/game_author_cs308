@@ -2,6 +2,8 @@ package engine.actions;
 
 import authoring.model.collections.GameObjectsCollection;
 import engine.gameObject.GameObject;
+import engine.gameObject.Identifier;
+import engine.gameObject.components.PhysicsBody;
 
 public class MakeNewObjectFromLocationAction extends MakeNewObjectAction{
 
@@ -22,8 +24,8 @@ public class MakeNewObjectFromLocationAction extends MakeNewObjectAction{
 			//TODO: will be template list
 			if (object.getIdentifier().getType().equals(myType)){
 				GameObject newObject = new GameObject(object, myX, myY, myType); 
-				newObject.setIdentifier(object.getIdentifier());
-				newObject.setPhysicsBody(object.getPhysicsBody());
+				newObject.setIdentifier(new Identifier(object.getIdentifier()));
+				newObject.setPhysicsBody(new PhysicsBody(object.getPhysicsBody()));
 				myRenderer.createAndAssignRenderedNode(newObject);
 				myCurrentLevel.addGameObject(newObject);
 			}

@@ -213,7 +213,7 @@ public class MarioGameTest extends Application {
         myConditions.add(nCon);
         
         //Delete 
-        Action delete = new DeleteTypeAction("floor");
+        Action delete = new DeleteTypeAction("fireball");
         ArrayList<Action> actions = new ArrayList<Action>();
         actions.add(delete);
         ArrayList<KeyCode> kclH = new ArrayList<KeyCode>();
