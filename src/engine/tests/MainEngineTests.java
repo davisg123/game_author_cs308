@@ -181,11 +181,11 @@ public class MainEngineTests extends Application {
         kclH.add(KeyCode.H);
         ButtonPressCondition hCon = new ButtonPressCondition(actions, kclH, 1.0, true);
         hCon.setIdentifier(new Identifier("button_cond", "h"));
+        
         myConditions.add(aCon);
         myConditions.add(dCon);
         myConditions.add(nCon);
         myConditions.add(hCon);
-        System.out.println(1);
         
         ArrayList<Action> wActList = new ArrayList<Action>();
         List<Identifier> wActListId = myBallObjects.getIdentifierList();
@@ -251,9 +251,15 @@ public class MainEngineTests extends Application {
          *******/
         LevelsCollection myLevels = new LevelsCollection();
         Level level0 = new Level(allGameObjects.getIdentifierList(),myConditions.getIdentifierList(),true);
-        level0.setBackgroundMusic("Flappy_Bird_Theme_Song.mp3");
-        level0.setBackgroundImage("Personnages-celebres-Troll-face-Troll-face-me-gusta-29215.jpg");
+        level0.setBackgroundMusic("Super Mario Bros. - Full.mp3");
+        level0.setBackgroundImage("overworld_bg.png");
+        level0.setIdentifier(new Identifier("Level","0"));
+        Level level1 = new Level(allGameObjects.getIdentifierList(), myConditions.getIdentifierList(),false);
+        level1.setBackgroundImage("overworld_bg.png");
+        level1.setIdentifier(new Identifier("Level","1"));
         myLevels.add(level0);
+        myLevels.add(level1);
+        
         
         /*
          * uncomment for saving game
