@@ -1,0 +1,24 @@
+<map id="authoring.eventhandlers.GameObjectDragHandler" name="authoring.eventhandlers.GameObjectDragHandler">
+<area shape="rect" id="node2" href="$d3/d6a/interfaceauthoring_1_1eventhandlers_1_1_game_handler.html" title="authoring.eventhandlers.\lGameHandler\&lt; MouseEvent \&gt;" alt="" coords="1757,25,1976,66"/>
+<area shape="rect" id="node3" href="$df/de5/classauthoring_1_1model_1_1collections_1_1_levels_collection.html" title="authoring.model.collections.\lLevelsCollection" alt="" coords="1765,90,1968,131"/>
+<area shape="rect" id="node4" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html" title="authoring.model.collections.\lGeneralCollection\&lt; Level \&gt;" alt="" coords="1313,6,1516,47"/>
+<area shape="rect" id="node5" href="$d4/d04/classauthoring_1_1view_1_1levelview_1_1_levels_view.html" title="authoring.view.levelview.\lLevelsView" alt="" coords="1779,155,1955,197"/>
+<area shape="rect" id="node6" href="$d0/d3f/classauthoring_1_1view_1_1baseclasses_1_1_tab_view.html" title="authoring.view.baseclasses.\lTabView" alt="" coords="1315,71,1514,113"/>
+<area shape="rect" id="node14" href="$de/d93/classauthoring_1_1view_1_1baseclasses_1_1_collection_view.html" title="authoring.view.baseclasses.\lCollectionView" alt="" coords="1315,239,1514,281"/>
+<area shape="rect" id="node9" href="$d2/d4f/interfacedata_1_1_observer.html" title="data.Observer" alt="" coords="1358,137,1471,164"/>
+<area shape="rect" id="node11" href="$d3/d6a/interfaceauthoring_1_1eventhandlers_1_1_game_handler.html" title="authoring.eventhandlers.\lGameHandler\&lt; T extends\l Event \&gt;" alt="" coords="859,309,1047,365"/>
+<area shape="rect" id="node13" href="$d4/d9e/classauthoring_1_1view_1_1propertiesview_1_1_properties_view.html" title="authoring.view.propertiesview.\lPropertiesView" alt="" coords="1761,418,1973,459"/>
+<area shape="rect" id="node17" href="$da/d8d/classauthoring_1_1view_1_1propertiesview_1_1_game_object_properties.html" title="authoring.view.propertiesview.\lGameObjectProperties" alt="" coords="1309,551,1521,593"/>
+<area shape="rect" id="node18" href="$de/d73/classauthoring_1_1view_1_1propertiesview_1_1_properties.html" title="authoring.view.propertiesview.\lProperties" alt="" coords="847,534,1059,575"/>
+<area shape="rect" id="node22" href="$dd/db2/classauthoring_1_1view_1_1baseclasses_1_1_accordion_container.html" title="authoring.view.baseclasses.\lAccordionContainer" alt="" coords="854,718,1053,759"/>
+<area shape="rect" id="node24" href="$d0/d7f/classengine_1_1game_object_1_1_game_object.html" title="engine.gameObject.GameObject" alt="" coords="1299,963,1530,989"/>
+<area shape="rect" id="node25" href="$d7/de6/interfaceengine_1_1game_object_1_1_i_enabled.html" title="engine.gameObject.IEnabled" alt="" coords="851,784,1056,811"/>
+<area shape="rect" id="node27" href="$dc/df6/interfaceengine_1_1game_object_1_1_identifiable.html" title="engine.gameObject.Identifiable" alt="" coords="843,885,1063,912"/>
+<area shape="rect" id="node28" href="$d4/dac/classengine_1_1game_object_1_1_identifier.html" title="engine.gameObject.Identifier" alt="" coords="850,936,1057,963"/>
+<area shape="rect" id="node30" href="$da/d35/classengine_1_1scrolling_1_1_scrolling_utility.html" title="engine.scrolling.Scrolling\lUtility" alt="" coords="864,987,1043,1029"/>
+<area shape="rect" id="node44" href="$d6/d66/classengine_1_1game_object_1_1_default_data.html" title="engine.gameObject.DefaultData" alt="" coords="839,1053,1067,1080"/>
+<area shape="rect" id="node33" href="$d2/d82/classengine_1_1render_1_1_rendered_node.html" title="engine.render.RenderedNode" alt="" coords="849,1173,1057,1200"/>
+<area shape="rect" id="node38" href="$d9/d9d/classengine_1_1game_object_1_1components_1_1_physics_body.html" title="engine.gameObject.components.\lPhysicsBody" alt="" coords="836,1391,1071,1433"/>
+<area shape="rect" id="node42" href="$d5/d1f/classengine_1_1physics_1_1_vector.html" title="engine.physics.Vector" alt="" coords="369,1525,530,1552"/>
+<area shape="rect" id="node43" href="$dc/db5/classengine_1_1physics_1_1_physics_component.html" title="engine.physics.PhysicsComponent" alt="" coords="5,1525,248,1552"/>
+</map>
