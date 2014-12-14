@@ -35,8 +35,7 @@ public class LevelsView extends TabView implements Observer {
 
 	@Override
 	public void update(Observable o, Object arg) {
-		// TODO Auto-generated method stub
-
+	
 	}
 
 	/**

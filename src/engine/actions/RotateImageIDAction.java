@@ -6,7 +6,7 @@ import engine.gameObject.Identifier;
 
 public class RotateImageIDAction extends IDAction {
     
-    Double myAngle;
+    private Double myAngle;
 
     public RotateImageIDAction (List<Identifier> ids, Double angle) {
         super(ids);

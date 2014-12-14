@@ -255,6 +255,8 @@ public class MarioGameTest extends Application {
         aCon.setIdentifier(new Identifier("button_cond","a"));
         myConditions.add(aCon);
         
+        
+        
         //Move Right
         Action dAct = new XVelocityIDAction(identList ,100.0);
         List<Action> dActList = new ArrayList<Action>();
@@ -343,8 +345,10 @@ public class MarioGameTest extends Application {
         
         List<Action> fireballGoombaConditionActionList = new ArrayList<Action>();
         Action DeleteGoombaAction = new DeleteTypeAction("goomba");
-        fireballGoombaConditionActionList.add(marioPlatformCollisionAction);
-        TypeCollisionCondition fireballAndGoombaCollision = new TypeCollisionCondition(marioPlatformConditionActionList,"mario","PlatformBlock");
+        Action DeleteFireballAction = new DeleteTypeAction("fireball");
+        fireballGoombaConditionActionList.add(DeleteGoombaAction);
+        fireballGoombaConditionActionList.add(DeleteFireballAction);
+        TypeCollisionCondition fireballAndGoombaCollision = new TypeCollisionCondition(fireballGoombaConditionActionList,"fireball","goomba");
         fireballAndGoombaCollision.setIdentifier(new Identifier("collision_cond","a"));
         myConditions.add(fireballAndGoombaCollision);
         
@@ -425,7 +429,7 @@ public class MarioGameTest extends Application {
          *******/
         LevelsCollection myLevels = new LevelsCollection();
         Level level0 = new Level(allGameObjects.getIdentifierList(),myConditions.getIdentifierList(),true);
-//        level0.setBackgroundMusic("Super Mario Bros. - Full.mp3");
+        level0.setBackgroundMusic("SuperMarioBrosFull.mp3");
         level0.setBackgroundImage("overworld_bg.png");
         level0.setIdentifier(new Identifier("Level","0"));
         Level level1 = new Level(allGameObjects.getIdentifierList(), myConditions.getIdentifierList(),false);

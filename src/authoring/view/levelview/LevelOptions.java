@@ -13,18 +13,24 @@ import javafx.scene.control.ToolBar;
 
 public class LevelOptions extends CollectionOptions {
 	private Button addLevelButton;
+	private Button deleteLevelButton;
 
 	public LevelOptions(ResourceBundle language, double width, double height) {
 		super(language, width, height);
-		addNewTabButton();
+		addNewButtons();
 	}
 
-	private void addNewTabButton() {
+	private void addNewButtons() {
 		addLevelButton = makeButton(myLanguage.getString("Add_Level"));
 		this.getItems().add(addLevelButton);
+		deleteLevelButton = makeButton(myLanguage.getString("Delete_Level"));
+		this.getItems().add(deleteLevelButton);
 	}
 
-	public void setButtonBehavior(GameHandler handler) {
+	public void setAddLevelButtonBehavior(GameHandler handler) {
 		addLevelButton.setOnAction(handler);
+	}
+	public void setDeleteLevelButtonBehavior(GameHandler handler){
+		deleteLevelButton.setOnAction(handler);
 	}
 }
