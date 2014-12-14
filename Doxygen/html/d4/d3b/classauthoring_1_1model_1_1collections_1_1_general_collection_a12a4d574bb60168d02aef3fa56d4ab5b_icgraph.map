@@ -1,0 +1,8 @@
+<map id="authoring.model.collections.GeneralCollection.addAll" name="authoring.model.collections.GeneralCollection.addAll">
+<area shape="rect" id="node2" href="$d0/d7d/classengine_1_1conditions_1_1_type_collision_condition.html#ae8aafd78eaa20c1fb0d9f308841af352" title="engine.conditions.TypeCollision\lCondition.checkCollisions" alt="" coords="275,5,493,46"/>
+<area shape="rect" id="node4" href="$d7/d00/classengine_1_1tests_1_1_main_engine_tests.html#ad06079aee97fd7ffd4f2b14a8f01b808" title="engine.tests.MainEngineTests.create\lGameObject" alt="" coords="257,70,511,111"/>
+<area shape="rect" id="node6" href="$dc/d21/classgames_1_1_mario_game_test.html#aab9eed35cd4d8ae1d108ae914b6a73ff" title="games.MarioGameTest.create\lGameObject" alt="" coords="277,135,491,177"/>
+<area shape="rect" id="node3" href="$d0/d7d/classengine_1_1conditions_1_1_type_collision_condition.html#a49e266d31c82639eb7b9df6aa5fe031d" title="engine.conditions.TypeCollision\lCondition.executeActions" alt="" coords="573,5,792,46"/>
+<area shape="rect" id="node5" href="$d7/d00/classengine_1_1tests_1_1_main_engine_tests.html#ad1e78dcd3453ebdeb09141cba734c133" title="engine.tests.MainEngineTests.start" alt="" coords="561,77,805,104"/>
+<area shape="rect" id="node7" href="$dc/d21/classgames_1_1_mario_game_test.html#a8b7c287ffdfcacefeb373e7430a608c8" title="games.MarioGameTest.start" alt="" coords="581,143,784,169"/>
+</map>

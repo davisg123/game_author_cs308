@@ -1,0 +1,17 @@
+<map id="authoring.model.AuthoringModel.convertToSerializable" name="authoring.model.AuthoringModel.convertToSerializable">
+<area shape="rect" id="node2" href="$df/de5/classauthoring_1_1model_1_1collections_1_1_levels_collection.html#ab355be93ea3c8a0f359099c4bf93ae10" title="authoring.model.collections.\lLevelsCollection.add" alt="" coords="271,5,473,46"/>
+<area shape="rect" id="node3" href="$db/d2a/classauthoring_1_1model_1_1collections_1_1_conditions_collection.html#af4aa1e8459d542b7f0e78ffe3b004d77" title="authoring.model.collections.\lConditionsCollection.add" alt="" coords="271,70,473,111"/>
+<area shape="rect" id="node4" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html#a1bdc1047736bbb23259d6a7fe4c6deeb" title="authoring.model.collections.\lGeneralCollection.add" alt="" coords="271,135,473,177"/>
+<area shape="rect" id="node5" href="$d7/dbf/classauthoring_1_1model_1_1_game_data.html#a4a3bfa5ed2418ba59bdf3e73b4ce310a" title="authoring.model.GameData.get\lConditions" alt="" coords="259,201,485,242"/>
+<area shape="rect" id="node6" href="$d7/dbf/classauthoring_1_1model_1_1_game_data.html#ab6eab149af02a9649d0e2b162daf3600" title="authoring.model.GameData.get\lGameObjects" alt="" coords="259,266,485,307"/>
+<area shape="rect" id="node7" href="$d7/dbf/classauthoring_1_1model_1_1_game_data.html#a5646a2267289545d487d4fe4a8a6298e" title="authoring.model.GameData.get\lImages" alt="" coords="259,331,485,373"/>
+<area shape="rect" id="node8" href="$d7/dbf/classauthoring_1_1model_1_1_game_data.html#a5188274f1af76c8d2e05a7c8dcba3805" title="authoring.model.GameData.get\lLevels" alt="" coords="259,397,485,438"/>
+<area shape="rect" id="node9" href="$d7/dbf/classauthoring_1_1model_1_1_game_data.html#a4c24125abc447d6793b3d31091d7912a" title="authoring.model.GameData.get\lSounds" alt="" coords="259,462,485,503"/>
+<area shape="rect" id="node10" href="$df/d84/classengine_1_1level_1_1_level.html#a0a4cb515a5d4c8144a881486189ecb4c" title="engine.level.Level.setBackground\lImage" alt="" coords="255,527,489,569"/>
+<area shape="rect" id="node11" href="$df/d84/classengine_1_1level_1_1_level.html#a7d156d06e5396af71c3d69b47dedcc66" title="engine.level.Level.setBackground\lMusic" alt="" coords="255,593,489,634"/>
+<area shape="rect" id="node12" href="$df/d84/classengine_1_1level_1_1_level.html#a1b07e6b160c4d26c8f02c1d57ef117bc" title="engine.level.Level.setConditionIds" alt="" coords="253,659,491,685"/>
+<area shape="rect" id="node13" href="$df/d84/classengine_1_1level_1_1_level.html#a1473c16b9e5b5d6d5f162e6357d4e90e" title="engine.level.Level.setHeight" alt="" coords="271,709,473,736"/>
+<area shape="rect" id="node14" href="$df/d84/classengine_1_1level_1_1_level.html#a978e8f0a732aecf29203b898e27b16b0" title="engine.level.Level.setIdentifier" alt="" coords="265,760,479,787"/>
+<area shape="rect" id="node15" href="$df/d84/classengine_1_1level_1_1_level.html#ac6aa999d5ea5fa90274d0d201dab1f8c" title="engine.level.Level.setStart\lIndicator" alt="" coords="277,811,467,853"/>
+<area shape="rect" id="node16" href="$df/d84/classengine_1_1level_1_1_level.html#a6fed6684fff9cdb0c75497abded3bcf2" title="engine.level.Level.setWidth" alt="" coords="275,877,469,904"/>
+</map>

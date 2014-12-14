@@ -1,0 +1,7 @@
+<map id="data.Observable.notifyObservers" name="data.Observable.notifyObservers">
+<area shape="rect" id="node2" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html#a1bdc1047736bbb23259d6a7fe4c6deeb" title="authoring.model.collections.\lGeneralCollection\&lt; GameObject \&gt;::add" alt="" coords="286,5,562,46"/>
+<area shape="rect" id="node3" href="$df/d84/classengine_1_1level_1_1_level.html#a0e3c5bae8948f49ede9e5a87f197581b" title="engine.level.Level.addGame\lObject" alt="" coords="323,70,525,111"/>
+<area shape="rect" id="node6" href="$df/d84/classengine_1_1level_1_1_level.html#a62fad5769cbf1d6156e1be0b10757b9e" title="engine.level.Level.remove\lGameObject" alt="" coords="330,135,518,177"/>
+<area shape="rect" id="node4" href="$d0/df2/classauthoring_1_1eventhandlers_1_1_game_object_drag_to_level_handler.html#a98ccf77195ecfc7146cd1737da68b6b2" title="authoring.eventhandlers.\lGameObjectDragToLevelHandler.updateName" alt="" coords="611,70,927,111"/>
+<area shape="rect" id="node5" href="$d0/df2/classauthoring_1_1eventhandlers_1_1_game_object_drag_to_level_handler.html#ad5002cd6b7781653104f1820a573f902" title="authoring.eventhandlers.\lGameObjectDragToLevelHandler.handle" alt="" coords="976,70,1251,111"/>
+</map>
