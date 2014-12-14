@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import authoring.model.GameData;
 import data.DataManager;
+import errorsAndExceptions.ErrorPopUp;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -132,7 +133,8 @@ public class ProgressSelector {
 		try {
 			myDataManager.writeProgressFile(saveData, myGameLocation, saveText);
 		} catch (IOException e) {
-			e.printStackTrace();
+			ErrorPopUp epu = new ErrorPopUp(e);
+			epu.display("Input/output error", false);
 		}
 		myProgressStage.close();
 	}
@@ -141,7 +143,8 @@ public class ProgressSelector {
 		try {
 			myDataManager.writeProgressFile(saveData, myGameLocation, selectedProgressState);
 		} catch (IOException e) {
-			e.printStackTrace();
+			ErrorPopUp epu = new ErrorPopUp(e);
+			epu.display("Input/output error", false);
 		}
 		myProgressStage.close();
 	}

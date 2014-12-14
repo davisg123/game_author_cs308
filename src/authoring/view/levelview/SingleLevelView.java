@@ -25,6 +25,7 @@ import data.Observable;
 import data.Observer;
 import engine.gameObject.GameObject;
 import engine.level.Level;
+import errorsAndExceptions.ErrorPopUp;
 
 /**
  * Class that contains the visualization data of a single level.
@@ -73,7 +74,8 @@ public class SingleLevelView extends ScrollPane implements Observer {
 			System.out.println("hit");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			System.out.println("Not an image selected for background");
+			ErrorPopUp epu = new ErrorPopUp(e);
+			epu.display("Not an image selected for background", false);
 		}
 		this.setContent(myGamePane);
 	}
