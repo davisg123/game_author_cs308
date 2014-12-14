@@ -92,7 +92,7 @@ public class GameObjectRenderer {
 			FileInputStream in;
 			try {
 				in = new FileInputStream(myFilePathUtility.getFilePath()+imageName);
-				Image image = new Image(in,obj.getWidth(),obj.getHeight(),true,true);
+				Image image = new Image(in,obj.getWidth(),obj.getHeight(),false,true);
 				ImageView view = new ImageView();
 				view.setImage(image);
 				view.setCache(true);
