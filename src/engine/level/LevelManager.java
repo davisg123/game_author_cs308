@@ -87,7 +87,6 @@ public class LevelManager implements Iterable<Level> {
 		for (Level level : myLevels) {
 			if (level.getIdentifier().equals(iD)) {
 				setCurrentLevel(level);
-				initializeCurrentLevel();
 				break;
 			}
 		}
