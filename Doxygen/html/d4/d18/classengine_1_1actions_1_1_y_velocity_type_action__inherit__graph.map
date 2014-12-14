@@ -1,0 +1,6 @@
+<map id="engine.actions.YVelocityTypeAction" name="engine.actions.YVelocityTypeAction">
+<area shape="rect" id="node2" href="$d9/d3b/classengine_1_1actions_1_1_velocity_type_action.html" title="engine.actions.VelocityType\lAction" alt="" coords="5,230,200,271"/>
+<area shape="rect" id="node3" href="$d4/d87/classengine_1_1actions_1_1_type_action.html" title="engine.actions.TypeAction" alt="" coords="9,155,196,181"/>
+<area shape="rect" id="node4" href="$d9/dd2/interfaceengine_1_1actions_1_1_action.html" title="engine.actions.Action" alt="" coords="82,80,240,107"/>
+<area shape="rect" id="node5" href="$d2/d15/interfaceengine_1_1actions_1_1_initializable.html" title="engine.actions.Initializable" alt="" coords="8,5,197,32"/>
+</map>
