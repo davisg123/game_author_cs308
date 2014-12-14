@@ -75,6 +75,8 @@ public class AuthoringModel {
 			levelToAdd.setStartIndicator(l.isStartLevel());
 			levelToAdd.setIdentifier(new Identifier(l.getIdentifier().getType(),l.getIdentifier().getUniqueId()));
 			levelToAdd.setConditionIds(l.getConditionIdentifiers());
+			levelToAdd.setBackgroundImage(l.getBackgroundImage());
+			levelToAdd.setBackgroundMusic(l.getBackgroundMusic());
 			mySerializableGame.getLevels().add(levelToAdd);
 		}
 		for(Condition c : myGame.getConditions()){
@@ -110,6 +112,8 @@ public class AuthoringModel {
 			newLevel.setStartIndicator(l.isStartLevel());
 			newLevel.setIdentifier(l.getIdentifier());
 			newLevel.setConditionIds(l.getConditionIdentifiers());
+			newLevel.setBackgroundImage(l.getBackgroundImage());
+			newLevel.setBackgroundMusic(l.getBackgroundMusic());
 			myGame.getLevels().add(newLevel);
 		}
 		for(Condition c: input.getConditions()){

@@ -7,8 +7,8 @@ import engine.gameObject.components.PhysicsBody;
 
 public class MakeNewObjectFromLocationAction extends MakeNewObjectAction{
 
-	private transient Double myX; 
-	private transient Double myY; 
+	private Double myX; 
+	private Double myY; 
 	
 	public MakeNewObjectFromLocationAction(String type, Double x, Double y) {
 		super(type);

@@ -13,12 +13,11 @@ public abstract class MakeNewObjectAction implements Action, Initializable {
 	protected transient GameObjectsCollection myMasterList;
 	protected transient GameObjectRenderer myRenderer; 
 	protected String myType; 
-	protected Random r;
+	protected transient Random r;
 
 	
 	public MakeNewObjectAction(String type){
 		myType = type; 
-		r = new Random();
 	}
 	
 	
@@ -26,6 +25,7 @@ public abstract class MakeNewObjectAction implements Action, Initializable {
 	@Override
 	public void initialize(GameManager manager) {
 		myRenderer = manager.getRenderer();
+		r = new Random();
 		//will be template list
 		myMasterList = manager.getLevelManager().getTemplates(); 
 		myCurrentLevel = manager.getLevelManager().getCurrentLevel();
