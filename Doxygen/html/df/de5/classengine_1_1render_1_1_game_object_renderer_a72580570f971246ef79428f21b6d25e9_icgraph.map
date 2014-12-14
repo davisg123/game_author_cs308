@@ -1,0 +1,17 @@
+<map id="engine.render.GameObjectRenderer.createImageAndView" name="engine.render.GameObjectRenderer.createImageAndView">
+<area shape="rect" id="node2" href="$df/de5/classengine_1_1render_1_1_game_object_renderer.html#a745cb65a5425a20a1b5063068ef1314a" title="engine.render.GameObject\lRenderer.createAndAssignRenderedNode" alt="" coords="273,201,557,242"/>
+<area shape="rect" id="node3" href="$d3/dbb/classengine_1_1actions_1_1render_1_1_paint_canvas.html#a3f4cb25dfb09aa686debf838e806b010" title="engine.actions.render.Paint\lCanvas.applyRender" alt="" coords="627,5,821,46"/>
+<area shape="rect" id="node4" href="$dd/d57/classengine_1_1actions_1_1_make_new_object_from_location_action.html#a2ebd225d5e10817ac79f4044867afa98" title="engine.actions.MakeNewObject\lFromLocationAction.execute" alt="" coords="613,70,835,111"/>
+<area shape="rect" id="node5" href="$db/db5/classengine_1_1actions_1_1render_1_1_change_image_type_action.html#a09110a0a08bac229b9e2feddf1d3378c" title="engine.actions.render.Change\lImageTypeAction.execute" alt="" coords="617,135,831,177"/>
+<area shape="rect" id="node6" href="$db/d61/classengine_1_1actions_1_1_make_new_object_from_object_action.html#a01ffb165d6169f7b0a22733e2b6c61a9" title="engine.actions.MakeNewObject\lFromObjectAction.execute" alt="" coords="613,201,835,242"/>
+<area shape="rect" id="node7" href="$d5/da2/classengine_1_1actions_1_1render_1_1_change_image_i_d_action.html#a7fe8769783e7338aa33561e0777d9a3e" title="engine.actions.render.Change\lImageIDAction.execute" alt="" coords="617,266,831,307"/>
+<area shape="rect" id="node8" href="$da/d16/classengine_1_1actions_1_1_make_new_random_object_action.html#a82ccd5604bd05170e416e41b32020f00" title="engine.actions.MakeNewRandom\lObjectAction.makeRandomObject" alt="" coords="605,331,843,373"/>
+<area shape="rect" id="node10" href="$df/de5/classengine_1_1render_1_1_game_object_renderer.html#a610545384a337edcd3bffb9f0c6ecf18" title="engine.render.GameObject\lRenderer.renderGameObjects" alt="" coords="619,397,829,438"/>
+<area shape="rect" id="node9" href="$da/d16/classengine_1_1actions_1_1_make_new_random_object_action.html#aa831c4b818ed75f812bf8ba0d453c942" title="engine.actions.MakeNewRandom\lObjectAction.execute" alt="" coords="897,331,1130,373"/>
+<area shape="rect" id="node11" href="$df/d67/classengine_1_1level_1_1_level_manager.html#a523599892453015eed0f1b506979af8a" title="engine.level.LevelManager.initialize\lCurrentLevel" alt="" coords="891,397,1136,438"/>
+<area shape="rect" id="node12" href="$df/d67/classengine_1_1level_1_1_level_manager.html#a1d0f314bbf304bf86067ab87b832d2e0" title="engine.level.LevelManager.find\lAndSetStartLevel" alt="" coords="1185,363,1402,405"/>
+<area shape="rect" id="node14" href="$df/d67/classengine_1_1level_1_1_level_manager.html#ad89101547413fe335873b050fd091c79" title="engine.level.LevelManager.set\lCurrentLevel" alt="" coords="1186,429,1401,470"/>
+<area shape="rect" id="node13" href="$df/d67/classengine_1_1level_1_1_level_manager.html#a0ea71eb9396652850db0d2da44c4ca81" title="engine.level.LevelManager.\lLevelManager" alt="" coords="1475,363,1669,405"/>
+<area shape="rect" id="node15" href="$df/d67/classengine_1_1level_1_1_level_manager.html#ad3c392cf6260c53428255fb596442692" title="engine.level.LevelManager.change\lToLevel" alt="" coords="1451,429,1693,470"/>
+<area shape="rect" id="node16" href="$d1/d73/classengine_1_1actions_1_1_change_level_action.html#a8190adf308768b0d12f6432d0cf0fbc4" title="engine.actions.ChangeLevel\lAction.execute" alt="" coords="1742,429,1943,470"/>
+</map>
