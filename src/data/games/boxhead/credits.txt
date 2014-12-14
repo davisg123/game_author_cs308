@@ -1,0 +1,5 @@
+Sprites from:
+http://2dgameartforprogrammers.blogspot.com/2014/02/top-down-view-zombies.html
+
+Bullet sound from:
+http://soundjax.com/laser-1.html
