@@ -1,4 +1,0 @@
-<map id="engine.gameObject.components.PhysicsBody.PhysicsBody" name="engine.gameObject.components.PhysicsBody.PhysicsBody">
-<area shape="rect" id="node2" href="$d9/d9d/classengine_1_1game_object_1_1components_1_1_physics_body.html#aba2ed3bce8ee8e404907c88b144626fc" title="engine.gameObject.components.\lPhysicsBody.getCollisionBodyHeight" alt="" coords="288,5,539,46"/>
-<area shape="rect" id="node3" href="$d9/d9d/classengine_1_1game_object_1_1components_1_1_physics_body.html#ae64e43632570392c3118b3d00af853fc" title="engine.gameObject.components.\lPhysicsBody.getCollisionBodyWidth" alt="" coords="292,70,535,111"/>
-</map>

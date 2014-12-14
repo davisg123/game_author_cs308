@@ -1,6 +1,0 @@
-<map id="engine.gameObject.Identifier.setUniqueId" name="engine.gameObject.Identifier.setUniqueId">
-<area shape="rect" id="node2" href="$d5/dcb/classengine_1_1conditions_1_1_button_press_condition.html#a9a924ad4a74f3b809b04aaeaf08db82d" title="engine.conditions.Button\lPressCondition.setKeyIdentifier" alt="" coords="332,5,551,46"/>
-<area shape="rect" id="node3" href="$d5/df0/classengine_1_1conditions_1_1_button_release_condition.html#ae5085a16286ab906125ba7e3c996a795" title="engine.conditions.Button\lReleaseCondition.setKeyIdentifier" alt="" coords="325,70,557,111"/>
-<area shape="rect" id="node4" href="$d0/df2/classauthoring_1_1eventhandlers_1_1_game_object_drag_to_level_handler.html#a98ccf77195ecfc7146cd1737da68b6b2" title="authoring.eventhandlers.\lGameObjectDragToLevelHandler.updateName" alt="" coords="283,135,599,177"/>
-<area shape="rect" id="node5" href="$d0/df2/classauthoring_1_1eventhandlers_1_1_game_object_drag_to_level_handler.html#ad5002cd6b7781653104f1820a573f902" title="authoring.eventhandlers.\lGameObjectDragToLevelHandler.handle" alt="" coords="648,135,923,177"/>
-</map>
