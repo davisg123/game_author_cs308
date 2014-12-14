@@ -1,0 +1,8 @@
+<map id="gamePlayer.view.keyboardUtility.KeyboardView.setNewKey" name="gamePlayer.view.keyboardUtility.KeyboardView.setNewKey">
+<area shape="rect" id="node2" href="$d5/dcb/classengine_1_1conditions_1_1_button_press_condition.html#a81d9c2e09654ce7015c287740071a752" title="engine.conditions.Button\lPressCondition.addKey" alt="" coords="295,5,476,46"/>
+<area shape="rect" id="node3" href="$d5/d37/classgame_player_1_1view_1_1keyboard_utility_1_1_mapped_keys.html#a346151bdad62cd635b0e212439a7af43" title="gamePlayer.view.keyboard\lUtility.MappedKeys.getKeyCode" alt="" coords="275,70,495,111"/>
+<area shape="rect" id="node4" href="$d5/dcb/classengine_1_1conditions_1_1_button_press_condition.html#aebf652fe5c28c807c2a13eedae258a7e" title="engine.conditions.Button\lPressCondition.getKeyIdentifier" alt="" coords="276,135,495,177"/>
+<area shape="rect" id="node6" href="$d5/dcb/classengine_1_1conditions_1_1_button_press_condition.html#a11b53583fbd33f6c695c96ad89551e90" title="engine.conditions.Button\lPressCondition.getKeyList" alt="" coords="292,201,479,242"/>
+<area shape="rect" id="node7" href="$d5/dcb/classengine_1_1conditions_1_1_button_press_condition.html#a9c9b2dc9b57e55722189966731d7773f" title="engine.conditions.Button\lPressCondition.removeKey" alt="" coords="289,266,481,307"/>
+<area shape="rect" id="node5" href="$d4/dac/classengine_1_1game_object_1_1_identifier.html#aa2630b5024b9595e43afe0bf53229433" title="engine.gameObject.Identifier.get\lUniqueId" alt="" coords="545,135,775,177"/>
+</map>
