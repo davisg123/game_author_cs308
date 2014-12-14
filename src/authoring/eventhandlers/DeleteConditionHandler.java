@@ -36,6 +36,7 @@ public class DeleteConditionHandler implements GameHandler<Event>{
 				break;
 			}
 		}
+		myDeleteConditionHandler.close();
 	}
 
 }
