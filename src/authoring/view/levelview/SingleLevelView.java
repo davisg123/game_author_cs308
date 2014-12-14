@@ -62,6 +62,8 @@ public class SingleLevelView extends ScrollPane implements Observer {
 		myGameLocation = gameLoc;
 		myGamePane.setBackground(myDefaultBackground);
 
+		System.out.println("BG: " + bgImage);
+		
 		File file = new File(myGameLocation.getPath() + "/images/" + bgImage);
 		BufferedImage bufferedImage;
 		try {

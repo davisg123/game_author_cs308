@@ -9,9 +9,9 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 	public static final double SCREEN_WIDTH = Screen.getPrimary()
-			.getVisualBounds().getWidth() * 3 / 4;
+			.getVisualBounds().getWidth();
 	public static final double SCREEN_HEIGHT = Screen.getPrimary()
-			.getVisualBounds().getHeight() * 4 / 5;
+			.getVisualBounds().getHeight();
 	private Locale myDefaultLocale = new Locale("en", "US");
 
 	private AuthoringScene myScene;

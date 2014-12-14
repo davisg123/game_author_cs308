@@ -77,6 +77,8 @@ public class AuthoringModel {
 			levelToAdd.setConditionIds(l.getConditionIdentifiers());
 			levelToAdd.setBackgroundImage(l.getBackgroundImage());
 			levelToAdd.setBackgroundMusic(l.getBackgroundMusic());
+			levelToAdd.setHeight(l.getHeight());
+			levelToAdd.setWidth(l.getWidth());
 			mySerializableGame.getLevels().add(levelToAdd);
 		}
 		for(Condition c : myGame.getConditions()){
@@ -114,6 +116,8 @@ public class AuthoringModel {
 			newLevel.setConditionIds(l.getConditionIdentifiers());
 			newLevel.setBackgroundImage(l.getBackgroundImage());
 			newLevel.setBackgroundMusic(l.getBackgroundMusic());
+			newLevel.setHeight(l.getHeight());
+			newLevel.setWidth(l.getWidth());
 			myGame.getLevels().add(newLevel);
 		}
 		for(Condition c: input.getConditions()){
