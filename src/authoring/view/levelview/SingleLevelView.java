@@ -8,6 +8,7 @@ import javax.imageio.ImageIO;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.geometry.Insets;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -30,30 +31,32 @@ import engine.level.Level;
  * @author Kevin Li
  *
  */
-public class SingleLevelView extends Pane implements Observer {
-	private static final int GAME_HEIGHT = 320;
-	private static final int GAME_WIDTH = 480;
+public class SingleLevelView extends ScrollPane implements Observer {
+	private static final int GAME_HEIGHT = 400;
+	private static final int GAME_WIDTH = 400;
 	private Background myDefaultBackground = new Background(new BackgroundFill(
 			Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY));
-	/*private static final double VIEW_HEIGHT_RATIO = .82;
-	private static final double VIEW_WIDTH_RATIO = 0.6;*/
+
+	private static final double VIEW_HEIGHT_RATIO = .82;
+	private static final double VIEW_WIDTH_RATIO = 0.6;
+
 	public static final double OBJECT_X_OFFSET = -Main.SCREEN_WIDTH * .2;
 	public static final double OBJECT_Y_OFFSET = -Main.SCREEN_HEIGHT * .23;
 	private File myGameLocation;
 
 	private GameHandler[] myEvents;
 	private String myID;
-	private double myViewWidth;
-	private double myViewHeight;
+	private Pane myGamePane;
 	private String myBackgroundImage;
 
 	public SingleLevelView(File gameLoc, double width, double height,
 			String bgImage, GameHandler... handlers) {
-		setView(GAME_WIDTH, GAME_HEIGHT);
+		myGamePane = new Pane();
+		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
 		myEvents = handlers;
 		myGameLocation = gameLoc;
-		this.setBackground(myDefaultBackground);
-		
+		myGamePane.setBackground(myDefaultBackground);
+
 		File file = new File(myGameLocation.getPath() + "/images/" + bgImage);
 		BufferedImage bufferedImage;
 		try {
@@ -62,13 +65,13 @@ public class SingleLevelView extends Pane implements Observer {
 			BackgroundImage backgroundImage = new BackgroundImage(image, null,
 					null, null, null);
 			Background background = new Background(backgroundImage);
-			this.setBackground(background);
+			myGamePane.setBackground(background);
 			System.out.println("hit");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Not an image selected for background");
 		}
-
+		this.setContent(myGamePane);
 	}
 
 	/**
@@ -86,12 +89,23 @@ public class SingleLevelView extends Pane implements Observer {
 	}
 
 	private void setView(double width, double height) {
-		this.myViewWidth = width;
-		this.myViewHeight = height;
 		setPrefSize(width, height);
 		setMinSize(width, height);
 		setMaxSize(width, height);
+
 	}
+
+	public void setPaneSize(double width, double height) {
+		myGamePane.setPrefSize(width, height);
+		myGamePane.setMinSize(width, height);
+		myGamePane.setMaxSize(width, height);
+
+	}
+
+	/*
+	 * public void setPaneMultiplier(double wMultiplier, double hMultiplier) {
+	 * setPaneSize(GAME_WIDTH * wMultiplier, GAME_HEIGHT * hMultiplier); }
+	 */
 
 	public void recreateLevel(Level l) {
 		// System.out.println(myEvents.length);
@@ -103,7 +117,7 @@ public class SingleLevelView extends Pane implements Observer {
 	@Override
 	public void update(Observable o, Object arg) {
 		Level level = ((Level) arg);
-		this.getChildren().clear();
+		myGamePane.getChildren().clear();
 		// System.out.println(level.getGameObjectsCollection());
 		// level.getGameObjectsCollection().clear();
 		// System.out.println(level.getLevelID());
@@ -120,7 +134,7 @@ public class SingleLevelView extends Pane implements Observer {
 				gameObject.getRotation());
 
 		this.moveGameObjectToLevel(g, x, y);
-		this.getChildren().add(g);
+		myGamePane.getChildren().add(g);
 
 	}
 
@@ -145,10 +159,18 @@ public class SingleLevelView extends Pane implements Observer {
 	}
 
 	public double getViewWidth() {
-		return this.myViewWidth;
+		return this.getWidth();
 	}
 
 	public double getViewHeight() {
-		return this.myViewHeight;
+		return this.getHeight();
+	}
+
+	public double getPaneWidth() {
+		return myGamePane.getWidth();
+	}
+
+	public double getPaneHeight() {
+		return myGamePane.getHeight();
 	}
 }

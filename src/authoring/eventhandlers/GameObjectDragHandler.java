@@ -65,10 +65,13 @@ public class GameObjectDragHandler implements GameHandler<MouseEvent> {
 				}
 				if (dragY > slv.getViewHeight()) {
 					System.out.println("off bottom");
-					newY = slv.getViewHeight() - OBJECT_Y_OFFSET - g.getHeight();
+					newY = slv.getViewHeight() - OBJECT_Y_OFFSET
+							- g.getHeight();
 				}
-				go.setX(newX);
-				go.setY(newY);
+				go.setX(newX + slv.getHvalue()
+						* (slv.getPaneWidth() - slv.getViewWidth()));
+				go.setY(newY + slv.getVvalue()
+						* (slv.getPaneHeight() - slv.getViewHeight()));
 
 				level.addGameObject(go);
 				myProperties.displayProperties(go);
