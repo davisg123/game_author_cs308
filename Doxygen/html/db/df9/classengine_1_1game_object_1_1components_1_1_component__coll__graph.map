@@ -1,5 +1,0 @@
-<map id="engine.gameObject.components.Component" name="engine.gameObject.components.Component">
-<area shape="rect" id="node2" href="$d7/de6/interfaceengine_1_1game_object_1_1_i_enabled.html" title="engine.gameObject.IEnabled" alt="" coords="147,5,352,32"/>
-<area shape="rect" id="node3" href="$dc/df6/interfaceengine_1_1game_object_1_1_identifiable.html" title="engine.gameObject.Identifiable" alt="" coords="139,56,359,83"/>
-<area shape="rect" id="node4" href="$d4/dac/classengine_1_1game_object_1_1_identifier.html" title="engine.gameObject.Identifier" alt="" coords="146,107,353,133"/>
-</map>

@@ -1,6 +1,0 @@
-<map id="engine.physics.Vector.delta" name="engine.physics.Vector.delta">
-<area shape="rect" id="node2" href="$d5/d1f/classengine_1_1physics_1_1_vector.html#acb86cc2e6c015757803d38f16266a085" title="engine.physics.Vector.delta" alt="" coords="251,12,447,39"/>
-<area shape="rect" id="node4" href="$d5/d1f/classengine_1_1physics_1_1_vector.html#a1bc7c00d836a738d45eb584223973dec" title="engine.physics.Vector.getX" alt="" coords="253,63,446,89"/>
-<area shape="rect" id="node5" href="$d5/d1f/classengine_1_1physics_1_1_vector.html#a6f71261863fa29e27f1b3f1051529321" title="engine.physics.Vector.getY" alt="" coords="253,113,445,140"/>
-<area shape="rect" id="node3" href="$d5/d1f/classengine_1_1physics_1_1_vector.html#a33c635f15f2f2e16f9b57542c6c3182f" title="engine.physics.Vector.calculate\lMagnitude" alt="" coords="496,5,717,46"/>
-</map>
