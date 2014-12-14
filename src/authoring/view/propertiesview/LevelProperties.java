@@ -9,12 +9,11 @@ import authoring.view.icons.LevelIcon;
 import engine.gameObject.Identifier;
 
 public class LevelProperties extends Properties{
-
 	
-	private GameHandler myAddConditionHandler;
+	private GameHandler[] myConditionHandlers;
 	
-	public LevelProperties(Object o, GameHandler handler) {
-		myAddConditionHandler = handler;
+	public LevelProperties(Object o, GameHandler... handlers) {
+		myConditionHandlers = handlers;
 		initializeProperties(o);
 	}
 
@@ -33,10 +32,12 @@ public class LevelProperties extends Properties{
 		super.addMapToView();
 		
 		Button addCond = new Button("Add Condition");
-		addCond.setOnAction(myAddConditionHandler);
+		addCond.setOnAction(myConditionHandlers[0]);
 		this.getChildren().add(addCond);
 		
-		//not working yet
+		Button delCond = new Button("Delete Condition");
+		delCond.setOnAction(myConditionHandlers[1]);
+		this.getChildren().add(delCond);
 		
 		for(Identifier i : graphic.getLevel().getConditionCollection()){
 			Text textID = new Text(i.getUniqueId());

@@ -31,10 +31,12 @@ import engine.level.Level;
  *
  */
 public class SingleLevelView extends Pane implements Observer {
+	private static final int GAME_HEIGHT = 320;
+	private static final int GAME_WIDTH = 480;
 	private Background myDefaultBackground = new Background(new BackgroundFill(
 			Color.WHITE, CornerRadii.EMPTY, Insets.EMPTY));
-	private static final double VIEW_HEIGHT_RATIO = .82;
-	private static final double VIEW_WIDTH_RATIO = 0.6;
+	/*private static final double VIEW_HEIGHT_RATIO = .82;
+	private static final double VIEW_WIDTH_RATIO = 0.6;*/
 	public static final double OBJECT_X_OFFSET = -Main.SCREEN_WIDTH * .2;
 	public static final double OBJECT_Y_OFFSET = -Main.SCREEN_HEIGHT * .23;
 	private File myGameLocation;
@@ -47,7 +49,7 @@ public class SingleLevelView extends Pane implements Observer {
 
 	public SingleLevelView(File gameLoc, double width, double height,
 			String bgImage, GameHandler... handlers) {
-		setView(width * VIEW_WIDTH_RATIO, height * VIEW_HEIGHT_RATIO);
+		setView(GAME_WIDTH, GAME_HEIGHT);
 		myEvents = handlers;
 		myGameLocation = gameLoc;
 		this.setBackground(myDefaultBackground);

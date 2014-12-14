@@ -1,7 +1,6 @@
 package engine.actions;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
@@ -19,7 +18,7 @@ public abstract class PhysicsIDAction implements Action, Initializable {
 
 	protected Double myValue;
 	protected CollisionComposition myCollision;
-	protected Collection<GameObject> myObjects;
+	protected transient Collection<GameObject> myObjects;
 	protected List<Identifier> myID;
 
 	public PhysicsIDAction(List<Identifier> id, Double value) {

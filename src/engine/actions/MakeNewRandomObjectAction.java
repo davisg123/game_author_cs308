@@ -3,6 +3,8 @@ package engine.actions;
 import java.util.Random;
 
 import engine.gameObject.GameObject;
+import engine.gameObject.Identifier;
+import engine.gameObject.components.PhysicsBody;
 
 public class MakeNewRandomObjectAction extends MakeNewObjectAction{
 
@@ -16,9 +18,10 @@ public class MakeNewRandomObjectAction extends MakeNewObjectAction{
 		super(type); 
 		r = new Random(); 
 		myLowerXBound = lowerXBound;
-		myUpperXBound = upperXBound;
 		myLowerYBound = lowerYBound;
+		myUpperXBound = upperXBound;
 		myUpperYBound = upperYBound;
+
 	}
 
 	
@@ -36,11 +39,11 @@ public class MakeNewRandomObjectAction extends MakeNewObjectAction{
 	}
 	
 	public void makeRandomObject(GameObject object){
-		double x = r.nextInt((int) (myUpperXBound-myLowerXBound)) + myLowerXBound; 
-		double y = r.nextInt((int) (myUpperYBound-myLowerYBound)) + myLowerYBound; 
-		GameObject newObject = new GameObject(object, x, y, myType); 
-		newObject.setIdentifier(object.getIdentifier());
-		newObject.setPhysicsBody(object.getPhysicsBody());
+            double x =  (myUpperXBound-myLowerXBound) * r.nextFloat() + myLowerXBound; 
+            double y =  (myUpperYBound-myLowerYBound) * r.nextFloat() + myLowerYBound; 
+            GameObject newObject = new GameObject(object, x, y, myType); 
+		newObject.setIdentifier(new Identifier(object.getIdentifier()));
+		newObject.setPhysicsBody(new PhysicsBody(object.getPhysicsBody()));
 		myRenderer.createAndAssignRenderedNode(newObject);
 		myCurrentLevel.addGameObject(newObject);
 	}

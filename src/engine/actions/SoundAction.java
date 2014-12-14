@@ -10,7 +10,7 @@ import engine.sound.SoundUtility;
  */
 
 public abstract class SoundAction implements Action, Initializable {
-    protected SoundUtility mySoundUtility;
+    protected transient SoundUtility mySoundUtility;
     protected String mySoundPath;
     
     public SoundAction () {

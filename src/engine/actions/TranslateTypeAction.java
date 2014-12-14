@@ -7,8 +7,8 @@ import engine.level.Level;
 
 public abstract class TranslateTypeAction implements Action, Initializable{
 
-	protected GameObjectsCollection myGameObjects; 
-	protected Level myCurrentLevel;
+	protected transient GameObjectsCollection myGameObjects; 
+	protected transient Level myCurrentLevel;
 	protected String myType; 
 	protected Double myValue;
 	

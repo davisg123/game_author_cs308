@@ -2,6 +2,7 @@ package engine.collision.objects;
 
 import engine.gameObject.GameObject;
 import engine.gameObject.components.PhysicsBody;
+import engine.physics.CollisionConstant;
 import engine.physics.Velocity;
 
 /**
@@ -65,49 +66,37 @@ public class CollisionComposition {
 		// System.out.println(xChange / (Math.abs(curX)+Math.abs(otherX)));
 		// create new condition to stop x or y
 		boolean xAxis = isOnXAxis(one, two);
-		GameObject fixed = (one.getPhysicsBody().getScalar("CollisionConstant")
+		// instantiating for its toString() method
+		CollisionConstant a = new CollisionConstant(0.0);
+		GameObject fixed = (one.getPhysicsBody().getScalar(a.toString())
 				.getValue() == 1) ? one : two;
-		GameObject other = (one.getPhysicsBody().getScalar("CollisionConstant")
+		GameObject other = (one.getPhysicsBody().getScalar(a.toString())
 				.getValue() == 1) ? two : one;
-		//System.out.println(fixed.getPhysicsBody().getCollisionBodyWidth());
-		double toMove = 0;
 		if (xAxis) {
 			other.getPhysicsBody().setVelocity(
 					new Velocity(0.0, other.getPhysicsBody().getVelocity()
 							.getY()));
 			if (other.getTranslateX() < fixed.getTranslateX()) {
-				toMove = collisionHelper(fixed.getTranslateX(),
-						other.getTranslateX(), fixed.getPhysicsBody()
-								.getCollisionBodyHeight() / 2.0,
-						other.getPhysicsBody().getCollisionBodyHeight() / 2.0);
+				other.setTranslateX(fixed.getTranslateX()
+						- other.getPhysicsBody().getCollisionBodyWidth());
 			} else {
-				toMove = -1.0
-						* collisionHelper(fixed.getTranslateX(),
-								other.getTranslateX(), fixed.getPhysicsBody()
-										.getCollisionBodyHeight() / 2.0, other
-										.getPhysicsBody()
-										.getCollisionBodyHeight() / 2.0);
+				other.setTranslateX(fixed.getTranslateX()
+						+ fixed.getPhysicsBody().getCollisionBodyWidth());
 			}
 		} else {
-			if (other.getTranslateY() < fixed.getTranslateY()) {
-				toMove = collisionHelper(fixed.getTranslateY(),
-						other.getTranslateY(), fixed.getPhysicsBody()
-								.getCollisionBodyWidth() / 2.0, other
-								.getPhysicsBody().getCollisionBodyWidth() / 2.0);
-
-			} else {
-				toMove = -1.0
-						* collisionHelper(fixed.getTranslateY(),
-								other.getTranslateY(), fixed.getPhysicsBody()
-										.getCollisionBodyWidth() / 2.0, other
-										.getPhysicsBody()
-										.getCollisionBodyWidth() / 2.0);
-			}
 			other.getPhysicsBody().setVelocity(
 					new Velocity(other.getPhysicsBody().getVelocity().getX(),
 							fixed.getPhysicsBody().getVelocity().getY()));
-			other.setTranslateY(other.getTranslateY() - toMove);
+			if (other.getTranslateY() < fixed.getTranslateY()) {
+				other.setTranslateY(fixed.getTranslateY()
+						- other.getPhysicsBody().getCollisionBodyHeight());
+			} else {
+				other.setTranslateY(fixed.getTranslateY()
+						+ fixed.getPhysicsBody().getCollisionBodyHeight());
+			}
 
+			// System.out.println(fixed.getTranslateY());
+			// System.out.println(other.getRenderedNode().get);
 		}
 	}
 

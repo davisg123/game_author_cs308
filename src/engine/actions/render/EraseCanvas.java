@@ -17,7 +17,7 @@ public class EraseCanvas extends RenderAction {
     @Override
     protected void applyRender () {
         for(GameObject object : myGameObjects) {
-            myRenderer.removeRenderedNode(object.getID());
+            myRenderer.removeRenderedNode(object.getIdentifier());
             //Should add an action???... separate it into the condition?..
             //TODO myLevel.remove(object);
             
