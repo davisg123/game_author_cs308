@@ -111,7 +111,7 @@ public class MarioGameTest extends Application {
         GameObject floor1 = new GameObject(null, "floor3.png", 
                                            1, 347, 8500.0, 800, 0, "FloorBlock1");
         floor1.setIdentifier(new Identifier("FloorBlock","a")); 
-        PhysicsBody floor1Body = new PhysicsBody(8500,50);
+        PhysicsBody floor1Body = new PhysicsBody(8500,800);
         floor1Body.addScalar((new CollisionConstant(1.0)));
         floor1.setPhysicsBody(floor1Body);
         myFloorObjects.add(floor1);
@@ -125,7 +125,7 @@ public class MarioGameTest extends Application {
         myPlatformObjects.add(platform1);
         
         GameObject platform2 = new GameObject(null, "BrickBlock_NSMB.png", 
-                                              349, 180, 50, 50, 0, "PlatformBlock2");
+                                              351, 180, 50, 50, 0, "PlatformBlock2");
         platform2.setIdentifier(new Identifier("PlatformBlock","b"));   
         PhysicsBody platform2Body = new PhysicsBody(50,50);
         platform2Body.addScalar((new CollisionConstant(1.0)));
@@ -134,7 +134,7 @@ public class MarioGameTest extends Application {
         
         
         GameObject platform3 = new GameObject(null, "BrickBlock_NSMB.png", 
-                                              398, 180, 50, 50, 0, "PlatformBlock2");
+                                              402, 180, 50, 50, 0, "PlatformBlock2");
         platform3.setIdentifier(new Identifier("PlatformBlock","c")); 
         PhysicsBody platform3Body = new PhysicsBody(50,50);
         platform3Body.addScalar((new CollisionConstant(1.0)));
@@ -142,7 +142,7 @@ public class MarioGameTest extends Application {
         myPlatformObjects.add(platform3);
 
         GameObject platform4 = new GameObject(null, "BrickBlock_NSMB.png", 
-                                              447, 180, 50, 50, 0, "PlatformBlock3");
+                                              453, 180, 50, 50, 0, "PlatformBlock3");
         platform4.setIdentifier(new Identifier("PlatformBlock","d"));   
         PhysicsBody platform4Body = new PhysicsBody(50,50);
         platform4Body.addScalar((new CollisionConstant(1.0)));
@@ -177,7 +177,7 @@ public class MarioGameTest extends Application {
         myMarioObjects.add(mario);
         
         //create a fireball
-        GameObject fireball = new GameObject(null, "ball.png", 50,50, 10, 10, 0, "fireball");
+        GameObject fireball = new GameObject(null, "fireball.gif", 50,50, 10, 10, 0, "fireball");
         fireball.setIdentifier(new Identifier("fireball", "template"));
         PhysicsBody fireballBody = new PhysicsBody(10, 10);
         fireball.setPhysicsBody(fireballBody);
@@ -187,20 +187,20 @@ public class MarioGameTest extends Application {
         goomba.setIdentifier(new Identifier("goomba","template"));
         PhysicsBody goombaBody = new PhysicsBody(30,30);
         goombaBody.addForce(new Gravity(0,1.0));
-        goombaBody.addScalar(new GravityConstant(1.0));
+        goombaBody.addScalar(new GravityConstant(10.0));
         goomba.setPhysicsBody(goombaBody);
         myGoombaObjects.add(goomba);
         
-        GameObject goomba1 = new GameObject(null,"Goomba.gif",500,150,30,30,0,"goomba");
+        GameObject goomba1 = new GameObject(null,"Goomba.gif",300,150,30,30,0,"goomba");
         goomba1.setIdentifier(new Identifier("goomba","a"));
         PhysicsBody goombaBody1 = new PhysicsBody(30,30);
         goombaBody1.addForce(new Gravity(0,1.0));
-        goombaBody1.addScalar(new GravityConstant(50.0));
+        goombaBody1.addScalar(new GravityConstant(10.0));
         goomba1.setPhysicsBody(goombaBody1);
         myGoombaObjects.add(goomba1);
         
         
-        GameObject goomba2 = new GameObject(null,"Goomba.gif",700,150,30,30,0,"goomba");
+        GameObject goomba2 = new GameObject(null,"Goomba.gif",400,150,30,30,0,"goomba");
         goomba2.setIdentifier(new Identifier("goomba","b"));
         PhysicsBody goombaBody2 = new PhysicsBody(30,30);
         goombaBody2.addForce(new Gravity(0,1.0));
@@ -328,7 +328,7 @@ public class MarioGameTest extends Application {
         FixedCollisionTypeAction goombaCollisionAction = new FixedCollisionTypeAction("goomba","FloorBlock",0.0);
         GoombaConditionActionList.add(goombaCollisionAction);
         TypeCollisionCondition goombaAndFloorCollision = new TypeCollisionCondition(GoombaConditionActionList,"goomba","FloorBlock");
-        goombaAndFloorCollision.setIdentifier(new Identifier("collision_cond","B"));
+        goombaAndFloorCollision.setIdentifier(new Identifier("collision_cond","b"));
         myConditions.add(goombaAndFloorCollision);
         
         //Platform Collisions
