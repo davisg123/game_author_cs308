@@ -27,3 +27,4 @@ public class TranslateXRandomType extends TranslateTypeAction {
 	}
 
 }
+

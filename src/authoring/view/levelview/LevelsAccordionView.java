@@ -2,14 +2,13 @@ package authoring.view.levelview;
 
 import java.util.ResourceBundle;
 
-import data.Observable;
-import data.Observer;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import authoring.eventhandlers.GameHandler;
 import authoring.model.collections.LevelsCollection;
 import authoring.view.baseclasses.CollectionView;
 import authoring.view.icons.LevelIcon;
+import data.Observable;
+import data.Observer;
 import engine.level.Level;
 
 public class LevelsAccordionView extends CollectionView implements Observer{
@@ -29,7 +28,7 @@ public class LevelsAccordionView extends CollectionView implements Observer{
 
 	@Override
 	public void update(Observable o, Object arg) {
-		addLevel((Level) arg);
+		addLevel((LevelsCollection) arg);
 		
 	}
 	
@@ -41,11 +40,14 @@ public class LevelsAccordionView extends CollectionView implements Observer{
 		levelEvents = gameHandlers;
 	}
 	
-	public void addLevel(Level l){
-		myName = l.getIdentifier().getUniqueId();
-		LevelIcon newLevel = new LevelIcon(myName, myEvents, l,levelEvents);
+	public void addLevel(LevelsCollection levels){
+		myVbox.getChildren().clear();
+		for (Level l : levels) {
+			myName = l.getIdentifier().getUniqueId();
+			LevelIcon newLevel = new LevelIcon(myName, myEvents, l, levelEvents);
 
-		myVbox.getChildren().add(newLevel);
+			myVbox.getChildren().add(newLevel);
+		}
 	}
 	
 	public String getMyName(){

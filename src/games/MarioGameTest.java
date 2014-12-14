@@ -343,8 +343,10 @@ public class MarioGameTest extends Application {
         
         List<Action> fireballGoombaConditionActionList = new ArrayList<Action>();
         Action DeleteGoombaAction = new DeleteTypeAction("goomba");
-        fireballGoombaConditionActionList.add(marioPlatformCollisionAction);
-        TypeCollisionCondition fireballAndGoombaCollision = new TypeCollisionCondition(marioPlatformConditionActionList,"mario","PlatformBlock");
+        Action DeleteFireballAction = new DeleteTypeAction("fireball");
+        fireballGoombaConditionActionList.add(DeleteGoombaAction);
+        fireballGoombaConditionActionList.add(DeleteFireballAction);
+        TypeCollisionCondition fireballAndGoombaCollision = new TypeCollisionCondition(fireballGoombaConditionActionList,"fireball","goomba");
         fireballAndGoombaCollision.setIdentifier(new Identifier("collision_cond","a"));
         myConditions.add(fireballAndGoombaCollision);
         

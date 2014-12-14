@@ -22,11 +22,15 @@ public class LevelWizard extends Wizard{
 		PropertyTextField nameField = new PropertyTextField("Name: ", "");
 		PropertyTextField BGImageField = new PropertyTextField("Background Image: ", "");
 		PropertyTextField BGMusicField = new PropertyTextField("Background Music: ", "");
+		PropertyTextField WidthField = new PropertyTextField("Width: ", "");
+		PropertyTextField HeightField = new PropertyTextField("Height: ", "");
 
 		
 		myMap.put("name", nameField);
 		myMap.put("BGImage", BGImageField);
 		myMap.put("BGMusic", BGMusicField);
+		myMap.put("width", WidthField);
+		myMap.put("height", HeightField);
 		
 		isFirst = new BooleanField("First Level", false);
 		

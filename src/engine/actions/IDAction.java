@@ -14,6 +14,7 @@ public abstract class IDAction implements Action, Initializable{
 	
 	public IDAction(List<Identifier> ids){
 		myIDs = ids; 
+		myGameObjects = new GameObjectsCollection();
 	}
 	
 	@Override
@@ -24,8 +25,5 @@ public abstract class IDAction implements Action, Initializable{
 			}
 		}
 	}
-
-
-	
 
 }
