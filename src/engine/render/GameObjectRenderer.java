@@ -29,6 +29,7 @@ public class GameObjectRenderer {
 	private Map<String, RenderedNode> myRenderedNodes;
 	private Level myCurrentLevel;
 	private static final String IMAGES = "images";
+	private static final String BACKGROUND = "background";
 	private FilePathUtility myFilePathUtility;
 	/**
 	 * Constructor takes in a group as the Canvas of the game 
@@ -148,21 +149,15 @@ public class GameObjectRenderer {
 	}
     
 
-    //TODO fix shitty code
     private void setBackGroundImage(Level level) {   
-        FileInputStream in;
-        try {
-            in = new FileInputStream(myFilePathUtility.getFilePath()+level.getBackgroundImage());
-            Image image = new Image(in);
-            ImageView view = new ImageView();
-            view.setImage(image);
-            view.setPreserveRatio(true);
-            view.setSmooth(true);
-            view.setCache(true);
-            myCanvas.getChildren().add(view);
-        }
-        catch (FileNotFoundException e) {
-        }
+        GameObject background = new GameObject();
+        background.setIdentifier(new Identifier(BACKGROUND,BACKGROUND));
+        background.setCurrentImagePath(level.getBackgroundImage());
+        ImageView view = createImageAndView(background);
+        background.setHeight(height);
+        RenderedNode node = new RenderedNode();
+        node.setImageView(view);
+        background.setRenderedNode(node);
     }
     
     public void setCameraFocus (GameObject obj) {
