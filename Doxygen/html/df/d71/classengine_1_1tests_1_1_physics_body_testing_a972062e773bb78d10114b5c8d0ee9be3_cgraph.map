@@ -1,0 +1,17 @@
+<map id="engine.tests.PhysicsBodyTesting.main" name="engine.tests.PhysicsBodyTesting.main">
+<area shape="rect" id="node2" href="$d9/d9d/classengine_1_1game_object_1_1components_1_1_physics_body.html#a5241a38b82aed5ed11e7b3674ecb83ce" title="engine.gameObject.components.\lPhysicsBody.addForce" alt="" coords="237,197,472,238"/>
+<area shape="rect" id="node13" href="$d9/d9d/classengine_1_1game_object_1_1components_1_1_physics_body.html#a69d3fe175f40fdc40ca6e414cac727a5" title="engine.gameObject.components.\lPhysicsBody.addScalar" alt="" coords="237,283,472,325"/>
+<area shape="rect" id="node15" href="$d9/d9d/classengine_1_1game_object_1_1components_1_1_physics_body.html#a81cf258c7074ffdeda32d457aa0db033" title="engine.gameObject.components.\lPhysicsBody.getForce" alt="" coords="237,349,472,390"/>
+<area shape="rect" id="node16" href="$d5/d1f/classengine_1_1physics_1_1_vector.html#a1db207d8cdcd33640087bfe81b1ba237" title="engine.physics.Vector.get\lMagnitude" alt="" coords="262,414,447,455"/>
+<area shape="rect" id="node3" href="$da/d09/classengine_1_1physics_1_1_force.html#a74549d9d00eace015d869eb197607f8a" title="engine.physics.Force.add\lOrChangeValue" alt="" coords="546,87,729,129"/>
+<area shape="rect" id="node7" href="$dc/db5/classengine_1_1physics_1_1_physics_component.html#aabe6f17a9d86eaf42e9df5769182dfa5" title="engine.physics.PhysicsComponent.to\lString" alt="" coords="803,201,1061,242"/>
+<area shape="rect" id="node8" href="$d9/d9d/classengine_1_1game_object_1_1components_1_1_physics_body.html#aec651bb9ed66c5c0db0bbbd0c2f445ae" title="engine.gameObject.components.\lPhysicsBody.balanceForces" alt="" coords="520,306,755,347"/>
+<area shape="rect" id="node12" href="$da/d09/classengine_1_1physics_1_1_force.html#a4cdc8c3b864f740daf42db4466aee3c7" title="engine.physics.Force.iterator" alt="" coords="534,204,741,231"/>
+<area shape="rect" id="node4" href="$da/d09/classengine_1_1physics_1_1_force.html#af4e5e84df07e6613da4d81ee5d7777ca" title="engine.physics.Force.calculate\lForce" alt="" coords="824,5,1040,46"/>
+<area shape="rect" id="node5" href="$da/d09/classengine_1_1physics_1_1_force.html#a198437861f88d7351509aa4e947679e0" title="engine.physics.Force.calculate\lMagnitude" alt="" coords="824,70,1040,111"/>
+<area shape="rect" id="node6" href="$d0/de5/classengine_1_1physics_1_1_scalar.html#a676fb6b37fae2e642fcdec1109b4b233" title="engine.physics.Scalar.get\lValue" alt="" coords="840,135,1024,177"/>
+<area shape="rect" id="node9" href="$d5/d1f/classengine_1_1physics_1_1_vector.html#a0ad05574ba8b82b2f265ebfa5869d27b" title="engine.physics.Vector.setX" alt="" coords="836,281,1028,308"/>
+<area shape="rect" id="node11" href="$d5/d1f/classengine_1_1physics_1_1_vector.html#a4e646d4b9bf5a3904817560725776cec" title="engine.physics.Vector.setY" alt="" coords="837,332,1027,359"/>
+<area shape="rect" id="node10" href="$d5/d1f/classengine_1_1physics_1_1_vector.html#a33c635f15f2f2e16f9b57542c6c3182f" title="engine.physics.Vector.calculate\lMagnitude" alt="" coords="1109,299,1331,341"/>
+<area shape="rect" id="node14" href="$d0/de5/classengine_1_1physics_1_1_scalar.html#afc6c4f29d09315850a328bb532d4bc35" title="engine.physics.Scalar.iterator" alt="" coords="532,372,743,399"/>
+</map>
