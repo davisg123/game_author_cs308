@@ -9,6 +9,7 @@ import data.DataManager;
 import authoring.model.GameData;
 import authoring.model.collections.ConditionsCollection;
 import authoring.model.collections.GameObjectsCollection;
+import authoring.model.collections.GeneralCollection;
 import authoring.model.collections.LevelsCollection;
 import engine.GameManager;
 import engine.actions.Action;
@@ -17,6 +18,7 @@ import engine.actions.FixedCollisionTypeAction;
 import engine.actions.ImpulseAction;
 import engine.actions.MakeNewObjectFromLocationAction;
 import engine.actions.MakeNewObjectFromObjectAction;
+import engine.actions.MakeNewRandomObjectAction;
 import engine.actions.TranslateXType;
 import engine.actions.TranslateYType;
 import engine.actions.XVelocityIDAction;
@@ -26,6 +28,7 @@ import engine.conditions.BoundaryConditionX;
 import engine.conditions.BoundaryConditionY;
 import engine.conditions.ButtonPressCondition;
 import engine.conditions.ButtonConditionManager;
+import engine.conditions.Condition;
 import engine.conditions.TimeCondition;
 import engine.conditions.TypeCollisionCondition;
 import engine.gameObject.GameObject;
@@ -59,6 +62,8 @@ public class MarioGameTest extends Application {
     private Scene myScene;
     private Group myRootGroup;
     
+    
+    
     public static void main(String[] args) throws Exception {
         launch(args);
     }
@@ -70,7 +75,7 @@ public class MarioGameTest extends Application {
 
         myRootGroup = new Group();
 
-        myScene = new Scene(myRootGroup,807,400);
+        myScene = new Scene(myRootGroup,400,400);
         ButtonConditionManager.getInstance().beginListeningToScene(myScene);
         myStage.setScene(myScene);
         myStage.show();
@@ -88,7 +93,7 @@ public class MarioGameTest extends Application {
         GameObjectsCollection myMarioObjects = new GameObjectsCollection();
         GameObjectsCollection myLabels = new GameObjectsCollection();
         GameObjectsCollection myQuestionBlocksObjects = new GameObjectsCollection();
-        
+        GameObjectsCollection myMushroomObjects = new GameObjectsCollection();
         
         //Create button for Splash Screen
         
@@ -145,13 +150,19 @@ public class MarioGameTest extends Application {
 
         GameObject questionBlock1 = new GameObject(null, "Question Block.gif", 
                                               500, 180, 50, 50, 0, "QuestionBlock1");
-        questionBlock1.setIdentifier(new Identifier("QuestionBlock","e"));   
+        questionBlock1.setIdentifier(new Identifier("QuestionBlock","a"));   
         PhysicsBody questionBlock1Body = new PhysicsBody(50,50);
         questionBlock1Body.addScalar((new CollisionConstant(1.0)));
         questionBlock1.setPhysicsBody(questionBlock1Body);
         myQuestionBlocksObjects.add(questionBlock1);
         
-        
+        GameObject mushroom1 = new GameObject(null, "1-Up Mushroom.gif", 
+                                                   500, 180, 50, 50, 0, "mushroom");
+             mushroom1.setIdentifier(new Identifier("mushroom","template"));   
+             PhysicsBody mushroom1Body = new PhysicsBody(50,50);
+             mushroom1.setPhysicsBody(mushroom1Body);
+             
+             
         
         
         
@@ -263,6 +274,17 @@ public class MarioGameTest extends Application {
         nCon.setIdentifier(new Identifier("button_cond", "n"));
         myConditions.add(nCon);
         
+        
+        //Shoot Random Fireball
+        List<Action> rTestList = new ArrayList<Action>(); 
+        Action ballRandAct = new MakeNewRandomObjectAction("fireball", 200.0,200.0,100.0,400.0);
+        rTestList.add(ballRandAct);
+        List<KeyCode> kclR = new ArrayList<KeyCode>();
+        kclR.add(KeyCode.R);
+        ButtonPressCondition rCon = new ButtonPressCondition(rTestList, kclR, 5.0, true);
+        rCon.setIdentifier(new Identifier("button_cond", "r"));
+        myConditions.add(rCon);
+        
         //Delete 
         Action delete = new DeleteTypeAction("fireball");
         List<Action> actions = new ArrayList<Action>();
@@ -282,6 +304,9 @@ public class MarioGameTest extends Application {
         ButtonPressCondition wCon = new ButtonPressCondition(wActList,kclW,50.0, true);
         wCon.setIdentifier(new Identifier("button_cond","w"));
         myConditions.add(wCon);
+        
+        
+     
         
         //collision stuff
         
@@ -311,6 +336,27 @@ public class MarioGameTest extends Application {
         myConditions.add(marioAndPlatformCollision);
         
         
+        //fireball Goomba
+        
+        List<Action> fireballGoombaConditionActionList = new ArrayList<Action>();
+        fireballGoombaConditionActionList.add(marioPlatformCollisionAction);
+        TypeCollisionCondition fireballAndGoombaCollision = new TypeCollisionCondition(marioPlatformConditionActionList,"mario","PlatformBlock");
+        fireballAndGoombaCollision.setIdentifier(new Identifier("collision_cond","a"));
+        myConditions.add(fireballAndGoombaCollision);
+        
+        
+        
+        //Question Mark Collision
+        
+        List<Action> marioQBlockConditionActionList = new ArrayList<Action>();
+        FixedCollisionTypeAction marioQBlockCollisionAction = new FixedCollisionTypeAction("mario","QuestionBlock",0.0);
+        marioQBlockConditionActionList.add(marioQBlockCollisionAction);
+        Action makeMushroomAction = new MakeNewObjectFromObjectAction("mushroom", questionBlock1.getIdentifier());
+        marioQBlockConditionActionList.add(makeMushroomAction);
+        TypeCollisionCondition marioAndQBlockCollision = new TypeCollisionCondition(marioPlatformConditionActionList,"mario","QuestionBlock");
+        marioAndQBlockCollision.setIdentifier(new Identifier("collision_cond","a"));
+        myConditions.add(marioAndQBlockCollision);
+        
         //Boundary
         Action boundaryRightAction = new TranslateYType("floor",350.0);
         Action boundaryLeftAction = new TranslateYType("floor",350.0);
@@ -324,11 +370,21 @@ public class MarioGameTest extends Application {
         
         //Scrolling
         Action boundaryScrollActionBall = new TranslateXType("mario",0.0);
-        Action boundaryScrollActionFloor = new TranslateXType("floor",-1.0);
+        Action boundaryScrollActionFloor = new TranslateXType("FloorBlock",-1.0);
+        Action boundaryScrollActionPlatform = new TranslateXType("PlatformBlock",-1.0);
+        Action boundaryScrollActionQBlock = new TranslateXType("QuestionBlock",-1.0);
+        Action boundaryScrollActionMushroom = new TranslateXType("mushroom",-1.0);
+        Action boundaryScrollActionFireball = new TranslateXType("fireball",-1.0);
+        Action boundaryScrollActionGoomba = new TranslateXType("goomba",-1.0);
         List<Action> scrollActionList = new ArrayList<Action>();
         scrollActionList.add(boundaryScrollActionBall);
         scrollActionList.add(boundaryScrollActionFloor);
-        BoundaryConditionX boundaryConditionScroll = new BoundaryConditionX(scrollActionList,myMarioObjects.getIdentifierList(),200.0,true);
+        scrollActionList.add(boundaryScrollActionPlatform);
+        scrollActionList.add(boundaryScrollActionQBlock);
+        scrollActionList.add(boundaryScrollActionMushroom);
+        scrollActionList.add(boundaryScrollActionFireball);
+        scrollActionList.add(boundaryScrollActionGoomba);
+        BoundaryConditionX boundaryConditionScroll = new BoundaryConditionX(scrollActionList,myMarioObjects.getIdentifierList(),350.0,true);
         boundaryConditionScroll.setIdentifier(new Identifier("bound_scroll","a"));
         myConditions.add(boundaryConditionScroll);
 
@@ -354,8 +410,10 @@ public class MarioGameTest extends Application {
         allGameObjects.addAll(myPlatformObjects);
         allGameObjects.addAll(myGoombaObjects);
         allGameObjects.addAll(myFloorObjects);
+        allGameObjects.addAll(myQuestionBlocksObjects);
         allGameObjects.add(fireball);
         allGameObjects.addAll(myLabels);
+        allGameObjects.addAll(myMushroomObjects);
 
 
         /*******
@@ -372,21 +430,21 @@ public class MarioGameTest extends Application {
         myLevels.add(level0);
         myLevels.add(level1);
         
-        
-        /*
-         * uncomment for saving game
-         */
-        
-        
-        GameData data = new GameData(myLevels,myConditions,allGameObjects);
-        DataManager manager = new DataManager();
-        try {
-            manager.writeGameFile(data, "fd_final.json", Paths.get(".").toString()+"/src/data/games/fd_final/");
-        }
-        catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
+//        
+//        /*
+//         * uncomment for saving game
+//         */
+//        
+//        
+//        GameData data = new GameData(myLevels,myConditions,allGameObjects);
+//        DataManager manager = new DataManager();
+//        try {
+//            manager.writeGameFile(data, "fd_final.json", Paths.get(".").toString()+"/src/data/games/fd_final/");
+//        }
+//        catch (IOException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
         
         
         /*******

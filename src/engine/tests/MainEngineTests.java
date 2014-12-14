@@ -181,11 +181,11 @@ public class MainEngineTests extends Application {
         kclH.add(KeyCode.H);
         ButtonPressCondition hCon = new ButtonPressCondition(actions, kclH, 1.0, true);
         hCon.setIdentifier(new Identifier("button_cond", "h"));
+        
         myConditions.add(aCon);
         myConditions.add(dCon);
         myConditions.add(nCon);
         myConditions.add(hCon);
-        System.out.println(1);
         
         ArrayList<Action> wActList = new ArrayList<Action>();
         List<Identifier> wActListId = myBallObjects.getIdentifierList();

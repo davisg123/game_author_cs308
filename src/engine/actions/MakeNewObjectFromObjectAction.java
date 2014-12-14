@@ -32,9 +32,7 @@ public class MakeNewObjectFromObjectAction extends MakeNewObjectAction {
 				newObject.setPhysicsBody(object.getPhysicsBody());
 				myRenderer.createAndAssignRenderedNode(newObject);
 				newObject.setOrientation(myObject.getOrientation());
-				myCurrentLevel.addGameObject(newObject);
-				
-				
+				myCurrentLevel.addGameObject(newObject);	
 			}
 			
 		}

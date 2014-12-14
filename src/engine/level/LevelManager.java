@@ -116,12 +116,14 @@ public class LevelManager implements Iterable<Level> {
 	public void initializeCurrentLevel() {
 		disableAllConditions();
 		setLevelEnabledConditions();
+		
 		for(Level level : myLevels) {
 		    mySoundPlayer.stopBackGroundMusic(level.getBackgroundMusic());
 		}
 		mySoundPlayer.playBackGroundMusic(myCurrentLevel.getBackgroundMusic());
 		myCurrentLevel.initialize(this);
 		myRenderer.renderGameObjects(myCurrentLevel);
+		
 	}
 
 	/**
@@ -158,6 +160,7 @@ public class LevelManager implements Iterable<Level> {
 		for (GameObject object: myGameObjects){
 			if (object.getIdentifier().getUniqueId().equals("template")){
 				myTemplateObjects.add(object);
+				System.out.println(object.getIdentifier().getType());
 			}
 		}
 	}
