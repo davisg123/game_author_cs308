@@ -1,8 +1,0 @@
-<map id="gamePlayer.model.DataWrapper" name="gamePlayer.model.DataWrapper">
-<area shape="rect" id="node2" href="$df/de5/classauthoring_1_1model_1_1collections_1_1_levels_collection.html" title="authoring.model.collections.\lLevelsCollection" alt="" coords="301,5,504,46"/>
-<area shape="rect" id="node3" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html" title="authoring.model.collections.\lGeneralCollection\&lt; Level \&gt;" alt="" coords="27,5,229,46"/>
-<area shape="rect" id="node4" href="$d1/d32/classauthoring_1_1model_1_1collections_1_1_game_objects_collection.html" title="authoring.model.collections.\lGameObjectsCollection" alt="" coords="301,70,504,111"/>
-<area shape="rect" id="node5" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html" title="authoring.model.collections.\lGeneralCollection\&lt; GameObject \&gt;" alt="" coords="6,70,250,111"/>
-<area shape="rect" id="node6" href="$db/d2a/classauthoring_1_1model_1_1collections_1_1_conditions_collection.html" title="authoring.model.collections.\lConditionsCollection" alt="" coords="301,135,504,177"/>
-<area shape="rect" id="node7" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html" title="authoring.model.collections.\lGeneralCollection\&lt; Condition \&gt;" alt="" coords="16,135,240,177"/>
-</map>
