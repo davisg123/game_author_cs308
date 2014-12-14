@@ -2,8 +2,6 @@ package gamePlayer.view;
 
 import javafx.scene.Group;
 import javafx.scene.Node;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 
 public class GameCanvas implements ViewController{
 	
@@ -11,9 +9,6 @@ public class GameCanvas implements ViewController{
 	
 	public GameCanvas() {
 		myCanvas = new Group();
-		Circle circle = new Circle(50, 50, 0);
-		circle.setFill(Color.BLACK);
-		myCanvas.getChildren().add(circle);
 	}
 	
 	@Override

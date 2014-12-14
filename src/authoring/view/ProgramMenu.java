@@ -116,7 +116,7 @@ public class ProgramMenu extends MenuBar {
 			((AuthoringView) myTabs.getTabs().get(currentTab).getContent())
 					.getController().loadData(gameData);
 		} catch (FileNotFoundException e) {
-			ErrorPopUp epu = new ErrorPopUp();
+			ErrorPopUp epu = new ErrorPopUp(e);
 			epu.display("File not found", false);
 		} catch (NullPointerException e) {
 			//User chose not to load a file. No action is needed.

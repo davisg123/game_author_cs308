@@ -55,7 +55,7 @@ public class AddActionHandler implements GameHandler<Event> {
 			myActionSelectionWizard.close();
 
 		} catch (ClassNotFoundException e) {
-			ErrorPopUp epu = new ErrorPopUp();
+			ErrorPopUp epu = new ErrorPopUp(e);
 			epu.display("Bad Class", false);
 		}
 
@@ -75,7 +75,7 @@ public class AddActionHandler implements GameHandler<Event> {
 			myCPW.close();
 		} catch (InstantiationException | IllegalAccessException
 				| IllegalArgumentException | InvocationTargetException e) {
-			ErrorPopUp epu = new ErrorPopUp();
+			ErrorPopUp epu = new ErrorPopUp(e);
 			epu.display("Could not construct action", false);
 		}
 	}
@@ -103,7 +103,7 @@ public class AddActionHandler implements GameHandler<Event> {
 					}
 				} catch (ClassNotFoundException | NoSuchMethodException | 
 						InvocationTargetException | IllegalAccessException e) {
-					ErrorPopUp epu = new ErrorPopUp();
+					ErrorPopUp epu = new ErrorPopUp(e);
 					epu.display("Bad Class", false);
 				}
 				inputs.add(innerList);
@@ -122,7 +122,7 @@ public class AddActionHandler implements GameHandler<Event> {
 					}
 				} catch (ClassNotFoundException | NoSuchMethodException | 
 						InvocationTargetException | IllegalAccessException e) {
-					ErrorPopUp epu = new ErrorPopUp();
+					ErrorPopUp epu = new ErrorPopUp(e);
 					epu.display("Bad Class", false);
 				}
 			}

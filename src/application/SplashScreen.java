@@ -66,7 +66,7 @@ public class SplashScreen {
 			try {
 				play();
 			} catch (IOException e) {
-				ErrorPopUp epu = new ErrorPopUp();
+				ErrorPopUp epu = new ErrorPopUp(e);
 				epu.display("Input/Output Error", false);
 			}
 		});

@@ -61,6 +61,10 @@ public class PhysicsBody {
 		myCollisionBodyWidth = collisionBodyWidth;
 		myCollisionBodyHeight = collisionBodyHeight;
 	}
+	
+	public PhysicsBody(PhysicsBody body){
+		this(body.getCollisionBodyWidth(), body.getCollisionBodyHeight());
+	}
 
 	/**
 	 * Sets Velocity of object

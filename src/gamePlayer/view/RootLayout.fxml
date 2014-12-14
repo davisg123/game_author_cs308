@@ -26,7 +26,7 @@
 @author: Abhishek Balakrishnan
 @author: Shreyas Bharadwaj
  -->
-<BorderPane prefWidth="1000.0" prefHeight="800.0"
+<BorderPane prefWidth="600.0" prefHeight="800.0"
 	xmlns:fx="http://javafx.com/fxml" fx:controller="gamePlayer.view.MenuBarController">
 	<stylesheets>
 		<URL value="@ribbon.css" />
@@ -43,7 +43,7 @@
 							</tooltip>
 						</Button>
 						<Button prefHeight="50" prefWidth="50" id="exitButton"
-							onAction="#exitFromGame">
+							onAction="#exitFromGamePlayer">
 							<tooltip>
 								<Tooltip id="tooltip" text="Exit from the program." />
 							</tooltip>

@@ -58,7 +58,7 @@ public class PlayerModel {
 					myGameData = myDataManager.readProgressFile(myGameLocation, newValue);
 					loadGameData();
 				} catch (FileNotFoundException e) {
-					ErrorPopUp epu = new ErrorPopUp();
+					ErrorPopUp epu = new ErrorPopUp(e);
 					epu.display("File not found", false);
 				}
 			}
@@ -76,7 +76,7 @@ public class PlayerModel {
 			myProgressSelector = new ProgressSelector(myGameLocation, progressFileName);
 			loadGameData();
 		} catch (FileNotFoundException e) {
-			ErrorPopUp epu = new ErrorPopUp();
+			ErrorPopUp epu = new ErrorPopUp(e);
 			epu.display("File not found", false);
 		} catch (NullPointerException e) {
 			//User chose not to load a file. No action is needed.
@@ -103,13 +103,17 @@ public class PlayerModel {
 	public ConditionsCollection getButtonConditions() {
 		return myButtonConditions;
 	}
-
+	
+	public void exitFromGame() {
+		myGameManager.clear();
+		exitFromGamePlayer();
+	}
+	
 	/**
 	 * Clear the game and close this stage
 	 * Return to the splash screen
 	 */
-	public void exitFromGame() {
-		myGameManager.clear();
+	public void exitFromGamePlayer() {
 		myPlayerView.close();
 		SplashScreen screen = new SplashScreen();
 		screen.show();

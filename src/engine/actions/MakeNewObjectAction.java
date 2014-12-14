@@ -1,5 +1,7 @@
 package engine.actions;
 
+import java.util.Random;
+
 import authoring.model.collections.GameObjectsCollection;
 import engine.GameManager;
 import engine.level.Level;
@@ -11,9 +13,12 @@ public abstract class MakeNewObjectAction implements Action, Initializable {
 	protected transient GameObjectsCollection myMasterList;
 	protected transient GameObjectRenderer myRenderer; 
 	protected String myType; 
+	protected Random r;
+
 	
 	public MakeNewObjectAction(String type){
 		myType = type; 
+		r = new Random();
 	}
 	
 	
