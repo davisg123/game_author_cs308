@@ -1,0 +1,4 @@
+<map id="engine.physics.CoefficientOfFriction" name="engine.physics.CoefficientOfFriction">
+<area shape="rect" id="node2" href="$d0/de5/classengine_1_1physics_1_1_scalar.html" title="engine.physics.Scalar" alt="" coords="261,96,420,123"/>
+<area shape="rect" id="node3" href="$dc/db5/classengine_1_1physics_1_1_physics_component.html" title="engine.physics.PhysicsComponent" alt="" coords="5,5,248,32"/>
+</map>
