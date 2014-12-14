@@ -1,0 +1,13 @@
+<map id="authoring.eventhandlers.AddLevelHandler" name="authoring.eventhandlers.AddLevelHandler">
+<area shape="rect" id="node2" href="$d3/d6a/interfaceauthoring_1_1eventhandlers_1_1_game_handler.html" title="authoring.eventhandlers.\lGameHandler\&lt; Event \&gt;" alt="" coords="938,57,1121,98"/>
+<area shape="rect" id="node3" href="$df/de5/classauthoring_1_1model_1_1collections_1_1_levels_collection.html" title="authoring.model.collections.\lLevelsCollection" alt="" coords="928,122,1131,163"/>
+<area shape="rect" id="node4" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html" title="authoring.model.collections.\lGeneralCollection\&lt; Level \&gt;" alt="" coords="555,78,757,119"/>
+<area shape="rect" id="node5" href="$d2/d89/classauthoring_1_1view_1_1wizards_1_1_level_wizard.html" title="authoring.view.wizards.Level\lWizard" alt="" coords="929,187,1130,229"/>
+<area shape="rect" id="node6" href="$d6/d32/classauthoring_1_1view_1_1wizards_1_1_wizard.html" title="authoring.view.wizards.Wizard" alt="" coords="551,144,761,171"/>
+<area shape="rect" id="node11" href="$d5/d4e/classauthoring_1_1view_1_1propertiesview_1_1_boolean_field.html" title="authoring.view.propertiesview.\lBooleanField" alt="" coords="550,225,762,266"/>
+<area shape="rect" id="node12" href="$d5/d98/classauthoring_1_1view_1_1propertiesview_1_1_property_field.html" title="authoring.view.propertiesview.\lPropertyField" alt="" coords="157,225,369,266"/>
+<area shape="rect" id="node15" href="$d4/d04/classauthoring_1_1view_1_1levelview_1_1_levels_view.html" title="authoring.view.levelview.\lLevelsView" alt="" coords="941,393,1117,434"/>
+<area shape="rect" id="node16" href="$d0/d3f/classauthoring_1_1view_1_1baseclasses_1_1_tab_view.html" title="authoring.view.baseclasses.\lTabView" alt="" coords="557,334,755,375"/>
+<area shape="rect" id="node19" href="$d2/d4f/interfacedata_1_1_observer.html" title="data.Observer" alt="" coords="599,400,713,427"/>
+<area shape="rect" id="node21" href="$d3/d6a/interfaceauthoring_1_1eventhandlers_1_1_game_handler.html" title="authoring.eventhandlers.\lGameHandler\&lt; T extends\l Event \&gt;" alt="" coords="562,501,750,557"/>
+</map>

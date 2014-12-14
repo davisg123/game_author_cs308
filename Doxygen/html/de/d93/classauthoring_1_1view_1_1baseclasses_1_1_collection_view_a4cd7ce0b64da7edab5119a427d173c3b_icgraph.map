@@ -1,0 +1,8 @@
+<map id="authoring.view.baseclasses.CollectionView.setView" name="authoring.view.baseclasses.CollectionView.setView">
+<area shape="rect" id="node2" href="$d0/db6/classauthoring_1_1view_1_1conditionsview_1_1_conditions_accordion_view.html#a68441fcac2a0f808fca00a6bcd9e9b52" title="authoring.view.conditionsview.\lConditionsAccordionView.Conditions\lAccordionView" alt="" coords="273,5,524,61"/>
+<area shape="rect" id="node3" href="$df/d83/classauthoring_1_1view_1_1gameobjectsview_1_1_game_objects_view.html#aa96e47a6e9333ecc4465232ffa287a23" title="authoring.view.gameobjectsview.\lGameObjectsView.GameObjectsView" alt="" coords="270,85,527,126"/>
+<area shape="rect" id="node4" href="$d6/d5f/classauthoring_1_1view_1_1graphicsview_1_1_images_view.html#a57436c82dd2c1c3f08e32b4d0f90245f" title="authoring.view.graphicsview.\lImagesView.ImagesView" alt="" coords="298,150,499,191"/>
+<area shape="rect" id="node5" href="$d9/d7c/classauthoring_1_1view_1_1levelview_1_1_levels_accordion_view.html#ac8cafad43dea8bf2561b0c9ddd7d77e7" title="authoring.view.levelview.\lLevelsAccordionView.LevelsAccordionView" alt="" coords="254,215,543,257"/>
+<area shape="rect" id="node6" href="$d4/d9e/classauthoring_1_1view_1_1propertiesview_1_1_properties_view.html#a89f03eeb55c7b4affdcdc80fd0496d49" title="authoring.view.propertiesview.\lPropertiesView.PropertiesView" alt="" coords="292,281,505,322"/>
+<area shape="rect" id="node7" href="$d5/da2/classauthoring_1_1view_1_1soundsview_1_1_sounds_view.html#a8bc83f2b6a2b6a085b5dcd8b5c4ad9fd" title="authoring.view.soundsview.\lSoundsView.SoundsView" alt="" coords="302,346,495,387"/>
+</map>

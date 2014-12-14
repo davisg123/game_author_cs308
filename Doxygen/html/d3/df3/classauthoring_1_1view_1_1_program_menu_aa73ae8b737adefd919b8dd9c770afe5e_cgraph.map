@@ -1,0 +1,9 @@
+<map id="authoring.view.ProgramMenu.loadFile" name="authoring.view.ProgramMenu.loadFile">
+<area shape="rect" id="node2" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#a10ecf01e628d3fa377f151a965424e50" title="authoring.view.ProgramMenu.loadData" alt="" coords="312,136,581,163"/>
+<area shape="rect" id="node3" href="$de/d50/classerrors_and_exceptions_1_1_error_pop_up.html#a879c9fa857c162edfab75ecf1558c944" title="errorsAndExceptions.Error\lPopUp.display" alt="" coords="679,70,868,111"/>
+<area shape="rect" id="node6" href="$d1/d95/classdata_1_1_data_manager.html#adf2d2f38be8e2b2934f3ec7e944e2c3a" title="data.DataManager.readGameFile" alt="" coords="657,136,890,163"/>
+<area shape="rect" id="node8" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#a64b6179ade9bc9185ddb677a3bdc883b" title="authoring.view.ProgramMenu.setupGame" alt="" coords="630,187,917,213"/>
+<area shape="rect" id="node4" href="$de/d50/classerrors_and_exceptions_1_1_error_pop_up.html#adecc4a2ab81e607673649e10e6d7da52" title="errorsAndExceptions.Error\lPopUp.createButton" alt="" coords="968,5,1157,46"/>
+<area shape="rect" id="node5" href="$de/d50/classerrors_and_exceptions_1_1_error_pop_up.html#a98549e423869b27d7ee3c87270786f60" title="errorsAndExceptions.Error\lPopUp.chooseStageWidth" alt="" coords="968,70,1157,111"/>
+<area shape="rect" id="node7" href="$d1/d95/classdata_1_1_data_manager.html#aec1d7a9fb10c2bd1ce23e7aff5eba74c" title="data.DataManager.readFile" alt="" coords="965,136,1160,163"/>
+</map>
