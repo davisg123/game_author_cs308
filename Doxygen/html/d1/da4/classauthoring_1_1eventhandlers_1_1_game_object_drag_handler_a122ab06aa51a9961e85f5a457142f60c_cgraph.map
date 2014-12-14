@@ -1,0 +1,13 @@
+<map id="authoring.eventhandlers.GameObjectDragHandler.handle" name="authoring.eventhandlers.GameObjectDragHandler.handle">
+<area shape="rect" id="node2" href="$d4/d9e/classauthoring_1_1view_1_1propertiesview_1_1_properties_view.html#aada4bb374276819c5187d5cb0bf9b3b3" title="authoring.view.propertiesview.\lPropertiesView.displayProperties" alt="" coords="301,5,529,46"/>
+<area shape="rect" id="node4" href="$d4/d04/classauthoring_1_1view_1_1levelview_1_1_levels_view.html#a077268144cda48745d9049eb96595e49" title="authoring.view.levelview.\lLevelsView.getCurrentLevel" alt="" coords="317,70,513,111"/>
+<area shape="rect" id="node5" href="$de/de8/classauthoring_1_1view_1_1icons_1_1_game_object_icon.html#a32645537c08dac70aca367efb2a242fd" title="authoring.view.icons.Game\lObjectIcon.getGameObject" alt="" coords="317,135,512,177"/>
+<area shape="rect" id="node6" href="$d1/d00/classauthoring_1_1view_1_1levelview_1_1_single_level_view.html#a42ad723beb65c70be407b1d5ac5e9023" title="authoring.view.levelview.\lSingleLevelView.getID" alt="" coords="327,201,503,242"/>
+<area shape="rect" id="node7" href="$d1/d00/classauthoring_1_1view_1_1levelview_1_1_single_level_view.html#a5e56dece97369ecf0769569c76dafff9" title="authoring.view.levelview.\lSingleLevelView.getPaneHeight" alt="" coords="305,266,525,307"/>
+<area shape="rect" id="node8" href="$d1/d00/classauthoring_1_1view_1_1levelview_1_1_single_level_view.html#abd3e95fc686736a42f31b91e7c8fe130" title="authoring.view.levelview.\lSingleLevelView.getPaneWidth" alt="" coords="308,331,521,373"/>
+<area shape="rect" id="node9" href="$d1/d00/classauthoring_1_1view_1_1levelview_1_1_single_level_view.html#a1810f27994fea9fee4a6b1909a3f5449" title="authoring.view.levelview.\lSingleLevelView.getViewHeight" alt="" coords="305,397,524,438"/>
+<area shape="rect" id="node10" href="$d1/d00/classauthoring_1_1view_1_1levelview_1_1_single_level_view.html#a3262632b08f2ecc04550d9825cb05c17" title="authoring.view.levelview.\lSingleLevelView.getViewWidth" alt="" coords="309,462,520,503"/>
+<area shape="rect" id="node11" href="$d0/d7f/classengine_1_1game_object_1_1_game_object.html#a19c7066821c1a92d431af05766c76947" title="engine.gameObject.GameObject.setX" alt="" coords="283,528,546,555"/>
+<area shape="rect" id="node12" href="$d0/d7f/classengine_1_1game_object_1_1_game_object.html#a4fca14c159b5c08e4b99e4e4e564efce" title="engine.gameObject.GameObject.setY" alt="" coords="283,579,546,605"/>
+<area shape="rect" id="node3" href="$d7/d83/interfaceauthoring_1_1view_1_1icons_1_1_i_properties_maker.html#a745ed3e07a49b672d08c475c51d942e1" title="authoring.view.icons.IProperties\lMaker.makeProperties" alt="" coords="595,5,818,46"/>
+</map>

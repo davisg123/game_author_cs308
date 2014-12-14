@@ -1,0 +1,12 @@
+<map id="authoring.model.GameData.getSounds" name="authoring.model.GameData.getSounds">
+<area shape="rect" id="node2" href="$d4/d68/classauthoring_1_1model_1_1_authoring_model.html#a11495359850ef25b7338f7e7ba0554d0" title="authoring.model.Authoring\lModel.convertFromSerializable" alt="" coords="281,5,498,46"/>
+<area shape="rect" id="node5" href="$d4/d68/classauthoring_1_1model_1_1_authoring_model.html#ab3e6b375a2e8fdc73b351fc873ce214e" title="authoring.model.Authoring\lModel.convertToSerializable" alt="" coords="290,70,489,111"/>
+<area shape="rect" id="node8" href="$d4/d68/classauthoring_1_1model_1_1_authoring_model.html#a36b0bf5dc987000328b00a660f686a3b" title="authoring.model.Authoring\lModel.getSounds" alt="" coords="293,135,486,177"/>
+<area shape="rect" id="node3" href="$d4/d68/classauthoring_1_1model_1_1_authoring_model.html#a3935f1a8c2e6b6fcd4609ffb4b1b8cf0" title="authoring.model.Authoring\lModel.load" alt="" coords="567,5,761,46"/>
+<area shape="rect" id="node4" href="$de/d41/classauthoring_1_1controller_1_1_authoring_controller.html#a78ad41cfba48debac79f09f1211cb108" title="authoring.controller.Authoring\lController.loadData" alt="" coords="830,5,1042,46"/>
+<area shape="rect" id="node6" href="$d4/d68/classauthoring_1_1model_1_1_authoring_model.html#a1cdb75c271642f158391ccecc24a539c" title="authoring.model.Authoring\lModel.save" alt="" coords="567,70,761,111"/>
+<area shape="rect" id="node7" href="$de/d41/classauthoring_1_1controller_1_1_authoring_controller.html#adbe015f9624bd3077b0eba208ece1966" title="authoring.controller.Authoring\lController.saveData" alt="" coords="830,70,1042,111"/>
+<area shape="rect" id="node9" href="$de/d41/classauthoring_1_1controller_1_1_authoring_controller.html#afa4d4de3a843b1f950f11839acfaef2b" title="authoring.controller.Authoring\lController.initializeGameHandlers" alt="" coords="547,135,781,177"/>
+<area shape="rect" id="node10" href="$de/d41/classauthoring_1_1controller_1_1_authoring_controller.html#a8efc17f104f4df42f385e8c7b25831e0" title="authoring.controller.Authoring\lController.initializeView" alt="" coords="830,165,1042,206"/>
+<area shape="rect" id="node11" href="$de/d41/classauthoring_1_1controller_1_1_authoring_controller.html#aa2e89dc7481c1e7deea1919eae007119" title="authoring.controller.Authoring\lController.AuthoringController" alt="" coords="1091,165,1303,206"/>
+</map>

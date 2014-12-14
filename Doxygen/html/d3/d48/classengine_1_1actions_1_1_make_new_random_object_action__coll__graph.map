@@ -1,0 +1,13 @@
+<map id="engine.actions.MakeNewRandomObjectAction" name="engine.actions.MakeNewRandomObjectAction">
+<area shape="rect" id="node2" href="$d2/dc5/classengine_1_1actions_1_1_make_new_object_action.html" title="engine.actions.MakeNewObject\lAction" alt="" coords="1472,201,1693,242"/>
+<area shape="rect" id="node3" href="$d9/dd2/interfaceengine_1_1actions_1_1_action.html" title="engine.actions.Action" alt="" coords="1165,57,1323,84"/>
+<area shape="rect" id="node4" href="$d2/d15/interfaceengine_1_1actions_1_1_initializable.html" title="engine.actions.Initializable" alt="" coords="769,68,959,95"/>
+<area shape="rect" id="node5" href="$df/de5/classengine_1_1render_1_1_game_object_renderer.html" title="engine.render.GameObject\lRenderer" alt="" coords="1147,201,1341,242"/>
+<area shape="rect" id="node7" href="$df/d84/classengine_1_1level_1_1_level.html" title="engine.level.Level" alt="" coords="797,287,931,313"/>
+<area shape="rect" id="node8" href="$d3/d8d/classdata_1_1_observable.html" title="data.Observable" alt="" coords="375,311,502,337"/>
+<area shape="rect" id="node10" href="$dc/df6/interfaceengine_1_1game_object_1_1_identifiable.html" title="engine.gameObject.Identifiable" alt="" coords="329,257,549,284"/>
+<area shape="rect" id="node11" href="$d4/dac/classengine_1_1game_object_1_1_identifier.html" title="engine.gameObject.Identifier" alt="" coords="335,140,542,167"/>
+<area shape="rect" id="node13" href="$d1/d32/classauthoring_1_1model_1_1collections_1_1_game_objects_collection.html" title="authoring.model.collections.\lGameObjectsCollection" alt="" coords="337,366,540,407"/>
+<area shape="rect" id="node14" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html" title="authoring.model.collections.\lGeneralCollection\&lt; GameObject \&gt;" alt="" coords="6,518,250,559"/>
+<area shape="rect" id="node17" href="$d9/db5/classengine_1_1_file_path_utility.html" title="engine.FilePathUtility" alt="" coords="787,185,941,212"/>
+</map>
