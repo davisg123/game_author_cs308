@@ -1,0 +1,12 @@
+<map id="authoring.eventhandlers.AddActionHandler.handle" name="authoring.eventhandlers.AddActionHandler.handle">
+<area shape="rect" id="node2" href="$d9/da4/classauthoring_1_1eventhandlers_1_1_add_action_handler.html#a9b96685d69e045a901bc1b55bc3fd327" title="authoring.eventhandlers.\lAddActionHandler.createAction" alt="" coords="237,133,459,174"/>
+<area shape="rect" id="node3" href="$de/d50/classerrors_and_exceptions_1_1_error_pop_up.html#a879c9fa857c162edfab75ecf1558c944" title="errorsAndExceptions.Error\lPopUp.display" alt="" coords="1096,38,1285,79"/>
+<area shape="rect" id="node6" href="$d9/da4/classauthoring_1_1eventhandlers_1_1_add_action_handler.html#a79570c2754dca122253b410d98017bd5" title="authoring.eventhandlers.\lAddActionHandler.finishAction" alt="" coords="515,133,728,174"/>
+<area shape="rect" id="node10" href="$d2/d02/classauthoring_1_1view_1_1wizards_1_1_action_choice_wizard.html#aa2dc1f8614d6d90b0b1fedf46e29d877" title="authoring.view.wizards.Action\lChoiceWizard.getSelectedAction" alt="" coords="507,227,735,269"/>
+<area shape="rect" id="node4" href="$de/d50/classerrors_and_exceptions_1_1_error_pop_up.html#adecc4a2ab81e607673649e10e6d7da52" title="errorsAndExceptions.Error\lPopUp.createButton" alt="" coords="1333,5,1523,46"/>
+<area shape="rect" id="node5" href="$de/d50/classerrors_and_exceptions_1_1_error_pop_up.html#a98549e423869b27d7ee3c87270786f60" title="errorsAndExceptions.Error\lPopUp.chooseStageWidth" alt="" coords="1333,70,1523,111"/>
+<area shape="rect" id="node7" href="$d1/d3b/classengine_1_1conditions_1_1_condition.html#a02855e132c46ad2e5b6e23cca319deb5" title="engine.conditions.Condition.add\lAction" alt="" coords="803,97,1029,138"/>
+<area shape="rect" id="node8" href="$d9/da4/classauthoring_1_1eventhandlers_1_1_add_action_handler.html#a64e5293c6eba41df2313e81b59601cb0" title="authoring.eventhandlers.\lAddActionHandler.convertInput\lParameters" alt="" coords="806,161,1026,217"/>
+<area shape="rect" id="node9" href="$d6/d32/classauthoring_1_1view_1_1wizards_1_1_wizard.html#a0d419b2943c99507fca42fd769c24b0e" title="authoring.view.wizards.Wizard.getMap" alt="" coords="785,241,1047,268"/>
+<area shape="rect" id="node11" href="$d4/d31/classauthoring_1_1view_1_1wizards_1_1_action_choices_v_box.html#a1ad07a1a06d43384af4406151330781c" title="authoring.view.wizards.Action\lChoicesVBox.getSelected" alt="" coords="812,293,1020,334"/>
+</map>

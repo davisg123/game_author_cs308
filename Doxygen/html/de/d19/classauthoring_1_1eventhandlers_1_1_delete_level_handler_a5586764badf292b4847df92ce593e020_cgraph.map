@@ -1,0 +1,5 @@
+<map id="authoring.eventhandlers.DeleteLevelHandler.handle" name="authoring.eventhandlers.DeleteLevelHandler.handle">
+<area shape="rect" id="node2" href="$de/d19/classauthoring_1_1eventhandlers_1_1_delete_level_handler.html#a223961ac55957961ca9861bfee96853d" title="authoring.eventhandlers.\lDeleteLevelHandler.deleteLevel" alt="" coords="249,27,471,69"/>
+<area shape="rect" id="node3" href="$d6/d32/classauthoring_1_1view_1_1wizards_1_1_wizard.html#a0d419b2943c99507fca42fd769c24b0e" title="authoring.view.wizards.Wizard.getMap" alt="" coords="521,5,783,32"/>
+<area shape="rect" id="node4" href="$df/de5/classauthoring_1_1model_1_1collections_1_1_levels_collection.html#a5c9d860075327ff2d8f755e390b90109" title="authoring.model.collections.\lLevelsCollection.removeByID" alt="" coords="549,57,755,98"/>
+</map>
