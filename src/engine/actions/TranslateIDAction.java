@@ -21,6 +21,7 @@ public abstract class TranslateIDAction implements Action, Initializable {
     public TranslateIDAction (List<Identifier> iDs, Double value) {
         myGameObjectIDs = iDs;
         myValue = value;
+        myGameObjects = new GameObjectsCollection();
     }
     
     @Override

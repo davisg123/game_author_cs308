@@ -15,7 +15,10 @@ public class MakeNewRandomObjectAction extends MakeNewObjectAction{
 	public MakeNewRandomObjectAction(String type, Double lowerXBound, Double upperXBound, Double lowerYBound, Double upperYBound){
 		super(type); 
 		r = new Random(); 
-		
+		myLowerXBound = lowerXBound;
+		myUpperXBound = upperXBound;
+		myLowerYBound = lowerYBound;
+		myUpperYBound = upperYBound;
 	}
 
 	
