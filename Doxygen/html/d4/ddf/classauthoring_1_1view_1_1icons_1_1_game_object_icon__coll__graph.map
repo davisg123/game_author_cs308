@@ -1,0 +1,16 @@
+<map id="authoring.view.icons.GameObjectIcon" name="authoring.view.icons.GameObjectIcon">
+<area shape="rect" id="node2" href="$d5/d47/classauthoring_1_1view_1_1icons_1_1_image_based_icon.html" title="authoring.view.icons.Image\lBasedIcon" alt="" coords="1549,89,1744,130"/>
+<area shape="rect" id="node3" href="$de/d21/classauthoring_1_1view_1_1icons_1_1_file_icon.html" title="authoring.view.icons.FileIcon" alt="" coords="1145,44,1345,71"/>
+<area shape="rect" id="node4" href="$dd/db4/classauthoring_1_1view_1_1icons_1_1_base_icon.html" title="authoring.view.icons.BaseIcon" alt="" coords="683,56,895,83"/>
+<area shape="rect" id="node6" href="$d3/d6a/interfaceauthoring_1_1eventhandlers_1_1_game_handler.html" title="authoring.eventhandlers.\lGameHandler\&lt; T extends\l Event \&gt;" alt="" coords="318,4,506,60"/>
+<area shape="rect" id="node18" href="$d2/d82/classengine_1_1render_1_1_rendered_node.html" title="engine.render.RenderedNode" alt="" coords="1141,221,1349,248"/>
+<area shape="rect" id="node10" href="$d0/d7f/classengine_1_1game_object_1_1_game_object.html" title="engine.gameObject.GameObject" alt="" coords="1531,489,1762,516"/>
+<area shape="rect" id="node11" href="$d7/de6/interfaceengine_1_1game_object_1_1_i_enabled.html" title="engine.gameObject.IEnabled" alt="" coords="1143,413,1348,440"/>
+<area shape="rect" id="node13" href="$dc/df6/interfaceengine_1_1game_object_1_1_identifiable.html" title="engine.gameObject.Identifiable" alt="" coords="1135,515,1355,541"/>
+<area shape="rect" id="node14" href="$d4/dac/classengine_1_1game_object_1_1_identifier.html" title="engine.gameObject.Identifier" alt="" coords="1142,565,1349,592"/>
+<area shape="rect" id="node15" href="$da/d35/classengine_1_1scrolling_1_1_scrolling_utility.html" title="engine.scrolling.Scrolling\lUtility" alt="" coords="1156,617,1335,658"/>
+<area shape="rect" id="node28" href="$d6/d66/classengine_1_1game_object_1_1_default_data.html" title="engine.gameObject.DefaultData" alt="" coords="1131,683,1359,709"/>
+<area shape="rect" id="node22" href="$d9/d9d/classengine_1_1game_object_1_1components_1_1_physics_body.html" title="engine.gameObject.components.\lPhysicsBody" alt="" coords="1128,347,1363,389"/>
+<area shape="rect" id="node26" href="$d5/d1f/classengine_1_1physics_1_1_vector.html" title="engine.physics.Vector" alt="" coords="709,379,870,405"/>
+<area shape="rect" id="node27" href="$dc/db5/classengine_1_1physics_1_1_physics_component.html" title="engine.physics.PhysicsComponent" alt="" coords="291,379,533,405"/>
+</map>

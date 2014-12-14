@@ -1,0 +1,12 @@
+<map id="authoring.view.icons.LevelIcon" name="authoring.view.icons.LevelIcon">
+<area shape="rect" id="node2" href="$d9/df7/classauthoring_1_1view_1_1icons_1_1_text_icon.html" title="authoring.view.icons.TextIcon" alt="" coords="1085,80,1291,107"/>
+<area shape="rect" id="node3" href="$dd/db4/classauthoring_1_1view_1_1icons_1_1_base_icon.html" title="authoring.view.icons.BaseIcon" alt="" coords="662,64,874,91"/>
+<area shape="rect" id="node5" href="$d3/d6a/interfaceauthoring_1_1eventhandlers_1_1_game_handler.html" title="authoring.eventhandlers.\lGameHandler\&lt; T extends\l Event \&gt;" alt="" coords="319,5,507,61"/>
+<area shape="rect" id="node7" href="$d7/d83/interfaceauthoring_1_1view_1_1icons_1_1_i_properties_maker.html" title="authoring.view.icons.IProperties\lMaker" alt="" coords="657,115,879,157"/>
+<area shape="rect" id="node8" href="$df/d84/classengine_1_1level_1_1_level.html" title="engine.level.Level" alt="" coords="1121,261,1255,288"/>
+<area shape="rect" id="node9" href="$d3/d8d/classdata_1_1_observable.html" title="data.Observable" alt="" coords="705,415,831,441"/>
+<area shape="rect" id="node11" href="$dc/df6/interfaceengine_1_1game_object_1_1_identifiable.html" title="engine.gameObject.Identifiable" alt="" coords="658,181,878,208"/>
+<area shape="rect" id="node12" href="$d4/dac/classengine_1_1game_object_1_1_identifier.html" title="engine.gameObject.Identifier" alt="" coords="665,232,871,259"/>
+<area shape="rect" id="node13" href="$d1/d32/classauthoring_1_1model_1_1collections_1_1_game_objects_collection.html" title="authoring.model.collections.\lGameObjectsCollection" alt="" coords="667,283,869,325"/>
+<area shape="rect" id="node14" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html" title="authoring.model.collections.\lGeneralCollection\&lt; GameObject \&gt;" alt="" coords="291,283,535,325"/>
+</map>

@@ -1,0 +1,4 @@
+<map id="engine.render.GameObjectRenderer.setBackGroundImage" name="engine.render.GameObjectRenderer.setBackGroundImage">
+<area shape="rect" id="node2" href="$df/d84/classengine_1_1level_1_1_level.html#a5dc36c31fcc8e0b5cbe2a942ec101fdb" title="engine.level.Level.getBackground\lImage" alt="" coords="275,5,511,46"/>
+<area shape="rect" id="node3" href="$d9/db5/classengine_1_1_file_path_utility.html#ad8a72da93bd719a750bd549ed92a37d7" title="engine.FilePathUtility.get\lFilePath" alt="" coords="305,70,481,111"/>
+</map>
