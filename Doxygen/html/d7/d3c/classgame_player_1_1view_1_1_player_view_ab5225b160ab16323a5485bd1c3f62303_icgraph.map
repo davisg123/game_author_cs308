@@ -1,6 +1,0 @@
-<map id="gamePlayer.view.PlayerView.initialize" name="gamePlayer.view.PlayerView.initialize">
-<area shape="rect" id="node2" href="$d2/dc9/classgame_player_1_1model_1_1_player_model.html#af8fd7a780ad8f9eebd18f451e188717e" title="gamePlayer.model.PlayerModel.initializeView" alt="" coords="307,12,613,39"/>
-<area shape="rect" id="node3" href="$d6/d99/classapplication_1_1_splash_screen.html#af35ff913e798fa504502185f76703a74" title="application.SplashScreen.play" alt="" coords="661,12,875,39"/>
-<area shape="rect" id="node4" href="$d6/d99/classapplication_1_1_splash_screen.html#abad5bc7bafefe1a4e59b0d121dc895e9" title="application.SplashScreen.initialize\lGUIElements" alt="" coords="923,5,1162,46"/>
-<area shape="rect" id="node5" href="$d6/d99/classapplication_1_1_splash_screen.html#a512cfd783d4871bae304c03a9a32cba9" title="application.SplashScreen.\lSplashScreen" alt="" coords="1211,5,1397,46"/>
-</map>

@@ -1,9 +1,0 @@
-<map id="data.Observer" name="data.Observer">
-<area shape="rect" id="node2" href="$d0/db6/classauthoring_1_1view_1_1conditionsview_1_1_conditions_accordion_view.html" title="authoring.view.conditionsview.\lConditionsAccordionView" alt="" coords="178,5,390,46"/>
-<area shape="rect" id="node3" href="$df/d83/classauthoring_1_1view_1_1gameobjectsview_1_1_game_objects_view.html" title="authoring.view.gameobjectsview.\lGameObjectsView" alt="" coords="169,70,399,111"/>
-<area shape="rect" id="node4" href="$d6/d5f/classauthoring_1_1view_1_1graphicsview_1_1_images_view.html" title="authoring.view.graphicsview.\lImagesView" alt="" coords="183,135,385,177"/>
-<area shape="rect" id="node5" href="$d9/d7c/classauthoring_1_1view_1_1levelview_1_1_levels_accordion_view.html" title="authoring.view.levelview.\lLevelsAccordionView" alt="" coords="196,201,372,242"/>
-<area shape="rect" id="node6" href="$d4/d04/classauthoring_1_1view_1_1levelview_1_1_levels_view.html" title="authoring.view.levelview.\lLevelsView" alt="" coords="196,266,372,307"/>
-<area shape="rect" id="node7" href="$d1/d00/classauthoring_1_1view_1_1levelview_1_1_single_level_view.html" title="authoring.view.levelview.\lSingleLevelView" alt="" coords="196,331,372,373"/>
-<area shape="rect" id="node8" href="$d5/da2/classauthoring_1_1view_1_1soundsview_1_1_sounds_view.html" title="authoring.view.soundsview.\lSoundsView" alt="" coords="187,397,381,438"/>
-</map>
