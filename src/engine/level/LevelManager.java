@@ -162,7 +162,6 @@ public class LevelManager implements Iterable<Level> {
 		for (GameObject object: myGameObjects){
 			if (object.getIdentifier().getUniqueId().equals("template")){
 				myTemplateObjects.add(object);
-				System.out.println(object.getIdentifier().getType());
 			}
 		}
 	}

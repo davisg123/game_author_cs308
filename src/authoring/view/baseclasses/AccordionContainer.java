@@ -3,7 +3,7 @@ package authoring.view.baseclasses;
 import javafx.scene.control.Accordion;
 
 /**
- * Base class that other classes can extend or call to create an accordian.
+ * Base class that other classes can extend or call to create an accordion.
  * 
  * @author Kevin Li
  *

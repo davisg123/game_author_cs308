@@ -6,7 +6,7 @@ import engine.GameManager;
 public abstract class ProgressAction implements Action, Initializable{
 
 	protected transient GameManager myGameManager;
-	protected DataManager myDataManager;
+	protected transient DataManager myDataManager;
 	
 	
 	@Override

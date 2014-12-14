@@ -42,15 +42,22 @@ public class ErrorPopUp {
 	private Exception myException;
 	
 	/**
-	 * Constructor.
+	 * Constructor without an exception.
 	 */
-	public ErrorPopUp(Exception e) {
+	public ErrorPopUp() {
 		popUpStage = new Stage();
 		popUpStage.setTitle(ERROR_TITLE);
 		root = new VBox();
 		myScene = new Scene(root, POP_UP_WIDTH, POP_UP_HEIGHT, Color.valueOf("#00008b"));
 		myScene.getStylesheets().add(getClass().getResource("ErrorStyle.css").toExternalForm());
 		popUpStage.setScene(myScene);
+	}
+	
+	/**
+	 * Constructor with an exception.
+	 */
+	public ErrorPopUp(Exception e) {
+		this();
 		myException = e;
 	}
 	
@@ -100,8 +107,9 @@ public class ErrorPopUp {
 		
 		root.getChildren().add(errorText);
 		Button okButton = createButton(root, "OK", BUTTON_X_COORD, BUTTON_Y_COORD, closePopUp);
-		Button viewButton = createButton(root, "View Error Trace", BUTTON_X_COORD-40, BUTTON_Y_COORD+40, viewErrorTrace);
 		root.getChildren().add(okButton);
+		if(myException != null) {
+		Button viewButton = createButton(root, "View Error Trace", BUTTON_X_COORD-40, BUTTON_Y_COORD+40, viewErrorTrace);
 		root.getChildren().add(viewButton);
 		double buttonWidth = viewButton.getWidth();
 		//get width of button so can send to chooseStageWidth method
@@ -111,6 +119,7 @@ public class ErrorPopUp {
 		double newStageWidth = chooseStageWidth(buttonWidth);
 		popUpStage.setWidth(newStageWidth);
 		//popUpStage.setWidth(2*textWidth);
+		}
 		popUpStage.show();
 		
 		if(throwException)
