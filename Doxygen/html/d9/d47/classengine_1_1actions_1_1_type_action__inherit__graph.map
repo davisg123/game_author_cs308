@@ -1,0 +1,11 @@
+<map id="engine.actions.TypeAction" name="engine.actions.TypeAction">
+<area shape="rect" id="node4" href="$d0/d2e/classengine_1_1actions_1_1_delete_interacting_objects_action.html" title="engine.actions.DeleteInteracting\lObjectsAction" alt="" coords="688,5,917,46"/>
+<area shape="rect" id="node5" href="$da/d60/classengine_1_1actions_1_1_delete_type_action.html" title="engine.actions.DeleteType\lAction" alt="" coords="708,70,897,111"/>
+<area shape="rect" id="node6" href="$db/db5/classengine_1_1actions_1_1render_1_1_change_image_type_action.html" title="engine.actions.render.Change\lImageTypeAction" alt="" coords="696,135,909,177"/>
+<area shape="rect" id="node7" href="$d6/d0d/classengine_1_1actions_1_1_switch_component_boolean_action.html" title="engine.actions.SwitchComponent\lBooleanAction" alt="" coords="685,201,920,242"/>
+<area shape="rect" id="node8" href="$d9/d3b/classengine_1_1actions_1_1_velocity_type_action.html" title="engine.actions.VelocityType\lAction" alt="" coords="705,266,901,307"/>
+<area shape="rect" id="node2" href="$d9/dd2/interfaceengine_1_1actions_1_1_action.html" title="engine.actions.Action" alt="" coords="243,168,402,195"/>
+<area shape="rect" id="node3" href="$d2/d15/interfaceengine_1_1actions_1_1_initializable.html" title="engine.actions.Initializable" alt="" coords="5,143,195,169"/>
+<area shape="rect" id="node9" href="$de/d56/classengine_1_1actions_1_1_x_velocity_type_action.html" title="engine.actions.XVelocity\lTypeAction" alt="" coords="968,233,1144,274"/>
+<area shape="rect" id="node10" href="$d8/d23/classengine_1_1actions_1_1_y_velocity_type_action.html" title="engine.actions.YVelocity\lTypeAction" alt="" coords="969,298,1143,339"/>
+</map>

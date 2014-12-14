@@ -1,0 +1,5 @@
+<map id="engine.actions.RotateImageTypeAction.initialize" name="engine.actions.RotateImageTypeAction.initialize">
+<area shape="rect" id="node2" href="$df/d67/classengine_1_1level_1_1_level_manager.html#a0b41aada08e898db8cc4bcd7646e39e1" title="engine.level.LevelManager.get\lCurrentLevel" alt="" coords="257,5,471,46"/>
+<area shape="rect" id="node3" href="$df/d84/classengine_1_1level_1_1_level.html#ac927326f1a3d7e17b5d577c336a5cfc1" title="engine.level.Level.getGame\lObjectsCollection" alt="" coords="265,70,463,111"/>
+<area shape="rect" id="node4" href="$d6/d94/classengine_1_1_game_manager.html#a6d1ae727d1d306393aada5a5178e8191" title="engine.GameManager.getLevel\lManager" alt="" coords="253,135,475,177"/>
+</map>

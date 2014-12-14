@@ -1,0 +1,9 @@
+<map id="engine.actions.PauseBackgroundMusic" name="engine.actions.PauseBackgroundMusic">
+<area shape="rect" id="node2" href="$d7/d07/classengine_1_1actions_1_1_sound_action.html" title="engine.actions.SoundAction" alt="" coords="979,56,1179,83"/>
+<area shape="rect" id="node3" href="$d9/dd2/interfaceengine_1_1actions_1_1_action.html" title="engine.actions.Action" alt="" coords="655,56,814,83"/>
+<area shape="rect" id="node4" href="$d2/d15/interfaceengine_1_1actions_1_1_initializable.html" title="engine.actions.Initializable" alt="" coords="265,5,455,32"/>
+<area shape="rect" id="node5" href="$da/d90/classengine_1_1sound_1_1_sound_utility.html" title="engine.sound.SoundUtility" alt="" coords="640,123,829,149"/>
+<area shape="rect" id="node6" href="$df/de5/classauthoring_1_1model_1_1collections_1_1_levels_collection.html" title="authoring.model.collections.\lLevelsCollection" alt="" coords="259,57,461,98"/>
+<area shape="rect" id="node7" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html" title="authoring.model.collections.\lGeneralCollection\&lt; Level \&gt;" alt="" coords="5,57,208,98"/>
+<area shape="rect" id="node10" href="$d9/db5/classengine_1_1_file_path_utility.html" title="engine.FilePathUtility" alt="" coords="283,224,437,251"/>
+</map>
