@@ -1,7 +1,0 @@
-<map id="engine.physics.Vector.delta" name="engine.physics.Vector.delta">
-<area shape="rect" id="node2" href="$d9/d9d/classengine_1_1game_object_1_1components_1_1_physics_body.html#a378b35e4343b358058e6a0917f3366b4" title="engine.gameObject.components.\lPhysicsBody.changeVelocity" alt="" coords="251,5,485,46"/>
-<area shape="rect" id="node5" href="$d5/d1f/classengine_1_1physics_1_1_vector.html#a0617c8eea76c73c65d7b78b6bcd0d140" title="engine.physics.Vector.delta" alt="" coords="270,71,466,97"/>
-<area shape="rect" id="node6" href="$d9/d9d/classengine_1_1game_object_1_1components_1_1_physics_body.html#ac4e0449aee85c24c697e4c436f4fb997" title="engine.gameObject.components.\lPhysicsBody.doImpulses" alt="" coords="251,122,485,163"/>
-<area shape="rect" id="node3" href="$d9/d9d/classengine_1_1game_object_1_1components_1_1_physics_body.html#a322c2d4e1205c1fc9bafabe04f394cb6" title="engine.gameObject.components.\lPhysicsBody.updatePhysicalCharacteristics" alt="" coords="534,63,829,105"/>
-<area shape="rect" id="node4" href="$d0/d7f/classengine_1_1game_object_1_1_game_object.html#ac7465f9b7adb414a894231d97e4ae91c" title="engine.gameObject.GameObject.update" alt="" coords="877,71,1157,97"/>
-</map>

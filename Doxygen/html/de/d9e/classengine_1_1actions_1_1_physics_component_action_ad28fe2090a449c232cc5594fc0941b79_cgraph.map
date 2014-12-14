@@ -1,5 +1,0 @@
-<map id="engine.actions.PhysicsComponentAction.applyPhysics" name="engine.actions.PhysicsComponentAction.applyPhysics">
-<area shape="rect" id="node2" href="$de/d9e/classengine_1_1actions_1_1_physics_component_action.html#ae572715850c1b62f073e4ccd799601fb" title="engine.actions.PhysicsComponent\lAction.determineOperation" alt="" coords="297,5,538,46"/>
-<area shape="rect" id="node3" href="$de/d8e/classengine_1_1actions_1_1_physics_i_d_action.html#af11386e3f1264341e71ef6576e4b6f72" title="engine.actions.PhysicsIDAction.for\lHelper" alt="" coords="297,70,537,111"/>
-<area shape="rect" id="node4" href="$da/d58/interfaceengine_1_1actions_1_1_physics_i_d_action_1_1_two_arg_interface.html#a56356fcd0050f2a70549f2e008c2c9c1" title="engine.actions.PhysicsIDAction.\lTwoArgInterface.operation" alt="" coords="587,70,810,111"/>
-</map>
