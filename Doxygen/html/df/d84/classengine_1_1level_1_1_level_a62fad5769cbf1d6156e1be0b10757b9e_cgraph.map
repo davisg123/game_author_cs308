@@ -1,0 +1,5 @@
+<map id="engine.level.Level.removeGameObject" name="engine.level.Level.removeGameObject">
+<area shape="rect" id="node2" href="$d3/d8d/classdata_1_1_observable.html#a120384f9a41245899f05bb1a4c36ac4d" title="data.Observable.notifyObservers" alt="" coords="243,5,474,32"/>
+<area shape="rect" id="node3" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html#ac1a07043ac0a440791b84cee1604745c" title="authoring.model.collections.\lGeneralCollection.remove" alt="" coords="257,57,460,98"/>
+<area shape="rect" id="node4" href="$d3/d8d/classdata_1_1_observable.html#a6da70e44050d139f40cf07384484f51d" title="data.Observable.setChanged" alt="" coords="255,123,463,149"/>
+</map>
