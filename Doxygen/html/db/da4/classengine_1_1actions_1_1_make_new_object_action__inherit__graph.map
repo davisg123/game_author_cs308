@@ -1,0 +1,7 @@
+<map id="engine.actions.MakeNewObjectAction" name="engine.actions.MakeNewObjectAction">
+<area shape="rect" id="node4" href="$dd/d57/classengine_1_1actions_1_1_make_new_object_from_location_action.html" title="engine.actions.MakeNewObject\lFromLocationAction" alt="" coords="727,5,948,46"/>
+<area shape="rect" id="node5" href="$db/d61/classengine_1_1actions_1_1_make_new_object_from_object_action.html" title="engine.actions.MakeNewObject\lFromObjectAction" alt="" coords="727,70,948,111"/>
+<area shape="rect" id="node6" href="$da/d16/classengine_1_1actions_1_1_make_new_random_object_action.html" title="engine.actions.MakeNewRandom\lObjectAction" alt="" coords="721,135,954,177"/>
+<area shape="rect" id="node2" href="$d9/dd2/interfaceengine_1_1actions_1_1_action.html" title="engine.actions.Action" alt="" coords="243,103,402,129"/>
+<area shape="rect" id="node3" href="$d2/d15/interfaceengine_1_1actions_1_1_initializable.html" title="engine.actions.Initializable" alt="" coords="5,77,195,104"/>
+</map>
