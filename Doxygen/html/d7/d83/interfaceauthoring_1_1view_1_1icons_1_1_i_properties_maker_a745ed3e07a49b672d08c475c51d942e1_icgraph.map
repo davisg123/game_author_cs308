@@ -1,8 +1,0 @@
-<map id="authoring.view.icons.IPropertiesMaker.makeProperties" name="authoring.view.icons.IPropertiesMaker.makeProperties">
-<area shape="rect" id="node2" href="$d4/d9e/classauthoring_1_1view_1_1propertiesview_1_1_properties_view.html#aada4bb374276819c5187d5cb0bf9b3b3" title="authoring.view.propertiesview.\lPropertiesView.displayProperties" alt="" coords="278,135,506,177"/>
-<area shape="rect" id="node3" href="$d6/df5/classauthoring_1_1eventhandlers_1_1_edit_game_object_handler.html#ac0a03e6b751068903df50296d9f1fbd7" title="authoring.eventhandlers.\lEditGameObjectHandler.handle" alt="" coords="581,5,803,46"/>
-<area shape="rect" id="node4" href="$d9/db6/classauthoring_1_1eventhandlers_1_1_game_object_click_handler.html#a9e7e6751a84bd94acd86479da0b02ffe" title="authoring.eventhandlers.\lGameObjectClickHandler.handle" alt="" coords="579,70,805,111"/>
-<area shape="rect" id="node5" href="$d1/da4/classauthoring_1_1eventhandlers_1_1_game_object_drag_handler.html#a122ab06aa51a9961e85f5a457142f60c" title="authoring.eventhandlers.\lGameObjectDragHandler.handle" alt="" coords="577,135,807,177"/>
-<area shape="rect" id="node6" href="$d0/df2/classauthoring_1_1eventhandlers_1_1_game_object_drag_to_level_handler.html#ad5002cd6b7781653104f1820a573f902" title="authoring.eventhandlers.\lGameObjectDragToLevelHandler.handle" alt="" coords="555,201,829,242"/>
-<area shape="rect" id="node7" href="$dd/d00/classauthoring_1_1eventhandlers_1_1_icon_click_handler.html#aabaf629e5e67f63ac4f1bc8be6cc3e51" title="authoring.eventhandlers.\lIconClickHandler.handle" alt="" coords="601,266,783,307"/>
-</map>
