@@ -1,0 +1,27 @@
+<map id="gamePlayer.view.PlayerView" name="gamePlayer.view.PlayerView">
+<area shape="rect" id="node7" href="$d2/dc9/classgame_player_1_1model_1_1_player_model.html" title="gamePlayer.model.PlayerModel" alt="" coords="2401,448,2623,475"/>
+<area shape="rect" id="node2" href="$db/d19/classgame_player_1_1view_1_1_game_canvas.html" title="gamePlayer.view.GameCanvas" alt="" coords="1194,317,1411,344"/>
+<area shape="rect" id="node3" href="$da/da0/interfacegame_player_1_1view_1_1_view_controller.html" title="gamePlayer.view.ViewController" alt="" coords="755,252,978,279"/>
+<area shape="rect" id="node26" href="$d6/d94/classengine_1_1_game_manager.html" title="engine.GameManager" alt="" coords="2031,1021,2195,1048"/>
+<area shape="rect" id="node29" href="$df/de5/classengine_1_1render_1_1_game_object_renderer.html" title="engine.render.GameObject\lRenderer" alt="" coords="1205,1197,1400,1238"/>
+<area shape="rect" id="node9" href="$d9/dbd/classgame_player_1_1view_1_1_progress_selector.html" title="gamePlayer.view.Progress\lSelector" alt="" coords="2020,518,2207,559"/>
+<area shape="rect" id="node43" href="$d5/d03/classgame_player_1_1view_1_1_file_selection_wizard.html" title="gamePlayer.view.FileSelection\lWizard" alt="" coords="2008,343,2219,385"/>
+<area shape="rect" id="node11" href="$d1/d95/classdata_1_1_data_manager.html" title="data.DataManager" alt="" coords="1639,639,1782,665"/>
+<area shape="rect" id="node15" href="$d7/dbf/classauthoring_1_1model_1_1_game_data.html" title="authoring.model.GameData" alt="" coords="1610,136,1811,163"/>
+<area shape="rect" id="node16" href="$df/de5/classauthoring_1_1model_1_1collections_1_1_levels_collection.html" title="authoring.model.collections.\lLevelsCollection" alt="" coords="765,902,968,943"/>
+<area shape="rect" id="node27" href="$df/d67/classengine_1_1level_1_1_level_manager.html" title="engine.level.LevelManager" alt="" coords="1615,1223,1806,1249"/>
+<area shape="rect" id="node38" href="$da/d90/classengine_1_1sound_1_1_sound_utility.html" title="engine.sound.SoundUtility" alt="" coords="1208,1108,1397,1135"/>
+<area shape="rect" id="node17" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html" title="authoring.model.collections.\lGeneralCollection\&lt; Level \&gt;" alt="" coords="337,1315,540,1357"/>
+<area shape="rect" id="node19" href="$d9/d07/classauthoring_1_1model_1_1collections_1_1_sounds_collection.html" title="authoring.model.collections.\lSoundsCollection" alt="" coords="1201,70,1404,111"/>
+<area shape="rect" id="node20" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html" title="authoring.model.collections.\lGeneralCollection\&lt; String \&gt;" alt="" coords="765,103,968,145"/>
+<area shape="rect" id="node23" href="$d5/d60/classauthoring_1_1model_1_1collections_1_1_images_collection.html" title="authoring.model.collections.\lImagesCollection" alt="" coords="1201,135,1404,177"/>
+<area shape="rect" id="node21" href="$d1/d32/classauthoring_1_1model_1_1collections_1_1_game_objects_collection.html" title="authoring.model.collections.\lGameObjectsCollection" alt="" coords="337,1019,540,1061"/>
+<area shape="rect" id="node31" href="$df/d84/classengine_1_1level_1_1_level.html" title="engine.level.Level" alt="" coords="799,1407,934,1433"/>
+<area shape="rect" id="node22" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html" title="authoring.model.collections.\lGeneralCollection\&lt; GameObject \&gt;" alt="" coords="6,1019,250,1061"/>
+<area shape="rect" id="node24" href="$db/d2a/classauthoring_1_1model_1_1collections_1_1_conditions_collection.html" title="authoring.model.collections.\lConditionsCollection" alt="" coords="1201,773,1404,814"/>
+<area shape="rect" id="node25" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html" title="authoring.model.collections.\lGeneralCollection\&lt; Condition \&gt;" alt="" coords="755,303,979,345"/>
+<area shape="rect" id="node32" href="$d3/d8d/classdata_1_1_observable.html" title="data.Observable" alt="" coords="375,1549,502,1576"/>
+<area shape="rect" id="node34" href="$dc/df6/interfaceengine_1_1game_object_1_1_identifiable.html" title="engine.gameObject.Identifiable" alt="" coords="329,1381,549,1408"/>
+<area shape="rect" id="node35" href="$d4/dac/classengine_1_1game_object_1_1_identifier.html" title="engine.gameObject.Identifier" alt="" coords="335,1432,542,1459"/>
+<area shape="rect" id="node37" href="$d9/db5/classengine_1_1_file_path_utility.html" title="engine.FilePathUtility" alt="" coords="790,1177,943,1204"/>
+</map>

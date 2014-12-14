@@ -1,0 +1,7 @@
+<map id="engine.gameObject.GameObject.getComponents" name="engine.gameObject.GameObject.getComponents">
+<area shape="rect" id="node2" href="$da/d8d/classauthoring_1_1view_1_1propertiesview_1_1_game_object_properties.html#a6f1aeaddb6956053690488c8ddaa38ba" title="authoring.view.propertiesview.\lGameObjectProperties.edit" alt="" coords="321,38,533,79"/>
+<area shape="rect" id="node6" href="$d0/d7f/classengine_1_1game_object_1_1_game_object.html#aa99b0343da84d676c7709cee3cfbc4e1" title="engine.gameObject.GameObject.\lGameObject" alt="" coords="309,103,544,145"/>
+<area shape="rect" id="node3" href="$d4/d9e/classauthoring_1_1view_1_1propertiesview_1_1_properties_view.html#aeed3bf20185eabcf870ee4c649bc1d4e" title="authoring.view.propertiesview.\lPropertiesView.getEditedGameObject" alt="" coords="593,38,853,79"/>
+<area shape="rect" id="node4" href="$d6/df5/classauthoring_1_1eventhandlers_1_1_edit_game_object_handler.html#ac0a03e6b751068903df50296d9f1fbd7" title="authoring.eventhandlers.\lEditGameObjectHandler.handle" alt="" coords="902,5,1125,46"/>
+<area shape="rect" id="node5" href="$df/d81/classauthoring_1_1eventhandlers_1_1_save_as_new_handler.html#a912458649a9a99cded7c346f9d8b40f5" title="authoring.eventhandlers.\lSaveAsNewHandler.handle" alt="" coords="917,70,1110,111"/>
+</map>

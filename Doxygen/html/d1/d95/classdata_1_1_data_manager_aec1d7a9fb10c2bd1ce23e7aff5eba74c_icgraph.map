@@ -1,0 +1,13 @@
+<map id="data.DataManager.readFile" name="data.DataManager.readFile">
+<area shape="rect" id="node2" href="$d1/d95/classdata_1_1_data_manager.html#adf2d2f38be8e2b2934f3ec7e944e2c3a" title="data.DataManager.readGameFile" alt="" coords="257,92,490,119"/>
+<area shape="rect" id="node10" href="$d1/d95/classdata_1_1_data_manager.html#a0d521e6d8990f8019112b1d1e0edf098" title="data.DataManager.readProgressFile" alt="" coords="248,149,499,176"/>
+<area shape="rect" id="node3" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#a10ecf01e628d3fa377f151a965424e50" title="authoring.view.ProgramMenu.loadData" alt="" coords="547,12,816,39"/>
+<area shape="rect" id="node7" href="$d1/d37/classengine_1_1actions_1_1_load_action.html#af92860bc56b712c077bb2d726a17a8aa" title="engine.actions.LoadAction.execute" alt="" coords="559,63,804,89"/>
+<area shape="rect" id="node8" href="$d2/dc9/classgame_player_1_1model_1_1_player_model.html#a810c0b28ae81f5a27c5df5f83f907088" title="gamePlayer.model.PlayerModel.load\lGameFile" alt="" coords="555,114,808,155"/>
+<area shape="rect" id="node4" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#aa73ae8b737adefd919b8dd9c770afe5e" title="authoring.view.ProgramMenu.loadFile" alt="" coords="875,12,1133,39"/>
+<area shape="rect" id="node5" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#a4f80944f8d70afac9f86de8caa8439b5" title="authoring.view.ProgramMenu.\lFileMenu" alt="" coords="1192,5,1403,46"/>
+<area shape="rect" id="node6" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#a1979060c566560f24eee51c819341adc" title="authoring.view.ProgramMenu.\lProgramMenu" alt="" coords="1451,5,1661,46"/>
+<area shape="rect" id="node9" href="$d9/dff/classgame_player_1_1view_1_1_menu_bar_controller.html#af1f1b493dce9b79a0f464c4f1a6dfd09" title="gamePlayer.view.MenuBarController.load\lGameFile" alt="" coords="864,114,1144,155"/>
+<area shape="rect" id="node11" href="$d2/dc9/classgame_player_1_1model_1_1_player_model.html#af190a1bec62622e48aa4006d19e8897a" title="gamePlayer.model.PlayerModel.add\lStringChangeListener" alt="" coords="556,179,807,221"/>
+<area shape="rect" id="node12" href="$d2/dc9/classgame_player_1_1model_1_1_player_model.html#ad762a1aa11a0f489413712d8dab91419" title="gamePlayer.model.PlayerModel.\lPlayerModel" alt="" coords="891,179,1117,221"/>
+</map>
