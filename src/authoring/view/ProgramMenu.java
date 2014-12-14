@@ -1,6 +1,7 @@
 package authoring.view;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Locale;
 import java.util.Map;
@@ -18,6 +19,7 @@ import authoring.controller.AuthoringController;
 import authoring.model.AuthoringModel;
 import authoring.model.GameData;
 import data.DataManager;
+import errorsAndExceptions.ErrorPopUp;
 
 /**
  * Class that contains the MenuBar for the authoring environments. Users can
@@ -106,14 +108,18 @@ public class ProgramMenu extends MenuBar {
 		if (gameLocation != null) {
 			setupGame(gameLocation);
 		}
+		GameData gameData;
 		try {
-			GameData gameData = myDataManager.readGameFile(gameLocation);
+			gameData = myDataManager.readGameFile(gameLocation);
 			System.out.println("game loaded");
 			int currentTab = myTabs.getSelectionModel().getSelectedIndex();
 			((AuthoringView) myTabs.getTabs().get(currentTab).getContent())
 					.getController().loadData(gameData);
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (FileNotFoundException e) {
+			ErrorPopUp epu = new ErrorPopUp();
+			epu.display("File not found", false);
+		} catch (NullPointerException e) {
+			//User chose not to load a file. No action is needed.
 		}
 	}
 	

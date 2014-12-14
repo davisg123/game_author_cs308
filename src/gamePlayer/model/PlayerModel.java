@@ -1,6 +1,7 @@
 package gamePlayer.model;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -14,6 +15,7 @@ import authoring.model.collections.ConditionsCollection;
 import engine.GameManager;
 import engine.conditions.ButtonPressCondition;
 import engine.conditions.Condition;
+import errorsAndExceptions.ErrorPopUp;
 import gamePlayer.view.FileSelectionWizard;
 import gamePlayer.view.PlayerView;
 import gamePlayer.view.ProgressSelector;
@@ -46,13 +48,19 @@ public class PlayerModel {
 		addFileNameChangeListener();
 	}
 	
+	// check here
 	private void addFileNameChangeListener() {
 		progressFileName.addListener(new ChangeListener<String>() {
 			@Override
 			public void changed(ObservableValue<? extends String> observable,
 					String oldValue, String newValue) {
-				myGameData = myDataManager.readProgressFile(myGameLocation, newValue);
-				loadGameData();
+				try {
+					myGameData = myDataManager.readProgressFile(myGameLocation, newValue);
+					loadGameData();
+				} catch (FileNotFoundException e) {
+					ErrorPopUp epu = new ErrorPopUp();
+					epu.display("File not found", false);
+				}
 			}
 		});
 	}
@@ -63,9 +71,17 @@ public class PlayerModel {
 
 	public void loadGameFile() {
 		myGameLocation = myFileSelector.selectFile();
-		myGameData = myDataManager.readGameFile(myGameLocation);
-		myProgressSelector = new ProgressSelector(myGameLocation, progressFileName);
-		loadGameData();
+		try {
+			myGameData = myDataManager.readGameFile(myGameLocation);
+			myProgressSelector = new ProgressSelector(myGameLocation, progressFileName);
+			loadGameData();
+		} catch (FileNotFoundException e) {
+			ErrorPopUp epu = new ErrorPopUp();
+			epu.display("File not found", false);
+		} catch (NullPointerException e) {
+			//User chose not to load a file. No action is needed.
+			System.out.println("loaded null");
+		}
 	}
 
 	private void loadGameData() {

@@ -1,6 +1,7 @@
 package authoring.eventhandlers;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.lang.reflect.Type;
@@ -13,6 +14,7 @@ import authoring.view.wizards.ActionChoiceWizard;
 import authoring.view.wizards.ConditionParameterWizard;
 import engine.actions.Action;
 import engine.conditions.Condition;
+import errorsAndExceptions.ErrorPopUp;
 
 public class AddActionHandler implements GameHandler<Event> {
 
@@ -41,7 +43,6 @@ public class AddActionHandler implements GameHandler<Event> {
 		
 		try {
 			classType = Class.forName(CONDITION_PATH_START + selected);
-			//System.out.println(classType.toString());
 
 			Constructor[] constructors = classType.getDeclaredConstructors();
 			myConstructor = constructors[0];
@@ -54,7 +55,8 @@ public class AddActionHandler implements GameHandler<Event> {
 			myActionSelectionWizard.close();
 
 		} catch (ClassNotFoundException e) {
-			System.out.println("Bad Class");
+			ErrorPopUp epu = new ErrorPopUp();
+			epu.display("Bad Class", false);
 		}
 
 	}
@@ -65,13 +67,16 @@ public class AddActionHandler implements GameHandler<Event> {
 			myInputParameters.add(myCPW.getMap().get(s).getInformation());
 		}
 		List<Object> inputs = convertInputParameters();
+		Action a;
 		try {
-			Action a = (Action) myConstructor.newInstance(inputs.toArray());
+			a = (Action) myConstructor.newInstance(inputs.toArray());
 			System.out.println(a.getClass());
 			myCondition.addAction(a);
 			myCPW.close();
-		} catch (Exception e) {
-			System.out.println("Could not construct action");
+		} catch (InstantiationException | IllegalAccessException
+				| IllegalArgumentException | InvocationTargetException e) {
+			ErrorPopUp epu = new ErrorPopUp();
+			epu.display("Could not construct action", false);
 		}
 	}
 		
@@ -96,8 +101,10 @@ public class AddActionHandler implements GameHandler<Event> {
 							innerList.add(parseMethod.invoke(c, s));
 						}
 					}
-				} catch (Exception e) {
-					System.out.println("Bad Class");
+				} catch (ClassNotFoundException | NoSuchMethodException | 
+						InvocationTargetException | IllegalAccessException e) {
+					ErrorPopUp epu = new ErrorPopUp();
+					epu.display("Bad Class", false);
 				}
 				inputs.add(innerList);
 			}else{
@@ -113,8 +120,10 @@ public class AddActionHandler implements GameHandler<Event> {
 						Object innerObject = parseMethod.invoke(c, s);
 						inputs.add(innerObject);
 					}
-				} catch (Exception e) {
-					System.out.println("Bad Class");
+				} catch (ClassNotFoundException | NoSuchMethodException | 
+						InvocationTargetException | IllegalAccessException e) {
+					ErrorPopUp epu = new ErrorPopUp();
+					epu.display("Bad Class", false);
 				}
 			}
 		}

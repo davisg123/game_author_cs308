@@ -1,5 +1,6 @@
 package application;
 
+import errorsAndExceptions.ErrorPopUp;
 import gamePlayer.model.PlayerModel;
 
 import java.io.IOException;
@@ -64,8 +65,9 @@ public class SplashScreen {
 		myPlayButton.setOnAction((event) -> {
 			try {
 				play();
-			} catch (Exception e) {
-
+			} catch (IOException e) {
+				ErrorPopUp epu = new ErrorPopUp();
+				epu.display("Input/Output Error", false);
 			}
 		});
 
