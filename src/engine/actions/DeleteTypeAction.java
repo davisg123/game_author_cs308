@@ -28,11 +28,10 @@ public class DeleteTypeAction extends TypeAction{
 	public void execute() {
 		for (Iterator<GameObject> it = myCurrentLevel.getGameObjectsCollection().iterator(); it.hasNext();){
 			GameObject object = it.next();
-			if (object.getIdentifier().getType().equals(myType) && object.isCollisionEnabled()){
+			if (object.getIdentifier().getType().equals(myType)){
 			   
 				myRenderer.removeRenderedNode(object.getIdentifier());
 				it.remove();
-			    
 
 			}
 		}
