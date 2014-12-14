@@ -5,12 +5,13 @@ import java.io.IOException;
 
 import authoring.model.GameData;
 import data.DataManager;
-import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
@@ -33,25 +34,17 @@ public class ProgressSelector {
 	String selectedProgressState;
 	File myGameLocation;
 	File myProgressFolder;
-//	GameData myGameData;
 	DataManager myDataManager;
-//	BooleanProperty myProgressLoaded;
 	StringProperty myProgressFileName;
 	Stage myProgressStage;
 	
-//	public ProgressSelector(File gameLocation, GameData gameData, 
-//			BooleanProperty progressLoaded, StringProperty progressFileName) {
 	public ProgressSelector(File gameLocation, StringProperty progressFileName) {
 		myGameLocation = gameLocation;
 		myProgressFolder = new File(gameLocation, DataManager.PROGRESS_FOLDER_NAME);
-//		myGameData = gameData;
-//		if(myGameData == null) System.out.println("super null");
 		myDataManager = new DataManager();
 		myProgressList = FXCollections.observableArrayList();
-		//updateProgressList();
 		myProgressListView = new ListView<String>(myProgressList);
 		addListViewListener();
-//		myProgressLoaded = progressLoaded;
 		myProgressFileName = progressFileName;
 	}
 	
@@ -71,7 +64,6 @@ public class ProgressSelector {
 		File[] progressFiles = myProgressFolder.listFiles();
 		for(File f : progressFiles) {
 			if(f.getName().contains(".json")) {
-				System.out.println(f.getName());//.indexOf(".json"));
 				String fileName = f.getName().substring(0, f.getName().indexOf(".json"));
 				if(!myProgressList.contains(fileName)) {
 					myProgressList.add(fileName);
@@ -86,32 +78,15 @@ public class ProgressSelector {
 		buildLoadWindow();
 	}
 
-	private void buildLoadWindow() {
-		VBox root = setupWindow("Load from progress state");
-		Button loadButton = new Button();
-		loadButton.setText("LOAD");
-		loadButton.setOnAction(event -> loadProgressEvent());
-		root.getChildren().add(loadButton);
-	}
-	
-	private void loadProgressEvent() {
-//		System.out.println("loading");
-//		if(myGameData==null) System.out.println("i'm null");
-//		System.out.println(myGameData);
-//		System.out.println(myGameData.getGameObjects());
-//		GameData tempData = myDataManager.readProgressFile(myGameLocation, selectedProgressState);
-//		myGameData = tempData;
-//		System.out.println(myGameData);
-//		System.out.println(myGameData.getGameObjects());
-		myProgressStage.close();
-//		myProgressLoaded.set(true);
-		myProgressFileName.set(selectedProgressState);
-//		System.out.println(selectedProgressState);
-	}
-	
 	public void saveProgressState(GameData saveData) {
 		updateProgressList();
 		buildSaveWindow(saveData);
+	}
+	
+	private void buildLoadWindow() {
+		VBox root = setupWindow("Load from progress state");
+		Button loadButton = createButton("LOAD", event -> loadProgressEvent());
+		root.getChildren().add(loadButton);
 	}
 
 	private void buildSaveWindow(GameData saveData) {
@@ -123,14 +98,33 @@ public class ProgressSelector {
 		name.setPromptText("Enter name for progress state");
 		name.setPrefColumnCount(TEXT_COLUMN_COUNT);
 		header.getChildren().add(name);
-		Button saveButton = new Button();
-		saveButton.setText("SAVE");
-		saveButton.setOnAction(event -> saveProgressEvent(name, saveData));
+		Button saveButton = createButton("SAVE", event -> saveProgressEvent(name, saveData));
 		header.getChildren().add(saveButton);
-		Button overwriteButton = new Button();
-		overwriteButton.setText("OVERWRITE");
-		overwriteButton.setOnAction(event -> overwriteProgressEvent(saveData));
+		Button overwriteButton = createButton("OVERWRITE", event -> overwriteProgressEvent(saveData));
 		root.getChildren().add(overwriteButton);
+	}
+	
+	private Button createButton(String title, EventHandler<ActionEvent> event) {
+		Button b = new Button();
+		b.setText(title);
+		b.setOnAction(event);
+		return b;
+	}
+	
+	private VBox setupWindow(String title) {
+		myProgressStage = new Stage();
+		myProgressStage.setTitle(title);
+		VBox root = new VBox();
+		root.getChildren().add(myProgressListView);
+		Scene scene = new Scene(root, 400, 400);
+		myProgressStage.setScene(scene);
+		myProgressStage.show();
+		return root;
+	}
+	
+	private void loadProgressEvent() {
+		myProgressStage.close();
+		myProgressFileName.set(selectedProgressState);
 	}
 	
 	private void saveProgressEvent(TextField name, GameData saveData) {
@@ -138,7 +132,6 @@ public class ProgressSelector {
 		try {
 			myDataManager.writeProgressFile(saveData, myGameLocation, saveText);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		myProgressStage.close();
@@ -153,15 +146,6 @@ public class ProgressSelector {
 		myProgressStage.close();
 	}
 	
-	private VBox setupWindow(String title) {
-		myProgressStage = new Stage();
-		myProgressStage.setTitle(title);
-		VBox root = new VBox();
-		root.getChildren().add(myProgressListView);
-		Scene scene = new Scene(root, 400, 400);
-		myProgressStage.setScene(scene);
-		myProgressStage.show();
-		return root;
-	}
+	
 
 }
