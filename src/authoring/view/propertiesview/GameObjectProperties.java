@@ -3,20 +3,18 @@ package authoring.view.propertiesview;
 import static authoring.view.levelview.SingleLevelView.OBJECT_X_OFFSET;
 import static authoring.view.levelview.SingleLevelView.OBJECT_Y_OFFSET;
 
-import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.TitledPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import authoring.eventhandlers.GameHandler;
 import authoring.view.baseclasses.AccordionContainer;
 import engine.gameObject.GameObject;
 import engine.gameObject.components.PhysicsBody;
-import engine.physics.CoefficientOfFriction;
+import engine.physics.CollisionConstant;
 import engine.physics.Density;
 import engine.physics.GravityConstant;
 import engine.physics.Mass;
@@ -216,6 +214,8 @@ public class GameObjectProperties extends Properties {
 				.getInformation())));
 		pb.addScalar(new GravityConstant(Double.parseDouble(physicsProperties
 				.get("gravity constant").getInformation())));
+		pb.addScalar(new CollisionConstant(Double.parseDouble(physicsProperties
+				.get("collision constant").getInformation())));
 		pb.addScalar(new Density(Double.parseDouble(physicsProperties.get(
 				"density").getInformation())));
 		pb.addScalar(new Volume(Double.parseDouble(physicsProperties.get(

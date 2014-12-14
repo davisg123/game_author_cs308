@@ -13,6 +13,7 @@ import authoring.view.wizards.Wizard;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 import engine.gameObject.components.PhysicsBody;
+import engine.physics.CollisionConstant;
 import engine.physics.Velocity;
 import errorsAndExceptions.ErrorPopUp;
 /**
@@ -62,7 +63,8 @@ public class AddObjectHandler implements GameHandler<Event> {
 				.getInformation()),Double.parseDouble(map.get("width")
 				.getInformation()));
 		p.setVelocity(new Velocity(Double.parseDouble(map.get("initXV").getInformation()), Double.parseDouble(map.get("initYV").getInformation())));
-		
+		p.addScalar(new CollisionConstant(Double.parseDouble(map
+				.get("collision constant").getInformation())));
 		myNewGameObject.setPhysicsBody(p);
 		myWizard.close();
 		
