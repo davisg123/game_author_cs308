@@ -45,6 +45,6 @@ public class MakeNewRandomObjectAction extends MakeNewObjectAction{
 		newObject.setIdentifier(new Identifier(object.getIdentifier()));
 		newObject.setPhysicsBody(new PhysicsBody(object.getPhysicsBody()));
 		myRenderer.createAndAssignRenderedNode(newObject);
-		myCurrentLevel.addGameObject(newObject);
+		myCurrentLevel.getGameObjectsCollection().add(newObject);
 	}
 }
