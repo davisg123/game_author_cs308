@@ -110,7 +110,7 @@ public class MarioGameTest extends Application {
         myFloorObjects.add(floor1);
         
         GameObject platform1 = new GameObject(null, "BrickBlock_NSMB.png", 
-                                            200, 100, 50, 50, 0, "PlatformBlock1");
+                                            300, 180, 50, 50, 0, "PlatformBlock1");
         platform1.setIdentifier(new Identifier("PlatformBlock","a")); 
         PhysicsBody platform1Body = new PhysicsBody(50,50);
         platform1Body.addScalar((new CollisionConstant(1.0)));
@@ -118,23 +118,41 @@ public class MarioGameTest extends Application {
         myPlatformObjects.add(platform1);
         
         GameObject platform2 = new GameObject(null, "BrickBlock_NSMB.png", 
-                                              250, 100, 50, 50, 0, "PlatformBlock1");
+                                              350, 180, 50, 50, 0, "PlatformBlock1");
         platform2.setIdentifier(new Identifier("PlatformBlock","b"));   
         PhysicsBody platform2Body = new PhysicsBody(50,50);
         platform2Body.addScalar((new CollisionConstant(1.0)));
         platform2.setPhysicsBody(platform2Body);
         myPlatformObjects.add(platform2);
         
-        //create a player
-        GameObject goomba1 = new GameObject(null,"Goomba.gif",300,150,30,30,0,"mario");
-        goomba1.setIdentifier(new Identifier("goomba","a"));
-        PhysicsBody goombaBody1 = new PhysicsBody(37,37);
-        goombaBody1.addForce(new Gravity(0,1.0));
-        goombaBody1.addScalar(new GravityConstant(50.0));
-        goomba1.setPhysicsBody(goombaBody1);
-        myGoombaObjects.add(goomba1);
         
-        GameObject mario = new GameObject(null,"Mario.gif",50,150,30,30,0,"mario");
+        GameObject platform3 = new GameObject(null, "BrickBlock_NSMB.png", 
+                                              400, 180, 50, 50, 0, "PlatformBlock1");
+        platform3.setIdentifier(new Identifier("PlatformBlock","c")); 
+        PhysicsBody platform3Body = new PhysicsBody(50,50);
+        platform3Body.addScalar((new CollisionConstant(1.0)));
+        platform3.setPhysicsBody(platform3Body);
+        myPlatformObjects.add(platform3);
+
+        GameObject platform4 = new GameObject(null, "BrickBlock_NSMB.png", 
+                                              450, 180, 50, 50, 0, "PlatformBlock1");
+        platform4.setIdentifier(new Identifier("PlatformBlock","d"));   
+        PhysicsBody platform4Body = new PhysicsBody(50,50);
+        platform4Body.addScalar((new CollisionConstant(1.0)));
+        platform4.setPhysicsBody(platform2Body);
+        myPlatformObjects.add(platform4);
+
+        GameObject questionBlock1 = new GameObject(null, "Question Block.gif", 
+                                              500, 180, 50, 50, 0, "PlatformBlock1");
+        questionBlock1.setIdentifier(new Identifier("PlatformBlock","e"));   
+        PhysicsBody questionBlock1Body = new PhysicsBody(50,50);
+        questionBlock1Body.addScalar((new CollisionConstant(1.0)));
+        questionBlock1.setPhysicsBody(questionBlock1Body);
+        myPlatformObjects.add(questionBlock1);
+        
+        
+        //create a player
+        GameObject mario = new GameObject(null,"Mario.gif",200,50,30,30,0,"mario");
         mario.setIdentifier(new Identifier("mario","a"));
         PhysicsBody marioBody = new PhysicsBody(37,37);
         marioBody.addForce(new Gravity(0,1.0));
@@ -148,7 +166,32 @@ public class MarioGameTest extends Application {
         PhysicsBody fireballBody = new PhysicsBody(10, 10);
         fireball.setPhysicsBody(fireballBody);
         
-
+        //create enemies
+        GameObject goomba = new GameObject(null,"Goomba.gif",200,150,30,30,0,"mario");
+        goomba.setIdentifier(new Identifier("goomba","template"));
+        PhysicsBody goombaBody = new PhysicsBody(37,37);
+        goombaBody.addForce(new Gravity(0,1.0));
+        goombaBody.addScalar(new GravityConstant(50.0));
+        goomba.setPhysicsBody(goombaBody);
+        myGoombaObjects.add(goomba);
+        
+        GameObject goomba1 = new GameObject(null,"Goomba.gif",500,150,30,30,0,"mario");
+        goomba1.setIdentifier(new Identifier("goomba","a"));
+        PhysicsBody goombaBody1 = new PhysicsBody(37,37);
+        goombaBody1.addForce(new Gravity(0,1.0));
+        goombaBody1.addScalar(new GravityConstant(50.0));
+        goomba1.setPhysicsBody(goombaBody1);
+        myGoombaObjects.add(goomba1);
+        
+        
+        GameObject goomba2 = new GameObject(null,"Goomba.gif",700,150,30,30,0,"mario");
+        goomba2.setIdentifier(new Identifier("goomba","b"));
+        PhysicsBody goombaBody2 = new PhysicsBody(37,37);
+        goombaBody2.addForce(new Gravity(0,1.0));
+        goombaBody2.addScalar(new GravityConstant(50.0));
+        goomba2.setPhysicsBody(goombaBody2);
+        myGoombaObjects.add(goomba2);
+        
         /******
          * conditions
          ******/
@@ -169,6 +212,10 @@ public class MarioGameTest extends Application {
         yVelActionList.add(yVelAction);
         yVelActionList.add(yVel1Action);
         yVelActionList.add(fireballMove);
+        
+
+        TranslateXType XVelAction = new TranslateXType("goomba",-1.0);
+        yVelActionList.add(XVelAction);
 
         //Action yVelAction = new YVelocityIDAction(temp,0.0);
         Action xVelAction=new XVelocityIDAction(identList, 0.0);
@@ -191,7 +238,7 @@ public class MarioGameTest extends Application {
         ButtonPressCondition aCon = new ButtonPressCondition(actionList,kclA, 1.0, true);
         aCon.setIdentifier(new Identifier("button_cond","a"));
         myConditions.add(aCon);
-
+        
         //Move Right
         Action dAct = new XVelocityIDAction(identList ,100.0);
         ArrayList<Action> dActList = new ArrayList<Action>();
@@ -213,7 +260,7 @@ public class MarioGameTest extends Application {
         myConditions.add(nCon);
         
         //Delete 
-        Action delete = new DeleteTypeAction("floor");
+        Action delete = new DeleteTypeAction("fireball");
         ArrayList<Action> actions = new ArrayList<Action>();
         actions.add(delete);
         ArrayList<KeyCode> kclH = new ArrayList<KeyCode>();
@@ -238,9 +285,9 @@ public class MarioGameTest extends Application {
         ArrayList<Action> MarioConditionActionList = new ArrayList<Action>();
         FixedCollisionTypeAction collisionAction = new FixedCollisionTypeAction("mario","FloorBlock",0.0);
         MarioConditionActionList.add(collisionAction);
-        TypeCollisionCondition ballAndFloorCollision = new TypeCollisionCondition(MarioConditionActionList,"mario","FloorBlock");
-        ballAndFloorCollision.setIdentifier(new Identifier("collision_cond","a"));
-        myConditions.add(ballAndFloorCollision);
+        TypeCollisionCondition marioAndFloorCollision = new TypeCollisionCondition(MarioConditionActionList,"mario","FloorBlock");
+        marioAndFloorCollision.setIdentifier(new Identifier("collision_cond","a"));
+        myConditions.add(marioAndFloorCollision);
         
 
         ArrayList<Action> GoombaConditionActionList = new ArrayList<Action>();
@@ -252,6 +299,12 @@ public class MarioGameTest extends Application {
         
         //Platform Collisions
         
+        ArrayList<Action> marioPlatformConditionActionList = new ArrayList<Action>();
+        FixedCollisionTypeAction marioPlatformCollisionAction = new FixedCollisionTypeAction("mario","PlatformBlock",0.0);
+        marioPlatformConditionActionList.add(marioPlatformCollisionAction);
+        TypeCollisionCondition marioAndPlatformCollision = new TypeCollisionCondition(marioPlatformConditionActionList,"mario","PlatformBlock");
+        marioAndPlatformCollision.setIdentifier(new Identifier("collision_cond","a"));
+        myConditions.add(marioAndPlatformCollision);
         
         
         //Boundary
@@ -319,7 +372,8 @@ public class MarioGameTest extends Application {
         /*
          * uncomment for saving game
          */
-        /*
+        
+        
         GameData data = new GameData(myLevels,myConditions,allGameObjects);
         DataManager manager = new DataManager();
         try {
@@ -329,7 +383,7 @@ public class MarioGameTest extends Application {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        */
+        
         
         /*******
          * game
