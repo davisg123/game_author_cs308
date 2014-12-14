@@ -1,0 +1,5 @@
+<map id="authoring.view.ProgramMenu.loadData" name="authoring.view.ProgramMenu.loadData">
+<area shape="rect" id="node2" href="$d1/d95/classdata_1_1_data_manager.html#adf2d2f38be8e2b2934f3ec7e944e2c3a" title="data.DataManager.readGameFile" alt="" coords="350,5,583,32"/>
+<area shape="rect" id="node4" href="$d3/df3/classauthoring_1_1view_1_1_program_menu.html#a64b6179ade9bc9185ddb677a3bdc883b" title="authoring.view.ProgramMenu.setupGame" alt="" coords="323,56,610,83"/>
+<area shape="rect" id="node3" href="$d1/d95/classdata_1_1_data_manager.html#aec1d7a9fb10c2bd1ce23e7aff5eba74c" title="data.DataManager.readFile" alt="" coords="659,5,853,32"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="engine.GameManager.objectForIdentifier" name="engine.GameManager.objectForIdentifier">
+<area shape="rect" id="node2" href="$db/d61/classengine_1_1actions_1_1_make_new_object_from_object_action.html#ae23a770628b915713b433612f27a7759" title="engine.actions.MakeNewObject\lFromObjectAction.initialize" alt="" coords="288,5,509,46"/>
+<area shape="rect" id="node3" href="$d0/da8/classengine_1_1actions_1_1_change_component_i_d_action.html#a6ea70c000c15a23106498e80a82d3dc9" title="engine.actions.ChangeComponent\lIDAction.initialize" alt="" coords="277,70,520,111"/>
+<area shape="rect" id="node4" href="$db/dfc/classengine_1_1conditions_1_1_game_object_condition.html#ae7a1fd15e4470ff08c9ceca63c43f988" title="engine.conditions.GameObject\lCondition.initialize" alt="" coords="289,135,508,177"/>
+<area shape="rect" id="node5" href="$df/d90/classengine_1_1actions_1_1_translate_i_d_action.html#a3ecf53d053e126273849e988a1db324a" title="engine.actions.Translate\lIDAction.initialize" alt="" coords="311,201,487,242"/>
+<area shape="rect" id="node6" href="$de/d8e/classengine_1_1actions_1_1_physics_i_d_action.html#aff31aa0aeb7f4cb6efbe3afbf9ff4d54" title="engine.actions.PhysicsIDAction.initialize" alt="" coords="261,267,536,293"/>
+</map>

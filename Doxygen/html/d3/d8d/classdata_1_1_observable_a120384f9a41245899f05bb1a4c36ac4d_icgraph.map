@@ -1,0 +1,11 @@
+<map id="data.Observable.notifyObservers" name="data.Observable.notifyObservers">
+<area shape="rect" id="node2" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html#a1bdc1047736bbb23259d6a7fe4c6deeb" title="authoring.model.collections.\lGeneralCollection\&lt; GameObject \&gt;::add" alt="" coords="286,38,562,79"/>
+<area shape="rect" id="node3" href="$df/d84/classengine_1_1level_1_1_level.html#a0e3c5bae8948f49ede9e5a87f197581b" title="engine.level.Level.addGame\lObject" alt="" coords="323,103,525,145"/>
+<area shape="rect" id="node10" href="$df/d84/classengine_1_1level_1_1_level.html#a62fad5769cbf1d6156e1be0b10757b9e" title="engine.level.Level.remove\lGameObject" alt="" coords="330,169,518,210"/>
+<area shape="rect" id="node4" href="$d0/df2/classauthoring_1_1eventhandlers_1_1_game_object_drag_to_level_handler.html#a98ccf77195ecfc7146cd1737da68b6b2" title="authoring.eventhandlers.\lGameObjectDragToLevelHandler.updateName" alt="" coords="611,5,927,46"/>
+<area shape="rect" id="node6" href="$dd/d57/classengine_1_1actions_1_1_make_new_object_from_location_action.html#a2ebd225d5e10817ac79f4044867afa98" title="engine.actions.MakeNewObject\lFromLocationAction.execute" alt="" coords="659,70,880,111"/>
+<area shape="rect" id="node7" href="$db/d61/classengine_1_1actions_1_1_make_new_object_from_object_action.html#a01ffb165d6169f7b0a22733e2b6c61a9" title="engine.actions.MakeNewObject\lFromObjectAction.execute" alt="" coords="659,135,880,177"/>
+<area shape="rect" id="node8" href="$da/d16/classengine_1_1actions_1_1_make_new_random_object_action.html#a82ccd5604bd05170e416e41b32020f00" title="engine.actions.MakeNewRandom\lObjectAction.makeRandomObject" alt="" coords="651,201,888,242"/>
+<area shape="rect" id="node5" href="$d0/df2/classauthoring_1_1eventhandlers_1_1_game_object_drag_to_level_handler.html#ad5002cd6b7781653104f1820a573f902" title="authoring.eventhandlers.\lGameObjectDragToLevelHandler.handle" alt="" coords="976,5,1251,46"/>
+<area shape="rect" id="node9" href="$da/d16/classengine_1_1actions_1_1_make_new_random_object_action.html#aa831c4b818ed75f812bf8ba0d453c942" title="engine.actions.MakeNewRandom\lObjectAction.execute" alt="" coords="997,201,1230,242"/>
+</map>
