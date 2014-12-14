@@ -19,11 +19,19 @@ public class ConditionsCollection extends GeneralCollection<Condition> {
     public void removeByID(String id){
     	for(Condition c : this.myObjects){
     		if(c.getIdentifier().getUniqueId().equals(id)){
-    			this.remove(c);
+    			this.myObjects.remove(c);
+    			break;
     		}
     	}
     	setChanged();
-    	notifyObservers();
+    	notifyObservers(this);
     }
+    
+    @Override
+	public void add(Condition a){
+		myObjects.add(a);
+		setChanged();
+		notifyObservers(this);
+	}
     
 }
