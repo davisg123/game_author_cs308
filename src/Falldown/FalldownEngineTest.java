@@ -15,9 +15,11 @@ import authoring.model.collections.LevelsCollection;
 import engine.GameManager;
 import engine.actions.Action;
 import engine.actions.ChangeLevelAction;
+import engine.actions.FixedCollisionTypeAction;
 import engine.conditions.BoundaryConditionY;
 import engine.conditions.ButtonConditionManager;
 import engine.conditions.ButtonPressCondition;
+import engine.conditions.TypeCollisionCondition;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 import engine.gameObject.components.PhysicsBody;
@@ -89,6 +91,9 @@ public class FalldownEngineTest extends Application {
 		/*
 		 * 
 		 * Level 1
+		 * 
+		 * 
+		 * 
 		 */
 		List<Action> level1Actions = new ArrayList<Action>();
 		ConditionsCollection myLevel1Conditions = new ConditionsCollection();
@@ -117,18 +122,25 @@ public class FalldownEngineTest extends Application {
 		floorLeft.setPhysicsBody(floorLeftBody);
 		myLevel1Objects.add(floorRight);
 		myLevel1Objects.add(floorLeft);
+		
+		ArrayList<Action> ConditionActionList = new ArrayList<Action>();
+        FixedCollisionTypeAction collisionAction = new FixedCollisionTypeAction("ball","floor",0.0);
+        ConditionActionList.add(collisionAction);
+        TypeCollisionCondition ballAndPlatformCollision = new TypeCollisionCondition(ConditionActionList,"ball","floor");
+        ballAndPlatformCollision.setIdentifier(new Identifier("collision_cond","a"));
+        myLevel1Conditions.add(ballAndPlatformCollision);
 
 		Action changeLevelAction2 = new ChangeLevelAction(level2ID);
 		level1Actions.add(changeLevelAction2);
 
 		BoundaryConditionY boundaryBottomCondition = new BoundaryConditionY(
-				level1Actions, myLevel1Objects.getIdentifierList(), 300.0, false);
+				level1Actions, myLevel1Objects.getIdentifierList(), 250.0, false);
 		BoundaryConditionY boundaryTopCondition = new BoundaryConditionY(
 				level1Actions, myLevel1Objects.getIdentifierList(), -50.0,
-				false);
+				true);
 		boundaryBottomCondition.setIdentifier(new Identifier("changeLevel",
 				"bottomBoundaryGameOver"));
-		myLevel1Conditions.add(boundaryBottomCondition);
+		//myLevel1Conditions.add(boundaryBottomCondition);
 		// myLevel1Conditions.add(boundaryTopCondition);
 
 		Level level1 = new Level(myLevel1Objects.getIdentifierList(),
@@ -136,9 +148,16 @@ public class FalldownEngineTest extends Application {
 		level1.setIdentifier(level1ID);
 
 		myGameObjects.addAll(myLevel1Objects);
-		//myConditions.addAll(myLevel1Conditions);
+		myConditions.addAll(myLevel1Conditions);
 		myLevels.add(level1);
 
+		/*
+		 * 
+		 * LEVEL 2
+		 * 
+		 * 
+		 */
+		
 		// Level 2, game over screen
 		ConditionsCollection myLevel2Conditions = new ConditionsCollection();
 		GameObjectsCollection myLevel2Objects = new GameObjectsCollection();

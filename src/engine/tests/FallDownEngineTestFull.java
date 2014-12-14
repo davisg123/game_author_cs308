@@ -16,8 +16,7 @@ import engine.GameManager;
 import engine.actions.Action;
 import engine.actions.DeleteTypeAction;
 import engine.actions.FixedCollisionTypeAction;
-import engine.actions.MakeNewObjectFromObjectAction;
-import engine.actions.TranslateXType;
+import engine.actions.TranslateXRandomType;
 import engine.actions.TranslateYType;
 import engine.actions.XVelocityIDAction;
 import engine.actions.YImpulseIDAction;
@@ -34,15 +33,9 @@ import engine.level.Level;
 import engine.physics.CollisionConstant;
 import engine.physics.Gravity;
 import engine.physics.GravityConstant;
+import engine.physics.Velocity;
 
-public class MainEngineTests extends Application {
-  
-    /**
-     * @author Davis
-     * 
-     * the sandbox for engine
-     * used to get stuff on the screen and keep engine team morale high
-     */
+public class FallDownEngineTestFull extends Application {
 
     private GameManager myGameManager;
     private Stage myStage;
@@ -69,32 +62,36 @@ public class MainEngineTests extends Application {
     }
     
     public void createGameObject (Group group) {
-        /*****
+    	
+    	/*
+    	 * 
+    	 * 
+    	 *  GAME OBJECT DECLARATION
+    	 * 
+    	 * 
+    	 * 
+    	 * 
+    	 * 
+    	 */
+
+    	/*****
          * create a sprite and put it in a collection
          *****/
         GameObjectsCollection myFloorObjects = new GameObjectsCollection();
         GameObjectsCollection myBallObjects = new GameObjectsCollection();
-        GameObjectsCollection myLabels = new GameObjectsCollection();
-        
-//        //create Labels for High scores, names, text etc
-        GameObject labelText = new GameObject(null, "", 0,0,300,300,0,"label_Text");
-        labelText.setIdentifier(new Identifier("LabelText","asdf"));
-        labelText.setLabel("THIS IS A LABEL, DO WHAT YOU WANT");
-       myLabels.add(labelText);
-        
-        //create the floor
+        // FLOOR OBJECTS
         GameObject floorRight = new GameObject(null,"floor.png",
-                                   200, 200, 20, 200, 0, "floor_right");
+                                   200, 200, 20, 400, 0, "floor_right");
         floorRight.setIdentifier(new Identifier("floor","a"));
-        //ugh, why do we have to set this explicitly?
-        PhysicsBody floorRightBody = new PhysicsBody(20,200);
+        PhysicsBody floorRightBody = new PhysicsBody(20,220);
         floorRightBody.addScalar((new CollisionConstant(1.0)));
+        floorRightBody.setVelocity(new Velocity(0.0, -200.0));
         floorRight.setPhysicsBody(floorRightBody);
-        GameObject floorLeft = new GameObject(null,"floor.png",
-                                               -50, 200, 20, 200, 0, "floor_left");
+        GameObject floorLeft = new GameObject(null,"floor.png", -50, 200, 20, 400, 0, "floor_left");
         floorLeft.setIdentifier(new Identifier("floor","b"));
-        PhysicsBody floorLeftBody = new PhysicsBody(20,210);
+        PhysicsBody floorLeftBody = new PhysicsBody(20,220);
         floorLeftBody.addScalar((new CollisionConstant(1.0)));
+        floorLeftBody.setVelocity(new Velocity(0.0, -200.0));
         floorLeft.setPhysicsBody(floorLeftBody);
         //floorBody.setAcceleration(new Acceleration(0.0,-77.0));
         myFloorObjects.add(floorRight);
@@ -105,20 +102,18 @@ public class MainEngineTests extends Application {
         ball.setIdentifier(new Identifier("ball","a"));
         PhysicsBody ballBody = new PhysicsBody(37,37);
         ballBody.addForce(new Gravity(0,1.0));
-        ballBody.addScalar(new GravityConstant(30.0));
+        ballBody.addScalar(new GravityConstant(45.0));
         ball.setPhysicsBody(ballBody);
-        myBallObjects.add(ball);
-        
-        //create a fireball
-        GameObject fireball = new GameObject(null, "ball.png", 50,50, 10, 10, 0, "ball_object");
-        fireball.setIdentifier(new Identifier("fireball", "template"));
-        PhysicsBody fireballBody = new PhysicsBody(10, 10);
-        fireball.setPhysicsBody(fireballBody);
-        
+        myBallObjects.add(ball);        
 
-        /******
-         * conditions
-         ******/
+        /*
+         * 
+         * 
+         * CONDITION DECLARATION
+         * 
+         * 
+         * 
+         */
 
         ConditionsCollection myConditions = new ConditionsCollection();
         ArrayList <Identifier> temp=new ArrayList();
@@ -126,28 +121,16 @@ public class MainEngineTests extends Application {
         ArrayList<Identifier> ballIdList = new ArrayList<Identifier>();
         ballIdList.add(ball.getIdentifier());
 
-        TranslateYType yVelAction = new TranslateYType("ball",1.0);
-        Action fireballMove = new TranslateXType("fireball", 2.0);
-        ArrayList<Action> yVelActionList = new ArrayList<Action>();
-        yVelActionList.add(yVelAction);
-        yVelActionList.add(fireballMove);
-
-        //Action yVelAction = new YVelocityIDAction(temp,0.0);
+        ArrayList<Action> ballVelActionList = new ArrayList<Action>();
         Action xVelAction=new XVelocityIDAction(temp, 0.0);
-        //yVelActionList.add(yVelAction);
-        yVelActionList.add(xVelAction);
-
-        TimeCondition myConstantVelocity = new TimeCondition(yVelActionList,1.0,true);
+        ballVelActionList.add(xVelAction);
+        
+        TimeCondition myConstantVelocity = new TimeCondition(ballVelActionList,1.0,true);
         myConstantVelocity.setIdentifier(new Identifier("time_cond","a"));
         myConditions.add(myConstantVelocity);
         
-        
-       
-
-        
-        Action aAct = new XVelocityIDAction(temp, -100.0);
-        //Action aAct = new MakeNewObjectFromLocationAction("ball",200.0,200.0);
-        Action dAct = new XVelocityIDAction(temp ,100.0);
+        Action aAct = new XVelocityIDAction(temp, -150.0);
+        Action dAct = new XVelocityIDAction(temp , 150.0);
         ArrayList<Action> actionList = new ArrayList<Action>();
         actionList.add(aAct);
         ArrayList<KeyCode> kclA = new ArrayList<KeyCode>();
@@ -156,9 +139,8 @@ public class MainEngineTests extends Application {
         aCon.setIdentifier(new Identifier("button_cond","a"));
         ArrayList<Action> dActList = new ArrayList<Action>();
         dActList.add(dAct);
-        ArrayList<Action> testList = new ArrayList<Action>(); 
-        Action ballAct = new MakeNewObjectFromObjectAction("fireball", ball.getIdentifier());
-        testList.add(ballAct);
+        ArrayList<Action> testList = new ArrayList<Action>();
+        
         ArrayList<KeyCode> kclN = new ArrayList<KeyCode>();
         kclN.add(KeyCode.N);
         ButtonPressCondition nCon = new ButtonPressCondition(testList, kclN, 5.0, true);
@@ -178,7 +160,6 @@ public class MainEngineTests extends Application {
         myConditions.add(dCon);
         myConditions.add(nCon);
         myConditions.add(hCon);
-        System.out.println(1);
         
         ArrayList<Action> wActList = new ArrayList<Action>();
         List<Identifier> wActListId = myBallObjects.getIdentifierList();
@@ -197,29 +178,31 @@ public class MainEngineTests extends Application {
         ballAndPlatformCollision.setIdentifier(new Identifier("collision_cond","a"));
         myConditions.add(ballAndPlatformCollision);
         
-        Action boundaryRightAction = new TranslateYType("floor",-1.0);
-        Action boundaryLeftAction = new TranslateYType("floor",-1.0);
-        ArrayList<Action> boundaryActionList = new ArrayList<Action>();
-        boundaryActionList.add(boundaryLeftAction);
-        boundaryActionList.add(boundaryRightAction);
-        BoundaryConditionY boundaryCondition = new BoundaryConditionY(boundaryActionList,myFloorObjects.getIdentifierList(),200.0,false);
-        boundaryCondition.setIdentifier(new Identifier("bound_cond","a"));
-        myConditions.add(boundaryCondition);
+        ArrayList<Action> boundaryTopActionList = new ArrayList<Action>();
+        Action shiftDown = new TranslateYType("floor", 300.0);
+        Action shiftX = new TranslateXRandomType("floor", -100.0, 100.0);
+        boundaryTopActionList.add(shiftDown);
+        boundaryTopActionList.add(shiftX);
         
-        Action boundaryScrollActionBall = new TranslateXType("ball",-1.0);
-        Action boundaryScrollActionFloor = new TranslateXType("floor",-1.0);
-        ArrayList<Action> scrollActionList = new ArrayList<Action>();
-        scrollActionList.add(boundaryScrollActionBall);
-        scrollActionList.add(boundaryScrollActionFloor);
-        BoundaryConditionX boundaryConditionScroll = new BoundaryConditionX(scrollActionList,myBallObjects.getIdentifierList(),200.0,true);
-        boundaryConditionScroll.setIdentifier(new Identifier("bound_scroll","a"));
-        myConditions.add(boundaryConditionScroll);
+        BoundaryConditionY boundaryConditionTop = new BoundaryConditionY(boundaryTopActionList, myFloorObjects.getIdentifierList(), 0.0, false);
+        boundaryConditionTop.setIdentifier(new Identifier("bound_cond", "bound_top"));
+        myConditions.add(boundaryConditionTop);
 
-        BoundaryConditionY boundaryConditionBottom = new BoundaryConditionY(boundaryActionList,myBallObjects.getIdentifierList(),250.0,true);
-        boundaryConditionBottom.setIdentifier(new Identifier("bound_cond","bottom"));
-        myConditions.add(boundaryConditionBottom);
+        ArrayList<Action> stopBallLeftList = new ArrayList<Action>();
+        Action stopBallLeftAction = new XVelocityIDAction(temp, 10.0);
+        stopBallLeftList.add(stopBallLeftAction);
         
+        ArrayList<Action> stopBallRightList = new ArrayList<Action>();
+        Action stopBallRightAction = new XVelocityIDAction(temp, -10.0);
+        stopBallRightList.add(stopBallRightAction);
         
+        BoundaryConditionX boundaryConditionLeft = new BoundaryConditionX(stopBallLeftList, myBallObjects.getIdentifierList(), 0.0, false);
+        boundaryConditionLeft.setIdentifier(new Identifier("bound_cond", "bound_left"));
+        myConditions.add(boundaryConditionLeft);
+
+		BoundaryConditionX boundaryConditionRight = new BoundaryConditionX(stopBallRightList, myBallObjects.getIdentifierList(), 270.0, true);
+		boundaryConditionRight.setIdentifier(new Identifier("bound_cond", "bound_right"));
+        myConditions.add(boundaryConditionRight);
         
         /*
          //uncomment for play pause stuff
@@ -240,18 +223,13 @@ public class MainEngineTests extends Application {
         GameObjectsCollection allGameObjects = new GameObjectsCollection();
         allGameObjects.addAll(myBallObjects);
         allGameObjects.addAll(myFloorObjects);
-        allGameObjects.add(fireball);
-        allGameObjects.addAll(myLabels);
-
 
         /*******
          * levels
          *******/
         LevelsCollection myLevels = new LevelsCollection();
-        Level level0 = new Level(allGameObjects.getIdentifierList(),myConditions.getIdentifierList(),true);
-        level0.setBackgroundMusic("Flappy_Bird_Theme_Song.mp3");
-        level0.setBackgroundImage("Personnages-celebres-Troll-face-Troll-face-me-gusta-29215.jpg");
-        myLevels.add(level0);
+        Level mainLevel = new Level(allGameObjects.getIdentifierList(),myConditions.getIdentifierList(),true);
+        myLevels.add(mainLevel);
         
         /*
          * uncomment for saving game

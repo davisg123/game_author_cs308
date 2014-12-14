@@ -15,7 +15,10 @@ public class MakeNewRandomObjectAction extends MakeNewObjectAction{
 	public MakeNewRandomObjectAction(String type, Double lowerXBound, Double upperXBound, Double lowerYBound, Double upperYBound){
 		super(type); 
 		r = new Random(); 
-		
+		myLowerXBound = lowerXBound;
+		myUpperXBound = upperXBound;
+		myLowerYBound = lowerYBound;
+		myUpperYBound = upperYBound;
 	}
 
 	
@@ -26,13 +29,14 @@ public class MakeNewRandomObjectAction extends MakeNewObjectAction{
 			//TODO: make this a template list
 			if (object.getIdentifier().getType().equals(myType)){
 				makeRandomObject(object);
-				
+				System.out.println("ok");
 			}
 		}
 		
 	}
 	
 	public void makeRandomObject(GameObject object){
+		System.out.println("trying to create new object...");
 		double x = r.nextInt((int) (myUpperXBound-myLowerXBound)) + myLowerXBound; 
 		double y = r.nextInt((int) (myUpperYBound-myLowerYBound)) + myLowerYBound; 
 		GameObject newObject = new GameObject(object, x, y, myType); 

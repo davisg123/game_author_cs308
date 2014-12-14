@@ -11,6 +11,7 @@ public class BoundaryConditionY extends GameObjectCondition {
     
     private Double myBoundary;
     private Boolean myUpTrigger;
+    private int myCounter = 0;
 
     public BoundaryConditionY (List<Action> myActions,
                               List<Identifier> myIDs,
