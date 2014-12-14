@@ -27,13 +27,13 @@ public class CollisionComposition {
 		boolean y;
 		double xPoint;
 		double yPoint;
-		for (double i = 2.0; i < 150; i++) {
+		for (double i = 3.0; i < 150; i++) {
 			xPoint = other.getTranslateX();
 			yPoint = other.getTranslateY();
 			x = false;
 			y = false;
-			curX = xVel / (i - .9);
-			curY = yVel / (i - .9);
+			curX = xVel / (i/2.0);
+			curY = yVel / (i/2.0);
 			other.setTranslateX(xPoint - curX);
 			if (other.getRenderedNode().getBoundsInParent()
 					.intersects(fixed.getRenderedNode().getBoundsInParent())) {
@@ -72,6 +72,7 @@ public class CollisionComposition {
 				.getValue() == 1) ? one : two;
 		GameObject other = (one.getPhysicsBody().getScalar(a.toString())
 				.getValue() == 1) ? two : one;
+		if(other.getID().equals("mario"))
 		if (xAxis) {
 			other.getPhysicsBody().setVelocity(
 					new Velocity(0.0, other.getPhysicsBody().getVelocity()
@@ -89,10 +90,10 @@ public class CollisionComposition {
 							fixed.getPhysicsBody().getVelocity().getY()));
 			if (other.getTranslateY() < fixed.getTranslateY()) {
 				other.setTranslateY(fixed.getTranslateY()
-						- other.getPhysicsBody().getCollisionBodyHeight());
+						- other.getPhysicsBody().getCollisionBodyHeight()-1.0);
 			} else {
 				other.setTranslateY(fixed.getTranslateY()
-						+ fixed.getPhysicsBody().getCollisionBodyHeight());
+						+ fixed.getPhysicsBody().getCollisionBodyHeight()+1.0);
 			}
 
 			// System.out.println(fixed.getTranslateY());

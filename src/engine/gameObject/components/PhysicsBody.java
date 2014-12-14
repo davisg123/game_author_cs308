@@ -49,7 +49,7 @@ public class PhysicsBody {
 		this(0, 0);
 	}
 
-	public PhysicsBody(double collisionBodyWidth, double collisionBodyHeight) {
+	public PhysicsBody(double collisionBodyHeight, double collisionBodyWidth) {
 		myImpulses = new ArrayList<Impulse>();
 		myAcceleration = new Acceleration();
 		myVelocity = new Velocity();
