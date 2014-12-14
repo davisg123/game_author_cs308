@@ -1,0 +1,5 @@
+<map id="engine.level.Level.addGameObject" name="engine.level.Level.addGameObject">
+<area shape="rect" id="node2" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html#a1bdc1047736bbb23259d6a7fe4c6deeb" title="authoring.model.collections.\lGeneralCollection.add" alt="" coords="271,5,473,46"/>
+<area shape="rect" id="node3" href="$d3/d8d/classdata_1_1_observable.html#a120384f9a41245899f05bb1a4c36ac4d" title="data.Observable.notifyObservers" alt="" coords="257,71,487,97"/>
+<area shape="rect" id="node4" href="$d3/d8d/classdata_1_1_observable.html#a6da70e44050d139f40cf07384484f51d" title="data.Observable.setChanged" alt="" coords="268,121,476,148"/>
+</map>

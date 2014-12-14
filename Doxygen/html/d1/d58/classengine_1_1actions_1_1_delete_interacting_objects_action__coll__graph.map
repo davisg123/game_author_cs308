@@ -1,0 +1,13 @@
+<map id="engine.actions.DeleteInteractingObjectsAction" name="engine.actions.DeleteInteractingObjectsAction">
+<area shape="rect" id="node2" href="$d4/d87/classengine_1_1actions_1_1_type_action.html" title="engine.actions.TypeAction" alt="" coords="1151,81,1337,108"/>
+<area shape="rect" id="node3" href="$d9/dd2/interfaceengine_1_1actions_1_1_action.html" title="engine.actions.Action" alt="" coords="785,5,943,32"/>
+<area shape="rect" id="node4" href="$d2/d15/interfaceengine_1_1actions_1_1_initializable.html" title="engine.actions.Initializable" alt="" coords="344,28,533,55"/>
+<area shape="rect" id="node5" href="$df/d84/classengine_1_1level_1_1_level.html" title="engine.level.Level" alt="" coords="797,165,931,192"/>
+<area shape="rect" id="node14" href="$df/de5/classengine_1_1render_1_1_game_object_renderer.html" title="engine.render.GameObject\lRenderer" alt="" coords="1147,209,1341,250"/>
+<area shape="rect" id="node6" href="$d3/d8d/classdata_1_1_observable.html" title="data.Observable" alt="" coords="375,220,502,247"/>
+<area shape="rect" id="node8" href="$dc/df6/interfaceengine_1_1game_object_1_1_identifiable.html" title="engine.gameObject.Identifiable" alt="" coords="329,271,549,297"/>
+<area shape="rect" id="node9" href="$d4/dac/classengine_1_1game_object_1_1_identifier.html" title="engine.gameObject.Identifier" alt="" coords="335,321,542,348"/>
+<area shape="rect" id="node11" href="$d1/d32/classauthoring_1_1model_1_1collections_1_1_game_objects_collection.html" title="authoring.model.collections.\lGameObjectsCollection" alt="" coords="337,89,540,130"/>
+<area shape="rect" id="node12" href="$d4/d3b/classauthoring_1_1model_1_1collections_1_1_general_collection.html" title="authoring.model.collections.\lGeneralCollection\&lt; GameObject \&gt;" alt="" coords="6,89,250,130"/>
+<area shape="rect" id="node17" href="$d9/db5/classengine_1_1_file_path_utility.html" title="engine.FilePathUtility" alt="" coords="787,216,941,243"/>
+</map>
