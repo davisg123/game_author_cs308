@@ -1,6 +1,0 @@
-<map id="engine.conditions.TypeCollisionCondition.initialize" name="engine.conditions.TypeCollisionCondition.initialize">
-<area shape="rect" id="node2" href="$df/d67/classengine_1_1level_1_1_level_manager.html#a0b41aada08e898db8cc4bcd7646e39e1" title="engine.level.LevelManager.get\lCurrentLevel" alt="" coords="291,5,506,46"/>
-<area shape="rect" id="node3" href="$df/d84/classengine_1_1level_1_1_level.html#ac927326f1a3d7e17b5d577c336a5cfc1" title="engine.level.Level.getGame\lObjectsCollection" alt="" coords="299,70,498,111"/>
-<area shape="rect" id="node4" href="$d6/d94/classengine_1_1_game_manager.html#a6d1ae727d1d306393aada5a5178e8191" title="engine.GameManager.getLevel\lManager" alt="" coords="288,135,509,177"/>
-<area shape="rect" id="node5" href="$d1/d3b/classengine_1_1conditions_1_1_condition.html#af76d495528a20a8dd66fbed133d158e4" title="engine.conditions.Condition.initialize\lActions" alt="" coords="272,201,525,242"/>
-</map>
