@@ -1,6 +1,7 @@
 package authoring.eventhandlers;
 
 import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Parameter;
 import java.lang.reflect.Type;
@@ -18,6 +19,7 @@ import authoring.view.wizards.ConditionSelectionWizard;
 import engine.actions.Action;
 import engine.conditions.Condition;
 import engine.gameObject.Identifier;
+import errorsAndExceptions.ErrorPopUp;
 
 public class AddConditionHandler implements GameHandler<Event> {
 
@@ -76,7 +78,8 @@ public class AddConditionHandler implements GameHandler<Event> {
 					event -> fillConditionParameters());
 
 		} catch (ClassNotFoundException e) {
-			//System.out.println("Bad Class");
+			ErrorPopUp epu = new ErrorPopUp(e);
+			epu.display("Bad Class", false);
 		}
 
 	}
@@ -127,8 +130,10 @@ public class AddConditionHandler implements GameHandler<Event> {
 							innerList.add(parseMethod.invoke(c, s));
 						}
 					}
-				} catch (Exception e) {
-					System.out.println("Bad Class");
+				} catch (ClassNotFoundException | NoSuchMethodException |
+						InvocationTargetException | IllegalAccessException e) {
+					ErrorPopUp epu = new ErrorPopUp(e);
+					epu.display("Bad Class", false);
 				}
 				inputs.add(innerList);
 			}else{
@@ -144,8 +149,10 @@ public class AddConditionHandler implements GameHandler<Event> {
 						Object innerObject = parseMethod.invoke(c, s);
 						inputs.add(innerObject);
 					}
-				} catch (Exception e) {
-					System.out.println("Bad Class");
+				} catch (ClassNotFoundException | NoSuchMethodException | 
+						InvocationTargetException | IllegalAccessException e) {
+					ErrorPopUp epu = new ErrorPopUp(e);
+					epu.display("Bad Class", false);
 				}
 			}
 		}
@@ -163,8 +170,10 @@ public class AddConditionHandler implements GameHandler<Event> {
 			c.setInputMap(displayMap);
 			myConditionsCollection.add(c);
 			mySelectionWizard.close();
-		} catch (Exception e) {
-			System.out.println("Could not construct");
+		} catch (InvocationTargetException | IllegalAccessException |
+				InstantiationException e) {
+			ErrorPopUp epu = new ErrorPopUp(e);
+			epu.display("Could not construct", false);
 		}
 	}
 
