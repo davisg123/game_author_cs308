@@ -1,0 +1,10 @@
+<map id="engine.level.Level.setBackgroundMusic" name="engine.level.Level.setBackgroundMusic">
+<area shape="rect" id="node2" href="$d7/d00/classengine_1_1tests_1_1_main_engine_tests.html#ad06079aee97fd7ffd4f2b14a8f01b808" title="engine.tests.MainEngineTests.create\lGameObject" alt="" coords="289,5,543,46"/>
+<area shape="rect" id="node4" href="$dc/d21/classgames_1_1_mario_game_test.html#aab9eed35cd4d8ae1d108ae914b6a73ff" title="games.MarioGameTest.create\lGameObject" alt="" coords="309,70,523,111"/>
+<area shape="rect" id="node6" href="$d4/d95/classauthoring_1_1eventhandlers_1_1_add_level_handler.html#a661a922286bb73b71fae0c5f17e076eb" title="authoring.eventhandlers.\lAddLevelHandler.createLevel" alt="" coords="313,135,519,177"/>
+<area shape="rect" id="node3" href="$d7/d00/classengine_1_1tests_1_1_main_engine_tests.html#ad1e78dcd3453ebdeb09141cba734c133" title="engine.tests.MainEngineTests.start" alt="" coords="593,12,837,39"/>
+<area shape="rect" id="node5" href="$dc/d21/classgames_1_1_mario_game_test.html#a8b7c287ffdfcacefeb373e7430a608c8" title="games.MarioGameTest.start" alt="" coords="613,77,816,104"/>
+<area shape="rect" id="node7" href="$d4/d95/classauthoring_1_1eventhandlers_1_1_add_level_handler.html#a5a230a4a3782a8abc4e950d761b3ca4c" title="authoring.eventhandlers.\lAddLevelHandler.getPrompt" alt="" coords="614,135,815,177"/>
+<area shape="rect" id="node8" href="$d4/d95/classauthoring_1_1eventhandlers_1_1_add_level_handler.html#a23ded002286606515b56a80a315ece08" title="authoring.eventhandlers.\lAddLevelHandler.promptLevelID" alt="" coords="885,135,1112,177"/>
+<area shape="rect" id="node9" href="$d4/d95/classauthoring_1_1eventhandlers_1_1_add_level_handler.html#a9a0d2dde9cdac11aa5914db24e516b1a" title="authoring.eventhandlers.\lAddLevelHandler.handle" alt="" coords="1161,135,1343,177"/>
+</map>

@@ -1,0 +1,23 @@
+<map id="engine.actions.PhysicsIDAction" name="engine.actions.PhysicsIDAction">
+<area shape="rect" id="node4" href="$d7/de2/classengine_1_1actions_1_1_fixed_collision_action.html" title="engine.actions.FixedCollision\lAction" alt="" coords="737,135,940,177"/>
+<area shape="rect" id="node5" href="$de/d9e/classengine_1_1actions_1_1_physics_component_action.html" title="engine.actions.PhysicsComponent\lAction" alt="" coords="718,201,959,242"/>
+<area shape="rect" id="node22" href="$df/d04/classengine_1_1actions_1_1_reverse_velocity_i_d_action.html" title="engine.actions.ReverseVelocity\lIDAction" alt="" coords="729,266,948,307"/>
+<area shape="rect" id="node2" href="$d9/dd2/interfaceengine_1_1actions_1_1_action.html" title="engine.actions.Action" alt="" coords="243,233,402,260"/>
+<area shape="rect" id="node3" href="$d2/d15/interfaceengine_1_1actions_1_1_initializable.html" title="engine.actions.Initializable" alt="" coords="5,208,195,235"/>
+<area shape="rect" id="node6" href="$dd/dd3/classengine_1_1actions_1_1_scalar_physics_action.html" title="engine.actions.ScalarPhysics\lAction" alt="" coords="1009,103,1215,145"/>
+<area shape="rect" id="node10" href="$d3/d7e/classengine_1_1actions_1_1_vector_physics_action.html" title="engine.actions.VectorPhysics\lAction" alt="" coords="1009,262,1215,303"/>
+<area shape="rect" id="node7" href="$da/d7b/classengine_1_1actions_1_1_density_physics_action.html" title="engine.actions.DensityPhysics\lAction" alt="" coords="1267,5,1482,46"/>
+<area shape="rect" id="node8" href="$d8/d27/classengine_1_1actions_1_1_mass_physics_action.html" title="engine.actions.MassPhysics\lAction" alt="" coords="1275,70,1474,111"/>
+<area shape="rect" id="node9" href="$df/df6/classengine_1_1actions_1_1_volume_physics_action.html" title="engine.actions.VolumePhysics\lAction" alt="" coords="1267,135,1482,177"/>
+<area shape="rect" id="node11" href="$de/d26/classengine_1_1actions_1_1_force_physics_action.html" title="engine.actions.ForcePhysics\lAction" alt="" coords="1274,201,1475,242"/>
+<area shape="rect" id="node16" href="$d4/de0/classengine_1_1actions_1_1_impulse_action.html" title="engine.actions.ImpulseAction" alt="" coords="1270,299,1479,325"/>
+<area shape="rect" id="node19" href="$d3/dce/classengine_1_1actions_1_1_velocity_i_d_action.html" title="engine.actions.VelocityIDAction" alt="" coords="1264,408,1485,435"/>
+<area shape="rect" id="node12" href="$d4/dc6/classengine_1_1actions_1_1_x_friction_physics_action.html" title="engine.actions.XFriction\lPhysicsAction" alt="" coords="1563,37,1735,78"/>
+<area shape="rect" id="node13" href="$d5/de6/classengine_1_1actions_1_1_x_gravity_physics_action.html" title="engine.actions.XGravityPhysics\lAction" alt="" coords="1540,102,1759,143"/>
+<area shape="rect" id="node14" href="$db/ddb/classengine_1_1actions_1_1_y_friction_physics_action.html" title="engine.actions.YFriction\lPhysicsAction" alt="" coords="1564,167,1735,209"/>
+<area shape="rect" id="node15" href="$dd/d79/classengine_1_1actions_1_1_y_gravity_physics_action.html" title="engine.actions.YGravityPhysics\lAction" alt="" coords="1540,233,1759,274"/>
+<area shape="rect" id="node17" href="$de/d83/classengine_1_1actions_1_1_x_impulse_i_d_action.html" title="engine.actions.XImpulseIDAction" alt="" coords="1534,299,1765,325"/>
+<area shape="rect" id="node18" href="$d3/de2/classengine_1_1actions_1_1_y_impulse_i_d_action.html" title="engine.actions.YImpulseIDAction" alt="" coords="1535,349,1764,376"/>
+<area shape="rect" id="node20" href="$d2/da8/classengine_1_1actions_1_1_x_velocity_i_d_action.html" title="engine.actions.XVelocity\lIDAction" alt="" coords="1561,401,1737,442"/>
+<area shape="rect" id="node21" href="$d1/da7/classengine_1_1actions_1_1_y_velocity_i_d_action.html" title="engine.actions.YVelocity\lIDAction" alt="" coords="1562,466,1737,507"/>
+</map>
