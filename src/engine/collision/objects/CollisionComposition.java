@@ -68,44 +68,34 @@ public class CollisionComposition {
 				.getValue() == 1) ? one : two;
 		GameObject other = (one.getPhysicsBody().getScalar("CollisionConstant")
 				.getValue() == 1) ? two : one;
+		System.out.println(fixed.getTranslateY()-other.getTranslateY());
 		double toMove = 0;
 		if (xAxis) {
 			other.getPhysicsBody().setVelocity(
 					new Velocity(0.0, other.getPhysicsBody().getVelocity()
 							.getY()));
 			if (other.getTranslateX() < fixed.getTranslateX()) {
-				toMove = collisionHelper(fixed.getTranslateX(),
-						other.getTranslateX(), fixed.getPhysicsBody()
-								.getCollisionBodyHeight() / 2.0,
-						other.getPhysicsBody().getCollisionBodyHeight() / 2.0);
+				other.setTranslateX(fixed.getTranslateX()
+						- other.getPhysicsBody().getCollisionBodyHeight());
 			} else {
-				toMove = -1.0
-						* collisionHelper(fixed.getTranslateX(),
-								other.getTranslateX(), fixed.getPhysicsBody()
-										.getCollisionBodyHeight() / 2.0, other
-										.getPhysicsBody()
-										.getCollisionBodyHeight() / 2.0);
+				other.setTranslateX(fixed.getTranslateX()
+						+ fixed.getPhysicsBody().getCollisionBodyHeight());
 			}
 		} else {
-			if (other.getTranslateY() < fixed.getTranslateY()) {
-				toMove = collisionHelper(fixed.getTranslateY(),
-						other.getTranslateY(), 0.0, other
-								.getPhysicsBody().getCollisionBodyWidth());
-
-			} else {
-				System.out.println(xAxis);
-				toMove = -1.0
-						* collisionHelper(fixed.getTranslateY(),
-								other.getTranslateY(), fixed.getPhysicsBody()
-										.getCollisionBodyWidth() / 2.0, other
-										.getPhysicsBody()
-										.getCollisionBodyWidth() / 2.0);
-			}
-			System.out.println(toMove);
 			other.getPhysicsBody().setVelocity(
 					new Velocity(other.getPhysicsBody().getVelocity().getX(),
 							fixed.getPhysicsBody().getVelocity().getY()));
-			other.setTranslateY(other.getTranslateY() - toMove+other.getPhysicsBody().getCollisionBodyWidth()/2.0);
+			if (other.getTranslateY() < fixed.getTranslateY()) {
+				other.setTranslateY(fixed.getTranslateY()
+						- other.getPhysicsBody().getCollisionBodyWidth());
+
+			} else {
+				other.setTranslateY(fixed.getTranslateY()
+						+ fixed.getPhysicsBody().getCollisionBodyWidth());
+			}
+
+			//System.out.println(fixed.getTranslateY());
+			//System.out.println(other.getRenderedNode().get);
 		}
 	}
 
