@@ -87,13 +87,17 @@ public class PlayerModel {
 	public ConditionsCollection getButtonConditions() {
 		return myButtonConditions;
 	}
-
+	
+	public void exitFromGame() {
+		myGameManager.clear();
+		exitFromGamePlayer();
+	}
+	
 	/**
 	 * Clear the game and close this stage
 	 * Return to the splash screen
 	 */
-	public void exitFromGame() {
-		myGameManager.clear();
+	public void exitFromGamePlayer() {
 		myPlayerView.close();
 		SplashScreen screen = new SplashScreen();
 		screen.show();

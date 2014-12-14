@@ -288,6 +288,7 @@ public class MarioGameTest extends Application {
         
         //Delete 
         Action delete = new DeleteTypeAction("fireball");
+
         List<Action> actions = new ArrayList<Action>();
         actions.add(delete);
         List<KeyCode> kclH = new ArrayList<KeyCode>();
