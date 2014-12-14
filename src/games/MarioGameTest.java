@@ -87,6 +87,7 @@ public class MarioGameTest extends Application {
         GameObjectsCollection myGoombaObjects = new GameObjectsCollection();
         GameObjectsCollection myMarioObjects = new GameObjectsCollection();
         GameObjectsCollection myLabels = new GameObjectsCollection();
+        GameObjectsCollection myQuestionBlocksObjects = new GameObjectsCollection();
         
         
         //Create button for Splash Screen
@@ -143,12 +144,15 @@ public class MarioGameTest extends Application {
         myPlatformObjects.add(platform4);
 
         GameObject questionBlock1 = new GameObject(null, "Question Block.gif", 
-                                              500, 180, 50, 50, 0, "PlatformBlock1");
-        questionBlock1.setIdentifier(new Identifier("PlatformBlock","e"));   
+                                              500, 180, 50, 50, 0, "QuestionBlock1");
+        questionBlock1.setIdentifier(new Identifier("QuestionBlock","e"));   
         PhysicsBody questionBlock1Body = new PhysicsBody(50,50);
         questionBlock1Body.addScalar((new CollisionConstant(1.0)));
         questionBlock1.setPhysicsBody(questionBlock1Body);
-        myPlatformObjects.add(questionBlock1);
+        myQuestionBlocksObjects.add(questionBlock1);
+        
+        
+        
         
         
         //create a player
@@ -198,17 +202,17 @@ public class MarioGameTest extends Application {
 
         ConditionsCollection myConditions = new ConditionsCollection();
         
-        ArrayList <Identifier> identList=new ArrayList<Identifier>();
+        List <Identifier> identList=new ArrayList<Identifier>();
         identList.add(mario.getIdentifier());
         
-        ArrayList<Identifier> marioIdList = new ArrayList<Identifier>();
+        List<Identifier> marioIdList = new ArrayList<Identifier>();
         marioIdList.add(mario.getIdentifier());
 
         TranslateYType yVelAction = new TranslateYType("mario",1.0);
         TranslateYType yVel1Action = new TranslateYType("goomba",1.0);
         
         Action fireballMove = new TranslateXType("fireball", 2.0);
-        ArrayList<Action> yVelActionList = new ArrayList<Action>();
+        List<Action> yVelActionList = new ArrayList<Action>();
         yVelActionList.add(yVelAction);
         yVelActionList.add(yVel1Action);
         yVelActionList.add(fireballMove);
@@ -231,9 +235,9 @@ public class MarioGameTest extends Application {
         
         // Move Left
         Action aAct = new XVelocityIDAction(identList, -100.0);
-        ArrayList<Action> actionList = new ArrayList<Action>();
+        List<Action> actionList = new ArrayList<Action>();
         actionList.add(aAct);
-        ArrayList<KeyCode> kclA = new ArrayList<KeyCode>();
+        List<KeyCode> kclA = new ArrayList<KeyCode>();
         kclA.add(KeyCode.A);
         ButtonPressCondition aCon = new ButtonPressCondition(actionList,kclA, 1.0, true);
         aCon.setIdentifier(new Identifier("button_cond","a"));
@@ -241,19 +245,19 @@ public class MarioGameTest extends Application {
         
         //Move Right
         Action dAct = new XVelocityIDAction(identList ,100.0);
-        ArrayList<Action> dActList = new ArrayList<Action>();
+        List<Action> dActList = new ArrayList<Action>();
         dActList.add(dAct);
-        ArrayList<KeyCode> kclD = new ArrayList<KeyCode>();
+        List<KeyCode> kclD = new ArrayList<KeyCode>();
         kclD.add(KeyCode.D);
         ButtonPressCondition dCon = new ButtonPressCondition(dActList,kclD,1.0, true);
         dCon.setIdentifier(new Identifier("button_cond","d")); 
         myConditions.add(dCon);
         
         //Shoot Fireball
-        ArrayList<Action> testList = new ArrayList<Action>(); 
+        List<Action> testList = new ArrayList<Action>(); 
         Action ballAct = new MakeNewObjectFromObjectAction("fireball", mario.getIdentifier());
         testList.add(ballAct);
-        ArrayList<KeyCode> kclN = new ArrayList<KeyCode>();
+        List<KeyCode> kclN = new ArrayList<KeyCode>();
         kclN.add(KeyCode.N);
         ButtonPressCondition nCon = new ButtonPressCondition(testList, kclN, 5.0, true);
         nCon.setIdentifier(new Identifier("button_cond", "n"));
@@ -261,19 +265,19 @@ public class MarioGameTest extends Application {
         
         //Delete 
         Action delete = new DeleteTypeAction("fireball");
-        ArrayList<Action> actions = new ArrayList<Action>();
+        List<Action> actions = new ArrayList<Action>();
         actions.add(delete);
-        ArrayList<KeyCode> kclH = new ArrayList<KeyCode>();
+        List<KeyCode> kclH = new ArrayList<KeyCode>();
         kclH.add(KeyCode.H);
         ButtonPressCondition hCon = new ButtonPressCondition(actions, kclH, 1.0, true);
         hCon.setIdentifier(new Identifier("button_cond", "h"));
         myConditions.add(hCon);
         
         //Jump
-        ArrayList<Action> wActList = new ArrayList<Action>();
+        List<Action> wActList = new ArrayList<Action>();
         List<Identifier> wActListId = myMarioObjects.getIdentifierList();
         wActList.add(new YImpulseIDAction(wActListId,-200.0));
-        ArrayList<KeyCode> kclW = new ArrayList<KeyCode>();
+        List<KeyCode> kclW = new ArrayList<KeyCode>();
         kclW.add(KeyCode.W);
         ButtonPressCondition wCon = new ButtonPressCondition(wActList,kclW,50.0, true);
         wCon.setIdentifier(new Identifier("button_cond","w"));
@@ -282,7 +286,7 @@ public class MarioGameTest extends Application {
         //collision stuff
         
         //Floor Collisions
-        ArrayList<Action> MarioConditionActionList = new ArrayList<Action>();
+        List<Action> MarioConditionActionList = new ArrayList<Action>();
         FixedCollisionTypeAction collisionAction = new FixedCollisionTypeAction("mario","FloorBlock",0.0);
         MarioConditionActionList.add(collisionAction);
         TypeCollisionCondition marioAndFloorCollision = new TypeCollisionCondition(MarioConditionActionList,"mario","FloorBlock");
@@ -290,7 +294,7 @@ public class MarioGameTest extends Application {
         myConditions.add(marioAndFloorCollision);
         
 
-        ArrayList<Action> GoombaConditionActionList = new ArrayList<Action>();
+        List<Action> GoombaConditionActionList = new ArrayList<Action>();
         FixedCollisionTypeAction goombaCollisionAction = new FixedCollisionTypeAction("goomba","FloorBlock",0.0);
         GoombaConditionActionList.add(goombaCollisionAction);
         TypeCollisionCondition goombaAndFloorCollision = new TypeCollisionCondition(GoombaConditionActionList,"goomba","FloorBlock");
@@ -299,7 +303,7 @@ public class MarioGameTest extends Application {
         
         //Platform Collisions
         
-        ArrayList<Action> marioPlatformConditionActionList = new ArrayList<Action>();
+        List<Action> marioPlatformConditionActionList = new ArrayList<Action>();
         FixedCollisionTypeAction marioPlatformCollisionAction = new FixedCollisionTypeAction("mario","PlatformBlock",0.0);
         marioPlatformConditionActionList.add(marioPlatformCollisionAction);
         TypeCollisionCondition marioAndPlatformCollision = new TypeCollisionCondition(marioPlatformConditionActionList,"mario","PlatformBlock");
@@ -310,7 +314,7 @@ public class MarioGameTest extends Application {
         //Boundary
         Action boundaryRightAction = new TranslateYType("floor",350.0);
         Action boundaryLeftAction = new TranslateYType("floor",350.0);
-        ArrayList<Action> boundaryActionList = new ArrayList<Action>();
+        List<Action> boundaryActionList = new ArrayList<Action>();
         boundaryActionList.add(boundaryLeftAction);
         boundaryActionList.add(boundaryRightAction);
         BoundaryConditionY boundaryCondition = new BoundaryConditionY(boundaryActionList,myFloorObjects.getIdentifierList(),-50.0,false);
@@ -321,7 +325,7 @@ public class MarioGameTest extends Application {
         //Scrolling
         Action boundaryScrollActionBall = new TranslateXType("mario",0.0);
         Action boundaryScrollActionFloor = new TranslateXType("floor",-1.0);
-        ArrayList<Action> scrollActionList = new ArrayList<Action>();
+        List<Action> scrollActionList = new ArrayList<Action>();
         scrollActionList.add(boundaryScrollActionBall);
         scrollActionList.add(boundaryScrollActionFloor);
         BoundaryConditionX boundaryConditionScroll = new BoundaryConditionX(scrollActionList,myMarioObjects.getIdentifierList(),200.0,true);
@@ -359,7 +363,7 @@ public class MarioGameTest extends Application {
          *******/
         LevelsCollection myLevels = new LevelsCollection();
         Level level0 = new Level(allGameObjects.getIdentifierList(),myConditions.getIdentifierList(),true);
-        level0.setBackgroundMusic("Super Mario Bros. - Full.mp3");
+//        level0.setBackgroundMusic("Super Mario Bros. - Full.mp3");
         level0.setBackgroundImage("overworld_bg.png");
         level0.setIdentifier(new Identifier("Level","0"));
         Level level1 = new Level(allGameObjects.getIdentifierList(), myConditions.getIdentifierList(),false);
