@@ -1,0 +1,9 @@
+<map id="engine.GameManager.initialize" name="engine.GameManager.initialize">
+<area shape="rect" id="node2" href="$d7/d00/classengine_1_1tests_1_1_main_engine_tests.html#ad06079aee97fd7ffd4f2b14a8f01b808" title="engine.tests.MainEngineTests.create\lGameObject" alt="" coords="273,5,527,46"/>
+<area shape="rect" id="node4" href="$d2/dc9/classgame_player_1_1model_1_1_player_model.html#a98f00ab471bdab4f36e313a78fe6ceab" title="gamePlayer.model.PlayerModel.load\lGameData" alt="" coords="273,70,527,111"/>
+<area shape="rect" id="node3" href="$d7/d00/classengine_1_1tests_1_1_main_engine_tests.html#ad1e78dcd3453ebdeb09141cba734c133" title="engine.tests.MainEngineTests.start" alt="" coords="581,12,825,39"/>
+<area shape="rect" id="node5" href="$d2/dc9/classgame_player_1_1model_1_1_player_model.html#aca9302c5af4ce0e4dc9d7d5a13d49e64" title="gamePlayer.model.PlayerModel.add\lFileNameChangeListener" alt="" coords="577,66,828,107"/>
+<area shape="rect" id="node7" href="$d2/dc9/classgame_player_1_1model_1_1_player_model.html#a810c0b28ae81f5a27c5df5f83f907088" title="gamePlayer.model.PlayerModel.load\lGameFile" alt="" coords="576,131,829,173"/>
+<area shape="rect" id="node6" href="$d2/dc9/classgame_player_1_1model_1_1_player_model.html#ad762a1aa11a0f489413712d8dab91419" title="gamePlayer.model.PlayerModel.\lPlayerModel" alt="" coords="904,66,1131,107"/>
+<area shape="rect" id="node8" href="$d9/dff/classgame_player_1_1view_1_1_menu_bar_controller.html#af1f1b493dce9b79a0f464c4f1a6dfd09" title="gamePlayer.view.MenuBarController.load\lGameFile" alt="" coords="877,131,1157,173"/>
+</map>
