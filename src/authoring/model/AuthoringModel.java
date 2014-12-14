@@ -15,6 +15,7 @@ import engine.conditions.Condition;
 import engine.gameObject.GameObject;
 import engine.gameObject.Identifier;
 import engine.level.Level;
+import errorsAndExceptions.ErrorPopUp;
 
 /**
  * The Model of the MVC, gets changes in information from the controller and
@@ -45,7 +46,8 @@ public class AuthoringModel {
 			System.out.println("game saved = " + success);
 			myDataManager.writeProgressFile(mySerializableGame, dataPath, "initial");
 		} catch (IOException e) {
-			System.out.println("Won't Save");
+			ErrorPopUp epu = new ErrorPopUp(e);
+			epu.display("Won't save", false);
 		}
 	}
 	
