@@ -1,5 +1,0 @@
-<map id="engine.gameObject.components.PhysicsBody.balanceForces" name="engine.gameObject.components.PhysicsBody.balanceForces">
-<area shape="rect" id="node2" href="$d5/d1f/classengine_1_1physics_1_1_vector.html#a0ad05574ba8b82b2f265ebfa5869d27b" title="engine.physics.Vector.setX" alt="" coords="288,5,480,32"/>
-<area shape="rect" id="node4" href="$d5/d1f/classengine_1_1physics_1_1_vector.html#a4e646d4b9bf5a3904817560725776cec" title="engine.physics.Vector.setY" alt="" coords="289,56,479,83"/>
-<area shape="rect" id="node3" href="$d5/d1f/classengine_1_1physics_1_1_vector.html#a33c635f15f2f2e16f9b57542c6c3182f" title="engine.physics.Vector.calculate\lMagnitude" alt="" coords="528,23,749,65"/>
-</map>

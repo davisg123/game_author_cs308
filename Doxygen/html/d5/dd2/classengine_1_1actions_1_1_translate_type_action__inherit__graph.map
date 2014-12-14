@@ -1,7 +1,0 @@
-<map id="engine.actions.TranslateTypeAction" name="engine.actions.TranslateTypeAction">
-<area shape="rect" id="node4" href="$d0/d3c/classengine_1_1actions_1_1_translate_x_random_type.html" title="engine.actions.Translate\lXRandomType" alt="" coords="675,5,851,46"/>
-<area shape="rect" id="node5" href="$d0/d80/classengine_1_1actions_1_1_translate_x_type.html" title="engine.actions.Translate\lXType" alt="" coords="675,70,851,111"/>
-<area shape="rect" id="node6" href="$d3/d17/classengine_1_1actions_1_1_translate_y_type.html" title="engine.actions.Translate\lYType" alt="" coords="675,135,851,177"/>
-<area shape="rect" id="node2" href="$d9/dd2/interfaceengine_1_1actions_1_1_action.html" title="engine.actions.Action" alt="" coords="243,103,402,129"/>
-<area shape="rect" id="node3" href="$d2/d15/interfaceengine_1_1actions_1_1_initializable.html" title="engine.actions.Initializable" alt="" coords="5,77,195,104"/>
-</map>
