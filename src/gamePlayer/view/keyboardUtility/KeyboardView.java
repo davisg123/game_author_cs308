@@ -88,7 +88,7 @@ public class KeyboardView {
 		ComboBox<String> functionCombos = new ComboBox<String>();
 		for (Iterator<Condition> conditionIterator = myButtonConditions.iterator(); conditionIterator.hasNext();) {
 			ButtonPressCondition condition = (ButtonPressCondition) conditionIterator.next();
-			functionCombos.getItems().add(condition.getKeyIdentifier());
+			functionCombos.getItems().add(condition.getIdentifier().getUniqueId());
 		}
 		return functionCombos;
 	}
@@ -107,7 +107,7 @@ public class KeyboardView {
 					bc.removeKey(kc);
 				}
 			}
-			if(bc.getKeyIdentifier().equals(keyFunction))
+			if(bc.getIdentifier().getUniqueId().equals(keyFunction))
 			{
 				bc.addKey(kc);
 			}

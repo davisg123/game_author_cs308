@@ -1,101 +1,66 @@
+// This entire file is part of my masterpiece.
+// Davis Gossage
+
 package engine.conditions;
 
 /**
  * @author Abhishek B
  * @author Davis Gossage
  * @author Safkat Islam
+ * 
+ * A condition that listens for a button press.
+ * Options can be set including repeat delay and non-repeating trigger
  */
-import java.util.ArrayList;
 import java.util.List;
-
 import engine.actions.Action;
 import javafx.scene.input.KeyCode;
 
-public class ButtonPressCondition extends Condition {
+public class ButtonPressCondition extends ButtonCondition {
     private List<KeyCode> myKeyList;
-    private List<Action> myReleaseActions;
     private Double myFramesElapsed;
     private Double myTargetFrameCount;
     private Boolean myKeyRepeats;
     private Boolean myExpired = false;
-    private Boolean myButtonActive = false;
     
     
-
-    public ButtonPressCondition (List<Action> onPressActions, List<KeyCode> keyList, Double frameCount, Boolean keyRepeats) {
-        super(onPressActions);
+    /**
+     * constructor for a button press condition
+     * 
+     * @param onPressActions
+     * list of actions to execute when the button is pressed
+     * @param keyList
+     * 
+     * @param frameCount
+     * @param keyRepeats
+     */
+    public ButtonPressCondition (List<Action> onPressActions, List<KeyCode> keyList,
+                                 Double frameCount, Boolean keyRepeats) {
+        super(onPressActions,keyList);
         myTargetFrameCount = frameCount;
         myKeyRepeats = keyRepeats;
         myKeyList = keyList;
-        //we want the button to execute the first frame, then frames elapsed will be set to 0
-        myFramesElapsed = 1000.0;
-    }
-    
-    public void setOnReleaseActions(List<Action> onReleaseActions){
-        myReleaseActions = onReleaseActions;
-    }
-    
-    public String getKeyIdentifier() {
-    	return myId.getUniqueId();
-    }
-    
-    public List<KeyCode> getKeyList()
-    {
-    	return myKeyList;
-    }
-    
-    public void addKey(KeyCode kc)
-    {
-    	if(!myKeyList.contains(kc))
-    	{
-    		myKeyList.add(kc);
-    	}    	
-    }
-    
-    public void removeKey(KeyCode kc){
-    	myKeyList.remove(kc);
-    }
-    
-    public void setKeyIdentifier(String id)
-    {
-    	myId.setUniqueId(id);
     }
 
     @Override
     protected void executeActions () {
     	boolean shouldExecute = false;
-    	for (KeyCode myKey : myKeyList){
-            if (ButtonConditionManager.getInstance().keyIsActive(myKey)){
+    	//check if any key in our list of keys to monitor is active
+    	for (KeyCode myKey : myKeyList) {
+            if (ButtonConditionManager.getInstance().keyIsActive(myKey)) {
                 shouldExecute = true;
             }
     	}
-        myFramesElapsed += 1;
-    	if (shouldExecute){
-    	    myButtonActive = true;
-    	    if (!myExpired && myFramesElapsed >= myTargetFrameCount){
+    	if (shouldExecute) {
+    	    //check that the condition has not expired
+    	    //and that we're not in the timeout window UNLESS this is the first time we're executing
+    	    if (!myExpired && (myFramesElapsed >= myTargetFrameCount || myFramesElapsed == null)) {
     	        myExpired = !myKeyRepeats;
     	        myFramesElapsed = 0.0;
-                for (Action a : getActions()){
+                for (Action a : getActions()) {
                     a.execute();
                 }
     	    }
     	}
-    	else{
-    	    if (myButtonActive){
-    	        myButtonActive = false;
-    	        if (myReleaseActions != null){
-    	            for (Action a: myReleaseActions){
-    	                a.execute();
-    	            }
-    	        }
-
-    	    }
-    	    myButtonActive = false;
-    	}
-    }
-    
-    @Override
-    public void respondToFrameElapsed () {
-        executeActions();
+        myFramesElapsed += 1;
     }
 }
